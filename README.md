@@ -8,10 +8,8 @@ This package is currently in active development and is subject to changes. Featu
 
 ## Features
 
-- **Type-safe CSS properties**: All CSS properties represented as Swift types
-- **Type-safe CSS values**: Strongly-typed values with appropriate constraints
-- **Compile-time validation**: Catch invalid CSS property values at compile time
-- **Comprehensive coverage**: Support for all standard CSS properties and values
+- **Type-safe CSS properties and types**: All CSS properties and types represented as Swift types
+- **Goal of complete CSS coverage**: At-rules, combinators, functions, pseudo-classes, pseudo-selectors, and selectors are a work in progress
 - **Bring Your Own integration**: Designed as a foundation for Swift packages that provide a Swift CSS Domain Specific Language (DSL)
 
 ## Examples
@@ -49,10 +47,9 @@ dependencies: [
 ## Related Projects
 
 * [swift-html-types](https://www.github.com/coenttb/swift-html-types): A Swift package that provides a strongly-typed domain model of HTML elements and attributes.
-* [swift-html](https://www.github.com/coenttb/swift-html): A Swift DSL for type-safe HTML & CSS, integrating with this package.
+* [swift-html](https://www.github.com/coenttb/swift-html): A Swift DSL for type-safe HTML & CSS, integrating this package.
 * [swift-web](https://www.github.com/coenttb/swift-web): Foundational tools for web development in Swift.
 * [coenttb-html](https://www.github.com/coenttb/coenttb-html): Builds on swift-html and adds functionality for HTML components, PDF generation, and more.
-* [swift-languages](https://www.github.com/coenttb/swift-languages): A package for cross-platform translations using Swift.
 
 ## Contribution
 
