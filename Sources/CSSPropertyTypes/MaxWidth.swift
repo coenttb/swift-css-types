@@ -18,17 +18,26 @@ import CSSTypeTypes
 ///         than width (but larger than min-width).
 ///
 /// - SeeAlso: [MDN Web Docs on max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
-public enum MaxWidth: Property {
+public enum MaxWidth: Property, LengthPercentageConvertible {
     public static let property: String = "max-width"
     
-    /// A specific size value (length, percentage, or calculated value)
-    case size(Size)
+    case lengthPercentage(LengthPercentage)
     
     /// No maximum width constraint
     case none
     
+    case maxContent
+    
+    case minContent
+    
+    case fitContent(LengthPercentage? = nil)
+    
+    case stretch
+    
     /// A global CSS value
     case global(CSSTypeTypes.Global)
+    
+    public static let fitContent: Self = .fitContent(nil)
 }
 
 /// CSS Output conversion
@@ -36,38 +45,28 @@ extension MaxWidth: CustomStringConvertible {
     /// Converts the max-width value to its CSS string representation
     public var description: String {
         switch self {
-        case .size(let size):
-            return size.description
+        case .lengthPercentage(let lengthPercentage):
+            lengthPercentage.description
         case .none:
-            return "none"
+            "none"
+        case .maxContent:
+            "max-content"
+        case .minContent:
+            "min-content"
+        case .fitContent(let lengthPercentage):
+            if let description = lengthPercentage?.description {
+                "fit-content(\(description)"
+            } else {
+                "fit-content"
+            }
+        case .stretch:
+            "stretch"
         case .global(let global):
-            return global.description
+            global.description
         }
     }
 }
 
-
-extension MaxWidth: LengthConvertible {
-    public static func length(_ length: CSSTypeTypes.Length) -> MaxWidth {
-        .size(.single(length))
-    }
-}
-extension MaxWidth {    
-    /// Size based on the content's preferred width
-    public static let maxContent: MaxWidth = .size(.maxContent)
-    
-    /// Size based on the content's minimum width
-    public static let minContent: MaxWidth = .size(.minContent)
-    
-    /// Size that uses available space up to the max-content size
-    public static let fitContent: MaxWidth = .size(.fitContent)
-    
-    /// Size to fit within the element while preserving aspect ratio
-    public static let contain: MaxWidth = .size(.contain)
-    
-    /// Size to cover the entire element while preserving aspect ratio
-    public static let cover: MaxWidth = .size(.cover)
-}
 
 /// Allow for numeric literals to be used directly
 extension MaxWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {

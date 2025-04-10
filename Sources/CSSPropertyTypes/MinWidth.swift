@@ -18,14 +18,29 @@ import CSSTypeTypes
 ///         than max-width or width.
 ///
 /// - SeeAlso: [MDN Web Docs on min-width](https://developer.mozilla.org/en-US/docs/Web/CSS/min-width)
-public enum MinWidth: Property {
+public enum MinWidth: Property, LengthPercentageConvertible {
     public static let property: String = "min-width"
     
-    /// A specific size value (length, percentage, or calculated value)
-    case size(Size)
+    case lengthPercentage(LengthPercentage)
+    
+    case auto
+    
+    /// No maximum width constraint
+    case none
+    
+    case maxContent
+    
+    case minContent
+    
+    case fitContent(LengthPercentage? = nil)
+    
+    case stretch
     
     /// A global CSS value
     case global(CSSTypeTypes.Global)
+    
+    public static let fitContent: Self = .fitContent(nil)
+
 }
 
 /// CSS Output conversion
@@ -33,39 +48,31 @@ extension MinWidth: CustomStringConvertible {
     /// Converts the min-width value to its CSS string representation
     public var description: String {
         switch self {
-        case .size(let size):
-            return size.description
+        case .lengthPercentage(let lengthPercentage):
+            lengthPercentage.description
+        case .auto:
+            "auto"
+        case .none:
+            "none"
+        case .maxContent:
+            "max-content"
+        case .minContent:
+            "min-content"
+        case .fitContent(let lengthPercentage):
+            if let description = lengthPercentage?.description {
+                "fit-content(\(description)"
+            } else {
+                "fit-content"
+            }
+        case .stretch:
+            "stretch"
         case .global(let global):
-            return global.description
+            global.description
         }
     }
 }
 
 
-extension MinWidth: LengthConvertible {
-    public static func length(_ length: CSSTypeTypes.Length) -> MinWidth {
-        .size(.single(length))
-    }
-}
-extension MinWidth {    
-    /// Automatic sizing (often resolves to 0)
-    public static let auto: MinWidth = .size(.auto)
-    
-    /// Size based on the content's preferred width
-    public static let maxContent: MinWidth = .size(.maxContent)
-    
-    /// Size based on the content's minimum width
-    public static let minContent: MinWidth = .size(.minContent)
-    
-    /// Size that uses available space up to the max-content size
-    public static let fitContent: MinWidth = .size(.fitContent)
-    
-    /// Size to fit within the element while preserving aspect ratio
-    public static let contain: MinWidth = .size(.contain)
-    
-    /// Size to cover the entire element while preserving aspect ratio
-    public static let cover: MinWidth = .size(.cover)
-}
 
 /// Allow for numeric literals to be used directly
 extension MinWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {

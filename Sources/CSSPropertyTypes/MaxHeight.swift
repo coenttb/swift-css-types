@@ -19,25 +19,26 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on max-height](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height)
 public enum MaxHeight: Property, LengthPercentageConvertible{
-    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> Self {
-        .fitContent(value)
-    }
-    
-    public static let fitContent: Self = .fitContent(nil)
     
     public static let property: String = "size"
     
-    case fitContent(LengthPercentage?)
+    case lengthPercentage(LengthPercentage)
     
+    /// No maximum width constraint
     case none
     
     case maxContent
     
     case minContent
     
+    case fitContent(LengthPercentage? = nil)
+    
     case stretch
     
-    case global(Global)
+    /// A global CSS value
+    case global(CSSTypeTypes.Global)
+    
+    public static let fitContent: Self = .fitContent(nil)
 }
 
 
@@ -46,16 +47,20 @@ extension MaxHeight: CustomStringConvertible {
     /// Converts the max-height value to its CSS string representation
     public var description: String {
         switch self {
-        case .fitContent(.none):
-            "fit-content"
-        case .fitContent(let .some(lengthPercentage)):
-            "fit-content(\(lengthPercentage.description)"
+        case .lengthPercentage(let lengthPercentage):
+            lengthPercentage.description
         case .none:
             "none"
         case .maxContent:
             "max-content"
         case .minContent:
             "min-content"
+        case .fitContent(let lengthPercentage):
+            if let description = lengthPercentage?.description {
+                "fit-content(\(description)"
+            } else {
+                "fit-content"
+            }
         case .stretch:
             "stretch"
         case .global(let global):
