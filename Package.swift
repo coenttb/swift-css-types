@@ -7,24 +7,24 @@ extension String {
     static let atRules: Self = "CSSAtRuleTypes"
     static let combinators: Self = "CSSCombinatorTypes"
     static let functions: Self = "CSSFunctionTypes"
+    static let properties: Self = "CSSPropertyTypes"
     static let pseudoClasses: Self = "CSSPseudoClassTypes"
     static let pseudoElements: Self = "CSSPseudoElementTypes"
     static let selectors: Self = "CSSSelectorTypes"
     static let css: Self = "CSSTypes"
     static let types: Self = "CSSTypeTypes"
-    static let properties: Self = "CSSPropertyTypes"
 }
 
 extension Target.Dependency {
     static var atRules: Self { .target(name: .atRules) }
     static var combinators: Self { .target(name: .combinators) }
     static var functions: Self { .target(name: .functions) }
+    static var properties: Self { .target(name: .properties) }
     static var pseudoClasses: Self { .target(name: .pseudoClasses) }
     static var pseudoElements: Self { .target(name: .pseudoElements) }
     static var selectors: Self { .target(name: .selectors) }
     static var css: Self { .target(name: .css) }
     static var types: Self { .target(name: .types) }
-    static var properties: Self { .target(name: .properties) }
 }
 
 let package = Package(
