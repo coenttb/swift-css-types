@@ -7,7 +7,7 @@
 
 import Foundation
 
-package protocol LineStyleConvertible {
+public protocol LineStyleConvertible {
     static func lineStyle(_ lineStyle: LineStyle) -> Self
 }
 

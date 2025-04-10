@@ -7,7 +7,7 @@
 
 import Foundation
 
-package protocol ColorConvertible {
+public protocol ColorConvertible {
     static func color(_ color: Color) -> Self
 }
 

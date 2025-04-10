@@ -31,7 +31,7 @@ import Foundation
 ///
 /// This protocol is particularly useful for CSS properties that accept length values
 /// but require specific types for additional functionality or validation.
-package protocol LengthPercentageConvertible: LengthConvertible & PercentageConvertible {
+public protocol LengthPercentageConvertible: LengthConvertible & PercentageConvertible {
     static func lengthPercentage(_ value: LengthPercentage) -> Self
 }
 

@@ -66,7 +66,7 @@ extension BaselinePosition: CustomStringConvertible {
     }
 }
 
-package protocol BaselinePositionConvertible {
+public protocol BaselinePositionConvertible {
     static func baseline(_: BaselinePosition)-> Self
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 
-package protocol PercentageConvertible {
+public protocol PercentageConvertible {
     static func percentage(_ percentage: Percentage) -> Self
 }
 

@@ -30,7 +30,7 @@ import Foundation
 ///
 /// This protocol is particularly useful for CSS properties that accept number values
 /// but require specific types for additional functionality or validation.
-package protocol NumberConvertible {
+public protocol NumberConvertible {
     /// Creates an instance from a CSS Number value
     ///
     /// This is the core method of the protocol that all conforming types must implement.
