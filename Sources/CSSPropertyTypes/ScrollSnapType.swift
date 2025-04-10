@@ -19,7 +19,7 @@ public enum ScrollSnapType: Property {
     public static let property: String = "scroll-snap-type"
     
     /// The axis along which snapping occurs
-    public enum Axis: String {
+    public enum Axis: String, Sendable {
         /// Horizontal axis
         case x
         
@@ -37,7 +37,7 @@ public enum ScrollSnapType: Property {
     }
     
     /// The strictness of snap point enforcement
-    public enum Strictness: String {
+    public enum Strictness: String, Sendable {
         /// The scroll container must snap to a snap position
         case mandatory
         

@@ -7,7 +7,7 @@
 
 import Foundation
 
-package protocol GlobalConvertible {
+public protocol GlobalConvertible {
     static func global(_ global: Global) -> Self
 }
 

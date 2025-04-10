@@ -1,5 +1,4 @@
 import Foundation
-import CSSTypeTypes
 
 /// Represents CSS transform functions that modify an element's appearance.
 ///

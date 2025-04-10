@@ -78,9 +78,7 @@ public struct DisplayListitemFactory {
     ///   - outer: The outer display type (`block` or `inline`)
     ///   - inner: The inner display type (`flow` or `flow-root`)
     /// - Returns: A DisplayListitem value with the combined display values
-    public static func create(outer: DisplayOutside, inner: DisplayInside) -> DisplayListitem {
-        let combinedValue = "\(outer) \(inner) list-item"
-        
+    public static func create(outer: DisplayOutside, inner: DisplayInside) -> DisplayListitem {        
         switch (outer, inner) {
         case (.block, .flow):
             return .blockFlowListItem

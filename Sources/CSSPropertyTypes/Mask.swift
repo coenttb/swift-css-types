@@ -357,14 +357,14 @@ public enum Mask: Property {
         case right
         
         /// Horizontal position keywords
-        public enum Horizontal: String {
+        public enum Horizontal: String, Sendable {
             case left
             case center
             case right
         }
         
         /// Vertical position keywords
-        public enum Vertical: String {
+        public enum Vertical: String, Sendable {
             case top
             case center
             case bottom
@@ -410,7 +410,7 @@ public enum Mask: Property {
         case horizontal_vertical(Value, Value)
         
         /// Repeat value
-        public enum Value: String {
+        public enum Value: String, Sendable {
             case `repeat`
             case space
             case round

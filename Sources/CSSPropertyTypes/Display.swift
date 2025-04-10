@@ -179,7 +179,7 @@ public enum Display: Property {
 }
 
 /// Outer display types that define how an element participates in flow layout
-public enum DisplayOutside: CustomStringConvertible {
+public enum DisplayOutside: Sendable, CustomStringConvertible {
     /// Element generates a block box
     case block
     
@@ -197,7 +197,7 @@ public enum DisplayOutside: CustomStringConvertible {
 }
 
 /// Inner display types that define how an element's contents are laid out
-public enum DisplayInside: CustomStringConvertible {
+public enum DisplayInside: Sendable, CustomStringConvertible {
     /// Uses flow layout (block-and-inline layout)
     case flow
     

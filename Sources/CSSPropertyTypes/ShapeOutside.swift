@@ -25,7 +25,7 @@ public enum ShapeOutside: Property {
     case none
     
     /// A shape box that defines the reference box for the shape
-    public enum ShapeBox: String {
+    public enum ShapeBox: String, Sendable {
         /// The shape is enclosed by the outside margin edge
         case marginBox = "margin-box"
         

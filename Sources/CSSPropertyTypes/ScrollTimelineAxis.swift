@@ -21,7 +21,7 @@ public enum ScrollTimelineAxis: Property {
     public static let property: String = "scroll-timeline-axis"
     
     /// The axis for scrollbar-driven timeline
-    public enum Axis: String {
+    public enum Axis: String, Sendable {
         /// The block axis (vertical for horizontal writing modes)
         case block
         

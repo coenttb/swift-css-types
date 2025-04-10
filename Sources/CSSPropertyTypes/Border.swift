@@ -107,7 +107,7 @@ extension Border: CustomStringConvertible {
 /// Convenience methods for creating Border objects
 extension Border {
     /// Creates a none border (invisible)
-    public static let none = Border.properties(style: .none)
+    public static let none = Border.properties(style: LineStyle.none)
     
     /// Creates a hidden border (invisible, high priority in border collapsing)
     public static let hidden = Border.properties(style: .hidden)
