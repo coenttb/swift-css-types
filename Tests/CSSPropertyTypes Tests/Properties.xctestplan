@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "C3E1658D-E3CA-4DD6-A24A-926984CDD4DF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "Properties Tests",
+        "name" : "Properties Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

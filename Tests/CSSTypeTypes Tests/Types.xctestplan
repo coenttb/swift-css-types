@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "9FE6B350-BEC4-4055-89F1-CECFFFF8772F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "Types Tests",
+        "name" : "Types Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
