@@ -28,7 +28,7 @@ extension Target.Dependency {
 }
 
 let package = Package(
-    name: "swift-css",
+    name: "swift-css-types",
     products: [
         .library(name: .atRules, targets: [.atRules]),
         .library(name: .combinators, targets: [.combinators]),
