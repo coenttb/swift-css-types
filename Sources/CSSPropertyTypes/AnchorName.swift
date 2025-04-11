@@ -66,3 +66,9 @@ extension AnchorName {
         return .multiple(names.map { DashedIdent($0) })
     }
 }
+
+extension AnchorName: ExpressibleByStringLiteral {
+    public init(stringLiteral value: StringLiteralType) {
+        self = .single(.init(value))
+    }
+}
