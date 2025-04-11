@@ -68,7 +68,7 @@ extension WebkitTapHighlightColor {
     ///   - color: The base color
     ///   - opacity: The opacity level (0.0-1.0)
     /// - Returns: A semi-transparent highlight color
-    public static func alpha(_ color: Color, opacity: Double) -> WebkitTapHighlightColor {
+    public static func alpha(_ color: CSSTypeTypes.Color, opacity: Double) -> WebkitTapHighlightColor {
         // Ensure opacity is between 0 and 1
         let clampedOpacity = max(0, min(1, opacity))
         

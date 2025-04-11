@@ -63,7 +63,7 @@ public enum BorderColor: Property {
     /// Creates a border color with the same value for all sides
     ///
     /// - Parameter color: The color for all sides
-    public init(_ color: Color) {
+    public init(_ color: CSSPropertyTypes.Color) {
         self = .all(color)
     }
     

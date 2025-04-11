@@ -57,7 +57,7 @@ public enum BorderBlockStartColor: Property, ColorConvertible {
     /// Creates a border-block-start-color with a specific color
     ///
     /// - Parameter color: The color for the block-start border
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

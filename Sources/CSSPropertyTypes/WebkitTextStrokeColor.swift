@@ -49,7 +49,7 @@ public enum WebkitTextStrokeColor: Property, ColorConvertible {
     /// Creates a WebkitTextStrokeColor from a Color
     ///
     /// - Parameter color: The stroke color
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
     

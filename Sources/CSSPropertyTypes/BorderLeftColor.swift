@@ -49,7 +49,7 @@ public enum BorderLeftColor: Property, ColorConvertible {
     /// Creates a border-left-color with a specific color
     ///
     /// - Parameter color: The color for the left border
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

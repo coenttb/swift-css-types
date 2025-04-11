@@ -100,7 +100,7 @@ public enum WebkitTextStroke: Property {
     ///
     /// - Parameter color: The stroke color
     /// - Returns: A WebkitTextStroke with the specified color
-    public static func color(_ color: Color) -> WebkitTextStroke {
+    public static func color(_ color: CSSTypeTypes.Color) -> WebkitTextStroke {
         .stroke(color: .color(color))
     }
     

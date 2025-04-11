@@ -60,7 +60,7 @@ public enum BackgroundColor: Property, ColorConvertible {
     /// Creates a background color with a specific color
     ///
     /// - Parameter color: The color to use
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

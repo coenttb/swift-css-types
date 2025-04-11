@@ -62,7 +62,7 @@ public enum BorderInlineEndColor: Property, ColorConvertible {
     /// Creates a border-inline-end-color with a specific color
     ///
     /// - Parameter color: The color for the inline-end border
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

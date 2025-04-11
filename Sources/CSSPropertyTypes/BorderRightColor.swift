@@ -49,7 +49,7 @@ public enum BorderRightColor: Property, ColorConvertible {
     /// Creates a border-right-color with a specific color
     ///
     /// - Parameter color: The color for the right border
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

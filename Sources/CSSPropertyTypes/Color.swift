@@ -15,7 +15,7 @@ import CSSTypeTypes
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
-public enum ColorProperty: Property, ColorConvertible {
+public enum Color: Property, ColorConvertible {
     public static let property: String = "color"
     
     /// A specific color value
@@ -26,7 +26,7 @@ public enum ColorProperty: Property, ColorConvertible {
 }
 
 /// CSS Output conversion
-extension ColorProperty: CustomStringConvertible {
+extension CSSPropertyTypes.Color: CustomStringConvertible {
     public var description: String {
         switch self {
         case .color(let color):
@@ -39,7 +39,7 @@ extension ColorProperty: CustomStringConvertible {
 }
 
 /// Factory methods for creating color values
-extension ColorProperty {
+extension CSSPropertyTypes.Color {
     /// Creates a color that matches the current color value
-    public static let currentColor: ColorProperty = .color(.currentColor)
+    public static let currentColor: CSSPropertyTypes.Color = .color(.currentColor)
 }

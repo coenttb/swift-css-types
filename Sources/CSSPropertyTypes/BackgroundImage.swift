@@ -123,7 +123,7 @@ extension BackgroundImage {
     ///
     /// - Parameter stops: The color stops for the gradient
     /// - Returns: A background image with a linear gradient
-    public static func linearGradient(stops: [Color]) -> BackgroundImage {
+    public static func linearGradient(stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.linearGradient(stops))
     }
     
@@ -133,7 +133,7 @@ extension BackgroundImage {
     ///   - direction: The direction of the gradient (e.g., "to bottom", "to right")
     ///   - stops: The color stops for the gradient
     /// - Returns: A background image with a directional linear gradient
-    public static func linearGradient(to side: Gradient.Direction.Side, stops: [Color]) -> BackgroundImage {
+    public static func linearGradient(to side: Gradient.Direction.Side, stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.linearGradient(to: side, stops: stops))
     }
     
@@ -141,7 +141,7 @@ extension BackgroundImage {
     ///
     /// - Parameter stops: The color stops for the gradient
     /// - Returns: A background image with a radial gradient
-    public static func radialGradient(stops: [Color]) -> BackgroundImage {
+    public static func radialGradient(stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.radialGradient(stops))
     }
     
@@ -151,7 +151,7 @@ extension BackgroundImage {
     ///   - angle: The starting angle for the gradient
     ///   - stops: The color stops for the gradient
     /// - Returns: A background image with a conic gradient
-    public static func conicGradient(from angle: Angle, stops: [Color]) -> BackgroundImage {
+    public static func conicGradient(from angle: Angle, stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.conicGradient(from: angle, stops: stops))
     }
     

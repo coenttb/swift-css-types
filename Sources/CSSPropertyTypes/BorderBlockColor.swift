@@ -61,7 +61,7 @@ public enum BorderBlockColor: Property, ColorConvertible {
     /// Creates a border-block-color with a specific color
     ///
     /// - Parameter color: The color for both block borders
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

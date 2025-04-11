@@ -24,7 +24,7 @@ public enum ColumnRuleColor: Property, ColorConvertible, GlobalConvertible {
     ///
     /// - Parameter color: The color for the column rule
     /// - Returns: A column rule color
-    public static func rule(_ color: Color) -> ColumnRuleColor {
+    public static func rule(_ color: CSSTypeTypes.Color) -> ColumnRuleColor {
         return .color(color)
     }
     

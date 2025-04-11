@@ -61,7 +61,7 @@ public enum BorderBlockEndColor: Property, ColorConvertible {
     /// Creates a border-block-end-color with a specific color
     ///
     /// - Parameter color: The color for the block-end border
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

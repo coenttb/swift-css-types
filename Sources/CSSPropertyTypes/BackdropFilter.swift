@@ -189,7 +189,7 @@ extension BackdropFilter {
     ///     color: .rgba(0, 0, 0, 0.5)
     /// ))
     /// ```
-    public static func dropShadow(offsetX: Length, offsetY: Length, blurRadius: Length?, color: Color?) -> BackdropFilter {
+    public static func dropShadow(offsetX: Length, offsetY: Length, blurRadius: Length?, color: CSSTypeTypes.Color?) -> BackdropFilter {
         .filter(.dropShadow(offsetX: offsetX, offsetY: offsetY, blurRadius: blurRadius, color: color))
     }
     

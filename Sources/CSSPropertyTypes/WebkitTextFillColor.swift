@@ -39,7 +39,7 @@ public enum WebkitTextFillColor: Property, ColorConvertible {
     case global(CSSTypeTypes.Global)
     
     /// Creates a WebkitTextFillColor from a Color
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
     

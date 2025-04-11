@@ -46,7 +46,7 @@ public enum BorderBottomColor: Property, ColorConvertible {
     /// Creates a border-bottom-color with a specific color
     ///
     /// - Parameter color: The color for the bottom border
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

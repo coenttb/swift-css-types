@@ -135,7 +135,7 @@ extension MaskImage {
     ///
     /// - Parameter stops: The color stops for the gradient
     /// - Returns: A mask image with the linear gradient
-    public static func linearGradient(_ stops: [Color]) -> MaskImage {
+    public static func linearGradient(_ stops: [CSSTypeTypes.Color]) -> MaskImage {
         MaskImage(.linearGradient(stops))
     }
     
@@ -145,7 +145,7 @@ extension MaskImage {
     ///   - direction: The direction of the gradient
     ///   - stops: The color stops for the gradient
     /// - Returns: A mask image with the linear gradient
-    public static func linearGradient(to side: Gradient.Direction.Side, stops: [Color]) -> MaskImage {
+    public static func linearGradient(to side: Gradient.Direction.Side, stops: [CSSTypeTypes.Color]) -> MaskImage {
 //        MaskImage(.linearGradient(direction: direction, stops: stops))
         MaskImage.single(.linearGradient(to: side, stops: stops))
     }
@@ -154,7 +154,7 @@ extension MaskImage {
     ///
     /// - Parameter stops: The color stops for the gradient
     /// - Returns: A mask image with the radial gradient
-    public static func radialGradient(_ stops: [Color]) -> MaskImage {
+    public static func radialGradient(_ stops: [CSSTypeTypes.Color]) -> MaskImage {
         MaskImage(.radialGradient(stops))
     }
     
@@ -164,7 +164,7 @@ extension MaskImage {
     ///   - angle: The starting angle of the gradient
     ///   - stops: The color stops for the gradient
     /// - Returns: A mask image with the conic gradient
-    public static func conicGradient(from angle: Angle, stops: [Color]) -> MaskImage {
+    public static func conicGradient(from angle: Angle, stops: [CSSTypeTypes.Color]) -> MaskImage {
         MaskImage(.conicGradient(from: angle, stops: stops))
     }
     

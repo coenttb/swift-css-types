@@ -66,7 +66,7 @@ public enum BorderInlineColor: Property, ColorConvertible {
     /// Creates a border-inline-color with a specific color
     ///
     /// - Parameter color: The color for both inline borders
-    public init(_ color: Color) {
+    public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
 }

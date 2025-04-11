@@ -48,7 +48,7 @@ extension ListStyleImage {
     }
     
     /// Creates a list-style-image using a linear gradient
-    public static func linearGradient(_ stops: [Color]) -> ListStyleImage {
+    public static func linearGradient(_ stops: [CSSTypeTypes.Color]) -> ListStyleImage {
         return .image(.linearGradient(stops))
     }
 }
