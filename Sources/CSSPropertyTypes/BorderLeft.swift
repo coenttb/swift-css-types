@@ -90,24 +90,24 @@ extension BorderLeft {
     public init(_ style: LineStyle) {
         self = .style(style)
     }
-    
-    /// Creates a border-left with a style and color
-    ///
-    /// - Parameters:
-    ///   - style: The left border style
-    ///   - color: The left border color
-    public init(_ style: LineStyle, _ color: Color) {
-        self = .init(style, color)
-    }
-    
-    /// Creates a border-left with a width and style
-    ///
-    /// - Parameters:
-    ///   - width: The left border width
-    ///   - style: The left border style
-    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
-        self = .init(width, style)
-    }
+//    
+//    /// Creates a border-left with a style and color
+//    ///
+//    /// - Parameters:
+//    ///   - style: The left border style
+//    ///   - color: The left border color
+//    public init(_ style: LineStyle, _ color: Color) {
+//        self = .init(style, color)
+//    }
+//    
+//    /// Creates a border-left with a width and style
+//    ///
+//    /// - Parameters:
+//    ///   - width: The left border width
+//    ///   - style: The left border style
+//    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
+//        self = .init(width, style)
+//    }
     
     /// Creates a border-left with a width, style, and color
     ///
@@ -200,27 +200,4 @@ extension BorderLeft {
     /// Creates a outset border-left with default width and color
     public static let outset = BorderLeft(.outset)
     
-    /// Creates a thin border-left with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thin border-left with the specified style
-    public static func thin(_ style: LineStyle) -> BorderLeft {
-        .init(.thin, style)
-    }
-    
-    /// Creates a medium border-left with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A medium border-left with the specified style
-    public static func medium(_ style: LineStyle) -> BorderLeft {
-        .init(.medium, style)
-    }
-    
-    /// Creates a thick border-left with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thick border-left with the specified style
-    public static func thick(_ style: LineStyle) -> BorderLeft {
-        .init(.thick, style)
-    }
 }

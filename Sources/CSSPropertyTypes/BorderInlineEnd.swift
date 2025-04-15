@@ -82,24 +82,24 @@ extension BorderInlineEnd {
         self = .style(style)
     }
     
-    /// Creates a border-inline-end with a style and color
-    ///
-    /// - Parameters:
-    ///   - style: The inline-end border style
-    ///   - color: The inline-end border color
-    public init(_ style: LineStyle, _ color: Color) {
-        self = .init(style, color)
-    }
-    
-    /// Creates a border-inline-end with a width and style
-    ///
-    /// - Parameters:
-    ///   - width: The inline-end border width
-    ///   - style: The inline-end border style
-    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
-        self = .init(width, style)
-    }
-    
+//    /// Creates a border-inline-end with a style and color
+//    ///
+//    /// - Parameters:
+//    ///   - style: The inline-end border style
+//    ///   - color: The inline-end border color
+//    public init(_ style: LineStyle, _ color: Color) {
+//        self = .init(style, color)
+//    }
+//    
+//    /// Creates a border-inline-end with a width and style
+//    ///
+//    /// - Parameters:
+//    ///   - width: The inline-end border width
+//    ///   - style: The inline-end border style
+//    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
+//        self = .init(width, style)
+//    }
+//    
     /// Creates a border-inline-end with a width, style, and color
     ///
     /// - Parameters:
@@ -190,27 +190,5 @@ extension BorderInlineEnd {
     /// Creates a outset border-inline-end with default width and color
     public static let outset = BorderInlineEnd(.outset)
     
-    /// Creates a thin border-inline-end with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thin border-inline-end with the specified style
-    public static func thin(_ style: LineStyle) -> BorderInlineEnd {
-        .init(.thin, style)
-    }
     
-    /// Creates a medium border-inline-end with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A medium border-inline-end with the specified style
-    public static func medium(_ style: LineStyle) -> BorderInlineEnd {
-        .init(.medium, style)
-    }
-    
-    /// Creates a thick border-inline-end with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thick border-inline-end with the specified style
-    public static func thick(_ style: LineStyle) -> BorderInlineEnd {
-        .init(.thick, style)
-    }
 }

@@ -83,23 +83,23 @@ extension BorderInlineStart {
         self = .style(style)
     }
     
-    /// Creates a border-inline-start with a style and color
-    ///
-    /// - Parameters:
-    ///   - style: The inline-start border style
-    ///   - color: The inline-start border color
-    public init(_ style: LineStyle, _ color: Color) {
-        self = .init(style, color)
-    }
-    
-    /// Creates a border-inline-start with a width and style
-    ///
-    /// - Parameters:
-    ///   - width: The inline-start border width
-    ///   - style: The inline-start border style
-    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
-        self = .init(width, style)
-    }
+//    /// Creates a border-inline-start with a style and color
+//    ///
+//    /// - Parameters:
+//    ///   - style: The inline-start border style
+//    ///   - color: The inline-start border color
+//    public init(_ style: LineStyle, _ color: Color) {
+//        self = .init(style, color)
+//    }
+//    
+//    /// Creates a border-inline-start with a width and style
+//    ///
+//    /// - Parameters:
+//    ///   - width: The inline-start border width
+//    ///   - style: The inline-start border style
+//    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
+//        self = .init(width, style)
+//    }
     
     /// Creates a border-inline-start with a width, style, and color
     ///
@@ -159,30 +159,3 @@ extension BorderInlineStart: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderInlineStart values
-extension BorderInlineStart {
-    
-    /// Creates a thin border-inline-start with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thin border-inline-start with the specified style
-    public static func thin(_ style: LineStyle) -> BorderInlineStart {
-        .init(.thin, style)
-    }
-    
-    /// Creates a medium border-inline-start with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A medium border-inline-start with the specified style
-    public static func medium(_ style: LineStyle) -> BorderInlineStart {
-        .init(.medium, style)
-    }
-    
-    /// Creates a thick border-inline-start with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thick border-inline-start with the specified style
-    public static func thick(_ style: LineStyle) -> BorderInlineStart {
-        .init(.thick, style)
-    }
-}
