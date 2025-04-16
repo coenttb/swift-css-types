@@ -44,7 +44,7 @@ let package = Package(
     targets: [
         .target(
             name: .atRules,
-            dependencies: [.properties]
+            dependencies: [.types, .properties]
         ),
         .testTarget(
             name: .atRules.tests,

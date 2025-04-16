@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "B736D997-E9F7-4E1F-B884-C5A9A76C7DE7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CSSAtRuleTypes Tests",
+        "name" : "CSSAtRuleTypes Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
