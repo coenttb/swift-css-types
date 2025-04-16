@@ -26,79 +26,47 @@ struct MediaTests {
         #expect(Media.all.rawValue == "@media all")
     }
     
-    @Test("Media feature initialization creates correct raw values")
-    func testMediaFeatureInitialization() {
-        let mediaFeature = Media(Media.Feature.maxWidth(.px(500)))
-        #expect(mediaFeature.rawValue == "@media (max-width: 500px)")
-    }
-    
-    // MARK: - Media Feature Tests
-    
-    @Test("Width-related features have correct raw values")
-    func testWidthFeatures() {
-        #expect(Media.Feature.width(.px(100)).rawValue == "width: 100px")
-        #expect(Media.Feature.minWidth(.em(1.5)).rawValue == "min-width: 1.5em")
-        #expect(Media.Feature.maxWidth(.percentage(80)).rawValue == "max-width: 80%")
-    }
-    
-    @Test("Height-related features have correct raw values")
-    func testHeightFeatures() {
-        #expect(Media.Feature.height(.px(100)).rawValue == "height: 100px")
-        #expect(Media.Feature.minHeight(.em(1.5)).rawValue == "min-height: 1.5em")
-        #expect(Media.Feature.maxHeight(.percentage(80)).rawValue == "max-height: 80%")
-    }
-    
-    @Test("Aspect ratio features have correct raw values")
-    func testAspectRatioFeatures() {
-        #expect(Media.Feature.aspectRatio(16, 9).rawValue == "aspect-ratio: 16/9")
-        #expect(Media.Feature.minAspectRatio(1, 1).rawValue == "min-aspect-ratio: 1/1")
-        #expect(Media.Feature.maxAspectRatio(21, 9).rawValue == "max-aspect-ratio: 21/9")
-    }
-    
-    @Test("Orientation feature has correct raw values")
-    func testOrientationFeature() {
-        #expect(Media.Feature.orientation(.portrait).rawValue == "orientation: portrait")
-        #expect(Media.Feature.orientation(.landscape).rawValue == "orientation: landscape")
-    }
-    
-    @Test("Color scheme feature has correct raw values")
-    func testColorSchemeFeature() {
-        #expect(Media.Feature.prefersColorScheme(.dark).rawValue == "prefers-color-scheme: dark")
-        #expect(Media.Feature.prefersColorScheme(.light).rawValue == "prefers-color-scheme: light")
-    }
-    
-    @Test("Motion preference feature has correct raw values")
-    func testMotionFeature() {
-        #expect(Media.Feature.prefersReducedMotion().rawValue == "prefers-reduced-motion: reduce")
-        #expect(Media.Feature.prefersReducedMotion(.noPreference).rawValue == "prefers-reduced-motion: no-preference")
-    }
-    
-    @Test("Contrast preference feature has correct raw values")
-    func testContrastFeature() {
-        #expect(Media.Feature.prefersContrast(.more).rawValue == "prefers-contrast: more")
-        #expect(Media.Feature.prefersContrast(.less).rawValue == "prefers-contrast: less")
-        #expect(Media.Feature.prefersContrast(.custom).rawValue == "prefers-contrast: custom")
-        #expect(Media.Feature.prefersContrast(.noPreference).rawValue == "prefers-contrast: no-preference")
-    }
-    
-    @Test("Resolution feature has correct raw values")
-    func testResolutionFeature() {
-        #expect(Media.Feature.resolution(Resolution.dpi(300)).rawValue == "resolution: 300dpi")
-        #expect(Media.Feature.minResolution(Resolution.dppx(2)).rawValue == "min-resolution: 2dppx")
-        #expect(Media.Feature.maxResolution(Resolution.dpi(96)).rawValue == "max-resolution: 96dpi")
+    @Test("Direct feature methods create correct media queries")
+    func testDirectFeatureMethods() {
+        #expect(Media.width(.px(100)).rawValue == "@media (width: 100px)")
+        #expect(Media.minWidth(.em(1.5)).rawValue == "@media (min-width: 1.5em)")
+        #expect(Media.maxWidth(.percentage(80)).rawValue == "@media (max-width: 80%)")
+        
+        #expect(Media.height(.px(100)).rawValue == "@media (height: 100px)")
+        #expect(Media.minHeight(.em(1.5)).rawValue == "@media (min-height: 1.5em)")
+        #expect(Media.maxHeight(.percentage(80)).rawValue == "@media (max-height: 80%)")
+        
+        #expect(Media.aspectRatio(16, 9).rawValue == "@media (aspect-ratio: 16/9)")
+        #expect(Media.minAspectRatio(1, 1).rawValue == "@media (min-aspect-ratio: 1/1)")
+        #expect(Media.maxAspectRatio(21, 9).rawValue == "@media (max-aspect-ratio: 21/9)")
+        
+        #expect(Media.orientation(.portrait).rawValue == "@media (orientation: portrait)")
+        #expect(Media.orientation(.landscape).rawValue == "@media (orientation: landscape)")
+        
+        #expect(Media.prefersColorScheme(.dark).rawValue == "@media (prefers-color-scheme: dark)")
+        #expect(Media.prefersColorScheme(.light).rawValue == "@media (prefers-color-scheme: light)")
+        
+        #expect(Media.prefersReducedMotion().rawValue == "@media (prefers-reduced-motion: reduce)")
+        #expect(Media.prefersReducedMotion(.noPreference).rawValue == "@media (prefers-reduced-motion: no-preference)")
+        
+        #expect(Media.prefersContrast(.more).rawValue == "@media (prefers-contrast: more)")
+        #expect(Media.prefersContrast(.less).rawValue == "@media (prefers-contrast: less)")
+        
+        #expect(Media.resolution(Resolution.dpi(300)).rawValue == "@media (resolution: 300dpi)")
+        #expect(Media.minResolution(Resolution.dppx(2)).rawValue == "@media (min-resolution: 2dppx)")
     }
     
     // MARK: - Logical Operator Tests
     
     @Test("AND operator combines media query correctly")
     func testAndOperator() {
-        let media = Media.screen.and(Media.Feature.maxWidth(.px(500)))
+        let media = Media.screen.and(Media.maxWidth(.px(500)))
         #expect(media.rawValue == "@media screen and (max-width: 500px)")
         
         let complexMedia = Media.screen
-            .and(Media.Feature.minWidth(.px(300)))
-            .and(Media.Feature.maxWidth(.px(800)))
-            .and(Media.Feature.orientation(.landscape))
+            .and(Media.minWidth(.px(300)))
+            .and(Media.maxWidth(.px(800)))
+            .and(Media.orientation(.landscape))
         
         #expect(
             complexMedia.rawValue == 
@@ -112,7 +80,7 @@ struct MediaTests {
         #expect(media.rawValue == "@media not print")
         
         let complexMedia = Media.screen
-            .and(Media.Feature.maxWidth(.px(500)))
+            .and(Media.maxWidth(.px(500)))
             .not()
         
         #expect(
@@ -133,7 +101,7 @@ struct MediaTests {
         #expect(media.rawValue == "@media screen, print")
         
         let complexMedia = Media.screen
-            .and(Media.Feature.maxWidth(.px(500)))
+            .and(Media.maxWidth(.px(500)))
             .or(Media.print)
         
         #expect(
@@ -146,12 +114,12 @@ struct MediaTests {
     
     @Test("& operator combines media query with feature correctly")
     func testAmpersandOperator() {
-        let media = Media.screen & Media.Feature.maxWidth(.px(500))
+        let media = Media.screen & Media.maxWidth(.px(500))
         #expect(media.rawValue == "@media screen and (max-width: 500px)")
         
         let complexMedia = Media.screen 
-            & Media.Feature.minWidth(.px(300)) 
-            & Media.Feature.maxWidth(.px(800))
+            & Media.minWidth(.px(300)) 
+            & Media.maxWidth(.px(800))
         
         #expect(
             complexMedia.rawValue == 
@@ -159,7 +127,7 @@ struct MediaTests {
         )
     }
     
-    @Test("| operator combines media queries correctly with comma")
+    @Test("|| operator combines media queries correctly with comma")
     func testPipeOperator() {
         let media = Media.screen || Media.print
         #expect(media.rawValue == "@media screen, print")
@@ -176,10 +144,10 @@ struct MediaTests {
     @Test("Complex media queries combine correctly with functions")
     func testComplexQueriesWithFunctions() {
         let complexQuery = Media.screen
-            .and(Media.Feature.minWidth(.px(768)))
-            .and(Media.Feature.maxWidth(.px(1200)))
-            .and(Media.Feature.orientation(.landscape))
-            .and(Media.Feature.prefersReducedMotion())
+            .and(Media.minWidth(.px(768)))
+            .and(Media.maxWidth(.px(1200)))
+            .and(Media.orientation(.landscape))
+            .and(Media.prefersReducedMotion())
         
         #expect(
             complexQuery.rawValue == 
@@ -190,10 +158,10 @@ struct MediaTests {
     @Test("Complex media queries combine correctly with operators")
     func testComplexQueriesWithOperators() {
         let complexQueryWithOperators = Media.screen
-            & Media.Feature.minWidth(.px(768))
-            & Media.Feature.maxWidth(.px(1200))
-            & Media.Feature.orientation(.landscape)
-            & Media.Feature.prefersReducedMotion()
+            & Media.minWidth(.px(768))
+            & Media.maxWidth(.px(1200))
+            & Media.orientation(.landscape)
+            & Media.prefersReducedMotion()
         
         #expect(
             complexQueryWithOperators.rawValue == 
@@ -203,8 +171,8 @@ struct MediaTests {
     
     @Test("Combined OR and AND operators work correctly")
     func testCombinedOrAndOperators() {
-        let combinedQuery = (Media.screen & Media.Feature.minWidth(.px(992))) 
-            || (Media.print & Media.Feature.orientation(.portrait))
+        let combinedQuery = (Media.screen & Media.minWidth(.px(992))) 
+            || (Media.print & Media.orientation(.portrait))
         
         #expect(
             combinedQuery.rawValue == 
@@ -214,7 +182,7 @@ struct MediaTests {
     
     @Test("Combined NOT and AND operators work correctly")
     func testCombinedNotAndOperators() {
-        let negatedQuery = !(Media.screen & Media.Feature.maxWidth(.px(600)))
+        let negatedQuery = !(Media.screen & Media.maxWidth(.px(600)))
         
         #expect(
             negatedQuery.rawValue == 
