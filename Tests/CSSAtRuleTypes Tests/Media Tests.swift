@@ -114,12 +114,12 @@ struct MediaTests {
     
     @Test("& operator combines media query with feature correctly")
     func testAmpersandOperator() {
-        let media = Media.screen & Media.maxWidth(.px(500))
+        let media = Media.screen && Media.maxWidth(.px(500))
         #expect(media.rawValue == "@media screen and (max-width: 500px)")
         
         let complexMedia = Media.screen 
-            & Media.minWidth(.px(300)) 
-            & Media.maxWidth(.px(800))
+            && Media.minWidth(.px(300))
+            && Media.maxWidth(.px(800))
         
         #expect(
             complexMedia.rawValue == 
@@ -158,10 +158,10 @@ struct MediaTests {
     @Test("Complex media queries combine correctly with operators")
     func testComplexQueriesWithOperators() {
         let complexQueryWithOperators = Media.screen
-            & Media.minWidth(.px(768))
-            & Media.maxWidth(.px(1200))
-            & Media.orientation(.landscape)
-            & Media.prefersReducedMotion()
+            && Media.minWidth(.px(768))
+            && Media.maxWidth(.px(1200))
+            && Media.orientation(.landscape)
+            && Media.prefersReducedMotion()
         
         #expect(
             complexQueryWithOperators.rawValue == 
@@ -171,8 +171,8 @@ struct MediaTests {
     
     @Test("Combined OR and AND operators work correctly")
     func testCombinedOrAndOperators() {
-        let combinedQuery = (Media.screen & Media.minWidth(.px(992))) 
-            || (Media.print & Media.orientation(.portrait))
+        let combinedQuery = (Media.screen && Media.minWidth(.px(992)))
+            || (Media.print && Media.orientation(.portrait))
         
         #expect(
             combinedQuery.rawValue == 
@@ -182,7 +182,7 @@ struct MediaTests {
     
     @Test("Combined NOT and AND operators work correctly")
     func testCombinedNotAndOperators() {
-        let negatedQuery = !(Media.screen & Media.maxWidth(.px(600)))
+        let negatedQuery = !(Media.screen && Media.maxWidth(.px(600)))
         
         #expect(
             negatedQuery.rawValue == 

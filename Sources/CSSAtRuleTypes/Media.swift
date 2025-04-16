@@ -298,7 +298,7 @@ extension Media {
     /// ```swift
     /// let query = Media.screen & Media.prefersColorScheme(.dark)
     /// ```
-    public static func & (lhs: Media, rhs: Media) -> Media {
+    public static func && (lhs: Media, rhs: Media) -> Media {
         lhs.and(rhs)
     }
     
