@@ -95,6 +95,7 @@ let package = Package(
             dependencies: [
                 .types,
                 .properties,
+                .atRules,
             ]
         ),
         .testTarget(
