@@ -151,31 +151,7 @@ extension Padding {
     public static func sides(vertical: LengthPercentage, horizontal: LengthPercentage) -> Padding {
         .verticalHorizontal(vertical, horizontal)
     }
-    
-    /// Creates a padding with the same value for all sides using pixel units
-    ///
-    /// - Parameter px: The padding in pixels
-    /// - Returns: A Padding instance with the same pixel value on all sides
-    public static func px(_ px: Double) -> Padding {
-        .all(.px(px))
-    }
-    
-    /// Creates a padding with the same value for all sides using em units
-    ///
-    /// - Parameter em: The padding in ems
-    /// - Returns: A Padding instance with the same em value on all sides
-    public static func em(_ em: Double) -> Padding {
-        .all(.em(em))
-    }
-    
-    /// Creates a padding with the same value for all sides using percentage
-    ///
-    /// - Parameter percent: The padding percentage
-    /// - Returns: A Padding instance with the same percentage value on all sides
-    public static func percentage(_ percentage: Percentage) -> Padding {
-        .all(.percentage(percentage))
-    }
-    
+
     /// Creates a padding with named sides
     ///
     /// - Parameters:

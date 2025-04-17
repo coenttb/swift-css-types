@@ -123,3 +123,7 @@ extension LengthPercentage: ExpressibleByFloatLiteral {
         self = .length(.px(value))
     }
 }
+
+extension LengthPercentage {
+    public static let zero: Self = .length(.zero)
+}
