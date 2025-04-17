@@ -56,11 +56,14 @@ public struct Media: AtRule {
     }
     
     /// Combines this media query with another using the 'and' operator.
-    public func and(_ other: Media) -> Media {
+    public func and(_ other: Media?) -> Media {
+        guard let other else { return self }
+        
         guard let featureString = other.featureString else {
             // If other is not a feature query, fall back to OR behavior
             return self.or(other)
         }
+        
         
         return Media(rawValue: "\(rawValue) and (\(featureString))")
     }
@@ -79,8 +82,9 @@ public struct Media: AtRule {
     }
     
     /// Combines this media query with another using the 'or' operator (comma in CSS).
-    public func or(_ other: Media) -> Media {
-        Media(rawValue: "\(rawValue), \(other.rawValue.dropFirst(7))")
+    public func or(_ other: Media?) -> Media {
+        guard let other else { return self }
+        return Media(rawValue: "\(rawValue), \(other.rawValue.dropFirst(7))")
     }
     
     // Predefined media types
@@ -300,7 +304,7 @@ extension Media {
     /// ```swift
     /// let query = Media.screen & Media.prefersColorScheme(.dark)
     /// ```
-    public static func && (lhs: Media, rhs: Media) -> Media {
+    public static func && (lhs: Media, rhs: Media?) -> Media {
         lhs.and(rhs)
     }
     
@@ -310,7 +314,7 @@ extension Media {
     /// ```swift
     /// let query = Media.screen || Media.print
     /// ```
-    public static func || (lhs: Media, rhs: Media) -> Media {
+    public static func || (lhs: Media, rhs: Media?) -> Media {
         lhs.or(rhs)
     }
     
