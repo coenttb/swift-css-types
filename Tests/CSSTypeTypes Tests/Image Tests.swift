@@ -159,8 +159,8 @@ struct ImageTests {
         #expect(paint.description == "paint(checkboard, black, white, 10px)")
     }
     
-    @Test("Image conforms to Equatable")
-    func testEquatable() {
+    @Test("Image conforms to Hashable")
+    func testHashable() {
         // Same type and values should be equal
         #expect(Image.url("image.jpg") == Image.url("image.jpg"))
         

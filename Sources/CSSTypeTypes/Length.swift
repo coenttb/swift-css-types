@@ -195,7 +195,7 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
 }
 
 /// Implements equality comparison for Length values
-extension Length: Equatable {
+extension Length: Hashable {
     /// Compares two Length values for equality
     ///
     /// Two Length values are considered equal if they have the same case and values.

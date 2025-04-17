@@ -66,7 +66,7 @@ public enum Grid: Property {
 }
 
 /// Direction for auto-flow grid layout
-public enum AutoFlowDirection: Sendable, Equatable {
+public enum AutoFlowDirection: Sendable, Hashable {
     /// Row direction
     case row
     
@@ -75,7 +75,7 @@ public enum AutoFlowDirection: Sendable, Equatable {
 }
 
 /// Density for auto-flow grid layout
-public enum AutoFlowDensity: Sendable, Equatable {
+public enum AutoFlowDensity: Sendable, Hashable {
     /// Normal density
     case normal
     
@@ -84,7 +84,7 @@ public enum AutoFlowDensity: Sendable, Equatable {
 }
 
 /// Auto-flow configuration for explicit grid tracks
-public struct AutoFlow: Sendable, Equatable, CustomStringConvertible {
+public struct AutoFlow: Sendable, Hashable, CustomStringConvertible {
     /// Direction of auto-flow
     let direction: AutoFlowDirection
     
@@ -112,7 +112,7 @@ public struct AutoFlow: Sendable, Equatable, CustomStringConvertible {
 }
 
 /// Represents a CSS grid track size
-public enum GridTrackSize: Sendable, Equatable, CustomStringConvertible {
+public enum GridTrackSize: Sendable, Hashable, CustomStringConvertible {
     /// Auto sizing
     case auto
     

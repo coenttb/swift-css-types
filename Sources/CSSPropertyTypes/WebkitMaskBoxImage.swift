@@ -43,7 +43,7 @@ public enum WebkitMaskBoxImage: Property {
     case global(CSSTypeTypes.Global)
     
     /// Source for the mask image
-    public enum Source: Sendable, Equatable {
+    public enum Source: Sendable, Hashable {
         /// URL to the mask image
         case url(Url)
         
@@ -55,7 +55,7 @@ public enum WebkitMaskBoxImage: Property {
     }
     
     /// Edge offsets for the mask image
-    public struct EdgeOffset: Sendable, Equatable {
+    public struct EdgeOffset: Sendable, Hashable {
         /// Top edge offset
         public let top: OffsetValue
         
@@ -85,7 +85,7 @@ public enum WebkitMaskBoxImage: Property {
         }
         
         /// Value type for edge offsets
-        public enum OffsetValue: Sendable, Equatable, CustomStringConvertible {
+        public enum OffsetValue: Sendable, Hashable, CustomStringConvertible {
             /// Number of pixels
             case number(Int)
             
@@ -109,7 +109,7 @@ public enum WebkitMaskBoxImage: Property {
     }
     
     /// Repeat style for the mask image
-    public struct RepeatStyle: Sendable, Equatable {
+    public struct RepeatStyle: Sendable, Hashable {
         /// Horizontal repeat style
         public let horizontal: Style
         
@@ -129,7 +129,7 @@ public enum WebkitMaskBoxImage: Property {
         }
         
         /// Style for how the image repeats
-        public enum Style: String, Sendable, Equatable {
+        public enum Style: String, Sendable, Hashable {
             /// Stretch the image to fill the space
             case stretch
             

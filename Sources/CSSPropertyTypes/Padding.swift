@@ -43,7 +43,7 @@ public enum Padding: Property, LengthPercentageConvertible {
     case global(CSSTypeTypes.Global)
     
     /// Named sides for padding
-    public struct NamedSides: Sendable, Equatable {
+    public struct NamedSides: Sendable, Hashable {
         /// Top padding value, if specified
         public var top: LengthPercentage?
         

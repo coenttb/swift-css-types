@@ -19,8 +19,8 @@ struct ContentDistributionTests {
         #expect(ContentDistribution.stretch.description == "stretch")
     }
     
-    @Test("ContentDistribution enum conforms to Equatable")
-    func testEquatable() {
+    @Test("ContentDistribution enum conforms to Hashable")
+    func testHashable() {
         let spaceBetween1 = ContentDistribution.spaceBetween
         let spaceBetween2 = ContentDistribution.spaceBetween
         let spaceAround = ContentDistribution.spaceAround

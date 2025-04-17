@@ -69,7 +69,7 @@ public enum Contain: Property, GlobalConvertible {
 }
 
 /// Allowed values for the `contain` property when using the combined case
-public enum ContainValue: Sendable, Equatable, CustomStringConvertible {
+public enum ContainValue: Sendable, Hashable, CustomStringConvertible {
     /// Size containment is applied to the element in both the inline and block directions.
     case size
     

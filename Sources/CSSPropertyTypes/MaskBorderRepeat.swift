@@ -67,7 +67,7 @@ public enum MaskBorderRepeat: Property {
     case global(CSSTypeTypes.Global)
     
     /// Repeat style options for mask borders
-    public enum RepeatStyle: String, Sendable, Equatable {
+    public enum RepeatStyle: String, Sendable, Hashable {
         /// Stretch the mask border image to fill the area
         case stretch
         

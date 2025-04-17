@@ -17,7 +17,7 @@ import Foundation
 ///         making it suitable for calculations involving number units.
 ///
 /// - SeeAlso: [MDN Web Docs on number-percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/number-percentage)
-public enum NumberPercentage: Sendable, Equatable, NumberConvertible, PercentageConvertible {
+public enum NumberPercentage: Sendable, Hashable, NumberConvertible, PercentageConvertible {
     /// A number value with a specific unit
     case number(Number)
     

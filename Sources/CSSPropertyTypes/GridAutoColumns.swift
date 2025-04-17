@@ -83,7 +83,7 @@ public enum GridAutoColumns: Property {
 }
 
 /// Values that can be used in minmax() expressions
-public enum MinMaxValue: Sendable, Equatable, CustomStringConvertible {
+public enum MinMaxValue: Sendable, Hashable, CustomStringConvertible {
     /// Auto sizing
     case auto
     

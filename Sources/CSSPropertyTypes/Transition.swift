@@ -68,7 +68,7 @@ public enum Transition: Property {
     public typealias Time = CSSTypeTypes.Time
     
     /// A specific transition configuration
-    public struct Configuration: Sendable, Equatable, CustomStringConvertible {
+    public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The property or properties to which the transition applies
         public let property: Property
         

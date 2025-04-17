@@ -34,7 +34,7 @@ public enum ColorScheme: Property {
 }
 
 /// Values for color schemes
-public enum ColorSchemeValue: Sendable, Equatable, CustomStringConvertible {
+public enum ColorSchemeValue: Sendable, Hashable, CustomStringConvertible {
     /// Light color scheme
     case light
     

@@ -75,7 +75,7 @@ public enum MaskOrigin: Property {
     case global(CSSTypeTypes.Global)
     
     /// Origin value type
-    public enum Origin: String, Sendable, Equatable {
+    public enum Origin: String, Sendable, Hashable {
         /// The mask is positioned relative to the border box
         case borderBox = "border-box"
         

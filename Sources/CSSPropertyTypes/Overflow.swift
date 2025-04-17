@@ -37,7 +37,7 @@ public enum Overflow: Property {
     case global(CSSTypeTypes.Global)
     
     /// Overflow value options
-    public enum Value: String, Sendable, Equatable {
+    public enum Value: String, Sendable, Hashable {
         /// Content is not clipped and may overflow the padding box
         case visible
         

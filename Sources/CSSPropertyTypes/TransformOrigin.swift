@@ -22,7 +22,7 @@ public enum TransformOrigin: Property {
     public static let property: String = "transform-origin"
     
     /// A horizontal position keyword
-    public enum HorizontalKeyword: Sendable, Equatable, CustomStringConvertible {
+    public enum HorizontalKeyword: Sendable, Hashable, CustomStringConvertible {
         /// The left edge (0%)
         case left
         
@@ -42,7 +42,7 @@ public enum TransformOrigin: Property {
     }
     
     /// A vertical position keyword
-    public enum VerticalKeyword: Sendable, Equatable, CustomStringConvertible {
+    public enum VerticalKeyword: Sendable, Hashable, CustomStringConvertible {
         /// The top edge (0%)
         case top
         
@@ -74,7 +74,7 @@ public enum TransformOrigin: Property {
     case global(CSSTypeTypes.Global)
     
     /// A single position value (keyword or length)
-    public enum Value: Sendable, Equatable {
+    public enum Value: Sendable, Hashable {
         /// A horizontal keyword (left, center, right)
         case horizontalKeyword(HorizontalKeyword)
         

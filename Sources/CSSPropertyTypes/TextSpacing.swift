@@ -54,7 +54,7 @@ public enum TextSpacing: Property {
 }
 
 /// Individual options for text spacing
-public enum TextSpacingOption: String, Sendable, Equatable, Hashable, CaseIterable {
+public enum TextSpacingOption: String, Sendable, Hashable, CaseIterable {
     /// Trims the leading spaces at the start of the line.
     case trimStart = "trim-start"
     

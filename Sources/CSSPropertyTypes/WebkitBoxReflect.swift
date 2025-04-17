@@ -53,7 +53,7 @@ public enum WebkitBoxReflect: Property {
     case global(CSSTypeTypes.Global)
     
     /// Types of reflection masks
-    public enum ReflectionMask: Sendable, Equatable {
+    public enum ReflectionMask: Sendable, Hashable {
         /// Linear gradient mask
         case linearGradient(CSSString)
         

@@ -55,8 +55,8 @@ struct DisplayInternalTests {
         #expect(DisplayInternal.rubyTextContainer.description == "ruby-text-container")
     }
     
-    @Test("DisplayInternal conforms to Equatable")
-    func testEquatable() {
+    @Test("DisplayInternal conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let display1 = DisplayInternal.tableCell
         let display2 = DisplayInternal.tableCell

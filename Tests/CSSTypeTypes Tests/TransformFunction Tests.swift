@@ -141,8 +141,8 @@ struct TransformFunctionTests {
         #expect(percentTranslate.description == "translate(25%, 75%)")
     }
     
-    @Test("TransformFunction conforms to Equatable")
-    func testEquatable() {
+    @Test("TransformFunction conforms to Hashable")
+    func testHashable() {
         let scale1 = TransformFunction.scale(1.5)
         let scale2 = TransformFunction.scale(1.5)
         let scale3 = TransformFunction.scale(2)

@@ -23,8 +23,8 @@ struct OverflowPositionTests {
         #expect(OverflowPosition.unsafe.description == "unsafe")
     }
     
-    @Test("OverflowPosition conforms to Equatable")
-    func testEquatable() {
+    @Test("OverflowPosition conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let pos1 = OverflowPosition.safe
         let pos2 = OverflowPosition.safe

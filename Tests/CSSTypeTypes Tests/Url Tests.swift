@@ -111,8 +111,8 @@ struct UrlTests {
         #expect(urlLiteral.description == "url('images/icon.png')")
     }
     
-    @Test("Url conforms to Equatable")
-    func testEquatable() {
+    @Test("Url conforms to Hashable")
+    func testHashable() {
         let url1 = Url("image.jpg")
         let url2 = Url("image.jpg")
         let url3 = Url("different.jpg")

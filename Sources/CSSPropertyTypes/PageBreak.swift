@@ -59,7 +59,7 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs: page-break-after](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-after)
 /// - SeeAlso: [MDN Web Docs: page-break-before](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before)
 /// - SeeAlso: [MDN Web Docs: page-break-inside](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside)
-public enum PageBreak: Sendable, Equatable, Property {
+public enum PageBreak: Sendable, Hashable, Property {
     public static let property: String = "page-break"
     /// Controls page breaks after an element.
     case after(After)

@@ -17,7 +17,7 @@ import Foundation
 ///         The prefix "#" is required for valid CSS output.
 ///
 /// - SeeAlso: [MDN Web Docs on hex-color](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color)
-public struct HexColor: Sendable, Equatable {
+public struct HexColor: Sendable, Hashable {
     /// The hex color value including the leading "#"
     public let value: String
     

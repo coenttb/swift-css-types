@@ -15,7 +15,7 @@ import Foundation
 /// - Note: Even when the value is zero, the unit must be specified in CSS.
 ///
 /// - SeeAlso: [MDN Web Docs on frequency](https://developer.mozilla.org/en-US/docs/Web/CSS/frequency)
-public enum Frequency: Sendable, Equatable {
+public enum Frequency: Sendable, Hashable {
     /// Frequency in hertz (Hz)
     case hz(Number)
     

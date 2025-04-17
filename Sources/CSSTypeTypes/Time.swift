@@ -15,9 +15,9 @@ import Foundation
 /// - Note: Even for time values of 0, a unit (s or ms) must always be specified in CSS.
 ///
 /// - SeeAlso: [MDN Web Docs on time](https://developer.mozilla.org/en-US/docs/Web/CSS/time)
-public struct Time: Sendable, Equatable {
+public struct Time: Sendable, Hashable {
     /// Represents a time unit (seconds or milliseconds)
-    public enum Unit: String, Sendable, Equatable {
+    public enum Unit: String, Sendable, Hashable {
         /// Seconds
         case second = "s"
         

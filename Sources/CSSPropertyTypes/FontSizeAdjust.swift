@@ -60,7 +60,7 @@ public enum FontSizeAdjust: Property {
     }
     
     /// Represents either a numeric value or the from-font keyword
-    public enum ValueOrFromFont: Sendable, Equatable, CustomStringConvertible {
+    public enum ValueOrFromFont: Sendable, Hashable, CustomStringConvertible {
         /// A numeric value
         case value(Double)
         

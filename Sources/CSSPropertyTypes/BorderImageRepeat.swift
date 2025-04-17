@@ -68,7 +68,7 @@ public enum BorderImageRepeat: Property {
     case global(CSSTypeTypes.Global)
     
     /// Repeat style options for border images
-    public enum RepeatStyle: String, Sendable, Equatable {
+    public enum RepeatStyle: String, Sendable, Hashable {
         /// Stretch the border image to fill the area
         case stretch
         

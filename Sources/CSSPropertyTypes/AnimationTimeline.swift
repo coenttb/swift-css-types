@@ -39,7 +39,7 @@ public enum AnimationTimeline: Property {
 }
 
 /// Scroller values for anonymous scroll progress timelines
-public enum ScrollerValue: String, Sendable, Equatable, CaseIterable {
+public enum ScrollerValue: String, Sendable, Hashable, CaseIterable {
     /// Document root as a scroller
     case root
     
@@ -51,7 +51,7 @@ public enum ScrollerValue: String, Sendable, Equatable, CaseIterable {
 }
 
 /// Scroll axis options for timelines
-public enum ScrollAxis: String, Sendable, Equatable, CaseIterable {
+public enum ScrollAxis: String, Sendable, Hashable, CaseIterable {
     /// Block direction (typically vertical)
     case block
     

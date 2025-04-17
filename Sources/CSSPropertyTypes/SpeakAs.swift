@@ -41,7 +41,7 @@ public enum SpeakAs: Property {
     }
     
     /// The different modes for speaking content
-    public enum SpeakingMode: Sendable, Equatable, CustomStringConvertible {
+    public enum SpeakingMode: Sendable, Hashable, CustomStringConvertible {
         /// Normal pronunciation rules with punctuation replaced by pauses.
         /// For example, "Hello, world!" would be pronounced as "Hello (pause) world (pause)".
         case normal
@@ -62,7 +62,7 @@ public enum SpeakAs: Property {
     }
     
     /// The different modes for pronouncing punctuation
-    public enum PunctuationMode: String, Sendable, Equatable, CustomStringConvertible {
+    public enum PunctuationMode: String, Sendable, Hashable, CustomStringConvertible {
         /// Default punctuation mode
         case auto
         
@@ -81,7 +81,7 @@ public enum SpeakAs: Property {
     }
     
     /// Configuration options for speak-as
-    public struct Options: Sendable, Equatable, CustomStringConvertible {
+    public struct Options: Sendable, Hashable, CustomStringConvertible {
         /// The speaking mode for content
         public let mode: SpeakingMode
         

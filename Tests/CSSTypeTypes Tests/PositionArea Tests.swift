@@ -112,8 +112,8 @@ struct PositionAreaTests {
         #expect(PositionArea.CoordinateValue.center.rawValue == "center")
     }
     
-    @Test("PositionArea conforms to Equatable")
-    func testEquatable() {
+    @Test("PositionArea conforms to Hashable")
+    func testHashable() {
         #expect(PositionArea.center == PositionArea.physical(.center))
         #expect(PositionArea.topLeft == PositionArea.physicalPair(.top, .left))
         #expect(PositionArea.physical(.top) == PositionArea.physical(.top))

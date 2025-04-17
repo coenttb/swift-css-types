@@ -100,8 +100,8 @@ struct BoxEdgeTests {
         #expect(invalidGeometry == nil) // "view-box" is not a valid Paint value
     }
     
-    @Test("BoxEdge conforms to Equatable")
-    func testMainEquatable() {
+    @Test("BoxEdge conforms to Hashable")
+    func testMainHashable() {
         let contentBox1 = BoxEdge.contentBox
         let contentBox2 = BoxEdge.contentBox
         let borderBox = BoxEdge.borderBox
@@ -110,8 +110,8 @@ struct BoxEdgeTests {
         #expect(contentBox1 != borderBox)
     }
     
-    @Test("BoxEdge subtypes conform to Equatable")
-    func testSubtypeEquatable() {
+    @Test("BoxEdge subtypes conform to Hashable")
+    func testSubtypeHashable() {
         let visualContentBox1 = BoxEdge.Visual.contentBox
         let visualContentBox2 = BoxEdge.Visual.contentBox
         let visualBorderBox = BoxEdge.Visual.borderBox

@@ -16,7 +16,7 @@ import Foundation
 ///         when the total size of all items is less than the container size.
 ///
 /// - SeeAlso: [MDN Web Docs on content-distribution values](https://developer.mozilla.org/en-US/docs/Web/CSS/content-distribution)
-public enum ContentDistribution: String, Sendable, Equatable, CaseIterable {
+public enum ContentDistribution: String, Sendable, Hashable, CaseIterable {
     /// Distributes items evenly with no space at the edges
     ///
     /// Places the first item at the start, the last item at the end, and distributes

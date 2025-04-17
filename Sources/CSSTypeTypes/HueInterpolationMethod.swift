@@ -16,7 +16,7 @@ import Foundation
 ///         when interpolating between two hue angles on a color wheel.
 ///
 /// - SeeAlso: [MDN Web Docs on hue-interpolation-method](https://developer.mozilla.org/en-US/docs/Web/CSS/hue-interpolation-method)
-public enum HueInterpolationMethod: String, Sendable, Equatable {
+public enum HueInterpolationMethod: String, Sendable, Hashable {
     /// Use the shorter arc between the two hues on the color wheel.
     ///
     /// When the two hues are exactly opposite (180 degrees apart), this algorithm

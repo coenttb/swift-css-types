@@ -33,7 +33,7 @@ public enum OverscrollBehavior: Property {
     case global(CSSTypeTypes.Global)
     
     /// Overscroll behavior values
-    public enum Value: String, Sendable, Equatable {
+    public enum Value: String, Sendable, Hashable {
         /// The default scroll overflow behavior occurs as normal
         case auto
         

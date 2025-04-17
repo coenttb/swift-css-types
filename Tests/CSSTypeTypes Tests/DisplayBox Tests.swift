@@ -23,8 +23,8 @@ struct DisplayBoxTests {
         #expect(DisplayBox.contents.description == "contents")
     }
     
-    @Test("DisplayBox conforms to Equatable")
-    func testEquatable() {
+    @Test("DisplayBox conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let display1 = DisplayBox.none
         let display2 = DisplayBox.none

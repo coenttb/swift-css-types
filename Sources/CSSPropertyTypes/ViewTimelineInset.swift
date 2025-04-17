@@ -36,7 +36,7 @@ public enum ViewTimelineInset: Property {
 }
 
 /// Represents the possible values for view-timeline-inset
-public enum ViewTimelineInsetValue: Sendable, Equatable {
+public enum ViewTimelineInsetValue: Sendable, Hashable {
     /// Uses scroll-padding for edge of scrollport
     case auto
     

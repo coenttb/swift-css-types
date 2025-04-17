@@ -17,7 +17,7 @@ import Foundation
 ///         within the container.
 ///
 /// - SeeAlso: [MDN Web Docs on content-position values](https://developer.mozilla.org/en-US/docs/Web/CSS/content-position)
-public enum ContentPosition: String, Sendable, Equatable, CaseIterable {
+public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// Centers the content within the container
     ///
     /// The content is centered along the axis.

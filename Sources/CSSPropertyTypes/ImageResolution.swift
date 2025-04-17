@@ -50,7 +50,7 @@ public enum ImageResolution: Property {
     }
     
     /// The source type for image resolution
-    public enum Source: Sendable, Equatable {
+    public enum Source: Sendable, Hashable {
         /// Uses the intrinsic resolution as specified by the image format
         case fromImage
         

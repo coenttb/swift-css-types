@@ -18,7 +18,7 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage)
 @dynamicMemberLookup
-public struct Percentage: Sendable, Equatable {
+public struct Percentage: Sendable, Hashable {
     /// The percentage value
     public let value: Double
     

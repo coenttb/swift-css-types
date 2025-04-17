@@ -14,7 +14,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on number](https://developer.mozilla.org/en-US/docs/Web/CSS/number)
-public struct Number: Sendable, Equatable {
+public struct Number: Sendable, Hashable {
     /// The numeric value
     public let value: Double
     

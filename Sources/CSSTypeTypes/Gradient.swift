@@ -23,9 +23,9 @@ import Foundation
 /// - Note: CSS gradients have no intrinsic dimensions; their size matches the element they're applied to.
 ///
 /// - SeeAlso: [MDN Web Docs on gradients](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient)
-public enum Gradient: Sendable, Equatable {
+public enum Gradient: Sendable, Hashable {
     /// Represents directions for linear gradients
-    public enum Direction: Sendable, Equatable, AngleConvertible {
+    public enum Direction: Sendable, Hashable, AngleConvertible {
         /// Direction specified by an angle
         case angle(Angle)
         
@@ -33,7 +33,7 @@ public enum Gradient: Sendable, Equatable {
         case to(Side)
         
         /// Represents sides or corners for the "to" keyword
-        public enum Side: String, Sendable, Equatable, CaseIterable {
+        public enum Side: String, Sendable, Hashable, CaseIterable {
             /// Top edge
             case top
             
@@ -61,7 +61,7 @@ public enum Gradient: Sendable, Equatable {
     }
     
     /// Represents a color stop in a gradient
-    public struct ColorStop: Sendable, Equatable {
+    public struct ColorStop: Sendable, Hashable {
         /// The color of the stop
         public let color: Color
         
@@ -76,9 +76,9 @@ public enum Gradient: Sendable, Equatable {
     }
     
     /// Represents options for radial gradients
-    public struct RadialOptions: Sendable, Equatable {
+    public struct RadialOptions: Sendable, Hashable {
         /// The shape of the gradient
-        public enum Shape: String, Sendable, Equatable {
+        public enum Shape: String, Sendable, Hashable {
             /// Circular shape (equal distance from center)
             case circle
             
@@ -87,7 +87,7 @@ public enum Gradient: Sendable, Equatable {
         }
         
         /// Size keywords for radial gradients
-        public enum Size: Sendable, Equatable {
+        public enum Size: Sendable, Hashable {
             /// Size specified by keywords
             case keyword(Keyword)
             
@@ -98,7 +98,7 @@ public enum Gradient: Sendable, Equatable {
             case elliptical(radiusX: LengthPercentage, radiusY: LengthPercentage)
             
             /// Keywords for radial gradient sizing
-            public enum Keyword: String, Sendable, Equatable {
+            public enum Keyword: String, Sendable, Hashable {
                 /// Gradient ends at the closest side from the center
                 case closestSide = "closest-side"
                 

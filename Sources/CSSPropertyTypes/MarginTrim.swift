@@ -67,7 +67,7 @@ public enum MarginTrim: Property {
     case global(CSSTypeTypes.Global)
     
     /// Edge types for margin trimming
-    public enum Edge: String, Sendable, Equatable, CaseIterable {
+    public enum Edge: String, Sendable, Hashable, CaseIterable {
         /// First block child margin
         case blockStart = "block-start"
         

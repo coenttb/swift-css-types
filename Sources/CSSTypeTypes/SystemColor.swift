@@ -15,7 +15,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on system colors](https://developer.mozilla.org/en-US/docs/Web/CSS/system-color)
-public struct SystemColor: RawRepresentable, Sendable, Equatable {
+public struct SystemColor: RawRepresentable, Sendable, Hashable {
     public var rawValue: String
     
     public init(rawValue: String) {

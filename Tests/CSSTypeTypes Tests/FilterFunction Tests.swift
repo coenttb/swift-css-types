@@ -124,8 +124,8 @@ struct FilterFunctionTests {
         #expect(sepiaFull.description == "sepia(100%)")
     }
     
-    @Test("FilterFunction conforms to Equatable")
-    func testEquatable() {
+    @Test("FilterFunction conforms to Hashable")
+    func testHashable() {
         let blur1 = FilterFunction.blur(.px(5))
         let blur2 = FilterFunction.blur(.px(5))
         let blur3 = FilterFunction.blur(.px(10))

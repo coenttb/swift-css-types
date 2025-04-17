@@ -16,7 +16,7 @@ import Foundation
 ///         this data type is part of the CSS Values and Units specification.
 ///
 /// - SeeAlso: [MDN Web Docs on frequency-percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/frequency-percentage)
-public enum FrequencyPercentage: Sendable, Equatable, PercentageConvertible {
+public enum FrequencyPercentage: Sendable, Hashable, PercentageConvertible {
     /// An absolute frequency value
     case frequency(Frequency)
     

@@ -36,8 +36,8 @@ struct ShapeTests {
         #expect(shape.description == "rect(auto, auto, auto, auto)")
     }
     
-    @Test("Shape conforms to Equatable")
-    func testEquatable() {
+    @Test("Shape conforms to Hashable")
+    func testHashable() {
         let shape1 = Shape.rect(top: .px(10), right: .px(100), bottom: .px(100), left: .px(10))
         let shape2 = Shape.rect(top: .px(10), right: .px(100), bottom: .px(100), left: .px(10))
         let shape3 = Shape.rect(top: .px(20), right: .px(100), bottom: .px(100), left: .px(10))

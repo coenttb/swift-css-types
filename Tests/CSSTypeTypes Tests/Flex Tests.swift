@@ -47,8 +47,8 @@ struct FlexTests {
         #expect(flex.description == "1.5fr")
     }
     
-    @Test("Flex conforms to Equatable")
-    func testEquatable() {
+    @Test("Flex conforms to Hashable")
+    func testHashable() {
         let flex1a: Flex = 1
         let flex1b: Flex = 1
         let flex2: Flex = 2

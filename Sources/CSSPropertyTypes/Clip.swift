@@ -27,7 +27,7 @@ public enum Clip: Property {
 }
 
 /// Represents a rectangular clipping shape
-public struct ClipRect: Sendable, Equatable {
+public struct ClipRect: Sendable, Hashable {
     /// Offset from the top edge (or auto)
     public var top: ClipValue
     
@@ -58,7 +58,7 @@ public struct ClipRect: Sendable, Equatable {
 }
 
 /// Represents a value for a clip rectangle side
-public enum ClipValue: Sendable, Equatable, LengthConvertible {
+public enum ClipValue: Sendable, Hashable, LengthConvertible {
     /// A length value
     case length(Length)
     

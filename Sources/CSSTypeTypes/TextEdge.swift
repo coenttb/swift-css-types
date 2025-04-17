@@ -19,7 +19,7 @@ import Foundation
 ///         position of the font's under edge.
 ///
 /// - SeeAlso: [MDN Web Docs on text-edge](https://developer.mozilla.org/en-US/docs/Web/CSS/text-edge)
-public enum TextEdge: Sendable, Equatable {
+public enum TextEdge: Sendable, Hashable {
     /// A single value for both over and under edges
     case single(Value)
     
@@ -27,7 +27,7 @@ public enum TextEdge: Sendable, Equatable {
     case pair(OverValue, UnderValue)
     
     /// Values for both over and under edges
-    public enum Value: String, Sendable, Equatable, CaseIterable {
+    public enum Value: String, Sendable, Hashable, CaseIterable {
         /// Both font edges are at text baseline (includes font's ascenders/descenders but excludes half-leading)
         case text
         
@@ -39,7 +39,7 @@ public enum TextEdge: Sendable, Equatable {
     }
     
     /// Values for the over edge (top of text)
-    public enum OverValue: String, Sendable, Equatable, CaseIterable {
+    public enum OverValue: String, Sendable, Hashable, CaseIterable {
         /// The font's over edge is at text-over baseline (includes ascenders but excludes half-leading)
         case text
         
@@ -57,7 +57,7 @@ public enum TextEdge: Sendable, Equatable {
     }
     
     /// Values for the under edge (bottom of text)
-    public enum UnderValue: String, Sendable, Equatable, CaseIterable {
+    public enum UnderValue: String, Sendable, Hashable, CaseIterable {
         /// The font's under edge is at text-under baseline (includes descenders but excludes half-leading)
         case text
         

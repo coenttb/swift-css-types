@@ -33,7 +33,7 @@ public enum AnimationRangeStart: Property, LengthPercentageConvertible {
 }
 
 /// Named timeline range values for animations
-public enum TimelineRangeName: String, Sendable, Equatable, CaseIterable {
+public enum TimelineRangeName: String, Sendable, Hashable, CaseIterable {
     /// Full range of a named view progress timeline
     case cover
     

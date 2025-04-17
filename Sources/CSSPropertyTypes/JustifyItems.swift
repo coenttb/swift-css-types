@@ -50,7 +50,7 @@ public enum JustifyItems: Property, SelfPositionConvertible, BaselinePositionCon
 }
 
 /// Legacy position for justify-items
-public enum LegacyPosition: String, Sendable, Equatable {
+public enum LegacyPosition: String, Sendable, Hashable {
     case left
     case right
     case center

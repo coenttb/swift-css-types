@@ -22,7 +22,7 @@ public enum ObjectPosition: Property {
     public static let property: String = "object-position"
     
     /// A single position value type
-    public enum Value: Sendable, Equatable {
+    public enum Value: Sendable, Hashable {
         /// Keyword position (top, right, bottom, left, center)
         case keyword(CSSTypeTypes.Position.Keyword)
         
@@ -197,7 +197,7 @@ extension ObjectPosition: CustomStringConvertible {
 }
 
 /// Object style container
-public struct ObjectStyle: Sendable, Equatable {
+public struct ObjectStyle: Sendable, Hashable {
     /// The object position
     public let position: ObjectPosition
     

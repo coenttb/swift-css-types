@@ -57,7 +57,7 @@ public enum GridArea: Property {
 }
 
 /// Represents coordinates defining a grid area
-public struct GridAreaCoordinates: Sendable, Equatable, CustomStringConvertible {
+public struct GridAreaCoordinates: Sendable, Hashable, CustomStringConvertible {
     /// The row start position
     public let rowStart: GridLine
     
@@ -120,9 +120,9 @@ public struct GridAreaCoordinates: Sendable, Equatable, CustomStringConvertible 
 }
 
 /// Represents a grid line position or span
-public struct GridLine: Sendable, Equatable, CustomStringConvertible {
+public struct GridLine: Sendable, Hashable, CustomStringConvertible {
     /// The type of grid line specification
-    private enum LineType: Sendable, Equatable {
+    private enum LineType: Sendable, Hashable {
         case number(Int)     // A numbered grid line
         case name(String)    // A named grid line
         case span(Int)       // A span of grid lines

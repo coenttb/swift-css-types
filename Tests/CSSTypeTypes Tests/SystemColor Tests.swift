@@ -76,8 +76,8 @@ struct SystemColorTests {
         #expect(customColor.description == "CustomColor")
     }
     
-    @Test("SystemColor conforms to Equatable")
-    func testEquatable() {
+    @Test("SystemColor conforms to Hashable")
+    func testHashable() {
         let canvas1 = SystemColor.canvas
         let canvas2 = SystemColor.canvas
         let field = SystemColor.field

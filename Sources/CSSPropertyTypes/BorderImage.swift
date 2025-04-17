@@ -91,7 +91,7 @@ public enum BorderImage: Property {
     }
     
     /// Configuration for a border image
-    public struct Configuration: Sendable, Equatable, CustomStringConvertible {
+    public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The source of the border image
         public let source: Source
         
@@ -259,7 +259,7 @@ public enum BorderImage: Property {
     }
     
     /// The source of the border image
-    public enum Source: Sendable, Equatable {
+    public enum Source: Sendable, Hashable {
         /// No border image
         case none
         
@@ -280,7 +280,7 @@ public enum BorderImage: Property {
     }
     
     /// The slice values for dividing the border image
-    public struct Slice: Sendable, Equatable {
+    public struct Slice: Sendable, Hashable {
         /// The top slice value
         public let top: SliceValue
         
@@ -326,7 +326,7 @@ public enum BorderImage: Property {
         }
         
         /// Slice value type
-        public enum SliceValue: Sendable, Equatable, CustomStringConvertible {
+        public enum SliceValue: Sendable, Hashable, CustomStringConvertible {
             /// Number value for slice
             case number(Number)
             
@@ -362,7 +362,7 @@ public enum BorderImage: Property {
     }
     
     /// The width of the border image
-    public struct Width: Sendable, Equatable {
+    public struct Width: Sendable, Hashable {
         /// The top width value
         public let top: WidthValue
         
@@ -400,7 +400,7 @@ public enum BorderImage: Property {
         }
         
         /// Width value type
-        public enum WidthValue: Sendable, Equatable, CustomStringConvertible, LengthPercentageConvertible {
+        public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthPercentageConvertible {
             /// Auto width
             case auto
             
@@ -444,7 +444,7 @@ public enum BorderImage: Property {
     }
     
     /// The outset value of the border image
-    public struct Outset: Sendable, Equatable {
+    public struct Outset: Sendable, Hashable {
         /// The top outset value
         public let top: OutsetValue
         
@@ -482,7 +482,7 @@ public enum BorderImage: Property {
         }
         
         /// Outset value type
-        public enum OutsetValue: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+        public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
             /// Number multiplier
             case number(Number)
             
@@ -518,7 +518,7 @@ public enum BorderImage: Property {
     }
     
     /// The repeat behavior of the border image
-    public struct Repeat: Sendable, Equatable {
+    public struct Repeat: Sendable, Hashable {
         /// The horizontal repeat value
         public let horizontal: RepeatValue
         
@@ -544,7 +544,7 @@ public enum BorderImage: Property {
         }
         
         /// Repeat value type
-        public enum RepeatValue: Sendable, Equatable {
+        public enum RepeatValue: Sendable, Hashable {
             /// Stretch the image to fill the space
             case stretch
             

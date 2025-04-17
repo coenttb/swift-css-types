@@ -15,7 +15,7 @@ import Foundation
 ///         so 480deg is equivalent to 120deg, -120deg is equivalent to 240deg, etc.
 ///
 /// - SeeAlso: [MDN Web Docs on hue](https://developer.mozilla.org/en-US/docs/Web/CSS/hue)
-public enum Hue: Sendable, Equatable, AngleConvertible {
+public enum Hue: Sendable, Hashable, AngleConvertible {
     /// Hue expressed as a number (interpreted as degrees)
     case number(Number)
     

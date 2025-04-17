@@ -16,7 +16,7 @@ import Foundation
 ///         content (innermost), padding, border, and margin (outermost).
 ///
 /// - SeeAlso: [MDN Web Docs on box-edge values](https://developer.mozilla.org/en-US/docs/Web/CSS/box-edge)
-public enum BoxEdge: String, Sendable, Equatable {
+public enum BoxEdge: String, Sendable, Hashable {
     /// The innermost box containing the element's content
     ///
     /// This represents the actual content area (like text or images).
@@ -77,14 +77,14 @@ public enum BoxEdge: String, Sendable, Equatable {
 /// Represents specialized subtypes of BoxEdge used in different contexts
 extension BoxEdge {
     /// Box edges for visual rendering (content-box, padding-box, border-box)
-    public enum Visual: String, Sendable, Equatable {
+    public enum Visual: String, Sendable, Hashable {
         case contentBox = "content-box"
         case paddingBox = "padding-box"
         case borderBox = "border-box"
     }
     
     /// Box edges for layout (content-box, padding-box, border-box, margin-box)
-    public enum Layout: String, Sendable, Equatable {
+    public enum Layout: String, Sendable, Hashable {
         case contentBox = "content-box"
         case paddingBox = "padding-box"
         case borderBox = "border-box"
@@ -92,7 +92,7 @@ extension BoxEdge {
     }
     
     /// Box edges for painting (content-box, padding-box, border-box, fill-box, stroke-box)
-    public enum Paint: String, Sendable, Equatable {
+    public enum Paint: String, Sendable, Hashable {
         case contentBox = "content-box"
         case paddingBox = "padding-box"
         case borderBox = "border-box"
@@ -101,7 +101,7 @@ extension BoxEdge {
     }
     
     /// Box edges for coordinate systems
-    public enum Coordinate: String, Sendable, Equatable {
+    public enum Coordinate: String, Sendable, Hashable {
         case contentBox = "content-box"
         case paddingBox = "padding-box"
         case borderBox = "border-box"
@@ -111,7 +111,7 @@ extension BoxEdge {
     }
     
     /// Box edges for geometric operations (margin-box, fill-box, stroke-box, view-box)
-    public enum Geometry: String, Sendable, Equatable {
+    public enum Geometry: String, Sendable, Hashable {
         case contentBox = "content-box"
         case paddingBox = "padding-box"
         case borderBox = "border-box"

@@ -52,8 +52,8 @@ struct NamedColorTests {
         #expect(NamedColor.allCases.contains(.rebeccapurple))
     }
     
-    @Test("NamedColor conforms to Equatable")
-    func testEquatable() {
+    @Test("NamedColor conforms to Hashable")
+    func testHashable() {
         let red1 = NamedColor.red
         let red2 = NamedColor.red
         let blue = NamedColor.blue

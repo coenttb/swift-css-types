@@ -104,7 +104,7 @@ extension BorderBottom: LineStyleConvertible {
 
 extension BorderBottom {
     /// Properties for the border-bottom shorthand
-    public struct Properties: Sendable, Equatable, CustomStringConvertible {
+    public struct Properties: Sendable, Hashable, CustomStringConvertible {
         /// The width of the bottom border
         public let width: BorderWidth?
         

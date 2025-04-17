@@ -16,7 +16,7 @@ public enum CounterReset: Property {
     public static let property: String = "counter-reset"
     
     /// An individual counter with an optional initial value
-    public struct Counter: Sendable, Equatable {
+    public struct Counter: Sendable, Hashable {
         /// The name of the counter
         public let name: CustomIdent
         

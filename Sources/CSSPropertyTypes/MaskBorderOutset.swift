@@ -61,7 +61,7 @@ public enum MaskBorderOutset: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a value for mask-border-outset
-    public enum OutsetValue: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+    public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
         

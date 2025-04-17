@@ -28,8 +28,8 @@ struct RelativeSizeTests {
         #expect(allCases.contains(RelativeSize.larger))
     }
     
-    @Test("RelativeSize conforms to Equatable")
-    func testEquatable() {
+    @Test("RelativeSize conforms to Hashable")
+    func testHashable() {
         let smaller1 = RelativeSize.smaller
         let smaller2 = RelativeSize.smaller
         let larger = RelativeSize.larger

@@ -17,7 +17,7 @@ import Foundation
 ///         making it suitable for calculations involving length units.
 ///
 /// - SeeAlso: [MDN Web Docs on length-percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage)
-public enum LengthPercentage: Sendable, Equatable, LengthConvertible, PercentageConvertible {
+public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageConvertible {
     /// A length value with a specific unit
     case length(Length)
     

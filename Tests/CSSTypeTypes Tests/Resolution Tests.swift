@@ -89,8 +89,8 @@ struct ResolutionTests {
         #expect(toDpi.unit == .dpi)
     }
     
-    @Test("Resolution.Unit conforms to Equatable")
-    func testUnitEquatable() {
+    @Test("Resolution.Unit conforms to Hashable")
+    func testUnitHashable() {
         #expect(Resolution.Unit.dpi == Resolution.Unit.dpi)
         #expect(Resolution.Unit.dpi != Resolution.Unit.dpcm)
         #expect(Resolution.Unit.dppx == Resolution.Unit.dppx)

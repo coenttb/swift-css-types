@@ -87,7 +87,7 @@ public enum TextUnderlinePosition: Property {
 }
 
 /// The possible individual values for text-underline-position
-public enum TextUnderlinePositionValue: Hashable, Sendable, Equatable, CustomStringConvertible {
+public enum TextUnderlinePositionValue: Sendable, Hashable, CustomStringConvertible {
     /// The user agent uses its own algorithm to place the line at or under the alphabetic baseline.
     case auto
     

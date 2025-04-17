@@ -55,7 +55,7 @@ public enum FontVariantNumeric: Property {
 }
 
 /// Represents the possible numeric variant options
-public enum NumericOption: String, Sendable, Equatable, Hashable, CaseIterable {
+public enum NumericOption: String, Sendable, Hashable, CaseIterable {
     /// Forces the use of special glyphs for ordinal markers (1st, 2nd, 3rd, etc.)
     case ordinal
     

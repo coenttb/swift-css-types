@@ -17,7 +17,7 @@ import Foundation
 ///         the relative increase or decrease in size is typically between 120% and 150%.
 ///
 /// - SeeAlso: [MDN Web Docs on relative-size](https://developer.mozilla.org/en-US/docs/Web/CSS/relative-size)
-public enum RelativeSize: String, Sendable, Equatable, CaseIterable {
+public enum RelativeSize: String, Sendable, Hashable, CaseIterable {
     /// A relative size one size smaller than the inherited size
     case smaller
     

@@ -106,8 +106,8 @@ struct LengthTests {
         #expect(3.75.q.description == "3.75q")
     }
     
-    @Test("Length conforms to Equatable")
-    func testEquatable() {
+    @Test("Length conforms to Hashable")
+    func testHashable() {
         // Same type and values should be equal
         #expect(Length.px(10) == Length.px(10))
         #expect(Length.em(1.5) == Length.em(1.5))

@@ -39,8 +39,8 @@ struct LineStyleTests {
         #expect(LineStyle.outset.description == "outset")
     }
     
-    @Test("LineStyle conforms to Equatable")
-    func testEquatable() {
+    @Test("LineStyle conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let style1 = LineStyle.solid
         let style2 = LineStyle.solid

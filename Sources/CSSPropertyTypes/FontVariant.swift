@@ -51,7 +51,7 @@ public enum FontVariant: Property {
 }
 
 /// Options for the font-variant property
-public enum FontVariantOption: Sendable, Equatable, CustomStringConvertible {
+public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
     // Ligature values
     case commonLigatures
     case noCommonLigatures

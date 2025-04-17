@@ -97,7 +97,7 @@ public enum MaskBorder: Property {
     }
     
     /// Configuration for a mask border
-    public struct Configuration: Sendable, Equatable, CustomStringConvertible {
+    public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The source of the mask border image
         public let source: Source
         
@@ -281,7 +281,7 @@ public enum MaskBorder: Property {
     }
     
     /// The source of the mask border image
-    public enum Source: Sendable, Equatable {
+    public enum Source: Sendable, Hashable {
         /// No mask border image
         case none
         
@@ -308,7 +308,7 @@ public enum MaskBorder: Property {
     }
     
     /// The slice values for dividing the mask border image
-    public struct Slice: Sendable, Equatable {
+    public struct Slice: Sendable, Hashable {
         /// The top slice value
         public let top: SliceValue
         
@@ -354,7 +354,7 @@ public enum MaskBorder: Property {
         }
         
         /// Slice value type
-        public enum SliceValue: Sendable, Equatable, CustomStringConvertible {
+        public enum SliceValue: Sendable, Hashable, CustomStringConvertible {
             /// Number value for slice
             case number(Number)
             
@@ -390,7 +390,7 @@ public enum MaskBorder: Property {
     }
     
     /// The width of the mask border
-    public struct Width: Sendable, Equatable {
+    public struct Width: Sendable, Hashable {
         /// The top width value
         public let top: WidthValue
         
@@ -428,7 +428,7 @@ public enum MaskBorder: Property {
         }
         
         /// Width value type
-        public enum WidthValue: Sendable, Equatable, CustomStringConvertible {
+        public enum WidthValue: Sendable, Hashable, CustomStringConvertible {
             /// Auto width
             case auto
             
@@ -485,7 +485,7 @@ public enum MaskBorder: Property {
     }
     
     /// The outset value of the mask border
-    public struct Outset: Sendable, Equatable {
+    public struct Outset: Sendable, Hashable {
         /// The top outset value
         public let top: OutsetValue
         
@@ -523,7 +523,7 @@ public enum MaskBorder: Property {
         }
         
         /// Outset value type
-        public enum OutsetValue: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+        public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
             /// Number multiplier
             case number(Number)
             
@@ -559,7 +559,7 @@ public enum MaskBorder: Property {
     }
     
     /// The repeat behavior of the mask border
-    public struct Repeat: Sendable, Equatable {
+    public struct Repeat: Sendable, Hashable {
         /// The horizontal repeat value
         public let horizontal: RepeatValue
         
@@ -585,7 +585,7 @@ public enum MaskBorder: Property {
         }
         
         /// Repeat value type
-        public enum RepeatValue: Sendable, Equatable {
+        public enum RepeatValue: Sendable, Hashable {
             /// Stretch the image to fill the space
             case stretch
             

@@ -48,8 +48,8 @@ struct ColorInterpolationMethodTests {
         #expect(ColorInterpolationMethod.custom(customProfile).description == "in 'my-custom-profile'")
     }
     
-    @Test("ColorInterpolationMethod conforms to Equatable")
-    func testEquatable() {
+    @Test("ColorInterpolationMethod conforms to Hashable")
+    func testHashable() {
         // Same type and values should be equal
         #expect(ColorInterpolationMethod.rectangular(.srgb) == ColorInterpolationMethod.rectangular(.srgb))
         #expect(ColorInterpolationMethod.polar(.hsl) == ColorInterpolationMethod.polar(.hsl))

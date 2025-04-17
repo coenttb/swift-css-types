@@ -72,7 +72,7 @@ public enum Animation: Property {
 }
 
 /// Properties that can be applied to an animation
-public enum AnimationProperty: Sendable, Equatable {
+public enum AnimationProperty: Sendable, Hashable {
     /// The name of the keyframes rule
     case name(AnimationName)
     
@@ -99,7 +99,7 @@ public enum AnimationProperty: Sendable, Equatable {
 }
 
 /// Collection of animation properties for a single animation
-public struct AnimationProperties: Sendable, Equatable {
+public struct AnimationProperties: Sendable, Hashable {
     /// Optional name of the animation
     public var name: AnimationName?
     

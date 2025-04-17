@@ -60,7 +60,7 @@ public enum WebkitMaskComposite: Property {
     }
     
     /// Composite operation for mask layers
-    public enum CompositeOperation: String, Sendable, Equatable, CaseIterable {
+    public enum CompositeOperation: String, Sendable, Hashable, CaseIterable {
         /// Overlapping pixels in the source mask image and the destination mask image are cleared
         case clear
         

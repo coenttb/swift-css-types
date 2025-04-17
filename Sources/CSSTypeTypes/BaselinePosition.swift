@@ -17,8 +17,8 @@ import Foundation
 ///         for last baseline, the fallback is typically "safe self-end" or "safe end".
 ///
 /// - SeeAlso: [MDN Web Docs on baseline-position values](https://developer.mozilla.org/en-US/docs/Web/CSS/baseline-position)
-public struct BaselinePosition: Sendable, Equatable {
-    public enum FirstLast: String, Sendable, Equatable, CustomStringConvertible {
+public struct BaselinePosition: Sendable, Hashable {
+    public enum FirstLast: String, Sendable, Hashable, CustomStringConvertible {
         /// Aligns to the first baseline (default if just "baseline" is specified)
         ///
         /// Aligns the alignment baseline of the box's first baseline set with the corresponding

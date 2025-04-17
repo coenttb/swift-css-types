@@ -42,7 +42,7 @@ public enum OffsetPath: Property {
     case global(CSSTypeTypes.Global)
     
     /// Specifies the size of a ray
-    public enum RaySize: Sendable, Equatable {
+    public enum RaySize: Sendable, Hashable {
         /// Uses the length from the center to the closest side
         case closestSide
         
@@ -60,7 +60,7 @@ public enum OffsetPath: Property {
     }
     
     /// Specifies the coordinate box to use for the offset path
-    public enum CoordBox: Sendable, Equatable {
+    public enum CoordBox: Sendable, Hashable {
         /// The box is positioned at the border edge of the element
         case borderBox
         

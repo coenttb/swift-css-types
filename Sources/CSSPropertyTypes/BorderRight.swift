@@ -101,7 +101,7 @@ public enum BorderRight: Property {
 
 extension BorderRight {
     /// Properties for the border-right shorthand
-    public struct Properties: Sendable, Equatable, CustomStringConvertible {
+    public struct Properties: Sendable, Hashable, CustomStringConvertible {
         /// The width of the right border
         public let width: BorderWidth?
         

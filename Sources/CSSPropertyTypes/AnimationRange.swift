@@ -44,7 +44,7 @@ public enum AnimationRange: Property, LengthPercentageConvertible {
 }
 
 /// A value for animation-range-start or animation-range-end
-public enum AnimationRangeValue: Sendable, Equatable, LengthPercentageConvertible {
+public enum AnimationRangeValue: Sendable, Hashable, LengthPercentageConvertible {
     /// Represents normal value (start/end of timeline)
     case normal
     

@@ -16,7 +16,7 @@ import Foundation
 ///         Multiple `fr` units create proportional divisions of space.
 ///
 /// - SeeAlso: [MDN Web Docs on flex data type](https://developer.mozilla.org/en-US/docs/Web/CSS/flex_number)
-public struct Flex: Sendable, Equatable {
+public struct Flex: Sendable, Hashable {
     /// The number of fractions of available space to use
     public let number: Number
     

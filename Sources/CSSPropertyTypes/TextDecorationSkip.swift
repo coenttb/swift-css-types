@@ -27,7 +27,7 @@ import CSSTypeTypes
 /// text-decoration-skip: objects spaces;
 /// text-decoration-skip: edges box-decoration;
 /// ```
-public enum TextDecorationSkipValue: Sendable, Equatable, CustomStringConvertible {
+public enum TextDecorationSkipValue: Sendable, Hashable, CustomStringConvertible {
     /// Nothing is skipped. Text decoration is drawn for all text content and across atomic inline-level boxes.
     case none
     

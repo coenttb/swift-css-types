@@ -14,7 +14,7 @@ public enum CounterSet: Property {
     public static let property: String = "counter-set"
     
     /// An individual counter with an optional value
-    public struct Counter: Sendable, Equatable {
+    public struct Counter: Sendable, Hashable {
         /// The name of the counter
         public let name: CustomIdent
         

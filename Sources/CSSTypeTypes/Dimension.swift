@@ -12,7 +12,7 @@ import Foundation
 ///         No whitespace is allowed between the number and unit.
 ///
 /// - SeeAlso: [MDN Web Docs on dimension values](https://developer.mozilla.org/en-US/docs/Web/CSS/dimension)
-public protocol Dimension: Sendable, Equatable, CustomStringConvertible {
+public protocol Dimension: Sendable, Hashable, CustomStringConvertible {
     /// The numeric value of the dimension
     var value: Double { get }
     

@@ -12,7 +12,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on filter-function](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function)
-public enum FilterFunction: Sendable, Equatable {
+public enum FilterFunction: Sendable, Hashable {
     /// Blurs the element
     ///
     /// The blur radius defines how many pixels on the screen blend into each other.

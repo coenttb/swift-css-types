@@ -51,7 +51,7 @@ public enum HangingPunctuation: Property {
 }
 
 /// Represents the possible options for hanging punctuation
-public enum HangingPunctuationOption: String, Sendable, Equatable, Hashable, CaseIterable {
+public enum HangingPunctuationOption: String, Sendable, Hashable, CaseIterable {
     /// Opening punctuation at the start of the first line hangs
     case first
     

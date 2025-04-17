@@ -17,7 +17,7 @@ import Foundation
 /// - Note: CSS anchor positioning is an experimental feature with limited browser support.
 ///
 /// - SeeAlso: [MDN Web Docs on position-area](https://developer.mozilla.org/en-US/docs/Web/CSS/position-area)
-public enum PositionArea: Sendable, Equatable {
+public enum PositionArea: Sendable, Hashable {
     /// A single physical value
     case physical(PhysicalValue)
     
@@ -37,7 +37,7 @@ public enum PositionArea: Sendable, Equatable {
     case coordinatePair(CoordinateValue, CoordinateValue)
     
     /// Physical value keywords
-    public enum PhysicalValue: String, Sendable, Equatable {
+    public enum PhysicalValue: String, Sendable, Hashable {
         // Basic positions
         /// Top edge of the grid
         case top
@@ -72,7 +72,7 @@ public enum PositionArea: Sendable, Equatable {
     }
     
     /// Logical value keywords
-    public enum LogicalValue: String, Sendable, Equatable {
+    public enum LogicalValue: String, Sendable, Hashable {
         // Generic logical positions
         /// Start position based on the containing block's writing mode
         case start
@@ -132,7 +132,7 @@ public enum PositionArea: Sendable, Equatable {
     }
     
     /// Coordinate value keywords
-    public enum CoordinateValue: String, Sendable, Equatable {
+    public enum CoordinateValue: String, Sendable, Hashable {
         // X-axis keywords
         /// Start of the x-axis based on the containing block's writing mode
         case xStart = "x-start"

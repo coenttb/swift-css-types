@@ -43,8 +43,8 @@ struct CustomIdentTests {
         #expect(multiWord.description == "fancy-animation")
     }
     
-    @Test("CustomIdent conforms to Equatable")
-    func testEquatable() {
+    @Test("CustomIdent conforms to Hashable")
+    func testHashable() {
         let ident1a = CustomIdent("test")
         let ident1b = CustomIdent("test")
         let ident2 = CustomIdent("other")

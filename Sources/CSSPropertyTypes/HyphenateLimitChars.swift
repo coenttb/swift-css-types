@@ -69,7 +69,7 @@ public enum HyphenateLimitChars: Property {
 
 /// Represents either an auto value or a specific integer value
 /// for hyphenation limits
-public enum HyphenLimit: Sendable, Equatable, CustomStringConvertible {
+public enum HyphenLimit: Sendable, Hashable, CustomStringConvertible {
     case auto
     case value(Int)
     

@@ -39,7 +39,7 @@ public enum Marker: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a marker value
-    public enum MarkerValue: Sendable, Equatable, CustomStringConvertible {
+    public enum MarkerValue: Sendable, Hashable, CustomStringConvertible {
         /// No marker
         case none
         

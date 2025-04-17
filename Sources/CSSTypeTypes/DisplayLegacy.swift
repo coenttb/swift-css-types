@@ -17,7 +17,7 @@ import Foundation
 ///         `inline flow-root` or `inline flex`.
 ///
 /// - SeeAlso: [MDN Web Docs on display-legacy values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-legacy)
-public enum DisplayLegacy: String, Sendable, Equatable {
+public enum DisplayLegacy: String, Sendable, Hashable {
     /// Inline-level block container
     ///
     /// The element generates a block box that flows with surrounding content as if it were a

@@ -18,7 +18,7 @@ import Foundation
 ///         with absolute lengths.
 ///
 /// - SeeAlso: [MDN Web Docs on calc function](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)
-public struct CalcSum: Sendable, Equatable {
+public struct CalcSum: Sendable, Hashable {
     /// The calculation expression as a string
     private let expression: String
     

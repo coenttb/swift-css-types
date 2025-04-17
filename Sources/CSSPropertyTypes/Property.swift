@@ -12,9 +12,9 @@ import CSSTypeTypes
 ///
 /// This protocol represents a CSS property in the Swift-CSS library.
 /// It provides the core requirements for all CSS properties including
-/// being thread-safe (Sendable), comparable (Equatable), string-convertible
+/// being thread-safe (Sendable), comparable (Hashable), string-convertible
 /// (CustomStringConvertible), and supporting global CSS values (GlobalConvertible).
-public protocol Property: Sendable, Equatable, CustomStringConvertible, GlobalConvertible {
+public protocol Property: Sendable, Hashable, CustomStringConvertible, GlobalConvertible {
 
     static var property: String { get }
 }

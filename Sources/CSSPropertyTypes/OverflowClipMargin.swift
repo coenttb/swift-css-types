@@ -39,7 +39,7 @@ public enum OverflowClipMargin: Property {
     case global(CSSTypeTypes.Global)
     
     /// Visual box reference points
-    public enum VisualBox: String, Sendable, Equatable {
+    public enum VisualBox: String, Sendable, Hashable {
         /// The content box edge
         case contentBox = "content-box"
         

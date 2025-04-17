@@ -106,8 +106,8 @@ struct ColorTests {
         #expect(clampedOpacity.description == "rgba(255, 0, 0, 1)")
     }
     
-    @Test("Color conforms to Equatable")
-    func testEquatable() {
+    @Test("Color conforms to Hashable")
+    func testHashable() {
         #expect(Color.red == Color.named(.red))
         #expect(Color.rgb(255, 0, 0) != Color.rgb(254, 0, 0))
         #expect(Color.rgba(0, 0, 255, 1.0) != Color.rgba(0, 0, 255, 0.9))

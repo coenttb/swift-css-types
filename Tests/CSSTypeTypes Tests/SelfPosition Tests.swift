@@ -48,8 +48,8 @@ struct SelfPositionTests {
         #expect(allPositions.contains(SelfPosition.flexEnd))
     }
     
-    @Test("SelfPosition conforms to Equatable")
-    func testEquatable() {
+    @Test("SelfPosition conforms to Hashable")
+    func testHashable() {
         let center1 = SelfPosition.center
         let center2 = SelfPosition.center
         let flexStart = SelfPosition.flexStart

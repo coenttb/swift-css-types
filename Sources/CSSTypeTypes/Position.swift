@@ -17,7 +17,7 @@ import Foundation
 /// - Note: The final position does not need to be inside the element's box.
 ///
 /// - SeeAlso: [MDN Web Docs on position](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value)
-public enum Position: Sendable, Equatable {
+public enum Position: Sendable, Hashable {
     /// A single keyword (center, top, right, bottom, left)
     case keyword(Keyword)
     
@@ -41,7 +41,7 @@ public enum Position: Sendable, Equatable {
     case offsets(Keyword, LengthPercentage, Keyword, LengthPercentage)
     
     /// Position keywords for horizontal and vertical alignment
-    public enum Keyword: String, Sendable, Equatable {
+    public enum Keyword: String, Sendable, Hashable {
         /// Center alignment
         case center
         

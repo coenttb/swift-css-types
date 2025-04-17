@@ -46,8 +46,8 @@ struct IntegerTests {
         #expect(negativeIntLiteral.description == "-50")
     }
     
-    @Test("Integer conforms to Equatable")
-    func testEquatable() {
+    @Test("Integer conforms to Hashable")
+    func testHashable() {
         // Same values should be equal
         let int1 = Integer(25)
         let int2 = Integer(25)

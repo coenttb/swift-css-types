@@ -16,7 +16,7 @@ import Foundation
 ///         and cannot start with an unescaped hyphen followed by a digit.
 ///
 /// - SeeAlso: [MDN Web Docs on ident](https://developer.mozilla.org/en-US/docs/Web/CSS/ident)
-public struct Ident: Sendable, Equatable {
+public struct Ident: Sendable, Hashable {
     /// The identifier string value
     public let value: String
     

@@ -16,11 +16,11 @@ import Foundation
 ///         This implementation uses double quotes by default.
 ///
 /// - SeeAlso: [MDN Web Docs on string](https://developer.mozilla.org/en-US/docs/Web/CSS/string)
-public struct CSSString: Sendable, Equatable {
+public struct CSSString: Sendable, Hashable {
     /// The raw string value
     public let value: String
     
-    public enum Quotes: Sendable, Equatable {
+    public enum Quotes: Sendable, Hashable {
         case single
         case double
     }

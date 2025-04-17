@@ -17,7 +17,7 @@ import Foundation
 /// - Note: Multiple transform functions can be combined using the `transform` property.
 ///
 /// - SeeAlso: [MDN Web Docs on transform-function](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function)
-public enum TransformFunction: Sendable, Equatable {
+public enum TransformFunction: Sendable, Hashable {
     
     // MARK: - Matrix Transformations
     

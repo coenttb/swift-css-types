@@ -256,8 +256,8 @@ struct GradientTests {
         #expect(hslGradient.description == "radial-gradient(in hsl shorter hue, yellow, green)")
     }
     
-    @Test("Gradient conforms to Equatable")
-    func testEquatable() {
+    @Test("Gradient conforms to Hashable")
+    func testHashable() {
         let gradient1 = Gradient.linearGradient(
             to: .right,
             colors: [.named(.red), .named(.blue)]

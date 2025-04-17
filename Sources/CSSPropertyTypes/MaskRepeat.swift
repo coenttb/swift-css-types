@@ -72,7 +72,7 @@ public enum MaskRepeat: Property {
     case global(CSSTypeTypes.Global)
     
     /// Repetition style values
-    public enum RepeatStyle: String, Sendable, Equatable {
+    public enum RepeatStyle: String, Sendable, Hashable {
         /// Repeat the image in both directions (default)
         case `repeat` = "repeat"
         

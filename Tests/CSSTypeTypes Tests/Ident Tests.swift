@@ -66,8 +66,8 @@ struct IdentTests {
         #expect(escaped.contains("\\"))
     }
     
-    @Test("Ident conforms to Equatable")
-    func testEquatable() {
+    @Test("Ident conforms to Hashable")
+    func testHashable() {
         // Same values should be equal
         let ident1 = Ident("same")
         let ident2 = Ident("same")

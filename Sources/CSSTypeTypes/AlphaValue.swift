@@ -23,7 +23,7 @@ import Foundation
 ///         clamped to lie within the valid range when rendered.
 ///
 /// - SeeAlso: [MDN Web Docs on alpha values](https://developer.mozilla.org/en-US/docs/Web/CSS/alpha-value)
-public enum AlphaValue: Sendable, Equatable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, PercentageConvertible {
+public enum AlphaValue: Sendable, Hashable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, PercentageConvertible {
     /// Specifies alpha as a number between 0.0 (transparent) and 1.0 (opaque)
     /// ```css
     /// opacity: 0.5;

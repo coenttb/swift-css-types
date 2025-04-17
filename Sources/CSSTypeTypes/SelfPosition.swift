@@ -13,7 +13,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on self-position](https://developer.mozilla.org/en-US/docs/Web/CSS/self-position)
-public enum SelfPosition: String, Sendable, Equatable, CaseIterable {
+public enum SelfPosition: String, Sendable, Hashable, CaseIterable {
     /// Centers the alignment subject within its alignment container
     case center
     

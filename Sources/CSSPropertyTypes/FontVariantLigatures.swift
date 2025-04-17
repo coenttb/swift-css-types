@@ -57,7 +57,7 @@ public enum FontVariantLigatures: Property {
 }
 
 /// Represents the possible ligature options
-public enum LigatureOption: String, Sendable, Equatable, Hashable, CaseIterable {
+public enum LigatureOption: String, Sendable, Hashable, CaseIterable {
     // Common ligatures
     /// Activates common ligatures (like 'fi', 'ffi', 'th')
     case commonLigatures = "common-ligatures"

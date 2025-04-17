@@ -26,7 +26,7 @@ public enum AnimationName: Property {
     /// Global value
     case global(CSSTypeTypes.Global)
     
-    public enum KeyFramesName: Sendable, Equatable, CustomStringConvertible {
+    public enum KeyFramesName: Sendable, Hashable, CustomStringConvertible {
         case customIdent(Ident)
         case string(CSSString)
         

@@ -144,8 +144,8 @@ struct TimeTests {
         #expect(floatLiteral.unit == .s)
     }
     
-    @Test("Time.Unit conforms to Equatable")
-    func testUnitEquatable() {
+    @Test("Time.Unit conforms to Hashable")
+    func testUnitHashable() {
         #expect(Time.Unit.s == Time.Unit.s)
         #expect(Time.Unit.ms == Time.Unit.ms)
         #expect(Time.Unit.s != Time.Unit.ms)

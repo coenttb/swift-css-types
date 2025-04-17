@@ -16,7 +16,7 @@ import Foundation
 ///         various visual effects, from simple transparency to complex color transformations.
 ///
 /// - SeeAlso: [MDN Web Docs on blend-mode values](https://developer.mozilla.org/en-US/docs/Web/CSS/blend-mode)
-public enum BlendMode: String, Sendable, Equatable {
+public enum BlendMode: String, Sendable, Hashable {
     /// The final color is the top color, regardless of the bottom color
     /// 
     /// The effect is like two opaque pieces of paper overlapping.

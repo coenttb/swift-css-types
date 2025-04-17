@@ -74,7 +74,7 @@ public enum MaskComposite: Property {
     case global(CSSTypeTypes.Global)
     
     /// Composite operation for mask layers
-    public enum CompositeOperation: String, Sendable, Equatable {
+    public enum CompositeOperation: String, Sendable, Hashable {
         /// Add current mask layer to previous mask layers
         case add
         

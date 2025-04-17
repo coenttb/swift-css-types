@@ -51,7 +51,7 @@ public enum TextAutospace: Property {
 }
 
 /// Individual options for text autospace
-public enum TextAutospaceOption: String, Sendable, Equatable, Hashable, CaseIterable {
+public enum TextAutospaceOption: String, Sendable, Hashable, CaseIterable {
     /// Insert extra spacing between ideographic (CJK) and non-ideographic text
     case ideographAlpha = "ideograph-alpha"
     

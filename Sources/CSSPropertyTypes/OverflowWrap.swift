@@ -26,7 +26,7 @@ import CSSTypeTypes
 ///         to `overflow-wrap`, with `word-wrap` being an alias.
 ///
 /// - SeeAlso: [MDN Web Docs on overflow-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap)
-public enum OverflowWrap: Property, Sendable, Equatable, CustomStringConvertible {
+public enum OverflowWrap: Property, Sendable, Hashable, CustomStringConvertible {
     public static let property: String = "overflow-wrap"
     
     /// Lines may only break at normal word break points (such as a space between two words).

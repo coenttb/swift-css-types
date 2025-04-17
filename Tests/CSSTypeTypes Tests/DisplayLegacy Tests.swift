@@ -27,8 +27,8 @@ struct DisplayLegacyTests {
         #expect(DisplayLegacy.inlineGrid.description == "inline-grid")
     }
     
-    @Test("DisplayLegacy conforms to Equatable")
-    func testEquatable() {
+    @Test("DisplayLegacy conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let display1 = DisplayLegacy.inlineBlock
         let display2 = DisplayLegacy.inlineBlock

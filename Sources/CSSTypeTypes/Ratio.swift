@@ -19,7 +19,7 @@ import Foundation
 /// - 239/100 (2.39): Widescreen, anamorphic movie format
 ///
 /// - SeeAlso: [MDN Web Docs on ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/ratio)
-public struct Ratio: Sendable, Equatable, Comparable {
+public struct Ratio: Sendable, Hashable, Comparable {
     /// The width component of the ratio
     public let width: Double
     

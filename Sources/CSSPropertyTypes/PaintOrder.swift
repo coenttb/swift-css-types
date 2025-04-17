@@ -33,7 +33,7 @@ public enum PaintOrder: Property {
     case global(CSSTypeTypes.Global)
     
     /// Individual paint layers that can be ordered
-    public enum PaintLayer: String, Hashable, Sendable, Equatable, CaseIterable {
+    public enum PaintLayer: String, Sendable, Hashable, CaseIterable {
         /// The fill of the element
         case fill
         

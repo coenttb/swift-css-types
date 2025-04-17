@@ -48,8 +48,8 @@ struct GenericFamilyTests {
         #expect(GenericFamily.math.description == "math")
     }
     
-    @Test("GenericFamily conforms to Equatable")
-    func testEquatable() {
+    @Test("GenericFamily conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let family1 = GenericFamily.sansSerif
         let family2 = GenericFamily.sansSerif

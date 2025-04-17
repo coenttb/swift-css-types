@@ -45,7 +45,7 @@ public enum PositionVisibility: Property {
     case global(CSSTypeTypes.Global)
     
     /// Individual visibility conditions
-    public enum Condition: String, Sendable, Equatable {
+    public enum Condition: String, Sendable, Hashable {
         /// Element is hidden if its anchor is completely hidden
         case anchorsVisible = "anchors-visible"
         

@@ -51,7 +51,7 @@ extension TextDecoration: CustomStringConvertible {
 }
 
 /// Value to represent a text decoration configuration
-public struct TextDecorationValue: Sendable, Equatable, CustomStringConvertible {
+public struct TextDecorationValue: Sendable, Hashable, CustomStringConvertible {
     /// The line type(s) to apply
     public let lines: [TextDecorationLine]
     

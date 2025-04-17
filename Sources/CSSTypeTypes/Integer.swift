@@ -15,7 +15,7 @@ import Foundation
 /// - Note: There is no official range of valid integer values in the CSS specifications.
 ///
 /// - SeeAlso: [MDN Web Docs on integer](https://developer.mozilla.org/en-US/docs/Web/CSS/integer)
-public struct Integer: Sendable, Equatable {
+public struct Integer: Sendable, Hashable {
     /// The integer value
     public let value: Int
     

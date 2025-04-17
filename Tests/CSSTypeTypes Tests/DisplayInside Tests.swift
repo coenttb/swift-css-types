@@ -31,8 +31,8 @@ struct DisplayInsideTests {
         #expect(DisplayInside.ruby.description == "ruby")
     }
     
-    @Test("DisplayInside conforms to Equatable")
-    func testEquatable() {
+    @Test("DisplayInside conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let display1 = DisplayInside.flex
         let display2 = DisplayInside.flex

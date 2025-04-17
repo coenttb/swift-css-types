@@ -46,8 +46,8 @@ struct FrequencyTests {
         #expect(intKhz.description == doubleKhz.description)
     }
     
-    @Test("Frequency conforms to Equatable")
-    func testEquatable() {
+    @Test("Frequency conforms to Hashable")
+    func testHashable() {
         let freq1 = Frequency.hz(440)
         let freq2 = Frequency.hz(440)
         let freq3 = Frequency.hz(880)

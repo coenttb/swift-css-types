@@ -22,9 +22,9 @@ import Foundation
 ///         right and the y-axis running downward.
 ///
 /// - SeeAlso: [MDN Web Docs on basic-shape values](https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape)
-public enum BasicShape: Sendable, Equatable {
+public enum BasicShape: Sendable, Hashable {
     /// Represents a fill rule for the polygon and path shapes
-    public enum FillRule: String, Sendable, Equatable {
+    public enum FillRule: String, Sendable, Hashable {
         /// The default fill rule
         case nonzero = "nonzero"
         
@@ -33,7 +33,7 @@ public enum BasicShape: Sendable, Equatable {
     }
     
     /// Specifies a radius keyword for circle and ellipse shapes
-    public enum ShapeRadius: Sendable, Equatable, LengthPercentageConvertible {
+    public enum ShapeRadius: Sendable, Hashable, LengthPercentageConvertible {
         case lengthPercentage(LengthPercentage)
         
         /// Uses the length from the center to the closest side as radius
@@ -44,7 +44,7 @@ public enum BasicShape: Sendable, Equatable {
     }
     
     /// Represents a point in a polygon shape
-    public struct PolygonPoint: Sendable, Equatable {
+    public struct PolygonPoint: Sendable, Hashable {
         /// The x-coordinate of the point
         public let x: LengthPercentage
         

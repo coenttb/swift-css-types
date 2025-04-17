@@ -109,8 +109,8 @@ struct HexColorTests {
         #expect(HexColor("no-prefix").isValid == false) // No # prefix
     }
     
-    @Test("HexColor conforms to Equatable")
-    func testEquatable() {
+    @Test("HexColor conforms to Hashable")
+    func testHashable() {
         let red1 = HexColor("#ff0000")
         let red2 = HexColor("#ff0000")
         let blue = HexColor("#0000ff")

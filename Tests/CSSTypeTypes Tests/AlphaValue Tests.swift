@@ -83,8 +83,8 @@ struct AlphaValueTests {
         }
     }
     
-    @Test("AlphaValue conforms to Equatable")
-    func testEquatable() {
+    @Test("AlphaValue conforms to Hashable")
+    func testHashable() {
         let number1 = AlphaValue.number(0.5)
         let number2 = AlphaValue.number(0.5)
         let number3 = AlphaValue.number(0.7)

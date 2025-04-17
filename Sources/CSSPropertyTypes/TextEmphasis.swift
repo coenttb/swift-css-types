@@ -62,7 +62,7 @@ public enum TextEmphasis: Property {
     }
     
     /// Configuration for a text emphasis
-    public struct Configuration: Sendable, Equatable, CustomStringConvertible {
+    public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The style of the emphasis marks
         public let style: TextEmphasisStyle
         

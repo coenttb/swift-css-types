@@ -20,8 +20,8 @@ struct CalcKeywordTests {
         #expect(CalcKeyword.NaN.description == "NaN")
     }
     
-    @Test("CalcKeyword enum conforms to Equatable")
-    func testEquatable() {
+    @Test("CalcKeyword enum conforms to Hashable")
+    func testHashable() {
         let e1 = CalcKeyword.e
         let e2 = CalcKeyword.e
         let pi = CalcKeyword.pi

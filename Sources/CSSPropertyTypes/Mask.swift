@@ -58,7 +58,7 @@ public enum Mask: Property {
     case global(CSSTypeTypes.Global)
     
     /// Configuration for a mask layer
-    public struct Configuration: Sendable, Equatable, CustomStringConvertible {
+    public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The mask reference (image or source)
         public let reference: MaskReference
         
@@ -276,7 +276,7 @@ public enum Mask: Property {
     }
     
     /// Represents a mask reference
-    public enum MaskReference: Sendable, Equatable, CustomStringConvertible {
+    public enum MaskReference: Sendable, Hashable, CustomStringConvertible {
         /// No mask
         case none
         
@@ -334,7 +334,7 @@ public enum Mask: Property {
     }
     
     /// Position of a mask
-    public enum Position: Sendable, Equatable {
+    public enum Position: Sendable, Hashable {
         /// Keywords for horizontal and vertical position
         case keywords(Horizontal, Vertical)
         
@@ -372,7 +372,7 @@ public enum Mask: Property {
     }
     
     /// Size of a mask
-    public enum Size: Sendable, Equatable {
+    public enum Size: Sendable, Hashable {
         /// Explicit width and height dimensions
         case dimensions(LengthPercentage, LengthPercentage)
         
@@ -387,7 +387,7 @@ public enum Mask: Property {
     }
     
     /// Repeat style for a mask
-    public enum RepeatStyle: Sendable, Equatable {
+    public enum RepeatStyle: Sendable, Hashable {
         /// Repeat horizontally only (shorthand for repeat no-repeat)
         case repeatX
         
@@ -419,7 +419,7 @@ public enum Mask: Property {
     }
     
     /// Geometry box for mask origin and clip
-    public enum GeometryBox: Sendable, Equatable {
+    public enum GeometryBox: Sendable, Hashable {
         /// The content box
         case contentBox
         
@@ -446,7 +446,7 @@ public enum Mask: Property {
     }
     
     /// Compositing operation for mask layers
-    public enum Composite: String, Sendable, Equatable {
+    public enum Composite: String, Sendable, Hashable {
         /// Add the current mask layer to the previous layers
         case add
         
@@ -461,7 +461,7 @@ public enum Mask: Property {
     }
     
     /// Masking mode
-    public enum MaskingMode: Sendable, Equatable {
+    public enum MaskingMode: Sendable, Hashable {
         /// Use alpha channel for masking
         case alpha
         

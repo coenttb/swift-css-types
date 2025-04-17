@@ -17,7 +17,7 @@ import CSSTypeTypes
 public enum CounterIncrement: Property {
     public static let property: String = "counter-increment"
     /// An individual counter with an optional increment value
-    public struct Counter: Sendable, Equatable {
+    public struct Counter: Sendable, Hashable {
         /// The name of the counter
         public let name: CustomIdent
         

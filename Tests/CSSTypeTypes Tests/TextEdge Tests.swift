@@ -63,8 +63,8 @@ struct TextEdgeTests {
         #expect(allCases.contains(.alphabetic))
     }
     
-    @Test("TextEdge conforms to Equatable")
-    func testEquatable() {
+    @Test("TextEdge conforms to Hashable")
+    func testHashable() {
         let text1 = TextEdge.text
         let text2 = TextEdge.single(.text)
         let ideographic = TextEdge.ideographic

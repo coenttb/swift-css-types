@@ -58,7 +58,7 @@ public enum FontVariantEastAsian: Property {
 }
 
 /// Represents the possible values for font-variant-east-asian
-public enum EastAsianVariantValue: String, Sendable, Equatable, Hashable, CaseIterable {
+public enum EastAsianVariantValue: String, Sendable, Hashable, CaseIterable {
     // Ruby
     /// Forces the use of special glyphs for ruby characters, which are usually 
     /// slightly bolder to improve contrast

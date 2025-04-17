@@ -18,7 +18,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on image](https://developer.mozilla.org/en-US/docs/Web/CSS/image)
-public indirect enum Image: Sendable, Equatable {
+public indirect enum Image: Sendable, Hashable {
     
     
     /// Represents an image from a URL
@@ -127,7 +127,7 @@ extension Image {
 
 
 /// A tuple representing an image source with its resolution
-public struct ImageSetItem: Sendable, Equatable {
+public struct ImageSetItem: Sendable, Hashable {
     public let url: String
     public let resolution: String
     

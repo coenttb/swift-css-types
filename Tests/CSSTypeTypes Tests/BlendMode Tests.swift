@@ -59,8 +59,8 @@ struct BlendModeTests {
         #expect(invalid == nil)
     }
     
-    @Test("BlendMode conforms to Equatable")
-    func testEquatable() {
+    @Test("BlendMode conforms to Hashable")
+    func testHashable() {
         let normal1 = BlendMode.normal
         let normal2 = BlendMode.normal
         let multiply = BlendMode.multiply

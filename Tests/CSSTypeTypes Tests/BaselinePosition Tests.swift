@@ -30,8 +30,8 @@ struct BaselinePositionTests {
         #expect(BaselinePosition.lastBaseline.description == "last baseline")
     }
     
-    @Test("BaselinePosition conforms to Equatable")
-    func testEquatable() {
+    @Test("BaselinePosition conforms to Hashable")
+    func testHashable() {
         let baseline1 = BaselinePosition.baseline
         let baseline2 = BaselinePosition.baseline
         let firstBaseline = BaselinePosition.firstBaseline

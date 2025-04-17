@@ -25,7 +25,7 @@ public enum ScrollTimeline: Property {
     public static let property: String = "scroll-timeline"
     
     /// Custom identifier for a timeline name (must start with --)
-    public struct CustomIdent: RawRepresentable, Sendable, Equatable, CustomStringConvertible {
+    public struct CustomIdent: RawRepresentable, Sendable, Hashable, CustomStringConvertible {
         public var rawValue: String
         
         public init(rawValue: String) {

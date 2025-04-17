@@ -19,9 +19,9 @@ import Foundation
 ///         which provides perceptually uniform color transitions.
 ///
 /// - SeeAlso: [MDN Web Docs on color interpolation methods](https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-method)
-public enum ColorInterpolationMethod: Sendable, Equatable {
+public enum ColorInterpolationMethod: Sendable, Hashable {
     /// Rectangular color spaces for color interpolation
-    public enum RectangularColorSpace: String, Sendable, Equatable, CustomStringConvertible {
+    public enum RectangularColorSpace: String, Sendable, Hashable, CustomStringConvertible {
         /// The standard sRGB color space
         case srgb = "srgb"
         
@@ -59,7 +59,7 @@ public enum ColorInterpolationMethod: Sendable, Equatable {
     }
     
     /// Polar color spaces for color interpolation
-    public enum PolarColorSpace: String, Sendable, Equatable, CustomStringConvertible {
+    public enum PolarColorSpace: String, Sendable, Hashable, CustomStringConvertible {
         /// The HSL (Hue, Saturation, Lightness) color space
         case hsl = "hsl"
         
@@ -76,7 +76,7 @@ public enum ColorInterpolationMethod: Sendable, Equatable {
     }
     
     /// Hue interpolation methods for polar color spaces
-    public enum HueInterpolationMethod: String, Sendable, Equatable, CustomStringConvertible {
+    public enum HueInterpolationMethod: String, Sendable, Hashable, CustomStringConvertible {
         /// Follows the shorter arc around the color wheel (default)
         case shorter = "shorter hue"
         

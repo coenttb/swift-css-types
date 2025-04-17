@@ -70,8 +70,8 @@ struct TimePercentageTests {
         #expect(floatLiteral.description == "1.5s")
     }
     
-    @Test("TimePercentage conforms to Equatable")
-    func testEquatable() {
+    @Test("TimePercentage conforms to Hashable")
+    func testHashable() {
         let seconds1 = TimePercentage.s(1)
         let seconds2 = TimePercentage.s(1)
         let seconds3 = TimePercentage.s(2)

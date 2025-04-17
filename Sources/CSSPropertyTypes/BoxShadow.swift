@@ -34,7 +34,7 @@ public enum BoxShadow: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a single box shadow
-    public struct Shadow: Sendable, Equatable, CustomStringConvertible {
+    public struct Shadow: Sendable, Hashable, CustomStringConvertible {
         /// The X offset of the shadow (horizontal distance)
         public let offsetX: Length
         

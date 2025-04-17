@@ -80,8 +80,8 @@ struct PositionTests {
         #expect(pixelPos.description == "10px 20px")
     }
     
-    @Test("Position conforms to Equatable")
-    func testEquatable() {
+    @Test("Position conforms to Hashable")
+    func testHashable() {
         #expect(Position.center == Position.keyword(.center))
         #expect(Position.topLeft == Position.keywords(.top, .left))
         #expect(Position.value(.px(50)) == Position.value(.px(50)))

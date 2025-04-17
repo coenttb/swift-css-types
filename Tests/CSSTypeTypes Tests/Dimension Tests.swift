@@ -66,8 +66,8 @@ struct DimensionTests {
         #expect(smallDecimal.description == "0.25em")
     }
     
-    @Test("GenericDimension conforms to Equatable")
-    func testEquatable() {
+    @Test("GenericDimension conforms to Hashable")
+    func testHashable() {
         // Same values and units should be equal
         let dim1 = GenericDimension(10, unit: "px")
         let dim2 = GenericDimension(10, unit: "px")

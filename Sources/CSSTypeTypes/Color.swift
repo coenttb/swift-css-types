@@ -15,7 +15,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
-public indirect enum Color: Sendable, Equatable {
+public indirect enum Color: Sendable, Hashable {
     /// A named color keyword
     case named(NamedColor)
     

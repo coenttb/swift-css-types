@@ -58,8 +58,8 @@ struct HueTests {
         #expect(Hue.angle(.grad(400)).normalizedDegrees() == 0) // 400grad = 360deg, which normalizes to 0
     }
     
-    @Test("Hue conforms to Equatable")
-    func testEquatable() {
+    @Test("Hue conforms to Hashable")
+    func testHashable() {
         // Same type and values should be equal
         #expect(Hue.number(Number(120)) == Hue.number(Number(120)))
         #expect(Hue.angle(.deg(240)) == Hue.angle(.deg(240)))

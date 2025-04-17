@@ -43,7 +43,7 @@ public enum Rotate: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a rotation axis
-    public enum Axis: String, Sendable, Equatable {
+    public enum Axis: String, Sendable, Hashable {
         /// X-axis (horizontal)
         case x
         

@@ -57,7 +57,7 @@ public enum GridTemplate: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a single row in a grid template area definition
-    public struct AreaRow: Sendable, Equatable {
+    public struct AreaRow: Sendable, Hashable {
         /// The string representation of the grid area for this row
         public let area: String
         

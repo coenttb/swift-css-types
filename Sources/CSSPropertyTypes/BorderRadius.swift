@@ -73,7 +73,7 @@ public enum BorderRadius: Property {
 
 extension BorderRadius {
     /// Represents the corner radii values for a border-radius
-    public struct Values: Sendable, Equatable, CustomStringConvertible {
+    public struct Values: Sendable, Hashable, CustomStringConvertible {
         /// Horizontal radii for the four corners (top-left, top-right, bottom-right, bottom-left)
         public let horizontal: [LengthPercentage]
         

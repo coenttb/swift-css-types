@@ -31,8 +31,8 @@ struct OverflowTests {
         #expect(Overflow.overlay.description == "overlay")
     }
     
-    @Test("Overflow conforms to Equatable")
-    func testEquatable() {
+    @Test("Overflow conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let overflow1 = Overflow.visible
         let overflow2 = Overflow.visible

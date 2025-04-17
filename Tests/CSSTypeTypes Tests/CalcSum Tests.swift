@@ -79,8 +79,8 @@ struct CalcSumTests {
         #expect(nestedMin.description == "calc(min(10%, 20px) + 1rem)")
     }
     
-    @Test("CalcSum conforms to Equatable")
-    func testEquatable() {
+    @Test("CalcSum conforms to Hashable")
+    func testHashable() {
         // Same expressions should be equal
         let calc1 = CalcSum("100% - 20px")
         let calc2 = CalcSum("100% - 20px")

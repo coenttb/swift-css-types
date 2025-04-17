@@ -18,7 +18,7 @@ import Foundation
 ///         `initial`, `inherit`, and `unset`, as well as `none`.
 ///
 /// - SeeAlso: [MDN Web Docs on custom-ident values](https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident)
-public struct CustomIdent: Sendable, Equatable {
+public struct CustomIdent: Sendable, Hashable {
     /// The string value of the custom identifier
     private let value: String
     

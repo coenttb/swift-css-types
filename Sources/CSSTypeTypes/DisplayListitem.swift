@@ -16,7 +16,7 @@ import Foundation
 ///         can be used with `list-style-type` and `list-style-position` to customize the list appearance.
 ///
 /// - SeeAlso: [MDN Web Docs on display-listitem values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-listitem)
-public enum DisplayListitem: String, Sendable, Equatable {
+public enum DisplayListitem: String, Sendable, Hashable {
     /// Basic list item
     ///
     /// Makes the element behave like a list item with a marker.

@@ -67,7 +67,7 @@ public enum GridColumn: Property {
 }
 
 /// Represents a value that can be used for grid column placement
-public enum GridColumnValue: Sendable, Equatable, CustomStringConvertible {
+public enum GridColumnValue: Sendable, Hashable, CustomStringConvertible {
     /// Auto placement
     case auto
     

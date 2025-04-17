@@ -91,7 +91,7 @@ public enum FontVariantAlternates: Property {
 }
 
 /// Options for the font-variant-alternates property when using the combination case
-public enum AlternateOption: Sendable, Equatable, CustomStringConvertible {
+public enum AlternateOption: Sendable, Hashable, CustomStringConvertible {
     /// Historical forms - glyphs that were common in the past but not today
     case historicalForms
     

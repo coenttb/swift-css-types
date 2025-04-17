@@ -23,7 +23,7 @@ public enum ObjectFit: Property {
     public static let property: String = "object-fit"
     
     /// The available keyword values for the `object-fit` property
-    public enum Keyword: Sendable, Equatable, CustomStringConvertible {
+    public enum Keyword: Sendable, Hashable, CustomStringConvertible {
         /// The replaced content is scaled to maintain its aspect ratio while fitting within 
         /// the element's content box. The entire object is made to fill the box, while 
         /// preserving its aspect ratio, resulting in "letterboxing" or "pillarboxing" if 

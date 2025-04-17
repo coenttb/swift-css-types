@@ -71,7 +71,7 @@ public enum Background: Property, ColorConvertible {
 
 extension Background {
     /// A single background layer configuration
-    public struct Layer: Sendable, Equatable {
+    public struct Layer: Sendable, Hashable {
         /// The background image to display
         public var image: Image?
         

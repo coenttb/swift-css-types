@@ -64,7 +64,7 @@ public enum FontFeatureSettings: Property {
 }
 
 /// Represents the possible values for OpenType feature settings
-public enum FeatureValue: Sendable, Equatable, CustomStringConvertible {
+public enum FeatureValue: Sendable, Hashable, CustomStringConvertible {
     /// Positive integer value
     case integer(Int)
     

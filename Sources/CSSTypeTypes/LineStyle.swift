@@ -17,7 +17,7 @@ import Foundation
 ///         won't be displayed.
 ///
 /// - SeeAlso: [MDN Web Docs on line-style](https://developer.mozilla.org/en-US/docs/Web/CSS/line-style)
-public enum LineStyle: String, Sendable, Equatable, CaseIterable {
+public enum LineStyle: String, Sendable, Hashable, CaseIterable {
     /// Displays no line. In border collapsing, has the lowest priority.
     case none
     

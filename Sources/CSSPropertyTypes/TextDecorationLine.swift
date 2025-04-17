@@ -38,7 +38,7 @@ public enum TextDecorationLine: Property {
 /// text-decoration-line: line-through;
 /// text-decoration-line: underline overline;
 /// ```
-public enum TextDecorationLineValue: Sendable, Equatable, CustomStringConvertible {
+public enum TextDecorationLineValue: Sendable, Hashable, CustomStringConvertible {
     /// Produces no text decoration.
     case none
     

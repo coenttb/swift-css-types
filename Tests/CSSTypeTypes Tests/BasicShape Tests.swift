@@ -145,8 +145,8 @@ struct BasicShapeTests {
         #expect(farthestSide.description == "farthest-side")
     }
     
-    @Test("FillRule conforms to Equatable")
-    func testFillRuleEquatable() {
+    @Test("FillRule conforms to Hashable")
+    func testFillRuleHashable() {
         let nonzero1 = BasicShape.FillRule.nonzero
         let nonzero2 = BasicShape.FillRule.nonzero
         let evenodd = BasicShape.FillRule.evenodd
@@ -155,8 +155,8 @@ struct BasicShapeTests {
         #expect(nonzero1 != evenodd)
     }
     
-    @Test("PolygonPoint conforms to Equatable")
-    func testPolygonPointEquatable() {
+    @Test("PolygonPoint conforms to Hashable")
+    func testPolygonPointHashable() {
         let point1 = BasicShape.PolygonPoint(.percentage(50), .percentage(50))
         let point2 = BasicShape.PolygonPoint(.percentage(50), .percentage(50))
         let point3 = BasicShape.PolygonPoint(.percentage(25), .percentage(75))

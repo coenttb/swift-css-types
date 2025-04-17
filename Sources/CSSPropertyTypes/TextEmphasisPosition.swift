@@ -51,7 +51,7 @@ public enum TextEmphasisPosition: Property {
 }
 
 /// Horizontal position for emphasis marks
-public enum HorizontalEmphasisPosition: String, Sendable, Equatable {
+public enum HorizontalEmphasisPosition: String, Sendable, Hashable {
     /// Draws marks over the text in horizontal writing mode
     case over
     
@@ -60,7 +60,7 @@ public enum HorizontalEmphasisPosition: String, Sendable, Equatable {
 }
 
 /// Vertical position for emphasis marks
-public enum VerticalEmphasisPosition: String, Sendable, Equatable {
+public enum VerticalEmphasisPosition: String, Sendable, Hashable {
     /// Draws marks to the right of the text in vertical writing mode
     case right
     

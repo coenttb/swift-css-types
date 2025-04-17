@@ -13,7 +13,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on generic-family](https://developer.mozilla.org/en-US/docs/Web/CSS/generic-family)
-public enum GenericFamily: String, Sendable, Equatable {
+public enum GenericFamily: String, Sendable, Hashable {
     /// Fonts with serifs (small strokes at the edges of letters)
     ///
     /// Serif fonts generally have finishing strokes, flared or tapering ends.

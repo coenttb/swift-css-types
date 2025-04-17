@@ -53,7 +53,7 @@ public enum PositionTryFallbacks: Property {
     case global(CSSTypeTypes.Global)
     
     /// Predefined position fallback tactics
-    public enum TryTactic: String, Sendable, Equatable {
+    public enum TryTactic: String, Sendable, Hashable {
         /// Flips the element's position along the block axis
         case flipBlock = "flip-block"
         
@@ -65,7 +65,7 @@ public enum PositionTryFallbacks: Property {
     }
     
     /// A single fallback option (can be a tactic, position area, or custom option)
-    public enum FallbackOption: Sendable, Equatable {
+    public enum FallbackOption: Sendable, Hashable {
         /// A predefined tactic
         case tactic(TryTactic)
         

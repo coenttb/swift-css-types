@@ -28,7 +28,7 @@ public enum FontFamily: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a font family either specific or generic
-    public enum Family: Sendable, Equatable, CustomStringConvertible {
+    public enum Family: Sendable, Hashable, CustomStringConvertible {
         /// A specifically named font family
         case specific(String)
         

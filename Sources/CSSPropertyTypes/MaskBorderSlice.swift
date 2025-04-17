@@ -69,7 +69,7 @@ public enum MaskBorderSlice: Property {
     case global(CSSTypeTypes.Global)
     
     /// Slice value type
-    public enum SliceValue: Sendable, Equatable, CustomStringConvertible {
+    public enum SliceValue: Sendable, Hashable, CustomStringConvertible {
         /// Number value (in pixels for raster images, coordinates for vector images)
         case number(Number)
         

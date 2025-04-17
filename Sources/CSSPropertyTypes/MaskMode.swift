@@ -57,7 +57,7 @@ public enum MaskMode: Property {
     case global(CSSTypeTypes.Global)
     
     /// Masking mode value
-    public enum MaskingMode: String, Sendable, Equatable {
+    public enum MaskingMode: String, Sendable, Hashable {
         /// Use the alpha channel of the mask image
         case alpha
         

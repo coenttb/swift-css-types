@@ -18,7 +18,7 @@ import Foundation
 ///         `flex` and `grid`.
 ///
 /// - SeeAlso: [MDN Web Docs on display-inside values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
-public enum DisplayInside: String, Sendable, Equatable {
+public enum DisplayInside: String, Sendable, Hashable {
     /// Standard block and inline layout
     ///
     /// The element uses flow layout, also known as block-and-inline layout.

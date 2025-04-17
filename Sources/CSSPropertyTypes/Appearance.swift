@@ -41,7 +41,7 @@ public enum Appearance: Property {
 }
 
 /// Compatibility auto values for the appearance property
-public enum CompatAuto: String, Sendable, Equatable, CaseIterable {
+public enum CompatAuto: String, Sendable, Hashable, CaseIterable {
     /// Button appearance
     case button
     

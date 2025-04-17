@@ -14,7 +14,7 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on shape](https://developer.mozilla.org/en-US/docs/Web/CSS/shape)
 @available(*, deprecated, message: "The clip property is deprecated. Use clip-path with BasicShape instead.")
-public enum Shape: Sendable, Equatable {
+public enum Shape: Sendable, Hashable {
     /// Represents a rectangle clip region
     ///
     /// - Parameters:

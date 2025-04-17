@@ -17,7 +17,7 @@ import Foundation
 ///         elements without using those actual HTML elements.
 ///
 /// - SeeAlso: [MDN Web Docs on display-internal values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-internal)
-public enum DisplayInternal: String, Sendable, Equatable {
+public enum DisplayInternal: String, Sendable, Hashable {
     // Table-related values
     
     /// Table row group (like `<tbody>`)

@@ -113,7 +113,7 @@ public enum Font: Property {
     // MARK: - Font Variant
     
     /// Represents the font-variant CSS property
-    public enum Variant: String, Sendable, Equatable {
+    public enum Variant: String, Sendable, Hashable {
         /// Renders text normally
         case normal
         

@@ -91,8 +91,8 @@ struct CSSStringTests {
         #expect(complexStringSingleQuotes.description == "'This is a \"quoted\" string with \\'apostrophes\\', a \\\\backslash\\\\ and\\A a newline'")
     }
     
-    @Test("CSSString conforms to Equatable")
-    func testEquatable() {
+    @Test("CSSString conforms to Hashable")
+    func testHashable() {
         // Same values and quotes should be equal
         let string1 = CSSString("Equal", quotes: .single)
         let string2 = CSSString("Equal", quotes: .single)

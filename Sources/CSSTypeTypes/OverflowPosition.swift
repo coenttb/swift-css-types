@@ -15,7 +15,7 @@ import Foundation
 /// - Note: If omitted in CSS, the default overflow alignment is a blend of safe and unsafe.
 ///
 /// - SeeAlso: [MDN Web Docs on overflow-position](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-position)
-public enum OverflowPosition: String, Sendable, Equatable, CaseIterable {
+public enum OverflowPosition: String, Sendable, Hashable, CaseIterable {
     /// If the alignment subject overflows the container, it's aligned as if the mode were start.
     ///
     /// This ensures the content is visible by potentially overriding the specified alignment

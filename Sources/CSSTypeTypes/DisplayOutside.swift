@@ -18,7 +18,7 @@ import Foundation
 ///         `display: block flow`).
 ///
 /// - SeeAlso: [MDN Web Docs on display-outside values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-outside)
-public enum DisplayOutside: String, Sendable, Equatable {
+public enum DisplayOutside: String, Sendable, Hashable {
     /// Block-level element
     ///
     /// The element generates a block element box, generating line breaks both before

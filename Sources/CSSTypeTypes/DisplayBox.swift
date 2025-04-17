@@ -17,7 +17,7 @@ import Foundation
 ///         `contents` makes the element itself invisible but keeps its children.
 ///
 /// - SeeAlso: [MDN Web Docs on display-box values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-box)
-public enum DisplayBox: String, Sendable, Equatable {
+public enum DisplayBox: String, Sendable, Hashable {
     /// Hides the element as if it doesn't exist in the document
     ///
     /// The element and all its descendants are removed from the rendering and layout.

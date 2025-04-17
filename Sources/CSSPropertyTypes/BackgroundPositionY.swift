@@ -71,7 +71,7 @@ public enum BackgroundPositionY: Property {
     case global(CSSTypeTypes.Global)
     
     /// Position keywords for vertical alignment
-    public enum Keyword: String, Sendable, Equatable {
+    public enum Keyword: String, Sendable, Hashable {
         /// Top edge
         case top
         

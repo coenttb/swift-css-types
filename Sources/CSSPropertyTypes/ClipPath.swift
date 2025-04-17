@@ -54,7 +54,7 @@ public enum ClipPath: Property {
 }
 
 /// Represents a circle clipping shape
-public struct CircleShape: Sendable, Equatable {
+public struct CircleShape: Sendable, Hashable {
     /// The radius of the circle
     public var radius: LengthPercentage
     
@@ -69,7 +69,7 @@ public struct CircleShape: Sendable, Equatable {
 }
 
 /// Represents an ellipse clipping shape
-public struct EllipseShape: Sendable, Equatable {
+public struct EllipseShape: Sendable, Hashable {
     /// The horizontal radius of the ellipse
     public var radiusX: LengthPercentage
     
@@ -92,7 +92,7 @@ public struct EllipseShape: Sendable, Equatable {
 }
 
 /// Represents an inset rectangle shape
-public struct InsetShape: Sendable, Equatable {
+public struct InsetShape: Sendable, Hashable {
     /// The top inset distance
     public var top: LengthPercentage
     
@@ -133,13 +133,13 @@ public struct InsetShape: Sendable, Equatable {
     }
 }
 
-public struct Point: Sendable, Equatable {
+public struct Point: Sendable, Hashable {
     public let x: LengthPercentage
     public let y: LengthPercentage
 }
 
 /// Represents a polygon clipping shape
-public struct PolygonShape: Sendable, Equatable {
+public struct PolygonShape: Sendable, Hashable {
     /// The points defining the polygon
     public var points: [Point]
     

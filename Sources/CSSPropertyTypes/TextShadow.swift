@@ -92,7 +92,7 @@ public enum TextShadow: Property {
 }
 
 /// Represents a single text shadow value
-public struct TextShadowValue: Sendable, Equatable {
+public struct TextShadowValue: Sendable, Hashable {
     /// The horizontal offset of the shadow
     public var offsetX: Length
     

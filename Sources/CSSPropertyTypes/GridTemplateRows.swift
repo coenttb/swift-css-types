@@ -51,7 +51,7 @@ public enum GridTemplateRows: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a grid track with optional line names before and after
-    public struct NamedTrack: Sendable, Equatable {
+    public struct NamedTrack: Sendable, Hashable {
         /// Line name before the track (optional)
         public let before: String?
         

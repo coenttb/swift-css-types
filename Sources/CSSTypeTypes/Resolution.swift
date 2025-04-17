@@ -16,9 +16,9 @@ import Foundation
 /// - Note: On screens, the units are related to CSS inches, centimeters, or pixels, not physical values.
 ///
 /// - SeeAlso: [MDN Web Docs on resolution](https://developer.mozilla.org/en-US/docs/Web/CSS/resolution)
-public struct Resolution: Sendable, Equatable {
+public struct Resolution: Sendable, Hashable {
     /// Represents the resolution unit (dpi, dpcm, dppx, x)
-    public enum Unit: String, Sendable, Equatable {
+    public enum Unit: String, Sendable, Hashable {
         /// Dots per inch (1dpi ≈ 0.39dpcm)
         case dpi
         

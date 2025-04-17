@@ -90,8 +90,8 @@ struct LengthPercentageTests {
         #expect(lengthPercentage.description == "10.5px")
     }
     
-    @Test("LengthPercentage conforms to Equatable")
-    func testEquatable() {
+    @Test("LengthPercentage conforms to Hashable")
+    func testHashable() {
         // Same type and values should be equal
         #expect(LengthPercentage.px(10) == LengthPercentage.px(10))
         #expect(LengthPercentage.percentage(50) == LengthPercentage.percentage(50))

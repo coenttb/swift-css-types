@@ -62,7 +62,7 @@ public enum BorderImageOutset: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a value for border-image-outset
-    public enum OutsetValue: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+    public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
         

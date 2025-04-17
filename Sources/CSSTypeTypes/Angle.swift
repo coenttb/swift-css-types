@@ -32,7 +32,7 @@ import Foundation
 ///         `.transform(.rotate(0.5))` means 0.5 degrees (not 0.5 turns!).
 ///
 /// - SeeAlso: [MDN Web Docs on CSS angle values](https://developer.mozilla.org/en-US/docs/Web/CSS/angle)
-public enum Angle: Sendable, Equatable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
+public enum Angle: Sendable, Hashable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     /// Specifies an angle in degrees (0-360)
     /// 
     /// A full circle is 360 degrees. This is the most common angle unit in CSS.

@@ -43,7 +43,7 @@ public enum WebkitTextStroke: Property {
     case global(CSSTypeTypes.Global)
     
     /// Width value for the text stroke
-    public enum StrokeWidth: Sendable, Equatable, CustomStringConvertible {
+    public enum StrokeWidth: Sendable, Hashable, CustomStringConvertible {
         /// Thin stroke width
         case thin
         
@@ -71,7 +71,7 @@ public enum WebkitTextStroke: Property {
     }
     
     /// Color value for the text stroke
-    public enum StrokeColor: Sendable, Equatable, CustomStringConvertible, ColorConvertible {
+    public enum StrokeColor: Sendable, Hashable, CustomStringConvertible, ColorConvertible {
         /// Specific color value
         case color(CSSTypeTypes.Color)
         

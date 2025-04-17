@@ -53,8 +53,8 @@ struct NumberPercentageTests {
         #expect(floatLiteral.description == "3.14")
     }
     
-    @Test("NumberPercentage conforms to Equatable")
-    func testEquatable() {
+    @Test("NumberPercentage conforms to Hashable")
+    func testHashable() {
         // Same number values should be equal
         let num1 = NumberPercentage.number(Number(10))
         let num2 = NumberPercentage.number(Number(10))

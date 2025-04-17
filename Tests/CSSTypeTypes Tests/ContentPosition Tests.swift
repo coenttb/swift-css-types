@@ -22,8 +22,8 @@ struct ContentPositionTests {
         #expect(ContentPosition.right.description == "right")
     }
     
-    @Test("ContentPosition enum conforms to Equatable")
-    func testEquatable() {
+    @Test("ContentPosition enum conforms to Hashable")
+    func testHashable() {
         let center1 = ContentPosition.center
         let center2 = ContentPosition.center
         let start = ContentPosition.start

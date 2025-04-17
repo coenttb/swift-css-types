@@ -89,8 +89,8 @@ struct AngleTests {
         }
     }
     
-    @Test("Angle conforms to Equatable")
-    func testEquatable() {
+    @Test("Angle conforms to Hashable")
+    func testHashable() {
         let deg1 = Angle.deg(45)
         let deg2 = Angle.deg(45)
         let deg3 = Angle.deg(90)

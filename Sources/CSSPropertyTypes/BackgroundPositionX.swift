@@ -75,7 +75,7 @@ public enum BackgroundPositionX: Property, LengthPercentageConvertible {
 
 extension BackgroundPositionX {
     /// Position keywords for horizontal alignment
-    public enum Keyword: String, Sendable, Equatable {
+    public enum Keyword: String, Sendable, Hashable {
         /// Left edge
         case left
         

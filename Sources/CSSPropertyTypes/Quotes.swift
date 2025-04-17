@@ -35,7 +35,7 @@ public enum Quotes: Property {
     /// Each pair represents a level of nesting, with the first pair for the outermost quotes
     case strings([Pair])
     
-    public struct Pair: Sendable, Equatable {
+    public struct Pair: Sendable, Hashable {
         let first: String
         let second: String
         

@@ -15,7 +15,7 @@ import Foundation
 /// - Note: When a percentage is used, it typically resolves to a time value based on context.
 ///
 /// - SeeAlso: [MDN Web Docs on time-percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/time-percentage)
-public enum TimePercentage: Sendable, Equatable, PercentageConvertible {
+public enum TimePercentage: Sendable, Hashable, PercentageConvertible {
     /// A time value in seconds or milliseconds
     case time(Time)
     

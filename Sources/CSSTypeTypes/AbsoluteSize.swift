@@ -28,7 +28,7 @@ import Foundation
 ///         corresponds to the user's preferred font size in the browser.
 ///
 /// - SeeAlso: [MDN Web Docs on absolute size values](https://developer.mozilla.org/en-US/docs/Web/CSS/absolute-size)
-public enum AbsoluteSize: String, Sendable, Equatable {
+public enum AbsoluteSize: String, Sendable, Hashable {
     /// An absolute size 60% the size of medium
     /// 
     /// Corresponds to the deprecated HTML `size="1"` attribute.

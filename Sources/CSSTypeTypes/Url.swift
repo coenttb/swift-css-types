@@ -15,7 +15,7 @@ import Foundation
 ///         This implementation uses quotes by default.
 ///
 /// - SeeAlso: [MDN Web Docs on url](https://developer.mozilla.org/en-US/docs/Web/CSS/url)
-public struct Url: Sendable, Equatable {
+public struct Url: Sendable, Hashable {
     /// The URL string value
     public let value: String
     

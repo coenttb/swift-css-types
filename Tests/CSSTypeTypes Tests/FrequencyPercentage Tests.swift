@@ -47,8 +47,8 @@ struct FrequencyPercentageTests {
         #expect(intPercent == doublePercent)
     }
     
-    @Test("FrequencyPercentage conforms to Equatable")
-    func testEquatable() {
+    @Test("FrequencyPercentage conforms to Hashable")
+    func testHashable() {
         let freq1 = FrequencyPercentage.hz(440)
         let freq2 = FrequencyPercentage.hz(440)
         let freq3 = FrequencyPercentage.hz(880)

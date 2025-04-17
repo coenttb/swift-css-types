@@ -41,7 +41,7 @@ public enum InsetInline: Property, LengthPercentageConvertible {
     case global(CSSTypeTypes.Global)
         
     /// Represents a value that can be either a length/percentage or auto
-    public enum Value: Equatable, Sendable {
+    public enum Value: Hashable, Sendable {
         /// Auto value (browser-determined)
         case auto
         

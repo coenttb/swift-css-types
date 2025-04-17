@@ -17,7 +17,7 @@ import Foundation
 ///         user-defined and won't cause naming conflicts.
 ///
 /// - SeeAlso: [MDN Web Docs on dashed-ident values](https://developer.mozilla.org/en-US/docs/Web/CSS/dashed-ident)
-public struct DashedIdent: Sendable, Equatable {
+public struct DashedIdent: Sendable, Hashable {
     /// The string value of the dashed identifier
     private let value: String
     

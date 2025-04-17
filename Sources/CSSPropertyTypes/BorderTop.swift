@@ -98,7 +98,7 @@ public enum BorderTop: Property {
 
 extension BorderTop {
     /// Properties for the border-top shorthand
-    public struct Properties: Sendable, Equatable, CustomStringConvertible {
+    public struct Properties: Sendable, Hashable, CustomStringConvertible {
         /// The width of the top border
         public let width: BorderWidth?
         

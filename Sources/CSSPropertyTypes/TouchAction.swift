@@ -23,7 +23,7 @@ import CSSTypeTypes
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on touch-action](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action)
-public enum TouchAction: Sendable, Equatable, Property {
+public enum TouchAction: Sendable, Hashable, Property {
     public static let property: String = "touch-action"
     /// Enable browser handling of all panning and zooming gestures
     case auto
@@ -43,7 +43,7 @@ public enum TouchAction: Sendable, Equatable, Property {
 }
 
 /// Individual touch action values that can be combined
-public enum TouchActionValue: String, Sendable, Equatable, Hashable {
+public enum TouchActionValue: String, Sendable, Hashable {
     /// Enable single-finger horizontal panning gestures
     case panX = "pan-x"
     

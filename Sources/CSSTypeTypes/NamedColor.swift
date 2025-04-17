@@ -17,7 +17,7 @@ import Foundation
 ///         except for the special `transparent` value.
 ///
 /// - SeeAlso: [MDN Web Docs on named colors](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color)
-public enum NamedColor: String, Sendable, Equatable, CaseIterable {
+public enum NamedColor: String, Sendable, Hashable, CaseIterable {
     // Basic colors (CSS Level 1)
     case black, silver, gray, white, maroon, red, purple, fuchsia
     case green, lime, olive, yellow, navy, blue, teal, aqua

@@ -17,7 +17,7 @@ import Foundation
 ///         whether to clip the content, show scrollbars, or display the content outside the box.
 ///
 /// - SeeAlso: [MDN Web Docs on overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
-public enum Overflow: String, Sendable, Equatable, CaseIterable {
+public enum Overflow: String, Sendable, Hashable, CaseIterable {
     public static let allCases: [Overflow] = [.visible, .hidden, .clip, .scroll, .auto]
     
     /// Content is not clipped and may be visible outside the padding box.

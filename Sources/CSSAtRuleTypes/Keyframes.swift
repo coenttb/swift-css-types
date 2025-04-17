@@ -143,13 +143,13 @@ public struct Keyframes: AtRule {
 
 extension Keyframes {
     /// Represents a single keyframe.
-    fileprivate struct Keyframe: Sendable, Equatable {
+    fileprivate struct Keyframe: Sendable, Hashable {
         var selectors: [KeyframeSelector]
         var styles: [String: String]
     }
     
     /// Represents a keyframe selector.
-    public enum KeyframeSelector: Sendable, Hashable, Equatable {
+    public enum KeyframeSelector: Sendable, Hashable {
         /// Starting keyframe (0%).
         case from
         

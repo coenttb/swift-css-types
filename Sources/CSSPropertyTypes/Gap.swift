@@ -57,7 +57,7 @@ extension Gap {
 
 
 /// Represents a gap value which can be a length or percentage
-public enum GapValue: Sendable, Equatable {
+public enum GapValue: Sendable, Hashable {
     /// Normal gap value (default, usually 0 except in multi-column layout)
     case normal
     

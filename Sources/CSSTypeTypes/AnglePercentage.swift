@@ -19,7 +19,7 @@ import Foundation
 ///         are expected.
 ///
 /// - SeeAlso: [MDN Web Docs on angle-percentage values](https://developer.mozilla.org/en-US/docs/Web/CSS/angle-percentage)
-public enum AnglePercentage: Sendable, Equatable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, PercentageConvertible, AngleConvertible {
+public enum AnglePercentage: Sendable, Hashable, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, PercentageConvertible, AngleConvertible {
     /// An angle value with specific units
     /// ```css
     /// hue-rotate(45deg);

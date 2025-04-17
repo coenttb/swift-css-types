@@ -139,7 +139,7 @@ public struct Page: AtRule {
 
 extension Page {
     /// Predefined page sizes for printing
-    public enum PageSize: Equatable, Sendable {
+    public enum PageSize: Hashable, Sendable {
         // Standard paper sizes
         case a3 /*= "A3"*/
         case a4 /*= "A4"*/

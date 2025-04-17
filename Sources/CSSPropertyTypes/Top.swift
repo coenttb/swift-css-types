@@ -21,7 +21,7 @@ import CSSTypeTypes
 /// - When `position` is `static`, the `top` property has no effect.
 ///
 /// - SeeAlso: [MDN Web Docs on top](https://developer.mozilla.org/en-US/docs/Web/CSS/top)
-public enum Top: Sendable, Equatable, LengthPercentageConvertible, Property {
+public enum Top: Sendable, Hashable, LengthPercentageConvertible, Property {
     public static let property: String = "top"
     case lengthPercentage(LengthPercentage)
     

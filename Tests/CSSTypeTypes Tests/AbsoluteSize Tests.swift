@@ -45,8 +45,8 @@ struct AbsoluteSizeTests {
         #expect(AbsoluteSize(rawValue: "invalid") == nil)
     }
     
-    @Test("AbsoluteSize conforms to Equatable")
-    func testEquatable() {
+    @Test("AbsoluteSize conforms to Hashable")
+    func testHashable() {
         let small1 = AbsoluteSize.small
         let small2 = AbsoluteSize.small
         let medium = AbsoluteSize.medium

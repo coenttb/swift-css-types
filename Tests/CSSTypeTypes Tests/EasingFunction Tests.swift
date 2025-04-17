@@ -79,8 +79,8 @@ struct EasingFunctionTests {
         #expect(point2.percentage?.value == 75)
     }
     
-    @Test("EasingFunction conforms to Equatable")
-    func testEquatable() {
+    @Test("EasingFunction conforms to Hashable")
+    func testHashable() {
         #expect(EasingFunction.linear == EasingFunction.linear)
         #expect(EasingFunction.ease != EasingFunction.easeIn)
         #expect(EasingFunction.cubicBezier(0.42, 0, 0.58, 1) == EasingFunction.cubicBezier(0.42, 0, 0.58, 1))

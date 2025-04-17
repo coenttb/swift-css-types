@@ -16,7 +16,7 @@ import Foundation
 ///         not directly as property values.
 ///
 /// - SeeAlso: [MDN Web Docs on calc-keyword values](https://developer.mozilla.org/en-US/docs/Web/CSS/calc-keyword)
-public enum CalcKeyword: String, Sendable, Equatable {
+public enum CalcKeyword: String, Sendable, Hashable {
     /// The base of the natural logarithm (approximately 2.718)
     ///
     /// Useful in exponential calculations.

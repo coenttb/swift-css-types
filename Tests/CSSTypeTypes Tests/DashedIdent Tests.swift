@@ -58,8 +58,8 @@ struct DashedIdentTests {
         #expect(fixedStringLiteral.description == "--margin")
     }
     
-    @Test("DashedIdent conforms to Equatable")
-    func testEquatable() {
+    @Test("DashedIdent conforms to Hashable")
+    func testHashable() {
         // Same values should be equal
         let ident1 = DashedIdent("--primary")
         let ident2 = DashedIdent("--primary")

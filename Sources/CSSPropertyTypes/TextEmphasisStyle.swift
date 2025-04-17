@@ -45,7 +45,7 @@ public enum TextEmphasisStyle: Property {
 }
 
 /// The fill style for emphasis marks: filled (solid) or open (hollow)
-public enum EmphasisFill: String, Sendable, Equatable {
+public enum EmphasisFill: String, Sendable, Hashable {
     /// The shape is filled with solid color. This is the default if not specified.
     case filled
     
@@ -54,7 +54,7 @@ public enum EmphasisFill: String, Sendable, Equatable {
 }
 
 /// The shape used for emphasis marks
-public enum EmphasisShape: String, Sendable, Equatable {
+public enum EmphasisShape: String, Sendable, Hashable {
     /// Display small circles as marks. 
     /// The filled dot is '•' (U+2022), and the open dot is '◦' (U+25E6).
     case dot

@@ -19,8 +19,8 @@ struct HueInterpolationMethodTests {
         #expect(HueInterpolationMethod.decreasing.description == "decreasing hue")
     }
     
-    @Test("HueInterpolationMethod enum conforms to Equatable")
-    func testEquatable() {
+    @Test("HueInterpolationMethod enum conforms to Hashable")
+    func testHashable() {
         let shorter1 = HueInterpolationMethod.shorter
         let shorter2 = HueInterpolationMethod.shorter
         let longer = HueInterpolationMethod.longer

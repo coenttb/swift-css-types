@@ -63,7 +63,7 @@
 //}
 //
 ///// Represents different types of Unicode range specifications
-//public enum UnicodeRangeValue: Sendable, Equatable {
+//public enum UnicodeRangeValue: Sendable, Hashable {
 //    /// A single code point, e.g., U+26
 //    case codePoint(Int)
 //    

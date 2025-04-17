@@ -30,7 +30,7 @@ public enum FontStretch: Property, PercentageConvertible {
     case global(CSSTypeTypes.Global)
     
     /// Font stretch keyword values
-    public enum Keyword: String, Sendable, Equatable {
+    public enum Keyword: String, Sendable, Hashable {
         /// Ultra-condensed font (50% of normal width)
         case ultraCondensed = "ultra-condensed"
         

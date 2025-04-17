@@ -20,8 +20,8 @@ struct GlobalTests {
         #expect(Global.unset.description == "unset")
     }
     
-    @Test("Global enum conforms to Equatable")
-    func testEquatable() {
+    @Test("Global enum conforms to Hashable")
+    func testHashable() {
         let inherit1 = Global.inherit
         let inherit2 = Global.inherit
         let initial = Global.initial

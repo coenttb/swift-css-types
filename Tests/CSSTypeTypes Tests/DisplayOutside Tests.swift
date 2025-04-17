@@ -25,8 +25,8 @@ struct DisplayOutsideTests {
         #expect(DisplayOutside.runIn.description == "run-in")
     }
     
-    @Test("DisplayOutside conforms to Equatable")
-    func testEquatable() {
+    @Test("DisplayOutside conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let display1 = DisplayOutside.block
         let display2 = DisplayOutside.block

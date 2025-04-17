@@ -57,7 +57,7 @@ public enum BorderWidth: Property {
 }
 extension BorderWidth {
     /// Represents different patterns of specifying border widths
-    public struct Values: Sendable, Equatable, CustomStringConvertible {
+    public struct Values: Sendable, Hashable, CustomStringConvertible {
         /// The width for the top border
         public let top: Width
         
@@ -150,7 +150,7 @@ extension BorderWidth {
 }
 extension BorderWidth {
     /// The possible width values for a border
-    public enum Width: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+    public enum Width: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// Thin line (usually 1px)
         case thin
         

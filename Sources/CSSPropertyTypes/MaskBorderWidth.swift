@@ -69,7 +69,7 @@ public enum MaskBorderWidth: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a value for mask-border-width
-    public enum WidthValue: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+    public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
         

@@ -53,7 +53,7 @@ public enum PositionArea: Property {
     case global(CSSTypeTypes.Global)
     
     /// Vertical (top/bottom) and horizontal (left/right) physical positions
-    public enum Physical: String, Sendable, Equatable {
+    public enum Physical: String, Sendable, Hashable {
         // Vertical (Y-axis) positions
         case top
         case center
@@ -88,7 +88,7 @@ public enum PositionArea: Property {
     }
     
     /// Logical block and inline positions
-    public enum Logical: String, Sendable, Equatable {
+    public enum Logical: String, Sendable, Hashable {
         // Block direction positions
         case blockStart = "block-start"
         case center
@@ -107,7 +107,7 @@ public enum PositionArea: Property {
     }
     
     /// Self-logical block and inline positions
-    public enum SelfLogical: String, Sendable, Equatable {
+    public enum SelfLogical: String, Sendable, Hashable {
         // Self-block direction positions
         case selfBlockStart = "self-block-start"
         case center
@@ -126,7 +126,7 @@ public enum PositionArea: Property {
     }
     
     /// Start/end/center positions
-    public enum StartEnd: String, Sendable, Equatable {
+    public enum StartEnd: String, Sendable, Hashable {
         case start
         case center
         case end
@@ -136,7 +136,7 @@ public enum PositionArea: Property {
     }
     
     /// Self-start/end/center positions
-    public enum SelfStartEnd: String, Sendable, Equatable {
+    public enum SelfStartEnd: String, Sendable, Hashable {
         case selfStart = "self-start"
         case center
         case selfEnd = "self-end"
@@ -146,7 +146,7 @@ public enum PositionArea: Property {
     }
     
     /// Position area keywords that can be used as a single value
-    public enum AreaKeyword: String, Sendable, Equatable {
+    public enum AreaKeyword: String, Sendable, Hashable {
         // Physical positions
         case top
         case bottom

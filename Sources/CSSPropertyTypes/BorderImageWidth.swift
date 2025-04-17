@@ -70,7 +70,7 @@ public enum BorderImageWidth: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a value for border-image-width
-    public enum WidthValue: Sendable, Equatable, CustomStringConvertible, LengthConvertible {
+    public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
         

@@ -13,7 +13,7 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on easing functions](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)
-public enum EasingFunction: Sendable, Equatable {
+public enum EasingFunction: Sendable, Hashable {
     /// Linear easing - constant rate with no acceleration or deceleration
     case linear
     
@@ -46,7 +46,7 @@ public enum EasingFunction: Sendable, Equatable {
 }
 
 /// Represents a point in a linear easing function with an optional timing percentage
-public struct LinearPoint: Sendable, Equatable {
+public struct LinearPoint: Sendable, Hashable {
     /// The progress value (typically between 0 and 1)
     public let value: Double
     
@@ -65,7 +65,7 @@ public struct LinearPoint: Sendable, Equatable {
 }
 
 /// Represents the position of steps in a stepped easing function
-public enum StepPosition: String, Sendable, Equatable, CustomStringConvertible {
+public enum StepPosition: String, Sendable, Hashable, CustomStringConvertible {
     /// Equivalent to jump-start; the first jump happens at the start
     case start
     

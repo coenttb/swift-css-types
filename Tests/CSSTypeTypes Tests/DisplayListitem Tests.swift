@@ -29,8 +29,8 @@ struct DisplayListitemTests {
         #expect(DisplayListitem.inlineFlowRootListItem.description == "inline flow-root list-item")
     }
     
-    @Test("DisplayListitem conforms to Equatable")
-    func testEquatable() {
+    @Test("DisplayListitem conforms to Hashable")
+    func testHashable() {
         // Same cases should be equal
         let display1 = DisplayListitem.listItem
         let display2 = DisplayListitem.listItem
