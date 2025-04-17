@@ -1,120 +1,182 @@
-//@property
-//
-//
-//Baseline 2024
-//NEWLY AVAILABLE
-//
-//
-//
-//The @property CSS at-rule is part of the CSS Houdini set of APIs. It allows developers to explicitly define CSS custom properties, allowing for property type checking and constraining, setting default values, and defining whether a custom property can inherit values or not.
-//
-//The @property rule represents a custom property registration directly in a stylesheet without having to run any JavaScript. Valid @property rules result in a registered custom property, which is similar to calling registerProperty() with equivalent parameters.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@property --rotation {
-//  syntax: "<angle>";
-//  inherits: false;
-//  initial-value: 45deg;
-//}
-//The custom property name is a <dashed-ident> that starts with -- and is followed by a valid, user-defined identifier. It is case-sensitive.
-//
-//Descriptors
-//syntax
-//A string that describes the allowed value types for the registered custom property. May be a data type name (such as <color>, <length>, or <number>, etc.), with multipliers (+, #) and combinators (|), or a custom ident. See the syntax descriptor page for more details.
-//
-//inherits
-//A boolean value that controls whether the custom property registration specified by @property inherits by default.
-//
-//initial-value
-//A value that sets the starting value for the property.
-//
-//Description
-//The following conditions must be met for the @property rule to be valid:
-//
-//The @property rule must include both the syntax and inherits descriptors. If either is missing, the entire @property rule is invalid and ignored.
-//The initial-value descriptor is optional if the value of the syntax descriptor is the universal syntax definition (that is, syntax: "*"). If the initial-value descriptor is required but omitted, the entire @property rule is invalid and ignored.
-//Unknown descriptors are invalid and ignored, but do not invalidate the @property rule.
-//Formal syntax
-//@property =
-//  @property <custom-property-name> { <declaration-list> }
-//
-//Sources: CSS Properties and Values API Level 1
-//Examples
-//Using @property to register and use a custom property
-//In this example, we define two custom properties, --item-size and --item-color, that we'll use to define the size (width and height) and background color of the three following items.
-//
-//HTML
-//Copy to Clipboard
-//Play
-//<div class="container">
-//  <div class="item one">Item one</div>
-//  <div class="item two">Item two</div>
-//  <div class="item three">Item three</div>
-//</div>
-//The following code uses the CSS @property at-rule to define a custom property named --item-size. The property sets the initial value to 40%, limiting valid values to <percentage> values only. This means, when used as the value for an item's size, its size will always be relative to its parent's size. The property is inheritable.
-//
-//CSS
-//Copy to Clipboard
-//Play
-//@property --item-size {
-//  syntax: "<percentage>";
-//  inherits: true;
-//  initial-value: 40%;
-//}
-//We define a second custom property, --item-color, using JavaScript instead of CSS. The JavaScript registerProperty() method is equivalent to @property at-rule. The property is defined to have an initial value of aqua, to accept only <color> values, and is not inherited.
-//
-//JS
-//Copy to Clipboard
-//Play
-//window.CSS.registerProperty({
-//  name: "--item-color",
-//  syntax: "<color>",
-//  inherits: false,
-//  initialValue: "aqua",
-//});
-//We use the two custom properties to style the items:
-//
-//CSS
-//Copy to Clipboard
-//Play
-//.container {
-//  display: flex;
-//  height: 200px;
-//  border: 1px dashed black;
-//
-//  /* set custom property values on parent */
-//  --item-size: 20%;
-//  --item-color: orange;
-//}
-//
-///* use custom properties to set item size and background color */
-//.item {
-//  width: var(--item-size);
-//  height: var(--item-size);
-//  background-color: var(--item-color);
-//}
-//
-///* set custom property values on element itself */
-//.two {
-//  --item-size: initial;
-//  --item-color: inherit;
-//}
-//
-//.three {
-//  /* invalid values */
-//  --item-size: 1000px;
-//  --item-color: xyz;
-//}
-//Play
-//
-//The two custom properties, --item-size: 20% and --item-color: orange; are set on the container parent, overriding the 40% and aqua default values set when these custom properties were defined. The size is set to be inheritable; the color is not.
-//
-//For item one, none of these custom properties have been set. The --item-size is inheritable, so the value 20% set on its parent container is used. On the other hand, the property --item-color is not inheritable, so the value orange set on the parent is not considered. Instead the default initial value aqua is used.
-//
-//For item two, CSS global keywords are set for both custom properties which are valid values for all value types and therefore valid no matter the syntax descriptor value. The --item-size is set to initial and uses the initial-value: 40%; set in the @property declaration. The initial value means the initialValue value for the property is used. The --item-color is set to inherit, explicitly inheriting the orange value from its parent even though the custom property is set to otherwise not be inherited. This is why item two is orange.
-//
-//For item three, the --item-size value gets set to 1000px. While 1000px is a <length> value, the @property declaration requires the value be a <percentage>, so the declaration is not valid and is ignored, meaning the inheritable 20% set on the parent is used. The xyz value is also invalid. As registerProperty() set --item-color to not be inherited, the default initial value of aqua is used and not the parent's orange value.
-//
-//Specifications
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @property at-rule.
+///
+/// The @property at-rule is part of the CSS Houdini APIs and allows developers
+/// to explicitly define CSS custom properties with type checking, constraints,
+/// default values, and inheritance behavior.
+///
+/// Examples:
+/// ```swift
+/// // Basic property definition
+/// Property.define("--theme-color")
+///     .syntax(.color)
+///     .inherits(false)
+///     .initialValue("blue")
+///
+/// // Numeric property with percentage
+/// Property.define("--spacing")
+///     .syntax(.percentage)
+///     .inherits(true)
+///     .initialValue("2%")
+///
+/// // Property with length values
+/// Property.define("--border-size")
+///     .syntax(.length)
+///     .inherits(false)
+///     .initialValue("1px")
+/// ```
+public struct Property: AtRule {
+    public static let identifier: String = "property"
+    public var rawValue: String
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+    
+    /// Creates a new @property rule with the specified custom property name
+    /// @property --name {}
+    public static func define(_ name: String) -> Property {
+        Property(rawValue: "@property \(name) {}")
+    }
+    
+    /// Sets the syntax descriptor for the property
+    /// @property --name { syntax: "<type>"; }
+    public func syntax(_ value: SyntaxType) -> Property {
+        addDescriptor("syntax: \"\(value.rawValue)\"")
+    }
+    
+    /// Sets the syntax descriptor using a custom syntax string
+    /// @property --name { syntax: "<custom-syntax>"; }
+    public func syntax(_ customSyntax: String) -> Property {
+        addDescriptor("syntax: \"\(customSyntax)\"")
+    }
+    
+    /// Sets the inherits descriptor for the property
+    /// @property --name { inherits: true|false; }
+    public func inherits(_ value: Bool) -> Property {
+        addDescriptor("inherits: \(value)")
+    }
+    
+    /// Sets the initial-value descriptor for the property
+    /// @property --name { initial-value: <value>; }
+    public func initialValue(_ value: String) -> Property {
+        addDescriptor("initial-value: \(value)")
+    }
+    
+    /// Sets the initial-value descriptor for the property using a color value
+    /// @property --name { initial-value: <color>; }
+    public func initialValue(_ value: Color) -> Property {
+        addDescriptor("initial-value: \(value)")
+    }
+    
+    /// Sets the initial-value descriptor for the property using a length value
+    /// @property --name { initial-value: <length>; }
+    public func initialValue(_ value: Length) -> Property {
+        addDescriptor("initial-value: \(value)")
+    }
+    
+    /// Sets the initial-value descriptor for the property using a length percentage value
+    /// @property --name { initial-value: <length-percentage>; }
+    public func initialValue(_ value: LengthPercentage) -> Property {
+        addDescriptor("initial-value: \(value)")
+    }
+    
+    /// Helper method to add a descriptor to the property rule
+    private func addDescriptor(_ descriptor: String) -> Property {
+        let currentContent = rawValue
+        
+        // Check if the rule already has descriptors
+        if currentContent.hasSuffix("{}") {
+            // No descriptors yet, add the first one
+            let newContent = currentContent.dropLast() + descriptor + ";}"
+            return Property(rawValue: String(newContent))
+        } else {
+            // Already has descriptors, add another one
+            let newContent = currentContent.dropLast() + " " + descriptor + ";}"
+            return Property(rawValue: String(newContent))
+        }
+    }
+}
+
+extension Property {
+    /// Built-in syntax types for CSS custom properties
+    public enum SyntaxType: String, Hashable, Sendable {
+        // Basic types
+        /// Any valid CSS value
+        case universal = "*"
+        
+        /// A CSS <color> value
+        case color = "<color>"
+        
+        /// A CSS <length> value
+        case length = "<length>"
+        
+        /// A CSS <percentage> value
+        case percentage = "<percentage>"
+        
+        /// A CSS <length-percentage> value (length or percentage)
+        case lengthPercentage = "<length-percentage>"
+        
+        /// A CSS <number> value
+        case number = "<number>"
+        
+        /// A CSS <integer> value
+        case integer = "<integer>"
+        
+        /// A CSS <angle> value
+        case angle = "<angle>"
+        
+        /// A CSS <time> value
+        case time = "<time>"
+        
+        /// A CSS <resolution> value
+        case resolution = "<resolution>"
+        
+        /// A CSS <transform-function> value
+        case transformFunction = "<transform-function>"
+        
+        /// A CSS <custom-ident> value
+        case customIdent = "<custom-ident>"
+        
+        // Image types
+        /// A CSS <image> value
+        case image = "<image>"
+        
+        /// A CSS <url> value
+        case url = "<url>"
+        
+        // Functions
+        /// A CSS <gradient> value
+        case gradient = "<gradient>"
+        
+        // Composite types with multipliers
+        /// One or more of the specified type (e.g., "<length>+")
+        public static func oneOrMore(_ type: SyntaxType) -> String {
+            "\(type.rawValue)+"
+        }
+        
+        /// Zero or more of the specified type (e.g., "<length>*")
+        public static func zeroOrMore(_ type: SyntaxType) -> String {
+            "\(type.rawValue)*"
+        }
+        
+        /// A list of the specified type (e.g., "<length>#")
+        public static func list(_ type: SyntaxType) -> String {
+            "\(type.rawValue)#"
+        }
+        
+        // Composite types with combinators
+        /// Either of the specified types (e.g., "<length> | <percentage>")
+        public static func either(_ type1: SyntaxType, _ type2: SyntaxType) -> String {
+            "\(type1.rawValue) | \(type2.rawValue)"
+        }
+        
+        /// Any number of the specified types (e.g., "[ <length> | <percentage> ]+")
+        public static func any(_ types: SyntaxType...) -> String {
+            let typeList = types.map { $0.rawValue }.joined(separator: " | ")
+            return "[ \(typeList) ]+"
+        }
+    }
+}

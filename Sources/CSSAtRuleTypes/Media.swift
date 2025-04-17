@@ -25,7 +25,9 @@ import CSSTypeTypes
 /// // Using operator overloads
 /// Media.screen & Media.maxWidth(.px(500)) & Media.prefersColorScheme(.dark)
 /// ```
-public struct Media: RawRepresentable, Hashable, Sendable {
+public struct Media: AtRule {
+    public static let identifier: String = "media"
+    
     public var rawValue: String
     
     public init(rawValue: String) {

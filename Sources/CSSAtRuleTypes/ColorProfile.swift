@@ -1,49 +1,102 @@
-//@color-profile
-//
-//The @color-profile CSS at-rule defines and names a color profile which can later be used in the color() function to specify a color.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@color-profile --swop5c {
-//  src: url("https://example.org/SWOP2006_Coated5v2.icc");
-//}
-//Descriptors
-//src
-//Specifies the URL to retrieve the color-profile information from.
-//
-//rendering-intent
-//If the color profile contains more than one rendering intent, this descriptor allows one to be selected as the one to use to define how to map the color to smaller gamuts than this profile is defined over.
-//
-//If used, it must be one of the following keywords:
-//
-//relative-colorimetric
-//Media-relative colorimetric is required to leave source colors that fall inside the destination medium gamut unchanged relative to the respective media white points. Source colors that are out of the destination medium gamut are mapped to colors on the gamut boundary using a variety of different methods.
-//
-//absolute-colorimetric
-//ICC-absolute colorimetric is required to leave source colors that fall inside the destination medium gamut unchanged relative to the adopted white (a perfect reflecting diffuser). Source colors that are out of the destination medium gamut are mapped to colors on the gamut boundary using a variety of different methods.
-//
-//perceptual
-//This method is often the preferred choice for images, especially when there are substantial differences between the source and destination (such as a screen display image reproduced on a reflection print). It takes the colors of the source image and re-optimizes the appearance for the destination medium using proprietary methods.
-//
-//saturation
-//This option was created to preserve the relative saturation (chroma) of the original, and to keep solid colors pure. However, it experienced interoperability problems like the perceptual intent.
-//
-//Formal syntax
-//@color-profile =
-//  @color-profile [ <dashed-ident> | device-cmyk ] { <declaration-list> }
-//
-//Sources: CSS Color Module Level 5
-//Examples
-//This example is from the specification and demonstrates using offset printing to ISO 12647-2:2004 using the CGATS/SWOP TR005 2007 characterization data on grade 5 paper with an ink limit of 300% Total Area Coverage, and medium gray component replacement (GCR).
-//
-//The src descriptor specifies the URL to retrieve the color-profile information from.
-//
-//CSS
-//Copy to Clipboard
-//@color-profile --swop5c {
-//  src: url("https://example.org/SWOP2006_Coated5v2.icc");
-//}
-//.header {
-//  background-color: color(--swop5c 0% 70% 20% 0%);
-//}
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @color-profile at-rule.
+///
+/// The @color-profile CSS at-rule defines and names a color profile which can later
+/// be used in the color() function to specify a color.
+///
+/// Examples:
+/// ```swift
+/// // Basic color profile with a source URL
+/// ColorProfile("--swop5c")
+///     .src("https://example.org/SWOP2006_Coated5v2.icc")
+///
+/// // Color profile with rendering intent
+/// ColorProfile("--srgb")
+///     .src("https://example.org/sRGB_ICC_v4.icc")
+///     .renderingIntent(.perceptual)
+/// ```
+public struct ColorProfile: AtRule {
+    public static let identifier: String = "color-profile"
+    
+    public var rawValue: String
+    private var name: String
+    private var descriptors: [String: String] = [:]
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+        // Extract name from rawValue for future reference
+        // This is a simplified implementation; a proper parser would be more complex
+        if let nameRange = rawValue.range(of: "@color-profile\\s+(--[\\w-]+|device-cmyk)\\s*\\{", options: .regularExpression) {
+            let nameString = String(rawValue[nameRange])
+            let parts = nameString.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+            self.name = parts.dropFirst().first ?? ""
+        } else {
+            self.name = ""
+        }
+    }
+    
+    /// Creates a color profile with the specified name.
+    ///
+    /// - Parameter name: The name of the color profile. Must start with `--` or be `device-cmyk`.
+    public init(_ name: String) {
+        self.name = name
+        self.rawValue = "@color-profile \(name) {}"
+    }
+    
+    /// Predefined device-cmyk color profile.
+    public static let deviceCMYK = ColorProfile("device-cmyk")
+    
+    /// Sets the source URL for the color profile.
+    ///
+    /// - Parameter url: The URL to retrieve the color profile information from.
+    /// - Returns: An updated ColorProfile instance.
+    public func src(_ url: String) -> ColorProfile {
+        var profile = self
+        profile.descriptors["src"] = "url(\"\(url)\")"
+        profile.updateRawValue()
+        return profile
+    }
+    
+    /// Sets the rendering intent for the color profile.
+    ///
+    /// - Parameter intent: The rendering intent to use.
+    /// - Returns: An updated ColorProfile instance.
+    public func renderingIntent(_ intent: RenderingIntent) -> ColorProfile {
+        var profile = self
+        profile.descriptors["rendering-intent"] = intent.rawValue
+        profile.updateRawValue()
+        return profile
+    }
+    
+    /// Updates the raw value based on the current descriptors.
+    private mutating func updateRawValue() {
+        let descriptorString = descriptors.map { key, value in
+            "  \(key): \(value);"
+        }.joined(separator: "\n")
+        
+        if descriptorString.isEmpty {
+            rawValue = "@color-profile \(name) {}"
+        } else {
+            rawValue = "@color-profile \(name) {\n\(descriptorString)\n}"
+        }
+    }
+}
+
+extension ColorProfile {
+    /// Represents rendering intent options for color profiles.
+    public enum RenderingIntent: String, Hashable, Sendable {
+        /// Media-relative colorimetric intent.
+        case relativeColorimetric = "relative-colorimetric"
+        
+        /// ICC-absolute colorimetric intent.
+        case absoluteColorimetric = "absolute-colorimetric"
+        
+        /// Perceptual rendering intent, often preferred for images.
+        case perceptual
+        
+        /// Saturation rendering intent, preserves relative saturation.
+        case saturation
+    }
+}

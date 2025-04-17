@@ -1,137 +1,378 @@
-//@font-face
-//
-//
-//Baseline Widely available *
-//
-//
-//
-//The @font-face CSS at-rule specifies a custom font with which to display text; the font can be loaded from either a remote server or a locally-installed font on the user's own computer.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@font-face {
-//  font-family: "Trickster";
-//  src:
-//    local("Trickster"),
-//    url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
-//    url("trickster-outline.otf") format("opentype"),
-//    url("trickster-outline.woff") format("woff");
-//}
-//Descriptors
-//ascent-override
-//Defines the ascent metric for the font.
-//
-//descent-override
-//Defines the descent metric for the font.
-//
-//font-display
-//Determines how a font face is displayed based on whether and when it is downloaded and ready to use.
-//
-//font-family
-//Specifies a name that will be used as the font face value for font properties. A font-family name is required for the @font-face rule to be valid.
-//
-//font-stretch
-//A font-stretch value. Accepts two values to specify a range that is supported by a font face, for example font-stretch: 50% 200%;
-//
-//font-style
-//A font-style value. Accepts two values to specify a range that is supported by a font face, for example font-style: oblique 20deg 50deg;
-//
-//font-weight
-//A font-weight value. Accepts two values to specify a range that is supported by a font face, for example font-weight: 100 400;
-//
-//font-feature-settings
-//Allows control over advanced typographic features in OpenType fonts.
-//
-//font-variation-settings
-//Allows low-level control over OpenType or TrueType font variations, by specifying the four-letter axis names of the features to vary, along with their variation values.
-//
-//line-gap-override
-//Defines the line gap metric for the font.
-//
-//size-adjust
-//Defines a multiplier for glyph outlines and metrics associated with this font. This makes it easier to harmonize the designs of various fonts when rendered at the same font size.
-//
-//src
-//Specifies references to font resources including hints about the font format and technology. A src is required for the @font-face rule to be valid.
-//
-//unicode-range
-//The range of Unicode code points to be used from the font.
-//
-//Description
-//It's common to use both url() and local() together, so that the user's installed copy of the font is used if available, falling back to downloading a copy of the font if it's not found on the user's device.
-//
-//If the local() function is provided, specifying a font name to look for on the user's device, and if the user agent finds a match, that local font is used. Otherwise, the font resource specified using the url() function is downloaded and used.
-//
-//Browsers attempt to load resources in their list declaration order, so usually local() should be written before url(). Both functions are optional, so a rule block containing only one or more local() without url() is possible. If more specific fonts with format() or tech() values are desired, these should be listed before versions that don't have these values, as the less specific variant would otherwise be tried and used first.
-//
-//By allowing authors to provide their own fonts, @font-face makes it possible to design content without being limited to the so-called "web-safe" fonts (that is, the fonts that are so common that they're considered to be universally available). The ability to specify the name of a locally-installed font to look for and use makes it possible to customize the font beyond the basics while making it possible to do so without relying on an internet connection.
-//
-//Note: Fallback strategies for loading fonts on older browsers are described in the src descriptor page.
-//The @font-face at-rule may be used not only at the top level of a CSS, but also inside any CSS conditional-group at-rule.
-//
-//Font MIME Types
-//Format    MIME type
-//TrueType    font/ttf
-//OpenType    font/otf
-//Web Open Font Format    font/woff
-//Web Open Font Format 2    font/woff2
-//Notes
-//Web fonts are subject to the same domain restriction (font files must be on the same domain as the page using them), unless HTTP access controls are used to relax this restriction.
-//@font-face cannot be declared within a CSS selector. For example, the following will not work:
-//CSS
-//Copy to Clipboard
-//.className {
-//  @font-face {
-//    font-family: "MyHelvetica";
-//    src:
-//      local("Helvetica Neue Bold"), local("HelveticaNeue-Bold"),
-//      url("MgOpenModernaBold.ttf");
-//    font-weight: bold;
-//  }
-//}
-//Formal syntax
-//@font-face =
-//  @font-face { <declaration-list> }
-//
-//Sources: CSS Fonts Module Level 4
-//Examples
-//Specifying a downloadable font
-//This example specifies a downloadable font to use, applying it to the entire body of the document:
-//
-//HTML
-//Copy to Clipboard
-//Play
-//<body>
-//  This is Bitstream Vera Serif Bold.
-//</body>
-//CSS
-//Copy to Clipboard
-//Play
-//@font-face {
-//  font-family: "Bitstream Vera Serif Bold";
-//  src: url("https://mdn.github.io/shared-assets/fonts/VeraSeBd.ttf");
-//}
-//
-//body {
-//  font-family: "Bitstream Vera Serif Bold", serif;
-//}
-//Play
-//
-//Specifying local font alternatives
-//In this example, the user's local copy of "Helvetica Neue Bold" is used; if the user does not have that font installed (both the full font name and the Postscript name are tried), then the downloadable font named "MgOpenModernaBold.ttf" is used instead:
-//
-//CSS
-//Copy to Clipboard
-//@font-face {
-//  font-family: "MyHelvetica";
-//  src:
-//    local("Helvetica Neue Bold"), local("HelveticaNeue-Bold"),
-//    url("MgOpenModernaBold.ttf");
-//  font-weight: bold;
-//}
-//Specifications
-//Specification
-//CSS Fonts Module Level 4
-//# font-face-rule
-//Browser
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @font-face at-rule.
+///
+/// The @font-face CSS at-rule specifies a custom font with which to display text;
+/// the font can be loaded from either a remote server or a locally-installed font
+/// on the user's own computer.
+///
+/// Examples:
+/// ```swift
+/// // Basic font face
+/// FontFace()
+///     .fontFamily("Trickster")
+///     .src([.url("trickster-outline.woff", format: "woff")])
+///
+/// // Font face with multiple sources and local fallback
+/// FontFace()
+///     .fontFamily("MyHelvetica")
+///     .src([
+///         .local("Helvetica Neue Bold"),
+///         .local("HelveticaNeue-Bold"),
+///         .url("MgOpenModernaBold.ttf")
+///     ])
+///     .fontWeight(.bold)
+///
+/// // Font face with variable font settings
+/// FontFace()
+///     .fontFamily("Inter")
+///     .src([.url("Inter-VariableFont.ttf")])
+///     .fontWeight(.range(100, 900))
+///     .fontVariationSettings([
+///         ("wght", 400),
+///         ("slnt", 0)
+///     ])
+/// ```
+public struct FontFace: AtRule {
+    public static let identifier: String = "font-face"
+    
+    public var rawValue: String
+    private var descriptors: [String: String] = [:]
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+    
+    /// Creates a new font face rule.
+    public init() {
+        self.rawValue = "@font-face {}"
+    }
+    
+    /// Updates the raw value based on the current descriptors.
+    private mutating func updateRawValue() {
+        let descriptorString = descriptors.map { key, value in
+            "  \(key): \(value);"
+        }.joined(separator: "\n")
+        
+        if descriptorString.isEmpty {
+            rawValue = "@font-face {}"
+        } else {
+            rawValue = "@font-face {\n\(descriptorString)\n}"
+        }
+    }
+    
+    /// Sets the font-family descriptor.
+    ///
+    /// - Parameter name: The name to be used as the font face value.
+    /// - Returns: An updated FontFace instance.
+    public func fontFamily(_ name: String) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["font-family"] = "\"\(name)\""
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the src descriptor.
+    ///
+    /// - Parameter sources: An array of font sources.
+    /// - Returns: An updated FontFace instance.
+    public func src(_ sources: [Source]) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["src"] = sources.map { $0.description }.joined(separator: ",\n    ")
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the font-display descriptor.
+    ///
+    /// - Parameter display: The font display strategy.
+    /// - Returns: An updated FontFace instance.
+    public func fontDisplay(_ display: FontDisplay) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["font-display"] = display.rawValue
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the font-weight descriptor.
+    ///
+    /// - Parameter weight: The font weight.
+    /// - Returns: An updated FontFace instance.
+    public func fontWeight(_ weight: FontWeight) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["font-weight"] = weight.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the font-style descriptor.
+    ///
+    /// - Parameter style: The font style.
+    /// - Returns: An updated FontFace instance.
+    public func fontStyle(_ style: FontStyle) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["font-style"] = style.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the font-stretch descriptor.
+    ///
+    /// - Parameter stretch: The font stretch.
+    /// - Returns: An updated FontFace instance.
+    public func fontStretch(_ stretch: FontStretch) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["font-stretch"] = stretch.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the unicode-range descriptor.
+    ///
+    /// - Parameter ranges: The Unicode range values.
+    /// - Returns: An updated FontFace instance.
+    public func unicodeRange(_ ranges: [String]) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["unicode-range"] = ranges.joined(separator: ", ")
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the font-feature-settings descriptor.
+    ///
+    /// - Parameter settings: The font feature settings as tuples of (feature, value).
+    /// - Returns: An updated FontFace instance.
+    public func fontFeatureSettings(_ settings: [(String, Int)]) -> FontFace {
+        var fontFace = self
+        let settingsString = settings.map { "\"\($0.0)\" \($0.1)" }.joined(separator: ", ")
+        fontFace.descriptors["font-feature-settings"] = settingsString
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the font-variation-settings descriptor.
+    ///
+    /// - Parameter settings: The font variation settings as tuples of (axis, value).
+    /// - Returns: An updated FontFace instance.
+    public func fontVariationSettings(_ settings: [(String, Int)]) -> FontFace {
+        var fontFace = self
+        let settingsString = settings.map { "\"\($0.0)\" \($0.1)" }.joined(separator: ", ")
+        fontFace.descriptors["font-variation-settings"] = settingsString
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the ascent-override descriptor.
+    ///
+    /// - Parameter value: The ascent override percentage.
+    /// - Returns: An updated FontFace instance.
+    public func ascentOverride(_ value: Percentage) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["ascent-override"] = value.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the descent-override descriptor.
+    ///
+    /// - Parameter value: The descent override percentage.
+    /// - Returns: An updated FontFace instance.
+    public func descentOverride(_ value: Percentage) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["descent-override"] = value.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the line-gap-override descriptor.
+    ///
+    /// - Parameter value: The line gap override percentage.
+    /// - Returns: An updated FontFace instance.
+    public func lineGapOverride(_ value: Percentage) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["line-gap-override"] = value.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+    
+    /// Sets the size-adjust descriptor.
+    ///
+    /// - Parameter value: The size adjust percentage.
+    /// - Returns: An updated FontFace instance.
+    public func sizeAdjust(_ value: Percentage) -> FontFace {
+        var fontFace = self
+        fontFace.descriptors["size-adjust"] = value.description
+        fontFace.updateRawValue()
+        return fontFace
+    }
+}
+
+// MARK: - Font Source
+
+extension FontFace {
+    /// Represents a font source (local or URL).
+    public enum Source: CustomStringConvertible {
+        /// A local font source.
+        case local(String)
+        
+        /// A URL font source with optional format and technology.
+        case url(String, format: String? = nil, tech: String? = nil)
+        
+        public var description: String {
+            switch self {
+            case .local(let name):
+                return "local(\"\(name)\")"
+            case .url(let url, let format, let tech):
+                var result = "url(\"\(url)\")"
+                if let format = format {
+                    result += " format(\"\(format)\")"
+                }
+                if let tech = tech {
+                    result += " tech(\(tech))"
+                }
+                return result
+            }
+        }
+    }
+    
+    /// Represents font-display descriptor values.
+    public enum FontDisplay: String, Hashable, Sendable {
+        /// Font display strategy: auto.
+        case auto
+        
+        /// Font display strategy: block.
+        case block
+        
+        /// Font display strategy: swap.
+        case swap
+        
+        /// Font display strategy: fallback.
+        case fallback
+        
+        /// Font display strategy: optional.
+        case optional
+    }
+    
+    /// Represents font-weight descriptor values.
+    public enum FontWeight: CustomStringConvertible, Hashable, Sendable {
+        /// A specific font weight using a numeric value.
+        case value(Int)
+        
+        /// A range of font weights for variable fonts.
+        case range(Int, Int)
+        
+        /// Font weight: normal (400).
+        case normal
+        
+        /// Font weight: bold (700).
+        case bold
+        
+        public var description: String {
+            switch self {
+            case .value(let value):
+                return String(value)
+            case .range(let min, let max):
+                return "\(min) \(max)"
+            case .normal:
+                return "normal"
+            case .bold:
+                return "bold"
+            }
+        }
+    }
+    
+    /// Represents font-style descriptor values.
+    public enum FontStyle: CustomStringConvertible, Hashable, Sendable {
+        /// Font style: normal.
+        case normal
+        
+        /// Font style: italic.
+        case italic
+        
+        /// Font style: oblique with optional angle.
+        case oblique(Int? = nil)
+        
+        /// A range of oblique angles for variable fonts.
+        case obliqueRange(Int, Int)
+        
+        public var description: String {
+            switch self {
+            case .normal:
+                return "normal"
+            case .italic:
+                return "italic"
+            case .oblique(let angle):
+                if let angle = angle {
+                    return "oblique \(angle)deg"
+                }
+                return "oblique"
+            case .obliqueRange(let min, let max):
+                return "oblique \(min)deg \(max)deg"
+            }
+        }
+    }
+    
+    /// Represents font-stretch descriptor values.
+    public enum FontStretch: CustomStringConvertible, Hashable, Sendable {
+        /// A specific font stretch value as a percentage.
+        case value(Int)
+        
+        /// A range of font stretch values for variable fonts.
+        case range(Int, Int)
+        
+        /// Font stretch: normal (100%).
+        case normal
+        
+        /// Font stretch: ultra-condensed (50%).
+        case ultraCondensed
+        
+        /// Font stretch: extra-condensed (62.5%).
+        case extraCondensed
+        
+        /// Font stretch: condensed (75%).
+        case condensed
+        
+        /// Font stretch: semi-condensed (87.5%).
+        case semiCondensed
+        
+        /// Font stretch: semi-expanded (112.5%).
+        case semiExpanded
+        
+        /// Font stretch: expanded (125%).
+        case expanded
+        
+        /// Font stretch: extra-expanded (150%).
+        case extraExpanded
+        
+        /// Font stretch: ultra-expanded (200%).
+        case ultraExpanded
+        
+        public var description: String {
+            switch self {
+            case .value(let value):
+                return "\(value)%"
+            case .range(let min, let max):
+                return "\(min)% \(max)%"
+            case .normal:
+                return "normal"
+            case .ultraCondensed:
+                return "ultra-condensed"
+            case .extraCondensed:
+                return "extra-condensed"
+            case .condensed:
+                return "condensed"
+            case .semiCondensed:
+                return "semi-condensed"
+            case .semiExpanded:
+                return "semi-expanded"
+            case .expanded:
+                return "expanded"
+            case .extraExpanded:
+                return "extra-expanded"
+            case .ultraExpanded:
+                return "ultra-expanded"
+            }
+        }
+    }
+}

@@ -1,70 +1,128 @@
-//@font-palette-values
-//
-//
-//Baseline 2022
-//NEWLY AVAILABLE
-//
-//
-//
-//The @font-palette-values CSS at-rule allows you to customize the default values of font-palette created by the font-maker.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@font-palette-values --identifier {
-//  font-family: Bixa;
-//}
-//.my-class {
-//  font-palette: --identifier;
-//}
-//The <dashed-ident> is a user defined identifier, that while it looks like a CSS custom property behaves in a different way and is not wrapped in a CSS var() function.
-//
-//Descriptors
-//base-palette
-//Specifies the name or index of the base-palette, created by the font-maker, to use.
-//
-//font-family
-//Specifies the name of the font family that this palette can be applied to. A font-family name is required for the @font-palette-values rule to be valid.
-//
-//override-colors
-//Specifies the colors in the base palette to override.
-//
-//Formal syntax
-//@font-palette-values =
-//  @font-palette-values <dashed-ident> { <declaration-list> }
-//
-//Sources: CSS Fonts Module Level 4
-//Examples
-//Overriding colors in an existing palette
-//This example shows how you can change some or all of the colors in a color font.
-//
-//HTML
-//
-//HTML
-//Copy to Clipboard
-//Play
-//<p>default colors</p>
-//<p class="alternate">alternate colors</p>
-//CSS
-//
-//CSS
-//Copy to Clipboard
-//Play
-//@import url(https://fonts.googleapis.com/css2?family=Bungee+Spice);
-//p {
-//  font-family: "Bungee Spice";
-//  font-size: 2rem;
-//}
-//@font-palette-values --Alternate {
-//  font-family: "Bungee Spice";
-//  override-colors:
-//    0 #00ffbb,
-//    1 #007744;
-//}
-//.alternate {
-//  font-palette: --Alternate;
-//}
-//Result
-//
-//When overriding colors of the normal or base-palette at index 0 you do not need to declare which base-palette to use. This should only be done when overriding a different base-palette. If you are overriding all the colors then there is also no need to specify the base-palette to use.
-//
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @font-palette-values at-rule.
+///
+/// The @font-palette-values CSS at-rule allows you to customize the default values
+/// of font-palette created by the font-maker.
+///
+/// Examples:
+/// ```swift
+/// // Simple palette with font family
+/// FontPaletteValues("--Grayscale")
+///     .fontFamily("Bixa Color")
+///
+/// // Using a specific base palette
+/// FontPaletteValues("--Alternate")
+///     .fontFamily("Bixa Color")
+///     .basePalette(2)
+///
+/// // Overriding colors
+/// FontPaletteValues("--Custom")
+///     .fontFamily("Bungee Spice")
+///     .overrideColors([
+///         (0, Color.hex("#00ffbb")),
+///         (1, Color.hex("#007744"))
+///     ])
+///
+/// // Complete customization
+/// FontPaletteValues("--BrandColors")
+///     .fontFamily("Rocher Color")
+///     .basePalette(3)
+///     .overrideColors([
+///         (0, Color.hex("#3366CC")),
+///         (1, Color.hex("#CC3366")),
+///         (2, Color.hex("#66CC33"))
+///     ])
+/// ```
+public struct FontPaletteValues: AtRule {
+    public static let identifier: String = "font-palette-values"
+    
+    public var rawValue: String
+    private var identifier: String
+    private var descriptors: [String: String] = [:]
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+        
+        // Extract identifier from rawValue - simplified implementation
+        if let idRange = rawValue.range(of: "@font-palette-values\\s+([^{]+)", options: .regularExpression),
+           let matches = rawValue[idRange].range(of: "\\s+([^{]+)", options: .regularExpression) {
+            self.identifier = String(rawValue[matches]).trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            self.identifier = ""
+        }
+    }
+    
+    /// Creates a font palette values rule with the specified identifier.
+    ///
+    /// - Parameter identifier: The palette identifier, which should start with `--`.
+    public init(_ identifier: String) {
+        self.identifier = identifier
+        self.rawValue = "@font-palette-values \(identifier) {}"
+    }
+    
+    /// Updates the raw value based on the current descriptors.
+    private mutating func updateRawValue() {
+        let descriptorString = descriptors.map { key, value in
+            "  \(key): \(value);"
+        }.joined(separator: "\n")
+        
+        if descriptorString.isEmpty {
+            rawValue = "@font-palette-values \(identifier) {}"
+        } else {
+            rawValue = "@font-palette-values \(identifier) {\n\(descriptorString)\n}"
+        }
+    }
+    
+    /// Sets the font-family descriptor.
+    ///
+    /// - Parameter family: The name of the font family.
+    /// - Returns: An updated FontPaletteValues instance.
+    public func fontFamily(_ family: String) -> FontPaletteValues {
+        var palette = self
+        palette.descriptors["font-family"] = "\"\(family)\""
+        palette.updateRawValue()
+        return palette
+    }
+    
+    /// Sets the base-palette descriptor.
+    ///
+    /// - Parameter index: The index of the base palette to use.
+    /// - Returns: An updated FontPaletteValues instance.
+    public func basePalette(_ index: Int) -> FontPaletteValues {
+        var palette = self
+        palette.descriptors["base-palette"] = String(index)
+        palette.updateRawValue()
+        return palette
+    }
+    
+    /// Sets the base-palette descriptor using a name.
+    ///
+    /// - Parameter name: The name of the base palette to use.
+    /// - Returns: An updated FontPaletteValues instance.
+    public func basePalette(_ name: String) -> FontPaletteValues {
+        var palette = self
+        palette.descriptors["base-palette"] = name
+        palette.updateRawValue()
+        return palette
+    }
+    
+    /// Sets the override-colors descriptor.
+    ///
+    /// - Parameter colors: An array of tuples containing color indices and values.
+    /// - Returns: An updated FontPaletteValues instance.
+    public func overrideColors(_ colors: [(Int, Color)]) -> FontPaletteValues {
+        var palette = self
+        let colorString = colors
+            .map { "\($0.0) \($0.1)" }
+            .joined(separator: ",\n    ")
+        
+        if !colorString.isEmpty {
+            palette.descriptors["override-colors"] = "\n    \(colorString)"
+        }
+        
+        palette.updateRawValue()
+        return palette
+    }
+}

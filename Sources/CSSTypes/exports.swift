@@ -7,5 +7,5 @@
 
 @_exported import CSSTypeTypes
 @_exported import CSSPropertyTypes
+@_exported import CSSAtRuleTypes
 
-public enum CSSModuleTest {}

@@ -1,163 +1,141 @@
-//@import
-//
-//
-//Baseline Widely available *
-//
-//
-//
-//The @import CSS at-rule is used to import style rules from other valid stylesheets. An @import rule must be defined at the top of the stylesheet, before any other at-rule (except @charset and @layer) and style declarations, or it will be ignored.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@import url;
-//@import url layer;
-//@import url layer(layer-name);
-//@import url layer(layer-name) supports(supports-condition);
-//@import url layer(layer-name) supports(supports-condition) list-of-media-queries;
-//@import url layer(layer-name) list-of-media-queries;
-//@import url supports(supports-condition);
-//@import url supports(supports-condition) list-of-media-queries;
-//@import url list-of-media-queries;
-//where:
-//
-//url
-//Is a <string> or a <url> type representing the location of the resource to import. The URL may be absolute or relative.
-//
-//list-of-media-queries
-//Is a comma-separated list of media queries, which specify the media-dependent conditions for applying the CSS rules defined in the linked URL. If the browser does not support any of these queries, it does not load the linked resource.
-//
-//layer-name
-//Is the name of a cascade layer into which the contents of the linked resource are imported. See layer() for more information.
-//
-//supports-condition
-//Indicates the feature(s) that the browser must support in order for the stylesheet to be imported. If the browser does not conform to the conditions specified in the supports-condition, it may not fetch the linked stylesheet, and even if downloaded through some other path, will not load it. The syntax of supports() is almost identical to that described in @supports, and that topic can be used as a more complete reference.
-//
-//Use @import together with the layer keyword or layer() function to import external style sheets (from frameworks, widget stylesheets, libraries, etc.) into layers.
-//
-//Description
-//Imported rules must come before all other types of rules, except @charset rules and layer creating @layer statements.
-//
-//CSS
-//Copy to Clipboard
-//* {
-//  margin: 0;
-//  padding: 0;
-//}
-///* more styles */
-//@import url("my-imported-styles.css");
-//As the @import at-rule is declared after the styles it is invalid and hence ignored.
-//
-//CSS
-//Copy to Clipboard
-//@import url("my-imported-styles.css");
-//* {
-//  margin: 0;
-//  padding: 0;
-//}
-///* more styles */
-//The @import rule is not a nested statement. Therefore, it cannot be used inside conditional group at-rules.
-//
-//So that user agents can avoid retrieving resources for unsupported media types, authors may specify media-dependent import conditions. These conditional imports specify comma-separated media queries after the URL. In the absence of any media query, the import is not conditional on the media used. Specifying all for the list-of-media-queries has the same effect.
-//
-//Similarly, user agents can use the supports() function in an @import at-rule to only fetch resources if a particular feature set is (or is not) supported. This allows authors to take advantage of recently introduced CSS features, while providing graceful fallbacks for older browser versions. Note that the conditions in the supports() function of an @import at-rule can be obtained in JavaScript using CSSImportRule.supportsText.
-//
-//The @import rule can also be used to create a cascade layer by importing rules from a linked resource. Rules can also be imported into an existing cascade layer. The layer keyword or the layer() function is used with @import for this purpose. Declarations in style rules from imported stylesheets interact with the cascade as if they were written literally into the stylesheet at the point of the import.
-//
-//Formal syntax
-//@import =
-//  @import [ <url> | <string> ] [ layer | layer( <layer-name> ) ]? <import-conditions> ;
-//
-//<url> =
-//  <url()>  |
-//  <src()>
-//
-//<layer-name> =
-//  <ident> [ '.' <ident> ]*
-//
-//<import-conditions> =
-//  [ supports( [ <supports-condition> | <declaration> ] ) ]? <media-query-list>?
-//
-//<url()> =
-//  url( <string> <url-modifier>* )  |
-//  <url-token>
-//
-//<src()> =
-//  src( <string> <url-modifier>* )
-//
-//<supports-condition> =
-//  not <supports-in-parens>                            |
-//  <supports-in-parens> [ and <supports-in-parens> ]*  |
-//  <supports-in-parens> [ or <supports-in-parens> ]*
-//
-//<supports-in-parens> =
-//  ( <supports-condition> )  |
-//  <supports-feature>        |
-//  <general-enclosed>
-//
-//<supports-feature> =
-//  <supports-decl>
-//
-//<supports-decl> =
-//  ( <declaration> )
-//
-//Sources: CSS Cascading and Inheritance Level 5, CSS Values and Units Module Level 4, CSS Conditional Rules Module Level 3
-//Examples
-//Importing CSS rules
-//CSS
-//Copy to Clipboard
-//@import "custom.css";
-//@import url("chrome://communicator/skin/");
-//The two examples above show how to specify the url as a <string> and as a url() function.
-//
-//Importing CSS rules conditional on media queries
-//CSS
-//Copy to Clipboard
-//@import url("fine-print.css") print;
-//@import url("bluish.css") print, screen;
-//@import "common.css" screen;
-//@import url("landscape.css") screen and (orientation: landscape);
-//The @import rules in the above examples show media-dependent conditions that will need to be true before the linked CSS rules are applied. So for instance, the last @import rule will load the landscape.css stylesheet only on a screen device in landscape orientation.
-//
-//Importing CSS rules conditional on feature support
-//CSS
-//Copy to Clipboard
-//@import url("gridy.css") supports(display: grid) screen and (max-width: 400px);
-//@import url("flexy.css") supports((not (display: grid)) and (display: flex))
-//  screen and (max-width: 400px);
-//The @import rules above illustrate how you might import a layout that uses a grid if display: grid is supported, and otherwise imports CSS that uses display: flex. While you can only have one supports() statement, you can combine any number of feature checks with not, and, and or. However, you must use parenthesis to define precedence when you mix them, e.g., supports((..) or (..) and not (..)) is invalid, but supports((..) or ((..) and (not (..)))) is valid. Note that if you just have a single declaration then you don't need to wrap it in additional parentheses: this is shown in the first example above.
-//
-//The examples above show support conditions using basic declaration syntax. You can also specify CSS functions in supports(), and it will evaluate to true if they are supported and can be evaluated on the user-agent. For example, the code below shows an @import that is conditional on both child combinators (selector()) and the font-tech() function:
-//
-//CSS
-//Copy to Clipboard
-//@import url("whatever.css")
-//supports((selector(h2 > p)) and (font-tech(color-COLRv1)));
-//Importing CSS rules into a cascade layer
-//CSS
-//Copy to Clipboard
-//@import "theme.css" layer(utilities);
-//In the above example, a cascade layer named utilities is created and it will include rules from the imported stylesheet theme.
-//
-//CSS
-//Copy to Clipboard
-//@import url(headings.css) layer(default);
-//@import url(links.css) layer(default);
-//
-//@layer default {
-//  audio[controls] {
-//    display: block;
-//  }
-//}
-//In the above example, the rules in headings.css and links.css stylesheets cascade within the same layer as the audio[controls] rule.
-//
-//CSS
-//Copy to Clipboard
-//@import "theme.css" layer();
-//@import "style.css" layer;
-//This is an example of creating two separate unnamed cascade layers and importing the linked rules into each one separately. A cascade layer declared without a name is an unnamed cascade layer. Unnamed cascade layers are finalized when created: they do not provide any means for re-arranging or adding styles and they cannot be referenced from outside.
-//
-//Specifications
-//Specification
-//CSS Cascading and Inheritance Level 5
-//# at-import
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @import at-rule.
+///
+/// The @import CSS at-rule is used to import style rules from other stylesheets.
+/// It must be defined at the top of the stylesheet, before any other at-rule
+/// (except @charset and @layer) and style declarations.
+///
+/// Examples:
+/// ```swift
+/// // Simple import
+/// Import("custom.css")
+///
+/// // Import with a URL
+/// Import.url("https://example.com/styles/main.css")
+///
+/// // Import with a single media query
+/// Import("print.css").media(Media.print)
+///
+/// // Import with multiple media queries
+/// Import("responsive.css").media([Media.screen, Media.maxWidth(.px(768))])
+///
+/// // Import with supports condition
+/// Import("grid.css").supports("display: grid")
+///
+/// // Import into a layer
+/// Import("theme.css").layer("utilities")
+///
+/// // Complex import with all conditions
+/// Import("responsive.css")
+///     .layer("layout")
+///     .supports("display: flex")
+///     .media([Media.screen, Media.maxWidth(.px(500))])
+/// ```
+public struct Import: AtRule {
+    public static let identifier: String = "import"
+    
+    public var rawValue: String
+    private var url: String
+    private var conditions: [String] = []
+    private var layerName: String?
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+        
+        // Extract URL from rawValue - simplified implementation
+        if let urlRange = rawValue.range(of: "@import\\s+([^\\s;]+)", options: .regularExpression),
+           let matches = rawValue[urlRange].range(of: "\\s+([^\\s;]+)", options: .regularExpression) {
+            self.url = String(rawValue[matches]).trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            self.url = ""
+        }
+    }
+    
+    /// Creates an import rule with the specified path.
+    ///
+    /// - Parameter path: The path to the CSS file to import.
+    public init(_ path: String) {
+        self.url = "\"\(path)\""
+        self.rawValue = "@import \(self.url);"
+    }
+    
+    /// Creates an import rule with the specified URL.
+    ///
+    /// - Parameter url: The URL to the CSS file to import.
+    /// - Returns: An Import instance.
+    public static func url(_ url: String) -> Import {
+        let formattedUrl = "url(\"\(url)\")"
+        var importRule = Import(rawValue: "@import \(formattedUrl);")
+        importRule.url = formattedUrl
+        return importRule
+    }
+    
+    /// Updates the raw value based on the current conditions.
+    private mutating func updateRawValue() {
+        var parts: [String] = ["@import", url]
+        
+        if let layerName = layerName {
+            if layerName.isEmpty {
+                parts.append("layer")
+            } else {
+                parts.append("layer(\(layerName))")
+            }
+        }
+        
+        parts.append(contentsOf: conditions)
+        rawValue = parts.joined(separator: " ") + ";"
+    }
+    
+    /// Sets the media query condition.
+    ///
+    /// - Parameter media: The media query to apply.
+    /// - Returns: An updated Import instance.
+    public func media(_ media: Media) -> Import {
+        var importRule = self
+        // Extract just the media query part (without "@media ")
+        let mediaQueryString = String(media.rawValue.dropFirst(7))
+        importRule.conditions = importRule.conditions.filter { !$0.starts(with: "screen") && !$0.starts(with: "print") && !$0.starts(with: "all") }
+        importRule.conditions.append(mediaQueryString)
+        importRule.updateRawValue()
+        return importRule
+    }
+    
+    /// Sets the media query conditions using multiple media queries.
+    ///
+    /// - Parameter medias: An array of media queries to apply.
+    /// - Returns: An updated Import instance.
+    public func media(_ medias: [Media]) -> Import {
+        var importRule = self
+        let mediaQueryStrings = medias.map { String($0.rawValue.dropFirst(7)) }
+        let mediaQueryString = mediaQueryStrings.joined(separator: ", ")
+        importRule.conditions = importRule.conditions.filter { !$0.starts(with: "screen") && !$0.starts(with: "print") && !$0.starts(with: "all") }
+        importRule.conditions.append(mediaQueryString)
+        importRule.updateRawValue()
+        return importRule
+    }
+    
+    /// Sets the supports condition.
+    ///
+    /// - Parameter condition: The condition to check for support.
+    /// - Returns: An updated Import instance.
+    public func supports(_ condition: String) -> Import {
+        var importRule = self
+        importRule.conditions = importRule.conditions.filter { !$0.starts(with: "supports") }
+        importRule.conditions.append("supports(\(condition))")
+        importRule.updateRawValue()
+        return importRule
+    }
+    
+    /// Sets the layer to import into.
+    ///
+    /// - Parameter name: The name of the layer. Pass an empty string for an anonymous layer.
+    /// - Returns: An updated Import instance.
+    public func layer(_ name: String = "") -> Import {
+        var importRule = self
+        importRule.layerName = name
+        importRule.updateRawValue()
+        return importRule
+    }
+}

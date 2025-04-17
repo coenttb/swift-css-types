@@ -1,188 +1,190 @@
-//@position-try
-//
-//
-//Limited availability
-//
-//
-//
-//Experimental: This is an experimental technology
-//Check the Browser compatibility table carefully before using this in production.
-//The @position-try CSS at-rule is used to define a custom position try fallback option, which can be used to define positioning and alignment for anchor-positioned elements. One or more sets of position try fallback options can be applied to the anchored element via the position-try-fallbacks property or position-try shorthand. When the positioned element is moved to a position where it starts to overflow its containing block or the viewport, the browser will select the first position try fallback option it finds that places the positioned element fully back on-screen.
-//
-//Each position option is named with a <dashed-ident> and contains a descriptor list specifying declarations that define information such as inset position, margin, sizing, and self-alignment. The <dashed-ident> is used to reference the custom position option in the position-try-fallbacks property and position-try shorthand.
-//
-//For detailed information on anchor features and position try fallback usage, see the CSS anchor positioning module landing page and the Handling overflow: try fallbacks and conditional hiding guide.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@position-try --try-option-name {
-//  descriptor-list
-//}
-//Note: The --try-option-name is a <dashed-ident> specifying an identifying name for the custom position option, which can then be used to add that fallback option to the position-try-fallbacks list.
-//Descriptors
-//The descriptors specify property values that define the behavior of the custom position option, i.e., where it will result in the positioned element being placed.
-//
-//position-anchor
-//Specifies a position-anchor property value that defines the anchor element that the positioned element is tethered to, by specifying a <dashed-ident> value equal to the anchor element's anchor-name property value.
-//
-//position-area
-//Specifies a position-area property value that defines the position of the anchor-positioned element relative to the anchor.
-//
-//Inset property descriptors
-//Specify anchor() function values that define the position of the anchor-positioned element's edges relative to the anchor element's edge. Inset property descriptors can be set that represent the following properties:
-//
-//top
-//left
-//bottom
-//right.
-//inset-block-start
-//inset-block-end
-//inset-inline-start
-//inset-inline-end
-//inset-block
-//inset-inline
-//inset
-//Margin property descriptors
-//Specify the margin set on the anchor-positioned element. Margin property descriptors can be set that represent the following properties:
-//
-//margin-top
-//margin-left
-//margin-bottom
-//margin-right
-//margin-block-start
-//margin-block-end
-//margin-inline-start
-//margin-inline-end
-//margin
-//margin-block
-//margin-inline
-//Sizing property descriptors
-//Specify anchor-size() function values that define the size of the anchor-positioned element relative to the anchor element size. Sizing property descriptors can be set that represent the following properties:
-//
-//width
-//height
-//min-width
-//min-height
-//max-width
-//max-height
-//block-size
-//inline-size
-//min-block-size
-//min-inline-size
-//max-block-size
-//max-inline-size
-//Self-alignment property descriptors
-//Specify the anchor-center value to align the anchor-positioned element relative to the anchor element's center, in the block or inline direction. align-self and justify-self property descriptors can take the anchor-center value.
-//
-//Note: When a custom position option is applied to an element, the property values defined in the @position-try at-rule descriptor takes precedence over the values set on the element via standard CSS properties.
-//Formal syntax
-//@position-try =
-//  @position-try <dashed-ident> { <declaration-list> }
-//
-//Sources: CSS Anchor Positioning
-//Examples
-//Custom position option usage
-//In this example, we define an anchor element and an anchor-positioned element, then create four named custom position try fallback options. These options are applied to the positioned element to ensure its contents are always visible no matter where the anchor element is within the viewport.
-//
-//HTML
-//
-//We include two <div> elements that will become an anchor and an anchor-positioned element:
-//
-//HTML
-//Copy to Clipboard
-//Play
-//<div class="anchor">⚓︎</div>
-//
-//<div class="infobox">
-//  <p>This is an information box.</p>
-//</div>
-//CSS
-//
-//We first style the <body> element to be very large, so that we can scroll the anchor and the positioned element around in the viewport, both horizontally and vertically:
-//
-//CSS
-//Copy to Clipboard
-//Play
-//body {
-//  width: 1500px;
-//  height: 500px;
-//}
-//The anchor is given an anchor-name and has a position value of absolute set on it. We then position it somewhere near the center of the initial <body> rendering using top and left values:
-//
-//CSS
-//Copy to Clipboard
-//Play
-//.anchor {
-//  anchor-name: --myAnchor;
-//  position: absolute;
-//  top: 100px;
-//  left: 350px;
-//}
-//Next, we use the @position-try at-rule to define four custom position options, with descriptive <dashed-ident> names to identify them and describe their purpose. Each one places the positioned element in a specific position around the anchor element and gives it an appropriate 10px margin between the positioned element and its anchor. The positioning is handled in a variety of ways, to demonstrate the different techniques available:
-//
-//The first and last position options use a position-area.
-//The second position option uses top with an anchor() value and justify-self: anchor-center to center the positioned element on the anchor in the inline direction.
-//The third position option uses left with an anchor() value, wrapped inside a calc() function that adds 10px of spacing (rather than creating the spacing with margin like the other options do). It then uses align-self: anchor-center to center the positioned element on the anchor in the block direction.
-//Finally, the left and right position options are given a narrower width
-//
-//CSS
-//Copy to Clipboard
-//Play
-//@position-try --custom-left {
-//  position-area: left;
-//  width: 100px;
-//  margin: 0 10px 0 0;
-//}
-//
-//@position-try --custom-bottom {
-//  top: anchor(bottom);
-//  justify-self: anchor-center;
-//  margin: 10px 0 0 0;
-//  position-area: none;
-//}
-//
-//@position-try --custom-right {
-//  left: calc(anchor(right) + 10px);
-//  align-self: anchor-center;
-//  width: 100px;
-//  position-area: none;
-//}
-//
-//@position-try --custom-bottom-right {
-//  position-area: bottom right;
-//  margin: 10px 0 0 10px;
-//}
-//The infobox is given fixed positioning, a position-anchor property that references the anchor's anchor-name to associate the two together, and it is tethered to the anchor's top edge using an position-area. We also give it a fixed width and some bottom margin. The custom position options are then referenced in the position-try-fallbacks property to prevent the positioned element from overflowing, or being scrolled out of view, when the anchor gets near the edge of the viewport.
-//
-//CSS
-//Copy to Clipboard
-//Play
-//.infobox {
-//  position: fixed;
-//  position-anchor: --myAnchor;
-//  position-area: top;
-//  width: 200px;
-//  margin: 0 0 10px 0;
-//  position-try-fallbacks:
-//    --custom-left, --custom-bottom,
-//    --custom-right, --custom-bottom-right;
-//}
-//Result
-//
-//Scroll the page and notice the change in the positioned element's placement as the anchor nears the different edges of the viewport. This is due to different fallback position options being applied.
-//
-//Play
-//
-//Let's talk through how these position options work:
-//
-//First of all, note that our default position is defined by position-area: top. When the infobox isn't overflowing the page in any direction, the infobox sits above the anchor, and the position try fallback options set in the position-try-fallbacks property are ignored. Also note that the infobox has a fixed width and bottom margin set. These values will change as different position try fallback options are applied.
-//If the infobox starts to overflow, the browser first tries the --custom-left position. This moves the infobox to the left of the anchor using position-area: left, adjusts the margin to suit, and also gives the infobox a different width.
-//Next, the browser tries the --custom-bottom position. This moves the infobox to the bottom of the anchor using top and justify-self instead of a position-area, and sets an appropriate margin. It doesn't include a width descriptor, so the infobox returns to its default width of 200px set by the width property.
-//The browser next tries the --custom-right position. This works much the same as the --custom-left position, with the same width descriptor value applied. However, we are using left and align-self to place the positioned element instead of a position-area. And we are wrapping the left value in a calc() function inside which we are adding 10px to create spacing, instead of using margin.
-//If none of the other try fallback options succeed in stopping the positioned element from overflowing, the browser tries the --custom-bottom-right position as a last resort. This places the positioned element to the bottom-right of the anchor using position-area: bottom right.
-//When a position option is applied, its values override the initial values set on the positioned element. For example, the width initially set on the positioned element is 200px, but when the --custom-right position option is applied, its width is set to 100px.
-//
-//In some cases, we need to set values inside the custom position options to turn off the initial values. The --custom-bottom and --custom-right options use inset property and *-self: anchor-center values to place the positioned element, therefore we remove the previously-set position-area value in each case by setting position-area: none. If we didn't do this, the initially set position-area: top value would still take effect and interfere with the other positioning information.
-//
-//Specifications
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @position-try at-rule.
+///
+/// The @position-try at-rule is used to define custom position fallback options
+/// for anchor-positioned elements. These fallback positions are applied when an
+/// anchored element would otherwise overflow its containing block or the viewport.
+///
+/// Examples:
+/// ```swift
+/// // Basic position try rule
+/// PositionTry.named("--custom-left")
+///     .positionArea(.left)
+///     .width(.px(100))
+///     .margin(.px(0), .px(10), .px(0), .px(0))
+///
+/// // Position try with alignment
+/// PositionTry.named("--custom-bottom")
+///     .top(.anchor("bottom"))
+///     .justifySelf(.anchorCenter)
+///     .margin(.px(10), .px(0), .px(0), .px(0))
+///     .positionArea(.none)
+///
+/// // Position try with calculation
+/// PositionTry.named("--custom-right")
+///     .left(.calc("anchor(right) + 10px"))
+///     .alignSelf(.anchorCenter)
+///     .width(.px(100))
+///     .positionArea(.none)
+/// ```
+public struct PositionTry: AtRule {
+    public static let identifier: String = "position-try"
+    
+    public var rawValue: String
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+    
+    /// Creates a new @position-try rule with the specified custom identifier
+    /// @position-try --name {}
+    public static func named(_ name: String) -> PositionTry {
+        PositionTry(rawValue: "@position-try \(name) {}")
+    }
+    
+    /// Sets the position-anchor property in the position try rule
+    /// @position-try --name { position-anchor: <value>; }
+    public func positionAnchor(_ value: String) -> PositionTry {
+        addProperty("position-anchor: \(value);")
+    }
+    
+    /// Sets the position-area property in the position try rule
+    /// @position-try --name { position-area: <value>; }
+    public func positionArea(_ value: PositionArea) -> PositionTry {
+        addProperty("position-area: \(value);")
+    }
+    
+    /// Sets position-area to "none" to disable it
+    /// @position-try --name { position-area: none; }
+    public func positionArea(_ value: PositionAreaValue) -> PositionTry {
+        addProperty("position-area: \(value.rawValue);")
+    }
+    
+    /// Sets the top property in the position try rule
+    /// @position-try --name { top: <value>; }
+    public func top(_ value: AnchorValue) -> PositionTry {
+        addProperty("top: \(value.rawValue);")
+    }
+    
+    /// Sets the right property in the position try rule
+    /// @position-try --name { right: <value>; }
+    public func right(_ value: AnchorValue) -> PositionTry {
+        addProperty("right: \(value.rawValue);")
+    }
+    
+    /// Sets the bottom property in the position try rule
+    /// @position-try --name { bottom: <value>; }
+    public func bottom(_ value: AnchorValue) -> PositionTry {
+        addProperty("bottom: \(value.rawValue);")
+    }
+    
+    /// Sets the left property in the position try rule
+    /// @position-try --name { left: <value>; }
+    public func left(_ value: AnchorValue) -> PositionTry {
+        addProperty("left: \(value.rawValue);")
+    }
+    
+    /// Sets the inset property in the position try rule
+    /// @position-try --name { inset: <value>; }
+    public func inset(_ value: AnchorValue) -> PositionTry {
+        addProperty("inset: \(value.rawValue);")
+    }
+    
+    /// Sets the width property in the position try rule
+    /// @position-try --name { width: <value>; }
+    public func width(_ value: LengthPercentage) -> PositionTry {
+        addProperty("width: \(value);")
+    }
+    
+    /// Sets the height property in the position try rule
+    /// @position-try --name { height: <value>; }
+    public func height(_ value: LengthPercentage) -> PositionTry {
+        addProperty("height: \(value);")
+    }
+    
+    /// Sets the margin property in the position try rule with a single value
+    /// @position-try --name { margin: <value>; }
+    public func margin(_ value: LengthPercentage) -> PositionTry {
+        addProperty("margin: \(value);")
+    }
+    
+    /// Sets the margin property in the position try rule with four values
+    /// @position-try --name { margin: <top> <right> <bottom> <left>; }
+    public func margin(_ top: LengthPercentage, _ right: LengthPercentage, _ bottom: LengthPercentage, _ left: LengthPercentage) -> PositionTry {
+        addProperty("margin: \(top) \(right) \(bottom) \(left);")
+    }
+    
+    /// Sets the align-self property in the position try rule
+    /// @position-try --name { align-self: <value>; }
+    public func alignSelf(_ value: SelfAlignment) -> PositionTry {
+        addProperty("align-self: \(value.rawValue);")
+    }
+    
+    /// Sets the justify-self property in the position try rule
+    /// @position-try --name { justify-self: <value>; }
+    public func justifySelf(_ value: SelfAlignment) -> PositionTry {
+        addProperty("justify-self: \(value.rawValue);")
+    }
+    
+    /// Helper method to add a CSS property to the position try rule
+    private func addProperty(_ property: String) -> PositionTry {
+        let currentContent = rawValue
+        
+        // Check if the rule already has properties
+        if currentContent.hasSuffix("{}") {
+            // No properties yet, add the first one
+            let newContent = currentContent.dropLast() + property + "}"
+            return PositionTry(rawValue: String(newContent))
+        } else {
+            // Already has properties, add another one
+            let newContent = currentContent.dropLast() + " " + property + "}"
+            return PositionTry(rawValue: String(newContent))
+        }
+    }
+}
+
+extension PositionTry {
+    /// Special position-area values
+    public enum PositionAreaValue: String, Hashable, Sendable {
+        /// Disables the position-area property
+        case none
+    }
+    
+    /// Anchor function values for inset properties
+    public enum AnchorValue: Hashable, Sendable {
+        /// Value using the anchor() function
+        case anchor(String)
+        
+        /// Value using a calc() function
+        case calc(String)
+        
+        /// The raw CSS representation
+        public var rawValue: String {
+            switch self {
+            case .anchor(let edge):
+                return "anchor(\(edge))"
+            case .calc(let expression):
+                return "calc(\(expression))"
+            }
+        }
+    }
+    
+    /// Self-alignment values for anchor positioning
+    public enum SelfAlignment: String, Hashable, Sendable {
+        /// Standard CSS alignment values
+        case auto
+        case normal
+        case start
+        case end
+        case center
+        case selfStart = "self-start"
+        case selfEnd = "self-end"
+        case flexStart = "flex-start"
+        case flexEnd = "flex-end"
+        
+        /// Anchor-specific alignment value
+        case anchorCenter = "anchor-center"
+    }
+}

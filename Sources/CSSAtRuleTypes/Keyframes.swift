@@ -1,142 +1,178 @@
-//@keyframes
-//
-//
-//Baseline Widely available *
-//
-//
-//
-//The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions.
-//
-//Syntax
-//CSS
-//Copy to Clipboard
-//@keyframes slide-in {
-//  from {
-//    transform: translateX(0%);
-//  }
-//
-//  to {
-//    transform: translateX(100%);
-//  }
-//}
-//Values
-//<custom-ident>
-//A name identifying the keyframe list. This must match the identifier production in CSS syntax.
-//
-//from
-//A starting offset of 0%.
-//
-//to
-//An ending offset of 100%.
-//
-//<percentage>
-//A percentage of the time through the animation sequence at which the specified keyframe should occur.
-//
-//<timeline-range-name> <percentage>
-//A percentage of the time through the specified animation-range at which the specified keyframe should occur. See CSS scroll-driven animations for more information on the kinds of animations that use named timeline ranges.
-//
-//Description
-//To use keyframes, create a @keyframes rule with a name that is then used by the animation-name property to match an animation to its keyframe declaration. Each @keyframes rule contains a style list of keyframe selectors, which specify percentages along the animation when the keyframe occurs, and a block containing the styles for that keyframe.
-//
-//You can list the keyframe percentages in any order; they will be handled in the order they should occur.
-//
-//JavaScript can access the @keyframes at-rule with the CSS object model interface CSSKeyframesRule.
-//
-//Valid keyframe lists
-//If a keyframe rule doesn't specify the start or end states of the animation (that is, 0%/from and 100%/to), browsers will use the element's existing styles for the start/end states. This can be used to animate an element from its initial state and back.
-//
-//Properties that can't be animated in keyframe rules are ignored, but supported properties will still be animated.
-//
-//Resolving duplicates
-//If multiple keyframe sets exist for a given name, the last one encountered by the parser is used. @keyframes rules don't cascade, so animations never derive keyframes from more than one rule set.
-//
-//If a given animation time offset is duplicated, all keyframes in the @keyframes rule for that percentage are used for that frame. There is cascading within a @keyframes rule if multiple keyframes specify the same percentage values.
-//
-//When properties are left out of some keyframes
-//Properties that aren't specified in every keyframe are interpolated if possible — properties that can't be interpolated are dropped from the animation. For example:
-//
-//CSS
-//Copy to Clipboard
-//@keyframes identifier {
-//  0% {
-//    top: 0;
-//    left: 0;
-//  }
-//  30% {
-//    top: 50px;
-//  }
-//  68%,
-//  72% {
-//    left: 50px;
-//  }
-//  100% {
-//    top: 100px;
-//    left: 100%;
-//  }
-//}
-//Here, the top property animates using the 0%, 30%, and 100% keyframes, and left animates using the 0%, 68%, 72% and 100% keyframes.
-//
-//When a keyframe is defined multiple times
-//If a keyframe is defined multiple times but not all affected properties are in each keyframe, all values specified in these keyframes are considered. For example:
-//
-//CSS
-//Copy to Clipboard
-//@keyframes identifier {
-//  0% {
-//    top: 0;
-//  }
-//  50% {
-//    top: 30px;
-//    left: 20px;
-//  }
-//  50% {
-//    top: 10px;
-//  }
-//  100% {
-//    top: 0;
-//  }
-//}
-//In this example, at the 50% keyframe, the values used are top: 10px and left: 20px.
-//
-//Cascading keyframes are supported starting in Firefox 14.
-//
-//!important in a keyframe
-//Declarations in a keyframe qualified with !important are ignored.
-//
-//CSS
-//Copy to Clipboard
-//@keyframes important1 {
-//  from {
-//    margin-top: 50px;
-//  }
-//  50% {
-//    margin-top: 150px !important; /* ignored */
-//  }
-//  to {
-//    margin-top: 100px;
-//  }
-//}
-//
-//@keyframes important2 {
-//  from {
-//    margin-top: 50px;
-//    margin-bottom: 100px;
-//  }
-//  to {
-//    margin-top: 150px !important; /* ignored */
-//    margin-bottom: 50px;
-//  }
-//}
-//Formal syntax
-//@keyframes =
-//  @keyframes <keyframes-name> { <qualified-rule-list> }
-//
-//<keyframes-name> =
-//  <custom-ident>  |
-//  <string>
-//
-//Sources: CSS Animations Level 1
-//Examples
-//CSS animation examples
-//See Using CSS animations and Animate elements on scroll with Scroll-driven animations for examples.
-//
+import Foundation
+import CSSTypeTypes
+
+/// Represents a CSS @keyframes at-rule.
+///
+/// The @keyframes CSS at-rule controls the intermediate steps in a CSS animation
+/// sequence by defining styles for keyframes (or waypoints) along the animation sequence.
+///
+/// Examples:
+/// ```swift
+/// // Simple slide-in animation
+/// Keyframes("slide-in")
+///     .keyframe(.from, [
+///         "transform": "translateX(0%)"
+///     ])
+///     .keyframe(.to, [
+///         "transform": "translateX(100%)"
+///     ])
+///
+/// // Fade animation with multiple keyframes
+/// Keyframes("fade-in-out")
+///     .keyframe(.percentage(0), [
+///         "opacity": "0"
+///     ])
+///     .keyframe(.percentage(50), [
+///         "opacity": "1"
+///     ])
+///     .keyframe(.percentage(100), [
+///         "opacity": "0"
+///     ])
+///
+/// // Complex animation with multiple properties
+/// Keyframes("bounce")
+///     .keyframe(.from, [
+///         "transform": "translateY(0)",
+///         "animation-timing-function": "ease-out"
+///     ])
+///     .keyframe(.percentage(40), [
+///         "transform": "translateY(-30px)",
+///         "animation-timing-function": "ease-in"
+///     ])
+///     .keyframe([.percentage(60), .percentage(80)], [
+///         "transform": "translateY(0)",
+///         "animation-timing-function": "ease-out"
+///     ])
+///     .keyframe(.percentage(100), [
+///         "transform": "translateY(0)"
+///     ])
+/// ```
+public struct Keyframes: AtRule {
+    public static let identifier: String = "keyframes"
+    
+    public var rawValue: String
+    private var name: String
+    private var keyframes: [Keyframe] = []
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+        
+        // Extract name from rawValue - simplified implementation
+        if let nameRange = rawValue.range(of: "@keyframes\\s+([^\\s{]+)", options: .regularExpression),
+           let matches = rawValue[nameRange].range(of: "\\s+([^\\s{]+)", options: .regularExpression) {
+            self.name = String(rawValue[matches]).trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            self.name = ""
+        }
+    }
+    
+    /// Creates a keyframes rule with the specified name.
+    ///
+    /// - Parameter name: The name of the animation.
+    public init(_ name: String) {
+        self.name = name
+        self.rawValue = "@keyframes \(name) {}"
+    }
+    
+    /// Updates the raw value based on the current keyframes.
+    private mutating func updateRawValue() {
+        var sections: [String] = []
+        
+        for frame in keyframes {
+            var styleLines: [String] = []
+            
+            for (property, value) in frame.styles {
+                styleLines.append("    \(property): \(value);")
+            }
+            
+            if !styleLines.isEmpty {
+                let selectorString = frame.selectors.map { $0.rawValue }.joined(separator: ", ")
+                let stylesString = styleLines.joined(separator: "\n")
+                sections.append("  \(selectorString) {\n\(stylesString)\n  }")
+            }
+        }
+        
+        let keyframesString = sections.joined(separator: "\n\n")
+        
+        if keyframesString.isEmpty {
+            rawValue = "@keyframes \(name) {}"
+        } else {
+            rawValue = "@keyframes \(name) {\n\(keyframesString)\n}"
+        }
+    }
+    
+    /// Adds a keyframe to the animation.
+    ///
+    /// - Parameters:
+    ///   - selector: The keyframe selector.
+    ///   - styles: The styles to apply at this keyframe.
+    /// - Returns: An updated Keyframes instance.
+    public func keyframe(_ selector: KeyframeSelector, _ styles: [String: String]) -> Keyframes {
+        return keyframe([selector], styles)
+    }
+    
+    /// Adds a keyframe with multiple selectors to the animation.
+    ///
+    /// - Parameters:
+    ///   - selectors: The keyframe selectors.
+    ///   - styles: The styles to apply at this keyframe.
+    /// - Returns: An updated Keyframes instance.
+    public func keyframe(_ selectors: [KeyframeSelector], _ styles: [String: String]) -> Keyframes {
+        var keyframes = self
+        let frame = Keyframe(selectors: selectors, styles: styles)
+        
+        // Check if we already have a keyframe with the same selectors
+        if let index = keyframes.keyframes.firstIndex(where: { $0.selectors == frame.selectors }) {
+            // Merge the styles
+            var updatedFrame = keyframes.keyframes[index]
+            for (key, value) in frame.styles {
+                updatedFrame.styles[key] = value
+            }
+            keyframes.keyframes[index] = updatedFrame
+        } else {
+            // Add a new keyframe
+            keyframes.keyframes.append(frame)
+        }
+        
+        keyframes.updateRawValue()
+        return keyframes
+    }
+}
+
+// MARK: - Keyframe Types
+
+extension Keyframes {
+    /// Represents a single keyframe.
+    fileprivate struct Keyframe: Sendable, Equatable {
+        var selectors: [KeyframeSelector]
+        var styles: [String: String]
+    }
+    
+    /// Represents a keyframe selector.
+    public enum KeyframeSelector: Sendable, Hashable, Equatable {
+        /// Starting keyframe (0%).
+        case from
+        
+        /// Ending keyframe (100%).
+        case to
+        
+        /// Percentage-based keyframe.
+        case percentage(Int)
+        
+        /// Named timeline range keyframe.
+        case timelineRange(String, Int)
+        
+        public var rawValue: String {
+            switch self {
+            case .from:
+                return "from"
+            case .to:
+                return "to"
+            case .percentage(let value):
+                return "\(value)%"
+            case .timelineRange(let name, let value):
+                return "\(name) \(value)%"
+            }
+        }
+    }
+}

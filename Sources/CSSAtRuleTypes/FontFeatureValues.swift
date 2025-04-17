@@ -1,67 +1,168 @@
-//@font-feature-values
-//
-//
-//Baseline 2023
-//NEWLY AVAILABLE
-//
-//
-//
-//The @font-feature-values CSS at-rule lets you use a common name in the font-variant-alternates property for features activated differently in OpenType. This can help simplify your CSS when using multiple fonts.
-//
-//The @font-feature-values at-rule may be used either at the top level of your CSS or inside any CSS conditional-group at-rule.
-//
-//Syntax
-//Each @font-feature-values block contains a list of either feature value blocks (listed below), or the font-display descriptor.
-//
-//Feature value blocks
-//@swash
-//Specifies a feature name that will work with the swash() functional notation of font-variant-alternates. A swash feature value definition allows only one value: ident1: 2 is valid, but ident2: 2 4 isn't.
-//
-//@annotation
-//Specifies a feature name that will work with the annotation() functional notation of font-variant-alternates. An annotation feature value definition allows only one value: ident1: 2 is valid, but ident2: 2 4 isn't.
-//
-//@ornaments
-//Specifies a feature name that will work with the ornaments() functional notation of font-variant-alternates. An ornaments feature value definition allows only one value: ident1: 2 is valid, but ident2: 2 4 isn't.
-//
-//@stylistic
-//Specifies a feature name that will work with the stylistic() functional notation of font-variant-alternates. A stylistic feature value definition allows only one value: ident1: 2 is valid, but ident2: 2 4 isn't.
-//
-//@styleset
-//Specifies a feature name that will work with the styleset() functional notation of font-variant-alternates. A styleset feature value definition allows an unlimited number of values: ident1: 2 4 12 1 maps to the OpenType values ss02, ss04, ss12, and ss01. Note that values higher than 99 are valid, but don't map to any OpenType values and are ignored.
-//
-//@character-variant
-//Specifies a feature name that will work with the character-variant() functional notation of font-variant-alternates. A character-variant feature value definition allows either one or two values: ident1: 3 maps to cv03=1, and ident2: 2 4 maps to cv02=4, but ident2: 2 4 5 is invalid.
-//
-//Formal syntax
-//@font-feature-values =
-//  @font-feature-values <family-name># { <declaration-rule-list> }
-//
-//<family-name> =
-//  <string>         |
-//  <custom-ident>+
-//
-//Sources: CSS Fonts Module Level 4
-//Examples
-//Using @styleset in a @font-feature-values rule
-//CSS
-//Copy to Clipboard
-///* At-rule for "nice-style" in Font One */
-//@font-feature-values Font One {
-//  @styleset {
-//    nice-style: 12;
-//  }
-//}
-//
-///* At-rule for "nice-style" in Font Two */
-//@font-feature-values Font Two {
-//  @styleset {
-//    nice-style: 4;
-//  }
-//}
-//
-//…
-//
-///* Apply the at-rules with a single declaration */
-//.nice-look {
-//  font-variant-alternates: styleset(nice-style);
-//}
+import Foundation
+
+/// Represents a CSS @font-feature-values at-rule.
+///
+/// The @font-feature-values CSS at-rule lets you use a common name in the
+/// font-variant-alternates property for features activated differently in OpenType.
+/// This helps simplify CSS when using multiple fonts.
+///
+/// Examples:
+/// ```swift
+/// // Single font family with styleset
+/// FontFeatureValues("Font One")
+///     .styleset(["nice-style": [12]])
+///
+/// // Multiple font families with stylistic and swash features
+/// FontFeatureValues(["Gentium", "Palatino"])
+///     .stylistic(["emphasis": 1])
+///     .swash(["decorated": 4])
+///
+/// // Complex font features with multiple types
+/// FontFeatureValues("Brill")
+///     .styleset(["headline": [1, 2, 3]])
+///     .stylistic(["emphasis": 2])
+///     .annotation(["circled": 1])
+///     .ornaments(["fleurons": 5])
+///     .characterVariant(["beta": (1, 2)])
+/// ```
+public struct FontFeatureValues: AtRule {
+    public static let identifier: String = "font-feature-values"
+    public var rawValue: String
+    private var families: [String]
+    private var blocks: [String: [String: String]] = [:]
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+        
+        // Extract families from rawValue - simplified implementation
+        if let familiesRange = rawValue.range(of: "@font-feature-values\\s+([^{]+)", options: .regularExpression),
+           let matches = rawValue[familiesRange].range(of: "\\s+([^{]+)", options: .regularExpression) {
+            let familiesString = String(rawValue[matches]).trimmingCharacters(in: .whitespacesAndNewlines)
+            self.families = familiesString.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespacesAndNewlines)) }
+        } else {
+            self.families = []
+        }
+    }
+    
+    /// Creates a font feature values rule for a single font family.
+    ///
+    /// - Parameter family: The font family name.
+    public init(_ family: String) {
+        self.families = [family]
+        self.rawValue = "@font-feature-values \(family) {}"
+    }
+    
+    /// Creates a font feature values rule for multiple font families.
+    ///
+    /// - Parameter families: The font family names.
+    public init(_ families: [String]) {
+        self.families = families
+        let familiesString = families.map { "\"\($0)\"" }.joined(separator: ", ")
+        self.rawValue = "@font-feature-values \(familiesString) {}"
+    }
+    
+    /// Updates the raw value based on the current blocks.
+    private mutating func updateRawValue() {
+        let familiesString = families.map { "\"\($0)\"" }.joined(separator: ", ")
+        
+        var blockStrings: [String] = []
+        for (blockType, features) in blocks {
+            var featureStrings: [String] = []
+            for (name, value) in features {
+                featureStrings.append("    \(name): \(value);")
+            }
+            
+            if !featureStrings.isEmpty {
+                let featureString = featureStrings.joined(separator: "\n")
+                blockStrings.append("  @\(blockType) {\n\(featureString)\n  }")
+            }
+        }
+        
+        let blockString = blockStrings.joined(separator: "\n\n")
+        
+        if blockString.isEmpty {
+            rawValue = "@font-feature-values \(familiesString) {}"
+        } else {
+            rawValue = "@font-feature-values \(familiesString) {\n\(blockString)\n}"
+        }
+    }
+    
+    /// Sets the styleset feature values.
+    ///
+    /// - Parameter features: A dictionary mapping feature names to values.
+    /// - Returns: An updated FontFeatureValues instance.
+    public func styleset(_ features: [String: [Int]]) -> FontFeatureValues {
+        var fontFeatureValues = self
+        for (name, values) in features {
+            fontFeatureValues.blocks["styleset", default: [:]][name] = values.map(String.init).joined(separator: " ")
+        }
+        fontFeatureValues.updateRawValue()
+        return fontFeatureValues
+    }
+    
+    /// Sets the stylistic feature values.
+    ///
+    /// - Parameter features: A dictionary mapping feature names to values.
+    /// - Returns: An updated FontFeatureValues instance.
+    public func stylistic(_ features: [String: Int]) -> FontFeatureValues {
+        var fontFeatureValues = self
+        for (name, value) in features {
+            fontFeatureValues.blocks["stylistic", default: [:]][name] = String(value)
+        }
+        fontFeatureValues.updateRawValue()
+        return fontFeatureValues
+    }
+    
+    /// Sets the swash feature values.
+    ///
+    /// - Parameter features: A dictionary mapping feature names to values.
+    /// - Returns: An updated FontFeatureValues instance.
+    public func swash(_ features: [String: Int]) -> FontFeatureValues {
+        var fontFeatureValues = self
+        for (name, value) in features {
+            fontFeatureValues.blocks["swash", default: [:]][name] = String(value)
+        }
+        fontFeatureValues.updateRawValue()
+        return fontFeatureValues
+    }
+    
+    /// Sets the annotation feature values.
+    ///
+    /// - Parameter features: A dictionary mapping feature names to values.
+    /// - Returns: An updated FontFeatureValues instance.
+    public func annotation(_ features: [String: Int]) -> FontFeatureValues {
+        var fontFeatureValues = self
+        for (name, value) in features {
+            fontFeatureValues.blocks["annotation", default: [:]][name] = String(value)
+        }
+        fontFeatureValues.updateRawValue()
+        return fontFeatureValues
+    }
+    
+    /// Sets the ornaments feature values.
+    ///
+    /// - Parameter features: A dictionary mapping feature names to values.
+    /// - Returns: An updated FontFeatureValues instance.
+    public func ornaments(_ features: [String: Int]) -> FontFeatureValues {
+        var fontFeatureValues = self
+        for (name, value) in features {
+            fontFeatureValues.blocks["ornaments", default: [:]][name] = String(value)
+        }
+        fontFeatureValues.updateRawValue()
+        return fontFeatureValues
+    }
+    
+    /// Sets the character-variant feature values.
+    ///
+    /// - Parameter features: A dictionary mapping feature names to value tuples.
+    /// - Returns: An updated FontFeatureValues instance.
+    public func characterVariant(_ features: [String: (Int, Int?)]) -> FontFeatureValues {
+        var fontFeatureValues = self
+        for (name, values) in features {
+            let valueString = values.1 != nil ? "\(values.0) \(values.1!)" : String(values.0)
+            fontFeatureValues.blocks["character-variant", default: [:]][name] = valueString
+        }
+        fontFeatureValues.updateRawValue()
+        return fontFeatureValues
+    }
+}

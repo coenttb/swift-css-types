@@ -1,95 +1,269 @@
-//@counter-style
-//
-//
-//Baseline 2023 *
-//NEWLY AVAILABLE
-//
-//
-//
-//The @counter-style CSS at-rule lets you extend predefined list styles and define your own counter styles that are not part of the predefined set of styles. The @counter-style rule contains descriptors defining how the counter value is converted into a string representation.
-//
-//CSS
-//Copy to Clipboard
-//@counter-style thumbs {
-//  system: cyclic;
-//  symbols: "\1F44D";
-//  suffix: " ";
-//}
-//
-//ul {
-//  list-style: thumbs;
-//}
-//While CSS provides many useful predefined counter styles, the @counter-style at-rule offers an open-ended method for creating counters. This at-rule caters to the needs of worldwide typography by allowing authors to define their own counter styles when the predefined styles don't fit their requirements.
-//
-//Syntax
-//The @counter-style at-rule is identified by a counter style name, and the style of the named counter can be fine-tuned using a <declaration-list> consisting of one or more descriptors and their values.
-//
-//Counter style name
-//<counter-style-name>
-//Provides a name for your counter style. It is specified as a case-sensitive <custom-ident> without quotes. The value should not be equal to none. Like all custom identifiers, the value of your counter style can't be a CSS-wide keyword. Avoid other enumerated CSS property values, including values of list and counter style properties. The name of your counter can't be the case-insensitive list-style-type property values of decimal, disc, square, circle, disclosure-open, and disclosure-closed.
-//
-//Note: The non-overridable counter style names decimal, disc, square, circle, disclosure-open, and disclosure-closed cannot be used as the name of a custom counter. However, they are valid in other contexts where the <counter-style-name> data type is expected, such as in system: extends <counter-style-name>.
-//Descriptors
-//system
-//Specifies the algorithm to be used for converting the integer value of a counter to a string representation. If the value is cyclic, numeric, alphabetic, symbolic, or fixed, the symbols descriptor must also be specified. If the value is additive, the additive-symbols descriptor must also be specified.
-//
-//symbols
-//Specifies the symbols that are to be used for the marker representations. Symbols can contain strings, images, or custom identifiers. This descriptor is required if the system descriptor is set to cyclic, numeric, alphabetic, symbolic, or fixed.
-//
-//additive-symbols
-//Defines the additive tuples for additive systems. While the symbols specified in the symbols descriptor are used for constructing marker representation by most algorithms, additive counter systems, such as Roman numerals, consist of a series of weighted symbols. The descriptors is a list of counter symbol along with their non-negative integer weights, listed by weight in descending order. This descriptor is required if the system descriptor is set to additive.
-//
-//negative
-//Specifies to symbols to be appended or prepended to the counter representation if the value is negative.
-//
-//prefix
-//Specifies a symbol that should be prepended to the marker representation. Prefixes are added to the representation in the final stage, before any characters added to negative counter values by the negative descriptor.
-//
-//suffix
-//Specifies, similar to the prefix descriptor, a symbol that is appended to the marker representation. Suffixes come after the marker representation, including after any characters added to negative counter values by the negative descriptor.
-//
-//range
-//Defines the range of values over which the counter style is applicable. If a counter style is used to represent a counter value outside of the ranges defined by this descriptor, the counter style will drop back to its fallback style.
-//
-//pad
-//Is used when you need the marker representations to be of a minimum length. For example if you want the counters to start at 01 and go through 02, 03, 04, etc., then the pad descriptor is to be used. For representations larger than the specified pad value, the marker is constructed as normal.
-//
-//speak-as
-//Describes how speech synthesizers, such as screen readers, should announce the counter style. For example, the value of the list item marker can be read out as numbers or alphabets for ordered lists or as audio cues for unordered lists, based on the value of this descriptor.
-//
-//fallback
-//Specifies the counter name of the system to fall back to if either the specified system is unable to construct the representation of a counter value or if the counter value is outside the specified range. If the fallback counter also fails to represent the value, then that counter's fallback is used, if one is specified. If there are either no fallback counters described or if the chain of fallback systems are unable to represent a counter value, then it will ultimately fall back to the decimal style.
-//
-//Formal syntax
-//@counter-style =
-//  @counter-style <counter-style-name> { <declaration-list> }
-//
-//Sources: CSS Counter Styles Level 3
-//Examples
-//Specifying symbols with counter-style
-//CSS
-//Copy to Clipboard
-//Play
-//@counter-style circled-alpha {
-//  system: fixed;
-//  symbols: Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ;
-//  suffix: " ";
-//}
-//The above counter style rule can be applied to lists like this:
-//
-//CSS
-//Copy to Clipboard
-//Play
-//.items {
-//  list-style: circled-alpha;
-//}
-//The above code produces the following result:
-//
-//Play
-//
-//See more examples on the demo page (code).
-//
-//Ready-made counter styles
-//Find a collection of over 100 counter-style code snippets in the Ready-made Counter Styles document. This document provides counters that meet the needs of languages and cultures around the world.
-//
-//The Counter styles converter pulls from this list to test and create copy and paste code for counter styles.
+import Foundation
+
+/// Represents a CSS @counter-style at-rule.
+///
+/// The @counter-style CSS at-rule lets you define custom counter styles for lists
+/// and counters that are not part of the predefined set of styles.
+///
+/// Examples:
+/// ```swift
+/// // Basic counter style
+/// CounterStyle("thumbs")
+///     .system(.cyclic)
+///     .symbols(["👍"])
+///     .suffix(" ")
+///
+/// // Roman numerals style
+/// CounterStyle("my-lower-roman")
+///     .system(.additive)
+///     .additiveSymbols([
+///         (1000, "m"),
+///         (900, "cm"),
+///         (500, "d"),
+///         (400, "cd"),
+///         (100, "c"),
+///         (90, "xc"),
+///         (50, "l"),
+///         (40, "xl"),
+///         (10, "x"),
+///         (9, "ix"),
+///         (5, "v"),
+///         (4, "iv"),
+///         (1, "i")
+///     ])
+///     .range(.infinite)
+/// ```
+public struct CounterStyle: AtRule {
+    public static let identifier: String = "container-style"
+    
+    public var rawValue: String
+    private var name: String
+    private var descriptors: [String: String] = [:]
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+        
+        // Extract name from rawValue for future reference
+        // This is a simplified implementation; a proper parser would be more complex
+        if let nameRange = rawValue.range(of: "@counter-style\\s+([\\w-]+)\\s*\\{", options: .regularExpression),
+           let match = rawValue[nameRange].range(of: "\\s+([\\w-]+)", options: .regularExpression) {
+            self.name = String(rawValue[match]).trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            self.name = ""
+        }
+    }
+    
+    /// Creates a counter style with the specified name.
+    ///
+    /// - Parameter name: The name of the counter style.
+    public init(_ name: String) {
+        self.name = name
+        self.rawValue = "@counter-style \(name) {}"
+    }
+    
+    /// Updates the raw value based on the current descriptors.
+    private mutating func updateRawValue() {
+        let descriptorString = descriptors.map { key, value in
+            "  \(key): \(value);"
+        }.joined(separator: "\n")
+        
+        if descriptorString.isEmpty {
+            rawValue = "@counter-style \(name) {}"
+        } else {
+            rawValue = "@counter-style \(name) {\n\(descriptorString)\n}"
+        }
+    }
+    
+    /// Sets the system descriptor.
+    ///
+    /// - Parameter system: The counting system to use.
+    /// - Returns: An updated CounterStyle instance.
+    public func system(_ system: System) -> CounterStyle {
+        var style = self
+        style.descriptors["system"] = system.rawValue
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the symbols descriptor.
+    ///
+    /// - Parameter symbols: The symbols to use for marker representation.
+    /// - Returns: An updated CounterStyle instance.
+    public func symbols(_ symbols: [String]) -> CounterStyle {
+        var style = self
+        style.descriptors["symbols"] = symbols.joined(separator: " ")
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the additive-symbols descriptor.
+    ///
+    /// - Parameter symbols: An array of tuples containing weights and symbols.
+    /// - Returns: An updated CounterStyle instance.
+    public func additiveSymbols(_ symbols: [(Int, String)]) -> CounterStyle {
+        var style = self
+        let symbolString = symbols
+            .map { "\(String($0.0)) \"\($0.1)\"" }
+            .joined(separator: " ")
+        style.descriptors["additive-symbols"] = symbolString
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the negative descriptor.
+    ///
+    /// - Parameters:
+    ///   - prefix: The prefix to use for negative values.
+    ///   - suffix: The suffix to use for negative values.
+    /// - Returns: An updated CounterStyle instance.
+    public func negative(prefix: String, suffix: String = "") -> CounterStyle {
+        var style = self
+        style.descriptors["negative"] = "\"\(prefix)\" \"\(suffix)\""
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the prefix descriptor.
+    ///
+    /// - Parameter prefix: The prefix to use.
+    /// - Returns: An updated CounterStyle instance.
+    public func prefix(_ prefix: String) -> CounterStyle {
+        var style = self
+        style.descriptors["prefix"] = "\"\(prefix)\""
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the suffix descriptor.
+    ///
+    /// - Parameter suffix: The suffix to use.
+    /// - Returns: An updated CounterStyle instance.
+    public func suffix(_ suffix: String) -> CounterStyle {
+        var style = self
+        style.descriptors["suffix"] = "\"\(suffix)\""
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the range descriptor.
+    ///
+    /// - Parameter range: The range over which the counter style is applicable.
+    /// - Returns: An updated CounterStyle instance.
+    public func range(_ range: Range) -> CounterStyle {
+        var style = self
+        style.descriptors["range"] = range.rawValue
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the pad descriptor.
+    ///
+    /// - Parameters:
+    ///   - length: The minimum length of the representation.
+    ///   - symbol: The symbol to use for padding.
+    /// - Returns: An updated CounterStyle instance.
+    public func pad(length: Int, symbol: String) -> CounterStyle {
+        var style = self
+        style.descriptors["pad"] = "\(length) \"\(symbol)\""
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the speak-as descriptor.
+    ///
+    /// - Parameter speakAs: The speech synthesis style.
+    /// - Returns: An updated CounterStyle instance.
+    public func speakAs(_ speakAs: SpeakAs) -> CounterStyle {
+        var style = self
+        style.descriptors["speak-as"] = speakAs.rawValue
+        style.updateRawValue()
+        return style
+    }
+    
+    /// Sets the fallback descriptor.
+    ///
+    /// - Parameter fallback: The name of the counter style to fall back to.
+    /// - Returns: An updated CounterStyle instance.
+    public func fallback(_ fallback: String) -> CounterStyle {
+        var style = self
+        style.descriptors["fallback"] = fallback
+        style.updateRawValue()
+        return style
+    }
+}
+
+// MARK: - Counter Style Enums
+
+extension CounterStyle {
+    /// Represents the counting system for a counter style.
+    public enum System: String, Hashable, Sendable {
+        /// A cyclic counter system cycles repeatedly through its provided symbols.
+        case cyclic
+        
+        /// A numeric counter system interprets the symbols as digits in a place-value numbering system.
+        case numeric
+        
+        /// An alphabetic counter system interprets the symbols as alphabetic digits.
+        case alphabetic
+        
+        /// A symbolic counter system cycles through the provided symbols, doubling, tripling, etc. them at predefined intervals.
+        case symbolic
+        
+        /// An additive counter system uses a combination of its symbols, with the numeric weight of each symbol adding up to the final value.
+        case additive
+        
+        /// A fixed counter system just cycles through a fixed set of counter symbols, stopping when it runs out of symbols.
+        case fixed
+        
+        /// Extends an existing counter style, reusing its values for any descriptors not explicitly provided.
+        case extends
+    }
+    
+    /// Represents the range over which a counter style is applicable.
+    public enum Range: CustomStringConvertible, Hashable, Sendable {
+        /// A specific range with start and end values.
+        case specific(min: Int, max: Int)
+        
+        /// An auto range, which is the default.
+        case auto
+        
+        /// An infinite range, for counters that work with any value.
+        case infinite
+        
+        public var description: String {
+            switch self {
+            case .specific(let min, let max):
+                return "\(min) \(max)"
+            case .auto:
+                return "auto"
+            case .infinite:
+                return "infinite"
+            }
+        }
+        
+        public var rawValue: String {
+            description
+        }
+    }
+    
+    /// Represents the speech synthesis style for a counter style.
+    public enum SpeakAs: String, Hashable, Sendable {
+        /// Speak as spelled out numbers (e.g., "one, two, three").
+        case numbers
+        
+        /// Speak as individual words (e.g., "a, b, c").
+        case words
+        
+        /// Speak as a specific counter style.
+        case counters
+        
+        /// Speak as spelled out numbers, but in another counter style.
+        case countersStyle = "counters style"
+        
+        /// Leave unspoken.
+        case none
+        
+        /// Use auto-detection.
+        case auto
+    }
+}
