@@ -43,7 +43,7 @@ extension PercentageConvertible {
     public static var full: Self { .init(.full) }
     
     /// Convenience to create a CSS percentage if you prefer calling it `percent` instead of `percentage`.
-    static func percent(_ percent: Percentage) -> Self {
+    public static func percent(_ percent: Percentage) -> Self {
         .percentage(percent)
     }
 }
