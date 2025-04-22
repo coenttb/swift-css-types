@@ -57,9 +57,3 @@ public enum LineHeight: Property, LengthPercentageConvertible, ExpressibleByFloa
         }
     }
 }
-
-extension LineHeight {
-    public init(_ value: Double){
-        self = .multiple(value)
-    }
-}
