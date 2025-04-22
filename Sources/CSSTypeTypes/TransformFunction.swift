@@ -279,7 +279,7 @@ public extension TransformFunction {
     ///   - x: Horizontal translation in pixels
     ///   - y: Vertical translation in pixels
     static func translate(_ x: Length, _ y: Length) -> TransformFunction {
-        return .translate(.length(x), .length(y))
+        return Self.translate(LengthPercentage.length(x), LengthPercentage.length(y))
     }
     
     /// Creates a transform that translates an element using percentage values

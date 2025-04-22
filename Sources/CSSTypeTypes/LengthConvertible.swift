@@ -68,6 +68,7 @@ extension LengthConvertible {
     }
 }
 
+    
 /// Factory methods for creating LengthConvertible instances
 extension LengthConvertible {
     /// Creates an instance with a fractional unit value
@@ -189,6 +190,6 @@ extension LengthConvertible {
 //    public static func calc(_ expression: CSSString) -> Self { .length(.calc(expression)) }
 }
 
-extension LengthConvertible {
-    public static var zero: Self { .init(.zero) }
-}
+//extension LengthConvertible {
+//    public static var zero: Self { Self.length(Length.zero) }
+//}

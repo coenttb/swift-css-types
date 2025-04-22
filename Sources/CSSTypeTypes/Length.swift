@@ -523,9 +523,17 @@ extension Length: CustomStringConvertible {
     }
 }
 
+extension Length: LengthConvertible {
+    public static func length(_ length: Length) -> Length {
+        length
+    }
+}
+
+
 /// Integer extensions for creating Length values
 extension Int {
-    /// Creates a pixel length from this integer
+   
+//    /// Creates a pixel length from this integer
     public var px: Length { .px(Double(self)) }
     
     /// Creates an em length from this integer
@@ -671,3 +679,54 @@ extension Double {
 //        length
 //    }
 //}
+
+
+
+//// Integer extensions for creating generic LengthConvertible values
+//extension Int {
+//    public func px<P: LengthConvertible>() -> P { .px(Double(self)) }
+//    public func em<P: LengthConvertible>() -> P { .em(Double(self)) }
+//    public func rem<P: LengthConvertible>() -> P { .rem(Double(self)) }
+//    public func vw<P: LengthConvertible>() -> P { .vw(Double(self)) }
+//    public func vh<P: LengthConvertible>() -> P { .vh(Double(self)) }
+//    public func fr<P: LengthConvertible>() -> P { .fr(Double(self)) }
+//    public func cm<P: LengthConvertible>() -> P { .length(.length(Double(self), .cm)) }
+//    public func mm<P: LengthConvertible>() -> P { .length(.length(Double(self), .mm)) }
+//    public func `in`<P: LengthConvertible>() -> P { .length(.length(Double(self), .in)) }
+//    public func pt<P: LengthConvertible>() -> P { .length(.length(Double(self), .pt)) }
+//    public func pc<P: LengthConvertible>() -> P { .length(.length(Double(self), .pc)) }
+//    public func ex<P: LengthConvertible>() -> P { .length(.length(Double(self), .ex)) }
+//    public func ch<P: LengthConvertible>() -> P { .length(.length(Double(self), .ch)) }
+//    public func lh<P: LengthConvertible>() -> P { .length(.length(Double(self), .lh)) }
+//    public func vmin<P: LengthConvertible>() -> P { .length(.length(Double(self), .vmin)) }
+//    public func vmax<P: LengthConvertible>() -> P { .length(.length(Double(self), .vmax)) }
+//    public func q<P: LengthConvertible>() -> P { .length(.length(Double(self), .q)) }
+//    public func cap<P: LengthConvertible>() -> P { .length(.length(Double(self), .cap)) }
+//    public func ic<P: LengthConvertible>() -> P { .length(.length(Double(self), .ic)) }
+//    public func rlh<P: LengthConvertible>() -> P { .length(.length(Double(self), .rlh)) }
+//}
+//
+//// Double extensions for creating generic LengthConvertible values
+//extension Double {
+//    public func px<P: LengthConvertible>() -> P { .px(self) }
+//    public func em<P: LengthConvertible>() -> P { .em(self) }
+//    public func rem<P: LengthConvertible>() -> P { .rem(self) }
+//    public func vw<P: LengthConvertible>() -> P { .vw(self) }
+//    public func vh<P: LengthConvertible>() -> P { .vh(self) }
+//    public func fr<P: LengthConvertible>() -> P { .fr(self) }
+//    public func cm<P: LengthConvertible>() -> P { .length(.length(self, .cm)) }
+//    public func mm<P: LengthConvertible>() -> P { .length(.length(self, .mm)) }
+//    public func `in`<P: LengthConvertible>() -> P { .length(.length(self, .in)) }
+//    public func pt<P: LengthConvertible>() -> P { .length(.length(self, .pt)) }
+//    public func pc<P: LengthConvertible>() -> P { .length(.length(self, .pc)) }
+//    public func ex<P: LengthConvertible>() -> P { .length(.length(self, .ex)) }
+//    public func ch<P: LengthConvertible>() -> P { .length(.length(self, .ch)) }
+//    public func lh<P: LengthConvertible>() -> P { .length(.length(self, .lh)) }
+//    public func vmin<P: LengthConvertible>() -> P { .length(.length(self, .vmin)) }
+//    public func vmax<P: LengthConvertible>() -> P { .length(.length(self, .vmax)) }
+//    public func q<P: LengthConvertible>() -> P { .length(.length(self, .q)) }
+//    public func cap<P: LengthConvertible>() -> P { .length(.length(self, .cap)) }
+//    public func ic<P: LengthConvertible>() -> P { .length(.length(self, .ic)) }
+//    public func rlh<P: LengthConvertible>() -> P { .length(.length(self, .rlh)) }
+//}
+//

@@ -41,23 +41,7 @@ public enum LineHeight: Property, LengthPercentageConvertible, ExpressibleByFloa
     public init(integerLiteral value: Int) {
         self = .multiple(Double(value))
     }
-    
-
-    
-    // MARK: - Convenience initializers for common length units
-    
-    public static func px(_ value: Double) -> LineHeight {
-        .length(.px(value))
-    }
-    
-    public static func em(_ value: Double) -> LineHeight {
-        .length(.em(value))
-    }
-    
-    public static func rem(_ value: Double) -> LineHeight {
-        .length(.rem(value))
-    }
-    
+        
     public var description: String {
         switch self {
         case .normal:
@@ -71,5 +55,11 @@ public enum LineHeight: Property, LengthPercentageConvertible, ExpressibleByFloa
         case .global(let value):
             return value.description
         }
+    }
+}
+
+extension LineHeight {
+    public init(_ value: Double){
+        self = .multiple(value)
     }
 }

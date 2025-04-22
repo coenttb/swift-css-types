@@ -15,6 +15,9 @@ struct AnimationRangeStartTests {
     @Test("AnimationRangeStart renders its Declaration correctly")
     func testDeclaration() {
         #expect(AnimationRangeStart.normal.declaration.description == "animation-range-start:normal")
+        
+        let x: BorderBlockEndWidth = .px(5)
+        #expect(x.description == Length.px(5).description)
     }
     
     @Test("AnimationRangeStart renders normal value correctly")
