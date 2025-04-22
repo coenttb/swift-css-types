@@ -107,3 +107,63 @@ public struct TextDecorationValue: Sendable, Hashable, CustomStringConvertible {
         return components.joined(separator: " ")
     }
 }
+
+extension TextDecoration {
+
+    public static func underline(
+        style: TextDecorationStyle? = nil,
+        color: Color? = nil,
+        thickness: LengthPercentage? = nil
+    ) -> Self {
+        .line(.value(.underline), style: style, color: color, thickness: thickness)
+    }
+
+    public static func overline(
+        style: TextDecorationStyle? = nil,
+        color: Color? = nil,
+        thickness: LengthPercentage? = nil
+    ) -> Self {
+        .line(.value(.overline), style: style, color: color, thickness: thickness)
+    }
+
+    public static func lineThrough(
+        style: TextDecorationStyle? = nil,
+        color: Color? = nil,
+        thickness: LengthPercentage? = nil
+    ) -> Self {
+        .line(.value(.lineThrough), style: style, color: color, thickness: thickness)
+    }
+
+    public static func blink(
+        style: TextDecorationStyle? = nil,
+        color: Color? = nil,
+        thickness: LengthPercentage? = nil
+    ) -> Self {
+        .line(.value(.blink), style: style, color: color, thickness: thickness)
+    }
+
+    public static func spellingError(
+        style: TextDecorationStyle? = nil,
+        color: Color? = nil,
+        thickness: LengthPercentage? = nil
+    ) -> Self {
+        .line(.value(.spellingError), style: style, color: color, thickness: thickness)
+    }
+
+    public static func grammarError(
+        style: TextDecorationStyle? = nil,
+        color: Color? = nil,
+        thickness: LengthPercentage? = nil
+    ) -> Self {
+        .line(.value(.grammarError), style: style, color: color, thickness: thickness)
+    }
+
+    // Static constants using defaults (nil)
+
+    public static let underline: Self = .underline()
+    public static let overline: Self = .overline()
+    public static let lineThrough: Self = .lineThrough()
+    public static let blink: Self = .blink()
+    public static let spellingError: Self = .spellingError()
+    public static let grammarError: Self = .grammarError()
+}
