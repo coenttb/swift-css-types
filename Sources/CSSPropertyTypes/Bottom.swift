@@ -51,7 +51,7 @@ extension Bottom: CustomStringConvertible {
         case .auto:
             return "auto"
             
-        case .lencgthPercentage(let value):
+        case .lengthPercentage(let value):
             return value.description
         case .global(let global):
             return global.description
