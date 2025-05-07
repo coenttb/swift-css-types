@@ -27,7 +27,7 @@ import CSSTypeTypes
 ///         that would be "bottom" when viewed in the default orientation.
 ///
 /// - SeeAlso: [MDN Web Docs on bottom](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom)
-public enum Bottom: Property {
+public enum Bottom: Property, LengthPercentageConvertible {
     
     public static let property: String = "bottom"
     
@@ -35,43 +35,12 @@ public enum Bottom: Property {
     case auto
     
     /// A specific length value
-    case length(Double, Length.Unit)
+    case lengthPercentage(LengthPercentage)
     
-    /// A percentage of the containing block's height
-    case percentage(Percentage)
     
     /// Global values
     case global(CSSTypeTypes.Global)
-    
-    /// Factory method for zero value
-    public static var zero: Bottom {
-        .length(0, .px)
-    }
-    
-    /// Factory method for pixels
-    public static func px(_ value: Double) -> Bottom {
-        .length(value, .px)
-    }
-    
-    /// Factory method for em units
-    public static func em(_ value: Double) -> Bottom {
-        .length(value, .em)
-    }
-    
-    /// Factory method for rem units
-    public static func rem(_ value: Double) -> Bottom {
-        .length(value, .rem)
-    }
-    
-    /// Factory method for viewport width units
-    public static func vw(_ value: Double) -> Bottom {
-        .length(value, .vw)
-    }
-    
-    /// Factory method for viewport height units
-    public static func vh(_ value: Double) -> Bottom {
-        .length(value, .vh)
-    }
+
 }
 
 /// CSS Output conversion
@@ -82,15 +51,8 @@ extension Bottom: CustomStringConvertible {
         case .auto:
             return "auto"
             
-        case .length(let value, let unit):
-            if value == 0 {
-                return "0"
-            }
-            return "\(value)\(unit)"
-            
-        case .percentage(let percentage):
-            return percentage.description
-            
+        case .lencgthPercentage(let value):
+            return value.description
         case .global(let global):
             return global.description
         }
