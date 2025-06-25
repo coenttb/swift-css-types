@@ -47,67 +47,67 @@ extension PlaceItems: CustomStringConvertible {
 // Convenience initializers
 extension PlaceItems {
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func normal() -> Self {
+    public static var normal: Self {
         return .single(.normal)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func stretch() -> Self {
+    public static var stretch: Self {
         return .single(.stretch)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func baseline() -> Self {
+    public static var baseline: Self {
         return .single(.baseline)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func firstBaseline() -> Self {
+    public static var firstBaseline: Self {
         return .single(.firstBaseline)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func lastBaseline() -> Self {
+    public static var lastBaseline: Self {
         return .single(.lastBaseline)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func center() -> Self {
+    public static var center: Self {
         return .single(.center)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func start() -> Self {
+    public static var start: Self {
         return .single(.start)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func end() -> Self {
+    public static var end: Self {
         return .single(.end)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func selfStart() -> Self {
+    public static var selfStart: Self {
         return .single(.selfStart)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func selfEnd() -> Self {
+    public static var selfEnd: Self {
         return .single(.selfEnd)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func flexStart() -> Self {
+    public static var flexStart: Self {
         return .single(.flexStart)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func flexEnd() -> Self {
+    public static var flexEnd: Self {
         return .single(.flexEnd)
     }
     
     /// Creates a PlaceItems with the same value for both align-items and justify-items
-    public static func anchorCenter() -> Self {
+    public static var anchorCenter: Self {
         return .single(.anchorCenter)
     }
     

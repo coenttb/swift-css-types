@@ -90,14 +90,30 @@ extension JustifyContent {
         return .distribution(.stretch)
     }
     
+    public static var center: Self {
+        .center()
+    }
+    
     /// Creates a center position
-    public static func center() -> Self {
-        return .position(nil, .center)
+    public static func center(
+        overflowPosition: OverflowPosition? = nil
+    ) -> Self {
+        return .position(overflowPosition, .center)
+    }
+    
+    public static var start: Self {
+        .start()
     }
     
     /// Creates a start position
-    public static func start() -> Self {
-        return .position(nil, .start)
+    public static func start(
+        overflowPosition: OverflowPosition? = nil
+    ) -> Self {
+        return .position(overflowPosition, .start)
+    }
+    
+    public static var end: Self {
+        .end()
     }
     
     /// Creates an end position
