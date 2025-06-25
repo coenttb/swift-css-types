@@ -338,37 +338,4 @@ extension Background {
     ) -> Background {
         .layer(Layer.image(.url(.init(url)), position: position, size: size, repeat: `repeat`))
     }
-    
-//    /// Creates a linear gradient background
-//    ///
-//    /// - Parameters:
-//    ///   - direction: The direction of the gradient
-//    ///   - stops: The color stops for the gradient
-//    /// - Returns: A background with a linear gradient
-//    public static func linearGradient(
-//        _ direction: Gradient.LinearGradient.Direction,
-//        _ stops: [Gradient.LinearGradient.ColorStop]
-//    ) -> Background {
-//        .layer(Layer.linear(direction, stops))
-//    }
-    
-    /// Creates a transparent background
-    ///
-    /// This is equivalent to `background: transparent;`
-    public static let transparent = Background.color(.transparent)
-    
-    /// Inherits the value from the parent element
-    public static let inherit = Background.global(.inherit)
-    
-    /// Uses the default value for the property
-    public static let initial = Background.global(.initial)
-    
-    /// Reverts to the browser's default styling
-    public static let revert = Background.global(.revert)
-    
-    /// Reverts to the value established in the previous cascade layer
-    public static let revertLayer = Background.global(.revertLayer)
-    
-    /// Resets to its natural value (acts like `inherit` or `initial` depending on the property)
-    public static let unset = Background.global(.unset)
 }

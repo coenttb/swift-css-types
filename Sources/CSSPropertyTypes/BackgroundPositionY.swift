@@ -125,32 +125,7 @@ extension BackgroundPositionY {
     /// Bottom position (100%)
     public static let bottom = BackgroundPositionY.keyword(.bottom)
     
-    /// Creates a position at a specific percentage
-    ///
-    /// - Parameter value: The percentage value (0-100)
-    /// - Returns: A vertical position at the specified percentage
-    public static func percentage(_ value: Percentage) -> BackgroundPositionY {
-        .lengthPercentage(.percentage(value))
-    }
-    
-    /// Creates a position at a specific pixel value
-    ///
-    /// - Parameter value: The pixel value
-    /// - Returns: A vertical position at the specified pixel value
-    public static func px(_ value: Double) -> BackgroundPositionY {
-        .lengthPercentage(.px(value))
-    }
-    
-//    /// Creates a position with an edge offset
-//    ///
-//    /// - Parameters:
-//    ///   - edge: The edge to offset from (top, bottom)
-//    ///   - offset: The offset value
-//    /// - Returns: A vertical position with the specified edge offset
-//    public static func offset(_ edge: Keyword, _ offset: LengthPercentage) -> BackgroundPositionY {
-//        .offset(edge, offset)
-//    }
-    
+
     /// Creates a position with multiple values
     ///
     /// - Parameter positions: The vertical position values

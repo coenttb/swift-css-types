@@ -55,35 +55,4 @@ public enum MarginBottom: Property, LengthPercentageConvertible, ExpressibleByIn
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
-    // MARK: - Factory methods
-    
-    /// Sets margin to 0
-    public static var zero: Self {
-        return .px(0)
-    }
-    
-    /// Create a margin with pixel units
-    public static func px(_ value: Double) -> Self {
-        .lengthPercentage(.px(value))
-    }
-    
-    /// Create a margin with em units
-    public static func em(_ value: Double) -> Self {
-        .lengthPercentage(.em(value))
-    }
-    
-    /// Create a margin with rem units
-    public static func rem(_ value: Double) -> Self {
-        .lengthPercentage(.rem(value))
-    }
-    
-    /// Create a margin with a percentage value
-    public static func percentage(_ value: Double) -> Self {
-        .lengthPercentage(.percentage(Percentage(value)))
-    }
 }
-
-// Allow creation from Length values
-extension MarginBottom: LengthConvertible {}
-

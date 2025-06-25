@@ -70,12 +70,9 @@ public enum BorderImageWidth: Property {
     case global(CSSTypeTypes.Global)
     
     /// Represents a value for border-image-width
-    public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
+    public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthPercentageConvertible {
         /// A length value
-        case length(Length)
-        
-        /// A percentage value
-        case percentage(Percentage)
+        case lengthPercentage(LengthPercentage)
         
         /// A number value (multiple of the border width)
         case number(Number)
@@ -86,10 +83,8 @@ public enum BorderImageWidth: Property {
         /// String representation of the width value
         public var description: String {
             switch self {
-            case .length(let length):
-                return length.description
-            case .percentage(let percentage):
-                return percentage.description
+            case .lengthPercentage(let value):
+                return value.description
             case .number(let number):
                 return number.description
             case .auto:
@@ -135,22 +130,6 @@ public enum BorderImageWidth: Property {
         self = .top_right_bottom_left(top, right, bottom, left)
     }
     
-    /// Creates a border-image-width with a length value for all sides
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-image-width with the specified length
-    public static func px(_ px: Double) -> BorderImageWidth {
-        return BorderImageWidth(.length(.px(px)))
-    }
-    
-    /// Creates a border-image-width with a percentage value for all sides
-    ///
-    /// - Parameter percentage: The percentage value
-    /// - Returns: A border-image-width with the specified percentage
-    public static func percentage(_ percentage: Percentage) -> BorderImageWidth {
-        return BorderImageWidth(.percentage(percentage))
-    }
-    
     /// Creates a border-image-width with a number value for all sides
     ///
     /// - Parameter number: The number multiplier
@@ -164,6 +143,12 @@ public enum BorderImageWidth: Property {
     
     /// Default value (1 - matches the border-width)
     public static let `default` = BorderImageWidth(.number(1))
+}
+
+extension BorderImageWidth: LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> BorderImageWidth {
+        .all(.lengthPercentage(value))
+    }
 }
 
 /// Provides string conversion for CSS output

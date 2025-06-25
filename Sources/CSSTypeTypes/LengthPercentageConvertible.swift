@@ -50,3 +50,10 @@ extension LengthPercentageConvertible {
 }
 
 
+extension LengthPercentageConvertible {
+    public init(
+        _ value: LengthPercentage
+    ){
+        self = .lengthPercentage(value)
+    }
+}

@@ -59,16 +59,16 @@ extension PerspectiveOrigin {
         .position(.values(x, y))
     }
     
-    /// Creates a perspective origin with x and y percentages
-    public static func percentage(_ x: Percentage, _ y: Percentage) -> PerspectiveOrigin {
-        .position(.percentage(x, y))
-    }
-    
-    /// Creates a perspective origin with x and y pixel values
-    public static func px(_ x: Double, _ y: Double) -> PerspectiveOrigin {
-        .position(.px(x, y))
-    }
-    
+//    /// Creates a perspective origin with x and y percentages
+//    public static func percentage(_ x: Percentage, _ y: Percentage) -> PerspectiveOrigin {
+//        .position(.percentage(x, y))
+//    }
+//    
+//    /// Creates a perspective origin with x and y pixel values
+//    public static func px(_ x: Double, _ y: Double) -> PerspectiveOrigin {
+//        .position(.px(x, y))
+//    }
+//    
     /// Center position (50% 50%)
     public static let center: PerspectiveOrigin = .position(.center)
     

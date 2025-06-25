@@ -75,37 +75,9 @@ extension BorderEndEndRadius: CustomStringConvertible {
     }
 }
 
-/// Convenience factory methods
-extension BorderEndEndRadius {
-    /// Creates a border-end-end-radius with the same radius for both horizontal and vertical dimensions
-    ///
-    /// - Parameter px: The radius in pixels
-    /// - Returns: A BorderEndEndRadius value
-    public static func px(_ value: Double) -> Self {
-        .radius(.px(value))
-    }
-    
-    /// Creates a border-end-end-radius with the same radius for both horizontal and vertical dimensions
-    ///
-    /// - Parameter em: The radius in em units
-    /// - Returns: A BorderEndEndRadius value
-    public static func em(_ value: Double) -> Self {
-        .radius(.em(value))
-    }
-    
-    /// Creates a border-end-end-radius with the same radius for both horizontal and vertical dimensions
-    ///
-    /// - Parameter rem: The radius in rem units
-    /// - Returns: A BorderEndEndRadius value
-    public static func rem(_ value: Double) -> Self {
-        .radius(.rem(value))
-    }
-    
-    /// Creates a border-end-end-radius with the same radius for both horizontal and vertical dimensions
-    ///
-    /// - Parameter percent: The radius as a percentage
-    /// - Returns: A BorderEndEndRadius value
-    public static func percentage(_ value: Percentage) -> Self {
-        .radius(.percentage(value))
+extension BorderEndEndRadius: LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> BorderEndEndRadius {
+        .radius(value)
     }
 }
+

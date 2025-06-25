@@ -422,15 +422,7 @@ public enum BorderImage: Property {
                 }
             }
         }
-        
-        /// Creates a width with a length value
-        ///
-        /// - Parameter px: The pixel value
-        /// - Returns: A width with the specified pixel length
-        public static func px(_ px: Double) -> Width {
-            return Width(.length(.px(px)))
-        }
-        
+
         /// Creates a width with a number multiplier
         ///
         /// - Parameter number: The number multiplier
@@ -500,14 +492,6 @@ public enum BorderImage: Property {
             }
         }
         
-        /// Creates an outset with a length value
-        ///
-        /// - Parameter px: The pixel value
-        /// - Returns: An outset with the specified pixel length
-        public static func px(_ px: Double) -> Outset {
-            return Outset(.length(.px(px)))
-        }
-        
         /// Creates an outset with a number multiplier
         ///
         /// - Parameter number: The number multiplier
@@ -557,6 +541,18 @@ public enum BorderImage: Property {
             /// Repeat the image with spacing to fit evenly
             case space
         }
+    }
+}
+
+extension BorderImage.Outset: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderImage.Outset {
+        BorderImage.Outset(.length(length))
+    }
+}
+
+extension BorderImage.Width: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderImage.Width {
+        BorderImage.Width(.length(length))
     }
 }
 

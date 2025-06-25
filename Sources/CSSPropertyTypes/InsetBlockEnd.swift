@@ -48,31 +48,4 @@ public enum InsetBlockEnd: Property, LengthPercentageConvertible {
         }
     }
 
-    /// Factory method for zero value
-    public static var zero: InsetBlockEnd {
-        .lengthPercentage(.px(0))
-    }
-    
-    /// Factory method for pixels
-    public static func px(_ value: Double) -> InsetBlockEnd {
-        .lengthPercentage(.px(value))
-    }
-    
-    /// Factory method for em units
-    public static func em(_ value: Double) -> InsetBlockEnd {
-        .lengthPercentage(.em(value))
-    }
-    
-    /// Factory method for rem units
-    public static func rem(_ value: Double) -> InsetBlockEnd {
-        .lengthPercentage(.rem(value))
-    }
-    
-    /// Factory method for percentage
-    public static func percentage(_ value: Percentage) -> InsetBlockEnd {
-        .lengthPercentage(.percentage(value))
-    }
 }
-
-// Allow creation from Length values
-extension InsetBlockEnd: LengthConvertible {}

@@ -90,26 +90,26 @@ extension OffsetPosition {
     /// Creates an offset-position with the bottom-right position
     public static let bottomRight = OffsetPosition(.bottomRight)
     
-    /// Creates an offset-position with percentage values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal percentage (0-100)
-    ///   - y: Vertical percentage (0-100)
-    /// - Returns: An OffsetPosition with the specified percentage position
-    public static func percentage(_ x: Double, _ y: Double) -> OffsetPosition {
-        OffsetPosition(.percentage(Percentage(x), Percentage(y)))
-    }
-    
-    /// Creates an offset-position with pixel values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal position in pixels
-    ///   - y: Vertical position in pixels
-    /// - Returns: An OffsetPosition with the specified pixel position
-    public static func px(_ x: Double, _ y: Double) -> OffsetPosition {
-        OffsetPosition(.px(x, y))
-    }
-    
+//    /// Creates an offset-position with percentage values
+//    ///
+//    /// - Parameters:
+//    ///   - x: Horizontal percentage (0-100)
+//    ///   - y: Vertical percentage (0-100)
+//    /// - Returns: An OffsetPosition with the specified percentage position
+//    public static func percentage(_ x: Double, _ y: Double) -> OffsetPosition {
+//        OffsetPosition(.percentage(Percentage(x), Percentage(y)))
+//    }
+//    
+//    /// Creates an offset-position with pixel values
+//    ///
+//    /// - Parameters:
+//    ///   - x: Horizontal position in pixels
+//    ///   - y: Vertical position in pixels
+//    /// - Returns: An OffsetPosition with the specified pixel position
+//    public static func px(_ x: Double, _ y: Double) -> OffsetPosition {
+//        OffsetPosition(.px(x, y))
+//    }
+//    
     /// Creates an offset-position with edge offsets
     ///
     /// - Parameters:
@@ -130,5 +130,11 @@ extension OffsetPosition {
     /// - Returns: An OffsetPosition with a single edge offset (e.g., "top 10px")
     public static func offset(_ edge: CSSTypeTypes.Position.Keyword, _ offset: LengthPercentage) -> OffsetPosition {
         OffsetPosition(.keywordValue(edge, offset))
+    }
+}
+
+extension OffsetPosition: LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> OffsetPosition {
+        .position(.init(value))
     }
 }

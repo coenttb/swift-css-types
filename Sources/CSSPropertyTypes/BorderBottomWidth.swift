@@ -41,7 +41,7 @@ import CSSTypeTypes
 /// - Note: For the border to be visible, you must also set `border-bottom-style` to a value other than `none`.
 ///
 /// - SeeAlso: [MDN Web Docs on border-bottom-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width)
-public enum BorderBottomWidth: Property {
+public enum BorderBottomWidth: Property  {
     
     public static let property: String = "border-bottom-width"
     
@@ -93,23 +93,4 @@ extension BorderBottomWidth {
     
     /// Creates a thick border-bottom-width
     public static let thick = BorderBottomWidth(.thick)
-    
-    /// Creates a border-bottom-width with a specific pixel value
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-bottom-width with the specified pixel value
-    public static func px(_ px: Double) -> BorderBottomWidth {
-        .width(.px(px))
-    }
-    
-    /// Creates a border-bottom-width with a specific percentage value
-    ///
-    /// - Parameter percent: The percentage value
-    /// - Returns: A border-bottom-width with the specified percentage value
-    public static func percentage(_ percentage: Percentage) -> BorderBottomWidth {
-        //        Type 'BorderWidth' has no member 'percent'
-        //        .width(.percentage(percentage))
-                fatalError()
-//        .width(.percentage(percentage))
-    }
 }

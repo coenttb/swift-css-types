@@ -261,43 +261,10 @@ extension BorderWidth {
     
     /// Creates a thick border width on all sides
     public static let thick = BorderWidth(.thick)
-    
-    /// Creates a border width with a specific pixel value on all sides
-    ///
-    /// - Parameter px: The width in pixels
-    /// - Returns: A border width with the specified pixel value
-    public static func px(_ px: Double) -> BorderWidth {
-        return BorderWidth(.px(px))
+}
+
+extension BorderBottomWidth: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderBottomWidth {
+        .width(.values(.init(.length(length))))
     }
-    
-    /// Creates a border width with a specific em value on all sides
-    ///
-    /// - Parameter em: The width in ems
-    /// - Returns: A border width with the specified em value
-    public static func em(_ em: Double) -> BorderWidth {
-        return BorderWidth(.em(em))
-    }
-    
-    /// Creates a border width with a specific rem value on all sides
-    ///
-    /// - Parameter rem: The width in rems
-    /// - Returns: A border width with the specified rem value
-    public static func rem(_ rem: Double) -> BorderWidth {
-        return BorderWidth(.rem(rem))
-    }
-    
-    /// Inherits the value from the parent element
-    public static let inherit = BorderWidth.global(.inherit)
-    
-    /// Uses the default value for the property
-    public static let initial = BorderWidth.global(.initial)
-    
-    /// Reverts to the browser's default styling
-    public static let revert = BorderWidth.global(.revert)
-    
-    /// Reverts to the value established in the previous cascade layer
-    public static let revertLayer = BorderWidth.global(.revertLayer)
-    
-    /// Resets to its natural value (acts like `inherit` or `initial` depending on the property)
-    public static let unset = BorderWidth.global(.unset)
 }

@@ -147,18 +147,18 @@ extension BackgroundPosition {
     ///   - y: Vertical position percentage (0-100)
     /// - Returns: A background position with percentage values
     public static func percentage(_ x: Percentage, _ y: Percentage) -> BackgroundPosition {
-        BackgroundPosition(.percentage(x, y))
+        BackgroundPosition.single(.values(.percentage(x), .percentage(y)))
     }
-    
-    /// Creates a background position with pixel values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal position in pixels
-    ///   - y: Vertical position in pixels
-    /// - Returns: A background position with pixel values
-    public static func px(_ x: Double, _ y: Double) -> BackgroundPosition {
-        BackgroundPosition(.px(x, y))
-    }
+//    
+//    /// Creates a background position with pixel values
+//    ///
+//    /// - Parameters:
+//    ///   - x: Horizontal position in pixels
+//    ///   - y: Vertical position in pixels
+//    /// - Returns: A background position with pixel values
+//    public static func px(_ x: Double, _ y: Double) -> BackgroundPosition {
+//        BackgroundPosition(.px(x, y))
+//    }
     
     /// Creates a background position with edge offsets
     ///

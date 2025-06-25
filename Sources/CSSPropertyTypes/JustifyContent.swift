@@ -71,22 +71,22 @@ extension JustifyContent: CustomStringConvertible {
 // Convenience initializers
 extension JustifyContent {
     /// Creates a space-between distribution
-    public static func spaceBetween() -> Self {
+    public static var spaceBetween: Self {
         return .distribution(.spaceBetween)
     }
     
     /// Creates a space-around distribution
-    public static func spaceAround() -> Self {
+    public static var spaceAround: Self {
         return .distribution(.spaceAround)
     }
     
     /// Creates a space-evenly distribution
-    public static func spaceEvenly() -> Self {
+    public static var spaceEvenly: Self {
         return .distribution(.spaceEvenly)
     }
     
     /// Creates a stretch distribution
-    public static func stretch() -> Self {
+    public static var stretch: Self {
         return .distribution(.stretch)
     }
     
@@ -101,27 +101,37 @@ extension JustifyContent {
     }
     
     /// Creates an end position
-    public static func end() -> Self {
-        return .position(nil, .end)
+    public static func end(
+        overflowPosition: OverflowPosition? = nil
+    ) -> Self {
+        return .position(overflowPosition, .end)
     }
     
     /// Creates a flex-start position
-    public static func flexStart() -> Self {
-        return .position(nil, .flexStart)
+    public static func flexStart(
+        overflowPosition: OverflowPosition? = nil
+    ) -> Self {
+        return .position(overflowPosition, .flexStart)
     }
     
     /// Creates a flex-end position
-    public static func flexEnd() -> Self {
-        return .position(nil, .flexEnd)
+    public static func flexEnd(
+        overflowPosition: OverflowPosition? = nil
+    ) -> Self {
+        return .position(overflowPosition, .flexEnd)
     }
     
     /// Creates a safe position alignment
-    public static func safe(_ position: ContentPosition) -> Self {
+    public static func safe(
+        _ position: ContentPosition
+    ) -> Self {
         return .position(.safe, position)
     }
     
     /// Creates an unsafe position alignment
-    public static func unsafe(_ position: ContentPosition) -> Self {
+    public static func unsafe(
+        _ position: ContentPosition
+    ) -> Self {
         return .position(.unsafe, position)
     }
 }

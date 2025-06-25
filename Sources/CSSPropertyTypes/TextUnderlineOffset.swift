@@ -16,7 +16,7 @@ import CSSTypeTypes
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on text-underline-offset](https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-offset)
-public enum TextUnderlineOffset: Property {
+public enum TextUnderlineOffset: Property, LengthPercentageConvertible {
     public static let property: String = "text-underline-offset"
     
     /// The browser chooses the appropriate offset for underlines.
@@ -24,29 +24,10 @@ public enum TextUnderlineOffset: Property {
     
     /// Specifies the offset of underlines as a length, overriding the font file suggestion and
     /// the browser default. It is recommended to use em units so the offset scales with the font size.
-    case length(Double, Length.Unit)
-    
-    /// Specifies the offset of underlines as a percentage of 1 em in the element's font.
-    /// A percentage inherits as a relative value, and so therefore scales with changes in the font.
-    case percentage(Percentage)
-    
+    case lengthPercentage(LengthPercentage)
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
-    /// Factory method for creating a length value in em units
-    public static func em(_ value: Double) -> TextUnderlineOffset {
-        .length(value, .em)
-    }
-    
-    /// Factory method for creating a length value in pixels
-    public static func px(_ value: Double) -> TextUnderlineOffset {
-        .length(value, .px)
-    }
-    
-    /// Factory method for creating a length value in rem units
-    public static func rem(_ value: Double) -> TextUnderlineOffset {
-        .length(value, .rem)
-    }
 }
 
 /// CSS Output conversion
@@ -57,11 +38,8 @@ extension TextUnderlineOffset: CustomStringConvertible {
         case .auto:
             return "auto"
             
-        case .length(let value, let unit):
-            return "\(value)\(unit)"
-            
-        case .percentage(let percentage):
-            return percentage.description
+        case .lengthPercentage(let value):
+            return value.description
             
         case .global(let global):
             return global.description

@@ -116,21 +116,19 @@ public enum BorderImageOutset: Property {
     public init(_ top: OutsetValue, _ right: OutsetValue, _ bottom: OutsetValue, _ left: OutsetValue) {
         self = .top_right_bottom_left(top, right, bottom, left)
     }
-    
-    /// Creates a border-image-outset with a length value for all sides
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-image-outset with the specified length
-    public static func px(_ px: Double) -> BorderImageOutset {
-        return BorderImageOutset(.length(.px(px)))
-    }
-    
+
     /// Creates a border-image-outset with a number value for all sides
     ///
     /// - Parameter number: The number multiplier
     /// - Returns: A border-image-outset with the specified number
     public static func number(_ number: Number) -> BorderImageOutset {
         return BorderImageOutset(.number(number))
+    }
+}
+
+extension BorderImageOutset: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderImageOutset {
+        .all(.length(length))
     }
 }
 

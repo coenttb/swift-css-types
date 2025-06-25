@@ -71,15 +71,7 @@ struct PositionTests {
         #expect(Position.bottomRight.description == "bottom right")
     }
     
-    @Test("Position factory methods work correctly")
-    func testFactoryMethods() {
-        let percentagePos = Position.percentage(Percentage(25), Percentage(75))
-        #expect(percentagePos.description == "25% 75%")
-        
-        let pixelPos = Position.px(10, 20)
-        #expect(pixelPos.description == "10px 20px")
-    }
-    
+
     @Test("Position conforms to Hashable")
     func testHashable() {
         #expect(Position.center == Position.keyword(.center))

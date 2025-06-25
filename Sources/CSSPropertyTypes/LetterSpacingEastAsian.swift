@@ -16,32 +16,18 @@ import CSSTypeTypes
 /// ```
 ///
 /// - SeeAlso: [CSS Text Module Level 3](https://www.w3.org/TR/css-text-3/)
-public enum LetterSpacingEastAsian: Property {
+public enum LetterSpacingEastAsian: Property, LengthConvertible {
     public static let property: String = "letter-spacing-east-asian"
     /// Uses the default spacing as specified by the font.
     case normal
     
     /// Adds or removes a specific amount of space between East Asian characters.
     /// Positive values increase spacing, negative values decrease it.
-    case length(Double, Length.Unit)
+    case length(Length)
     
     /// Global values
     case global(CSSTypeTypes.Global)
-    
-    /// Factory method for creating a length value in em units
-    public static func em(_ value: Double) -> Self {
-        .length(value, .em)
-    }
-    
-    /// Factory method for creating a length value in pixels
-    public static func px(_ value: Double) -> Self {
-        .length(value, .px)
-    }
-    
-    /// Factory method for creating a length value in rem units
-    public static func rem(_ value: Double) -> Self {
-        .length(value, .rem)
-    }
+
 }
 
 /// CSS Output conversion
@@ -52,8 +38,8 @@ extension LetterSpacingEastAsian: CustomStringConvertible {
         case .normal:
             return "normal"
             
-        case .length(let value, let unit):
-            return "\(value)\(unit)"
+        case .length(let value):
+            return value.description
             
         case .global(let global):
             return global.description

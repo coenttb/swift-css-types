@@ -85,24 +85,11 @@ public enum Position: Sendable, Hashable {
     /// Creates a bottom-right position
     public static let bottomRight: Position = .keywords(.bottom, .right)
     
-    /// Creates a position with percentage values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal position percentage (0-100)
-    ///   - y: Vertical position percentage (0-100)
-    /// - Returns: A Position with percentage values
-    public static func percentage(_ x: Percentage, _ y: Percentage) -> Position {
-        return .values(.percentage(x), .percentage(y))
-    }
-    
-    /// Creates a position with pixel values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal position in pixels
-    ///   - y: Vertical position in pixels
-    /// - Returns: A Position with pixel values
-    public static func px(_ x: Double, _ y: Double) -> Position {
-        return .values(.px(x), .px(y))
+}
+
+extension Position: LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: LengthPercentage) -> Position {
+        .value(value)
     }
 }
 

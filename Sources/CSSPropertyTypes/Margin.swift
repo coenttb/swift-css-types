@@ -33,10 +33,10 @@ public enum Margin: Property, LengthPercentageConvertible {
     case verticalHorizontal(LengthPercentage, LengthPercentage)
     
     /// Three values: top, left/right (horizontal), and bottom
-    case topHorizontalBottom(LengthPercentage, LengthPercentage, LengthPercentage)
+    case topHorizontalBottom(CSSPropertyTypes.MarginTop, LengthPercentage, CSSPropertyTypes.MarginBottom)
     
     /// Four values: top, right, bottom, and left (clockwise)
-    case sides(LengthPercentage, LengthPercentage, LengthPercentage, LengthPercentage)
+    case sides(CSSPropertyTypes.MarginTop, CSSPropertyTypes.MarginRight, CSSPropertyTypes.MarginBottom, CSSPropertyTypes.MarginLeft)
 
     /// Global values
     case global(CSSTypeTypes.Global)
@@ -96,10 +96,10 @@ extension Margin {
     ///   - left: The left margin value (optional)
     /// - Returns: A Margin instance with the specified sides
     public static func sides(
-        top: LengthPercentage? = nil,
-        right: LengthPercentage? = nil,
-        bottom: LengthPercentage? = nil,
-        left: LengthPercentage? = nil
+        top: CSSPropertyTypes.MarginTop? = nil,
+        right: CSSPropertyTypes.MarginRight? = nil,
+        bottom: CSSPropertyTypes.MarginBottom? = nil,
+        left: CSSPropertyTypes.MarginLeft? = nil
     ) -> Margin {
         .sides(top ?? .zero, right ?? .zero, bottom ?? .zero, left ?? .zero)
     }

@@ -74,7 +74,7 @@ public enum TransformOrigin: Property {
     case global(CSSTypeTypes.Global)
     
     /// A single position value (keyword or length)
-    public enum Value: Sendable, Hashable {
+    public enum Value: Sendable, Hashable, LengthPercentageConvertible {
         /// A horizontal keyword (left, center, right)
         case horizontalKeyword(HorizontalKeyword)
         
@@ -82,10 +82,12 @@ public enum TransformOrigin: Property {
         case verticalKeyword(VerticalKeyword)
         
         /// A length value (px, em, etc)
-        case length(Length)
-        
-        /// A percentage value
-        case percentage(Percentage)
+        case lengthPercentage(LengthPercentage)
+    }
+}
+extension TransformOrigin: LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> TransformOrigin {
+        .singleValue(.init(value))
     }
 }
 
@@ -135,38 +137,6 @@ extension TransformOrigin {
     public static func vertical(_ keyword: VerticalKeyword) -> Value {
         .verticalKeyword(keyword)
     }
-    
-    /// A convenient shorthand for pixel values
-    ///
-    /// - Parameter pixels: The number of pixels
-    /// - Returns: A transform origin value
-    public static func px(_ pixels: Double) -> Value {
-        .length(.px(pixels))
-    }
-    
-    /// A convenient shorthand for percentage values
-    ///
-    /// - Parameter percent: The percentage value
-    /// - Returns: A transform origin value
-    public static func percentage(_ percentage: Percentage) -> Value {
-        .percentage(percentage)
-    }
-    
-    /// A convenient shorthand for em values
-    ///
-    /// - Parameter ems: The number of ems
-    /// - Returns: A transform origin value
-    public static func em(_ ems: Double) -> Value {
-        .length(.em(ems))
-    }
-    
-    /// A convenient shorthand for rem values
-    ///
-    /// - Parameter rems: The number of rems
-    /// - Returns: A transform origin value
-    public static func rem(_ rems: Double) -> Value {
-        .length(.rem(rems))
-    }
 }
 
 /// Common transform origin positions
@@ -208,10 +178,8 @@ extension TransformOrigin.Value: CustomStringConvertible {
             return keyword.description
         case .verticalKeyword(let keyword):
             return keyword.description
-        case .length(let length):
-            return length.description
-        case .percentage(let percentage):
-            return percentage.description
+        case .lengthPercentage(let value):
+            return value.description
         }
     }
 }

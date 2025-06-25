@@ -390,7 +390,7 @@ public enum MaskBorder: Property {
     }
     
     /// The width of the mask border
-    public struct Width: Sendable, Hashable {
+    public struct Width: Sendable, Hashable, LengthPercentageConvertible {
         /// The top width value
         public let top: WidthValue
         
@@ -402,6 +402,10 @@ public enum MaskBorder: Property {
         
         /// The left width value
         public let left: WidthValue?
+        
+        public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> MaskBorder.Width {
+            .init(.lengthPercentage(value))
+        }
         
         /// Creates a width with the same value for all sides
         ///
@@ -428,7 +432,7 @@ public enum MaskBorder: Property {
         }
         
         /// Width value type
-        public enum WidthValue: Sendable, Hashable, CustomStringConvertible {
+        public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthPercentageConvertible {
             /// Auto width
             case auto
             
@@ -436,10 +440,7 @@ public enum MaskBorder: Property {
             case number(Number)
             
             /// Length value
-            case length(Length)
-            
-            /// Percentage value
-            case percentage(Percentage)
+            case lengthPercentage(LengthPercentage)
             
             /// Returns string representation of the width value
             public var description: String {
@@ -448,29 +449,12 @@ public enum MaskBorder: Property {
                     return "auto"
                 case .number(let number):
                     return number.description
-                case .length(let length):
+                case .lengthPercentage(let length):
                     return length.description
-                case .percentage(let percentage):
-                    return percentage.description
                 }
             }
         }
-        
-        /// Creates a width with a length value
-        ///
-        /// - Parameter px: The pixel value
-        /// - Returns: A width with the specified pixel length
-        public static func px(_ px: Double) -> Width {
-            return Width(.length(.px(px)))
-        }
-        
-        /// Creates a width with a percentage value
-        ///
-        /// - Parameter value: The percentage value
-        /// - Returns: A width with the specified percentage
-        public static func percentage(_ value: Percentage) -> Width {
-            return Width(.percentage(value))
-        }
+
         
         /// Creates a width with a number multiplier
         ///
@@ -485,7 +469,7 @@ public enum MaskBorder: Property {
     }
     
     /// The outset value of the mask border
-    public struct Outset: Sendable, Hashable {
+    public struct Outset: Sendable, Hashable, LengthConvertible {
         /// The top outset value
         public let top: OutsetValue
         
@@ -497,6 +481,10 @@ public enum MaskBorder: Property {
         
         /// The left outset value
         public let left: OutsetValue?
+        
+        public static func length(_ length: CSSTypeTypes.Length) -> MaskBorder.Outset {
+            .init(.length(length))
+        }
         
         /// Creates an outset with the same value for all sides
         ///
@@ -540,15 +528,7 @@ public enum MaskBorder: Property {
                 }
             }
         }
-        
-        /// Creates an outset with a length value
-        ///
-        /// - Parameter px: The pixel value
-        /// - Returns: An outset with the specified pixel length
-        public static func px(_ px: Double) -> Outset {
-            return Outset(.length(.px(px)))
-        }
-        
+
         /// Creates an outset with a number multiplier
         ///
         /// - Parameter number: The number multiplier

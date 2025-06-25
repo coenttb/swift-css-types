@@ -172,18 +172,18 @@ extension MaskPosition {
     ///   - y: Vertical position percentage (0-100)
     /// - Returns: A mask position with percentage values
     public static func percentage(_ x: Percentage, _ y: Percentage) -> MaskPosition {
-        MaskPosition(.percentage(x, y))
+        .single(.values(.percentage(x), .percentage(y)))
     }
-    
-    /// Creates a mask position with pixel values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal position in pixels
-    ///   - y: Vertical position in pixels
-    /// - Returns: A mask position with pixel values
-    public static func px(_ x: Double, _ y: Double) -> MaskPosition {
-        MaskPosition(.px(x, y))
-    }
+//    
+//    /// Creates a mask position with pixel values
+//    ///
+//    /// - Parameters:
+//    ///   - x: Horizontal position in pixels
+//    ///   - y: Vertical position in pixels
+//    /// - Returns: A mask position with pixel values
+//    public static func px(_ x: Double, _ y: Double) -> MaskPosition {
+//        .single(.values(.px(x, y)))
+//    }
     
     /// Creates a mask position with edge offsets
     ///

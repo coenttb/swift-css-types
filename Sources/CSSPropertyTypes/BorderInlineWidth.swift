@@ -66,6 +66,11 @@ public enum BorderInlineWidth: Property {
         self = .width(width)
     }
 }
+extension BorderInlineWidth: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderInlineWidth {
+        .width(.length(length))
+    }
+}
 
 /// Provides string conversion for CSS output
 extension BorderInlineWidth: CustomStringConvertible {
@@ -101,28 +106,5 @@ extension BorderInlineWidth {
     
     /// Creates a thick border-inline-width
     public static let thick = BorderInlineWidth(.thick)
-    
-    /// Creates a border-inline-width with a pixel value
-    ///
-    /// - Parameter px: The width in pixels
-    /// - Returns: A border-inline-width with the specified pixel value
-    public static func px(_ px: Double) -> BorderInlineWidth {
-        return BorderInlineWidth(.px(px))
-    }
-    
-    /// Creates a border-inline-width with a em value
-    ///
-    /// - Parameter em: The width in ems
-    /// - Returns: A border-inline-width with the specified em value
-    public static func em(_ em: Double) -> BorderInlineWidth {
-        return BorderInlineWidth(.em(em))
-    }
-    
-    /// Creates a border-inline-width with a rem value
-    ///
-    /// - Parameter rem: The width in rems
-    /// - Returns: A border-inline-width with the specified rem value
-    public static func rem(_ rem: Double) -> BorderInlineWidth {
-        return BorderInlineWidth(.rem(rem))
-    }
+
 }

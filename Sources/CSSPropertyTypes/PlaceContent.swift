@@ -56,52 +56,52 @@ extension PlaceContent {
 // Convenience initializers
 extension PlaceContent {
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func normal() -> Self {
+    public static var normal: Self {
         return .single(.normal)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func stretch() -> Self {
+    public static var stretch: Self {
         return .single(.stretch)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func spaceBetween() -> Self {
+    public static var spaceBetween: Self {
         return .single(.spaceBetween)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func spaceAround() -> Self {
+    public static var spaceAround: Self {
         return .single(.spaceAround)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func spaceEvenly() -> Self {
+    public static var spaceEvenly: Self {
         return .single(.spaceEvenly)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func center() -> Self {
+    public static var center: Self {
         return .single(.center)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func start() -> Self {
+    public static var start: Self {
         return .single(.start)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func end() -> Self {
+    public static var end: Self {
         return .single(.end)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func flexStart() -> Self {
+    public static var flexStart: Self {
         return .single(.flexStart)
     }
     
     /// Creates a PlaceContent with the same value for both align-content and justify-content
-    public static func flexEnd() -> Self {
+    public static var flexEnd: Self {
         return .single(.flexEnd)
     }
     

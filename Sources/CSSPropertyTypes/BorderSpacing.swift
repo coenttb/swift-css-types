@@ -69,6 +69,11 @@ public enum BorderSpacing: Property {
         self = .horizontal_vertical(horizontal, vertical)
     }
 }
+extension BorderSpacing: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderSpacing {
+        .all(.length(length))
+    }
+}
 
 /// Provides string conversion for CSS output
 extension BorderSpacing {
@@ -96,41 +101,5 @@ extension BorderSpacing {
 extension BorderSpacing {
     /// The default border-spacing value (0)
     public static let `default` = BorderSpacing(.px(0))
-    
-    /// Creates a border-spacing with 0 spacing
-    public static let zero = BorderSpacing(.px(0))
-    
-    /// Creates a border-spacing with a pixel value
-    ///
-    /// - Parameter px: The spacing in pixels
-    /// - Returns: A border-spacing with the specified pixel value
-    public static func px(_ px: Double) -> BorderSpacing {
-        BorderSpacing(.px(px))
-    }
-    
-    /// Creates a border-spacing with an em value
-    ///
-    /// - Parameter em: The spacing in ems
-    /// - Returns: A border-spacing with the specified em value
-    public static func em(_ em: Double) -> BorderSpacing {
-        BorderSpacing(.em(em))
-    }
-    
-    /// Creates a border-spacing with a rem value
-    ///
-    /// - Parameter rem: The spacing in rems
-    /// - Returns: A border-spacing with the specified rem value
-    public static func rem(_ rem: Double) -> BorderSpacing {
-        BorderSpacing(.rem(rem))
-    }
-    
-    /// Creates a border-spacing with different horizontal and vertical pixel values
-    ///
-    /// - Parameters:
-    ///   - horizontal: The horizontal spacing in pixels
-    ///   - vertical: The vertical spacing in pixels
-    /// - Returns: A border-spacing with the specified pixel values
-    public static func px(_ horizontal: Double, _ vertical: Double) -> BorderSpacing {
-        BorderSpacing(.px(horizontal), .px(vertical))
-    }
+
 }

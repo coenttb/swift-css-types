@@ -30,6 +30,12 @@ public enum OffsetAnchor: Property {
     case global(CSSTypeTypes.Global)
 }
 
+extension OffsetAnchor: LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> OffsetAnchor {
+        .position(.init(value))
+    }
+}
+
 /// CSS Output conversion
 extension OffsetAnchor: CustomStringConvertible {
     /// Converts the offset-anchor value to its CSS string representation
@@ -73,24 +79,5 @@ extension OffsetAnchor {
     
     /// Creates an offset-anchor with the bottom-right position
     public static let bottomRight: OffsetAnchor = .position(.bottomRight)
-    
-    /// Creates an offset-anchor with percentage values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal percentage (0-100)
-    ///   - y: Vertical percentage (0-100)
-    /// - Returns: An OffsetAnchor with the specified percentage position
-    public static func percentage(_ x: Double, _ y: Double) -> Self {
-        .position(.percentage(Percentage(x), Percentage(y)))
-    }
-    
-    /// Creates an offset-anchor with pixel values
-    ///
-    /// - Parameters:
-    ///   - x: Horizontal position in pixels
-    ///   - y: Vertical position in pixels
-    /// - Returns: An OffsetAnchor with the specified pixel position
-    public static func px(_ x: Double, _ y: Double) -> Self {
-        .position(.px(x, y))
-    }
 }
+

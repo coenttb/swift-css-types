@@ -130,34 +130,3 @@ extension BorderStartEndRadius: CustomStringConvertible {
         }
     }
 }
-
-/// Convenience methods for creating BorderStartEndRadius values
-extension BorderStartEndRadius {
-    /// Creates a border-start-end-radius with a circular corner using pixel units
-    ///
-    /// - Parameter px: The radius in pixels
-    /// - Returns: A border-start-end-radius with the specified radius
-    public static func px(_ px: Double) -> BorderStartEndRadius {
-        .radius(.px(px))
-    }
-    
-    /// Creates a border-start-end-radius with an elliptical corner using pixel units
-    ///
-    /// - Parameters:
-    ///   - horizontal: The horizontal radius in pixels
-    ///   - vertical: The vertical radius in pixels
-    /// - Returns: A border-start-end-radius with the specified radii
-    public static func px(_ horizontal: Double, _ vertical: Double) -> BorderStartEndRadius {
-        .elliptical(.px(horizontal), .px(vertical))
-    }
-    
-    /// Creates a border-start-end-radius with an elliptical corner using percentages
-    ///
-    /// - Parameters:
-    ///   - horizontal: The horizontal radius as a percentage
-    ///   - vertical: The vertical radius as a percentage
-    /// - Returns: A border-start-end-radius with the specified radii
-    public static func percentage(_ horizontal: Percentage, _ vertical: Percentage) -> BorderStartEndRadius {
-        .elliptical(.percentage(horizontal), .percentage(vertical))
-    }
-}

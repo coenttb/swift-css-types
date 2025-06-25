@@ -78,6 +78,11 @@ extension BorderTopWidth: CustomStringConvertible {
         }
     }
 }
+extension BorderTopWidth: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderTopWidth {
+        .width(.length(length))
+    }
+}
 
 /// Convenience methods for creating BorderTopWidth values
 extension BorderTopWidth {
@@ -93,20 +98,4 @@ extension BorderTopWidth {
     /// Creates a thick border-top-width
     public static let thick = BorderTopWidth(.thick)
     
-    /// Creates a border-top-width with a specific pixel value
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-top-width with the specified pixel value
-    public static func px(_ px: Double) -> BorderTopWidth {
-        .width(.px(px))
-    }
-    
-    /// Creates a border-top-width with a specific percentage value
-    ///
-    /// - Parameter percent: The percentage value
-    /// - Returns: A border-top-width with the specified percentage value
-    public static func percentage(_ percentage: Percentage) -> BorderTopWidth {
-//     THIS IS INCORRECT:   .width(.percentage(percentage)), BECAUSE: Type 'BorderWidth' has no member 'percent'
-        fatalError()
-    }
 }

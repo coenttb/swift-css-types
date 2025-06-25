@@ -107,22 +107,6 @@ extension BorderBlockEndWidth {
     
     /// Creates a thick border-block-end-width
     public static let thick = BorderBlockEndWidth(.thick)
-    
-    /// Creates a border-block-end-width with a specific pixel value
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-block-end-width with the specified pixel value
-    public static func px(_ px: Double) -> BorderBlockEndWidth {
-        .width(.px(px))
-    }
-    
-    /// Creates a border-block-end-width with a specific percentage value
-    ///
-    /// - Parameter percent: The percentage value
-    /// - Returns: A border-block-end-width with the specified percentage value
-    public static func percentage(_ percentage: Percentage) -> BorderBlockEndWidth {
-        //        Type 'BorderWidth' has no member 'percent'
-        //        .width(.percentage(percentage))
-                fatalError()
-    }
+
+
 }

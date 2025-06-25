@@ -42,7 +42,8 @@ import CSSTypeTypes
 ///         appearing as though they're not part of the element.
 ///
 /// - SeeAlso: [MDN Web Docs on mask-border-outset](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-outset)
-public enum MaskBorderOutset: Property {
+public enum MaskBorderOutset: Property, LengthConvertible {
+   
     public static let property: String = "mask-border-outset"
     
     /// All four sides have the same outset value
@@ -59,6 +60,10 @@ public enum MaskBorderOutset: Property {
     
     /// Global CSS values
     case global(CSSTypeTypes.Global)
+    
+    public static func length(_ length: CSSTypeTypes.Length) -> MaskBorderOutset {
+        .init(.length(length))
+    }
     
     /// Represents a value for mask-border-outset
     public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
@@ -115,14 +120,7 @@ public enum MaskBorderOutset: Property {
     public init(_ top: OutsetValue, _ right: OutsetValue, _ bottom: OutsetValue, _ left: OutsetValue) {
         self = .top_right_bottom_left(top, right, bottom, left)
     }
-    
-    /// Creates a mask-border-outset with a length value for all sides
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A mask-border-outset with the specified length
-    public static func px(_ px: Double) -> MaskBorderOutset {
-        return MaskBorderOutset(.length(.px(px)))
-    }
+
     
     /// Creates a mask-border-outset with a number value for all sides
     ///

@@ -145,7 +145,8 @@ extension Offset {
     ///   - x: Horizontal percentage (0-100)
     ///   - y: Vertical percentage (0-100)
     /// - Returns: An Offset with a percentage position
-    public static func percentage(_ x: Double, _ y: Double) -> Self {
-        .position(.percentage(x, y), nil)
+    public static func percentage(_ x: Percentage, _ y: Percentage) -> Self {
+//        .position(.percentage(x, y), nil)
+        .position(.percentage(x), .percent(y))
     }
 }

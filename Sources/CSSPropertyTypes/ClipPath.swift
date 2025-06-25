@@ -280,21 +280,3 @@ extension ClipPath {
         .polygon(PolygonShape(points: points))
     }
 }
-
-/// Global value helpers
-extension ClipPath {
-    /// Inherit value
-    public static let inherit: ClipPath = .global(.inherit)
-    
-    /// Initial value
-    public static let initial: ClipPath = .global(.initial)
-    
-    /// Revert value
-    public static let revert: ClipPath = .global(.revert)
-    
-    /// Revert layer value
-    public static let revertLayer: ClipPath = .global(.revertLayer)
-    
-    /// Unset value
-    public static let unset: ClipPath = .global(.unset)
-}

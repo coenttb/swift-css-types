@@ -85,6 +85,11 @@ extension BorderRightWidth: CustomStringConvertible {
         }
     }
 }
+extension BorderRightWidth: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderRightWidth {
+        .width(.length(length))
+    }
+}
 
 /// Convenience methods for creating BorderRightWidth values
 extension BorderRightWidth {
@@ -99,22 +104,5 @@ extension BorderRightWidth {
     
     /// Creates a thick border-right-width
     public static let thick = BorderRightWidth(.thick)
-    
-    /// Creates a border-right-width with a specific pixel value
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-right-width with the specified pixel value
-    public static func px(_ px: Double) -> BorderRightWidth {
-        .width(.px(px))
-    }
-    
-    /// Creates a border-right-width with a specific percentage value
-    ///
-    /// - Parameter percent: The percentage value
-    /// - Returns: A border-right-width with the specified percentage value
-    public static func percentage(_ percentage: Percentage) -> BorderRightWidth {
-//        Type 'BorderWidth' has no member 'percent'
-//        .width(.percentage(percentage))
-        fatalError()
-    }
+
 }

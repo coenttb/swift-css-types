@@ -133,19 +133,4 @@ extension BorderBlock {
     public static func thick(_ style: LineStyle) -> BorderBlock {
         .widthAndStyle(.thick, style)
     }
-    
-    /// Inherits the value from the parent element
-    public static let inherit = BorderBlock.global(.inherit)
-    
-    /// Uses the default value for the property
-    public static let initial = BorderBlock.global(.initial)
-    
-    /// Reverts to the browser's default styling
-    public static let revert = BorderBlock.global(.revert)
-    
-    /// Reverts to the value established in the previous cascade layer
-    public static let revertLayer = BorderBlock.global(.revertLayer)
-    
-    /// Resets to its natural value (acts like `inherit` or `initial` depending on the property)
-    public static let unset = BorderBlock.global(.unset)
 }

@@ -64,6 +64,11 @@ public enum BorderLeftWidth: Property {
         self = .width(width)
     }
 }
+extension BorderLeftWidth: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderLeftWidth {
+        .width(.length(length))
+    }
+}
 
 /// Provides string conversion for CSS output
 extension BorderLeftWidth: CustomStringConvertible {
@@ -99,22 +104,4 @@ extension BorderLeftWidth {
     
     /// Creates a thick border-left-width
     public static let thick = BorderLeftWidth(.thick)
-    
-    /// Creates a border-left-width with a specific pixel value
-    ///
-    /// - Parameter px: The pixel value
-    /// - Returns: A border-left-width with the specified pixel value
-    public static func px(_ px: Double) -> BorderLeftWidth {
-        .width(.px(px))
-    }
-    
-    /// Creates a border-left-width with a specific percentage value
-    ///
-    /// - Parameter percent: The percentage value
-    /// - Returns: A border-left-width with the specified percentage value
-    public static func percentage(_ percentage: Percentage) -> BorderLeftWidth {
-//        DOESNT WORK: Type 'BorderWidth' has no member 'percent'
-//        .width(.percentage(percentage))
-        fatalError()
-    }
 }

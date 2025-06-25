@@ -48,21 +48,5 @@ public enum LineHeightStep: Property, LengthConvertible, ExpressibleByFloatLiter
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
-    // MARK: - Convenience initializers for common length units
-    
-    /// Create a line-height-step with pixel units
-    public static func px(_ value: Double) -> LineHeightStep {
-        .length(.px(value))
-    }
-    
-    /// Create a line-height-step with em units
-    public static func em(_ value: Double) -> LineHeightStep {
-        .length(.em(value))
-    }
-    
-    /// Create a line-height-step with rem units
-    public static func rem(_ value: Double) -> LineHeightStep {
-        .length(.rem(value))
-    }
+
 }

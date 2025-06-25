@@ -56,6 +56,12 @@ public enum BorderBlockWidth: Property {
     }
 }
 
+extension BorderBlockWidth: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> Self {
+        .all(.length(length))
+    }
+}
+
 /// Convenience methods for creating BorderBlockWidth values
 extension BorderBlockWidth {
     /// The default border width (medium)
@@ -69,28 +75,5 @@ extension BorderBlockWidth {
     
     /// Creates a thick border width on both block sides
     public static let thick = BorderBlockWidth(.thick)
-    
-    /// Creates a border width with a specific pixel value on both block sides
-    ///
-    /// - Parameter px: The width in pixels
-    /// - Returns: A border width with the specified pixel value
-    public static func px(_ px: Double) -> BorderBlockWidth {
-        return BorderBlockWidth(.px(px))
-    }
-    
-    /// Creates a border width with a specific em value on both block sides
-    ///
-    /// - Parameter em: The width in ems
-    /// - Returns: A border width with the specified em value
-    public static func em(_ em: Double) -> BorderBlockWidth {
-        return BorderBlockWidth(.em(em))
-    }
-    
-    /// Creates a border width with a specific rem value on both block sides
-    ///
-    /// - Parameter rem: The width in rems
-    /// - Returns: A border width with the specified rem value
-    public static func rem(_ rem: Double) -> BorderBlockWidth {
-        return BorderBlockWidth(.rem(rem))
-    }
+
 }

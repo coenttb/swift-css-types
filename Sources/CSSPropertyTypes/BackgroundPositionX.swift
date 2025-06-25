@@ -128,30 +128,4 @@ extension BackgroundPositionX {
     
     /// Right position (100%)
     public static let right = BackgroundPositionX.keyword(.right)
-    
-    /// Creates a position at a specific percentage
-    ///
-    /// - Parameter value: The percentage value (0-100)
-    /// - Returns: A horizontal position at the specified percentage
-    public static func percentage(_ value: Percentage) -> BackgroundPositionX {
-        .lengthPercentage(.percentage(value))
-    }
-    
-    /// Creates a position at a specific pixel value
-    ///
-    /// - Parameter value: The pixel value
-    /// - Returns: A horizontal position at the specified pixel value
-    public static func px(_ value: Double) -> BackgroundPositionX {
-        .lengthPercentage(.px(value))
-    }
-    
-   
-    /// Creates a position with multiple values
-    ///
-    /// - Parameter positions: The horizontal position values
-    /// - Returns: A horizontal position with multiple values
-    public static func values(_ positions: BackgroundPositionX...) -> BackgroundPositionX {
-//        THIS DOESN'T COMPILE: values(positions), BECAUSE: Cannot pass array of type 'BackgroundPositionX...' as variadic arguments of type 'BackgroundPositionX'
-        fatalError()
-    }
 }
