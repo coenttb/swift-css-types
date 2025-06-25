@@ -109,6 +109,12 @@ public enum Size: Property {
     }
 }
 
+extension Size: LengthConvertible {
+    public static func length(_ length: CSSTypeTypes.Length) -> Size {
+        .single(length)
+    }
+}
+
 /// Allows Size to be created from integer literals.
 extension Size: ExpressibleByIntegerLiteral {
     /// Creates a Size from an integer literal, interpreting it as pixels.
