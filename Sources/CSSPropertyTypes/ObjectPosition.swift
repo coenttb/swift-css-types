@@ -18,31 +18,20 @@ import CSSTypeTypes
 /// - Note: The position can be set so that the replaced element is drawn outside its box.
 ///
 /// - SeeAlso: [MDN Web Docs on object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
-public enum ObjectPosition: Property {
+public enum ObjectPosition: Property, LengthPercentageConvertible {
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> ObjectPosition {
+        .oneValue(.lengthPercentage(value))
+    }
+    
     public static let property: String = "object-position"
     
     /// A single position value type
-    public enum Value: Sendable, Hashable {
+    public enum Value: Sendable, Hashable, LengthPercentageConvertible {
         /// Keyword position (top, right, bottom, left, center)
         case keyword(CSSTypeTypes.Position.Keyword)
         
         /// Percentage value
-        case percentage(Percentage)
-        
-        /// Pixel value
-        case px(Double)
-        
-        /// Em value
-        case em(Double)
-        
-        /// Rem value
-        case rem(Double)
-        
-        /// Viewport width value
-        case vw(Double)
-        
-        /// Viewport height value
-        case vh(Double)
+        case lengthPercentage(LengthPercentage)
     }
     
     /// Single keyword position (top, right, bottom, left, center)
@@ -216,23 +205,8 @@ extension ObjectPosition.Value: CustomStringConvertible {
         case .keyword(let keyword):
             return keyword.rawValue
             
-        case .percentage(let percentage):
-            return percentage.description
-            
-        case .px(let value):
-            return "\(value)px"
-            
-        case .em(let value):
-            return "\(value)em"
-            
-        case .rem(let value):
-            return "\(value)rem"
-            
-        case .vw(let value):
-            return "\(value)vw"
-            
-        case .vh(let value):
-            return "\(value)vh"
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
         }
     }
 }
