@@ -189,4 +189,69 @@ struct MediaTests {
             "@media not screen and (max-width: 600px)"
         )
     }
+    
+    // These test cases would have caught the bug:
+
+    @Test("AND operator with predefined desktop/mobile queries")
+    func testAndOperatorWithPredefinedQueries() {
+        // This would fail with the buggy implementation
+        let media = Media.desktop.and(Media.prefersColorScheme(.dark))
+        #expect(media.rawValue == "@media only screen and (min-width: 832px) and (prefers-color-scheme: dark)")
+        
+        // This would also fail
+        let combined = Media.mobile.and(Media.orientation(.portrait))
+        #expect(combined.rawValue == "@media only screen and (max-width: 831px) and (orientation: portrait)")
+    }
+
+    @Test("AND operator with two media types")
+    func testAndOperatorWithTwoMediaTypes() {
+        // This would fail - trying to combine two media types
+        let media = Media.screen.and(Media.print)
+        // Should fallback to OR behavior with buggy implementation
+        #expect(media.rawValue == "@media screen and print") // This would fail
+    }
+
+    @Test("AND operator with 'only' keyword queries")
+    func testAndOperatorWithOnlyQueries() {
+        let onlyScreen = Media.screen.only()
+        let media = onlyScreen.and(Media.maxWidth(.px(500)))
+        #expect(media.rawValue == "@media only screen and (max-width: 500px)")
+    }
+
+    @Test("AND operator with complex non-feature queries")
+    func testAndOperatorWithComplexQueries() {
+        // Create a complex query that's not a simple feature query
+        let complexQuery = Media(rawValue: "only screen and (min-width: 768px)")
+        let result = complexQuery.and(Media.prefersColorScheme(.dark))
+        #expect(result.rawValue == "@media only screen and (min-width: 768px) and (prefers-color-scheme: dark)")
+    }
+
+    @Test("Chaining with mixed query types")
+    func testChainedMixedQueries() {
+        // This combines your predefined queries with feature queries
+        let result = Media.desktop
+            .and(Media.prefersColorScheme(.dark))
+            .and(Media.prefersReducedMotion())
+        
+        #expect(result.rawValue == "@media only screen and (min-width: 832px) and (prefers-color-scheme: dark) and (prefers-reduced-motion: reduce)")
+    }
 }
+
+extension CSSAtRuleTypes.Media {
+    /// Targets devices in dark mode.
+    public static let dark = Self(rawValue: "@media (prefers-color-scheme: dark)")
+    /// Targets print media (when the page is being printed).
+    public static let print = Self(rawValue: "@media print")
+    public static let desktop = Self(rawValue: "@media only screen and (min-width: 832px)")
+    public static let mobile = Self(rawValue: "@media only screen and (max-width: 831px)")
+    public static let tablet = Self(rawValue: "@media only screen and (min-width: 768px) and (max-width: 1024px)")
+    public static let landscape = Self(rawValue: "@media (orientation: landscape)")
+    public static let portrait = Self(rawValue: "@media (orientation: portrait)")
+    public static let retina = Self(rawValue: "@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)")
+    public static let smallMobile = Self(rawValue: "@media only screen and (max-width: 320px)")
+    public static let largeMobile = Self(rawValue: "@media only screen and (min-width: 321px) and (max-width: 767px)")
+    public static let largeDesktop = Self(rawValue: "@media only screen and (min-width: 1200px)")
+    public static let hover = Self(rawValue: "@media (hover: hover)")
+    public static let reducedMotion = Self(rawValue: "@media (prefers-reduced-motion: reduce)")
+}
+
