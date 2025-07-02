@@ -59,13 +59,11 @@ public struct Media: AtRule {
     public func and(_ other: Media?) -> Media {
         guard let other else { return self }
         
-        guard let featureString = other.featureString else {
-            // If other is not a feature query, fall back to OR behavior
-            return self.or(other)
-        }
+        // Extract the media query content (without @media prefix)
+        let selfContent = String(rawValue.dropFirst(7)) // Remove "@media "
+        let otherContent = String(other.rawValue.dropFirst(7)) // Remove "@media "
         
-        
-        return Media(rawValue: "\(rawValue) and (\(featureString))")
+        return Media(rawValue: "@media \(selfContent) and \(otherContent)")
     }
     
     /// Negates the media query.
