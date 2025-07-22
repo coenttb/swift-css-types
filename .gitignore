@@ -72,3 +72,4 @@ Packages/*
 .swiftpm
 
 CLAUDE.md
+.claude
