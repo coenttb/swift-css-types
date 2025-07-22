@@ -93,9 +93,15 @@ let package = Package(
         .target(
             name: .css,
             dependencies: [
-                .types,
-                .properties,
                 .atRules,
+                .combinators,
+                .functions,
+                .properties,
+                .pseudoClasses,
+                .pseudoElements,
+                .selectors,
+                .css,
+                .types,
             ]
         ),
         .testTarget(
