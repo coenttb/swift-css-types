@@ -100,7 +100,6 @@ let package = Package(
                 .pseudoClasses,
                 .pseudoElements,
                 .selectors,
-                .css,
             ]
         ),
         .testTarget(
