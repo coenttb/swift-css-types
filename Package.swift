@@ -101,7 +101,6 @@ let package = Package(
                 .pseudoElements,
                 .selectors,
                 .css,
-                .types,
             ]
         ),
         .testTarget(
