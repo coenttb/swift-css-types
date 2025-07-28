@@ -47,9 +47,9 @@ dependencies: [
 ## Related Projects
 
 * [swift-html-types](https://www.github.com/coenttb/swift-html-types): A Swift package that provides a strongly-typed domain model of HTML elements and attributes.
-* [swift-html](https://www.github.com/coenttb/swift-html): A Swift DSL for type-safe HTML & CSS, integrating this package.
+* [swift-html](https://www.github.com/coenttb/swift-html): A Swift DSL for domain-accurate and type-safe HTML & CSS.
 * [swift-web](https://www.github.com/coenttb/swift-web): Foundational tools for web development in Swift.
-* [coenttb-html](https://www.github.com/coenttb/coenttb-html): Builds on swift-html and adds functionality for HTML components, PDF generation, and more.
+* [coenttb-com-server](https://www.github.com/coenttb/coenttb-com-server): 100% Swift server & website, built in `swift-html-types`.
 
 ## Contribution
 
