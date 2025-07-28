@@ -221,7 +221,7 @@ struct MediaTests {
     @Test("AND operator with complex non-feature queries")
     func testAndOperatorWithComplexQueries() {
         // Create a complex query that's not a simple feature query
-        let complexQuery = Media(rawValue: "only screen and (min-width: 768px)")
+        let complexQuery = Media(rawValue: "@media only screen and (min-width: 768px)")
         let result = complexQuery.and(Media.prefersColorScheme(.dark))
         #expect(result.rawValue == "@media only screen and (min-width: 768px) and (prefers-color-scheme: dark)")
     }
