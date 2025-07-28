@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `stroke` property defines the color or SVG paint server used to draw an element's stroke outline.
 ///
@@ -32,25 +32,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on stroke](https://developer.mozilla.org/en-US/docs/Web/CSS/stroke)
 public indirect enum Stroke: Property, ColorConvertible {
     public static let property: String = "stroke"
-    
+
     /// No stroke is painted (transparent)
     case none
-    
+
     /// Uses the stroke value from a context element
     case contextStroke
-    
+
     /// A specific color for the stroke
     case color(CSSTypeTypes.Color)
-    
+
     /// A URL reference to an SVG paint server element (gradient, pattern)
     case url(Url)
-    
+
     /// A URL with a fallback color if the URL reference doesn't resolve
     case urlWithFallback(url: Url, fallback: Stroke = .none)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

@@ -24,7 +24,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: normal;
     /// ```
     case normal
-    
+
     /// Multiplies the top and bottom colors
     /// 
     /// A black layer leads to a black final layer, and a white layer leads to no change.
@@ -33,7 +33,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: multiply;
     /// ```
     case multiply
-    
+
     /// Inverts colors, multiplies them, and inverts that value
     /// 
     /// A black layer leads to no change, and a white layer leads to a white final layer.
@@ -42,7 +42,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: screen;
     /// ```
     case screen
-    
+
     /// Multiplies if the bottom color is darker, screens if the bottom color is lighter
     /// 
     /// This blend mode is equivalent to hard-light but with the layers swapped.
@@ -50,19 +50,19 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: overlay;
     /// ```
     case overlay
-    
+
     /// Selects the darkest value from each color channel
     /// ```css
     /// mix-blend-mode: darken;
     /// ```
     case darken
-    
+
     /// Selects the lightest value from each color channel
     /// ```css
     /// mix-blend-mode: lighten;
     /// ```
     case lighten
-    
+
     /// Divides the bottom color by the inverse of the top color
     /// 
     /// A black foreground leads to no change, while a foreground with the inverse color of
@@ -71,7 +71,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: color-dodge;
     /// ```
     case colorDodge = "color-dodge"
-    
+
     /// Inverts the bottom color, divides by the top color, and inverts again
     /// 
     /// A white foreground leads to no change, while a foreground with the inverse color of
@@ -80,7 +80,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: color-burn;
     /// ```
     case colorBurn = "color-burn"
-    
+
     /// Multiplies if the top color is darker, screens if the top color is lighter
     /// 
     /// This blend mode is equivalent to overlay but with the layers swapped.
@@ -89,7 +89,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: hard-light;
     /// ```
     case hardLight = "hard-light"
-    
+
     /// Similar to hard-light, but softer
     /// 
     /// The effect is similar to shining a diffused spotlight on the backdrop.
@@ -97,7 +97,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: soft-light;
     /// ```
     case softLight = "soft-light"
-    
+
     /// Subtracts the darker of the two colors from the lighter one
     /// 
     /// A black layer has no effect, while a white layer inverts the other layer's color.
@@ -105,7 +105,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: difference;
     /// ```
     case difference
-    
+
     /// Similar to difference, but with less contrast
     /// 
     /// A black layer has no effect, while a white layer inverts the other layer's color.
@@ -113,13 +113,13 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: exclusion;
     /// ```
     case exclusion
-    
+
     /// Applies the hue of the top color with saturation and luminosity of the bottom color
     /// ```css
     /// mix-blend-mode: hue;
     /// ```
     case hue
-    
+
     /// Applies the saturation of the top color with hue and luminosity of the bottom color
     /// 
     /// A pure gray backdrop, having no saturation, will have no effect.
@@ -127,7 +127,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: saturation;
     /// ```
     case saturation
-    
+
     /// Applies the hue and saturation of the top color with luminosity of the bottom color
     /// 
     /// The effect preserves gray levels and can be used to colorize the foreground.
@@ -135,7 +135,7 @@ public enum BlendMode: String, Sendable, Hashable {
     /// mix-blend-mode: color;
     /// ```
     case color
-    
+
     /// Applies the luminosity of the top color with hue and saturation of the bottom color
     /// 
     /// This blend mode is equivalent to color, but with the layers swapped.

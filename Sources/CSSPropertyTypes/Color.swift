@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `color` property sets the foreground color value of an element's text and text decorations,
 /// and sets the `currentcolor` value. `currentcolor` may be used as an indirect value on other
@@ -17,10 +17,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
 public enum Color: Property, ColorConvertible {
     public static let property: String = "color"
-    
+
     /// A specific color value
     case color(CSSTypeTypes.Color)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -31,7 +31,7 @@ extension CSSPropertyTypes.Color: CustomStringConvertible {
         switch self {
         case .color(let color):
             return color.description
-            
+
         case .global(let global):
             return global.description
         }

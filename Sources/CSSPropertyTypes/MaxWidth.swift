@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `max-width` property sets the maximum width of an element. It prevents 
 /// the used value of the width property from becoming larger than the value specified for max-width.
@@ -20,23 +20,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
 public enum MaxWidth: Property, LengthPercentageConvertible {
     public static let property: String = "max-width"
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// No maximum width constraint
     case none
-    
+
     case maxContent
-    
+
     case minContent
-    
+
     case fitContent(LengthPercentage? = nil)
-    
+
     case stretch
-    
+
     /// A global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public static let fitContent: Self = .fitContent(nil)
 }
 
@@ -67,7 +67,6 @@ extension MaxWidth: CustomStringConvertible {
     }
 }
 
-
 /// Allow for numeric literals to be used directly
 extension MaxWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     /// Creates a max-width with a pixel value from an integer literal
@@ -76,7 +75,7 @@ extension MaxWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a max-width with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-style` shorthand property, which sets the line style for all sides of an element's border.
 ///
@@ -55,21 +55,21 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style)
 public enum BorderStyle: Property {
-    
+
     public static let property: String = "border-style"
-    
+
     /// Same style for all four sides
     case all(LineStyle)
-    
+
     /// Different styles for vertical (top/bottom) and horizontal (left/right) sides
     case vertical_horizontal(LineStyle, LineStyle)
-    
+
     /// Different styles for top, horizontal (left/right), and bottom sides
     case top_horizontal_bottom(LineStyle, LineStyle, LineStyle)
-    
+
     /// Different styles for each side in clockwise order: top, right, bottom, left
     case top_right_bottom_left(LineStyle, LineStyle, LineStyle, LineStyle)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 
@@ -79,7 +79,7 @@ public enum BorderStyle: Property {
     public init(_ style: LineStyle) {
         self = .all(style)
     }
-    
+
     /// Creates a border style with two values (vertical and horizontal)
     ///
     /// - Parameters:
@@ -88,7 +88,7 @@ public enum BorderStyle: Property {
     public init(_ vertical: LineStyle, _ horizontal: LineStyle) {
         self = .vertical_horizontal(vertical, horizontal)
     }
-    
+
     /// Creates a border style with three values (top, horizontal, bottom)
     ///
     /// - Parameters:
@@ -98,7 +98,7 @@ public enum BorderStyle: Property {
     public init(_ top: LineStyle, _ horizontal: LineStyle, _ bottom: LineStyle) {
         self = .top_horizontal_bottom(top, horizontal, bottom)
     }
-    
+
     /// Creates a border style with four values (one for each side)
     ///
     /// - Parameters:
@@ -142,34 +142,34 @@ extension BorderStyle: CustomStringConvertible {
 extension BorderStyle {
     /// The default border style (none)
     public static let `default` = BorderStyle(.none)
-    
+
     /// Creates a none border style (invisible)
     public static let none = BorderStyle(.none)
-    
+
     /// Creates a hidden border style (invisible, high priority in border collapsing)
     public static let hidden = BorderStyle(.hidden)
-    
+
     /// Creates a solid border style
     public static let solid = BorderStyle(.solid)
-    
+
     /// Creates a dotted border style
     public static let dotted = BorderStyle(.dotted)
-    
+
     /// Creates a dashed border style
     public static let dashed = BorderStyle(.dashed)
-    
+
     /// Creates a double border style
     public static let double = BorderStyle(.double)
-    
+
     /// Creates a groove border style
     public static let groove = BorderStyle(.groove)
-    
+
     /// Creates a ridge border style
     public static let ridge = BorderStyle(.ridge)
-    
+
     /// Creates an inset border style
     public static let inset = BorderStyle(.inset)
-    
+
     /// Creates an outset border style
     public static let outset = BorderStyle(.outset)
 }

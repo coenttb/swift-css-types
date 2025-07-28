@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-origin` property, which sets the background's origin point.
 ///
@@ -39,21 +39,21 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on background-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin)
 public enum BackgroundOrigin: Property {
-    
+
     public static let property: String = "background-origin"
-    
+
     /// The background is positioned relative to the border box
     case borderBox
-    
+
     /// The background is positioned relative to the padding box (default)
     case paddingBox
-    
+
     /// The background is positioned relative to the content box
     case contentBox
-    
+
     /// Multiple origin values for multiple backgrounds
     case multiple([BackgroundOrigin])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -89,7 +89,7 @@ extension BackgroundOrigin: CustomStringConvertible {
 extension BackgroundOrigin {
     /// The default value for background-origin (`padding-box`)
     public static let `default` = BackgroundOrigin.paddingBox
-    
+
     /// Creates a background-origin with multiple values
     ///
     /// - Parameter origins: The background origin values
@@ -100,7 +100,7 @@ extension BackgroundOrigin {
         }
         return .multiple(origins)
     }
-    
+
     /// Creates a background-origin with multiple values
     ///
     /// - Parameter origins: The background origin values

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid-auto-columns` property specifies the size of an implicitly-created grid column track or pattern of tracks.
 ///
@@ -23,39 +23,39 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on grid-auto-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns)
 public enum GridAutoColumns: Property {
-    
+
     public static let property: String = "grid-auto-columns"
-    
+
     /// Auto sizing (similar to minmax(min-content, max-content))
     case auto
-    
+
     /// Fixed length value
     case px(Double)
-    
+
     /// Percentage of grid container width
     case percentage(Percentage)
-    
+
     /// Flexible length (takes a share of remaining space)
     case fr(Double)
-    
+
     /// Largest minimal content contribution
     case minContent
-    
+
     /// Largest maximal content contribution
     case maxContent
-    
+
     /// Range between min and max with minmax()
     case minMax(MinMaxValue, MinMaxValue)
-    
+
     /// Size that is clamped at the provided argument
     case fitContent(LengthPercentage)
-    
+
     /// Multiple track sizes for a repeating pattern
     case multiple([GridAutoColumns])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -86,22 +86,22 @@ public enum GridAutoColumns: Property {
 public enum MinMaxValue: Sendable, Hashable, CustomStringConvertible {
     /// Auto sizing
     case auto
-    
+
     /// Fixed length value
     case px(Double)
-    
+
     /// Percentage value
     case percentage(Percentage)
-    
+
     /// Flexible length (only valid as maximum)
     case fr(Double)
-    
+
     /// Largest minimal content contribution
     case minContent
-    
+
     /// Largest maximal content contribution
     case maxContent
-    
+
     public var description: String {
         switch self {
         case .auto:

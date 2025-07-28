@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `flood-color` property defines the color used in filter effects for the
 /// `<feFlood>` and `<feDropShadow>` SVG filter elements.
@@ -17,16 +17,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on flood-color](https://developer.mozilla.org/en-US/docs/Web/CSS/flood-color)
 public enum FloodColor: Property, ColorConvertible {
     public static let property: String = "flood-color"
-    
+
     /// A specific color value
     case color(CSSTypeTypes.Color)
-    
+
     /// Current color value
     case currentColor
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .color(let color):

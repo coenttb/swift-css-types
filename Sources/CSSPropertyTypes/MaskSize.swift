@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-size` property, which sets the size of mask images.
 ///
@@ -52,25 +52,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-size](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-size)
 public enum MaskSize: Property {
     public static let property: String = "mask-size"
-    
+
     /// Scale to the container without cropping or stretching (fit inside)
     case contain
-    
+
     /// Scale to fill the container completely (may crop)
     case cover
-    
+
     /// Use natural size or scale proportionally
     case auto
-    
+
     /// Specify just width (height auto-scales to maintain aspect ratio)
     case width(LengthPercentage)
-    
+
     /// Specify both width and height
     case size(LengthPercentage, LengthPercentage)
-    
+
     /// Multiple sizes for multiple masks
     case multiple([MaskSize])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -124,10 +124,10 @@ extension MaskSize: LengthPercentageConvertible {
 extension MaskSize {
     /// The default value for mask-size (`auto`)
     public static let `default` = MaskSize.auto
-    
+
     /// Auto size for width and height
     public static let autoSize = MaskSize.size(.auto, .auto)
-    
+
     /// Creates a mask size with multiple values
     ///
     /// - Parameter sizes: The size values for each mask
@@ -138,7 +138,7 @@ extension MaskSize {
         }
         return .multiple(sizes)
     }
-    
+
     /// Creates a mask size with multiple values
     ///
     /// - Parameter sizes: The size values for each mask

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-color` property, which sets the color of the logical inline borders.
 ///
@@ -54,15 +54,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-color)
 public enum BorderInlineColor: Property, ColorConvertible {
-    
+
     public static let property: String = "border-inline-color"
-    
+
     /// A specific color for both inline borders
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-color with a specific color
     ///
     /// - Parameter color: The color for both inline borders
@@ -96,25 +96,25 @@ extension BorderInlineColor: CustomStringConvertible {
 extension BorderInlineColor {
     /// The default border-inline-color value (currentcolor)
     public static let `default` = BorderInlineColor(.currentColor)
-    
+
     /// Creates a transparent border-inline-color
     public static let transparent = BorderInlineColor(.transparent)
-    
+
     /// Creates a border-inline-color that uses the current text color
     public static let currentColor = BorderInlineColor(.currentColor)
-    
+
     /// Creates a black border-inline-color
     public static let black = BorderInlineColor(.black)
-    
+
     /// Creates a white border-inline-color
     public static let white = BorderInlineColor(.white)
-    
+
     /// Creates a red border-inline-color
     public static let red = BorderInlineColor(.red)
-    
+
     /// Creates a green border-inline-color
     public static let green = BorderInlineColor(.green)
-    
+
     /// Creates a blue border-inline-color
     public static let blue = BorderInlineColor(.blue)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border` shorthand property, which sets all border properties at once.
 ///
@@ -48,16 +48,16 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
 public enum Border: Property {
-    
+
     public static let property: String = "border"
-    
+
     /// Specifies border properties (width, style, color)
     /// Note that per CSS spec, these can be specified in any order
     case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     public init(
         width: BorderWidth? = nil,
         style: LineStyle? = nil,
@@ -83,21 +83,21 @@ extension Border: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.isEmpty ? "none" : parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -108,34 +108,34 @@ extension Border: CustomStringConvertible {
 extension Border {
     /// Creates a none border (invisible)
     public static let none = Border.properties(style: LineStyle.none)
-    
+
     /// Creates a hidden border (invisible, high priority in border collapsing)
     public static let hidden = Border.properties(style: .hidden)
-    
+
     /// Creates a solid border with default width and color
     public static let solid = Border.properties(style: .solid)
-    
+
     /// Creates a dotted border with default width and color
     public static let dotted = Border.properties(style: .dotted)
-    
+
     /// Creates a dashed border with default width and color
     public static let dashed = Border.properties(style: .dashed)
-    
+
     /// Creates a double border with default width and color
     public static let double = Border.properties(style: .double)
-    
+
     /// Creates a groove border with default width and color
     public static let groove = Border.properties(style: .groove)
-    
+
     /// Creates a ridge border with default width and color
     public static let ridge = Border.properties(style: .ridge)
-    
+
     /// Creates a inset border with default width and color
     public static let inset = Border.properties(style: .inset)
-    
+
     /// Creates a outset border with default width and color
     public static let outset = Border.properties(style: .outset)
-    
+
     /// Creates a thin border with the specified style
     ///
     /// - Parameter style: The border style
@@ -143,7 +143,7 @@ extension Border {
     public static func thin(_ style: LineStyle) -> Border {
         .properties(width: .thin, style: style)
     }
-    
+
     /// Creates a medium border with the specified style
     ///
     /// - Parameter style: The border style
@@ -151,7 +151,7 @@ extension Border {
     public static func medium(_ style: LineStyle) -> Border {
         .properties(width: .medium, style: style)
     }
-    
+
     /// Creates a thick border with the specified style
     ///
     /// - Parameter style: The border style

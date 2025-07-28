@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-play-state property sets whether an animation is running or paused.
 ///
@@ -17,10 +17,10 @@ public enum AnimationPlayState: Property {
     public static let property: String = "animation-play-state"
     /// The animation is currently playing (default)
     case running
-    
+
     /// The animation is currently paused
     case paused
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }

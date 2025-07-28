@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-iteration-count property sets the number of times
 /// an animation sequence should be played before stopping.
@@ -13,15 +13,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation-iteration-count](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count)
 public enum AnimationIterationCount: Property {
-    
+
     public static let property: String = "animation-iteration-count"
-    
+
     /// The animation will repeat forever
     case infinite
-    
+
     /// The number of times the animation will repeat (default is 1)
     case count(Number)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -51,7 +51,7 @@ extension AnimationIterationCount: ExpressibleByIntegerLiteral, ExpressibleByFlo
             self = .count(.init(value))
         }
     }
-    
+
     /// Creates an iteration count from a floating-point literal
     public init(floatLiteral value: Double) {
         if value <= 0 {

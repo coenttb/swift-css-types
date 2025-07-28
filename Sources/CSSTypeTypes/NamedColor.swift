@@ -21,13 +21,13 @@ public enum NamedColor: String, Sendable, Hashable, CaseIterable {
     // Basic colors (CSS Level 1)
     case black, silver, gray, white, maroon, red, purple, fuchsia
     case green, lime, olive, yellow, navy, blue, teal, aqua
-    
+
     // CSS Level 2
     case orange
-    
+
     // CSS Colors Level 4 (added in honor of Eric Meyer)
     case rebeccapurple
-    
+
     // Extended colors (X11/SVG colors)
     case aliceblue, antiquewhite, aquamarine, azure, beige, bisque, blanchedalmond
     case blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral
@@ -49,7 +49,7 @@ public enum NamedColor: String, Sendable, Hashable, CaseIterable {
     case saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, skyblue
     case slateblue, slategray, slategrey, snow, springgreen, steelblue, tan, thistle
     case tomato, turquoise, violet, wheat, whitesmoke, yellowgreen
-    
+
     // Special keyword
     case transparent
     case currentColor = "currentColor"

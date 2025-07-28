@@ -1,7 +1,6 @@
 //
 // ScrollPaddingInlineStart.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-inline-start` CSS property defines offsets for the start edge in the inline dimension of the optimal
@@ -17,15 +16,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingInlineStart: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-inline-start"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

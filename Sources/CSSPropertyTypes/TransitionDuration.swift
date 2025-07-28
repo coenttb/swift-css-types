@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transition-duration` property specifies the duration of a transition effect.
 ///
@@ -23,16 +23,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on transition-duration](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration)
 public enum TransitionDuration: Property {
     public static let property: String = "transition-duration"
-    
+
     /// A single time duration
     case time(Time)
-    
+
     /// Multiple time durations for different properties
     case list([Time])
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .time(let time):
@@ -43,12 +43,12 @@ public enum TransitionDuration: Property {
             return global.description
         }
     }
-    
+
     /// Creates a transition duration with a time value
     public init(_ time: Time) {
         self = .time(time)
     }
-    
+
     /// Creates a transition duration with multiple time values
     public init(_ times: [Time]) {
         if times.isEmpty {
@@ -59,22 +59,22 @@ public enum TransitionDuration: Property {
             self = .list(times)
         }
     }
-    
+
     /// Creates a transition duration with multiple time values
     public init(_ times: Time...) {
         self.init(times)
     }
-    
+
     /// Creates a transition duration with a value in seconds
     public static func seconds(_ value: Double) -> TransitionDuration {
         .time(.s(value))
     }
-    
+
     /// Creates a transition duration with a value in milliseconds
     public static func milliseconds(_ value: Double) -> TransitionDuration {
         .time(.ms(value))
     }
-    
+
     /// Zero duration (no transition)
     public static let zero = TransitionDuration(.zero)
 }
@@ -85,7 +85,7 @@ extension TransitionDuration: ExpressibleByIntegerLiteral, ExpressibleByFloatLit
     public init(integerLiteral value: Int) {
         self = .time(Time(integerLiteral: value))
     }
-    
+
     /// Creates a duration in seconds from a floating point literal
     public init(floatLiteral value: Double) {
         self = .time(Time(floatLiteral: value))

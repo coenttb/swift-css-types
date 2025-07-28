@@ -21,7 +21,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: blur(5px);
     /// ```
     case blur(Length)
-    
+
     /// Makes the element brighter or darker
     ///
     /// A value of 0 makes the element completely black, 1 leaves it unchanged,
@@ -30,7 +30,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: brightness(1.5);
     /// ```
     case brightness(Double)
-    
+
     /// Adjusts the contrast of the element
     ///
     /// A value of 0 makes the element completely gray, 1 leaves it unchanged,
@@ -39,7 +39,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: contrast(200%);
     /// ```
     case contrast(Double)
-    
+
     /// Applies a drop shadow effect to the element
     ///
     /// Creates a shadow that follows the alpha shape of the element.
@@ -47,7 +47,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: drop-shadow(16px 16px 10px black);
     /// ```
     case dropShadow(offsetX: Length, offsetY: Length, blurRadius: Length?, color: Color?)
-    
+
     /// Converts the element to grayscale
     ///
     /// A value of 0 leaves the element unchanged, while 1 makes it completely grayscale.
@@ -55,7 +55,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: grayscale(0.5);
     /// ```
     case grayscale(Double)
-    
+
     /// Rotates the hue of the element
     ///
     /// Applies a rotation to the colors of the element. A value of 0deg leaves the element unchanged.
@@ -63,7 +63,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: hue-rotate(90deg);
     /// ```
     case hueRotate(Angle)
-    
+
     /// Inverts the colors of the element
     ///
     /// A value of 0 leaves the element unchanged, while 1 completely inverts the colors.
@@ -71,7 +71,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: invert(0.75);
     /// ```
     case invert(Double)
-    
+
     /// Adjusts the opacity of the element
     ///
     /// A value of 0 makes the element completely transparent, while 1 leaves it unchanged.
@@ -79,7 +79,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: opacity(0.5);
     /// ```
     case opacity(Double)
-    
+
     /// Adjusts color saturation of the element
     ///
     /// A value of 0 makes the element completely unsaturated (grayscale),
@@ -88,7 +88,7 @@ public enum FilterFunction: Sendable, Hashable {
     /// filter: saturate(2);
     /// ```
     case saturate(Double)
-    
+
     /// Converts the element to sepia
     ///
     /// A value of 0 leaves the element unchanged, while 1 makes it completely sepia-toned.
@@ -105,53 +105,53 @@ extension FilterFunction: CustomStringConvertible {
         switch self {
         case .blur(let radius):
             return "blur(\(radius))"
-            
+
         case .brightness(let amount):
             let value = formatNumberOrPercentage(amount)
             return "brightness(\(value))"
-            
+
         case .contrast(let amount):
             let value = formatNumberOrPercentage(amount)
             return "contrast(\(value))"
-            
+
         case .dropShadow(let offsetX, let offsetY, let blurRadius, let color):
             var shadow = "\(offsetX) \(offsetY)"
-            
+
             if let blurRadius = blurRadius {
                 shadow += " \(blurRadius)"
             }
-            
+
             if let color = color {
                 shadow += " \(color)"
             }
-            
+
             return "drop-shadow(\(shadow))"
-            
+
         case .grayscale(let amount):
             let value = formatNumberOrPercentage(amount)
             return "grayscale(\(value))"
-            
+
         case .hueRotate(let angle):
             return "hue-rotate(\(angle))"
-            
+
         case .invert(let amount):
             let value = formatNumberOrPercentage(amount)
             return "invert(\(value))"
-            
+
         case .opacity(let amount):
             let value = formatNumberOrPercentage(amount)
             return "opacity(\(value))"
-            
+
         case .saturate(let amount):
             let value = formatNumberOrPercentage(amount)
             return "saturate(\(value))"
-            
+
         case .sepia(let amount):
             let value = formatNumberOrPercentage(amount)
             return "sepia(\(value))"
         }
     }
-    
+
     /// Helper function to format number values, using percentage notation for values between 0 and 1
     private func formatNumberOrPercentage(_ value: Double) -> String {
         if value >= 0 && value <= 1 {

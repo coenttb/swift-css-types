@@ -63,13 +63,13 @@ extension AngleConvertible {
     /// let angle: Angle = .px(100)
     /// let gridTrack = GridTrack(angle)
     /// ```
-    public init(_ angle: Angle){
+    public init(_ angle: Angle) {
         self = .angle(angle)
     }
 }
 
 extension AngleConvertible {
-   
+
     /// Creates some AngleConvertible with a degree value
     ///
     /// - Parameter value: The degree value
@@ -77,7 +77,7 @@ extension AngleConvertible {
     public static func deg(_ value: Double) -> Self {
         .angle(.deg(value))
     }
-    
+
     /// Creates some AngleConvertible with a radian value
     ///
     /// - Parameter value: The radian value
@@ -85,7 +85,7 @@ extension AngleConvertible {
     public static func rad(_ value: Double) -> Self {
         .angle(.rad(value))
     }
-    
+
     /// Creates some AngleConvertible with a gradian value
     ///
     /// - Parameter value: The gradian value
@@ -93,7 +93,7 @@ extension AngleConvertible {
     public static func grad(_ value: Double) -> Self {
         .angle(.grad(value))
     }
-    
+
     /// Creates some AngleConvertible with a turn value
     ///
     /// - Parameter value: The turn value (1.0 = full 360° turn)
@@ -101,8 +101,7 @@ extension AngleConvertible {
     public static func turn(_ value: Double) -> Self {
         .angle(.turn(value))
     }
-    
-    
+
     /// Creates some AngleConvertible value from degrees
     ///
     /// - Parameter value: The angle in degrees
@@ -110,7 +109,7 @@ extension AngleConvertible {
     public static func degrees(_ value: Double) -> Self {
         return .angle(.degrees(value))
     }
-    
+
     /// Creates some AngleConvertible value from gradians
     ///
     /// - Parameter value: The angle in gradians
@@ -118,7 +117,7 @@ extension AngleConvertible {
     public static func gradians(_ value: Double) -> Self {
         return .angle(.gradians(value))
     }
-    
+
     /// Creates some AngleConvertible value from radians
     ///
     /// - Parameter value: The angle in radians

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `fill-rule` CSS property defines the algorithm used to determine which parts of an SVG shape
 /// are considered "inside" and should be filled.
@@ -16,13 +16,13 @@ public enum FillRule: Property {
     public static let property: String = "fill-rule"
     /// Uses ray crossing algorithm counting intersections; if count is zero, point is outside
     case nonzero
-    
+
     /// Uses ray crossing algorithm counting intersections; if count is odd, point is inside
     case evenodd
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .nonzero:

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-duration property sets the length of time that an animation takes to complete one cycle.
 ///
@@ -12,28 +12,28 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation-duration](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration)
 public enum AnimationDuration: Property {
-    
+
     public static let property: String = "animation-duration"
-    
+
     /// Auto duration (equivalent to 0s for time-based animations, fills the entire timeline for scroll-driven animations)
     case auto
-    
+
     /// The time that an animation takes to complete one cycle
     case time(Time)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a duration in seconds
     public static func s(_ seconds: Double) -> AnimationDuration {
         return .time(Time.s(max(0, seconds)))
     }
-    
+
     /// Creates a duration in milliseconds
     public static func ms(_ milliseconds: Double) -> AnimationDuration {
         return .time(Time.ms(max(0, milliseconds)))
     }
-    
+
     /// Zero duration
     public static let zero = AnimationDuration.time(Time.zero)
 }

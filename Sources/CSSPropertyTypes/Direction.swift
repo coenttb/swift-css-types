@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `direction` property sets the direction of text, table columns, and horizontal overflow.
 ///
@@ -22,16 +22,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on direction](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)
 public enum Direction: Property {
     public static let property: String = "direction"
-    
+
     /// Text and other elements go from left to right. This is the default value.
     case ltr
-    
+
     /// Text and other elements go from right to left.
     case rtl
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .ltr: return "ltr"

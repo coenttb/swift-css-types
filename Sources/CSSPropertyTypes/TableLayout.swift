@@ -1,7 +1,6 @@
 //
 // TableLayout.swift
 
-
 import CSSTypeTypes
 
 /// The `table-layout` CSS property sets the algorithm used to lay out table cells, rows, and columns.
@@ -19,16 +18,16 @@ import CSSTypeTypes
 /// ```
 public enum TableLayout: Property {
     public static let property: String = "table-layout"
-    
+
     /// The automatic table layout algorithm is used (content-based sizing)
     case auto
-    
+
     /// The fixed table layout algorithm is used (faster, based on first row only)
     case fixed
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

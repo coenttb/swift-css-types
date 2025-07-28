@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-start-color` property, which defines the color of the logical
 /// inline-start border of an element.
@@ -50,15 +50,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-start-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-color)
 public enum BorderInlineStartColor: Property, ColorConvertible {
-    
+
     public static let property: String = "border-inline-start-color"
-    
+
     /// A specific color for the inline-start border
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-start-color with a specific color
     ///
     /// - Parameter color: The color for the inline-start border
@@ -92,25 +92,25 @@ extension BorderInlineStartColor: CustomStringConvertible {
 extension BorderInlineStartColor {
     /// The default border-inline-start-color value (currentcolor)
     public static let `default` = BorderInlineStartColor(.currentColor)
-    
+
     /// Creates a transparent border-inline-start-color
     public static let transparent = BorderInlineStartColor(.transparent)
-    
+
     /// Creates a border-inline-start-color that uses the current text color
     public static let currentColor = BorderInlineStartColor(.currentColor)
-    
+
     /// Creates a black border-inline-start-color
     public static let black = BorderInlineStartColor(.black)
-    
+
     /// Creates a white border-inline-start-color
     public static let white = BorderInlineStartColor(.white)
-    
+
     /// Creates a red border-inline-start-color
     public static let red = BorderInlineStartColor(.red)
-    
+
     /// Creates a green border-inline-start-color
     public static let green = BorderInlineStartColor(.green)
-    
+
     /// Creates a blue border-inline-start-color
     public static let blue = BorderInlineStartColor(.blue)
 }

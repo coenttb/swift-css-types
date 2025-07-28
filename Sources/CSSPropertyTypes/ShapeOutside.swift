@@ -1,7 +1,6 @@
 //
 // ShapeOutside.swift
 
-
 import CSSTypeTypes
 
 /// The `shape-outside` CSS property defines a shape—which may be non-rectangular—around which adjacent
@@ -20,40 +19,40 @@ import CSSTypeTypes
 /// ```
 public enum ShapeOutside: Property {
     public static let property: String = "shape-outside"
-    
+
     /// The float area is unaffected. Inline content wraps around the element's margin box, like usual.
     case none
-    
+
     /// A shape box that defines the reference box for the shape
     public enum ShapeBox: String, Sendable {
         /// The shape is enclosed by the outside margin edge
         case marginBox = "margin-box"
-        
+
         /// The shape is enclosed by the outside border edge
         case borderBox = "border-box"
-        
+
         /// The shape is enclosed by the outside padding edge
         case paddingBox = "padding-box"
-        
+
         /// The shape is enclosed by the outside content edge
         case contentBox = "content-box"
     }
-    
+
     /// The float area is computed according to the shape of a float element's edges
     case box(ShapeBox)
-    
+
     /// The float area is computed based on a basic shape function
     case shape(BasicShape)
-    
+
     /// The float area is computed based on a basic shape function with a reference box
     case shapeWithBox(BasicShape, ShapeBox)
-    
+
     /// The float area is extracted from the alpha channel of the specified image
     case image(url: String)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -70,7 +69,7 @@ public enum ShapeOutside: Property {
             return global.description
         }
     }
-    
+
     /// Creates a ShapeOutside with a circle shape
     /// - Parameters:
     ///   - radius: The radius of the circle (as a percentage or length)
@@ -80,7 +79,7 @@ public enum ShapeOutside: Property {
         let shape = BasicShape.circle(radius: .lengthPercentage(radius), at: nil)
         return box != nil ? .shapeWithBox(shape, box!) : .shape(shape)
     }
-    
+
     /// Creates a ShapeOutside with an ellipse shape
     /// - Parameters:
     ///   - radiusX: The x-radius of the ellipse
@@ -89,13 +88,13 @@ public enum ShapeOutside: Property {
     /// - Returns: A ShapeOutside with the specified ellipse shape
     public static func ellipse(radiusX: LengthPercentage, radiusY: LengthPercentage, box: ShapeBox? = nil) -> Self {
         let shape = BasicShape.ellipse(
-            radiusX: .lengthPercentage(radiusX), 
+            radiusX: .lengthPercentage(radiusX),
             radiusY: .lengthPercentage(radiusY),
             at: nil
         )
         return box != nil ? .shapeWithBox(shape, box!) : .shape(shape)
     }
-    
+
     /// Creates a ShapeOutside with a polygon shape
     /// - Parameters:
     ///   - points: Array of (x, y) percentage coordinate pairs
@@ -105,7 +104,7 @@ public enum ShapeOutside: Property {
         let polygonPoints = points.map { (x, y) -> (LengthPercentage, LengthPercentage) in
             (LengthPercentage.percentage(.init(floatLiteral: x)), .percentage(.init(floatLiteral: y)))
         }
-        
+
         let shape = BasicShape.polygon(points: polygonPoints)
         return box != nil ? .shapeWithBox(shape, box!) : .shape(shape)
     }

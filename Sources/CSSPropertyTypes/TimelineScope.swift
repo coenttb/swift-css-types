@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `timeline-scope` property modifies the scope of a named animation timeline.
 ///
@@ -24,19 +24,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on timeline-scope](https://developer.mozilla.org/en-US/docs/Web/CSS/timeline-scope)
 public enum TimelineScope: Property {
     public static let property: String = "timeline-scope"
-    
+
     /// There is no change in timeline scope
     case none
-    
+
     /// Makes all named timelines visible to the element and all its descendants
     case all
-    
+
     /// A single timeline that will be visible to the element and all its descendants
     case custom(DashedIdent)
-    
+
     /// Multiple timelines that will be visible to the element and all its descendants
     case multiple([DashedIdent])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -48,16 +48,16 @@ extension TimelineScope: CustomStringConvertible {
         switch self {
         case .none:
             return "none"
-            
+
         case .all:
             return "all"
-            
+
         case .custom(let ident):
             return ident.description
-            
+
         case .multiple(let idents):
             return idents.map { $0.description }.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -73,7 +73,7 @@ extension TimelineScope {
     public static func custom(_ name: String) -> Self {
         return .custom(DashedIdent(name))
     }
-    
+
     /// Creates a timeline scope with multiple timeline names
     ///
     /// - Parameter names: The names of the timelines (with or without -- prefix)

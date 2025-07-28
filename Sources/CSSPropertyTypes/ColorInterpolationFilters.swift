@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `color-interpolation-filters` property specifies the color space for imaging operations
 /// performed via SVG filter effects.
@@ -25,17 +25,17 @@ public enum ColorInterpolationFilters: Property {
     /// Indicates that color interpolation should occur in the linearized RGB color space
     /// as described in the sRGB specification. This is the default property value.
     case linearRGB
-    
+
     /// Indicates that color interpolation should occur in the gamma-encoded sRGB color space.
     case sRGB
-    
+
     /// Indicates that the user agent can choose either the sRGB or linearRGB color space for interpolation.
     /// This means the author doesn't require interpolation to occur in a specific color space.
     case auto
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .linearRGB: return "linearRGB"

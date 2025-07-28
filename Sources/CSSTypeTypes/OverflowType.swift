@@ -19,36 +19,36 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
 public enum Overflow: String, Sendable, Hashable, CaseIterable {
     public static let allCases: [Overflow] = [.visible, .hidden, .clip, .scroll, .auto]
-    
+
     /// Content is not clipped and may be visible outside the padding box.
     ///
     /// This is the default value. The element box is not a scroll container.
     case visible
-    
+
     /// Content is clipped at the padding box. No scrollbars are provided.
     ///
     /// Clipped content is not visible, but the content still exists.
     /// The element box is a scroll container.
     case hidden
-    
+
     /// Content is clipped at the overflow clip edge defined by overflow-clip-margin.
     ///
     /// User agents do not add scrollbars and programmatic scrolling is not supported.
     /// No new formatting context is created.
     case clip
-    
+
     /// Content is clipped at the padding box, but scrollbars are added to see the content.
     ///
     /// Scrollbars are always displayed, whether or not content is actually overflowing.
     /// The element box is a scroll container.
     case scroll
-    
+
     /// If content overflows, it will be clipped but scrollbars appear as needed.
     ///
     /// Unlike scroll, user agents display scrollbars only if content is overflowing.
     /// The element box is a scroll container.
     case auto
-    
+
     /// Legacy alias for auto (deprecated).
     ///
     /// With overlay, scrollbars are drawn on top of content instead of taking up space.

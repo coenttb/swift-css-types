@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-spacing` property, which sets the distance between borders of adjacent table cells.
 ///
@@ -41,25 +41,25 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-spacing](https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing)
 public enum BorderSpacing: Property {
-    
+
     public static let property: String = "border-spacing"
-    
+
     /// Same spacing for both horizontal and vertical
     case all(Length)
-    
+
     /// Different spacing for horizontal and vertical
     case horizontal_vertical(Length, Length)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-spacing with the same value for horizontal and vertical spacing
     ///
     /// - Parameter length: The spacing value
     public init(_ length: Length) {
         self = .all(length)
     }
-    
+
     /// Creates a border-spacing with different values for horizontal and vertical spacing
     ///
     /// - Parameters:

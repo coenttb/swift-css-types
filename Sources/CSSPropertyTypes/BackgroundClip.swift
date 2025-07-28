@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-clip` property, which determines the area within which the background is painted.
 ///
@@ -52,30 +52,30 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on background-clip](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip)
 public enum BackgroundClip: Property {
-    
+
     public static let property: String = "background-clip"
-    
+
     /// The background extends to the outside edge of the border
     case borderBox
-    
+
     /// The background extends to the outside edge of the padding (default)
     case paddingBox
-    
+
     /// The background is painted within the content box
     case contentBox
-    
+
     /// The background is painted within the foreground text
     case text
-    
+
     /// The background is painted within the area painted by the border
     ///
     /// Takes border-width and border-style into account but ignores any
     /// transparency introduced by border-color.
     case borderArea
-    
+
     /// Multiple clip values for multiple backgrounds
     case multiple([BackgroundClip])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -114,7 +114,7 @@ extension BackgroundClip: CustomStringConvertible {
 extension BackgroundClip {
     /// The default value for background-clip (`border-box`)
     public static let `default` = BackgroundClip.borderBox
-    
+
     /// Creates a background-clip with multiple values
     ///
     /// - Parameter clips: The background clip values
@@ -125,7 +125,7 @@ extension BackgroundClip {
         }
         return .multiple(clips)
     }
-    
+
     /// Creates a background-clip with multiple values
     ///
     /// - Parameter clips: The background clip values

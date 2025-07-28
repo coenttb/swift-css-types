@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents a CSS @color-profile at-rule.
 ///
@@ -19,11 +19,11 @@ import CSSTypeTypes
 /// ```
 public struct ColorProfile: AtRule {
     public static let identifier: String = "color-profile"
-    
+
     public var rawValue: String
     private var name: String
     private var descriptors: [String: String] = [:]
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
         // Extract name from rawValue for future reference
@@ -36,7 +36,7 @@ public struct ColorProfile: AtRule {
             self.name = ""
         }
     }
-    
+
     /// Creates a color profile with the specified name.
     ///
     /// - Parameter name: The name of the color profile. Must start with `--` or be `device-cmyk`.
@@ -44,10 +44,10 @@ public struct ColorProfile: AtRule {
         self.name = name
         self.rawValue = "@color-profile \(name) {}"
     }
-    
+
     /// Predefined device-cmyk color profile.
     public static let deviceCMYK = ColorProfile("device-cmyk")
-    
+
     /// Sets the source URL for the color profile.
     ///
     /// - Parameter url: The URL to retrieve the color profile information from.
@@ -58,7 +58,7 @@ public struct ColorProfile: AtRule {
         profile.updateRawValue()
         return profile
     }
-    
+
     /// Sets the rendering intent for the color profile.
     ///
     /// - Parameter intent: The rendering intent to use.
@@ -69,13 +69,13 @@ public struct ColorProfile: AtRule {
         profile.updateRawValue()
         return profile
     }
-    
+
     /// Updates the raw value based on the current descriptors.
     private mutating func updateRawValue() {
         let descriptorString = descriptors.map { key, value in
             "  \(key): \(value);"
         }.joined(separator: "\n")
-        
+
         if descriptorString.isEmpty {
             rawValue = "@color-profile \(name) {}"
         } else {
@@ -89,13 +89,13 @@ extension ColorProfile {
     public enum RenderingIntent: String, Hashable, Sendable {
         /// Media-relative colorimetric intent.
         case relativeColorimetric = "relative-colorimetric"
-        
+
         /// ICC-absolute colorimetric intent.
         case absoluteColorimetric = "absolute-colorimetric"
-        
+
         /// Perceptual rendering intent, often preferred for images.
         case perceptual
-        
+
         /// Saturation rendering intent, preserves relative saturation.
         case saturation
     }

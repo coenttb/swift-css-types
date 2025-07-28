@@ -12,7 +12,7 @@ public protocol GlobalConvertible {
 }
 
 extension GlobalConvertible {
-    public init(_ global: Global){
+    public init(_ global: Global) {
         self = .global(global)
     }
 }

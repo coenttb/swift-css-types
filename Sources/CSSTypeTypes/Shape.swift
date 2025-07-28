@@ -51,7 +51,7 @@ extension Shape {
     public static func rect(top: Double, right: Double, bottom: Double, left: Double) -> Shape {
         return .rect(top: .px(top), right: .px(right), bottom: .px(bottom), left: .px(left))
     }
-    
+
     /// Creates a rectangular clip region with the same offset on all sides
     ///
     /// - Parameter all: Offset in pixels for all sides
@@ -59,7 +59,7 @@ extension Shape {
     public static func rect(all: Double) -> Shape {
         return .rect(top: all, right: all, bottom: all, left: all)
     }
-    
+
     /// Creates a rectangular clip region with auto values
     ///
     /// - Returns: A rectangle shape with auto values for all sides

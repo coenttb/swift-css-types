@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `block-size` property, which defines the size of an element in the block dimension.
 ///
@@ -57,25 +57,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size)
 public enum BlockSize: Property {
     public static let property: String = "block-size"
-    
+
     /// Automatic sizing based on content
     case auto
-    
+
     /// Fixed length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Size that fits the intrinsic minimum width of the content
     case minContent
-    
+
     /// Size that fits the intrinsic preferred width of the content
     case maxContent
-    
+
     /// Size that uses the available space, but never less than min-content and never more than max-content
     case fitContent
-    
+
     /// Size that uses the available space up to the specified value, but never less than min-content
     case fitContentLength(LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -124,7 +124,7 @@ extension BlockSize {
     public static func fitContentPx(_ px: Double) -> BlockSize {
         .fitContentLength(.px(px))
     }
-    
+
     /// Creates a block-size with a fit-content constrained by a percentage value
     ///
     /// - Parameter percent: The maximum percentage value (0-100)

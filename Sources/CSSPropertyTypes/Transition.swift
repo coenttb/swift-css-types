@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transition` property is a shorthand property for setting the four transition properties
 /// in a single declaration: `transition-property`, `transition-duration`, `transition-timing-function`,
@@ -25,13 +25,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
 public enum Transition: Property {
     public static let property: String = "transition"
-    
+
     /// A specific transition configuration
     case config(Configuration)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a new transition with the specified properties
     /// - Parameters:
     ///   - property: The property to transition (default is .all)
@@ -54,36 +54,36 @@ public enum Transition: Property {
             behavior: behavior
         ))
     }
-    
+
     /// Represents a CSS transition property
     public typealias Property = TransitionProperty
-    
+
     /// Represents a CSS transition timing function
     public typealias TimingFunction = TransitionTimingFunction
-    
+
     /// Represents a CSS transition behavior
     public typealias Behavior = TransitionBehavior
-    
+
     /// Represents a time value for transitions
     public typealias Time = CSSTypeTypes.Time
-    
+
     /// A specific transition configuration
     public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The property or properties to which the transition applies
         public let property: Property
-        
+
         /// The duration of the transition
         public let duration: Time
-        
+
         /// The timing function that specifies the speed curve of the transition
         public let timingFunction: TimingFunction
-        
+
         /// Optional delay before the transition starts
         public let delay: Time?
-        
+
         /// Optional behavior for discrete properties
         public let behavior: Behavior?
-        
+
         /// Creates a new transition configuration with the specified properties
         /// - Parameters:
         ///   - property: The property to transition
@@ -104,18 +104,18 @@ public enum Transition: Property {
             self.delay = delay
             self.behavior = behavior
         }
-        
+
         public var description: String {
             var result = [property.description, duration.description, timingFunction.description]
-            
+
             if let delay = delay {
                 result.append(delay.description)
             }
-            
+
             if let behavior = behavior {
                 result.append(behavior.description)
             }
-            
+
             return result.joined(separator: " ")
         }
     }
@@ -157,7 +157,7 @@ extension Transition {
             behavior: behavior
         ))
     }
-    
+
     /// Factory method to create a transition with no transition effect
     /// - Returns: A transition configured for no properties
     public static func none() -> Transition {
@@ -167,7 +167,7 @@ extension Transition {
             timingFunction: .ease
         ))
     }
-    
+
     /// Factory method to create a transition for a specific property
     /// - Parameters:
     ///   - propertyName: The name of the CSS property to transition

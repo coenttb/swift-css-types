@@ -23,19 +23,19 @@ public enum HueInterpolationMethod: String, Sendable, Hashable {
     /// defaults to a clockwise direction if the first hue < second hue,
     /// or counterclockwise if the first hue > second hue.
     case shorter = "shorter hue"
-    
+
     /// Use the longer arc between the two hues on the color wheel.
     ///
     /// This method takes the longer path around the color wheel, which can be
     /// useful for effects that require a broader color transition.
     case longer = "longer hue"
-    
+
     /// Always use the clockwise arc regardless of which is shorter.
     ///
     /// This ensures consistent clockwise interpolation, which can be useful
     /// for predictable transitions in certain designs.
     case increasing = "increasing hue"
-    
+
     /// Always use the counterclockwise arc regardless of which is shorter.
     ///
     /// This ensures consistent counterclockwise interpolation, which can be

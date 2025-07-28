@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Specifies how overlines and underlines are drawn when they pass over glyph ascenders and descenders.
 ///
@@ -25,21 +25,21 @@ import CSSTypeTypes
 /// ```
 public enum TextDecorationSkipInk: Property {
     public static let property: String = "text-decoration-skip-ink"
-    
+
     /// The default — the browser may interrupt underlines and overlines so that they
     /// do not touch or closely approach a glyph. That is, they are interrupted where
     /// they would otherwise cross over a glyph.
     case auto
-    
+
     /// Underlines and overlines are drawn across the full length of the text content,
     /// including parts that cross over glyph descenders and ascenders.
     case none
-    
+
     /// The browser must interrupt underlines and overlines so that they do not touch
     /// or closely approach a glyph. This can be helpful with certain Chinese, Japanese,
     /// or Korean (CJK) fonts, where the auto behavior might not create interruptions.
     case all
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

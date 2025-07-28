@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `overflow-y` CSS property sets what shows when content overflows a block-level element's 
 /// top and bottom edges. This may be nothing, a scroll bar, or the overflow content.
@@ -21,25 +21,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on overflow-y](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y)
 public enum OverflowY: Property {
     public static let property: String = "overflow-y"
-    
+
     /// Content is not clipped and may be visible outside the element's padding box
     case visible
-    
+
     /// Content is clipped if necessary to fit vertically in the element's padding box, no scrollbars
     case hidden
-    
+
     /// Content is clipped at the element's overflow clip edge, defined using overflow-clip-margin
     case clip
-    
+
     /// Content is clipped if necessary to fit vertically, scrollbars always visible
     case scroll
-    
+
     /// Content clipped if necessary, scrollbars only shown when needed
     case auto
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// CSS string representation
     public var description: String {
         switch self {

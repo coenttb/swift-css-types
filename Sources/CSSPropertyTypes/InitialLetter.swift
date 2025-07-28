@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `initial-letter` property sets the size and sink for dropped, raised,
 /// and sunken initial letters.
@@ -17,19 +17,19 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on initial-letter](https://developer.mozilla.org/en-US/docs/Web/CSS/initial-letter)
 public enum InitialLetter: Property {
-    
+
     public static let property: String = "initial-letter"
-    
+
     /// No special initial-letter effect. Text behaves as normal.
     case normal
-    
+
     /// Defines the size of the initial letter (in number of lines) and optionally the sink value.
     /// If the sink value is omitted, it is the same as the size, floored to the nearest positive integer.
     case sized(size: Double, sink: Int?)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:
@@ -56,7 +56,7 @@ extension InitialLetter {
     public static func drop(size: Double) -> InitialLetter {
         .sized(size: size, sink: nil)
     }
-    
+
     /// Create a raised initial letter with the specified size and sink.
     /// The initial letter will be sized to occupy the given number of lines,
     /// but with a baseline position specified by the sink parameter.

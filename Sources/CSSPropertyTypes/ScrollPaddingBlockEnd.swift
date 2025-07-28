@@ -1,7 +1,6 @@
 //
 // ScrollPaddingBlockEnd.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-block-end` CSS property defines offsets for the end edge in the block dimension
@@ -18,15 +17,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingBlockEnd: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-block-end"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

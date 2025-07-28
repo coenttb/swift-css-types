@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `page` property is used to specify a named page, a specific type of page defined by 
 /// the `@page` at-rule, which controls the layout of printed documents.
@@ -33,17 +33,17 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on page](https://developer.mozilla.org/en-US/docs/Web/CSS/page)
 public enum Page: Property {
     public static let property: String = "page"
-    
+
     /// Uses the value of the nearest ancestor with a non-auto value.
     /// If no ancestor has a named page value set, the used value is the empty string.
     case auto
-    
+
     /// A case-sensitive name defined in a @page at-rule
     case name(String)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:

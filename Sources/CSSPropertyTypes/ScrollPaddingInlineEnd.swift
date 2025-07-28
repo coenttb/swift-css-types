@@ -1,7 +1,6 @@
 //
 // ScrollPaddingInlineEnd.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-inline-end` CSS property defines offsets for the end edge in the inline dimension of the optimal
@@ -17,15 +16,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingInlineEnd: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-inline-end"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

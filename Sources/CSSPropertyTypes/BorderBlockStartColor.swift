@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-block-start-color` property, which sets the color of the logical block-start border.
 ///
@@ -50,10 +50,10 @@ public enum BorderBlockStartColor: Property, ColorConvertible {
     public static let property: String = "border-block-start-color"
     /// A specific color for the block-start border
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-block-start-color with a specific color
     ///
     /// - Parameter color: The color for the block-start border
@@ -87,25 +87,25 @@ extension BorderBlockStartColor: CustomStringConvertible {
 extension BorderBlockStartColor {
     /// The default border-block-start-color value (currentcolor)
     public static let `default` = BorderBlockStartColor(.currentColor)
-    
+
     /// Creates a transparent border-block-start-color
     public static let transparent = BorderBlockStartColor(.transparent)
-    
+
     /// Creates a border-block-start-color that uses the current text color
     public static let currentColor = BorderBlockStartColor(.currentColor)
-    
+
     /// Creates a black border-block-start-color
     public static let black = BorderBlockStartColor(.black)
-    
+
     /// Creates a white border-block-start-color
     public static let white = BorderBlockStartColor(.white)
-    
+
     /// Creates a red border-block-start-color
     public static let red = BorderBlockStartColor(.red)
-    
+
     /// Creates a green border-block-start-color
     public static let green = BorderBlockStartColor(.green)
-    
+
     /// Creates a blue border-block-start-color
     public static let blue = BorderBlockStartColor(.blue)
 }

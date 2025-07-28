@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `outline-style` property sets the style of an element's outline.
 ///
@@ -17,37 +17,37 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on outline-style](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-style)
 public enum OutlineStyle: Property {
     public static let property: String = "outline-style"
-    
+
     /// Browser's default style for outlines
     case auto
-    
+
     /// No outline is displayed
     case none
-    
+
     /// The outline is a series of dots
     case dotted
-    
+
     /// The outline is a series of short line segments
     case dashed
-    
+
     /// The outline is a single line
     case solid
-    
+
     /// The outline is two single lines
     case double
-    
+
     /// The outline looks as though it were carved into the page
     case groove
-    
+
     /// The outline looks as though it were extruded from the page
     case ridge
-    
+
     /// The outline makes the box look as though it were embedded in the page
     case inset
-    
+
     /// The outline makes the box look as though it were coming out of the page
     case outset
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }

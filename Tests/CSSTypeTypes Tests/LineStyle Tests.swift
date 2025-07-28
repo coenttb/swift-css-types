@@ -10,7 +10,7 @@ import Testing
 
 @Suite("LineStyle Tests")
 struct LineStyleTests {
-    
+
     @Test("LineStyle enum has correct cases and raw values")
     func testEnumCases() {
         #expect(LineStyle.none.rawValue == "none")
@@ -24,7 +24,7 @@ struct LineStyleTests {
         #expect(LineStyle.inset.rawValue == "inset")
         #expect(LineStyle.outset.rawValue == "outset")
     }
-    
+
     @Test("LineStyle description returns raw value")
     func testDescription() {
         #expect(LineStyle.none.description == "none")
@@ -38,19 +38,19 @@ struct LineStyleTests {
         #expect(LineStyle.inset.description == "inset")
         #expect(LineStyle.outset.description == "outset")
     }
-    
+
     @Test("LineStyle conforms to Hashable")
     func testHashable() {
         // Same cases should be equal
         let style1 = LineStyle.solid
         let style2 = LineStyle.solid
         #expect(style1 == style2)
-        
+
         // Different cases should not be equal
         let style3 = LineStyle.dashed
         #expect(style1 != style3)
     }
-    
+
     @Test("LineStyle conforms to CaseIterable")
     func testCaseIterable() {
         // All cases should be in allCases
@@ -67,7 +67,7 @@ struct LineStyleTests {
         #expect(allCases.contains(.inset))
         #expect(allCases.contains(.outset))
     }
-    
+
     @Test("LineStyle can be created from raw values")
     func testRawValueInitialization() {
         #expect(LineStyle(rawValue: "none") == LineStyle.none)
@@ -82,7 +82,7 @@ struct LineStyleTests {
         #expect(LineStyle(rawValue: "outset") == LineStyle.outset)
         #expect(LineStyle(rawValue: "invalid") == nil)
     }
-    
+
     @Test("LineStyle is3D property identifies 3D styles correctly")
     func testIs3D() {
         // 3D styles
@@ -90,7 +90,7 @@ struct LineStyleTests {
         #expect(LineStyle.ridge.is3D)
         #expect(LineStyle.inset.is3D)
         #expect(LineStyle.outset.is3D)
-        
+
         // Non-3D styles
         #expect(!LineStyle.none.is3D)
         #expect(!LineStyle.hidden.is3D)
@@ -99,13 +99,13 @@ struct LineStyleTests {
         #expect(!LineStyle.solid.is3D)
         #expect(!LineStyle.double.is3D)
     }
-    
+
     @Test("LineStyle isVisible property identifies visible styles correctly")
     func testIsVisible() {
         // Invisible styles
         #expect(!LineStyle.none.isVisible)
         #expect(!LineStyle.hidden.isVisible)
-        
+
         // Visible styles
         #expect(LineStyle.dotted.isVisible)
         #expect(LineStyle.dashed.isVisible)
@@ -116,7 +116,7 @@ struct LineStyleTests {
         #expect(LineStyle.inset.isVisible)
         #expect(LineStyle.outset.isVisible)
     }
-    
+
     @Test("LineStyle opposite3D property returns correct opposites for 3D styles")
     func testOpposite3D() {
         // Valid opposites
@@ -124,11 +124,11 @@ struct LineStyleTests {
         #expect(LineStyle.ridge.opposite3D == LineStyle.groove)
         #expect(LineStyle.inset.opposite3D == LineStyle.outset)
         #expect(LineStyle.outset.opposite3D == LineStyle.inset)
-        
+
         // Verify symmetry of opposites
         #expect(LineStyle.groove.opposite3D?.opposite3D == LineStyle.groove)
         #expect(LineStyle.inset.opposite3D?.opposite3D == LineStyle.inset)
-        
+
         // Non-3D styles return nil
         #expect(LineStyle.none.opposite3D == nil)
         #expect(LineStyle.hidden.opposite3D == nil)
@@ -137,21 +137,21 @@ struct LineStyleTests {
         #expect(LineStyle.solid.opposite3D == nil)
         #expect(LineStyle.double.opposite3D == nil)
     }
-    
+
     @Test("LineStyle is used correctly in CSS properties context")
     func testUsageInContext() {
         // Border style
         let borderStyle = "border-style: \(LineStyle.solid)"
         #expect(borderStyle == "border-style: solid")
-        
+
         // Individual border side style
         let borderTopStyle = "border-top-style: \(LineStyle.dashed)"
         #expect(borderTopStyle == "border-top-style: dashed")
-        
+
         // Column rule style
         let columnRuleStyle = "column-rule-style: \(LineStyle.double)"
         #expect(columnRuleStyle == "column-rule-style: double")
-        
+
         // Outline style
         let outlineStyle = "outline-style: \(LineStyle.groove)"
         #expect(outlineStyle == "outline-style: groove")

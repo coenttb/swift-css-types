@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `right` property participates in specifying the horizontal position of a positioned element.
 ///
@@ -28,16 +28,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on right](https://developer.mozilla.org/en-US/docs/Web/CSS/right)
 public enum Right: Property, LengthPercentageConvertible {
     public static let property: String = "right"
-    
+
     /// A length-percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Default value, position is determined by normal flow or left property
     case auto
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

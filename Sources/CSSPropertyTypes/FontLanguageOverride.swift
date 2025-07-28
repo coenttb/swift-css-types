@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `font-language-override` property controls the use of language-specific glyphs in a typeface.
 ///
@@ -20,19 +20,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on font-language-override](https://developer.mozilla.org/en-US/docs/Web/CSS/font-language-override)
 public enum FontLanguageOverride: Property {
     public static let property: String = "font-language-override"
-    
+
     /// Tells the browser to use font glyphs that are appropriate for the language
     /// specified by the lang attribute. This is the default value.
     case normal
-    
+
     /// Tells the browser to use font glyphs that are appropriate for the language
     /// specified by the string. The string must match a language tag found in the
     /// OpenType language system, e.g., "ENG" for English, "KOR" for Korean.
     case language(CSSString)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:
@@ -51,22 +51,22 @@ extension FontLanguageOverride {
     public static var english: FontLanguageOverride {
         .language(.init("ENG"))
     }
-    
+
     /// Use Turkish glyphs ("TRK")
     public static var turkish: FontLanguageOverride {
         .language(.init("TRK"))
     }
-    
+
     /// Use Korean glyphs ("KOR")
     public static var korean: FontLanguageOverride {
         .language(.init("KOR"))
     }
-    
+
     /// Use Danish glyphs ("DAN")
     public static var danish: FontLanguageOverride {
         .language(.init("DAN"))
     }
-    
+
     /// Use Japanese glyphs ("JAN")
     public static var japanese: FontLanguageOverride {
         .language(.init("JAN"))

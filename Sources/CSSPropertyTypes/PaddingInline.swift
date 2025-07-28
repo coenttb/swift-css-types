@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-inline` shorthand property defines the logical inline start and end padding of an element,
 /// which maps to physical padding properties depending on the element's writing mode, directionality, and text orientation.
@@ -19,13 +19,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-inline](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline)
 public enum PaddingInline: Property {
     public static let property: String = "padding-inline"
-    
+
     /// Single value for both inline-start and inline-end padding
     case uniform(LengthPercentage)
-    
+
     /// Two values: the first for inline-start and the second for inline-end padding
     case separate(LengthPercentage, LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -37,10 +37,10 @@ extension PaddingInline: CustomStringConvertible {
         switch self {
         case .uniform(let value):
             return value.description
-            
+
         case .separate(let start, let end):
             return "\(start) \(end)"
-            
+
         case .global(let global):
             return global.description
         }
@@ -49,7 +49,7 @@ extension PaddingInline: CustomStringConvertible {
 
 /// Convenience initializers
 extension PaddingInline {
-    
+
     /// Creates a padding-inline with separate start and end values
     ///
     /// - Parameters:
@@ -59,7 +59,7 @@ extension PaddingInline {
     public static func separate(start: LengthPercentage, end: LengthPercentage) -> PaddingInline {
         .separate(start, end)
     }
-    
+
     /// Creates a padding-inline with pixel values
     ///
     /// - Parameters:
@@ -72,7 +72,7 @@ extension PaddingInline {
         }
         return .uniform(.px(start))
     }
-    
+
     /// Creates a padding-inline with em values
     ///
     /// - Parameters:
@@ -85,7 +85,7 @@ extension PaddingInline {
         }
         return .uniform(.em(start))
     }
-    
+
     /// Creates a padding-inline with percentage values
     ///
     /// - Parameters:
@@ -98,7 +98,7 @@ extension PaddingInline {
         }
         return .uniform(.percentage(start))
     }
-    
+
     /// Creates a padding-inline with a zero value for both sides
     public static let zero: PaddingInline = .uniform(.px(0))
 }

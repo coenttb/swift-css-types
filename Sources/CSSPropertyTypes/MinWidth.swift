@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `min-width` property sets the minimum width of an element. It prevents 
 /// the used value of the width property from becoming smaller than the value specified for min-width.
@@ -20,25 +20,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on min-width](https://developer.mozilla.org/en-US/docs/Web/CSS/min-width)
 public enum MinWidth: Property, LengthPercentageConvertible {
     public static let property: String = "min-width"
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     case auto
-    
+
     /// No maximum width constraint
     case none
-    
+
     case maxContent
-    
+
     case minContent
-    
+
     case fitContent(LengthPercentage? = nil)
-    
+
     case stretch
-    
+
     /// A global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public static let fitContent: Self = .fitContent(nil)
 
 }
@@ -72,8 +72,6 @@ extension MinWidth: CustomStringConvertible {
     }
 }
 
-
-
 /// Allow for numeric literals to be used directly
 extension MinWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     /// Creates a min-width with a pixel value from an integer literal
@@ -82,7 +80,7 @@ extension MinWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a min-width with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

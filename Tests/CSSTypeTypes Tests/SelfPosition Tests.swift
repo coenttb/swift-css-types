@@ -10,7 +10,7 @@ import Testing
 
 @Suite("SelfPosition Tests")
 struct SelfPositionTests {
-    
+
     @Test("SelfPosition values render correctly")
     func testSelfPositionValues() {
         #expect(SelfPosition.center.description == "center")
@@ -21,7 +21,7 @@ struct SelfPositionTests {
         #expect(SelfPosition.flexStart.description == "flex-start")
         #expect(SelfPosition.flexEnd.description == "flex-end")
     }
-    
+
     @Test("SelfPosition conforms to CaseIterable")
     func testCaseIterable() {
         let allCases = SelfPosition.allCases
@@ -34,7 +34,7 @@ struct SelfPositionTests {
         #expect(allCases.contains(SelfPosition.flexStart))
         #expect(allCases.contains(SelfPosition.flexEnd))
     }
-    
+
     @Test("SelfPosition.allPositions contains all values")
     func testAllPositions() {
         let allPositions = SelfPosition.allPositions
@@ -47,17 +47,17 @@ struct SelfPositionTests {
         #expect(allPositions.contains(SelfPosition.flexStart))
         #expect(allPositions.contains(SelfPosition.flexEnd))
     }
-    
+
     @Test("SelfPosition conforms to Hashable")
     func testHashable() {
         let center1 = SelfPosition.center
         let center2 = SelfPosition.center
         let flexStart = SelfPosition.flexStart
-        
+
         #expect(center1 == center2)
         #expect(center1 != flexStart)
     }
-    
+
     @Test("Raw values are correct")
     func testRawValues() {
         #expect(SelfPosition.center.rawValue == "center")
@@ -68,15 +68,15 @@ struct SelfPositionTests {
         #expect(SelfPosition.flexStart.rawValue == "flex-start")
         #expect(SelfPosition.flexEnd.rawValue == "flex-end")
     }
-    
+
     @Test("Initialization from raw value works correctly")
     func testRawValueInitializer() {
         let center = SelfPosition(rawValue: "center")
         #expect(center == SelfPosition.center)
-        
+
         let selfStart = SelfPosition(rawValue: "self-start")
         #expect(selfStart == SelfPosition.selfStart)
-        
+
         // Invalid raw value
         let invalid = SelfPosition(rawValue: "invalid")
         #expect(invalid == nil)

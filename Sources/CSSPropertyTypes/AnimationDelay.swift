@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-delay property specifies the amount of time to wait from applying
 /// the animation to an element before beginning to perform the animation.
@@ -15,25 +15,25 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay)
 public enum AnimationDelay: Property {
-    
+
     public static let property: String = "animation-delay"
-    
+
     /// The delay time value
     case time(Time)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a delay in seconds
     public static func s(_ seconds: Double) -> AnimationDelay {
         return .time(Time.s(seconds))
     }
-    
+
     /// Creates a delay in milliseconds
     public static func ms(_ milliseconds: Double) -> AnimationDelay {
         return .time(Time.ms(milliseconds))
     }
-    
+
     /// Zero delay (animation starts immediately)
     public static let zero = AnimationDelay.time(Time.zero)
 }

@@ -24,7 +24,7 @@ public enum CalcKeyword: String, Sendable, Hashable {
     /// width: calc(e * 10px); /* Approximately 27.18px */
     /// ```
     case e = "e"
-    
+
     /// The ratio of a circle's circumference to its diameter (approximately 3.142)
     ///
     /// Useful in trigonometric calculations.
@@ -32,7 +32,7 @@ public enum CalcKeyword: String, Sendable, Hashable {
     /// transform: rotate(calc(pi * 1rad)); /* Rotate 180 degrees */
     /// ```
     case pi = "pi"
-    
+
     /// Represents positive infinity
     ///
     /// Used to indicate the largest possible value.
@@ -40,7 +40,7 @@ public enum CalcKeyword: String, Sendable, Hashable {
     /// width: calc(min(infinity * 1px, 100%)); /* Effectively 100% */
     /// ```
     case infinity = "infinity"
-    
+
     /// Represents negative infinity
     ///
     /// Used to indicate the smallest possible value.
@@ -48,7 +48,7 @@ public enum CalcKeyword: String, Sendable, Hashable {
     /// width: calc(max(-infinity * 1px, 100px)); /* Effectively 100px */
     /// ```
     case negativeInfinity = "-infinity"
-    
+
     /// Represents "Not a Number"
     ///
     /// Results from invalid mathematical operations.

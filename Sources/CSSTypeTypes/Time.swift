@@ -20,20 +20,20 @@ public struct Time: Sendable, Hashable {
     public enum Unit: String, Sendable, Hashable {
         /// Seconds
         case second = "s"
-        
+
         /// Milliseconds
         case millisecond = "ms"
-        
+
         public static let s: Self = .second
         public static let ms: Self = .millisecond
     }
-    
+
     /// The numeric value of the time
     public let value: Double
-    
+
     /// The unit of the time
     public let unit: Unit
-    
+
     /// Creates a new CSS time value
     /// - Parameters:
     ///   - value: The numeric time value
@@ -42,30 +42,30 @@ public struct Time: Sendable, Hashable {
         self.value = value
         self.unit = unit
     }
-    
+
     /// Creates a time value in seconds
     /// - Parameter value: The time in seconds
     /// - Returns: A time value in seconds
     public static func s(_ value: Double) -> Time {
         return .init(value, unit: .second)
     }
-    
+
     /// Creates a time value in milliseconds
     /// - Parameter value: The time in milliseconds
     /// - Returns: A time value in milliseconds
     public static func ms(_ value: Double) -> Time {
         return .init(value, unit: .millisecond)
     }
-    
+
     /// Creates a time value of 0 seconds
     public static let zero = Time(0, unit: .second)
-    
+
     /// Creates a time value of 1 second
     public static let oneSecond = Time(1, unit: .second)
-    
+
     /// Creates a time value of 0.5 seconds (500ms)
     public static let halfSecond = Time(0.5, unit: .second)
-    
+
     /// Converts the time to seconds, regardless of the original unit
     public var inSeconds: Double {
         switch unit {
@@ -75,7 +75,7 @@ public struct Time: Sendable, Hashable {
             return value / 1000
         }
     }
-    
+
     /// Converts the time to milliseconds, regardless of the original unit
     public var inMilliseconds: Double {
         switch unit {
@@ -85,7 +85,7 @@ public struct Time: Sendable, Hashable {
             return value
         }
     }
-    
+
     /// Converts the time to a different unit
     /// - Parameter targetUnit: The unit to convert to
     /// - Returns: A new time in the requested unit with an equivalent value
@@ -93,7 +93,7 @@ public struct Time: Sendable, Hashable {
         if unit == targetUnit {
             return self
         }
-        
+
         switch targetUnit {
         case .second:
             return .init(inSeconds, unit: .second)
@@ -122,7 +122,7 @@ extension Time {
         let seconds = lhs.inSeconds + rhs.inSeconds
         return .init(seconds, unit: .second).converted(to: lhs.unit)
     }
-    
+
     /// Subtracts one time value from another
     /// - Parameters:
     ///   - lhs: First time value
@@ -132,7 +132,7 @@ extension Time {
         let seconds = lhs.inSeconds - rhs.inSeconds
         return .init(seconds, unit: .second).converted(to: lhs.unit)
     }
-    
+
     /// Multiplies a time value by a scalar
     /// - Parameters:
     ///   - lhs: Time value
@@ -141,7 +141,7 @@ extension Time {
     public static func * (lhs: Time, rhs: Double) -> Time {
         return .init(lhs.value * rhs, unit: lhs.unit)
     }
-    
+
     /// Divides a time value by a scalar
     /// - Parameters:
     ///   - lhs: Time value
@@ -150,7 +150,7 @@ extension Time {
     public static func / (lhs: Time, rhs: Double) -> Time {
         return .init(lhs.value / rhs, unit: lhs.unit)
     }
-    
+
     /// Negates a time value
     /// - Parameter value: Time value to negate
     /// - Returns: The negated value
@@ -169,7 +169,7 @@ extension Time: Comparable {
     public static func < (lhs: Time, rhs: Time) -> Bool {
         return lhs.inSeconds < rhs.inSeconds
     }
-    
+
     /// Checks if two time values are equal by comparing their durations
     /// - Parameters:
     ///   - lhs: First time value

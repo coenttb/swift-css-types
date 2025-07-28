@@ -36,13 +36,13 @@ public enum AbsoluteSize: String, Sendable, Hashable {
     /// font-size: xx-small;
     /// ```
     case xxSmall = "xx-small"
-    
+
     /// An absolute size 75% the size of medium
     /// ```css
     /// font-size: x-small;
     /// ```
     case xSmall = "x-small"
-    
+
     /// An absolute size 89% the size of medium
     /// 
     /// Corresponds to the deprecated HTML `size="2"` attribute.
@@ -50,7 +50,7 @@ public enum AbsoluteSize: String, Sendable, Hashable {
     /// font-size: small;
     /// ```
     case small = "small"
-    
+
     /// A user's preferred font size, used as the reference middle value
     /// 
     /// Corresponds to the deprecated HTML `size="3"` attribute.
@@ -58,7 +58,7 @@ public enum AbsoluteSize: String, Sendable, Hashable {
     /// font-size: medium;
     /// ```
     case medium = "medium"
-    
+
     /// An absolute size 20% larger than medium
     /// 
     /// Corresponds to the deprecated HTML `size="4"` attribute.
@@ -66,7 +66,7 @@ public enum AbsoluteSize: String, Sendable, Hashable {
     /// font-size: large;
     /// ```
     case large = "large"
-    
+
     /// An absolute size 50% larger than medium
     /// 
     /// Corresponds to the deprecated HTML `size="5"` attribute.
@@ -74,7 +74,7 @@ public enum AbsoluteSize: String, Sendable, Hashable {
     /// font-size: x-large;
     /// ```
     case xLarge = "x-large"
-    
+
     /// An absolute size twice the size of medium
     /// 
     /// Corresponds to the deprecated HTML `size="6"` attribute.
@@ -82,7 +82,7 @@ public enum AbsoluteSize: String, Sendable, Hashable {
     /// font-size: xx-large;
     /// ```
     case xxLarge = "xx-large"
-    
+
     /// An absolute size three times the size of medium
     /// 
     /// Corresponds to the deprecated HTML `size="7"` attribute.

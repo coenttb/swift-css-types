@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `opacity` property sets the opacity of an element. Opacity is the degree to 
 /// which content behind an element is hidden, and is the opposite of transparency.
@@ -24,23 +24,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity)
 public enum Opacity: Property {
     public static let property: String = "opacity"
-    
+
     /// A specific opacity value
     case value(Double)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates an opacity with a specified value
     ///
     /// - Parameter value: The opacity value (0-1), values outside this range will be clamped
     public init(_ value: Double) {
         self = .value(max(0, min(1, value)))
     }
-    
+
     /// Fully transparent (opacity: 0)
     public static let transparent: Opacity = .value(0)
-    
+
     /// Fully opaque (opacity: 1)
     public static let opaque: Opacity = .value(1)
 }

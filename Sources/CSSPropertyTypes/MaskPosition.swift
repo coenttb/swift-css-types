@@ -23,8 +23,8 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-position` property, which sets the initial position of mask images.
 ///
@@ -80,23 +80,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-position](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-position)
 public enum MaskPosition: Property {
     public static let property: String = "mask-position"
-    
+
     /// A single position value
     case single(CSSTypeTypes.Position)
-    
+
     /// Multiple position values for multiple masks
     case multiple([CSSTypeTypes.Position])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a mask position with a single position
     ///
     /// - Parameter position: The position value
     public init(_ position: CSSTypeTypes.Position) {
         self = .single(position)
     }
-    
+
     /// Creates a mask position with multiple positions
     ///
     /// - Parameter positions: The position values
@@ -137,34 +137,34 @@ extension MaskPosition: CustomStringConvertible {
 extension MaskPosition {
     /// The default value for mask-position (`0% 0%`)
     public static let `default` = MaskPosition(.values(.percentage(0), .percentage(0)))
-    
+
     /// Position in the center
     public static let center = MaskPosition(.center)
-    
+
     /// Position at the top
     public static let top = MaskPosition(.top)
-    
+
     /// Position at the right
     public static let right = MaskPosition(.right)
-    
+
     /// Position at the bottom
     public static let bottom = MaskPosition(.bottom)
-    
+
     /// Position at the left
     public static let left = MaskPosition(.left)
-    
+
     /// Position at the top left (default)
     public static let topLeft = MaskPosition(.topLeft)
-    
+
     /// Position at the top right
     public static let topRight = MaskPosition(.topRight)
-    
+
     /// Position at the bottom left
     public static let bottomLeft = MaskPosition(.bottomLeft)
-    
+
     /// Position at the bottom right
     public static let bottomRight = MaskPosition(.bottomRight)
-    
+
     /// Creates a mask position with percentage values
     ///
     /// - Parameters:
@@ -184,7 +184,7 @@ extension MaskPosition {
 //    public static func px(_ x: Double, _ y: Double) -> MaskPosition {
 //        .single(.values(.px(x, y)))
 //    }
-    
+
     /// Creates a mask position with edge offsets
     ///
     /// - Parameters:
@@ -196,7 +196,7 @@ extension MaskPosition {
     public static func offsets(_ edge1: CSSTypeTypes.Position.Keyword, _ offset1: LengthPercentage, _ edge2: CSSTypeTypes.Position.Keyword, _ offset2: LengthPercentage) -> MaskPosition {
         MaskPosition(.offsets(edge1, offset1, edge2, offset2))
     }
-    
+
     /// Creates a mask position with multiple values
     ///
     /// - Parameter positions: The position values
@@ -204,7 +204,7 @@ extension MaskPosition {
     public static func values(_ positions: [CSSTypeTypes.Position]) -> MaskPosition {
         MaskPosition(positions)
     }
-    
+
     /// Creates a mask position with multiple values
     ///
     /// - Parameter positions: The position values

@@ -28,7 +28,7 @@ extension Double {
     public static func truncatingRemainder(_ value: Double) -> String {
         return "\(value.truncatingRemainder(dividingBy: 1) == 0 ? String(Int(value)) : String(value))"
     }
-    
+
     /// Instance method version of truncatingRemainder that operates on the Double value itself.
     ///
     /// Examples:

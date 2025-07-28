@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-webkit-tap-highlight-color` property sets the color of the highlight 
 /// that appears over a link or interactive element while it's being tapped on mobile devices.
@@ -35,16 +35,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-tap-highlight-color](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-tap-highlight-color)
 public enum WebkitTapHighlightColor: Property, ColorConvertible {
     public static let property: String = "-webkit-tap-highlight-color"
-    
+
     /// A specific color for the tap highlight
     case color(CSSTypeTypes.Color)
-    
+
     /// Transparent highlight (effectively removing it)
     case transparent
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .color(let color):
@@ -61,7 +61,7 @@ public enum WebkitTapHighlightColor: Property, ColorConvertible {
 extension WebkitTapHighlightColor {
     /// Default value (black)
     public static let `default` = WebkitTapHighlightColor.color(.named(.black))
-    
+
     /// Creates a semi-transparent highlight color
     ///
     /// - Parameters:
@@ -71,7 +71,7 @@ extension WebkitTapHighlightColor {
     public static func alpha(_ color: CSSTypeTypes.Color, opacity: Double) -> WebkitTapHighlightColor {
         // Ensure opacity is between 0 and 1
         let clampedOpacity = max(0, min(1, opacity))
-        
+
         // Create a new color with the specified opacity
         switch color {
         case .rgba(let r, let g, let b, _):

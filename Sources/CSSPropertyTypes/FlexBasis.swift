@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `flex-basis` property sets the initial main size of a flex item.
 ///
@@ -20,37 +20,37 @@ public enum FlexBasis: Property, LengthPercentageConvertible, ExpressibleByInteg
     public static let property: String = "flex-basis"
     /// Default value. The item's base size is determined by its width/height properties or by its content.
     case auto
-    
+
     /// Use automatic sizing based on the content size
     case content
-    
+
     /// Use the minimum content size
     case minContent
-    
+
     /// Use the maximum content size
     case maxContent
-    
+
     /// Use the fit-content algorithm
     case fitContent
-    
+
     /// A length or percentage value measured from the beginning of the timeline
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // MARK: - Initializers for literal expressions
-    
+
     /// Create a flex-basis using an integer literal (converted to pixels)
     public init(integerLiteral value: Int) {
         self = .length(.px(Double(value)))
     }
-    
+
     /// Create a flex-basis using a float literal (converted to pixels)
     public init(floatLiteral value: Double) {
         self = .length(.px(value))
     }
-    
+
     public var description: String {
         switch self {
         case .auto:

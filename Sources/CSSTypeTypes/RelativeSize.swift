@@ -20,7 +20,7 @@ import Foundation
 public enum RelativeSize: String, Sendable, Hashable, CaseIterable {
     /// A relative size one size smaller than the inherited size
     case smaller
-    
+
     /// A relative size one size larger than the inherited size
     case larger
 }

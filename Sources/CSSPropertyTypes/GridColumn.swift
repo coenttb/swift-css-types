@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid-column` shorthand property specifies a grid item's size and location within 
 /// a grid by contributing a line, a span, or nothing (automatic) to its grid placement, 
@@ -22,30 +22,30 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on grid-column](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column)
 public enum GridColumn: Property {
-    
+
     public static let property: String = "grid-column"
-    
+
     /// Auto placement
     case auto
-    
+
     /// Placement using a single grid line
     case line(Int)
-    
+
     /// Placement using a named grid line or area
     case name(String)
-    
+
     /// Placement spanning a specific number of tracks
     case span(Int)
-    
+
     /// Placement spanning to a named grid line
     case spanTo(String)
-    
+
     /// Placement with explicit start and end
     case placement(GridColumnValue, GridColumnValue)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -70,22 +70,22 @@ public enum GridColumn: Property {
 public enum GridColumnValue: Sendable, Hashable, CustomStringConvertible {
     /// Auto placement
     case auto
-    
+
     /// A specific numbered grid line
     case line(Int)
-    
+
     /// A specific line from the end (negative values)
     case lineEnd(Int)
-    
+
     /// A named grid line
     case name(String)
-    
+
     /// A span of tracks
     case span(Int)
-    
+
     /// A span to a named line
     case spanTo(String)
-    
+
     public var description: String {
         switch self {
         case .auto:

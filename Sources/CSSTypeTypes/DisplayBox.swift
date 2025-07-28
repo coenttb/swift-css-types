@@ -26,7 +26,7 @@ public enum DisplayBox: String, Sendable, Hashable {
     /// display: none;
     /// ```
     case none
-    
+
     /// Makes the element's box disappear, but keeps its children
     ///
     /// The element itself doesn't generate a box, but its children are rendered

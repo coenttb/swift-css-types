@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-border-mode` property, which specifies the blending mode used in a mask border.
 ///
@@ -23,19 +23,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-border-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-mode)
 public enum MaskBorderMode: Property {
     public static let property: String = "mask-border-mode"
-    
+
     /// The alpha values of the mask border image are used as the mask values
     case alpha
-    
+
     /// The luminance values of the mask border image are used as the mask values
     case luminance
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Default value (alpha)
     public static let `default` = MaskBorderMode.alpha
-    
+
     /// String representation of the mask-border-mode
     public var description: String {
         switch self {

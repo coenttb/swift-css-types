@@ -1,7 +1,6 @@
 //
 // StrokeWidth.swift
 
-
 import CSSTypeTypes
 
 /// The `stroke-width` CSS property defines the width of a stroke applied to SVG shapes.
@@ -18,15 +17,15 @@ import CSSTypeTypes
 /// ```
 public enum StrokeWidth: Property, LengthPercentageConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
     public static let property: String = "stroke-width"
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// A number of SVG units for the stroke width
     case number(CSSTypeTypes.Number)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):
@@ -37,12 +36,12 @@ public enum StrokeWidth: Property, LengthPercentageConvertible, ExpressibleByInt
             return global.description
         }
     }
-    
+
     /// Creates a StrokeWidth using an integer literal (interpreted as SVG units)
     public init(integerLiteral value: Int) {
         self = .number(.init(integerLiteral: value))
     }
-    
+
     /// Creates a StrokeWidth using a floating-point literal (interpreted as SVG units)
     public init(floatLiteral value: Double) {
         self = .number(.init(floatLiteral: value))

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS view-transition-name property provides the selected element with a distinct identifying name
 /// and causes it to participate in a separate view transition from the root view transition.
@@ -18,15 +18,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on view-transition-name](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name)
 public enum ViewTransitionName: Property {
-    
+
     public static let property: String = "view-transition-name"
-    
+
     /// The element will not participate in a view transition
     case none
-    
+
     /// An identifying name that causes the element to participate in a separate view transition
     case custom(CustomIdent)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -38,10 +38,10 @@ extension ViewTransitionName: CustomStringConvertible {
         switch self {
         case .none:
             return "none"
-            
+
         case .custom(let ident):
             return ident.description
-            
+
         case .global(let global):
             return global.description
         }

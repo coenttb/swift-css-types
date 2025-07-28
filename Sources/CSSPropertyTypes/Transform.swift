@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transform` property lets you rotate, scale, skew, or translate an element.
 /// It modifies the coordinate space of the CSS visual formatting model.
@@ -31,13 +31,13 @@ public enum Transform: Property {
     public static let property: String = "transform"
     /// No transformation
     case none
-    
+
     /// A single transform function
     case function(TransformFunction)
-    
+
     /// Multiple transform functions applied in sequence
     case compound([TransformFunction])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -56,7 +56,7 @@ extension Transform {
     public static func matrix(a: Number, b: Number, c: Number, d: Number, tx: Number, ty: Number) -> Transform {
         .function(.matrix(a: a, b: b, c: c, d: d, tx: tx, ty: ty))
     }
-    
+
     /// Matrix3d transform with 16 values (3D transformation)
     ///
     /// - Parameter values: The 16 values of the 4×4 matrix, in column-major order
@@ -64,7 +64,7 @@ extension Transform {
     public static func matrix3d(_ values: [Number]) -> Transform {
         .function(.matrix3d(values: values))
     }
-    
+
     /// Perspective transform for 3D transformations
     ///
     /// - Parameter distance: The distance from the viewer to the z=0 plane
@@ -72,7 +72,7 @@ extension Transform {
     public static func perspective(_ distance: Length) -> Transform {
         .function(.perspective(distance))
     }
-    
+
     /// Rotation transform
     ///
     /// - Parameter angle: The angle of rotation
@@ -80,7 +80,7 @@ extension Transform {
     public static func rotate(_ angle: Angle) -> Transform {
         .function(.rotate(angle))
     }
-    
+
     /// 3D rotation transform
     ///
     /// - Parameters:
@@ -92,7 +92,7 @@ extension Transform {
     public static func rotate3d(x: Number, y: Number, z: Number, angle: Angle) -> Transform {
         .function(.rotate3d(x: x, y: y, z: z, angle: angle))
     }
-    
+
     /// X-axis rotation transform
     ///
     /// - Parameter angle: The angle of rotation
@@ -100,7 +100,7 @@ extension Transform {
     public static func rotateX(_ angle: Angle) -> Transform {
         .function(.rotateX(angle))
     }
-    
+
     /// Y-axis rotation transform
     ///
     /// - Parameter angle: The angle of rotation
@@ -108,7 +108,7 @@ extension Transform {
     public static func rotateY(_ angle: Angle) -> Transform {
         .function(.rotateY(angle))
     }
-    
+
     /// Z-axis rotation transform
     ///
     /// - Parameter angle: The angle of rotation
@@ -116,7 +116,7 @@ extension Transform {
     public static func rotateZ(_ angle: Angle) -> Transform {
         .function(.rotateZ(angle))
     }
-    
+
     /// Scale transform
     ///
     /// - Parameters:
@@ -126,7 +126,7 @@ extension Transform {
     public static func scale(_ sx: NumberPercentage, _ sy: NumberPercentage? = nil) -> Transform {
         .function(.scale(sx, sy))
     }
-    
+
     /// 3D scale transform
     ///
     /// - Parameters:
@@ -137,7 +137,7 @@ extension Transform {
     public static func scale3d(x: Number, y: Number, z: Number) -> Transform {
         .function(.scale3d(sx: x, sy: y, sz: z))
     }
-    
+
     /// X-axis scale transform
     ///
     /// - Parameter factor: The scaling factor
@@ -145,7 +145,7 @@ extension Transform {
     public static func scaleX(_ factor: Number) -> Transform {
         .function(.scaleX(factor))
     }
-    
+
     /// Y-axis scale transform
     ///
     /// - Parameter factor: The scaling factor
@@ -153,7 +153,7 @@ extension Transform {
     public static func scaleY(_ factor: Number) -> Transform {
         .function(.scaleY(factor))
     }
-    
+
     /// Z-axis scale transform
     ///
     /// - Parameter factor: The scaling factor
@@ -161,7 +161,7 @@ extension Transform {
     public static func scaleZ(_ factor: Number) -> Transform {
         .function(.scaleZ(factor))
     }
-    
+
     /// Skew transform
     ///
     /// - Parameters:
@@ -171,7 +171,7 @@ extension Transform {
     public static func skew(_ angleX: Angle, _ angleY: Angle? = nil) -> Transform {
         .function(.skew(angleX, angleY))
     }
-    
+
     /// X-axis skew transform
     ///
     /// - Parameter angle: The skew angle
@@ -179,7 +179,7 @@ extension Transform {
     public static func skewX(_ angle: Angle) -> Transform {
         .function(.skewX(angle))
     }
-    
+
     /// Y-axis skew transform
     ///
     /// - Parameter angle: The skew angle
@@ -187,7 +187,7 @@ extension Transform {
     public static func skewY(_ angle: Angle) -> Transform {
         .function(.skewY(angle))
     }
-    
+
     /// Translation transform
     ///
     /// - Parameters:
@@ -197,7 +197,7 @@ extension Transform {
     public static func translate(_ tx: LengthPercentage, _ ty: LengthPercentage? = nil) -> Transform {
         .function(.translate(tx, ty))
     }
-    
+
     /// 3D translation transform
     ///
     /// - Parameters:
@@ -208,7 +208,7 @@ extension Transform {
     public static func translate3d(x: LengthPercentage, y: LengthPercentage, z: Length) -> Transform {
         .function(.translate3d(x, y, z))
     }
-    
+
     /// X-axis translation transform
     ///
     /// - Parameter distance: The translation distance
@@ -216,7 +216,7 @@ extension Transform {
     public static func translateX(_ distance: LengthPercentage) -> Transform {
         .function(.translateX(distance))
     }
-    
+
     /// Y-axis translation transform
     ///
     /// - Parameter distance: The translation distance
@@ -224,7 +224,7 @@ extension Transform {
     public static func translateY(_ distance: LengthPercentage) -> Transform {
         .function(.translateY(distance))
     }
-    
+
     /// Z-axis translation transform
     ///
     /// - Parameter distance: The translation distance
@@ -241,13 +241,13 @@ extension Transform: CustomStringConvertible {
         switch self {
         case .none:
             return "none"
-            
+
         case .function(let function):
             return function.description
-            
+
         case .compound(let functions):
             return functions.map { $0.description }.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -267,34 +267,34 @@ extension Transform {
             switch (lhs, rhs) {
             case (.none, _):
                 return transformFunctions(from: rhs)
-                
+
             case (_, .none):
                 return transformFunctions(from: lhs)
-                
+
             case (.global, _), (_, .global):
                 // Combining with globals doesn't make sense, so just use the left side
                 return transformFunctions(from: lhs)
-                
+
             default:
                 return transformFunctions(from: lhs) + transformFunctions(from: rhs)
             }
         }()
-        
+
         return .compound(functions)
     }
-    
+
     /// Helper to extract transform functions from a Transform
     private static func transformFunctions(from transform: Transform) -> [TransformFunction] {
         switch transform {
         case .none:
             return []
-            
+
         case .function(let function):
             return [function]
-            
+
         case .compound(let functions):
             return functions
-            
+
         case .global:
             return []
         }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `outline-width` property sets the thickness of an element's outline.
 ///
@@ -17,19 +17,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on outline-width](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-width)
 public enum OutlineWidth: Property, LengthConvertible {
     public static let property: String = "outline-width"
-    
+
     /// A specific length value
     case length(Length)
-    
+
     /// Thin outline (typically 1px)
     case thin
-    
+
     /// Medium outline (typically 3px)
     case medium
-    
+
     /// Thick outline (typically 5px)
     case thick
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -61,7 +61,7 @@ extension OutlineWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates an outline-width with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

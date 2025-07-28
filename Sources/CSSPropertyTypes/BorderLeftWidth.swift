@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-left-width` property, which sets the width of the left border.
 ///
@@ -48,15 +48,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-left-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width)
 public enum BorderLeftWidth: Property {
-    
+
     public static let property: String = "border-left-width"
-    
+
     /// A specific width for the left border
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-left-width with a specific border width
     ///
     /// - Parameter width: The width for the left border
@@ -95,13 +95,13 @@ extension BorderLeftWidth: CustomStringConvertible {
 extension BorderLeftWidth {
     /// The default border-left-width value (medium)
     public static let `default` = BorderLeftWidth(.medium)
-    
+
     /// Creates a thin border-left-width
     public static let thin = BorderLeftWidth(.thin)
-    
+
     /// Creates a medium border-left-width
     public static let medium = BorderLeftWidth(.medium)
-    
+
     /// Creates a thick border-left-width
     public static let thick = BorderLeftWidth(.thick)
 }

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `resize` property sets whether an element is resizable, and if so, in which directions.
 ///
@@ -26,28 +26,28 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize)
 public enum Resize: Property {
     public static let property: String = "resize"
-    
+
     /// Element can't be resized by the user
     case none
-    
+
     /// Element can be resized both horizontally and vertically
     case both
-    
+
     /// Element can only be resized horizontally
     case horizontal
-    
+
     /// Element can only be resized vertically
     case vertical
-    
+
     /// Element can be resized in the block direction (depends on writing mode)
     case block
-    
+
     /// Element can be resized in the inline direction (depends on writing mode)
     case inline
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

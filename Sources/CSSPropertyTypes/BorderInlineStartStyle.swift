@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-start-style` property, which defines the style of the logical
 /// inline-start border of an element.
@@ -47,15 +47,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-start-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-style)
 public enum BorderInlineStartStyle: Property {
-    
+
     public static let property: String = "border-inline-start-style"
-    
+
     /// A specific line style for the inline-start border
     case lineStyle(LineStyle)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-start-style with a specific line style
     ///
     /// - Parameter style: The line style for the inline-start border
@@ -88,34 +88,34 @@ extension BorderInlineStartStyle: CustomStringConvertible {
 extension BorderInlineStartStyle {
     /// The default border-inline-start-style value (none)
     public static let `default` = BorderInlineStartStyle(.none)
-    
+
     /// Creates a none (invisible) border-inline-start-style
     public static let none = BorderInlineStartStyle(.none)
-    
+
     /// Creates a hidden (invisible, but with higher priority) border-inline-start-style
     public static let hidden = BorderInlineStartStyle(.hidden)
-    
+
     /// Creates a dotted border-inline-start-style
     public static let dotted = BorderInlineStartStyle(.dotted)
-    
+
     /// Creates a dashed border-inline-start-style
     public static let dashed = BorderInlineStartStyle(.dashed)
-    
+
     /// Creates a solid border-inline-start-style
     public static let solid = BorderInlineStartStyle(.solid)
-    
+
     /// Creates a double border-inline-start-style
     public static let double = BorderInlineStartStyle(.double)
-    
+
     /// Creates a groove border-inline-start-style
     public static let groove = BorderInlineStartStyle(.groove)
-    
+
     /// Creates a ridge border-inline-start-style
     public static let ridge = BorderInlineStartStyle(.ridge)
-    
+
     /// Creates an inset border-inline-start-style
     public static let inset = BorderInlineStartStyle(.inset)
-    
+
     /// Creates an outset border-inline-start-style
     public static let outset = BorderInlineStartStyle(.outset)
 }

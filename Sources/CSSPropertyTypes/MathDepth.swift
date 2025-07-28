@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `math-depth` property describes a notion of depth for each element of a mathematical formula,
 /// with respect to the top-level container of that formula.
@@ -17,19 +17,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on math-depth](https://developer.mozilla.org/en-US/docs/Web/CSS/math-depth)
 public enum MathDepth: Property {
     public static let property: String = "math-depth"
-    
+
     /// Set to the inherited math-depth plus 1 when inherited math-style is compact.
     case autoAdd
-    
+
     /// Set to the inherited math-depth plus the specified integer.
     case add(Int)
-    
+
     /// Set to the specified integer.
     case absolute(Int)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .autoAdd:
@@ -50,12 +50,12 @@ extension MathDepth {
     public static var zero: MathDepth {
         .absolute(0)
     }
-    
+
     /// Increase math depth by 1 (go one level deeper)
     public static var increaseByOne: MathDepth {
         .add(1)
     }
-    
+
     /// Decrease math depth by 1 (go one level up)
     public static var decreaseByOne: MathDepth {
         .add(-1)

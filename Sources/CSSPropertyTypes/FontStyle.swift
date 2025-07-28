@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `font-style` property sets whether a font should be styled with a normal, italic, 
 /// or oblique face from its font family.
@@ -20,20 +20,20 @@ public enum FontStyle: Property {
     public static let property: String = "font-style"
     /// Selects a font that is classified as normal within a font family
     case normal
-    
+
     /// Selects a font that is classified as italic
     case italic
-    
+
     /// Selects a font that is classified as oblique
     case oblique
-    
+
     /// Selects an oblique font with a specific angle of slant
     /// - Parameter degrees: The angle of slant in degrees, between -90 and 90
     case obliqueAngle(Double)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `marker-end` CSS property points to a marker that will be drawn on the last vertex of the element's path.
 ///
@@ -16,16 +16,16 @@ import CSSTypeTypes
 /// - SeeAlso: `marker-start`, `marker-mid`, `marker` (shorthand)
 public enum MarkerEnd: Property {
     public static let property: String = "marker-end"
-    
+
     /// No marker will be drawn at the last vertex of the element's path.
     case none
-    
+
     /// A URL reference to a marker element to be drawn at the last vertex of the element's path.
     case url(Url)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -47,12 +47,12 @@ extension MarkerEnd {
     ///
     /// Example:
     /// ```swift
-    /// .markerEnd(.reference(id: "arrow"))  // marker-end: url("#arrow")
+    /// .markerEnd(.reference(id: "arrow"))  // MARK: er-end: url("#arrow")
     /// ```
     public static func reference(id: String) -> Self {
         .url(Url("#\(id)"))
     }
-    
+
     /// Creates a URL reference to an external marker defined in the specified file.
     ///
     /// - Parameters:
@@ -62,7 +62,7 @@ extension MarkerEnd {
     ///
     /// Example:
     /// ```swift
-    /// .markerEnd(.externalReference(file: "markers.svg", id: "arrow"))  // marker-end: url("markers.svg#arrow")
+    /// .markerEnd(.externalReference(file: "markers.svg", id: "arrow"))  // MARK: er-end: url("markers.svg#arrow")
     /// ```
     public static func externalReference(file: String, id: String) -> Self {
         .url(Url("\(file)#\(id)"))

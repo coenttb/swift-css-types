@@ -21,14 +21,14 @@ import Foundation
 public struct CalcSum: Sendable, Hashable {
     /// The calculation expression as a string
     private let expression: String
-    
+
     /// Creates a new calculation with the given expression
     ///
     /// - Parameter expression: A valid CSS calculation expression
     public init(_ expression: String) {
         self.expression = expression
     }
-    
+
     /// Creates a CSS calc() function with the given expression
     ///
     /// - Parameter expression: A valid CSS calculation expression
@@ -36,7 +36,7 @@ public struct CalcSum: Sendable, Hashable {
     public static func calc(_ expression: String) -> CalcSum {
         return CalcSum(expression)
     }
-    
+
     /// Creates a CSS min() function with the given expressions
     ///
     /// - Parameter expressions: A comma-separated list of values
@@ -44,7 +44,7 @@ public struct CalcSum: Sendable, Hashable {
     public static func min(_ expressions: String) -> CalcSum {
         return CalcSum("min(\(expressions))")
     }
-    
+
     /// Creates a CSS max() function with the given expressions
     ///
     /// - Parameter expressions: A comma-separated list of values
@@ -52,7 +52,7 @@ public struct CalcSum: Sendable, Hashable {
     public static func max(_ expressions: String) -> CalcSum {
         return CalcSum("max(\(expressions))")
     }
-    
+
     /// Creates a CSS clamp() function with the given expressions
     ///
     /// - Parameters:
@@ -73,13 +73,13 @@ extension CalcSum: CustomStringConvertible {
     /// a CSS math function. It also handles expressions containing nested math functions.
     public var description: String {
         // If the expression already IS a complete math function, return it as is
-        if (expression.hasPrefix("min(") && expression.hasSuffix(")")) || 
-           (expression.hasPrefix("max(") && expression.hasSuffix(")")) || 
-           (expression.hasPrefix("clamp(") && expression.hasSuffix(")")) || 
+        if (expression.hasPrefix("min(") && expression.hasSuffix(")")) ||
+           (expression.hasPrefix("max(") && expression.hasSuffix(")")) ||
+           (expression.hasPrefix("clamp(") && expression.hasSuffix(")")) ||
            (expression.hasPrefix("calc(") && expression.hasSuffix(")")) {
             return expression
         }
-        
+
         // Otherwise, wrap it in calc(), regardless of whether it contains math functions
         return "calc(\(expression))"
     }

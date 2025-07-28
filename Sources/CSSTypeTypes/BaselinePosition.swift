@@ -29,7 +29,7 @@ public struct BaselinePosition: Sendable, Hashable {
         /// align-items: baseline;
         /// ```
         case first = "first"
-        
+
         /// Aligns to the last baseline
         ///
         /// Aligns the alignment baseline of the box's last baseline set with the corresponding
@@ -38,16 +38,16 @@ public struct BaselinePosition: Sendable, Hashable {
         /// align-items: last baseline;
         /// ```
         case last = "last"
-        
+
         public var description: String { rawValue}
     }
-    
+
     let firstLast: FirstLast?
-    
+
     public init(firstLast: FirstLast?) {
         self.firstLast = firstLast
     }
-    
+
     public static let first: Self = .init(firstLast: .first)
     public static let last: Self = .init(firstLast: .last)
     public static let firstBaseline: Self = .init(firstLast: .first)
@@ -67,17 +67,16 @@ extension BaselinePosition: CustomStringConvertible {
 }
 
 public protocol BaselinePositionConvertible {
-    static func baseline(_: BaselinePosition)-> Self
+    static func baseline(_: BaselinePosition) -> Self
 }
 
 extension BaselinePositionConvertible {
     /// Creates a baseline alignment
     public static var firstBaseline: Self { .baseline(.firstBaseline) }
-    
+
     /// Creates a baseline alignment
     public static var lastBaseline: Self { .baseline(.lastBaseline) }
-    
+
     /// Creates a simple baseline alignment
     public static var baseline: Self { .baseline(.baseline) }
 }
-

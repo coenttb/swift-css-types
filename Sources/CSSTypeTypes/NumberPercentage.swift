@@ -20,7 +20,7 @@ import Foundation
 public enum NumberPercentage: Sendable, Hashable, NumberConvertible, PercentageConvertible {
     /// A number value with a specific unit
     case number(Number)
-    
+
     /// A percentage value
     case percentage(Percentage)
 }

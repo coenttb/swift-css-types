@@ -6,7 +6,7 @@ import Foundation
 /// component values are within the proper ranges before creating color values.
 /// These functions are designed to work with the Color type from the Types module.
 public enum ColorValidation {
-    
+
     /// Validates and clamps RGB color components.
     ///
     /// - Parameters:
@@ -21,7 +21,7 @@ public enum ColorValidation {
             min(255, max(0, blue))
         )
     }
-    
+
     /// Validates and clamps RGBA color components.
     ///
     /// - Parameters:
@@ -38,7 +38,7 @@ public enum ColorValidation {
             min(1.0, max(0.0, alpha))
         )
     }
-    
+
     /// Validates and clamps HSL color components.
     ///
     /// - Parameters:
@@ -53,7 +53,7 @@ public enum ColorValidation {
             min(100, max(0, lightness))
         )
     }
-    
+
     /// Validates and clamps HSLA color components.
     ///
     /// - Parameters:
@@ -70,7 +70,7 @@ public enum ColorValidation {
             min(1.0, max(0.0, alpha))
         )
     }
-    
+
     /// Validates and clamps HWB color components.
     ///
     /// - Parameters:
@@ -85,7 +85,7 @@ public enum ColorValidation {
             min(100, max(0, blackness))
         )
     }
-    
+
     /// Validates and clamps Oklch color components.
     ///
     /// - Parameters:
@@ -118,7 +118,7 @@ public extension Color {
         let validated = ColorValidation.validateRGB(red, green, blue)
         return .rgb(validated.red, validated.green, validated.blue)
     }
-    
+
     /// Creates a color from RGBA values with validation.
     ///
     /// - Parameters:
@@ -131,7 +131,7 @@ public extension Color {
         let validated = ColorValidation.validateRGBA(red, green, blue, alpha)
         return .rgba(validated.red, validated.green, validated.blue, validated.alpha)
     }
-    
+
     /// Creates a color from HSL values with validation.
     ///
     /// - Parameters:
@@ -143,7 +143,7 @@ public extension Color {
         let validated = ColorValidation.validateHSL(hue, saturation, lightness)
         return .hsl(validated.hue, validated.saturation, validated.lightness)
     }
-    
+
     /// Creates a color from HSLA values with validation.
     ///
     /// - Parameters:
@@ -156,7 +156,7 @@ public extension Color {
         let validated = ColorValidation.validateHSLA(hue, saturation, lightness, alpha)
         return .hsla(validated.hue, validated.saturation, validated.lightness, validated.alpha)
     }
-    
+
     /// Creates a color from HWB values with validation.
     ///
     /// - Parameters:
@@ -168,7 +168,7 @@ public extension Color {
         let validated = ColorValidation.validateHWB(hue, whiteness, blackness)
         return .hwb(validated.hue, validated.whiteness, validated.blackness)
     }
-    
+
     /// Creates a color from Oklch values with validation.
     ///
     /// - Parameters:

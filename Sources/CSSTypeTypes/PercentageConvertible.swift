@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public protocol PercentageConvertible {
     static func percentage(_ percentage: Percentage) -> Self
 }
@@ -26,22 +25,21 @@ extension PercentageConvertible {
     /// let percentage: Percentage = .px(100)
     /// let gridTrack = GridTrack(percentage)
     /// ```
-    public init(_ percentage: Percentage){
+    public init(_ percentage: Percentage) {
         self = .percentage(percentage)
     }
 }
 
-
 extension PercentageConvertible {
     /// Creates a CSS percentage value of 0%
     public static var zero: Self { .init(.zero) }
-    
+
     /// Creates a CSS percentage value of 50%
     public static var half: Self { .init(.half) }
-    
+
     /// Creates a CSS percentage value of 100%
     public static var full: Self { .init(.full) }
-    
+
     /// Convenience to create a CSS percentage if you prefer calling it `percent` instead of `percentage`.
     public static func percent(_ percent: Percentage) -> Self {
         .percentage(percent)

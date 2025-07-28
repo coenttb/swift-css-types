@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-border-source` property, which specifies the source image
 /// used to create an element's mask border.
@@ -27,34 +27,34 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-border-source](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-source)
 public enum MaskBorderSource: Property {
     public static let property: String = "mask-border-source"
-    
+
     /// No mask border source
     case none
-    
+
     /// Use a URL to an image as mask border source
     case url(Url)
-    
+
     /// Use a linear gradient as mask border source
     case linearGradient(CSSString)
-    
+
     /// Use a radial gradient as mask border source
     case radialGradient(CSSString)
-    
+
     /// Use a conic gradient as mask border source
     case conicGradient(CSSString)
-    
+
     /// Use a repeating linear gradient as mask border source
     case repeatingLinearGradient(CSSString)
-    
+
     /// Use a repeating radial gradient as mask border source
     case repeatingRadialGradient(CSSString)
-    
+
     /// Use a repeating conic gradient as mask border source
     case repeatingConicGradient(CSSString)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Default value (none)
     public static let `default` = MaskBorderSource.none
 }

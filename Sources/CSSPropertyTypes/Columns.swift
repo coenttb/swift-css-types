@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `columns` shorthand property sets the number of columns to use when drawing an element's contents,
 /// as well as those columns' widths.
@@ -17,16 +17,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on columns](https://developer.mozilla.org/en-US/docs/Web/CSS/columns)
 public enum Columns: Property {
     public static let property: String = "columns"
-    
+
     /// Set both column width and column count
     case both(ColumnWidth, ColumnCount)
-    
+
     /// Set only column width
     case width(ColumnWidth)
-    
+
     /// Set only column count
     case count(ColumnCount)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -43,13 +43,13 @@ extension Columns: CustomStringConvertible {
         switch self {
         case .both(let width, let count):
             return "\(width) \(count)"
-            
+
         case .width(let width):
             return width.description
-            
+
         case .count(let count):
             return count.description
-            
+
         case .global(let global):
             return global.description
         }
@@ -60,5 +60,5 @@ extension Columns: CustomStringConvertible {
 extension Columns {
     /// Auto-sized columns
     public static let auto: Columns = .count(.auto)
-    
+
 }

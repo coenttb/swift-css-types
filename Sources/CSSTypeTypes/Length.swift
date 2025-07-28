@@ -73,20 +73,20 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
 //    /// Percentages are relative to another value, typically the parent element's
 //    /// corresponding dimension or the viewport size.
 //    case percent(Double)
-    
+
     /// A specific CSS length keyword
     ///
     /// These keywords provide special dimension behaviors like automatic sizing.
     case keyword(Keyword)
-    
+
     /// A CSS calc() function expression
     ///
     /// The calc() function lets you perform calculations to determine CSS property values.
     case calc(String)
-    
+
     /// Global CSS values that can be applied to any CSS property
     case global(Global)
-    
+
     /// Available CSS length units
     ///
     /// These units represent the various ways to measure length in CSS,
@@ -95,13 +95,13 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
         // Absolute units
         /// Pixels (device pixels)
         case px
-        
+
         // Relative font units
         /// Relative to the font-size of the element
         case em
         /// Relative to the font-size of the root element
         case rem
-        
+
         // Viewport-relative units
         /// Percentage of viewport width
         case vw
@@ -111,7 +111,7 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
         case vmin
         /// Maximum of viewport width and height
         case vmax
-        
+
         // Physical units
         /// Centimeters
         case cm
@@ -123,7 +123,7 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
         case pt
         /// Picas (12 points)
         case pc
-        
+
         // More typography-related units
         /// x-height of the element's font
         case ex
@@ -131,11 +131,11 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
         case ch
         /// Line height of the element
         case lh
-        
+
         // Grid-specific units
         /// Fractional unit for CSS Grid layouts
         case fr
-        
+
         // Newer CSS units
         /// Quarter-millimeters
         case q
@@ -146,7 +146,7 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
         /// Line height of the root element
         case rlh
     }
-    
+
     /// CSS length-related keywords
     ///
     /// These keywords are used for special sizing behaviors that can't be 
@@ -154,17 +154,17 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
     public enum Keyword: String, Sendable {
         /// Browser determines the appropriate size based on context
         case auto
-        
+
         /// Size to the intrinsic maximum width/height of the content
         case maxContent = "max-content"
-        
+
         /// Size to the intrinsic minimum width/height of the content
         case minContent = "min-content"
-        
+
         /// Size based on content while respecting constraints
         case fitContent = "fit-content"
     }
-    
+
     /// Creates a length using an integer literal
     ///
     /// Integer literals are interpreted as pixel values.
@@ -178,7 +178,7 @@ public enum Length: Sendable, ExpressibleByIntegerLiteral, ExpressibleByFloatLit
     public init(integerLiteral value: Int) {
         self = .length(Double(value), .px)
     }
-    
+
     /// Creates a length using a floating-point literal
     ///
     /// Floating-point literals are interpreted as pixel values.
@@ -221,7 +221,7 @@ extension Length: Hashable {
 extension Length: Numeric {
     /// Type representing the magnitude of a Length value
     public typealias Magnitude = Double
-    
+
     /// The absolute value of the Length
     ///
     /// For length and percent values, returns the absolute numeric value.
@@ -236,14 +236,14 @@ extension Length: Numeric {
             return 0 // Non-numeric types return 0 magnitude
         }
     }
-    
+
     /// Creates a Length from an exact binary integer
     ///
     /// This initializer converts the integer to a pixel value.
-    public init?<T>(exactly source: T) where T : BinaryInteger {
+    public init?<T>(exactly source: T) where T: BinaryInteger {
         self = .length(Double(source), .px)
     }
-    
+
     /// Multiplies two Length values
     ///
     /// - For lengths with the same unit, multiplies the values and preserves the unit
@@ -262,14 +262,14 @@ extension Length: Numeric {
             return .calc("\(lhs) * \(rhs)")
         }
     }
-    
+
     /// Multiplies a Length value in place
     ///
     /// Replaces the left-hand value with the result of multiplying by the right-hand value.
     public static func *= (lhs: inout Length, rhs: Length) {
         lhs = lhs * rhs
     }
-    
+
     /// Adds two Length values
     ///
     /// - For lengths with the same unit, adds the values and preserves the unit
@@ -291,14 +291,14 @@ extension Length: Numeric {
             return .calc("\(lhs) + \(rhs)")
         }
     }
-    
+
     /// Adds a Length value in place
     ///
     /// Replaces the left-hand value with the result of adding the right-hand value.
     public static func += (lhs: inout Length, rhs: Length) {
         lhs = lhs + rhs
     }
-    
+
     /// Subtracts two Length values
     ///
     /// - For lengths with the same unit, subtracts the values and preserves the unit
@@ -320,14 +320,14 @@ extension Length: Numeric {
             return .calc("\(lhs) - \(rhs)")
         }
     }
-    
+
     /// Subtracts a Length value in place
     ///
     /// Replaces the left-hand value with the result of subtracting the right-hand value.
     public static func -= (lhs: inout Length, rhs: Length) {
         lhs = lhs - rhs
     }
-    
+
     /// Divides a Length value by a numeric divisor
     ///
     /// Divides the numeric component of the Length by the specified value,
@@ -394,7 +394,7 @@ extension Length {
     /// .width(.px(200)) // width: 200px
     /// ```
     public static func px(_ value: Double) -> Self { .length(value, .px) }
-    
+
     /// Creates an em length value
     ///
     /// Ems are relative to the font-size of the current element.
@@ -406,7 +406,7 @@ extension Length {
     /// .margin(.em(1.5)) // margin: 1.5em
     /// ```
     public static func em(_ value: Double) -> Self { .length(value, .em) }
-    
+
     /// Creates a rem length value
     ///
     /// Rems are relative to the font-size of the root element.
@@ -418,7 +418,7 @@ extension Length {
     /// .fontSize(.rem(1.2)) // font-size: 1.2rem
     /// ```
     public static func rem(_ value: Double) -> Self { .length(value, .rem) }
-    
+
     /// Creates a viewport width percentage value
     ///
     /// vw units are relative to 1% of the viewport's width.
@@ -430,7 +430,7 @@ extension Length {
     /// .width(.vw(50)) // width: 50vw
     /// ```
     public static func vw(_ value: Double) -> Self { .length(value, .vw) }
-    
+
     /// Creates a viewport height percentage value
     ///
     /// vh units are relative to 1% of the viewport's height.
@@ -442,7 +442,7 @@ extension Length {
     /// .height(.vh(100)) // height: 100vh
     /// ```
     public static func vh(_ value: Double) -> Self { .length(value, .vh) }
-    
+
     /// Creates a fractional unit value for CSS Grid
     ///
     /// fr units represent a fraction of the available space in the grid container.
@@ -454,7 +454,7 @@ extension Length {
     /// .gridTemplateColumns(.fr(1), .fr(2)) // grid-template-columns: 1fr 2fr
     /// ```
     public static func fr(_ value: Double) -> Self { .length(value, .fr) }
-    
+
     /// The auto keyword
     ///
     /// The browser determines the appropriate size based on context.
@@ -464,7 +464,7 @@ extension Length {
     /// .width(.auto) // width: auto
     /// ```
     public static let auto: Self = .keyword(.auto)
-    
+
     /// The max-content keyword
     ///
     /// Represents the intrinsic maximum width of the content.
@@ -474,7 +474,7 @@ extension Length {
     /// .width(.maxContent) // width: max-content
     /// ```
     public static let maxContent: Self = .keyword(.maxContent)
-    
+
     /// The min-content keyword
     ///
     /// Represents the intrinsic minimum width of the content.
@@ -484,7 +484,7 @@ extension Length {
     /// .width(.minContent) // width: min-content
     /// ```
     public static let minContent: Self = .keyword(.minContent)
-    
+
     /// The fit-content keyword
     ///
     /// Sizes the element based on its content while respecting constraints.
@@ -529,60 +529,59 @@ extension Length: LengthConvertible {
     }
 }
 
-
 /// Integer extensions for creating Length values
 extension Int {
-   
+
 //    /// Creates a pixel length from this integer
     public var px: Length { .px(Double(self)) }
-    
+
     /// Creates an em length from this integer
     public var em: Length { .em(Double(self)) }
-    
+
     /// Creates a rem length from this integer
     public var rem: Length { .rem(Double(self)) }
-    
+
     /// Creates a viewport width percentage from this integer
     public var vw: Length { .vw(Double(self)) }
-    
+
     /// Creates a viewport height percentage from this integer
     public var vh: Length { .vh(Double(self)) }
-    
+
     /// Creates a grid fractional unit from this integer
     public var fr: Length { .fr(Double(self)) }
-    
+
 //    /// Creates a percentage from this integer
 //    public var percent: Length { .percentage(Double(self)) }
-    
+
     // Additional units
-    
+
     /// Creates a centimeter length from this integer
     public var cm: Length { .length(Double(self), .cm) }
-    
+
     /// Creates a millimeter length from this integer
     public var mm: Length { .length(Double(self), .mm) }
-    
+
     /// Creates an inch length from this integer
     public var `in`: Length { .length(Double(self), .in) }
-    
+
     /// Creates a point length from this integer
     public var pt: Length { .length(Double(self), .pt) }
-    
+
     /// Creates a pica length from this integer
     public var pc: Length { .length(Double(self), .pc) }
-    
+
     /// Creates an ex length from this integer
     public var ex: Length { .length(Double(self), .ex) }
-    
+
     /// Creates a ch length from this integer
     public var ch: Length { .length(Double(self), .ch) }
-    
+
     /// Creates a line-height length from this integer
     public var lh: Length { .length(Double(self), .lh) }
-    
+
     /// Creates a viewport minimum length from this integer
     public var vmin: Length { .length(Double(self), .vmin) }
-    
+
     /// Creates a viewport maximum length from this integer
     public var vmax: Length { .length(Double(self), .vmax) }
 }
@@ -591,70 +590,70 @@ extension Int {
 extension Double {
     /// Creates a pixel length from this double
     public var px: Length { .px(self) }
-    
+
     /// Creates an em length from this double
     public var em: Length { .em(self) }
-    
+
     /// Creates a rem length from this double
     public var rem: Length { .rem(self) }
-    
+
     /// Creates a viewport width percentage from this double
     public var vw: Length { .vw(self) }
-    
+
     /// Creates a viewport height percentage from this double
     public var vh: Length { .vh(self) }
-    
+
     /// Creates a grid fractional unit from this double
     public var fr: Length { .fr(self) }
-    
+
 //    /// Creates a percentage from this double
 //    public var percent: Length { .percentage(self) }
-    
+
     // Additional units
-    
+
     /// Creates a centimeter length from this double
     public var cm: Length { .length(self, .cm) }
-    
+
     /// Creates a millimeter length from this double
     public var mm: Length { .length(self, .mm) }
-    
+
     /// Creates an inch length from this double
     public var `in`: Length { .length(self, .in) }
-    
+
     /// Creates a point length from this double
     public var pt: Length { .length(self, .pt) }
-    
+
     /// Creates a pica length from this double
     public var pc: Length { .length(self, .pc) }
-    
+
     /// Creates an ex length from this double
     public var ex: Length { .length(self, .ex) }
-    
+
     /// Creates a ch length from this double
     public var ch: Length { .length(self, .ch) }
-    
+
     /// Creates a line-height length from this double
     public var lh: Length { .length(self, .lh) }
-    
+
     /// Creates a viewport minimum length from this double
     public var vmin: Length { .length(self, .vmin) }
-    
+
     /// Creates a viewport maximum length from this double
     public var vmax: Length { .length(self, .vmax) }
 }
 
 /// Additional unit extensions for Int
 extension Int {
-    
+
     /// Creates a quarter-millimeter length from this integer
     public var q: Length { .length(Double(self), .q) }
-    
+
     /// Creates a cap height length from this integer
     public var cap: Length { .length(Double(self), .cap) }
-    
+
     /// Creates an ideographic character width from this integer
     public var ic: Length { .length(Double(self), .ic) }
-    
+
     /// Creates a root line height length from this integer
     public var rlh: Length { .length(Double(self), .rlh) }
 }
@@ -663,27 +662,25 @@ extension Int {
 extension Double {
     /// Creates a quarter-millimeter length from this double
     public var q: Length { .length(self, .q) }
-    
+
     /// Creates a cap height length from this double
     public var cap: Length { .length(self, .cap) }
-    
+
     /// Creates an ideographic character width from this double
     public var ic: Length { .length(self, .ic) }
-    
+
     /// Creates a root line height length from this double
     public var rlh: Length { .length(self, .rlh) }
 }
 
-//extension Length: LengthConvertible {
+// extension Length: LengthConvertible {
 //    public static func length(_ length: Length) -> Length {
 //        length
 //    }
-//}
-
-
+// }
 
 //// Integer extensions for creating generic LengthConvertible values
-//extension Int {
+// extension Int {
 //    public func px<P: LengthConvertible>() -> P { .px(Double(self)) }
 //    public func em<P: LengthConvertible>() -> P { .em(Double(self)) }
 //    public func rem<P: LengthConvertible>() -> P { .rem(Double(self)) }
@@ -704,10 +701,10 @@ extension Double {
 //    public func cap<P: LengthConvertible>() -> P { .length(.length(Double(self), .cap)) }
 //    public func ic<P: LengthConvertible>() -> P { .length(.length(Double(self), .ic)) }
 //    public func rlh<P: LengthConvertible>() -> P { .length(.length(Double(self), .rlh)) }
-//}
+// }
 //
 //// Double extensions for creating generic LengthConvertible values
-//extension Double {
+// extension Double {
 //    public func px<P: LengthConvertible>() -> P { .px(self) }
 //    public func em<P: LengthConvertible>() -> P { .em(self) }
 //    public func rem<P: LengthConvertible>() -> P { .rem(self) }
@@ -728,5 +725,5 @@ extension Double {
 //    public func cap<P: LengthConvertible>() -> P { .length(.length(self, .cap)) }
 //    public func ic<P: LengthConvertible>() -> P { .length(.length(self, .ic)) }
 //    public func rlh<P: LengthConvertible>() -> P { .length(.length(self, .rlh)) }
-//}
+// }
 //

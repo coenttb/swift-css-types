@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `cy` CSS property defines the y-axis coordinate of the center point of SVG circle and ellipse elements.
 ///
@@ -11,19 +11,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/cy)
 public enum Cy: Property {
     public static let property: String = "cy"
-    
+
     /// A specific length value
     case length(Length)
-    
+
     /// A percentage of the SVG viewport height
     case percentage(Percentage)
-    
+
     /// A combination of length and percentage
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .length(let length):

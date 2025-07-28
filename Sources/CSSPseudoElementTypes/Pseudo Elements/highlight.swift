@@ -24,10 +24,10 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::highlight()](https://developer.mozilla.org/en-US/docs/Web/CSS/::highlight)
 public struct Highlight: CSSPseudoElement {
     @inlinable public static var name: String { "highlight" }
-    
+
     /// The custom identifier for this highlight
     public let identifier: String?
-    
+
     public init(_ identifier: String? = nil) {
         self.identifier = identifier
     }

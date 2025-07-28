@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The interpolate-size CSS property allows you to enable animations and
 /// transitions between a <length-percentage> value and an intrinsic size value
@@ -29,17 +29,17 @@ import CSSTypeTypes
 /// - content (for containers sized using flex-basis)
 public enum InterpolateSize: Property {
     public static let property: String = "interpolate-size"
-    
+
     /// The default behavior — intrinsic size values cannot be interpolated.
     case numericOnly
-    
+
     /// Enables interpolation between a <length-percentage> value and an intrinsic size value,
     /// to allow animation between the two.
     case allowKeywords
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .numericOnly:

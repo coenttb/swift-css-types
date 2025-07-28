@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-position-x` property, which sets the initial horizontal position for background images.
 ///
@@ -54,23 +54,22 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-position-x](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-x)
 public enum BackgroundPositionX: Property, LengthPercentageConvertible {
     public static let property: String = "background-position-x"
-    
-    
+
     /// A horizontal position with a keyword value
     case keyword(Keyword)
-    
+
     /// A horizontal position with a length or percentage
     case lengthPercentage(LengthPercentage)
-    
+
     /// A horizontal position with an edge offset
     case offset(Keyword, LengthPercentage)
-    
+
     /// Multiple horizontal positions for multiple backgrounds
     case multiple([BackgroundPositionX])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
 }
 
 extension BackgroundPositionX {
@@ -78,10 +77,10 @@ extension BackgroundPositionX {
     public enum Keyword: String, Sendable, Hashable {
         /// Left edge
         case left
-        
+
         /// Horizontal center
         case center
-        
+
         /// Right edge
         case right
     }
@@ -119,13 +118,13 @@ extension BackgroundPositionX: CustomStringConvertible {
 extension BackgroundPositionX {
     /// The default value for background-position-x (`0%`)
     public static let `default` = BackgroundPositionX.zero
-    
+
     /// Left position (0%)
     public static let left = BackgroundPositionX.keyword(.left)
-    
+
     /// Center position (50%)
     public static let center = BackgroundPositionX.keyword(.center)
-    
+
     /// Right position (100%)
     public static let right = BackgroundPositionX.keyword(.right)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `list-style-image` property sets an image to be used as the list item marker.
 ///
@@ -18,15 +18,15 @@ public enum ListStyleImage: Property {
     public static let property: String = "list-style-image"
     /// No image is used; the standard list item marker is displayed
     case none
-    
+
     /// An image to be used as the list item marker
     case image(Image)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // MARK: - CustomStringConvertible
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -46,7 +46,7 @@ extension ListStyleImage {
     public static func url(_ url: Url) -> ListStyleImage {
         return .image(.url(url))
     }
-    
+
     /// Creates a list-style-image using a linear gradient
     public static func linearGradient(_ stops: [CSSTypeTypes.Color]) -> ListStyleImage {
         return .image(.linearGradient(stops))

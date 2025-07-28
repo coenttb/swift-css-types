@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-image` property, which sets one or more background images on an element.
 ///
@@ -51,23 +51,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-image](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)
 public enum BackgroundImage: Property {
     public static let property: String = "background-image"
-    
+
     /// A single image
     case single(Image)
-    
+
     /// Multiple images as layers
     case multiple([Image])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a background image with a single image
     ///
     /// - Parameter image: The image to use
     public init(_ image: Image) {
         self = .single(image)
     }
-    
+
     /// Creates a background image with multiple images as layers
     ///
     /// - Parameter images: The images to use as layers (first will be on top)
@@ -107,10 +107,10 @@ extension BackgroundImage: CustomStringConvertible {
 extension BackgroundImage {
     /// The default value for background-image (`none`)
     public static let `default` = BackgroundImage(.none)
-    
+
     /// No background image
     public static let none = BackgroundImage(.none)
-    
+
     /// Creates a background image with a URL
     ///
     /// - Parameter url: The URL of the image
@@ -118,7 +118,7 @@ extension BackgroundImage {
     public static func url(_ url: Url) -> BackgroundImage {
         BackgroundImage.single(.url(url))
     }
-    
+
     /// Creates a background image with a linear gradient
     ///
     /// - Parameter stops: The color stops for the gradient
@@ -126,7 +126,7 @@ extension BackgroundImage {
     public static func linearGradient(stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.linearGradient(stops))
     }
-    
+
     /// Creates a background image with a directional linear gradient
     ///
     /// - Parameters:
@@ -136,7 +136,7 @@ extension BackgroundImage {
     public static func linearGradient(to side: Gradient.Direction.Side, stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.linearGradient(to: side, stops: stops))
     }
-    
+
     /// Creates a background image with a radial gradient
     ///
     /// - Parameter stops: The color stops for the gradient
@@ -144,7 +144,7 @@ extension BackgroundImage {
     public static func radialGradient(stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.radialGradient(stops))
     }
-    
+
     /// Creates a background image with a conic gradient
     ///
     /// - Parameters:
@@ -154,7 +154,7 @@ extension BackgroundImage {
     public static func conicGradient(from angle: Angle, stops: [CSSTypeTypes.Color]) -> BackgroundImage {
         BackgroundImage(.conicGradient(from: angle, stops: stops))
     }
-    
+
     /// Creates a background image with multiple values
     ///
     /// - Parameter images: The images to use as layers
@@ -162,7 +162,7 @@ extension BackgroundImage {
     public static func values(_ images: [Image]) -> BackgroundImage {
         BackgroundImage(images)
     }
-    
+
     /// Creates a background image with multiple values
     ///
     /// - Parameter images: The images to use as layers

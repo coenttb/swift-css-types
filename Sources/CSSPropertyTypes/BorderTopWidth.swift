@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-top-width` property, which sets the width of the top border.
 ///
@@ -43,13 +43,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on border-top-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width)
 public enum BorderTopWidth: Property {
     public static let property: String = "border-top-width"
-    
+
     /// A specific width for the top border
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-top-width with a specific border width
     ///
     /// - Parameter width: The width for the top border
@@ -88,14 +88,14 @@ extension BorderTopWidth: LengthConvertible {
 extension BorderTopWidth {
     /// The default border-top-width value (medium)
     public static let `default` = BorderTopWidth(.medium)
-    
+
     /// Creates a thin border-top-width
     public static let thin = BorderTopWidth(.thin)
-    
+
     /// Creates a medium border-top-width
     public static let medium = BorderTopWidth(.medium)
-    
+
     /// Creates a thick border-top-width
     public static let thick = BorderTopWidth(.thick)
-    
+
 }

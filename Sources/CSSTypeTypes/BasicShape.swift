@@ -27,30 +27,30 @@ public enum BasicShape: Sendable, Hashable {
     public enum FillRule: String, Sendable, Hashable {
         /// The default fill rule
         case nonzero = "nonzero"
-        
+
         /// Alternative fill rule for complex shapes with self-intersections
         case evenodd = "evenodd"
     }
-    
+
     /// Specifies a radius keyword for circle and ellipse shapes
     public enum ShapeRadius: Sendable, Hashable, LengthPercentageConvertible {
         case lengthPercentage(LengthPercentage)
-        
+
         /// Uses the length from the center to the closest side as radius
         case closestSide
-        
+
         /// Uses the length from the center to the farthest side as radius
         case farthestSide
     }
-    
+
     /// Represents a point in a polygon shape
     public struct PolygonPoint: Sendable, Hashable {
         /// The x-coordinate of the point
         public let x: LengthPercentage
-        
+
         /// The y-coordinate of the point
         public let y: LengthPercentage
-        
+
         /// Creates a new point for a polygon
         ///
         /// - Parameters:
@@ -67,37 +67,37 @@ public enum BasicShape: Sendable, Hashable {
     /// clip-path: inset(20px 50px 10px 30px round 10px);
     /// ```
     case inset(top: LengthPercentage, right: LengthPercentage, bottom: LengthPercentage, left: LengthPercentage, borderRadius: String?)
-    
+
     /// Defines a rectangle with x, y coordinates and width, height
     /// ```css
     /// clip-path: xywh(10px 20px 200px 100px);
     /// ```
     case xywh(x: LengthPercentage, y: LengthPercentage, width: LengthPercentage, height: LengthPercentage, borderRadius: String?)
-    
+
     /// Defines a rectangle by distances from edges
     /// ```css
     /// clip-path: rect(10px 210px 110px 20px);
     /// ```
     case rect(top: LengthPercentage, right: LengthPercentage, bottom: LengthPercentage, left: LengthPercentage, borderRadius: String?)
-    
+
     /// Defines a circle
     /// ```css
     /// clip-path: circle(50px at 25% 25%);
     /// ```
     case circle(radius: ShapeRadius?, at: Position?)
-    
+
     /// Defines an ellipse
     /// ```css
     /// clip-path: ellipse(100px 50px at center);
     /// ```
     case ellipse(radiusX: ShapeRadius?, radiusY: ShapeRadius?, at: Position?)
-    
+
     /// Defines a polygon
     /// ```css
     /// clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     /// ```
     case polygon(fillRule: FillRule? = nil, points: [PolygonPoint])
-    
+
     /// Defines a path using an SVG path string
     /// ```css
     /// clip-path: path("M 0,0 H 100 V 100 H 0 Z");
@@ -117,7 +117,7 @@ extension BasicShape: CustomStringConvertible {
             } else {
                 return "inset(\(insetValues))"
             }
-            
+
         case let .xywh(x, y, width, height, borderRadius):
             let values = "\(x) \(y) \(width) \(height)"
             if let radius = borderRadius {
@@ -125,7 +125,7 @@ extension BasicShape: CustomStringConvertible {
             } else {
                 return "xywh(\(values))"
             }
-            
+
         case let .rect(top, right, bottom, left, borderRadius):
             let values = "\(top) \(right) \(bottom) \(left)"
             if let radius = borderRadius {
@@ -133,7 +133,7 @@ extension BasicShape: CustomStringConvertible {
             } else {
                 return "rect(\(values))"
             }
-            
+
         case let .circle(radius, position):
             var result = "circle("
             if let r = radius {
@@ -144,7 +144,7 @@ extension BasicShape: CustomStringConvertible {
             }
             result += ")"
             return result
-            
+
         case let .ellipse(rx, ry, position):
             var result = "ellipse("
             if let radiusX = rx, let radiusY = ry {
@@ -155,7 +155,7 @@ extension BasicShape: CustomStringConvertible {
             }
             result += ")"
             return result
-            
+
         case let .polygon(fillRule, points):
             var result = "polygon("
             if let rule = fillRule {
@@ -164,7 +164,7 @@ extension BasicShape: CustomStringConvertible {
             let pointsStr = points.map { "\($0.x) \($0.y)" }.joined(separator: ", ")
             result += pointsStr + ")"
             return result
-            
+
         case let .path(fillRule, pathData):
             var result = "path("
             if let rule = fillRule {

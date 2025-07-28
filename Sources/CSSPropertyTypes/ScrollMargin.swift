@@ -5,8 +5,8 @@
 //  Created by Claude on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `scroll-margin` shorthand property sets all of the scroll margins of an element at once,
 /// assigning values much like the margin property does for margins of an element.
@@ -21,22 +21,22 @@ import CSSTypeTypes
 /// ```
 public enum ScrollMargin: Property, LengthConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
     public static let property: String = "scroll-margin"
-    
+
     /// A single length value for all four sides
     case all(Length)
-    
+
     /// Two length values for vertical and horizontal sides (top/bottom, left/right)
     case vertical_horizontal(Length, Length)
-    
+
     /// Three length values for top, horizontal sides (left/right), and bottom
     case top_horizontal_bottom(Length, Length, Length)
-    
+
     /// Four length values for top, right, bottom, and left sides
     case top_right_bottom_left(Length, Length, Length, Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .all(let value):
@@ -51,17 +51,17 @@ public enum ScrollMargin: Property, LengthConvertible, ExpressibleByIntegerLiter
             return global.description
         }
     }
-    
+
     /// Creates a ScrollMargin from a length value (applies to all sides)
     public static func length(_ length: Length) -> Self {
         .all(length)
     }
-    
+
     /// Creates a ScrollMargin using an integer literal (interpreted as pixels for all sides)
     public init(integerLiteral value: Int) {
         self = .all(.px(Double(value)))
     }
-    
+
     /// Creates a ScrollMargin using a floating-point literal (interpreted as pixels for all sides)
     public init(floatLiteral value: Double) {
         self = .all(.px(value))

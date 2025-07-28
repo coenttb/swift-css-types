@@ -5,11 +5,11 @@
 ////  Created on 04/02/2025.
 ////
 //
-//import CSSTypeTypes
-//import Testing
+// import CSSTypeTypes
+// import Testing
 //
-//@Suite("Double Tests")
-//struct DoubleTests {
+// @Suite("Double Tests")
+// struct DoubleTests {
 //    
 //    @Test("Double.truncatingRemainder() formats whole numbers correctly")
 //    func testTruncatingRemainderWithWholeNumbers() {
@@ -80,4 +80,4 @@
 //        let percentage = "width: \((33.333).truncatingRemainder(digits: 2))%"
 //        #expect(percentage == "width: 33.33%")
 //    }
-//}
+// }

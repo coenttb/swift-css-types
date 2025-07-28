@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Sets the color of decorations added to text by text-decoration-line.
 ///
@@ -28,10 +28,10 @@ import CSSTypeTypes
 /// ```
 public enum TextDecorationColor: Property, ColorConvertible {
     public static let property: String = "text-decoration-color"
-    
+
     /// A specific color value for the text decoration.
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

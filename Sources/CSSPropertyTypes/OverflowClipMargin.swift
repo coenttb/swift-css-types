@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `overflow-clip-margin` CSS property determines how far outside its bounds an element with
 /// `overflow: clip` may be painted before being clipped. The bound defined by this property is called
@@ -25,31 +25,31 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on overflow-clip-margin](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-clip-margin)
 public enum OverflowClipMargin: Property {
     public static let property: String = "overflow-clip-margin"
-    
+
     /// A length value for the clip margin
     case length(Length)
-    
+
     /// A visual box reference point
     case visualBox(VisualBox)
-    
+
     /// A visual box with a specific margin length
     case boxWithLength(VisualBox, Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// Visual box reference points
     public enum VisualBox: String, Sendable, Hashable {
         /// The content box edge
         case contentBox = "content-box"
-        
+
         /// The padding box edge
         case paddingBox = "padding-box"
-        
+
         /// The border box edge
         case borderBox = "border-box"
     }
-    
+
     /// CSS string representation
     public var description: String {
         switch self {
@@ -71,12 +71,12 @@ extension OverflowClipMargin: LengthConvertible {
     public static func px(_ value: Double) -> OverflowClipMargin {
         .length(.px(value))
     }
-    
+
     /// Create a clip margin with em units
     public static func em(_ value: Double) -> OverflowClipMargin {
         .length(.em(value))
     }
-    
+
     /// Create a clip margin with rem units
     public static func rem(_ value: Double) -> OverflowClipMargin {
         .length(.rem(value))
@@ -89,7 +89,7 @@ extension OverflowClipMargin: ExpressibleByIntegerLiteral, ExpressibleByFloatLit
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Initialize from a float literal as pixels
     public init(floatLiteral value: Double) {
         self = .px(value)

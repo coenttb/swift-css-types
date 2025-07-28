@@ -30,14 +30,14 @@ public enum AlphaValue: Sendable, Hashable, ExpressibleByIntegerLiteral, Express
     /// color: rgba(255, 0, 0, 0.75);
     /// ```
     case number(Number)
-    
+
     /// Specifies alpha as a percentage between 0% (transparent) and 100% (opaque)
     /// ```css
     /// opacity: 50%;
     /// color: rgba(255, 0, 0, 75%);
     /// ```
     case percentage(Percentage)
-    
+
     /// Creates an alpha value as a number from an integer literal
     ///
     /// Integers are converted to their decimal equivalent as numbers.
@@ -51,7 +51,7 @@ public enum AlphaValue: Sendable, Hashable, ExpressibleByIntegerLiteral, Express
     public init(integerLiteral value: Int) {
         self = .number(.init(value))
     }
-    
+
     /// Creates an alpha value as a number from a floating-point literal
     ///
     /// This allows you to use decimal numbers directly where alpha values are expected.

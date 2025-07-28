@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `marker-mid` CSS property points to a marker that will be drawn on all middle vertices of the element's path.
 ///
@@ -18,13 +18,13 @@ public enum MarkerMid: Property {
     public static let property: String = "marker-mid"
     /// No marker will be drawn at the middle vertices of the element's path.
     case none
-    
+
     /// A URL reference to a marker element to be drawn at each middle vertex of the element's path.
     case url(Url)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -46,12 +46,12 @@ extension MarkerMid {
     ///
     /// Example:
     /// ```swift
-    /// .markerMid(.reference(id: "diamond"))  // marker-mid: url("#diamond")
+    /// .markerMid(.reference(id: "diamond"))  // MARK: er-mid: url("#diamond")
     /// ```
     public static func reference(id: String) -> Self {
         .url(Url("#\(id)"))
     }
-    
+
     /// Creates a URL reference to an external marker defined in the specified file.
     ///
     /// - Parameters:
@@ -61,7 +61,7 @@ extension MarkerMid {
     ///
     /// Example:
     /// ```swift
-    /// .markerMid(.externalReference(file: "markers.svg", id: "diamond"))  // marker-mid: url("markers.svg#diamond")
+    /// .markerMid(.externalReference(file: "markers.svg", id: "diamond"))  // MARK: er-mid: url("markers.svg#diamond")
     /// ```
     public static func externalReference(file: String, id: String) -> Self {
         .url(Url("\(file)#\(id)"))

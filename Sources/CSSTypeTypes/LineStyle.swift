@@ -20,31 +20,31 @@ import Foundation
 public enum LineStyle: String, Sendable, Hashable, CaseIterable {
     /// Displays no line. In border collapsing, has the lowest priority.
     case none
-    
+
     /// Displays no line. In border collapsing, has the highest priority.
     case hidden
-    
+
     /// Displays a series of round dots.
     case dotted
-    
+
     /// Displays a series of short square-ended dashes.
     case dashed
-    
+
     /// Displays a single, straight, solid line.
     case solid
-    
+
     /// Displays two straight lines with space between them.
     case double
-    
+
     /// Displays a border with a carved appearance.
     case groove
-    
+
     /// Displays a border with an extruded appearance.
     case ridge
-    
+
     /// Displays a border that makes the element appear embedded.
     case inset
-    
+
     /// Displays a border that makes the element appear embossed.
     case outset
 }
@@ -68,7 +68,7 @@ extension LineStyle {
             return false
         }
     }
-    
+
     /// Whether the line style is visible
     public var isVisible: Bool {
         switch self {
@@ -78,7 +78,7 @@ extension LineStyle {
             return true
         }
     }
-    
+
     /// Returns the opposite 3D effect style, if applicable
     public var opposite3D: LineStyle? {
         switch self {

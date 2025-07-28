@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-webkit-mask-position-y` property sets the initial vertical position of a mask image.
 ///
@@ -59,25 +59,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-mask-position-y](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-mask-position-y)
 public enum WebkitMaskPositionY: Property, LengthPercentageConvertible {
     public static let property: String = "-webkit-mask-position-y"
-    
+
     /// Top edge position (0%)
     case top
-    
+
     /// Vertical center position (50%)
     case center
-    
+
     /// Bottom edge position (100%)
     case bottom
-    
+
     /// A position defined by a length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Multiple vertical positions for multiple masks
     case multiple([WebkitMaskPositionY])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a mask position-y with multiple values
     ///
     /// - Parameter positions: The position values
@@ -124,7 +124,7 @@ extension WebkitMaskPositionY: CustomStringConvertible {
 
 /// Convenience methods for WebkitMaskPositionY
 extension WebkitMaskPositionY {
-    
+
     /// Creates a position with multiple values
     ///
     /// - Parameter positions: The position values
@@ -132,7 +132,7 @@ extension WebkitMaskPositionY {
     public static func values(_ positions: [WebkitMaskPositionY]) -> WebkitMaskPositionY {
         WebkitMaskPositionY(positions)
     }
-    
+
     /// Creates a position with multiple values
     ///
     /// - Parameter positions: The position values

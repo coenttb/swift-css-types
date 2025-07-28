@@ -1,7 +1,6 @@
 //
 // StopOpacity.swift
 
-
 import CSSTypeTypes
 
 /// The `stop-opacity` CSS property defines the opacity of a given color gradient stop in the SVG `<stop>` element
@@ -16,16 +15,16 @@ import CSSTypeTypes
 /// ```
 public enum StopOpacity: Property {
     public static let property: String = "stop-opacity"
-    
+
     /// A numeric opacity value between 0 and 1
     case number(Number)
-    
+
     /// A percentage opacity value between 0% and 100%
     case percentage(Percentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .number(let number):
@@ -38,14 +37,14 @@ public enum StopOpacity: Property {
             return global.description
         }
     }
-    
+
     /// Creates a StopOpacity with a numeric value
     /// - Parameter value: The opacity value between 0 and 1
     /// - Returns: A StopOpacity with the specified numeric value
     public static func opacity(_ value: Double) -> Self {
         .number(.init(value))
     }
-    
+
     /// Creates a StopOpacity with a percentage value
     /// - Parameter value: The opacity percentage value
     /// - Returns: A StopOpacity with the specified percentage value

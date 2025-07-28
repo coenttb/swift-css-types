@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 27/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// A protocol that all CSS properties conform to
 ///
@@ -30,9 +30,7 @@ public struct Declaration: Sendable, Hashable, CustomStringConvertible {
 }
 
 extension Declaration {
-    public init<Propery: Property>(_ property: Propery){
+    public init<Propery: Property>(_ property: Propery) {
         self.description = "\(Propery.property):\(property.description)"
     }
 }
-
-

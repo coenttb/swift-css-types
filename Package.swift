@@ -38,7 +38,7 @@ let package = Package(
         .library(name: .selectors, targets: [.selectors]),
         .library(name: .css, targets: [.css]),
         .library(name: .types, targets: [.types]),
-        .library(name: .properties, targets: [.properties]),
+        .library(name: .properties, targets: [.properties])
     ],
     dependencies: [],
     targets: [
@@ -99,7 +99,7 @@ let package = Package(
                 .properties,
                 .pseudoClasses,
                 .pseudoElements,
-                .selectors,
+                .selectors
             ]
         ),
         .testTarget(
@@ -121,7 +121,7 @@ let package = Package(
         .testTarget(
             name: .properties.tests,
             dependencies: [.properties, .types]
-        ),
+        )
     ]
 )
 

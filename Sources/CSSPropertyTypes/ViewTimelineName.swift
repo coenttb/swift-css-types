@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS view-timeline-name property defines the name of a named view progress timeline, which
 /// is progressed through based on the change in visibility of an element (subject) inside a scrollable
@@ -21,15 +21,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on view-timeline-name](https://developer.mozilla.org/en-US/docs/Web/CSS/view-timeline-name)
 public enum ViewTimelineName: Property {
-    
+
     public static let property: String = "view-timeline-name"
-    
+
     /// The timeline has no name
     case none
-    
+
     /// An arbitrary custom identifier defining a name for a view progress timeline
     case custom(DashedIdent)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -41,10 +41,10 @@ extension ViewTimelineName: CustomStringConvertible {
         switch self {
         case .none:
             return "none"
-            
+
         case .custom(let ident):
             return ident.description
-            
+
         case .global(let global):
             return global.description
         }

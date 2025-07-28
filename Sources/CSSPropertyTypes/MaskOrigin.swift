@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-origin` property, which sets the origin point for positioning the mask image.
 ///
@@ -49,48 +49,48 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-origin)
 public enum MaskOrigin: Property {
     public static let property: String = "mask-origin"
-    
+
     /// The mask is positioned relative to the border box (default)
     case borderBox
-    
+
     /// The mask is positioned relative to the padding box
     case paddingBox
-    
+
     /// The mask is positioned relative to the content box
     case contentBox
-    
+
     /// For SVG elements, the mask is positioned relative to the fill box
     case fillBox
-    
+
     /// For SVG elements, the mask is positioned relative to the stroke box
     case strokeBox
-    
+
     /// For SVG elements, the mask is positioned relative to the view box
     case viewBox
-    
+
     /// Multiple origin values for multiple masks
     case multiple([Origin])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Origin value type
     public enum Origin: String, Sendable, Hashable {
         /// The mask is positioned relative to the border box
         case borderBox = "border-box"
-        
+
         /// The mask is positioned relative to the padding box
         case paddingBox = "padding-box"
-        
+
         /// The mask is positioned relative to the content box
         case contentBox = "content-box"
-        
+
         /// For SVG elements, the mask is positioned relative to the fill box
         case fillBox = "fill-box"
-        
+
         /// For SVG elements, the mask is positioned relative to the stroke box
         case strokeBox = "stroke-box"
-        
+
         /// For SVG elements, the mask is positioned relative to the view box
         case viewBox = "view-box"
     }
@@ -136,7 +136,7 @@ extension MaskOrigin: CustomStringConvertible {
 extension MaskOrigin {
     /// The default value for mask-origin (`border-box`)
     public static let `default` = MaskOrigin.borderBox
-    
+
     /// Creates a mask-origin with multiple values
     ///
     /// - Parameter origins: The origin values
@@ -154,7 +154,7 @@ extension MaskOrigin {
         }
         return .multiple(origins)
     }
-    
+
     /// Creates a mask-origin with multiple values
     ///
     /// - Parameter origins: The origin values

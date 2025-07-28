@@ -12,7 +12,7 @@ public protocol ColorConvertible {
 }
 
 extension ColorConvertible {
-    
+
     /// Creates a color from RGB values
     ///
     /// - Parameters:
@@ -101,8 +101,7 @@ extension ColorConvertible {
             )
         )
     }
-    
-    
+
     /// Creates a color from LAB values
     ///
     /// - Parameters:
@@ -119,7 +118,7 @@ extension ColorConvertible {
             )
         )
     }
-    
+
     /// Creates a color from LAB values
     ///
     /// - Parameters:
@@ -157,7 +156,7 @@ extension ColorConvertible {
             )
         )
     }
-    
+
     /// Creates a color from Oklch values
     ///
     /// - Parameters:
@@ -174,13 +173,13 @@ extension ColorConvertible {
             )
         )
     }
-    
+
     public static func hex(_ value: String) -> Self {
         return .color(
             .hex(value)
         )
     }
-    
+
     public static func named(_ value: NamedColor) -> Self {
         return .color(
             .named(value)
@@ -199,7 +198,7 @@ extension ColorConvertible {
     public static func rgb(red: Int, green: Int, blue: Int) -> Self {
         .rgb(red, green, blue)
     }
-    
+
     /// Creates a color from RGBA values with labeled parameters
     ///
     /// - Parameters:
@@ -211,7 +210,7 @@ extension ColorConvertible {
     public static func rgba(red: Int, green: Int, blue: Int, alpha: Double) -> Self {
         .rgba(red, green, blue, alpha)
     }
-    
+
     /// Creates a color from HSL values with labeled parameters
     ///
     /// - Parameters:
@@ -222,7 +221,7 @@ extension ColorConvertible {
     public static func hsl(hue: Hue, saturation: Double, lightness: Double) -> Self {
         .hsl(hue, saturation, lightness)
     }
-    
+
     /// Creates a color from HSLA values with labeled parameters
     ///
     /// - Parameters:
@@ -234,7 +233,7 @@ extension ColorConvertible {
     public static func hsla(hue: Hue, saturation: Double, lightness: Double, alpha: Double) -> Self {
         .hsla(hue, saturation, lightness, alpha)
     }
-    
+
     /// Creates a color from HWB values with labeled parameters
     ///
     /// - Parameters:
@@ -245,7 +244,7 @@ extension ColorConvertible {
     public static func hwb(hue: Hue, whiteness: Double, blackness: Double) -> Self {
         .hwb(hue, whiteness, blackness)
     }
-    
+
     /// Creates a color from LAB values with labeled parameters
     ///
     /// - Parameters:
@@ -256,7 +255,7 @@ extension ColorConvertible {
     public static func lab(lightness: Double, aAxis: Double, bAxis: Double) -> Self {
         .lab(lightness, aAxis, bAxis)
     }
-    
+
     /// Creates a color from LCH values with labeled parameters
     ///
     /// - Parameters:
@@ -267,7 +266,7 @@ extension ColorConvertible {
     public static func lch(lightness: Double, chroma: Double, hue: Double) -> Self {
         .lch(lightness, chroma, hue)
     }
-    
+
     /// Creates a color from Oklab values with labeled parameters
     ///
     /// - Parameters:
@@ -278,7 +277,7 @@ extension ColorConvertible {
     public static func oklab(lightness: Double, aAxis: Double, bAxis: Double) -> Self {
         .oklab(lightness, aAxis, bAxis)
     }
-    
+
     /// Creates a color from Oklch values with labeled parameters
     ///
     /// - Parameters:
@@ -290,7 +289,6 @@ extension ColorConvertible {
         .oklch(lightness, chroma, hue)
     }
 }
-
 
 // Basic colors (CSS Level 1)
 

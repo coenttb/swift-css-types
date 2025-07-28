@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding` shorthand property sets the padding area on all four sides of an element at once.
 ///
@@ -23,39 +23,39 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
 public enum Padding: Property, LengthPercentageConvertible {
     public static let property: String = "padding"
-    
+
     /// Single value for all sides
     case all(LengthPercentage)
-    
+
     /// Two values: top/bottom (vertical) and left/right (horizontal)
     case verticalHorizontal(LengthPercentage, LengthPercentage)
-    
+
     /// Three values: top, left/right (horizontal), and bottom
     case topHorizontalBottom(LengthPercentage, LengthPercentage, LengthPercentage)
-    
+
     /// Four values: top, right, bottom, and left (clockwise)
     case sides(LengthPercentage, LengthPercentage, LengthPercentage, LengthPercentage)
-    
+
     /// Named sides: top, right, bottom, left in any combination
     case named(NamedSides)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Named sides for padding
     public struct NamedSides: Sendable, Hashable {
         /// Top padding value, if specified
         public var top: LengthPercentage?
-        
+
         /// Right padding value, if specified
         public var right: LengthPercentage?
-        
+
         /// Bottom padding value, if specified
         public var bottom: LengthPercentage?
-        
+
         /// Left padding value, if specified
         public var left: LengthPercentage?
-        
+
         /// Initialize with named sides
         public init(top: LengthPercentage? = nil, right: LengthPercentage? = nil, bottom: LengthPercentage? = nil, left: LengthPercentage? = nil) {
             self.top = top
@@ -63,7 +63,7 @@ public enum Padding: Property, LengthPercentageConvertible {
             self.bottom = bottom
             self.left = left
         }
-        
+
         /// Initialize with vertical and horizontal values
         public init(vertical: LengthPercentage? = nil, horizontal: LengthPercentage? = nil) {
             self.top = vertical
@@ -87,16 +87,16 @@ extension Padding {
         switch self {
         case .all(let value):
             return value.description
-            
+
         case .verticalHorizontal(let vertical, let horizontal):
             return "\(vertical) \(horizontal)"
-            
+
         case .topHorizontalBottom(let top, let horizontal, let bottom):
             return "\(top) \(horizontal) \(bottom)"
-            
+
         case .sides(let top, let right, let bottom, let left):
             return "\(top) \(right) \(bottom) \(left)"
-            
+
         case .named(let sides):
             // Convert to the most compact representation based on which sides are specified
             if let top = sides.top, let right = sides.right, let bottom = sides.bottom, let left = sides.left {
@@ -117,7 +117,7 @@ extension Padding {
             } else {
                 // Only some sides are specified - use individual properties instead
                 var individualProperties: [String] = []
-                
+
                 if let top = sides.top {
                     individualProperties.append("padding-top: \(top);")
                 }
@@ -130,10 +130,10 @@ extension Padding {
                 if let left = sides.left {
                     individualProperties.append("padding-left: \(left);")
                 }
-                
+
                 return individualProperties.joined(separator: " ")
             }
-            
+
         case .global(let global):
             return global.description
         }
@@ -141,7 +141,7 @@ extension Padding {
 }
 
 /// Convenience initializers for padding
-extension Padding {    
+extension Padding {
     /// Creates a padding with vertical and horizontal values
     ///
     /// - Parameters:
@@ -168,7 +168,7 @@ extension Padding {
     ) -> Padding {
         .named(NamedSides(top: top, right: right, bottom: bottom, left: left))
     }
-    
+
     /// Creates a padding with vertical (top/bottom) and horizontal (left/right) values
     ///
     /// - Parameters:
@@ -181,7 +181,7 @@ extension Padding {
     ) -> Padding {
         .named(NamedSides(vertical: vertical, horizontal: horizontal))
     }
-    
+
     /// Creates a padding with zero on all sides
     public static let zero: Padding = .all(.px(0))
 }

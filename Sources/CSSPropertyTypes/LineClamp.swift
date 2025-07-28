@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The line-clamp CSS property allows limiting of the contents of a block to the specified number of lines.
 ///
@@ -30,13 +30,13 @@ public enum LineClamp: Property {
     public static let property: String = "line-clamp"
     /// No clamping; all lines of text are displayed
     case none
-    
+
     /// Clamp the text to the specified number of lines
     case lines(Int)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

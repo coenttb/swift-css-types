@@ -26,7 +26,7 @@ public enum DisplayLegacy: String, Sendable, Hashable {
     /// display: inline-block;
     /// ```
     case inlineBlock = "inline-block"
-    
+
     /// Inline-level table
     ///
     /// The element behaves like an HTML `<table>` but as an inline box rather than a block-level box.
@@ -35,7 +35,7 @@ public enum DisplayLegacy: String, Sendable, Hashable {
     /// display: inline-table;
     /// ```
     case inlineTable = "inline-table"
-    
+
     /// Inline-level flex container
     ///
     /// The element behaves like an inline element and lays out its content according to the
@@ -44,7 +44,7 @@ public enum DisplayLegacy: String, Sendable, Hashable {
     /// display: inline-flex;
     /// ```
     case inlineFlex = "inline-flex"
-    
+
     /// Inline-level grid container
     ///
     /// The element behaves like an inline element and lays out its content according to the

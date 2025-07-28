@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS align-self property overrides a grid or flex item's align-items value.
 ///
@@ -19,25 +19,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
 public enum AlignSelf: Property, SelfPositionConvertible, BaselinePositionConvertible {
     public static let property: String = "align-self"
-    
+
     /// Uses the parent's align-items value
     case auto
-    
+
     /// Default alignment for the layout mode
     case normal
-    
+
     /// Stretches items to fill the container
     case stretch
-    
+
     /// Baseline alignment
     case baseline(BaselinePosition)
-    
+
     /// Positional alignment with optional overflow safety
     case position(OverflowPosition?, SelfPosition)
-    
+
     /// Aligns item to the center of an anchor element
     case anchorCenter
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -49,26 +49,26 @@ extension AlignSelf {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .normal:
             return "normal"
-            
+
         case .stretch:
             return "stretch"
-            
+
         case .baseline(let position):
             return position.description
-            
+
         case .position(let overflow, let position):
             if let overflow = overflow {
                 return "\(overflow) \(position)"
             } else {
                 return position.description
             }
-            
+
         case .anchorCenter:
             return "anchor-center"
-            
+
         case .global(let global):
             return global.description
         }

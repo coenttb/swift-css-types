@@ -1,7 +1,6 @@
 //
 // ScrollMarginRight.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-margin-right` CSS property defines the right margin of the scroll snap area that is used
@@ -17,13 +16,13 @@ import CSSTypeTypes
 /// ```
 public enum ScrollMarginRight: Property, LengthConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
     public static let property: String = "scroll-margin-right"
-    
+
     /// A length value for the right margin
     case length(Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .length(let length): return length.description
@@ -35,7 +34,7 @@ public enum ScrollMarginRight: Property, LengthConvertible, ExpressibleByInteger
     public init(integerLiteral value: Int) {
         self = .length(.px(Double(value)))
     }
-    
+
     /// Creates a ScrollMarginRight using a floating-point literal (interpreted as pixels)
     public init(floatLiteral value: Double) {
         self = .length(.px(value))

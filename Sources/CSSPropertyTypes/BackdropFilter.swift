@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `backdrop-filter` property, which applies filter effects to the area behind an element.
 ///
@@ -46,27 +46,27 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on backdrop-filter](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter)
 public enum BackdropFilter: Property {
-    
+
     public static let property: String = "backdrop-filter"
-    
+
     /// No filter effect
     case none
-    
+
     /// A single filter function
     case filter(FilterFunction)
-    
+
     /// Multiple filter functions
     case filters([FilterFunction])
-    
+
     /// SVG filter URL reference
     case url(Url)
-    
+
     /// Combined filters (URL + functions)
     case combined(url: String, filters: [FilterFunction])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
 //    /// Creates a backdrop filter with no effect
 //    public static var none: BackdropFilter {
 //        return .none
@@ -79,7 +79,7 @@ public enum BackdropFilter: Property {
 //    public static func filters(_ filters: [FilterFunction]) -> BackdropFilter {
 //        return filters.isEmpty ? .none : (filters.count == 1 ? .filter(filters[0]) : .filters(filters))
 //    }
-    
+
     /// Creates a backdrop filter with one or more filter functions
     ///
     /// - Parameter filters: One or more filter functions to apply
@@ -87,7 +87,7 @@ public enum BackdropFilter: Property {
     public static func filters(_ filters: FilterFunction...) -> BackdropFilter {
         return Self.filters(filters)
     }
-    
+
 //    /// Creates a combined filter with URL and filter functions
 //    ///
 //    /// - Parameters:
@@ -147,7 +147,7 @@ extension BackdropFilter {
     public static func blur(_ radius: Length) -> BackdropFilter {
         .filter(.blur(radius))
     }
-    
+
     /// Creates a backdrop filter that adjusts brightness
     ///
     /// - Parameter amount: Brightness multiplier (1.0 = normal, 0.5 = 50% darker, 2.0 = 100% brighter)
@@ -159,7 +159,7 @@ extension BackdropFilter {
     public static func brightness(_ amount: Double) -> BackdropFilter {
         .filter(.brightness(amount))
     }
-    
+
     /// Creates a backdrop filter that adjusts contrast
     ///
     /// - Parameter amount: Contrast multiplier (1.0 = normal, 0.5 = 50% less contrast, 2.0 = 100% more contrast)
@@ -171,7 +171,7 @@ extension BackdropFilter {
     public static func contrast(_ amount: Double) -> BackdropFilter {
         .filter(.contrast(amount))
     }
-    
+
     /// Creates a backdrop filter that applies a drop shadow
     ///
     /// - Parameters:
@@ -192,7 +192,7 @@ extension BackdropFilter {
     public static func dropShadow(offsetX: Length, offsetY: Length, blurRadius: Length?, color: CSSTypeTypes.Color?) -> BackdropFilter {
         .filter(.dropShadow(offsetX: offsetX, offsetY: offsetY, blurRadius: blurRadius, color: color))
     }
-    
+
     /// Creates a backdrop filter that applies a grayscale effect
     ///
     /// - Parameter amount: Intensity of the effect (0.0 = no effect, 1.0 = full grayscale)
@@ -204,7 +204,7 @@ extension BackdropFilter {
     public static func grayscale(_ amount: Double) -> BackdropFilter {
         .filter(.grayscale(amount))
     }
-    
+
     /// Creates a backdrop filter that rotates colors along the hue spectrum
     ///
     /// - Parameter angle: The angle of rotation on the color wheel
@@ -216,7 +216,7 @@ extension BackdropFilter {
     public static func hueRotate(_ angle: Angle) -> BackdropFilter {
         .filter(.hueRotate(angle))
     }
-    
+
     /// Creates a backdrop filter that inverts the colors
     ///
     /// - Parameter amount: Intensity of the effect (0.0 = no effect, 1.0 = fully inverted)
@@ -228,7 +228,7 @@ extension BackdropFilter {
     public static func invert(_ amount: Double) -> BackdropFilter {
         .filter(.invert(amount))
     }
-    
+
     /// Creates a backdrop filter that adjusts opacity
     ///
     /// - Parameter amount: Opacity level (0.0 = transparent, 1.0 = fully opaque)
@@ -240,7 +240,7 @@ extension BackdropFilter {
     public static func opacity(_ amount: Double) -> BackdropFilter {
         .filter(.opacity(amount))
     }
-    
+
     /// Creates a backdrop filter that adjusts color saturation
     ///
     /// - Parameter amount: Saturation multiplier (0.0 = grayscale, 1.0 = normal, 2.0 = highly saturated)
@@ -252,7 +252,7 @@ extension BackdropFilter {
     public static func saturate(_ amount: Double) -> BackdropFilter {
         .filter(.saturate(amount))
     }
-    
+
     /// Creates a backdrop filter that applies a sepia tone effect
     ///
     /// - Parameter amount: Intensity of the effect (0.0 = no effect, 1.0 = full sepia)
@@ -264,7 +264,7 @@ extension BackdropFilter {
     public static func sepia(_ amount: Double) -> BackdropFilter {
         .filter(.sepia(amount))
     }
-    
+
     /// Creates a backdrop filter with a URL and additional filter functions
     ///
     /// - Parameters:

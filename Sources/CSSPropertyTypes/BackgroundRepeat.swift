@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-repeat` property, which sets how background images are repeated.
 ///
@@ -58,47 +58,47 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat)
 public enum BackgroundRepeat: Property {
     public static let property: String = "background-repeat"
-    
+
     /// A single repetition style (shorthand for both directions)
     case single(RepeatStyle)
-    
+
     /// Different repetition styles for horizontal and vertical directions
     case twoValue(RepeatStyle, RepeatStyle)
-    
+
     /// Multiple repetition values for multiple backgrounds
     case multiple([BackgroundRepeat])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Repetition style values
     public enum RepeatStyle: String, Sendable, Hashable {
         /// Repeat the image in both directions (default)
         case `repeat` = "repeat"
-        
+
         /// Don't repeat the image
         case noRepeat = "no-repeat"
-        
+
         /// Repeat only horizontally (shorthand for repeat no-repeat)
         case repeatX = "repeat-x"
-        
+
         /// Repeat only vertically (shorthand for no-repeat repeat)
         case repeatY = "repeat-y"
-        
+
         /// Space images evenly without clipping
         case space = "space"
-        
+
         /// Stretch and repeat to fill the area
         case round = "round"
     }
-    
+
     /// Creates a background repeat with a single style for both directions
     ///
     /// - Parameter style: The repeat style
     public init(_ style: RepeatStyle) {
         self = .single(style)
     }
-    
+
     /// Creates a background repeat with different styles for horizontal and vertical
     ///
     /// - Parameters:
@@ -107,7 +107,7 @@ public enum BackgroundRepeat: Property {
     public init(_ horizontal: RepeatStyle, _ vertical: RepeatStyle) {
         self = .twoValue(horizontal, vertical)
     }
-    
+
     /// Creates a background repeat with multiple values for multiple backgrounds
     ///
     /// - Parameter repeats: The repeat values for each background
@@ -139,7 +139,7 @@ extension BackgroundRepeat: CustomStringConvertible {
         switch self {
         case .single(let style):
             return style.rawValue
-            
+
         case .twoValue(let horizontal, let vertical):
             // Special cases for the shorthand values
             if horizontal == .repeat && vertical == .noRepeat {
@@ -149,10 +149,10 @@ extension BackgroundRepeat: CustomStringConvertible {
             } else {
                 return "\(horizontal.rawValue) \(vertical.rawValue)"
             }
-            
+
         case .multiple(let repeats):
             return repeats.map { $0.description }.joined(separator: ", ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -163,25 +163,25 @@ extension BackgroundRepeat: CustomStringConvertible {
 extension BackgroundRepeat {
     /// The default value for background-repeat (`repeat`)
     public static let `default` = BackgroundRepeat(.repeat)
-    
+
     /// Repeat in both directions
     public static let `repeat` = BackgroundRepeat(.repeat)
-    
+
     /// Don't repeat the image
     public static let noRepeat = BackgroundRepeat(.noRepeat)
-    
+
     /// Repeat only horizontally
     public static let repeatX = BackgroundRepeat(.repeatX)
-    
+
     /// Repeat only vertically
     public static let repeatY = BackgroundRepeat(.repeatY)
-    
+
     /// Space images evenly without clipping
     public static let space = BackgroundRepeat(.space)
-    
+
     /// Stretch and repeat to fill the area
     public static let round = BackgroundRepeat(.round)
-    
+
     /// Creates a background repeat with multiple values
     ///
     /// - Parameter repeats: The repeat values for each background
@@ -189,7 +189,7 @@ extension BackgroundRepeat {
     public static func values(_ repeats: [BackgroundRepeat]) -> BackgroundRepeat {
         BackgroundRepeat(repeats)
     }
-    
+
     /// Creates a background repeat with multiple values
     ///
     /// - Parameter repeats: The repeat values for each background

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `r` property defines the radius of a circle in SVG.
 ///
@@ -25,13 +25,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on r](https://developer.mozilla.org/en-US/docs/Web/CSS/r)
 public enum R: Property, LengthPercentageConvertible {
     public static let property: String = "r"
-    
+
     /// A length-percentage value for the radius
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

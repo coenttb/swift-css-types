@@ -1,5 +1,5 @@
-//import Foundation
-//import CSSTypeTypes
+// import Foundation
+// import CSSTypeTypes
 //
 ///// The all shorthand CSS property resets all of an element's properties except 
 ///// unicode-bidi, direction, and CSS Custom Properties.
@@ -19,7 +19,7 @@
 ///// ```
 /////
 ///// - SeeAlso: [MDN Web Docs on all](https://developer.mozilla.org/en-US/docs/Web/CSS/all)
-//public enum All: Property {
+// public enum All: Property {
 //    public static let property: String = "all"
 //    
 //    /// Sets all properties to their initial values
@@ -36,10 +36,10 @@
 //    
 //    /// Resets all properties to the values from a previous cascade layer
 //    case revertLayer
-//}
+// }
 //
 ///// CSS Output conversion
-//extension All: CustomStringConvertible {
+// extension All: CustomStringConvertible {
 //    /// Converts the property value to its CSS string representation
 //    public var description: String {
 //        switch self {
@@ -55,4 +55,4 @@
 //            return "revert-layer"
 //        }
 //    }
-//}
+// }

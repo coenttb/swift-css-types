@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `inset-inline-start` property defines the logical inline start offset of an element,
 /// which maps to a physical inset depending on the element's writing mode, directionality,
@@ -27,16 +27,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on inset-inline-start](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline-start)
 public enum InsetInlineStart: Property, LengthPercentageConvertible {
     public static let property: String = "inset-inline-start"
-    
+
     /// The position is determined automatically based on the element's normal flow position
     case auto
-    
+
     /// A specific length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -55,7 +55,7 @@ extension InsetInlineStart {
     public init(_ value: Double) {
         self = .lengthPercentage(.px(value))
     }
-    
+
     /// Creates an instance with an integer pixel value
     public init(_ value: Int) {
         self = .lengthPercentage(.px(Double(value)))

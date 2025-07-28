@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS view-timeline-inset property specifies adjustments to the position of the scrollport
 /// in which the subject element of a named view progress timeline animation is deemed to be visible.
@@ -22,15 +22,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on view-timeline-inset](https://developer.mozilla.org/en-US/docs/Web/CSS/view-timeline-inset)
 public enum ViewTimelineInset: Property {
-    
+
     public static let property: String = "view-timeline-inset"
-    
+
     /// A single value for both start and end
     case single(ViewTimelineInsetValue)
-    
+
     /// Separate values for start and end
     case double(ViewTimelineInsetValue, ViewTimelineInsetValue)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -39,10 +39,10 @@ public enum ViewTimelineInset: Property {
 public enum ViewTimelineInsetValue: Sendable, Hashable {
     /// Uses scroll-padding for edge of scrollport
     case auto
-    
+
     /// A length value (in pixels, em, etc.)
     case length(Length)
-    
+
     /// A percentage value
     case percentage(Percentage)
 }
@@ -54,10 +54,10 @@ extension ViewTimelineInsetValue: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .length(let length):
             return length.description
-            
+
         case .percentage(let percentage):
             return percentage.description
         }
@@ -71,10 +71,10 @@ extension ViewTimelineInset: CustomStringConvertible {
         switch self {
         case .single(let value):
             return value.description
-            
+
         case .double(let start, let end):
             return "\(start) \(end)"
-            
+
         case .global(let global):
             return global.description
         }

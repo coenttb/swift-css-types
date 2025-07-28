@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `font-variant-alternates` property controls the usage of alternate glyphs. 
 /// These alternate glyphs may be referenced by alternative names defined in @font-feature-values.
@@ -19,51 +19,51 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on font-variant-alternates](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates)
 public enum FontVariantAlternates: Property {
-    
+
     public static let property: String = "font-variant-alternates"
-    
+
     /// This value deactivates alternate glyphs.
     case normal
-    
+
     /// This value enables historical forms — glyphs that were common in the past but not today.
     /// It corresponds to the OpenType value hist.
     case historicalForms
-    
+
     /// Stylistic alternates for individual characters.
     /// The parameter is a font-specific name mapped to a number. 
     /// It corresponds to the OpenType value salt, like salt 2.
     case stylistic(String)
-    
+
     /// Stylistic alternatives for sets of characters.
     /// The parameter is a font-specific name mapped to a number.
     /// It corresponds to the OpenType value ssXY, like ss02.
     case styleset(String)
-    
+
     /// Specific stylistic alternatives for characters (individual character styles).
     /// The parameter is a font-specific name mapped to a number.
     /// It corresponds to the OpenType value cvXY, like cv02.
     case characterVariant(String)
-    
+
     /// Swash glyphs. The parameter is a font-specific name mapped to a number.
     /// It corresponds to the OpenType values swsh and cswh, like swsh 2 and cswh 2.
     case swash(String)
-    
+
     /// Ornaments, like fleurons and other dingbat glyphs.
     /// The parameter is a font-specific name mapped to a number.
     /// It corresponds to the OpenType value ornm, like ornm 2.
     case ornaments(String)
-    
+
     /// Annotations, like circled digits or inverted characters.
     /// The parameter is a font-specific name mapped to a number.
     /// It corresponds to the OpenType value nalt, like nalt 2.
     case annotation(String)
-    
+
     /// A combination of alternate values.
     case combination([AlternateOption])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:
@@ -94,25 +94,25 @@ public enum FontVariantAlternates: Property {
 public enum AlternateOption: Sendable, Hashable, CustomStringConvertible {
     /// Historical forms - glyphs that were common in the past but not today
     case historicalForms
-    
+
     /// Stylistic alternates for individual characters
     case stylistic(String)
-    
+
     /// Stylistic alternatives for sets of characters
     case styleset(String)
-    
+
     /// Specific stylistic alternatives for characters
     case characterVariant(String)
-    
+
     /// Swash glyphs
     case swash(String)
-    
+
     /// Ornaments, like fleurons and other dingbat glyphs
     case ornaments(String)
-    
+
     /// Annotations, like circled digits or inverted characters
     case annotation(String)
-    
+
     public var description: String {
         switch self {
         case .historicalForms:

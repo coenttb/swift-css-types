@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-webkit-mask-repeat-y` property specifies whether and how 
 /// a mask image is repeated (tiled) vertically.
@@ -58,25 +58,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-mask-repeat-y](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-mask-repeat-y)
 public enum WebkitMaskRepeatY: Property {
     public static let property: String = "-webkit-mask-repeat-y"
-    
+
     /// Repeat the mask image vertically (default)
     case `repeat`
-    
+
     /// Don't repeat the mask image vertically
     case noRepeat
-    
+
     /// Space mask images evenly in the vertical direction
     case space
-    
+
     /// Stretch and repeat mask images to fill the space in the vertical direction
     case round
-    
+
     /// Multiple repeat values for multiple masks
     case multiple([WebkitMaskRepeatY])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a mask repeat-y with multiple values
     ///
     /// - Parameter repeats: The repeat values for multiple masks
@@ -124,7 +124,7 @@ extension WebkitMaskRepeatY: CustomStringConvertible {
 extension WebkitMaskRepeatY {
     /// Default value (repeat)
     public static let `default` = WebkitMaskRepeatY.repeat
-    
+
     /// Creates a mask repeat-y with multiple values
     ///
     /// - Parameter repeats: The repeat values
@@ -132,7 +132,7 @@ extension WebkitMaskRepeatY {
     public static func values(_ repeats: [WebkitMaskRepeatY]) -> WebkitMaskRepeatY {
         WebkitMaskRepeatY(repeats)
     }
-    
+
     /// Creates a mask repeat-y with multiple values
     ///
     /// - Parameter repeats: The repeat values

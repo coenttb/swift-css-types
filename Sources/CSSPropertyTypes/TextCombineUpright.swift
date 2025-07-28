@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-combine-upright` property sets the combination of characters into the space 
 /// of a single character.
@@ -21,20 +21,20 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-combine-upright](https://developer.mozilla.org/en-US/docs/Web/CSS/text-combine-upright)
 public enum TextCombineUpright: Property {
     public static let property: String = "text-combine-upright"
-    
+
     /// There is no special processing.
     case none
-    
+
     /// Attempts to typeset all consecutive characters within the box horizontally,
     /// such that they take up the space of a single character within the vertical line of the box.
     case all
-    
+
     /// Attempts to display a sequence of consecutive ASCII digits (U+0030–U+0039) that is n or
     /// fewer characters wide as a single horizontally oriented character.
     /// If the sequence is wider than n characters, then the user agent must
     /// render the text as if text-combine-upright were none.
     case digits(Int)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -52,13 +52,13 @@ extension TextCombineUpright: CustomStringConvertible {
         switch self {
         case .none:
             return "none"
-            
+
         case .all:
             return "all"
-            
+
         case .digits(let count):
             return "digits \(count)"
-            
+
         case .global(let global):
             return global.description
         }
@@ -71,12 +71,12 @@ extension TextCombineUpright {
     public static var digits2: TextCombineUpright {
         .digits(2)
     }
-    
+
     /// Combines 3 digits into a single character space
     public static var digits3: TextCombineUpright {
         .digits(3)
     }
-    
+
     /// Combines 4 digits into a single character space
     public static var digits4: TextCombineUpright {
         .digits(4)

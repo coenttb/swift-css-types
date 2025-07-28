@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-block-end-width` property, which sets the width of the logical block-end border.
 ///
@@ -49,16 +49,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-block-end-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-width)
 public enum BorderBlockEndWidth: Property {
-    
+
     public static let property: String = "border-block-end-width"
-    
-        
+
     /// A specific width for the block-end border
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-block-end-width with a specific border width
     ///
     /// - Parameter width: The width for the block-end border
@@ -98,15 +97,14 @@ extension BorderBlockEndWidth: CustomStringConvertible {
 extension BorderBlockEndWidth {
     /// The default border-block-end-width value (medium)
     public static let `default` = BorderBlockEndWidth(.medium)
-    
+
     /// Creates a thin border-block-end-width
     public static let thin = BorderBlockEndWidth(.thin)
-    
+
     /// Creates a medium border-block-end-width
     public static let medium = BorderBlockEndWidth(.medium)
-    
+
     /// Creates a thick border-block-end-width
     public static let thick = BorderBlockEndWidth(.thick)
-
 
 }

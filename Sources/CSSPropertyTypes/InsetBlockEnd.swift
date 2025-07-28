@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `inset-block-end` property defines the logical block end offset of an element,
 /// which maps to a physical inset depending on the element's writing mode, directionality,
@@ -30,13 +30,13 @@ public enum InsetBlockEnd: Property, LengthPercentageConvertible {
     public static let property: String = "inset-block-end"
     /// The position is determined automatically based on the element's normal flow position
     case auto
-    
+
     /// A specific length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:

@@ -40,6 +40,6 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::file-selector-button](https://developer.mozilla.org/en-US/docs/Web/CSS/::file-selector-button)
 public struct FileSelectorButton: CSSPseudoElement {
     @inlinable public static var name: String { "file-selector-button" }
-    
+
     public init() {}
 }

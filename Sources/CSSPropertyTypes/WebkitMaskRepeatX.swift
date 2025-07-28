@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-webkit-mask-repeat-x` property specifies whether and how 
 /// a mask image is repeated (tiled) horizontally.
@@ -58,25 +58,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-mask-repeat-x](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-mask-repeat-x)
 public enum WebkitMaskRepeatX: Property {
     public static let property: String = "-webkit-mask-repeat-x"
-    
+
     /// Repeat the mask image horizontally (default)
     case `repeat`
-    
+
     /// Don't repeat the mask image horizontally
     case noRepeat
-    
+
     /// Space mask images evenly in the horizontal direction
     case space
-    
+
     /// Stretch and repeat mask images to fill the space in the horizontal direction
     case round
-    
+
     /// Multiple repeat values for multiple masks
     case multiple([WebkitMaskRepeatX])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a mask repeat-x with multiple values
     ///
     /// - Parameter repeats: The repeat values for multiple masks
@@ -124,7 +124,7 @@ extension WebkitMaskRepeatX: CustomStringConvertible {
 extension WebkitMaskRepeatX {
     /// Default value (repeat)
     public static let `default` = WebkitMaskRepeatX.repeat
-    
+
     /// Creates a mask repeat-x with multiple values
     ///
     /// - Parameter repeats: The repeat values
@@ -132,7 +132,7 @@ extension WebkitMaskRepeatX {
     public static func values(_ repeats: [WebkitMaskRepeatX]) -> WebkitMaskRepeatX {
         WebkitMaskRepeatX(repeats)
     }
-    
+
     /// Creates a mask repeat-x with multiple values
     ///
     /// - Parameter repeats: The repeat values

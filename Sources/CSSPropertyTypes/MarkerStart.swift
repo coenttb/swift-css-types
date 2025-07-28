@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `marker-start` CSS property points to a marker that will be drawn on the first vertex of the element's path.
 ///
@@ -16,16 +16,16 @@ import CSSTypeTypes
 /// - SeeAlso: `marker-mid`, `marker-end`, `marker` (shorthand)
 public enum MarkerStart: Property {
     public static let property: String = "marker-start"
-    
+
     /// No marker will be drawn at the first vertex of the element's path.
     case none
-    
+
     /// A URL reference to a marker element to be drawn at the first vertex of the element's path.
     case url(Url)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -47,12 +47,12 @@ extension MarkerStart {
     ///
     /// Example:
     /// ```swift
-    /// .markerStart(.reference(id: "arrow"))  // marker-start: url("#arrow")
+    /// .markerStart(.reference(id: "arrow"))  // MARK: er-start: url("#arrow")
     /// ```
     public static func reference(id: String) -> Self {
         .url(Url("#\(id)"))
     }
-    
+
     /// Creates a URL reference to an external marker defined in the specified file.
     ///
     /// - Parameters:
@@ -62,7 +62,7 @@ extension MarkerStart {
     ///
     /// Example:
     /// ```swift
-    /// .markerStart(.externalReference(file: "markers.svg", id: "arrow"))  // marker-start: url("markers.svg#arrow")
+    /// .markerStart(.externalReference(file: "markers.svg", id: "arrow"))  // MARK: er-start: url("markers.svg#arrow")
     /// ```
     public static func externalReference(file: String, id: String) -> Self {
         .url(Url("\(file)#\(id)"))

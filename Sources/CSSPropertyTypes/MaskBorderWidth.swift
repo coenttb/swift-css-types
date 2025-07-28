@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-border-width` property, which sets the width of an element's mask border.
 ///
@@ -52,36 +52,36 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-border-width](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-width)
 public enum MaskBorderWidth: Property {
     public static let property: String = "mask-border-width"
-    
+
     /// All four sides have the same width value
     case all(WidthValue)
-    
+
     /// Top and bottom sides have the same value, and left and right sides have the same value
     case vertical_horizontal(WidthValue, WidthValue)
-    
+
     /// Top, horizontal sides (left and right), and bottom have different values
     case top_horizontal_bottom(WidthValue, WidthValue, WidthValue)
-    
+
     /// Each side (top, right, bottom, left) has a different value
     case top_right_bottom_left(WidthValue, WidthValue, WidthValue, WidthValue)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a value for mask-border-width
     public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
-        
+
         /// A percentage value
         case percentage(Percentage)
-        
+
         /// A number value (multiple of the border width)
         case number(Number)
-        
+
         /// Automatic width (uses intrinsic dimensions)
         case auto
-        
+
         /// String representation of the width value
         public var description: String {
             switch self {
@@ -96,14 +96,14 @@ public enum MaskBorderWidth: Property {
             }
         }
     }
-    
+
     /// Creates a mask-border-width with the same value for all sides
     ///
     /// - Parameter value: The width value for all sides
     public init(_ value: WidthValue) {
         self = .all(value)
     }
-    
+
     /// Creates a mask-border-width with different values for vertical and horizontal sides
     ///
     /// - Parameters:
@@ -112,7 +112,7 @@ public enum MaskBorderWidth: Property {
     public init(_ vertical: WidthValue, _ horizontal: WidthValue) {
         self = .vertical_horizontal(vertical, horizontal)
     }
-    
+
     /// Creates a mask-border-width with different values for top, horizontal sides, and bottom
     ///
     /// - Parameters:
@@ -122,7 +122,7 @@ public enum MaskBorderWidth: Property {
     public init(_ top: WidthValue, _ horizontal: WidthValue, _ bottom: WidthValue) {
         self = .top_horizontal_bottom(top, horizontal, bottom)
     }
-    
+
     /// Creates a mask-border-width with different values for each side
     ///
     /// - Parameters:
@@ -133,7 +133,7 @@ public enum MaskBorderWidth: Property {
     public init(_ top: WidthValue, _ right: WidthValue, _ bottom: WidthValue, _ left: WidthValue) {
         self = .top_right_bottom_left(top, right, bottom, left)
     }
-    
+
     /// Creates a mask-border-width with a length value for all sides
     ///
     /// - Parameter px: The pixel value
@@ -141,7 +141,7 @@ public enum MaskBorderWidth: Property {
     public static func px(_ px: Double) -> MaskBorderWidth {
         return MaskBorderWidth(.length(.px(px)))
     }
-    
+
     /// Creates a mask-border-width with a percentage value for all sides
     ///
     /// - Parameter percentage: The percentage value
@@ -149,7 +149,7 @@ public enum MaskBorderWidth: Property {
     public static func percentage(_ percentage: Percentage) -> MaskBorderWidth {
         return MaskBorderWidth(.percentage(percentage))
     }
-    
+
     /// Creates a mask-border-width with a number value for all sides
     ///
     /// - Parameter number: The number multiplier
@@ -157,10 +157,10 @@ public enum MaskBorderWidth: Property {
     public static func number(_ number: Number) -> MaskBorderWidth {
         return MaskBorderWidth(.number(number))
     }
-    
+
     /// Creates a mask-border-width with auto value for all sides
     public static let auto = MaskBorderWidth(.auto)
-    
+
     /// Default value (auto)
     public static let `default` = MaskBorderWidth(.auto)
 }

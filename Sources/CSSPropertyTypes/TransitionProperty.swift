@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transition-property` property specifies the names of the CSS properties to which 
 /// a transition effect should be applied.
@@ -25,24 +25,24 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on transition-property](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property)
 public enum TransitionProperty: Property {
-    
+
     public static let property: String = "transition-property"
-    
+
     /// Apply transitions to all properties that change
     case all
-    
+
     /// Apply transitions to no properties
     case none
-    
+
     /// Apply transitions to a specific property by name
     case custom(CSSString)
-    
+
     /// Apply transitions to a list of properties by name
     case list([String])
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .all:
@@ -57,7 +57,7 @@ public enum TransitionProperty: Property {
             return global.description
         }
     }
-    
+
     /// Creates a transition property with multiple property names
     public init(_ properties: [String]) {
         if properties.isEmpty {
@@ -68,7 +68,7 @@ public enum TransitionProperty: Property {
             self = .list(properties)
         }
     }
-    
+
     /// Creates a transition property with multiple property names
     public init(_ properties: String...) {
         self.init(properties)

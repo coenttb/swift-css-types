@@ -13,4 +13,3 @@ extension CSSPseudoElement {
     @inlinable static var prefix: String { "::" }
     public var description: String { Self.prefix + Self.name }
 }
-

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `outline-offset` property sets the amount of space between an outline and the edge or border of an element.
 ///
@@ -16,10 +16,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on outline-offset](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-offset)
 public enum OutlineOffset: Property, LengthConvertible {
     public static let property: String = "outline-offset"
-    
+
     /// A length value defining the offset distance
     case length(Length)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -46,7 +46,7 @@ extension OutlineOffset {
     public static func px(_ value: Double) -> Self {
         .length(.px(value))
     }
-    
+
     /// Creates an outline-offset with an em value
     ///
     /// - Parameter value: The em value
@@ -54,7 +54,7 @@ extension OutlineOffset {
     public static func em(_ value: Double) -> Self {
         .length(.em(value))
     }
-    
+
     /// Creates an outline-offset with a rem value
     ///
     /// - Parameter value: The rem value
@@ -72,7 +72,7 @@ extension OutlineOffset: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral 
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates an outline-offset with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-moz-image-region` property specifies a region of an image to use
 /// in place of the whole image for certain Mozilla XUL elements.
@@ -31,16 +31,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -moz-image-region](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-image-region)
 public enum MozImageRegion: Property {
     public static let property: String = "moz-image-region"
-    
+
     /// Use the entire image
     case auto
-    
+
     /// Specify a rectangular region of the image to use
     case rect(top: Length, right: Length, bottom: Length, left: Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:

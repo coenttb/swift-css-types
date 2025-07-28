@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-block-end` property defines the logical block end padding of an element, 
 /// which maps to a physical padding depending on the element's writing mode, directionality, and text orientation.
@@ -19,10 +19,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-block-end](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block-end)
 public enum PaddingBlockEnd: Property, LengthPercentageConvertible {
     public static let property: String = "padding-block-end"
-    
+
     /// A length or percentage value for the block-end padding
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -34,7 +34,7 @@ extension PaddingBlockEnd: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .global(let global):
             return global.description
         }

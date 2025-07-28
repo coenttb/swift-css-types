@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-block-start-width` property, which sets the width of the logical block-start border.
 ///
@@ -47,16 +47,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-block-start-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start-width)
 public enum BorderBlockStartWidth: Property {
-    
+
     public static let property: String = "border-block-start-width"
-    
-        
+
     /// A specific width for the block-start border
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-block-start-width with a specific border width
     ///
     /// - Parameter width: The width for the block-start border
@@ -96,13 +95,13 @@ extension BorderBlockStartWidth: CustomStringConvertible {
 extension BorderBlockStartWidth {
     /// The default border-block-start-width value (medium)
     public static let `default` = BorderBlockStartWidth(.medium)
-    
+
     /// Creates a thin border-block-start-width
     public static let thin = BorderBlockStartWidth(.thin)
-    
+
     /// Creates a medium border-block-start-width
     public static let medium = BorderBlockStartWidth(.medium)
-    
+
     /// Creates a thick border-block-start-width
     public static let thick = BorderBlockStartWidth(.thick)
 

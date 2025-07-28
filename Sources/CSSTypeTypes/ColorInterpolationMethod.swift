@@ -24,80 +24,80 @@ public enum ColorInterpolationMethod: Sendable, Hashable {
     public enum RectangularColorSpace: String, Sendable, Hashable, CustomStringConvertible {
         /// The standard sRGB color space
         case srgb = "srgb"
-        
+
         /// The linearized sRGB color space
         case srgbLinear = "srgb-linear"
-        
+
         /// The Display P3 wide-gamut color space
         case displayP3 = "display-p3"
-        
+
         /// The Adobe RGB (1998) color space
         case a98rgb = "a98-rgb"
-        
+
         /// The ProPhoto RGB color space
         case prophotoRgb = "prophoto-rgb"
-        
+
         /// The Rec. 2020 color space for ultra-high-definition TV
         case rec2020 = "rec2020"
-        
+
         /// The CIELAB color space
         case lab = "lab"
-        
+
         /// The Oklab perceptual color space
         case oklab = "oklab"
-        
+
         /// The CIE XYZ color space
         case xyz = "xyz"
-        
+
         /// The CIE XYZ color space with D50 white point
         case xyzD50 = "xyz-d50"
-        
+
         /// The CIE XYZ color space with D65 white point
         case xyzD65 = "xyz-d65"
-        
+
         public var description: String { rawValue }
     }
-    
+
     /// Polar color spaces for color interpolation
     public enum PolarColorSpace: String, Sendable, Hashable, CustomStringConvertible {
         /// The HSL (Hue, Saturation, Lightness) color space
         case hsl = "hsl"
-        
+
         /// The HWB (Hue, Whiteness, Blackness) color space
         case hwb = "hwb"
-        
+
         /// The LCH (Lightness, Chroma, Hue) color space
         case lch = "lch"
-        
+
         /// The Oklch perceptual color space
         case oklch = "oklch"
-        
+
         public var description: String { rawValue }
     }
-    
+
     /// Hue interpolation methods for polar color spaces
     public enum HueInterpolationMethod: String, Sendable, Hashable, CustomStringConvertible {
         /// Follows the shorter arc around the color wheel (default)
         case shorter = "shorter hue"
-        
+
         /// Follows the longer arc around the color wheel
         case longer = "longer hue"
-        
+
         /// Interpolates in the direction of increasing hue values
         case increasing = "increasing hue"
-        
+
         /// Interpolates in the direction of decreasing hue values
         case decreasing = "decreasing hue"
-        
+
         public var description: String { rawValue }
     }
-    
+
     /// Interpolation using a rectangular color space
     case rectangular(RectangularColorSpace)
-    
+
     /// Interpolation using a polar color space with optional hue interpolation method
     case polar(PolarColorSpace, HueInterpolationMethod? = nil)
-    
+
     /// Interpolation using a custom color profile
     case custom(CSSString)
 }

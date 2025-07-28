@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-border-outset` property, which sets the distance by which an element's
 /// mask border is set out from its border box.
@@ -43,36 +43,36 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on mask-border-outset](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-outset)
 public enum MaskBorderOutset: Property, LengthConvertible {
-   
+
     public static let property: String = "mask-border-outset"
-    
+
     /// All four sides have the same outset value
     case all(OutsetValue)
-    
+
     /// Top and bottom sides have the same value, and left and right sides have the same value
     case vertical_horizontal(OutsetValue, OutsetValue)
-    
+
     /// Top, horizontal sides (left and right), and bottom have different values
     case top_horizontal_bottom(OutsetValue, OutsetValue, OutsetValue)
-    
+
     /// Each side (top, right, bottom, left) has a different value
     case top_right_bottom_left(OutsetValue, OutsetValue, OutsetValue, OutsetValue)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     public static func length(_ length: CSSTypeTypes.Length) -> MaskBorderOutset {
         .init(.length(length))
     }
-    
+
     /// Represents a value for mask-border-outset
     public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
-        
+
         /// A number value (multiple of the border width)
         case number(Number)
-        
+
         /// String representation of the outset value
         public var description: String {
             switch self {
@@ -83,14 +83,14 @@ public enum MaskBorderOutset: Property, LengthConvertible {
             }
         }
     }
-    
+
     /// Creates a mask-border-outset with the same value for all sides
     ///
     /// - Parameter value: The outset value for all sides
     public init(_ value: OutsetValue) {
         self = .all(value)
     }
-    
+
     /// Creates a mask-border-outset with different values for vertical and horizontal sides
     ///
     /// - Parameters:
@@ -99,7 +99,7 @@ public enum MaskBorderOutset: Property, LengthConvertible {
     public init(_ vertical: OutsetValue, _ horizontal: OutsetValue) {
         self = .vertical_horizontal(vertical, horizontal)
     }
-    
+
     /// Creates a mask-border-outset with different values for top, horizontal sides, and bottom
     ///
     /// - Parameters:
@@ -109,7 +109,7 @@ public enum MaskBorderOutset: Property, LengthConvertible {
     public init(_ top: OutsetValue, _ horizontal: OutsetValue, _ bottom: OutsetValue) {
         self = .top_horizontal_bottom(top, horizontal, bottom)
     }
-    
+
     /// Creates a mask-border-outset with different values for each side
     ///
     /// - Parameters:
@@ -121,7 +121,6 @@ public enum MaskBorderOutset: Property, LengthConvertible {
         self = .top_right_bottom_left(top, right, bottom, left)
     }
 
-    
     /// Creates a mask-border-outset with a number value for all sides
     ///
     /// - Parameter number: The number multiplier
@@ -129,7 +128,7 @@ public enum MaskBorderOutset: Property, LengthConvertible {
     public static func number(_ number: Number) -> MaskBorderOutset {
         return MaskBorderOutset(.number(number))
     }
-    
+
     /// Default value (0)
     public static let `default` = MaskBorderOutset(.number(0))
 }

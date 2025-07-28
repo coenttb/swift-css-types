@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-mode` property, which sets whether the mask image is treated as a luminance or alpha mask.
 ///
@@ -43,27 +43,27 @@ public enum MaskMode: Property {
     public static let property: String = "mask-mode"
     /// Use the alpha channel of the mask image
     case alpha
-    
+
     /// Use the luminance values of the mask image
     case luminance
-    
+
     /// Use alpha for images, luminance for SVG masks (default)
     case matchSource
-    
+
     /// Multiple mode values for multiple mask layers
     case multiple([MaskingMode])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Masking mode value
     public enum MaskingMode: String, Sendable, Hashable {
         /// Use the alpha channel of the mask image
         case alpha
-        
+
         /// Use the luminance values of the mask image
         case luminance
-        
+
         /// Use alpha for images, luminance for SVG masks
         case matchSource = "match-source"
     }
@@ -100,7 +100,7 @@ extension MaskMode: CustomStringConvertible {
 extension MaskMode {
     /// The default value for mask-mode (`match-source`)
     public static let `default` = MaskMode.matchSource
-    
+
     /// Creates a mask-mode with multiple values
     ///
     /// - Parameter modes: The masking mode values
@@ -115,7 +115,7 @@ extension MaskMode {
         }
         return .multiple(modes)
     }
-    
+
     /// Creates a mask-mode with multiple values
     ///
     /// - Parameter modes: The masking mode values

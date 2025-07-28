@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `paint-order` property lets you control the order in which the fill and stroke 
 /// (and painting markers) of text content and shapes are drawn.
@@ -22,24 +22,24 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on paint-order](https://developer.mozilla.org/en-US/docs/Web/CSS/paint-order)
 public enum PaintOrder: Property {
     public static let property: String = "paint-order"
-    
+
     /// Default painting order (fill, stroke, markers)
     case normal
-    
+
     /// Custom painting order with one or more specified layers
     case custom(Set<PaintLayer>)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Individual paint layers that can be ordered
     public enum PaintLayer: String, Sendable, Hashable, CaseIterable {
         /// The fill of the element
         case fill
-        
+
         /// The stroke (outline) of the element
         case stroke
-        
+
         /// SVG markers (e.g., arrowheads) used with the marker-* properties
         case markers
     }
@@ -52,16 +52,16 @@ extension PaintOrder: CustomStringConvertible {
         switch self {
         case .normal:
             return "normal"
-            
+
         case .custom(let layers):
             if layers.isEmpty {
                 return "normal"
             }
-            
+
             // The specification doesn't define an order for the output,
             // so we sort them to ensure consistent output
             return layers.map { $0.rawValue }.sorted().joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -78,16 +78,16 @@ extension PaintOrder {
     public static func first(_ first: PaintLayer) -> PaintOrder {
         .custom([first])
     }
-    
+
     /// Creates a paint order with the fill layer first
     public static let fill: PaintOrder = .first(.fill)
-    
+
     /// Creates a paint order with the stroke layer first
     public static let stroke: PaintOrder = .first(.stroke)
-    
+
     /// Creates a paint order with the markers layer first
     public static let markers: PaintOrder = .first(.markers)
-    
+
     /// Creates a paint order with multiple layers in specified order
     ///
     /// - Parameter layers: The layers in the order they should be painted

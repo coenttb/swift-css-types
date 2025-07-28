@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `white-space` property sets how white space inside an element is handled.
 ///
@@ -23,31 +23,31 @@ public enum WhiteSpace: Property {
     /// Newline characters in the source are handled the same as other white spaces.
     /// Lines are broken as necessary to fill line boxes.
     case normal
-    
+
     /// Sequences of white space are preserved.
     /// Lines are only broken at newline characters in the source and at <br> elements.
     case pre
-    
+
     /// Sequences of white space are preserved.
     /// Lines are broken at newline characters, at <br>, and as necessary to fill line boxes.
     case preWrap
-    
+
     /// Sequences of white space are collapsed.
     /// Lines are broken at newline characters, at <br>, and as necessary to fill line boxes.
     case preLine
-    
+
     /// Collapses white space and forces inline text to stay on the same line until a <br> is encountered.
     case nowrap
-    
+
     /// Similar to pre-wrap, but with additional behavior:
     /// - Any preserved white space always takes space, including at line ends
     /// - Line breaks can occur after any preserved white space character
     /// - Preserved spaces affect intrinsic sizes
     case breakSpaces
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:

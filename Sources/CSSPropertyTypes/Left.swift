@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `left` property participates in specifying the horizontal position of a positioned element.
 /// This inset property has no effect on non-positioned elements.
@@ -32,27 +32,27 @@ public enum Left: Property, LengthPercentageConvertible {
     public static let property: String = "left"
     /// A specific length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Browser determines the position automatically
     case auto
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Converts the left value to its CSS string representation
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .auto:
             return "auto"
-            
+
         case .global(let global):
             return global.description
         }
     }
-    
+
 }
 
 /// Factory methods for creating Left values
@@ -69,7 +69,7 @@ extension Left: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a left position from a floating-point literal (in pixels)
     ///
     /// - Parameter value: The pixel value as a double

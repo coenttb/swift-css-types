@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-block-end` shorthand property, which sets border properties for the block-end edge.
 ///
@@ -49,21 +49,21 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-block-end](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end)
 public enum BorderBlockEnd: Property {
-    
+
     public static let property: String = "border-block-end"
-    
+
     /// Specifies border properties (width, style, color)
     /// Note that per CSS spec, these can be specified in any order
     case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     public init(
         width: BorderWidth? = nil,
         style: LineStyle? = nil,
         color: Color? = nil
-    ){
+    ) {
         self = .properties(width: width, style: style, color: color)
     }
 }
@@ -83,21 +83,21 @@ extension BorderBlockEnd: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.isEmpty ? "none" : parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -112,7 +112,7 @@ extension BorderBlockEnd: LineStyleConvertible {
 
 /// Convenience methods for creating BorderBlockEnd objects
 extension BorderBlockEnd {
-    
+
     /// Creates a thin border-block-end with the specified style
     ///
     /// - Parameter style: The border style
@@ -120,7 +120,7 @@ extension BorderBlockEnd {
     public static func thin(_ style: LineStyle) -> BorderBlockEnd {
         .properties(width: .thin, style: style)
     }
-    
+
     /// Creates a medium border-block-end with the specified style
     ///
     /// - Parameter style: The border style
@@ -128,7 +128,7 @@ extension BorderBlockEnd {
     public static func medium(_ style: LineStyle) -> BorderBlockEnd {
         .properties(width: .medium, style: style)
     }
-    
+
     /// Creates a thick border-block-end with the specified style
     ///
     /// - Parameter style: The border style

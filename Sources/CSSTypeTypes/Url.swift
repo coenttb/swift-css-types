@@ -18,10 +18,10 @@ import Foundation
 public struct Url: Sendable, Hashable {
     /// The URL string value
     public let value: String
-    
+
     /// Whether to use quotes around the URL
     public let quotes: CSSString.Quotes?
-    
+
     /// Creates a new CSS URL value
     ///
     /// - Parameters:
@@ -31,7 +31,7 @@ public struct Url: Sendable, Hashable {
         self.value = value
         self.quotes = quotes
     }
-    
+
     /// Creates a data URL for an embedded resource
     ///
     /// - Parameters:
@@ -58,10 +58,10 @@ extension Url: CustomStringConvertible {
             let endIndex = processedValue.index(before: processedValue.endIndex)
             processedValue = String(processedValue[startIndex..<endIndex])
         }
-        
+
         // First escape the URL-specific characters (not quote related)
         let escapedValue = escapeUrlCharacters(processedValue)
-        
+
         // Handle quotes based on the quotes property
         let urlString: String
         if let quoteStyle = quotes {
@@ -80,10 +80,10 @@ extension Url: CustomStringConvertible {
             // URL without quotes
             urlString = escapedValue
         }
-        
+
         return "url(\(urlString))"
     }
-    
+
     /// Escapes URL-specific special characters in a string
     ///
     /// - Parameter string: The URL string to escape
@@ -93,15 +93,15 @@ extension Url: CustomStringConvertible {
         if string.hasPrefix("data:") {
             // For data URLs, we don't need to escape URL-specific characters
             return string
-        } 
-        
+        }
+
         // For regular URLs, escape parentheses, commas, spaces
         var result = string
         result = result.replacingOccurrences(of: "(", with: "%28")
-        result = result.replacingOccurrences(of: ")", with: "%29") 
+        result = result.replacingOccurrences(of: ")", with: "%29")
         result = result.replacingOccurrences(of: ",", with: "%2C")
         result = result.replacingOccurrences(of: " ", with: "%20")
-        
+
         return result
     }
 }

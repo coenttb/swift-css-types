@@ -1,7 +1,6 @@
 //
 // ShapeImageThreshold.swift
 
-
 import CSSTypeTypes
 
 /// The `shape-image-threshold` CSS property sets the alpha channel threshold used to extract the shape using
@@ -15,13 +14,13 @@ import CSSTypeTypes
 /// ```
 public enum ShapeImageThreshold: Property {
     public static let property: String = "shape-image-threshold"
-    
+
     /// Alpha threshold value (0.0 to 1.0)
     case value(Double)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .value(let threshold):
@@ -32,7 +31,7 @@ public enum ShapeImageThreshold: Property {
             return global.description
         }
     }
-    
+
     /// Creates a ShapeImageThreshold with a specific alpha threshold value
     /// - Parameter threshold: The alpha threshold value (will be clamped to 0.0-1.0)
     /// - Returns: A ShapeImageThreshold with the specified value

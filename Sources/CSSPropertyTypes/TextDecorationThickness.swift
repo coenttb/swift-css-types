@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Sets the thickness of lines used for text decoration (underline, overline, line-through).
 ///
@@ -25,16 +25,16 @@ import CSSTypeTypes
 /// ```
 public enum TextDecorationThickness: Property, LengthPercentageConvertible {
     public static let property: String = "text-decoration-thickness"
-    
+
     /// The UA chooses an appropriate thickness for text decoration lines.
     case auto
-    
+
     /// Specifies that text decoration lines should use the thickness specified by the font file.
     case fromFont
-    
+
     /// A length or percentage value measured from the beginning of the timeline
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

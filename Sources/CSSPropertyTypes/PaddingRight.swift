@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-right` property sets the width of the padding area on the right of an element.
 ///
@@ -16,10 +16,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-right](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right)
 public enum PaddingRight: Property, LengthPercentageConvertible {
     public static let property: String = "padding-right"
-    
+
     /// A length or percentage value for the right padding
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -31,7 +31,7 @@ extension PaddingRight: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .global(let global):
             return global.description
         }

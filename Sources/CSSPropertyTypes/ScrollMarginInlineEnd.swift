@@ -2,7 +2,6 @@
 // ScrollMarginInlineEnd.swift
 //
 
-
 import CSSTypeTypes
 
 /// The `scroll-margin-inline-end` CSS property defines the margin of the scroll snap area at the end of the inline
@@ -18,13 +17,13 @@ import CSSTypeTypes
 /// ```
 public enum ScrollMarginInlineEnd: Property, LengthConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
     public static let property: String = "scroll-margin-inline-end"
-    
+
     /// A length value for the inline end margin
     case length(Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .length(let length): return length.description
@@ -36,7 +35,7 @@ public enum ScrollMarginInlineEnd: Property, LengthConvertible, ExpressibleByInt
     public init(integerLiteral value: Int) {
         self = .length(.px(Double(value)))
     }
-    
+
     /// Creates a ScrollMarginInlineEnd using a floating-point literal (interpreted as pixels)
     public init(floatLiteral value: Double) {
         self = .length(.px(value))

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Customizes the width of tab characters (U+0009).
 ///
@@ -25,10 +25,10 @@ public enum TabSize: Property, LengthConvertible {
     public static let property: String = "tab-size"
     /// Specify tab width as a number of spaces
     case number(Int)
-    
+
     /// Specify tab width as a specific length
     case length(Length)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

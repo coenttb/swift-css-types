@@ -19,7 +19,7 @@ import Foundation
 public struct Ident: Sendable, Hashable {
     /// The identifier string value
     public let value: String
-    
+
     /// Creates an identifier from a string value.
     ///
     /// - Parameter value: The identifier string
@@ -27,7 +27,7 @@ public struct Ident: Sendable, Hashable {
     public init(_ value: String) {
         self.value = value
     }
-    
+
     /// Checks if the identifier is valid according to CSS syntax rules.
     ///
     /// A valid CSS identifier:
@@ -39,22 +39,22 @@ public struct Ident: Sendable, Hashable {
     public var isValid: Bool {
         // Basic pattern for valid CSS identifiers
         let pattern = "^-?[_a-zA-Z\\u00A0-\\uFFFF][_a-zA-Z0-9\\-\\u00A0-\\uFFFF]*$"
-        
+
         // Check if the identifier starts with a hyphen followed by a digit
-        let startsWithHyphenDigit = value.hasPrefix("-") && 
-                                    value.count > 1 && 
+        let startsWithHyphenDigit = value.hasPrefix("-") &&
+                                    value.count > 1 &&
                                     value[value.index(after: value.startIndex)].isNumber
-        
+
         if startsWithHyphenDigit {
             return false
         }
-        
+
         // Check against the pattern
         let regex = try? NSRegularExpression(pattern: pattern)
         let range = NSRange(location: 0, length: value.utf16.count)
         return regex?.firstMatch(in: value, range: range) != nil
     }
-    
+
     /// Escapes the identifier for use in CSS.
     ///
     /// This method adds necessary escaping for characters that need to be escaped in CSS.
@@ -62,7 +62,7 @@ public struct Ident: Sendable, Hashable {
     /// - Returns: The escaped identifier string
     public func escaped() -> String {
         var result = ""
-        
+
         for (i, char) in value.enumerated() {
             if i == 0 && char.isNumber {
                 // Escape first character if it's a digit
@@ -75,7 +75,7 @@ public struct Ident: Sendable, Hashable {
                 result += String(char)
             }
         }
-        
+
         return result
     }
 }

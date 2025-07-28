@@ -1,7 +1,6 @@
 //
 // ScrollPaddingLeft.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-left` CSS property defines offsets for the left of the optimal viewing region of the scrollport:
@@ -17,15 +16,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingLeft: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-left"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

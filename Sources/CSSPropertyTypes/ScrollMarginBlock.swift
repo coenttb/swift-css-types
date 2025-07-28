@@ -5,8 +5,8 @@
 //  Created by Claude on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `scroll-margin-block` shorthand property sets the scroll margins of an element
 /// in the block dimension.
@@ -21,16 +21,16 @@ import CSSTypeTypes
 /// ```
 public enum ScrollMarginBlock: Property, LengthConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
     public static let property: String = "scroll-margin-block"
-    
+
     /// A single length value for both block start and block end
     case all(Length)
-    
+
     /// Two length values for block start and block end
     case start_end(Length, Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .all(let value):
@@ -41,17 +41,17 @@ public enum ScrollMarginBlock: Property, LengthConvertible, ExpressibleByInteger
             return global.description
         }
     }
-    
+
     /// Creates a ScrollMarginBlock from a length value (applies to both start and end)
     public static func length(_ length: Length) -> Self {
         .all(length)
     }
-    
+
     /// Creates a ScrollMarginBlock using an integer literal (interpreted as pixels for both edges)
     public init(integerLiteral value: Int) {
         self = .all(.px(Double(value)))
     }
-    
+
     /// Creates a ScrollMarginBlock using a floating-point literal (interpreted as pixels for both edges)
     public init(floatLiteral value: Double) {
         self = .all(.px(value))

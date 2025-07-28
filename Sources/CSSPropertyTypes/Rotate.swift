@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `rotate` property allows you to specify rotation transforms individually and
 /// independently of the `transform` property.
@@ -26,34 +26,34 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on rotate](https://developer.mozilla.org/en-US/docs/Web/CSS/rotate)
 public enum Rotate: Property {
     public static let property: String = "rotate"
-    
+
     /// No rotation is applied
     case none
-    
+
     /// Rotation around the Z-axis (2D rotation)
     case z(Angle)
-    
+
     /// Rotation around a specific axis (X, Y, or Z)
     case axis(Axis, Angle)
-    
+
     /// Rotation around a specific vector and angle (3D rotation)
     case vector(Double, Double, Double, Angle)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a rotation axis
     public enum Axis: String, Sendable, Hashable {
         /// X-axis (horizontal)
         case x
-        
+
         /// Y-axis (vertical)
         case y
-        
+
         /// Z-axis (depth)
         case z
     }
-    
+
     public var description: String {
         switch self {
         case .none:

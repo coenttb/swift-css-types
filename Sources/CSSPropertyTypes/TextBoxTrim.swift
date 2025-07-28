@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-box-trim` property specifies which of the over and under edges of text content 
 /// to trim from a text element's block container.
@@ -29,22 +29,22 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-box-trim](https://developer.mozilla.org/en-US/docs/Web/CSS/text-box-trim)
 public enum TextBoxTrim: Property {
     public static let property: String = "text-box-trim"
-    
+
     /// No space is trimmed from the text.
     case none
-    
+
     /// The start (over) and end (under) edges are both trimmed.
     case trimBoth
-    
+
     /// The start (over) edge is trimmed.
     case trimStart
-    
+
     /// The end (under) edge is trimmed.
     case trimEnd
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

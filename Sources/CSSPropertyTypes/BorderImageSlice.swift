@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-image-slice` property, which divides a border image into regions
 /// that form the components of an element's border.
@@ -51,32 +51,32 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-image-slice](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice)
 public enum BorderImageSlice: Property {
-    
+
     public static let property: String = "border-image-slice"
-    
+
     /// Same slice value for all sides
     case all(SliceValue, fill: Bool)
-    
+
     /// Different values for vertical (top/bottom) and horizontal (left/right) sides
     case vertical_horizontal(SliceValue, SliceValue, fill: Bool)
-    
+
     /// Different values for top, horizontal (left/right), and bottom sides
     case top_horizontal_bottom(SliceValue, SliceValue, SliceValue, fill: Bool)
-    
+
     /// Different values for each side (top, right, bottom, left)
     case top_right_bottom_left(SliceValue, SliceValue, SliceValue, SliceValue, fill: Bool)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Slice value type
     public enum SliceValue: Sendable, Hashable, CustomStringConvertible {
         /// Number value (in pixels for raster images, coordinates for vector images)
         case number(Number)
-        
+
         /// Percentage value relative to the source image's size
         case percentage(Percentage)
-        
+
         /// String representation of the slice value
         public var description: String {
             switch self {
@@ -87,7 +87,7 @@ public enum BorderImageSlice: Property {
             }
         }
     }
-    
+
     /// Creates a border-image-slice with the same value for all sides
     ///
     /// - Parameters:
@@ -96,7 +96,7 @@ public enum BorderImageSlice: Property {
     public init(_ value: SliceValue, fill: Bool = false) {
         self = .all(value, fill: fill)
     }
-    
+
     /// Creates a border-image-slice with different values for vertical and horizontal sides
     ///
     /// - Parameters:
@@ -106,7 +106,7 @@ public enum BorderImageSlice: Property {
     public init(_ vertical: SliceValue, _ horizontal: SliceValue, fill: Bool = false) {
         self = .vertical_horizontal(vertical, horizontal, fill: fill)
     }
-    
+
     /// Creates a border-image-slice with different values for top, horizontal sides, and bottom
     ///
     /// - Parameters:
@@ -117,7 +117,7 @@ public enum BorderImageSlice: Property {
     public init(_ top: SliceValue, _ horizontal: SliceValue, _ bottom: SliceValue, fill: Bool = false) {
         self = .top_horizontal_bottom(top, horizontal, bottom, fill: fill)
     }
-    
+
     /// Creates a border-image-slice with different values for each side
     ///
     /// - Parameters:
@@ -129,7 +129,7 @@ public enum BorderImageSlice: Property {
     public init(_ top: SliceValue, _ right: SliceValue, _ bottom: SliceValue, _ left: SliceValue, fill: Bool = false) {
         self = .top_right_bottom_left(top, right, bottom, left, fill: fill)
     }
-    
+
     /// Creates a border-image-slice with a number value for all sides
     ///
     /// - Parameters:
@@ -139,7 +139,7 @@ public enum BorderImageSlice: Property {
     public static func number(_ value: Number, fill: Bool = false) -> BorderImageSlice {
         return BorderImageSlice(.number(value), fill: fill)
     }
-    
+
     /// Creates a border-image-slice with a percentage value for all sides
     ///
     /// - Parameters:
@@ -180,7 +180,7 @@ extension BorderImageSlice: CustomStringConvertible {
             return global.description
         }
     }
-    
+
     /// Helper method to add the 'fill' keyword if needed
     private func combineWithFill(_ values: String, _ fill: Bool) -> String {
         return fill ? "\(values) fill" : values

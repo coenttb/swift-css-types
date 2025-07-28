@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `counter-set` CSS property sets CSS counters to given values.
 ///
@@ -12,15 +12,15 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/counter-set)
 public enum CounterSet: Property {
     public static let property: String = "counter-set"
-    
+
     /// An individual counter with an optional value
     public struct Counter: Sendable, Hashable {
         /// The name of the counter
         public let name: CustomIdent
-        
+
         /// The value to set the counter to (defaults to 0 if nil)
         public let value: Int?
-        
+
         /// Creates a counter with an optional value
         /// - Parameters:
         ///   - name: The name of the counter
@@ -30,22 +30,22 @@ public enum CounterSet: Property {
             self.value = value
         }
     }
-    
+
     /// Do not set any counters
     case none
-    
+
     /// Set a single counter to 0
     case counter(CustomIdent)
-    
+
     /// Set a single counter to the specified value
     case counterWithValue(CustomIdent, Int)
-    
+
     /// Set multiple counters with their respective values
     case counters([Counter])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

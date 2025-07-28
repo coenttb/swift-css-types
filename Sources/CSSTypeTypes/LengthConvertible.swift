@@ -63,12 +63,11 @@ extension LengthConvertible {
     /// let length: Length = .px(100)
     /// let gridTrack = GridTrack(length)
     /// ```
-    public init(_ length: Length){
+    public init(_ length: Length) {
         self = .length(length)
     }
 }
 
-    
 /// Factory methods for creating LengthConvertible instances
 extension LengthConvertible {
     /// Creates an instance with a fractional unit value
@@ -84,7 +83,7 @@ extension LengthConvertible {
     /// GridTrack.fr(2)  // 2fr
     /// ```
     public static func fr(_ value: Double) -> Self { .length(.fr(value)) }
-    
+
     /// Creates an instance with a pixel value
     ///
     /// Pixels (px) are absolute units that represent device pixels.
@@ -97,7 +96,7 @@ extension LengthConvertible {
     /// GridTrack.px(100)  // 100px
     /// ```
     public static func px(_ value: Double) -> Self { .length(.px(value)) }
-    
+
     /// Creates an instance with an em value
     ///
     /// Ems are relative to the font-size of the current element.
@@ -110,7 +109,7 @@ extension LengthConvertible {
     /// GridTrack.em(1.5)  // 1.5em
     /// ```
     public static func em(_ value: Double) -> Self { .length(.em(value)) }
-    
+
     /// Creates an instance with a rem value
     ///
     /// Rems are relative to the font-size of the root element.
@@ -123,7 +122,7 @@ extension LengthConvertible {
     /// GridTrack.rem(1.2)  // 1.2rem
     /// ```
     public static func rem(_ value: Double) -> Self { .length(.rem(value)) }
-    
+
     /// Creates an instance with a viewport width percentage
     ///
     /// vw units are relative to 1% of the viewport's width.
@@ -136,7 +135,7 @@ extension LengthConvertible {
     /// GridTrack.vw(50)  // 50vw
     /// ```
     public static func vw(_ value: Double) -> Self { .length(.vw(value)) }
-    
+
     /// Creates an instance with a viewport height percentage
     ///
     /// vh units are relative to 1% of the viewport's height.
@@ -149,7 +148,7 @@ extension LengthConvertible {
     /// GridTrack.vh(100)  // 100vh
     /// ```
     public static func vh(_ value: Double) -> Self { .length(.vh(value)) }
-    
+
     /// Creates an instance with a viewport minimum unit
     ///
     /// vmin units are relative to 1% of the viewport's smaller dimension.
@@ -162,7 +161,7 @@ extension LengthConvertible {
     /// GridTrack.vmin(10)  // 10vmin
     /// ```
     public static func vmin(_ value: Double) -> Self { .length(.length(value, .vmin)) }
-    
+
     /// Creates an instance with a viewport maximum unit
     ///
     /// vmax units are relative to 1% of the viewport's larger dimension.
@@ -175,7 +174,7 @@ extension LengthConvertible {
     /// GridTrack.vmax(10)  // 10vmax
     /// ```
     public static func vmax(_ value: Double) -> Self { .length(.length(value, .vmax)) }
-    
+
 //    /// Creates an instance with a CSS calc() expression
 //    ///
 //    /// The calc() function lets you perform calculations to determine CSS property values.
@@ -190,6 +189,6 @@ extension LengthConvertible {
 //    public static func calc(_ expression: CSSString) -> Self { .length(.calc(expression)) }
 }
 
-//extension LengthConvertible {
+// extension LengthConvertible {
 //    public static var zero: Self { Self.length(Length.zero) }
-//}
+// }

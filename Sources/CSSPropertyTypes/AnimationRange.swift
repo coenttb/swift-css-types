@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-range shorthand property is used to set the start and end of an animation's
 /// attachment range along its timeline, i.e. where along the timeline an animation will start and end.
@@ -17,28 +17,27 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation-range](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range)
 public enum AnimationRange: Property, LengthPercentageConvertible {
-    
+
     public static let property: String = "animation-range"
-    
-    
+
     /// A single value that sets both start and end
     case single(AnimationRangeValue)
-    
+
     /// Separate start and end values
     case startEnd(AnimationRangeValue, AnimationRangeValue)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> AnimationRange {
         .single(.lengthPercentage(value))
     }
-    
+
     /// Convenience method for specifying a named range without percentages
     public static func namedRange(_ name: TimelineRangeName) -> AnimationRange {
         return .single(.namedRange(name))
     }
-    
+
     /// Default value (normal)
     public static let normal = AnimationRange.single(.normal)
 }
@@ -47,10 +46,10 @@ public enum AnimationRange: Property, LengthPercentageConvertible {
 public enum AnimationRangeValue: Sendable, Hashable, LengthPercentageConvertible {
     /// Represents normal value (start/end of timeline)
     case normal
-    
+
     /// A length or percentage value measured from the beginning of the timeline
     case lengthPercentage(LengthPercentage)
-    
+
     /// A specific named timeline range
     case namedRange(TimelineRangeName, Percentage? = nil)
 }

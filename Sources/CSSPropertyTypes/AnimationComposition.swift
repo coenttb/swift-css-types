@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-composition property specifies the composite operation
 /// to use when multiple animations affect the same property simultaneously.
@@ -13,18 +13,18 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation-composition](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-composition)
 public enum AnimationComposition: Property {
-    
+
     public static let property: String = "animation-composition"
-    
+
     /// The effect value overrides the underlying value of the property (default)
     case replace
-    
+
     /// The effect value builds on the underlying value of the property
     case add
-    
+
     /// The effect and underlying values are combined
     case accumulate
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }

@@ -1,7 +1,6 @@
 //
 // ScrollPaddingBlockStart.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-block-start` CSS property defines offsets for the start edge in the block dimension
@@ -18,15 +17,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingBlockStart: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-block-start"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"
@@ -34,12 +33,12 @@ public enum ScrollPaddingBlockStart: Property, LengthPercentageConvertible, Cust
         case .global(let global): return global.description
         }
     }
-    
+
     /// Creates a ScrollPaddingBlockStart using a length
     public static func px(_ value: Double) -> Self {
         .length(.px(value))
     }
-    
+
     /// Creates a ScrollPaddingBlockStart using a percentage
     public static func percent(_ value: Double) -> Self {
         .percentage(.init(value))

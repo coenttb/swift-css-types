@@ -39,6 +39,6 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::column](https://developer.mozilla.org/en-US/docs/Web/CSS/::column)
 public struct Column: CSSPseudoElement {
     @inlinable public static var name: String { "column" }
-    
+
     public init() {}
 }

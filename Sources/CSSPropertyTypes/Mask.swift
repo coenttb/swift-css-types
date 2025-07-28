@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask` shorthand property, which hides an element (partially or fully) by masking
 /// or clipping the image at specific points.
@@ -44,45 +44,45 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask](https://developer.mozilla.org/en-US/docs/Web/CSS/mask)
 public enum Mask: Property {
     public static let property: String = "mask"
-    
+
     /// No mask
     case none
-    
+
     /// A single mask layer configuration
     case configuration(Configuration)
-    
+
     /// Multiple mask layers
     case layers([Configuration])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Configuration for a mask layer
     public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The mask reference (image or source)
         public let reference: MaskReference
-        
+
         /// The position of the mask
         public let position: Position?
-        
+
         /// The size of the mask
         public let size: Size?
-        
+
         /// The repeat style of the mask
         public let `repeat`: RepeatStyle?
-        
+
         /// The clipping box of the mask
         public let clip: GeometryBox?
-        
+
         /// The origin box of the mask
         public let origin: GeometryBox?
-        
+
         /// The composite operation of the mask
         public let composite: Composite?
-        
+
         /// The masking mode
         public let mode: MaskingMode?
-        
+
         /// Creates a mask configuration
         ///
         /// - Parameters:
@@ -113,23 +113,23 @@ public enum Mask: Property {
             self.composite = composite
             self.mode = mode
         }
-        
+
         /// CSS string representation
         public var description: String {
             var parts: [String] = []
-            
+
             // Mask reference
             parts.append(reference.description)
-            
+
             // Masking mode
             if let mode = mode {
                 parts.append(modeDescription(mode))
             }
-            
+
             // Position and size
             if let position = position {
                 let positionPart = positionDescription(position)
-                
+
                 if let size = size {
                     parts.append("\(positionPart) / \(sizeDescription(size))")
                 } else {
@@ -138,12 +138,12 @@ public enum Mask: Property {
             } else if let size = size {
                 parts.append("0% 0% / \(sizeDescription(size))")
             }
-            
+
             // Repeat
             if let `repeat` = `repeat` {
                 parts.append(repeatDescription(`repeat`))
             }
-            
+
             // Geometry boxes (clip and origin)
             if let origin = origin {
                 if let clip = clip {
@@ -161,15 +161,15 @@ public enum Mask: Property {
             } else if let clip = clip {
                 parts.append(clipDescription(clip))
             }
-            
+
             // Composite
             if let composite = composite {
                 parts.append(compositeDescription(composite))
             }
-            
+
             return parts.joined(separator: " ")
         }
-        
+
         private func positionDescription(_ position: Position) -> String {
             switch position {
             case .keywords(let horizontal, let vertical):
@@ -188,7 +188,7 @@ public enum Mask: Property {
                 return "right"
             }
         }
-        
+
         private func sizeDescription(_ size: Size) -> String {
             switch size {
             case .dimensions(let width, let height):
@@ -201,7 +201,7 @@ public enum Mask: Property {
                 return "auto"
             }
         }
-        
+
         private func repeatDescription(_ repeat: RepeatStyle) -> String {
             switch `repeat` {
             case .repeatX:
@@ -220,7 +220,7 @@ public enum Mask: Property {
                 return "\(horizontal.rawValue) \(vertical.rawValue)"
             }
         }
-        
+
         private func geometryBoxDescription(_ box: GeometryBox) -> String {
             switch box {
             case .contentBox:
@@ -241,7 +241,7 @@ public enum Mask: Property {
                 return "no-clip"
             }
         }
-        
+
         private func clipDescription(_ clip: GeometryBox) -> String {
             if clip == .noClip {
                 return "no-clip"
@@ -249,7 +249,7 @@ public enum Mask: Property {
                 return geometryBoxDescription(clip)
             }
         }
-        
+
         private func compositeDescription(_ composite: Composite) -> String {
             switch composite {
             case .add:
@@ -262,7 +262,7 @@ public enum Mask: Property {
                 return "exclude"
             }
         }
-        
+
         private func modeDescription(_ mode: MaskingMode) -> String {
             switch mode {
             case .alpha:
@@ -274,33 +274,33 @@ public enum Mask: Property {
             }
         }
     }
-    
+
     /// Represents a mask reference
     public enum MaskReference: Sendable, Hashable, CustomStringConvertible {
         /// No mask
         case none
-        
+
         /// URL to an image or SVG element
         case url(Url)
-        
+
         /// Linear gradient
         case linearGradient(CSSString)
-        
+
         /// Radial gradient
         case radialGradient(CSSString)
-        
+
         /// Conic gradient
         case conicGradient(CSSString)
-        
+
         /// Repeating linear gradient
         case repeatingLinearGradient(CSSString)
-        
+
         /// Repeating radial gradient
         case repeatingRadialGradient(CSSString)
-        
+
         /// Repeating conic gradient
         case repeatingConicGradient(CSSString)
-        
+
         /// CSS string representation
         public var description: String {
             switch self {
@@ -332,37 +332,37 @@ public enum Mask: Property {
             }
         }
     }
-    
+
     /// Position of a mask
     public enum Position: Sendable, Hashable {
         /// Keywords for horizontal and vertical position
         case keywords(Horizontal, Vertical)
-        
+
         /// Custom position with specific values
         case custom(LengthPercentage, LengthPercentage)
-        
+
         /// Center position (shorthand for center center)
         case center
-        
+
         /// Top position (shorthand for center top)
         case top
-        
+
         /// Bottom position (shorthand for center bottom)
         case bottom
-        
+
         /// Left position (shorthand for left center)
         case left
-        
+
         /// Right position (shorthand for right center)
         case right
-        
+
         /// Horizontal position keywords
         public enum Horizontal: String, Sendable {
             case left
             case center
             case right
         }
-        
+
         /// Vertical position keywords
         public enum Vertical: String, Sendable {
             case top
@@ -370,45 +370,45 @@ public enum Mask: Property {
             case bottom
         }
     }
-    
+
     /// Size of a mask
     public enum Size: Sendable, Hashable {
         /// Explicit width and height dimensions
         case dimensions(LengthPercentage, LengthPercentage)
-        
+
         /// Scale mask to cover the entire element, possibly cropping the mask
         case cover
-        
+
         /// Scale mask to fit within the element, possibly leaving uncovered areas
         case contain
-        
+
         /// Use the mask's intrinsic size
         case auto
     }
-    
+
     /// Repeat style for a mask
     public enum RepeatStyle: Sendable, Hashable {
         /// Repeat horizontally only (shorthand for repeat no-repeat)
         case repeatX
-        
+
         /// Repeat vertically only (shorthand for no-repeat repeat)
         case repeatY
-        
+
         /// Repeat in both directions
         case `repeat`
-        
+
         /// Repeat with space between each tile
         case space
-        
+
         /// Repeat and scale to fit an exact number of tiles
         case round
-        
+
         /// No repetition
         case noRepeat
-        
+
         /// Different values for horizontal and vertical
         case horizontal_vertical(Value, Value)
-        
+
         /// Repeat value
         public enum Value: String, Sendable {
             case `repeat`
@@ -417,61 +417,61 @@ public enum Mask: Property {
             case noRepeat = "no-repeat"
         }
     }
-    
+
     /// Geometry box for mask origin and clip
     public enum GeometryBox: Sendable, Hashable {
         /// The content box
         case contentBox
-        
+
         /// The padding box
         case paddingBox
-        
+
         /// The border box
         case borderBox
-        
+
         /// The margin box
         case marginBox
-        
+
         /// The fill box (SVG)
         case fillBox
-        
+
         /// The stroke box (SVG)
         case strokeBox
-        
+
         /// The view box (SVG)
         case viewBox
-        
+
         /// Special value for no-clip (only valid for mask-clip)
         case noClip
     }
-    
+
     /// Compositing operation for mask layers
     public enum Composite: String, Sendable, Hashable {
         /// Add the current mask layer to the previous layers
         case add
-        
+
         /// Subtract the current mask layer from the previous layers
         case subtract
-        
+
         /// Intersect the current mask layer with the previous layers
         case intersect
-        
+
         /// Areas covered by both the current mask layer and previous layers are excluded
         case exclude
     }
-    
+
     /// Masking mode
     public enum MaskingMode: Sendable, Hashable {
         /// Use alpha channel for masking
         case alpha
-        
+
         /// Use luminance values for masking
         case luminance
-        
+
         /// Use the mask source's native format
         case matchSource
     }
-    
+
     /// Creates a mask with URL reference
     ///
     /// - Parameter url: The URL to the mask image
@@ -479,7 +479,7 @@ public enum Mask: Property {
     public static func url(_ url: Url) -> Mask {
         return .configuration(Configuration(.url(url)))
     }
-    
+
     /// Creates a mask with a linear gradient
     ///
     /// - Parameter gradient: The linear gradient definition
@@ -487,7 +487,7 @@ public enum Mask: Property {
     public static func linearGradient(_ gradient: CSSString) -> Mask {
         return .configuration(Configuration(.linearGradient(gradient)))
     }
-    
+
     /// Creates a mask with a radial gradient
     ///
     /// - Parameter gradient: The radial gradient definition

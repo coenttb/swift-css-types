@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-radius` shorthand property, which rounds the corners of an element's border.
 ///
@@ -61,12 +61,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on border-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius)
 public enum BorderRadius: Property {
     public static let property: String = "border-radius"
-    
-    
-    
+
     /// Border radius values
     case values(Values)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -76,10 +74,10 @@ extension BorderRadius {
     public struct Values: Sendable, Hashable, CustomStringConvertible {
         /// Horizontal radii for the four corners (top-left, top-right, bottom-right, bottom-left)
         public let horizontal: [LengthPercentage]
-        
+
         /// Optional vertical radii for the four corners, for elliptical corners
         public let vertical: [LengthPercentage]?
-        
+
         /// Creates a Values instance with horizontal radii and optional vertical radii
         ///
         /// - Parameters:
@@ -89,14 +87,14 @@ extension BorderRadius {
             self.horizontal = Values.expandRadii(horizontal)
             self.vertical = vertical.map(Values.expandRadii)
         }
-        
+
         /// Creates a Values instance with the same radius for all corners
         ///
         /// - Parameter radius: The radius to use for all corners
         public init(_ radius: LengthPercentage) {
             self.init(horizontal: [radius])
         }
-        
+
         /// Creates a Values instance with two values
         /// First for top-left & bottom-right, second for top-right & bottom-left
         ///
@@ -106,7 +104,7 @@ extension BorderRadius {
         public init(_ first: LengthPercentage, _ second: LengthPercentage) {
             self.init(horizontal: [first, second])
         }
-        
+
         /// Creates a Values instance with three values
         /// First for top-left, second for top-right & bottom-left, third for bottom-right
         ///
@@ -117,7 +115,7 @@ extension BorderRadius {
         public init(_ first: LengthPercentage, _ second: LengthPercentage, _ third: LengthPercentage) {
             self.init(horizontal: [first, second, third])
         }
-        
+
         /// Creates a Values instance with four values
         /// For top-left, top-right, bottom-right, and bottom-left corners respectively
         ///
@@ -129,7 +127,7 @@ extension BorderRadius {
         public init(_ topLeft: LengthPercentage, _ topRight: LengthPercentage, _ bottomRight: LengthPercentage, _ bottomLeft: LengthPercentage) {
             self.init(horizontal: [topLeft, topRight, bottomRight, bottomLeft])
         }
-        
+
         /// Creates a Values instance with elliptical corners (uniform horizontal and vertical radii)
         ///
         /// - Parameters:
@@ -138,7 +136,7 @@ extension BorderRadius {
         public init(horizontal: LengthPercentage, vertical: LengthPercentage) {
             self.init(horizontal: [horizontal], vertical: [vertical])
         }
-        
+
         /// Expands an array of radii according to CSS rules
         ///
         /// CSS has specific rules for how shorthand values are expanded:
@@ -166,34 +164,34 @@ extension BorderRadius {
                 return Array(radii.prefix(4))
             }
         }
-        
+
         /// String representation of the radius values according to CSS syntax
         public var description: String {
             guard let vertical = vertical, !vertical.isEmpty else {
                 // Only horizontal values
                 return formatCSSValues(horizontal)
             }
-            
+
             // Both horizontal and vertical values (elliptical corners)
             return "\(formatCSSValues(horizontal)) / \(formatCSSValues(vertical))"
         }
-        
+
         /// Formats array values for CSS output, applying CSS shorthand optimizations
         private func formatCSSValues(_ values: [LengthPercentage]) -> String {
             guard !values.isEmpty else { return "" }
-            
+
             // Apply CSS shorthand optimization for values
             // - If all 4 values are the same, output 1 value
             // - If values follow the pattern [a, b, a, b], output 2 values
             // - If values follow the pattern [a, b, c, b], output 3 values
             // - Otherwise, output all 4 values
-            
+
             if values.count == 4 {
                 let topLeft = values[0]
                 let topRight = values[1]
                 let bottomRight = values[2]
                 let bottomLeft = values[3]
-                
+
                 if topLeft == topRight && topRight == bottomRight && bottomRight == bottomLeft {
                     // All values are the same - use 1-value syntax
                     return topLeft.description
@@ -205,7 +203,7 @@ extension BorderRadius {
                     return "\(topLeft.description) \(topRight.description) \(bottomRight.description)"
                 }
             }
-            
+
             // Default to all values
             return values.map { $0.description }.joined(separator: " ")
         }
@@ -220,7 +218,7 @@ extension BorderRadius {
     public init(radius: LengthPercentage) {
         self = .values(Values(radius))
     }
-    
+
     /// Creates a border-radius with specified horizontal radii and optional vertical radii
     ///
     /// - Parameters:
@@ -247,7 +245,7 @@ extension BorderRadius {
             }
         }
     }
-    
+
 }
 
 /// Support for LengthPercentageConvertible
@@ -283,7 +281,6 @@ extension BorderRadius: CustomStringConvertible {
 /// Convenience methods for creating BorderRadius values
 extension BorderRadius {
 
-    
     /// Creates a border-radius with elliptical corners using the same values for all corners
     ///
     /// - Parameters:
@@ -293,7 +290,7 @@ extension BorderRadius {
     public static func elliptical(_ horizontal: LengthPercentage, _ vertical: LengthPercentage) -> BorderRadius {
         .values(Values(horizontal: horizontal, vertical: vertical))
     }
-    
+
     /// Helper methods for creating Values with specific patterns
     public static func uniform(_ radius: LengthPercentage) -> BorderRadius {
         .values(Values(radius))

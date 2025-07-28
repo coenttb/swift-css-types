@@ -20,13 +20,13 @@ import Foundation
 public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageConvertible {
     /// A length value with a specific unit
     case length(Length)
-    
+
     /// A percentage value
     case percentage(Percentage)
-    
+
     /// A CSS calc() expression
     case calc(String)
-    
+
     /// Creates a length-percentage from pixels
     ///
     /// - Parameter value: The length in pixels
@@ -34,7 +34,7 @@ public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageC
     public static func px(_ value: Double) -> LengthPercentage {
         return .length(.px(value))
     }
-    
+
     /// Creates a length-percentage from ems
     ///
     /// - Parameter value: The length in ems
@@ -42,7 +42,7 @@ public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageC
     public static func em(_ value: Double) -> LengthPercentage {
         return .length(.em(value))
     }
-    
+
     /// Creates a length-percentage from rems
     ///
     /// - Parameter value: The length in rems
@@ -54,7 +54,7 @@ public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageC
     ///
     /// The browser determines the appropriate size based on context.
     public static let auto: LengthPercentage = .length(.auto)
-    
+
     /// Creates a length-percentage from an integer pixel value
     ///
     /// - Parameter value: The pixel value as an integer
@@ -62,7 +62,7 @@ public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageC
     public static func px(_ value: Int) -> LengthPercentage {
         return .length(.px(Double(value)))
     }
-    
+
     /// Creates a length-percentage from an integer em value
     ///
     /// - Parameter value: The em value as an integer
@@ -70,7 +70,7 @@ public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageC
     public static func em(_ value: Int) -> LengthPercentage {
         return .length(.em(Double(value)))
     }
-    
+
     /// Creates a length-percentage from an integer rem value
     ///
     /// - Parameter value: The rem value as an integer
@@ -78,7 +78,7 @@ public enum LengthPercentage: Sendable, Hashable, LengthConvertible, PercentageC
     public static func rem(_ value: Int) -> LengthPercentage {
         return .length(.rem(Double(value)))
     }
-    
+
     /// Creates a length-percentage from an integer percentage
     ///
     /// - Parameter value: The percentage as an integer
@@ -103,7 +103,6 @@ extension LengthPercentage: CustomStringConvertible {
     }
 }
 
-
 /// Allow creation of LengthPercentage values from integer literals
 extension LengthPercentage: ExpressibleByIntegerLiteral {
     /// Creates a length-percentage from an integer literal (pixels)
@@ -127,4 +126,3 @@ extension LengthPercentage: ExpressibleByFloatLiteral {
 extension LengthPercentage {
     public static let zero: Self = .length(.zero)
 }
-

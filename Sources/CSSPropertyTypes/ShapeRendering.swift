@@ -1,7 +1,6 @@
 //
 // ShapeRendering.swift
 
-
 import CSSTypeTypes
 
 /// The `shape-rendering` CSS property provides hints to the renderer about what tradeoffs to make when rendering
@@ -16,26 +15,26 @@ import CSSTypeTypes
 /// ```
 public enum ShapeRendering: Property {
     public static let property: String = "shape-rendering"
-    
+
     /// Directs user agents to make tradeoffs balancing speed, edge crispness, and geometric precision,
     /// with geometric precision given more importance
     case auto
-    
+
     /// Emphasizes edge contrast over geometric precision or rendering speed,
     /// likely skipping techniques like anti-aliasing
     case crispEdges
-    
+
     /// Emphasizes geometric precision over speed or crisp edges,
     /// may involve anti-aliasing
     case geometricPrecision
-    
+
     /// Emphasizes rendering speed over geometric precision or edge crispness,
     /// likely skipping techniques like anti-aliasing
     case optimizeSpeed
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

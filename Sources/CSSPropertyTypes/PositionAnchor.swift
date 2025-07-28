@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `position-anchor` property specifies the anchor name of the anchor element that 
 /// a positioned element is associated with.
@@ -45,17 +45,17 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on position-anchor](https://developer.mozilla.org/en-US/docs/Web/CSS/position-anchor)
 public enum PositionAnchor: Property {
     public static let property: String = "position-anchor"
-    
+
     /// Associates a positioned element with its implicit anchor element, if it has one
     /// (for example, as set by the non-standard HTML anchor attribute)
     case auto
-    
+
     /// The name of the anchor element to associate the positioned element with
     case anchorName(DashedIdent)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a position anchor using a string value
     ///
     /// - Parameter name: The anchor name (with or without dashes)
@@ -63,7 +63,7 @@ public enum PositionAnchor: Property {
     public static func anchorName(_ name: String) -> PositionAnchor {
         .anchorName(DashedIdent(name))
     }
-    
+
     public var description: String {
         switch self {
         case .auto:

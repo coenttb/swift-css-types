@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `math-shift` property indicates whether superscripts inside MathML formulas
 /// should be raised by a normal or compact shift.
@@ -19,18 +19,18 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on math-shift](https://developer.mozilla.org/en-US/docs/Web/CSS/math-shift)
 public enum MathShift: Property {
     public static let property: String = "math-shift"
-    
+
     /// The initial value, indicates normal rendering. Superscripts in MathML formulas use
     /// the superscriptShiftUp parameter from the OpenType MATH table.
     case normal
-    
+
     /// Indicates compact rendering. Superscripts in MathML formulas use the superscriptShiftUpCramped
     /// parameter from the OpenType MATH table, which is generally smaller.
     case compact
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:

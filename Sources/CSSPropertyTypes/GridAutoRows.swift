@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid-auto-rows` property specifies the size of an implicitly-created grid row track or pattern of tracks.
 ///
@@ -23,32 +23,32 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on grid-auto-rows](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows)
 public enum GridAutoRows: Property, LengthPercentageConvertible {
-    
+
     public static let property: String = "grid-auto-rows"
-    
+
     /// Auto sizing (similar to minmax(min-content, max-content))
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Largest minimal content contribution
     case minContent
-    
+
     /// Largest maximal content contribution
     case maxContent
-    
+
     /// Range between min and max with minmax()
     case minMax(MinMaxValue, MinMaxValue)
-    
+
     /// Size that is clamped at the provided argument
     case fitContent(LengthPercentage)
-    
+
     /// Multiple track sizes for a repeating pattern
     case multiple([GridAutoRows])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:

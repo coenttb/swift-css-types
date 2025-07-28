@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The lighting-color CSS property defines the color of the light source for the 
 /// <feDiffuseLighting> and <feSpecularLighting> SVG lighting filter primitives within an SVG <filter>.
@@ -27,10 +27,10 @@ public enum LightingColor: Property, ColorConvertible {
     public static let property: String = "lighting-color"
     /// A specific color value
     case color(CSSTypeTypes.Color)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .color(let color):
@@ -45,16 +45,16 @@ public enum LightingColor: Property, ColorConvertible {
 extension LightingColor {
     /// White lighting color (default)
     public static let white: LightingColor = .color(.white)
-    
+
     /// Red lighting color
     public static let red: LightingColor = .color(.red)
-    
+
     /// Blue lighting color
     public static let blue: LightingColor = .color(.blue)
-    
+
     /// Green lighting color
     public static let green: LightingColor = .color(.green)
-    
+
     /// Current color value
     public static let currentColor: LightingColor = .color(.currentColor)
 }

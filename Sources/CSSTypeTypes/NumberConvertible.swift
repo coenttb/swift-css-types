@@ -62,10 +62,10 @@ extension NumberConvertible {
     /// let number: Number = 1.5
     /// let flexGrow = FlexGrow(number)
     /// ```
-    public init(_ number: Number){
+    public init(_ number: Number) {
         self = .number(number)
     }
-    
+
     /// Creates an instance from a Double value
     ///
     /// This initializer provides a convenient way to create a number-convertible instance
@@ -80,7 +80,7 @@ extension NumberConvertible {
     public init(_ value: Double) {
         self = .number(Number(value))
     }
-    
+
     /// Creates an instance from an Int value
     ///
     /// This initializer provides a convenient way to create a number-convertible instance
@@ -108,7 +108,7 @@ extension NumberConvertible {
     /// FlexGrow.zero  // 0
     /// ```
     public static var zero: Self { .number(.zero) }
-    
+
     /// Creates an instance with a value of one
     ///
     /// - Returns: A new instance representing the value 1

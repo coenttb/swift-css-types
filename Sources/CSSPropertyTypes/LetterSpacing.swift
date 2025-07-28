@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The letter-spacing CSS property sets the horizontal spacing behavior between text characters.
 ///
@@ -30,13 +30,13 @@ public enum LetterSpacing: Property, LengthPercentageConvertible {
     public static let property: String = "letter-spacing"
     /// The normal letter spacing for the current font
     case normal
-    
+
     /// A specific length value for letter spacing
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Converts the letter-spacing value to its CSS string representation
     public var description: String {
         switch self {
@@ -58,7 +58,7 @@ extension LetterSpacing: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral 
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a letter-spacing from a floating-point literal (in pixels)
     ///
     /// - Parameter value: The pixel value as a double
@@ -71,13 +71,13 @@ extension LetterSpacing: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral 
 extension LetterSpacing {
     /// Zero letter-spacing
     public static let zero: LetterSpacing = .px(0)
-    
+
     /// A tight letter-spacing (-0.05em)
     public static let tight: LetterSpacing = .em(-0.05)
-    
+
     /// A wide letter-spacing (0.1em)
     public static let wide: LetterSpacing = .em(0.1)
-    
+
     /// A very wide letter-spacing (0.25em)
     public static let veryWide: LetterSpacing = .em(0.25)
 }

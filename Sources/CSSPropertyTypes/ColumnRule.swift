@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `column-rule` shorthand property sets the width, style, and color of the
 /// line drawn between columns in a multi-column layout.
@@ -19,19 +19,19 @@ public enum ColumnRule: Property, LineStyleConvertible {
     public static let property: String = "column-rule"
     /// A rule with style, width, and color
     case full(LineStyle, BorderWidth.Width, Color?)
-    
+
     /// A rule with just style and width
     case styleWidth(LineStyle, BorderWidth.Width)
-    
+
     /// A rule with just style and color
     case styleColor(LineStyle, Color)
-    
+
     /// A rule with just style
     case lineStyle(LineStyle)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a column rule with style, width, and color
     ///
     /// - Parameters:
@@ -42,7 +42,7 @@ public enum ColumnRule: Property, LineStyleConvertible {
     public static func rule(_ style: LineStyle, _ width: BorderWidth.Width, _ color: Color? = nil) -> ColumnRule {
         return .full(style, width, color)
     }
-    
+
     /// Creates a column rule with just style and width
     ///
     /// - Parameters:
@@ -52,7 +52,7 @@ public enum ColumnRule: Property, LineStyleConvertible {
     public static func rule(_ style: LineStyle, _ width: BorderWidth.Width) -> ColumnRule {
         return .styleWidth(style, width)
     }
-    
+
     /// Creates a column rule with just style and color
     ///
     /// - Parameters:
@@ -62,7 +62,7 @@ public enum ColumnRule: Property, LineStyleConvertible {
     public static func rule(_ style: LineStyle, _ color: Color) -> ColumnRule {
         return .styleColor(style, color)
     }
-    
+
     /// Creates a column rule with just style
     ///
     /// - Parameter style: The line style for the rule
@@ -70,7 +70,7 @@ public enum ColumnRule: Property, LineStyleConvertible {
     public static func rule(_ lineStyle: LineStyle) -> ColumnRule {
         return .lineStyle(lineStyle)
     }
-    
+
     /// String representation of the column-rule
     public var description: String {
         switch self {
@@ -97,10 +97,10 @@ extension ColumnRule {
 
     /// Creates a thin solid column rule
     public static let thin = ColumnRule.styleWidth(.solid, .thin)
-    
+
     /// Creates a medium solid column rule
     public static let medium = ColumnRule.styleWidth(.solid, .medium)
-    
+
     /// Creates a thick solid column rule
     public static let thick = ColumnRule.styleWidth(.solid, .thick)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-image-outset` property, which sets the distance by which an element's
 /// border image is set out from its border box.
@@ -43,32 +43,32 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-image-outset](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-outset)
 public enum BorderImageOutset: Property {
-    
+
     public static let property: String = "border-image-outset"
-    
+
     /// All four sides have the same outset value
     case all(OutsetValue)
-    
+
     /// Top and bottom sides have the same value, and left and right sides have the same value
     case vertical_horizontal(OutsetValue, OutsetValue)
-    
+
     /// Top, horizontal sides (left and right), and bottom have different values
     case top_horizontal_bottom(OutsetValue, OutsetValue, OutsetValue)
-    
+
     /// Each side (top, right, bottom, left) has a different value
     case top_right_bottom_left(OutsetValue, OutsetValue, OutsetValue, OutsetValue)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a value for border-image-outset
     public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// A length value
         case length(Length)
-        
+
         /// A number value (multiple of the border width)
         case number(Number)
-        
+
         /// String representation of the outset value
         public var description: String {
             switch self {
@@ -79,14 +79,14 @@ public enum BorderImageOutset: Property {
             }
         }
     }
-    
+
     /// Creates a border-image-outset with the same value for all sides
     ///
     /// - Parameter value: The outset value for all sides
     public init(_ value: OutsetValue) {
         self = .all(value)
     }
-    
+
     /// Creates a border-image-outset with different values for vertical and horizontal sides
     ///
     /// - Parameters:
@@ -95,7 +95,7 @@ public enum BorderImageOutset: Property {
     public init(_ vertical: OutsetValue, _ horizontal: OutsetValue) {
         self = .vertical_horizontal(vertical, horizontal)
     }
-    
+
     /// Creates a border-image-outset with different values for top, horizontal sides, and bottom
     ///
     /// - Parameters:
@@ -105,7 +105,7 @@ public enum BorderImageOutset: Property {
     public init(_ top: OutsetValue, _ horizontal: OutsetValue, _ bottom: OutsetValue) {
         self = .top_horizontal_bottom(top, horizontal, bottom)
     }
-    
+
     /// Creates a border-image-outset with different values for each side
     ///
     /// - Parameters:

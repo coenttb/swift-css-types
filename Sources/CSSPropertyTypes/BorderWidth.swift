@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-width` shorthand property, which sets the width of an element's borders.
 ///
@@ -41,7 +41,7 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on border-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width)
 public enum BorderWidth: Property {
     public static let property: String = "border-width"
-    
+
     /// One of the various patterns of border width values
     /// The width values can be specified in multiple patterns:
     /// - Single width for all sides
@@ -49,27 +49,26 @@ public enum BorderWidth: Property {
     /// - Top, horizontal, and bottom widths
     /// - Top, right, bottom, and left widths
     case values(Values)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
-    
+
 }
 extension BorderWidth {
     /// Represents different patterns of specifying border widths
     public struct Values: Sendable, Hashable, CustomStringConvertible {
         /// The width for the top border
         public let top: Width
-        
+
         /// The width for the right border
         public let right: Width
-        
+
         /// The width for the bottom border
         public let bottom: Width
-        
+
         /// The width for the left border
         public let left: Width
-        
+
         /// Pattern used to create this width values set
         private enum Pattern {
             case all
@@ -77,9 +76,9 @@ extension BorderWidth {
             case topHorizontalBottom
             case fourSides
         }
-        
+
         private let pattern: Pattern
-        
+
         /// Creates a width values set with the same value for all sides
         ///
         /// - Parameter width: The width for all sides
@@ -90,7 +89,7 @@ extension BorderWidth {
             self.left = width
             self.pattern = .all
         }
-        
+
         /// Creates width values with vertical and horizontal components
         ///
         /// - Parameters:
@@ -103,7 +102,7 @@ extension BorderWidth {
             self.left = horizontal
             self.pattern = .verticalHorizontal
         }
-        
+
         /// Creates width values with top, horizontal, and bottom components
         ///
         /// - Parameters:
@@ -117,7 +116,7 @@ extension BorderWidth {
             self.left = horizontal
             self.pattern = .topHorizontalBottom
         }
-        
+
         /// Creates width values with specific widths for each side
         ///
         /// - Parameters:
@@ -132,7 +131,7 @@ extension BorderWidth {
             self.left = left
             self.pattern = .fourSides
         }
-        
+
         /// String representation of the width values
         public var description: String {
             switch pattern {
@@ -153,16 +152,16 @@ extension BorderWidth {
     public enum Width: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
         /// Thin line (usually 1px)
         case thin
-        
+
         /// Medium line (usually 3px)
         case medium
-        
+
         /// Thick line (usually 5px)
         case thick
-        
+
         /// A specific length value
         case length(Length)
-        
+
         /// String representation of the width
         public var description: String {
             switch self {
@@ -187,7 +186,7 @@ extension BorderWidth {
     public init(_ width: Width) {
         self = .values(.init(width))
     }
-    
+
     /// Creates a border width with two values (vertical and horizontal)
     ///
     /// - Parameters:
@@ -196,7 +195,7 @@ extension BorderWidth {
     public init(vertical: Width, horizontal: Width) {
         self = .values(.init(vertical, vertical, vertical, vertical))
     }
-    
+
     /// Creates a border width with three values (top, horizontal, bottom)
     ///
     /// - Parameters:
@@ -206,7 +205,7 @@ extension BorderWidth {
     public init(top: Width, horizontal: Width, bottom: Width) {
         self = .values(.init(top: top, horizontal: horizontal, bottom: bottom))
     }
-    
+
     /// Creates a border width with four values (one for each side)
     ///
     /// - Parameters:
@@ -252,13 +251,13 @@ extension BorderWidth: CustomStringConvertible {
 extension BorderWidth {
     /// The default border width (medium)
     public static let `default` = BorderWidth(.medium)
-    
+
     /// Creates a thin border width on all sides
     public static let thin = BorderWidth(.thin)
-    
+
     /// Creates a medium border width on all sides
     public static let medium = BorderWidth(.medium)
-    
+
     /// Creates a thick border width on all sides
     public static let thick = BorderWidth(.thick)
 }

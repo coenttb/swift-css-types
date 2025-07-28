@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-emphasis` property applies emphasis marks to text (except spaces and control characters).
 ///
@@ -25,13 +25,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-emphasis](https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis)
 public enum TextEmphasis: Property {
     public static let property: String = "text-emphasis"
-    
+
     /// Emphasis configuration with style and optional color
     case config(Configuration)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a new text emphasis with style and optional color
     /// - Parameters:
     ///   - style: The style of the emphasis marks
@@ -43,7 +43,7 @@ public enum TextEmphasis: Property {
             self = .config(Configuration(style: style, color: color))
         }
     }
-    
+
     /// Creates a new text emphasis with specified shape, fill, and optional color
     /// - Parameters:
     ///   - shape: The shape to use for the emphasis marks
@@ -52,7 +52,7 @@ public enum TextEmphasis: Property {
     public init(shape: EmphasisShape, fill: EmphasisFill = .filled, color: TextEmphasisColor? = nil) {
         self = .config(Configuration(style: .shape(shape, fill), color: color))
     }
-    
+
     /// Creates a new text emphasis with a string character and optional color
     /// - Parameters:
     ///   - string: The string character to use as the emphasis mark
@@ -60,15 +60,15 @@ public enum TextEmphasis: Property {
     public init(string: CSSString, color: TextEmphasisColor? = nil) {
         self = .config(Configuration(style: .string(string), color: color))
     }
-    
+
     /// Configuration for a text emphasis
     public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The style of the emphasis marks
         public let style: TextEmphasisStyle
-        
+
         /// The color of the emphasis marks
         public let color: TextEmphasisColor?
-        
+
         /// Creates a new text emphasis configuration with style and optional color
         /// - Parameters:
         ///   - style: The style of the emphasis marks
@@ -77,13 +77,13 @@ public enum TextEmphasis: Property {
             self.style = style
             self.color = color
         }
-        
+
         /// CSS string representation
         public var description: String {
             if let color = color {
                 return "\(style) \(color)"
             }
-            
+
             return style.description
         }
     }
@@ -108,22 +108,22 @@ extension TextEmphasis {
     public static var none: TextEmphasis {
         .config(Configuration(style: .none))
     }
-    
+
     /// Filled dot emphasis with optional color
     public static func filledDot(color: TextEmphasisColor? = nil) -> TextEmphasis {
         .config(Configuration(style: .filledDot, color: color))
     }
-    
+
     /// Filled circle emphasis with optional color
     public static func filledCircle(color: TextEmphasisColor? = nil) -> TextEmphasis {
         .config(Configuration(style: .filledCircle, color: color))
     }
-    
+
     /// Filled triangle emphasis with optional color
     public static func filledTriangle(color: TextEmphasisColor? = nil) -> TextEmphasis {
         .config(Configuration(style: .filledTriangle, color: color))
     }
-    
+
     /// Single character emphasis with optional color
     public static func character(_ char: String, color: TextEmphasisColor? = nil) -> TextEmphasis {
         .config(Configuration(style: .string(.init(char)), color: color))

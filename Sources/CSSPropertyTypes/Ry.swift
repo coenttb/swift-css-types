@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `ry` property defines the y-axis (vertical) radius of an SVG ellipse
 /// and the vertical curve of the corners of an SVG rectangle.
@@ -26,16 +26,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on ry](https://developer.mozilla.org/en-US/docs/Web/CSS/ry)
 public enum Ry: Property, LengthPercentageConvertible {
     public static let property: String = "ry"
-    
+
     /// A length-percentage value for the vertical radius
     case lengthPercentage(LengthPercentage)
-    
+
     /// Auto value (uses the rx value, or 0 if both are auto)
     case auto
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

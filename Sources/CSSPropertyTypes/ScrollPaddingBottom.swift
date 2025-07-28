@@ -1,7 +1,6 @@
 //
 // ScrollPaddingBottom.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-bottom` CSS property defines offsets for the bottom of the optimal viewing region of the scrollport:
@@ -17,15 +16,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingBottom: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-bottom"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"
@@ -33,12 +32,12 @@ public enum ScrollPaddingBottom: Property, LengthPercentageConvertible, CustomSt
         case .global(let global): return global.description
         }
     }
-    
+
     /// Creates a ScrollPaddingBottom using a length
     public static func px(_ value: Double) -> Self {
         .length(.px(value))
     }
-    
+
     /// Creates a ScrollPaddingBottom using a percentage
     public static func percent(_ value: Double) -> Self {
         .percentage(.init(value))

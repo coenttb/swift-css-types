@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `max-block-size` property defines the maximum size of an element in the block direction.
 /// When writing mode is horizontal, this refers to the element's maximum height. When writing mode
@@ -19,13 +19,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on max-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size)
 public enum MaxBlockSize: Property {
     public static let property: String = "max-block-size"
-    
+
     /// A specific size value (length, percentage, or calculated value)
     case size(Size)
-    
+
     /// No maximum block-size constraint
     case none
-    
+
     /// A global CSS value
     case global(CSSTypeTypes.Global)
 }
@@ -51,19 +51,19 @@ extension MaxBlockSize: LengthConvertible {
     }
 }
 
-extension MaxBlockSize {    
+extension MaxBlockSize {
     /// Size based on the content's preferred size
     public static let maxContent: MaxBlockSize = .size(.maxContent)
-    
+
     /// Size based on the content's minimum size
     public static let minContent: MaxBlockSize = .size(.minContent)
-    
+
     /// Size that uses available space up to the max-content size
     public static let fitContent: MaxBlockSize = .size(.fitContent)
-    
+
     /// Size to fit within the element while preserving aspect ratio
     public static let contain: MaxBlockSize = .size(.contain)
-    
+
     /// Size to cover the entire element while preserving aspect ratio
     public static let cover: MaxBlockSize = .size(.cover)
 }
@@ -76,7 +76,7 @@ extension MaxBlockSize: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a max-block-size with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

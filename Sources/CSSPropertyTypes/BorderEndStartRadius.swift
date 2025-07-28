@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-end-start-radius` property, which defines a logical border radius on an element,
 /// which maps to a physical border radius depending on the element's writing-mode, direction, and text-orientation.
@@ -41,15 +41,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-end-start-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-end-start-radius)
 public enum BorderEndStartRadius: Property {
-    
+
     public static let property: String = "border-end-start-radius"
-    
+
     /// A single radius applied to both the horizontal and vertical dimensions
     case radius(LengthPercentage)
-    
+
     /// Different radii for horizontal and vertical dimensions
     case horizontal_vertical(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

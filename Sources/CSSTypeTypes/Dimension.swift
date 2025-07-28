@@ -15,7 +15,7 @@ import Foundation
 public protocol Dimension: Sendable, Hashable, CustomStringConvertible {
     /// The numeric value of the dimension
     var value: Double { get }
-    
+
     /// The unit of the dimension
     var unit: String { get }
 }
@@ -46,10 +46,10 @@ extension Dimension {
 public struct GenericDimension: Dimension {
     /// The numeric value of the dimension
     public let value: Double
-    
+
     /// The unit of the dimension
     public let unit: String
-    
+
     /// Creates a new dimension with the specified value and unit
     ///
     /// - Parameters:
@@ -59,7 +59,7 @@ public struct GenericDimension: Dimension {
         self.value = value
         self.unit = unit
     }
-    
+
     /// Creates a new dimension with the specified value and unit
     ///
     /// - Parameters:

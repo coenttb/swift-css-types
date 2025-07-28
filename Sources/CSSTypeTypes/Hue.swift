@@ -18,11 +18,10 @@ import Foundation
 public enum Hue: Sendable, Hashable, AngleConvertible {
     /// Hue expressed as a number (interpreted as degrees)
     case number(Number)
-    
+
     /// Hue expressed as an angle
     case angle(Angle)
-    
-    
+
     /// Normalizes the hue angle to its equivalent angle in the range [0, 360) degrees
     ///
     /// This method converts the hue angle to degrees and then ensures that the value
@@ -31,7 +30,7 @@ public enum Hue: Sendable, Hashable, AngleConvertible {
     /// - Returns: The normalized hue angle in degrees
     public func normalizedDegrees() -> Double {
         let degrees: Double
-        
+
         switch self {
         case .number(let number):
             degrees = number.value
@@ -48,7 +47,7 @@ public enum Hue: Sendable, Hashable, AngleConvertible {
                 degrees = value * 360.0
             }
         }
-        
+
         // Normalize to [0, 360)
         return ((degrees.truncatingRemainder(dividingBy: 360.0)) + 360.0).truncatingRemainder(dividingBy: 360.0)
     }

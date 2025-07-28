@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-border-repeat` property, which defines how the mask border image is repeated
 /// or stretched to fill the border area.
@@ -56,38 +56,38 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-border-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-repeat)
 public enum MaskBorderRepeat: Property {
     public static let property: String = "mask-border-repeat"
-    
+
     /// Same repeat style for all sides
     case all(RepeatStyle)
-    
+
     /// Different repeat styles for horizontal (top & bottom) and vertical (left & right) sides
     case horizontal_vertical(RepeatStyle, RepeatStyle)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Repeat style options for mask borders
     public enum RepeatStyle: String, Sendable, Hashable {
         /// Stretch the mask border image to fill the area
         case stretch
-        
+
         /// Tile the mask border image (may be clipped if not exact fit)
         case `repeat`
-        
+
         /// Tile the mask border image and scale it to fit exactly
         case round
-        
+
         /// Tile the mask border image with space between tiles
         case space
     }
-    
+
     /// Creates a mask-border-repeat with the same style for all sides
     ///
     /// - Parameter style: The repeat style for all sides
     public init(_ style: RepeatStyle) {
         self = .all(style)
     }
-    
+
     /// Creates a mask-border-repeat with different styles for horizontal and vertical sides
     ///
     /// - Parameters:
@@ -96,19 +96,19 @@ public enum MaskBorderRepeat: Property {
     public init(_ horizontal: RepeatStyle, _ vertical: RepeatStyle) {
         self = .horizontal_vertical(horizontal, vertical)
     }
-    
+
     /// Default repeat style (stretch)
     public static let `default` = MaskBorderRepeat(.stretch)
-    
+
     /// Stretch the mask border image to fill the area
     public static let stretch = MaskBorderRepeat(.stretch)
-    
+
     /// Tile the mask border image (may be clipped if not exact fit)
     public static let `repeat` = MaskBorderRepeat(.repeat)
-    
+
     /// Tile the mask border image and scale it to fit exactly
     public static let round = MaskBorderRepeat(.round)
-    
+
     /// Tile the mask border image with space between tiles
     public static let space = MaskBorderRepeat(.space)
 }

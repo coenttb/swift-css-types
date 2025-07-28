@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-moz-force-broken-image-icon` property can be used to force the broken
 /// image icon to be shown even when a broken image has an alt attribute.
@@ -30,16 +30,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -moz-force-broken-image-icon](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-force-broken-image-icon)
 public enum MozForceBrokenImageIcon: Property {
     public static let property: String = "-moz-force-broken-image-icon"
-    
+
     /// Do not show broken image icon when alt text exists (default)
     case off
-    
+
     /// Show broken image icon even when alt text exists
     case on
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .off:

@@ -35,14 +35,14 @@ import Foundation
 /// ```
 public struct CounterStyle: AtRule {
     public static let identifier: String = "container-style"
-    
+
     public var rawValue: String
     private var name: String
     private var descriptors: [String: String] = [:]
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
-        
+
         // Extract name from rawValue for future reference
         // This is a simplified implementation; a proper parser would be more complex
         if let nameRange = rawValue.range(of: "@counter-style\\s+([\\w-]+)\\s*\\{", options: .regularExpression),
@@ -52,7 +52,7 @@ public struct CounterStyle: AtRule {
             self.name = ""
         }
     }
-    
+
     /// Creates a counter style with the specified name.
     ///
     /// - Parameter name: The name of the counter style.
@@ -60,20 +60,20 @@ public struct CounterStyle: AtRule {
         self.name = name
         self.rawValue = "@counter-style \(name) {}"
     }
-    
+
     /// Updates the raw value based on the current descriptors.
     private mutating func updateRawValue() {
         let descriptorString = descriptors.map { key, value in
             "  \(key): \(value);"
         }.joined(separator: "\n")
-        
+
         if descriptorString.isEmpty {
             rawValue = "@counter-style \(name) {}"
         } else {
             rawValue = "@counter-style \(name) {\n\(descriptorString)\n}"
         }
     }
-    
+
     /// Sets the system descriptor.
     ///
     /// - Parameter system: The counting system to use.
@@ -84,7 +84,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the symbols descriptor.
     ///
     /// - Parameter symbols: The symbols to use for marker representation.
@@ -95,7 +95,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the additive-symbols descriptor.
     ///
     /// - Parameter symbols: An array of tuples containing weights and symbols.
@@ -109,7 +109,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the negative descriptor.
     ///
     /// - Parameters:
@@ -122,7 +122,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the prefix descriptor.
     ///
     /// - Parameter prefix: The prefix to use.
@@ -133,7 +133,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the suffix descriptor.
     ///
     /// - Parameter suffix: The suffix to use.
@@ -144,7 +144,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the range descriptor.
     ///
     /// - Parameter range: The range over which the counter style is applicable.
@@ -155,7 +155,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the pad descriptor.
     ///
     /// - Parameters:
@@ -168,7 +168,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the speak-as descriptor.
     ///
     /// - Parameter speakAs: The speech synthesis style.
@@ -179,7 +179,7 @@ public struct CounterStyle: AtRule {
         style.updateRawValue()
         return style
     }
-    
+
     /// Sets the fallback descriptor.
     ///
     /// - Parameter fallback: The name of the counter style to fall back to.
@@ -199,37 +199,37 @@ extension CounterStyle {
     public enum System: String, Hashable, Sendable {
         /// A cyclic counter system cycles repeatedly through its provided symbols.
         case cyclic
-        
+
         /// A numeric counter system interprets the symbols as digits in a place-value numbering system.
         case numeric
-        
+
         /// An alphabetic counter system interprets the symbols as alphabetic digits.
         case alphabetic
-        
+
         /// A symbolic counter system cycles through the provided symbols, doubling, tripling, etc. them at predefined intervals.
         case symbolic
-        
+
         /// An additive counter system uses a combination of its symbols, with the numeric weight of each symbol adding up to the final value.
         case additive
-        
+
         /// A fixed counter system just cycles through a fixed set of counter symbols, stopping when it runs out of symbols.
         case fixed
-        
+
         /// Extends an existing counter style, reusing its values for any descriptors not explicitly provided.
         case extends
     }
-    
+
     /// Represents the range over which a counter style is applicable.
     public enum Range: CustomStringConvertible, Hashable, Sendable {
         /// A specific range with start and end values.
         case specific(min: Int, max: Int)
-        
+
         /// An auto range, which is the default.
         case auto
-        
+
         /// An infinite range, for counters that work with any value.
         case infinite
-        
+
         public var description: String {
             switch self {
             case .specific(let min, let max):
@@ -240,29 +240,29 @@ extension CounterStyle {
                 return "infinite"
             }
         }
-        
+
         public var rawValue: String {
             description
         }
     }
-    
+
     /// Represents the speech synthesis style for a counter style.
     public enum SpeakAs: String, Hashable, Sendable {
         /// Speak as spelled out numbers (e.g., "one, two, three").
         case numbers
-        
+
         /// Speak as individual words (e.g., "a, b, c").
         case words
-        
+
         /// Speak as a specific counter style.
         case counters
-        
+
         /// Speak as spelled out numbers, but in another counter style.
         case countersStyle = "counters style"
-        
+
         /// Leave unspoken.
         case none
-        
+
         /// Use auto-detection.
         case auto
     }

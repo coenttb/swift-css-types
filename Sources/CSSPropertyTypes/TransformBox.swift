@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transform-box` property defines the layout box to which the `transform`,
 /// individual transform properties (`translate`, `scale`, `rotate`), and `transform-origin` properties relate.
@@ -18,30 +18,30 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on transform-box](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-box)
 public enum TransformBox: Property {
-    
+
     public static let property: String = "transform-box"
-    
+
     /// The content box is used as the reference box.
     ///
     /// The reference box of a `<table>` is the border box of its table wrapper box, not its table box.
     case contentBox
-    
+
     /// The border box is used as the reference box.
     ///
     /// The reference box of a `<table>` is the border box of its table wrapper box, not its table box.
     case borderBox
-    
+
     /// The object bounding box is used as the reference box.
     ///
     /// For elements with associated CSS layout box, acts as `content-box`.
     /// This is particularly useful for SVG elements.
     case fillBox
-    
+
     /// The stroke bounding box is used as the reference box.
     ///
     /// For elements with associated CSS layout box, acts as `border-box`.
     case strokeBox
-    
+
     /// The nearest SVG viewport is used as the reference box.
     ///
     /// If a `viewBox` attribute is specified for the SVG viewport creating element,
@@ -52,7 +52,7 @@ public enum TransformBox: Property {
     /// For elements with associated CSS layout box, acts as `border-box`.
     /// This is the default value.
     case viewBox
-    
+
     case global(CSSTypeTypes.Global)
 }
 
@@ -81,7 +81,7 @@ extension TransformBox: CustomStringConvertible {
 extension TransformBox {
     /// The default transform box (view-box)
     public static let defaultValue: TransformBox = .viewBox
-    
+
     /// Use for CSS elements to use the content area as reference
     ///
     /// For SVG elements with associated CSS layout, acts like content-box.
@@ -90,7 +90,7 @@ extension TransformBox {
     public static func content() -> TransformBox {
         .contentBox
     }
-    
+
     /// Use for CSS elements to use the border area as reference
     ///
     /// This includes padding and border, but not margin.
@@ -99,7 +99,7 @@ extension TransformBox {
     public static func border() -> TransformBox {
         .borderBox
     }
-    
+
     /// Use for SVG elements to transform relative to their bounding box
     ///
     /// This makes the transform origin the center of the SVG element's bounding box.
@@ -110,7 +110,7 @@ extension TransformBox {
     public static func svgBoundingBox() -> TransformBox {
         .fillBox
     }
-    
+
     /// Use for SVG elements to transform relative to the SVG viewport
     ///
     /// This makes the transform origin relative to the SVG viewport.

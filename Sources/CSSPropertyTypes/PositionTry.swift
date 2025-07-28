@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `position-try` property is a shorthand that sets both `position-try-order` and 
 /// `position-try-fallbacks` properties.
@@ -28,16 +28,16 @@ public enum PositionTry: Property {
     public static let property: String = "position-try"
     /// Setting both order and fallbacks properties
     case combined(PositionTryOrder, PositionTryFallbacks)
-    
+
     /// Setting just the order property
     case order(PositionTryOrder)
-    
+
     /// Setting just the fallbacks property
     case fallbacks(PositionTryFallbacks)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .combined(let order, let fallbacks):
@@ -50,7 +50,7 @@ public enum PositionTry: Property {
             return global.description
         }
     }
-    
+
     /// Create a position-try with order and fallbacks
     public static func orderAndFallbacks(order: PositionTryOrder, fallbacks: PositionTryFallbacks) -> PositionTry {
         .combined(order, fallbacks)

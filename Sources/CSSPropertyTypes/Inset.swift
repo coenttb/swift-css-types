@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `inset` property is a shorthand that corresponds to the `top`, `right`, `bottom`, and/or `left` properties.
 ///
@@ -27,24 +27,24 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on inset](https://developer.mozilla.org/en-US/docs/Web/CSS/inset)
 public enum Inset: Property, LengthPercentageConvertible {
     public static let property: String = "inset"
-    
+
     /// Auto value for all sides
     case auto
-    
+
     /// Values for each side (top, right, bottom, left)
     case sides(top: Value, right: Value, bottom: Value, left: Value)
-    
+
     /// Global values (inherit, initial, etc.)
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a value for each side that can be either a length/percentage or auto
     public enum Value: Hashable, Sendable, LengthPercentageConvertible {
         /// Auto value (browser-determined)
         case auto
-        
+
         /// Specific length or percentage value
         case lengthPercentage(LengthPercentage)
-        
+
         public var description: String {
             switch self {
             case .auto:
@@ -53,13 +53,13 @@ public enum Inset: Property, LengthPercentageConvertible {
                 return value.description
             }
         }
-        
+
         /// Converts a LengthPercentage to a Value
         public static func from(_ value: LengthPercentage) -> Value {
             .lengthPercentage(value)
         }
     }
-    
+
     /// Initialize with the same value for all sides
     public init(_ value: LengthPercentage) {
         self = .sides(
@@ -69,7 +69,7 @@ public enum Inset: Property, LengthPercentageConvertible {
             left: .lengthPercentage(value)
         )
     }
-    
+
     /// Initialize with auto for all sides
     public init(auto: Bool = true) {
         if auto {
@@ -83,7 +83,7 @@ public enum Inset: Property, LengthPercentageConvertible {
             )
         }
     }
-    
+
     /// Initialize with vertical and horizontal values
     public init(vertical: LengthPercentage, horizontal: LengthPercentage) {
         self = .sides(
@@ -93,7 +93,7 @@ public enum Inset: Property, LengthPercentageConvertible {
             left: .lengthPercentage(horizontal)
         )
     }
-    
+
     /// Initialize with top, horizontal, and bottom values (three-value syntax)
     public init(top: LengthPercentage, horizontal: LengthPercentage, bottom: LengthPercentage) {
         self = .sides(
@@ -103,7 +103,7 @@ public enum Inset: Property, LengthPercentageConvertible {
             left: .lengthPercentage(horizontal)
         )
     }
-    
+
     /// Initialize with four specific values
     public init(
         top: LengthPercentage,
@@ -118,7 +118,7 @@ public enum Inset: Property, LengthPercentageConvertible {
             left: .lengthPercentage(left)
         )
     }
-    
+
     /// Initialize with values that can be either lengths or auto
     public init(
         top: Value,
@@ -128,12 +128,12 @@ public enum Inset: Property, LengthPercentageConvertible {
     ) {
         self = .sides(top: top, right: right, bottom: bottom, left: left)
     }
-    
+
     public var description: String {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .sides(let top, let right, let bottom, let left):
             // Optimize output based on values
             if top == right && right == bottom && bottom == left {
@@ -149,12 +149,12 @@ public enum Inset: Property, LengthPercentageConvertible {
                 // All sides different - use four values
                 return "\(top.description) \(right.description) \(bottom.description) \(left.description)"
             }
-            
+
         case .global(let global):
             return global.description
         }
     }
-    
+
     public static func lengthPercentage(_ value: LengthPercentage) -> Inset {
         .init(value)
     }

@@ -1,8 +1,8 @@
 //
 // OffsetPosition.swift
 //
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `offset-position` property defines the initial position of an element along a path.
 ///
@@ -23,19 +23,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on offset-position](https://developer.mozilla.org/en-US/docs/Web/CSS/offset-position)
 public enum OffsetPosition: Property {
     public static let property: String = "offset-position"
-    
+
     /// Element is placed at 50% 50% of the containing block (default)
     case normal
-    
+
     /// Element is placed at its own top-left corner
     case auto
-    
+
     /// A position value (usi   ng the Position type)
     case position(CSSTypeTypes.Position)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates an offset-position with a position value
     ///
     /// - Parameter position: The position value
@@ -65,31 +65,31 @@ extension OffsetPosition: CustomStringConvertible {
 extension OffsetPosition {
     /// Creates an offset-position with the center position
     public static let center = OffsetPosition(.center)
-    
+
     /// Creates an offset-position with the top position
     public static let top = OffsetPosition(.top)
-    
+
     /// Creates an offset-position with the right position
     public static let right = OffsetPosition(.right)
-    
+
     /// Creates an offset-position with the bottom position
     public static let bottom = OffsetPosition(.bottom)
-    
+
     /// Creates an offset-position with the left position
     public static let left = OffsetPosition(.left)
-    
+
     /// Creates an offset-position with the top-left position
     public static let topLeft = OffsetPosition(.topLeft)
-    
+
     /// Creates an offset-position with the top-right position
     public static let topRight = OffsetPosition(.topRight)
-    
+
     /// Creates an offset-position with the bottom-left position
     public static let bottomLeft = OffsetPosition(.bottomLeft)
-    
+
     /// Creates an offset-position with the bottom-right position
     public static let bottomRight = OffsetPosition(.bottomRight)
-    
+
 //    /// Creates an offset-position with percentage values
 //    ///
 //    /// - Parameters:
@@ -121,7 +121,7 @@ extension OffsetPosition {
     public static func offsets(_ edge1: CSSTypeTypes.Position.Keyword, _ offset1: LengthPercentage, _ edge2: CSSTypeTypes.Position.Keyword, _ offset2: LengthPercentage) -> OffsetPosition {
         OffsetPosition(.offsets(edge1, offset1, edge2, offset2))
     }
-    
+
     /// Creates an offset-position with a single edge and offset
     ///
     /// - Parameters:

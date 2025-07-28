@@ -26,14 +26,14 @@ public enum AnglePercentage: Sendable, Hashable, ExpressibleByIntegerLiteral, Ex
     /// rotate(0.5turn);
     /// ```
     case angle(Angle)
-    
+
     /// A percentage value that resolves to an angle in context
     /// ```css
     /// hue-rotate(50%);
     /// rotate(50%);
     /// ```
     case percentage(Percentage)
-    
+
     /// Creates an angle-percentage value from an integer literal (as degrees)
     ///
     /// This allows you to use integers directly where angle-percentages are expected.
@@ -52,7 +52,7 @@ public enum AnglePercentage: Sendable, Hashable, ExpressibleByIntegerLiteral, Ex
     public init(integerLiteral value: Int) {
         self = .angle(.deg(Double(value)))
     }
-    
+
     /// Creates an angle-percentage value from a floating-point literal (as degrees)
     ///
     /// This allows you to use decimals directly where angle-percentages are expected.

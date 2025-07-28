@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-name property specifies the names of one or more @keyframes at-rules
 /// describing the animation or animations to apply to the element.
@@ -13,27 +13,26 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation-name](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name)
 public enum AnimationName: Property {
-    
+
     public static let property: String = "animation-name"
-    
+
     /// No animation should be applied (default)
     case none
-    
-   
+
     /// A custom keyframe name
     case keyframes(KeyFramesName)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public enum KeyFramesName: Sendable, Hashable, CustomStringConvertible {
         case customIdent(Ident)
         case string(CSSString)
-        
-        public init(_ string: String){
+
+        public init(_ string: String) {
             self = .customIdent(.init(string))
         }
-        
+
         public var description: String {
             switch self {
             case .customIdent(let ident):
@@ -72,13 +71,11 @@ extension AnimationName: ExpressibleByStringLiteral {
             // Remove the quotes and treat as a string with double quotes
             let trimmed = String(value.dropFirst().dropLast())
             self = .keyframes(.string(.init(trimmed, quotes: .double)))
-        }
-        else if value.starts(with: "'") && value.hasSuffix("'") {
+        } else if value.starts(with: "'") && value.hasSuffix("'") {
             // Remove the quotes and treat as a string with single quotes
             let trimmed = String(value.dropFirst().dropLast())
             self = .keyframes(.string(.init(trimmed, quotes: .single)))
-        }
-        else {
+        } else {
             // Treat as a custom identifier
             self = .keyframes(.customIdent(.init(value)))
         }

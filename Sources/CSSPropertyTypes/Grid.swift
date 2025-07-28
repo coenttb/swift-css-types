@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid` property is a shorthand property that sets all of the explicit and implicit grid properties in a single declaration.
 ///
@@ -20,24 +20,24 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
 public enum Grid: Property {
-    
+
     public static let property: String = "grid"
-    
+
     /// Sets all grid values to their initial value
     case none
-    
+
     /// Defines grid template with rows and columns
     case template([GridTrackSize], [GridTrackSize])
-    
+
     /// Defines an auto-flow grid with columns
     case autoFlow(AutoFlowDirection, AutoFlowDensity? = nil, GridTrackSize? = nil)
-    
+
     /// Defines rows with auto-flow columns
     case explicit([GridTrackSize], AutoFlow)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -69,7 +69,7 @@ public enum Grid: Property {
 public enum AutoFlowDirection: Sendable, Hashable {
     /// Row direction
     case row
-    
+
     /// Column direction
     case column
 }
@@ -78,7 +78,7 @@ public enum AutoFlowDirection: Sendable, Hashable {
 public enum AutoFlowDensity: Sendable, Hashable {
     /// Normal density
     case normal
-    
+
     /// Dense packing algorithm
     case dense
 }
@@ -87,18 +87,18 @@ public enum AutoFlowDensity: Sendable, Hashable {
 public struct AutoFlow: Sendable, Hashable, CustomStringConvertible {
     /// Direction of auto-flow
     let direction: AutoFlowDirection
-    
+
     /// Density of auto-flow
     let density: AutoFlowDensity
-    
+
     /// Auto track size
     let trackSize: GridTrackSize?
-    
+
     /// Creates an auto-flow configuration
     public static func autoFlow(_ direction: AutoFlowDirection, _ density: AutoFlowDensity = .normal, _ trackSize: GridTrackSize? = nil) -> AutoFlow {
         return AutoFlow(direction: direction, density: density, trackSize: trackSize)
     }
-    
+
     public var description: String {
         var result = "auto-flow"
         if density == .dense {
@@ -115,28 +115,28 @@ public struct AutoFlow: Sendable, Hashable, CustomStringConvertible {
 public enum GridTrackSize: Sendable, Hashable, CustomStringConvertible {
     /// Auto sizing
     case auto
-    
+
     /// Fixed length value
     case px(Double)
-    
+
     /// Percentage value
     case percentage(Percentage)
-    
+
     /// Flexible length
     case fr(Double)
-    
+
     /// Minimum content size
     case minContent
-    
+
     /// Maximum content size
     case maxContent
-    
+
     /// Min-max value range
     case minMax(MinMaxValue, MinMaxValue)
-    
+
     /// Fit content to argument
     case fitContent(LengthPercentage)
-    
+
     public var description: String {
         switch self {
         case .auto:

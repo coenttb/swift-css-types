@@ -18,7 +18,7 @@ import Foundation
 public enum Frequency: Sendable, Hashable {
     /// Frequency in hertz (Hz)
     case hz(Number)
-    
+
     /// Frequency in kilohertz (kHz)
     case khz(Number)
 }

@@ -28,7 +28,7 @@ extension Double {
     public static func truncatingRemainder(_ value: Double) -> String {
         return "\(value.truncatingRemainder(dividingBy: 1) == 0 ? String(Int(value)) : String(value))"
     }
-    
+
     /// Instance method version of truncatingRemainder that operates on the Double value itself.
     ///
     /// Examples:
@@ -44,7 +44,7 @@ extension Double {
     public func truncatingRemainder() -> String {
         Self.truncatingRemainder(self)
     }
-    
+
     /// Formats a Double value as a string with a specified number of decimal places,
     /// removing the decimal point and trailing zeros if the value is a whole number.
     ///
@@ -68,12 +68,12 @@ extension Double {
         } else {
             let factor = pow(10, Double(digits))
             let rounded = (value * factor).rounded() / factor
-            
+
             // Format the string with the specified number of decimal places
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = digits
             formatter.minimumFractionDigits = 1  // Always show at least .0 if not an integer
-            
+
             if let formattedString = formatter.string(from: NSNumber(value: rounded)) {
                 return formattedString
             } else {
@@ -81,7 +81,7 @@ extension Double {
             }
         }
     }
-    
+
     /// Instance method version of truncatingRemainder with specified decimal places.
     ///
     /// Examples:

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `margin-inline` shorthand property defines both the logical inline start and end margins
 /// of an element, which maps to physical margins depending on the element's writing mode,
@@ -24,17 +24,17 @@ public enum MarginInline: Property {
     public static let property: String = "margin-inline"
     /// Single value for both inline-start and inline-end margins
     case single(Margin)
-    
+
     /// Different values for inline-start and inline-end margins
     case double(Margin, Margin)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
 }
 
 extension MarginInline {
-    
+
     /// Factory method for auto margins (centers the element in its container if used with both sides)
     public static var auto: MarginInline {
         .single(.auto)
@@ -65,10 +65,10 @@ extension MarginInline: CustomStringConvertible {
         switch self {
         case .single(let margin):
             return margin.description
-            
+
         case .double(let start, let end):
             return "\(start) \(end)"
-            
+
         case .global(let global):
             return global.description
         }

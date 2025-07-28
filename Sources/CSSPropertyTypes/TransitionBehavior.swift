@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transition-behavior` property specifies whether transitions will be started for
 /// properties whose animation behavior is discrete.
@@ -25,13 +25,13 @@ public enum TransitionBehavior: Property {
     public static let property: String = "transition-behavior"
     /// Allow transitions for discrete properties
     case allowDiscrete
-    
+
     /// Do not allow transitions for discrete properties (default)
     case normal
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .allowDiscrete:

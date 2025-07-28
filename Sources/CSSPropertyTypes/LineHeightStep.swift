@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `line-height-step` property sets the step unit for line box heights.
 ///
@@ -20,12 +20,12 @@ public enum LineHeightStep: Property, LengthConvertible, ExpressibleByFloatLiter
     public static let property: String = "line-height-step"
     /// A specific length value defining the step unit
     case length(Length)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // MARK: - Protocol Conformance
-    
+
     /// Implementation of the CustomStringConvertible protocol
     public var description: String {
         switch self {
@@ -35,15 +35,14 @@ public enum LineHeightStep: Property, LengthConvertible, ExpressibleByFloatLiter
             return global.description
         }
     }
-    
-    
+
     // MARK: - Convenience initializers
-    
+
     /// Create a line-height-step using a float literal as pixels
     public init(floatLiteral value: Double) {
         self = .px(value)
     }
-    
+
     /// Create a line-height-step using an integer literal as pixels
     public init(integerLiteral value: Int) {
         self = .px(Double(value))

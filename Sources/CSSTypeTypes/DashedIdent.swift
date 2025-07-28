@@ -20,7 +20,7 @@ import Foundation
 public struct DashedIdent: Sendable, Hashable {
     /// The string value of the dashed identifier
     private let value: String
-    
+
     /// Creates a new dashed identifier with the given value
     ///
     /// - Parameter value: A valid CSS dashed identifier string
@@ -33,7 +33,7 @@ public struct DashedIdent: Sendable, Hashable {
             self.value = "--\(value)"
         }
     }
-    
+
     /// Creates a dashed identifier from a string literal
     ///
     /// - Parameter value: A string literal to use as the identifier
@@ -41,7 +41,7 @@ public struct DashedIdent: Sendable, Hashable {
     public init(stringLiteral value: String) {
         self.init(value)
     }
-    
+
     /// Creates a custom dashed identifier with a valid value
     ///
     /// - Parameter value: A string to convert to a valid CSS dashed identifier
@@ -51,7 +51,7 @@ public struct DashedIdent: Sendable, Hashable {
     public static func custom(_ value: String) -> DashedIdent {
         return DashedIdent(value)
     }
-    
+
     /// Creates a CSS custom property variable reference
     ///
     /// - Parameter name: The name of the custom property (with or without `--` prefix)
@@ -59,7 +59,7 @@ public struct DashedIdent: Sendable, Hashable {
     public static func `var`(_ name: DashedIdent) -> String {
         return "var(\(name))"
     }
-    
+
     /// Creates a CSS custom property variable reference with a fallback value
     ///
     /// - Parameters:

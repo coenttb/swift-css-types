@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `mix-blend-mode` property sets how an element's content should blend with the content
 /// of the element's parent and the element's background.
@@ -17,65 +17,65 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode)
 public enum MixBlendMode: Property {
-    
+
     public static let property: String = "mix-blend-mode"
-    
+
     // Standard blend modes
     /// The final color is the top color, regardless of the bottom color
     case normal
-    
+
     /// Multiplies the top and bottom colors
     case multiply
-    
+
     /// Inverts colors, multiplies them, and inverts that value
     case screen
-    
+
     /// Multiplies if the bottom color is darker, screens if the bottom color is lighter
     case overlay
-    
+
     /// Selects the darkest value from each color channel
     case darken
-    
+
     /// Selects the lightest value from each color channel
     case lighten
-    
+
     /// Divides the bottom color by the inverse of the top color
     case colorDodge
-    
+
     /// Inverts the bottom color, divides by the top color, and inverts again
     case colorBurn
-    
+
     /// Multiplies if the top color is darker, screens if the top color is lighter
     case hardLight
-    
+
     /// Similar to hard-light, but softer
     case softLight
-    
+
     /// Subtracts the darker of the two colors from the lighter one
     case difference
-    
+
     /// Similar to difference, but with less contrast
     case exclusion
-    
+
     /// Applies the hue of the top color with saturation and luminosity of the bottom color
     case hue
-    
+
     /// Applies the saturation of the top color with hue and luminosity of the bottom color
     case saturation
-    
+
     /// Applies the hue and saturation of the top color with luminosity of the bottom color
     case color
-    
+
     /// Applies the luminosity of the top color with hue and saturation of the bottom color
     case luminosity
-    
+
     // Additional compositing operators
     /// Blending using the plus-darker compositing operator
     case plusDarker
-    
+
     /// Blending using the plus-lighter compositing operator
     case plusLighter
-    
+
     case global(Global)
 }
 

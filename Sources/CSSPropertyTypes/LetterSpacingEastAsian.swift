@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `letter-spacing-east-asian` property controls the spacing behavior specifically
 /// for East Asian text (Chinese, Japanese, Korean).
@@ -20,11 +20,11 @@ public enum LetterSpacingEastAsian: Property, LengthConvertible {
     public static let property: String = "letter-spacing-east-asian"
     /// Uses the default spacing as specified by the font.
     case normal
-    
+
     /// Adds or removes a specific amount of space between East Asian characters.
     /// Positive values increase spacing, negative values decrease it.
     case length(Length)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 
@@ -37,10 +37,10 @@ extension LetterSpacingEastAsian: CustomStringConvertible {
         switch self {
         case .normal:
             return "normal"
-            
+
         case .length(let value):
             return value.description
-            
+
         case .global(let global):
             return global.description
         }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `clip` property defines a visible portion of an element.
 /// The clip property applies only to absolutely positioned elements
@@ -18,10 +18,10 @@ public enum Clip: Property {
     public static let property: String = "clip"
     /// The element does not clip (default).
     case auto
-    
+
     /// A rectangular shape that clips the element.
     case rect(ClipRect)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -30,16 +30,16 @@ public enum Clip: Property {
 public struct ClipRect: Sendable, Hashable {
     /// Offset from the top edge (or auto)
     public var top: ClipValue
-    
+
     /// Offset from the right edge (or auto)
     public var right: ClipValue
-    
+
     /// Offset from the bottom edge (or auto)
     public var bottom: ClipValue
-    
+
     /// Offset from the left edge (or auto)
     public var left: ClipValue
-    
+
     /// Initializes a clip rectangle with specific values
     public init(top: ClipValue, right: ClipValue, bottom: ClipValue, left: ClipValue) {
         self.top = top
@@ -47,7 +47,7 @@ public struct ClipRect: Sendable, Hashable {
         self.bottom = bottom
         self.left = left
     }
-    
+
     /// Initializes a clip rectangle with numeric pixel values
     public init(top: Double, right: Double, bottom: Double, left: Double) {
         self.top = .length(.px(top))
@@ -61,7 +61,7 @@ public struct ClipRect: Sendable, Hashable {
 public enum ClipValue: Sendable, Hashable, LengthConvertible {
     /// A length value
     case length(Length)
-    
+
     /// An auto value, which clips to the inside border edge
     case auto
 }
@@ -91,10 +91,10 @@ extension Clip: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .rect(let rect):
             return rect.description
-            
+
         case .global(let global):
             return global.description
         }
@@ -107,7 +107,7 @@ extension Clip {
     public static func rect(top: ClipValue, right: ClipValue, bottom: ClipValue, left: ClipValue) -> Clip {
         .rect(ClipRect(top: top, right: right, bottom: bottom, left: left))
     }
-    
+
     /// Creates a rectangular clip with pixel values
     public static func rect(top: Double, right: Double, bottom: Double, left: Double) -> Clip {
         .rect(ClipRect(top: top, right: right, bottom: bottom, left: left))

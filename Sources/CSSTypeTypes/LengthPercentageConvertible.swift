@@ -39,7 +39,7 @@ extension LengthPercentageConvertible {
     public static func length(_ length: CSSTypeTypes.Length) -> Self {
         .lengthPercentage(.length(length))
     }
-    
+
     public static func percentage(_ percentage: CSSTypeTypes.Percentage) -> Self {
         .lengthPercentage(.percentage(percentage))
     }
@@ -49,11 +49,10 @@ extension LengthPercentageConvertible {
     public static var zero: Self { .length(.zero) }
 }
 
-
 extension LengthPercentageConvertible {
     public init(
         _ value: LengthPercentage
-    ){
+    ) {
         self = .lengthPercentage(value)
     }
 }

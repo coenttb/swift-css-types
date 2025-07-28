@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-collapse` property, which determines whether table borders
 /// are collapsed or separated.
@@ -39,13 +39,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on border-collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse)
 public enum BorderCollapse: Property {
     public static let property: String = "border-collapse"
-    
+
     /// Cells share borders (collapsed borders)
     case collapse
-    
+
     /// Cells have distinct borders (separated borders)
     case separate
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

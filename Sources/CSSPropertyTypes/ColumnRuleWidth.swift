@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `column-rule-width` property sets the width of the line drawn between columns in a multi-column layout.
 ///
@@ -21,10 +21,10 @@ public enum ColumnRuleWidth: Property, LengthConvertible {
     case thin
     case medium
     case thick
-    
+
     /// A specific length value
     case length(Length)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -35,16 +35,16 @@ extension ColumnRuleWidth: CustomStringConvertible {
         switch self {
         case .thin:
             return "thin"
-            
+
         case .medium:
             return "medium"
-            
+
         case .thick:
             return "thick"
-            
+
         case .length(let length):
             return length.description
-            
+
         case .global(let global):
             return global.description
         }

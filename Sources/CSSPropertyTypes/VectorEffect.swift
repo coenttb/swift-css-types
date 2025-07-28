@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `vector-effect` property suppresses specific transformation effects in SVG.
 ///
@@ -21,15 +21,15 @@ public enum VectorEffect: Property {
     public static let property: String = "vector-effect"
     /// No vector effects are applied to the element, meaning it will be fully affected by transforms as normal.
     case none
-    
+
     /// The element's drawn stroke width will be physically equal in size to its defined stroke width,
     /// even if the element has been scaled up or down in size due to transforms of either itself or
     /// its coordinate system.
     case nonScalingStroke
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none: return "none"

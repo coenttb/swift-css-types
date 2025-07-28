@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `-webkit-text-stroke-color` property specifies the stroke (outline) color of characters of text.
 /// If this property is not set, the value of the `color` property is used.
@@ -36,23 +36,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-text-stroke-color](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke-color)
 public enum WebkitTextStrokeColor: Property, ColorConvertible {
     public static let property: String = "-webkit-text-stroke-color"
-    
+
     /// A specific color for the text stroke
     case color(CSSTypeTypes.Color)
-    
+
     /// Current text color
     case currentColor
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a WebkitTextStrokeColor from a Color
     ///
     /// - Parameter color: The stroke color
     public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
-    
+
     public var description: String {
         switch self {
         case .color(let color):

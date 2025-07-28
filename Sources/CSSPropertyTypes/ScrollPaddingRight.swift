@@ -1,7 +1,6 @@
 //
 // ScrollPaddingRight.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-right` CSS property defines offsets for the right of the optimal viewing region of the scrollport:
@@ -17,15 +16,15 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingRight: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-right"
-    
+
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"
@@ -33,12 +32,12 @@ public enum ScrollPaddingRight: Property, LengthPercentageConvertible, CustomStr
         case .global(let global): return global.description
         }
     }
-    
+
     /// Creates a ScrollPaddingRight using a length
     public static func px(_ value: Double) -> Self {
         .length(.px(value))
     }
-    
+
     /// Creates a ScrollPaddingRight using a percentage
     public static func percent(_ value: Double) -> Self {
         .percentage(.init(value))

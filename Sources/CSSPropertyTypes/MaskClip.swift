@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-clip` property, which determines the area which is affected by the mask.
 ///
@@ -66,34 +66,34 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-clip](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-clip)
 public enum MaskClip: Property {
     public static let property: String = "mask-clip"
-    
+
     /// The mask extends to the outside edge of the border (default)
     case borderBox
-    
+
     /// The mask extends to the outside edge of the padding
     case paddingBox
-    
+
     /// The mask is painted within the content box
     case contentBox
-    
+
     /// The mask extends to the outside edge of the margin
     case marginBox
-    
+
     /// For SVG elements, the mask is painted within the fill box
     case fillBox
-    
+
     /// For SVG elements, the mask is painted within the stroke box
     case strokeBox
-    
+
     /// For SVG elements, the mask is painted within the view box
     case viewBox
-    
+
     /// No clipping is applied to the mask
     case noClip
-    
+
     /// Multiple clip values for multiple masks
     case multiple([MaskClip])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -140,7 +140,7 @@ extension MaskClip: CustomStringConvertible {
 extension MaskClip {
     /// The default value for mask-clip (`border-box`)
     public static let `default` = MaskClip.borderBox
-    
+
     /// Creates a mask-clip with multiple values
     ///
     /// - Parameter clips: The mask clip values
@@ -151,7 +151,7 @@ extension MaskClip {
         }
         return .multiple(clips)
     }
-    
+
     /// Creates a mask-clip with multiple values
     ///
     /// - Parameter clips: The mask clip values

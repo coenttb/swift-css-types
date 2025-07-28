@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-right-width` property, which sets the width of the right border.
 ///
@@ -48,15 +48,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-right-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width)
 public enum BorderRightWidth: Property {
-    
+
     public static let property: String = "border-right-width"
-    
+
     /// A specific width for the right border
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-right-width with a specific border width
     ///
     /// - Parameter width: The width for the right border
@@ -95,13 +95,13 @@ extension BorderRightWidth: LengthConvertible {
 extension BorderRightWidth {
     /// The default border-right-width value (medium)
     public static let `default` = BorderRightWidth(.medium)
-    
+
     /// Creates a thin border-right-width
     public static let thin = BorderRightWidth(.thin)
-    
+
     /// Creates a medium border-right-width
     public static let medium = BorderRightWidth(.medium)
-    
+
     /// Creates a thick border-right-width
     public static let thick = BorderRightWidth(.thick)
 

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `break-inside` property sets how page, column, or region breaks should behave inside a generated box.
 /// If there is no generated box, the property is ignored.
@@ -24,22 +24,22 @@ public enum BreakInside: Property {
     public static let property: String = "break-inside"
     /// Allows, but does not force, any break (page, column, or region) to be inserted within the element.
     case auto
-    
+
     /// Avoids any break (page, column, or region) from being inserted within the element.
     case avoid
-    
+
     /// Avoids any page break within the element.
     case avoidPage
-    
+
     /// Avoids any column break within the element.
     case avoidColumn
-    
+
     /// Avoids any region break within the element.
     case avoidRegion
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

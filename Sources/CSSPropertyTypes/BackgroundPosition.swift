@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-position` property, which sets the initial position of a background image.
 ///
@@ -55,23 +55,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
 public enum BackgroundPosition: Property {
     public static let property: String = "background-position"
-    
+
     /// A single position value
     case single(CSSTypeTypes.Position)
-    
+
     /// Multiple position values for multiple backgrounds
     case multiple([CSSTypeTypes.Position])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a background position with a single position
     ///
     /// - Parameter position: The position value
     public init(_ position: CSSTypeTypes.Position) {
         self = .single(position)
     }
-    
+
     /// Creates a background position with multiple positions
     ///
     /// - Parameter positions: The position values
@@ -112,34 +112,34 @@ extension BackgroundPosition: CustomStringConvertible {
 extension BackgroundPosition {
     /// The default value for background-position (`0% 0%`)
     public static let `default` = BackgroundPosition(.values(.percentage(0), .percentage(0)))
-    
+
     /// Position in the center
     public static let center = BackgroundPosition(.center)
-    
+
     /// Position at the top
     public static let top = BackgroundPosition(.top)
-    
+
     /// Position at the right
     public static let right = BackgroundPosition(.right)
-    
+
     /// Position at the bottom
     public static let bottom = BackgroundPosition(.bottom)
-    
+
     /// Position at the left
     public static let left = BackgroundPosition(.left)
-    
+
     /// Position at the top left (default)
     public static let topLeft = BackgroundPosition(.topLeft)
-    
+
     /// Position at the top right
     public static let topRight = BackgroundPosition(.topRight)
-    
+
     /// Position at the bottom left
     public static let bottomLeft = BackgroundPosition(.bottomLeft)
-    
+
     /// Position at the bottom right
     public static let bottomRight = BackgroundPosition(.bottomRight)
-    
+
     /// Creates a background position with percentage values
     ///
     /// - Parameters:
@@ -159,7 +159,7 @@ extension BackgroundPosition {
 //    public static func px(_ x: Double, _ y: Double) -> BackgroundPosition {
 //        BackgroundPosition(.px(x, y))
 //    }
-    
+
     /// Creates a background position with edge offsets
     ///
     /// - Parameters:
@@ -171,7 +171,7 @@ extension BackgroundPosition {
     public static func offsets(_ edge1: CSSTypeTypes.Position.Keyword, _ offset1: LengthPercentage, _ edge2: CSSTypeTypes.Position.Keyword, _ offset2: LengthPercentage) -> BackgroundPosition {
         BackgroundPosition(.offsets(edge1, offset1, edge2, offset2))
     }
-    
+
     /// Creates a background position with multiple values
     ///
     /// - Parameter positions: The position values
@@ -179,7 +179,7 @@ extension BackgroundPosition {
     public static func values(_ positions: [CSSTypeTypes.Position]) -> BackgroundPosition {
         BackgroundPosition(positions)
     }
-    
+
     /// Creates a background position with multiple values
     ///
     /// - Parameter positions: The position values

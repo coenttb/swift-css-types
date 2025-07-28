@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `inset-block` property is a shorthand that defines the logical block start and end
 /// offsets of an element, which map to physical offsets depending on the element's writing mode,
@@ -27,26 +27,23 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on inset-block](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block)
 public enum InsetBlock: Property, LengthPercentageConvertible {
     public static let property: String = "inset-block"
-    
+
     /// Auto value for both start and end
     case auto
-    
+
     /// Different values for start and end
     case sides(start: LengthPercentage, end: LengthPercentage)
 
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public init(
         start: LengthPercentage,
         end: LengthPercentage
-    ){
+    ) {
         self = .sides(start: start, end: end)
     }
-    
-    
-    
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -54,7 +51,7 @@ public enum InsetBlock: Property, LengthPercentageConvertible {
 
         case .sides(let start, let end):
             return "\(start) \(end)"
-      
+
         case .global(let global):
             return global.description
         }
@@ -70,7 +67,7 @@ extension InsetBlock {
     public static func same(_ value: LengthPercentage) -> InsetBlock {
         .init(start: value, end: value)
     }
-    
+
     public static func lengthPercentage(_ value: LengthPercentage) -> InsetBlock {
         .init(start: value, end: value)
     }

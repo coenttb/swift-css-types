@@ -18,49 +18,49 @@ import Foundation
 public indirect enum Color: Sendable, Hashable {
     /// A named color keyword
     case named(NamedColor)
-    
+
     /// A hexadecimal color notation
     case hex(HexColor)
-    
+
     /// A color using the RGB color model
     case rgb(Int, Int, Int)
-    
+
     /// A color using the RGB color model with alpha
     case rgba(Int, Int, Int, Double)
-    
+
     /// A color using the HSL color model (hue, saturation, lightness)
     case hsl(Hue, Double, Double)
-    
+
     /// A color using the HSL color model with alpha
     case hsla(Hue, Double, Double, Double)
-    
+
     /// A color using the HWB color model (hue, whiteness, blackness)
     case hwb(Hue, Double, Double)
-    
+
     /// A color using the CIELAB color model
     case lab(Double, Double, Double)
-    
+
     /// A color using the LCH color model (lightness, chroma, hue)
     case lch(Double, Double, Double)
-    
+
     /// A color using the Oklab color model
     case oklab(Double, Double, Double)
-    
+
     /// A color using the Oklch color model
     case oklch(Double, Double, Double)
-    
+
     /// A color-mix function with two colors
     case mix(ColorInterpolationMethod, Color, Color, Double? = nil)
-    
+
     /// A system color
     case system(SystemColor)
-    
+
     /// The current color value
     case currentColor
-    
+
     /// A completely transparent color
     case transparent
-    
+
 }
 
 /// Provides string conversion for CSS output
@@ -70,50 +70,50 @@ extension Color: CustomStringConvertible {
         switch self {
         case .named(let name):
             return name.description
-            
+
         case .hex(let hex):
             return hex.description
-            
+
         case .rgb(let r, let g, let b):
             return "rgb(\(r), \(g), \(b))"
-            
+
         case .rgba(let r, let g, let b, let a):
             return "rgba(\(r), \(g), \(b), \(a.truncatingRemainder()))"
-            
+
         case .hsl(let h, let s, let l):
             return "hsl(\(h), \(s.truncatingRemainder())%, \(l.truncatingRemainder())%)"
-            
+
         case .hsla(let h, let s, let l, let a):
             return "hsla(\(h), \(s.truncatingRemainder())%, \(l.truncatingRemainder())%, \(a.truncatingRemainder()))"
-            
+
         case .hwb(let h, let w, let b):
             return "hwb(\(h) \(w.truncatingRemainder())% \(b.truncatingRemainder())%)"
-            
+
         case .lab(let l, let a, let b):
             return "lab(\(l.truncatingRemainder())% \(a.truncatingRemainder()) \(b.truncatingRemainder()))"
-            
+
         case .lch(let l, let c, let h):
             return "lch(\(l.truncatingRemainder())% \(c.truncatingRemainder()) \(h.truncatingRemainder()))"
-            
+
         case .oklab(let l, let a, let b):
             return "oklab(\(l.truncatingRemainder()) \(a.truncatingRemainder()) \(b.truncatingRemainder()))"
-            
+
         case .oklch(let l, let c, let h):
             return "oklch(\(l.truncatingRemainder()) \(c.truncatingRemainder()) \(h.truncatingRemainder()))"
-            
+
         case .mix(let method, let color1, let color2, let percentage):
             if let percentage = percentage {
                 return "color-mix(\(method), \(color1), \(color2) \(percentage.truncatingRemainder())%)"
             } else {
                 return "color-mix(\(method), \(color1), \(color2))"
             }
-            
+
         case .system(let color):
             return color.description
-            
+
         case .currentColor:
             return "currentColor"
-            
+
         case .transparent:
             return "transparent"
         }
@@ -123,31 +123,31 @@ extension Color: CustomStringConvertible {
 extension Color {
     /// Black color
     public static let black: Color = .named(.black)
-    
+
     /// White color
     public static let white: Color = .named(.white)
-    
+
     /// Red color
     public static let red: Color = .named(.red)
-    
+
     /// Green color
     public static let green: Color = .named(.green)
-    
+
     /// Blue color
     public static let blue: Color = .named(.blue)
-    
+
     /// Yellow color
     public static let yellow: Color = .named(.yellow)
-    
+
     /// Magenta color
     public static let magenta: Color = .named(.fuchsia)
-    
+
     /// Cyan color
     public static let cyan: Color = .named(.aqua)
-    
+
     /// Gray color
     public static let gray: Color = .named(.gray)
-    
+
     /// The currentColor keyword
     public static let current: Color = .currentColor
 }
@@ -160,7 +160,7 @@ extension Color {
     public static func hex(_ hex: String) -> Color {
         return .hex(HexColor(hex))
     }
-    
+
     /// Creates a color from RGB values
     ///
     /// - Parameters:
@@ -171,7 +171,7 @@ extension Color {
     public static func rgb(red: Int, green: Int, blue: Int) -> Color {
         return .rgb(red, green, blue)
     }
-    
+
     /// Creates a color from RGBA values
     ///
     /// - Parameters:
@@ -183,7 +183,7 @@ extension Color {
     public static func rgba(red: Int, green: Int, blue: Int, alpha: Double) -> Color {
         return .rgba(red, green, blue, alpha)
     }
-    
+
     /// Creates a color from HSL values
     ///
     /// - Parameters:
@@ -194,7 +194,7 @@ extension Color {
     public static func hsl(hue: Hue, saturation: Double, lightness: Double) -> Color {
         return .hsl(hue, saturation, lightness)
     }
-    
+
     /// Creates a color from HSLA values
     ///
     /// - Parameters:
@@ -206,7 +206,7 @@ extension Color {
     public static func hsla(hue: Hue, saturation: Double, lightness: Double, alpha: Double) -> Color {
         return .hsla(hue, saturation, lightness, alpha)
     }
-    
+
     /// Creates a color from HWB values
     ///
     /// - Parameters:
@@ -217,7 +217,7 @@ extension Color {
     public static func hwb(hue: Hue, whiteness: Double, blackness: Double) -> Color {
         return .hwb(hue, whiteness, blackness)
     }
-    
+
     /// Creates a color from LAB values
     ///
     /// - Parameters:
@@ -228,7 +228,7 @@ extension Color {
     public static func lab(lightness: Double, aAxis: Double, bAxis: Double) -> Color {
         return .lab(lightness, aAxis, bAxis)
     }
-    
+
     /// Creates a color from LCH values
     ///
     /// - Parameters:
@@ -239,7 +239,7 @@ extension Color {
     public static func lch(lightness: Double, chroma: Double, hue: Double) -> Color {
         return .lch(lightness, chroma, hue)
     }
-    
+
     /// Creates a color from Oklab values
     ///
     /// - Parameters:
@@ -250,7 +250,7 @@ extension Color {
     public static func oklab(lightness: Double, aAxis: Double, bAxis: Double) -> Color {
         return .oklab(lightness, aAxis, bAxis)
     }
-    
+
     /// Creates a color from Oklch values
     ///
     /// - Parameters:
@@ -262,4 +262,3 @@ extension Color {
         return .oklch(lightness, chroma, hue)
     }
 }
-

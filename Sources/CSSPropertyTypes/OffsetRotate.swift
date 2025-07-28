@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `offset-rotate` property defines the orientation/direction of the element 
 /// as it is positioned along the `offset-path`.
@@ -18,19 +18,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on offset-rotate](https://developer.mozilla.org/en-US/docs/Web/CSS/offset-rotate)
 public enum OffsetRotate: Property, AngleConvertible {
     public static let property: String = "offset-rotate"
-    
+
     /// The element is rotated to match the direction of the path
     case auto
-    
+
     /// The element is rotated by a specific angle
     case angle(Angle)
-    
+
     /// The element follows the path direction with an additional angle offset
     case autoAngle(Angle)
-    
+
     /// The element is rotated in the opposite direction of the path
     case reverse
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -56,7 +56,7 @@ extension OffsetRotate: CustomStringConvertible {
 
 /// Convenience initializers for OffsetRotate
 extension OffsetRotate {
-   
+
     /// Creates an auto offset-rotate with a degree offset
     ///
     /// - Parameter value: The degree offset
@@ -74,7 +74,7 @@ extension OffsetRotate: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .angle(.deg(Double(value)))
     }
-    
+
     /// Creates an offset-rotate with a degree value from a floating-point literal
     ///
     /// - Parameter value: The degree value as a double

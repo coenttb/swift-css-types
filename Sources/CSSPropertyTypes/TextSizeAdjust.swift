@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-size-adjust` property controls the text inflation algorithm used on some smartphones and tablets.
 ///
@@ -20,18 +20,18 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust)
 public enum TextSizeAdjust: Property {
     public static let property: String = "text-size-adjust"
-    
+
     /// Enables the browser's inflation algorithm. This value is used to cancel a none value
     /// previously set with CSS.
     case auto
-    
+
     /// Disables the browser's inflation algorithm.
     case none
-    
+
     /// Enables the browser's inflation algorithm, specifying a percentage value
     /// with which to increase the font size.
     case percentage(Percentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -43,13 +43,13 @@ extension TextSizeAdjust: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .none:
             return "none"
-            
+
         case .percentage(let percentage):
             return percentage.description
-            
+
         case .global(let global):
             return global.description
         }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-left-color` property, which sets the color of the left border.
 ///
@@ -37,15 +37,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-left-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-color)
 public enum BorderLeftColor: Property, ColorConvertible {
-    
+
     public static let property: String = "border-left-color"
-    
+
     /// A specific color for the left border
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-left-color with a specific color
     ///
     /// - Parameter color: The color for the left border
@@ -79,25 +79,25 @@ extension BorderLeftColor: CustomStringConvertible {
 extension BorderLeftColor {
     /// The default border-left-color value (currentcolor)
     public static let `default` = BorderLeftColor(.currentColor)
-    
+
     /// Creates a transparent border-left-color
     public static let transparent = BorderLeftColor(.transparent)
-    
+
     /// Creates a border-left-color that uses the current text color
     public static let currentColor = BorderLeftColor(.currentColor)
-    
+
     /// Creates a black border-left-color
     public static let black = BorderLeftColor(.black)
-    
+
     /// Creates a white border-left-color
     public static let white = BorderLeftColor(.white)
-    
+
     /// Creates a red border-left-color
     public static let red = BorderLeftColor(.red)
-    
+
     /// Creates a green border-left-color
     public static let green = BorderLeftColor(.green)
-    
+
     /// Creates a blue border-left-color
     public static let blue = BorderLeftColor(.blue)
 }

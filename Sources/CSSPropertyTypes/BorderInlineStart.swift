@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-start` shorthand property, which sets border properties for
 /// the logical inline-start border of an element.
@@ -53,21 +53,20 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-start](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start)
 public enum BorderInlineStart: Property {
-    
+
     public static let property: String = "border-inline-start"
-    
+
     /// Represents the possible border property combinations
     case properties(width: BorderWidth.Width?, style: LineStyle?, color: Color?)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-start with just a style
     public static func style(_ style: LineStyle) -> BorderInlineStart {
         .properties(width: nil, style: style, color: nil)
     }
-    
-   
+
     /// Creates a border-inline-start with a width, style, and color
     public static func all(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) -> BorderInlineStart {
         .properties(width: width, style: style, color: color)
@@ -82,7 +81,7 @@ extension BorderInlineStart {
     public init(_ style: LineStyle) {
         self = .style(style)
     }
-    
+
 //    /// Creates a border-inline-start with a style and color
 //    ///
 //    /// - Parameters:
@@ -100,7 +99,7 @@ extension BorderInlineStart {
 //    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
 //        self = .init(width, style)
 //    }
-    
+
     /// Creates a border-inline-start with a width, style, and color
     ///
     /// - Parameters:
@@ -110,7 +109,7 @@ extension BorderInlineStart {
     public init(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) {
         self = .all(width, style, color)
     }
-    
+
     /// Creates a border-inline-start with specific properties
     ///
     /// - Parameters:
@@ -138,24 +137,23 @@ extension BorderInlineStart: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
     }
 }
-

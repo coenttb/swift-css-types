@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-emphasis-color` property sets the color of emphasis marks.
 ///
@@ -16,14 +16,14 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-emphasis-color](https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-color)
 public enum TextEmphasisColor: Property, ColorConvertible {
     public static let property: String = "text-emphasis-color"
-    
+
     /// Defines the color of the emphasis marks.
     /// If no color is present, it defaults to currentcolor.
     case color(CSSTypeTypes.Color)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .color(let color):

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-start-width` property, which defines the width of the logical
 /// inline-start border of an element.
@@ -47,15 +47,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-start-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-width)
 public enum BorderInlineStartWidth: Property {
-    
+
     public static let property: String = "border-inline-start-width"
-    
+
     /// Use a specific width value for the inline-start border
     case width(BorderWidth.Width)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-start-width with a specific width value
     ///
     /// - Parameter width: The width value for the inline-start border
@@ -88,19 +88,19 @@ extension BorderInlineStartWidth: LengthConvertible {
     public static func length(_ length: CSSTypeTypes.Length) -> BorderInlineStartWidth {
         BorderInlineStartWidth.width(.length(length))
     }
-    
+
 }
 /// Convenience methods for creating BorderInlineStartWidth values
 extension BorderInlineStartWidth {
     /// The default border-inline-start-width value (medium)
     public static let `default` = BorderInlineStartWidth(.medium)
-    
+
     /// A thin border-inline-start-width
     public static let thin = BorderInlineStartWidth(.thin)
-    
+
     /// A medium border-inline-start-width
     public static let medium = BorderInlineStartWidth(.medium)
-    
+
     /// A thick border-inline-start-width
     public static let thick = BorderInlineStartWidth(.thick)
 }

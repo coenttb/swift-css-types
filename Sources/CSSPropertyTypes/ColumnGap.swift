@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `column-gap` property sets the size of the gap (gutter) between an element's columns.
 ///
@@ -16,16 +16,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on column-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap)
 public enum ColumnGap: Property, LengthPercentageConvertible {
     public static let property: String = "column-gap"
-    
+
     /// The browser's default spacing is used between columns.
     /// For multi-column layout this is typically 1em, for other layout types it is 0.
     case normal
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// String representation of the column-gap value
     public var description: String {
         switch self {
@@ -49,7 +49,7 @@ extension ColumnGap: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a column gap with a pixel value from a float literal
     ///
     /// ```swift

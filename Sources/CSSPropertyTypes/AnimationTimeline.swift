@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation-timeline property specifies the timeline that is used to control
 /// the progress of a CSS animation.
@@ -21,19 +21,19 @@ public enum AnimationTimeline: Property {
     public static let property: String = "animation-timeline"
     /// Animation is not associated with a timeline
     case none
-    
+
     /// The animation's timeline is the document's default DocumentTimeline
     case auto
-    
+
     /// A named timeline previously declared with scroll-timeline-name or view-timeline-name
     case named(DashedIdent)
-    
+
     /// An anonymous scroll progress timeline
     case scroll(ScrollerValue? = nil, ScrollAxis? = nil)
-    
+
     /// An anonymous view progress timeline
     case view(ScrollAxis? = nil, ViewTimelineInset? = nil)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -42,10 +42,10 @@ public enum AnimationTimeline: Property {
 public enum ScrollerValue: String, Sendable, Hashable, CaseIterable {
     /// Document root as a scroller
     case root
-    
+
     /// Nearest scrollable ancestor
     case nearest
-    
+
     /// The element itself
     case `self`
 }
@@ -54,13 +54,13 @@ public enum ScrollerValue: String, Sendable, Hashable, CaseIterable {
 public enum ScrollAxis: String, Sendable, Hashable, CaseIterable {
     /// Block direction (typically vertical)
     case block
-    
+
     /// Inline direction (typically horizontal)
     case inline
-    
+
     /// Horizontal (x-axis)
     case x
-    
+
     /// Vertical (y-axis)
     case y
 }

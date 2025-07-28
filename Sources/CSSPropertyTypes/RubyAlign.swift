@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `ruby-align` property defines the distribution of ruby elements over the base text.
 ///
@@ -25,22 +25,22 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on ruby-align](https://developer.mozilla.org/en-US/docs/Web/CSS/ruby-align)
 public enum RubyAlign: Property {
     public static let property: String = "ruby-align"
-    
+
     /// Ruby is aligned with the start of the base text
     case start
-    
+
     /// Ruby is aligned at the middle of the base text
     case center
-    
+
     /// Extra space is distributed between ruby elements
     case spaceBetween
-    
+
     /// Extra space is distributed between and around ruby elements
     case spaceAround
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .start:

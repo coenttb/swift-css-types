@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-image-width` property, which sets the width of an element's border image.
 ///
@@ -51,35 +51,35 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-image-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-width)
 public enum BorderImageWidth: Property {
-    
+
     public static let property: String = "border-image-width"
-    
+
     /// All four sides have the same width value
     case all(WidthValue)
-    
+
     /// Top and bottom sides have the same value, and left and right sides have the same value
     case vertical_horizontal(WidthValue, WidthValue)
-    
+
     /// Top, horizontal sides (left and right), and bottom have different values
     case top_horizontal_bottom(WidthValue, WidthValue, WidthValue)
-    
+
     /// Each side (top, right, bottom, left) has a different value
     case top_right_bottom_left(WidthValue, WidthValue, WidthValue, WidthValue)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a value for border-image-width
     public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthPercentageConvertible {
         /// A length value
         case lengthPercentage(LengthPercentage)
-        
+
         /// A number value (multiple of the border width)
         case number(Number)
-        
+
         /// Automatic width (uses intrinsic dimensions)
         case auto
-        
+
         /// String representation of the width value
         public var description: String {
             switch self {
@@ -92,14 +92,14 @@ public enum BorderImageWidth: Property {
             }
         }
     }
-    
+
     /// Creates a border-image-width with the same value for all sides
     ///
     /// - Parameter value: The width value for all sides
     public init(_ value: WidthValue) {
         self = .all(value)
     }
-    
+
     /// Creates a border-image-width with different values for vertical and horizontal sides
     ///
     /// - Parameters:
@@ -108,7 +108,7 @@ public enum BorderImageWidth: Property {
     public init(_ vertical: WidthValue, _ horizontal: WidthValue) {
         self = .vertical_horizontal(vertical, horizontal)
     }
-    
+
     /// Creates a border-image-width with different values for top, horizontal sides, and bottom
     ///
     /// - Parameters:
@@ -118,7 +118,7 @@ public enum BorderImageWidth: Property {
     public init(_ top: WidthValue, _ horizontal: WidthValue, _ bottom: WidthValue) {
         self = .top_horizontal_bottom(top, horizontal, bottom)
     }
-    
+
     /// Creates a border-image-width with different values for each side
     ///
     /// - Parameters:
@@ -129,7 +129,7 @@ public enum BorderImageWidth: Property {
     public init(_ top: WidthValue, _ right: WidthValue, _ bottom: WidthValue, _ left: WidthValue) {
         self = .top_right_bottom_left(top, right, bottom, left)
     }
-    
+
     /// Creates a border-image-width with a number value for all sides
     ///
     /// - Parameter number: The number multiplier
@@ -137,10 +137,10 @@ public enum BorderImageWidth: Property {
     public static func number(_ number: Number) -> BorderImageWidth {
         return BorderImageWidth(.number(number))
     }
-    
+
     /// Creates a border-image-width with auto value for all sides
     public static let auto = BorderImageWidth(.auto)
-    
+
     /// Default value (1 - matches the border-width)
     public static let `default` = BorderImageWidth(.number(1))
 }

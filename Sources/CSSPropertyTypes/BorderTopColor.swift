@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-top-color` property, which sets the color of the top border.
 ///
@@ -34,15 +34,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-top-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color)
 public enum BorderTopColor: Property, ColorConvertible {
-    
+
     public static let property: String = "border-top-color"
-    
+
     /// A specific color for the top border
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-top-color with a specific color
     ///
     /// - Parameter color: The color for the top border
@@ -76,25 +76,25 @@ extension BorderTopColor: CustomStringConvertible {
 extension BorderTopColor {
     /// The default border-top-color value (currentcolor)
     public static let `default` = BorderTopColor(.currentColor)
-    
+
     /// Creates a transparent border-top-color
     public static let transparent = BorderTopColor(.transparent)
-    
+
     /// Creates a border-top-color that uses the current text color
     public static let currentColor = BorderTopColor(.currentColor)
-    
+
     /// Creates a black border-top-color
     public static let black = BorderTopColor(.black)
-    
+
     /// Creates a white border-top-color
     public static let white = BorderTopColor(.white)
-    
+
     /// Creates a red border-top-color
     public static let red = BorderTopColor(.red)
-    
+
     /// Creates a green border-top-color
     public static let green = BorderTopColor(.green)
-    
+
     /// Creates a blue border-top-color
     public static let blue = BorderTopColor(.blue)
 }

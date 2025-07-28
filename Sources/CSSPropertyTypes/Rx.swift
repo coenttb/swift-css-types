@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `rx` property defines the x-axis (horizontal) radius of an SVG ellipse
 /// and the horizontal curve of the corners of an SVG rectangle.
@@ -26,17 +26,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on rx](https://developer.mozilla.org/en-US/docs/Web/CSS/rx)
 public enum Rx: Property, LengthPercentageConvertible {
     public static let property: String = "rx"
-    
-    
+
     /// A length-percentage value for the horizontal radius
     case lengthPercentage(LengthPercentage)
-    
+
     /// Auto value (uses the ry value, or 0 if both are auto)
     case auto
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

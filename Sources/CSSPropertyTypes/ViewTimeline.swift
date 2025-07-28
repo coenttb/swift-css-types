@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS view-timeline shorthand property defines a named view progress timeline, which is
 /// progressed through based on the change in visibility of an element (subject) inside a scrollable
@@ -23,15 +23,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on view-timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/view-timeline)
 public enum ViewTimeline: Property {
-    
+
     public static let property: String = "view-timeline"
-    
+
     /// Just a name for the timeline (axis defaults to .block)
     case name(ViewTimelineName)
-    
+
     /// Name and axis for the timeline
     case nameAndAxis(ViewTimelineName, ViewTimelineAxis)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -43,10 +43,10 @@ extension ViewTimeline: CustomStringConvertible {
         switch self {
         case .name(let name):
             return name.description
-            
+
         case .nameAndAxis(let name, let axis):
             return "\(name) \(axis)"
-            
+
         case .global(let global):
             return global.description
         }
@@ -62,7 +62,7 @@ extension ViewTimeline {
     public static func custom(_ name: String) -> Self {
         return .name(.custom(name))
     }
-    
+
     /// Creates a view timeline with a custom name and specific axis
     ///
     /// - Parameters:

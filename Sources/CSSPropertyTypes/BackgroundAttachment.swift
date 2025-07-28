@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-attachment` property, which determines how a background image is attached to the viewport.
 ///
@@ -43,26 +43,26 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-attachment](https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment)
 public enum BackgroundAttachment: Property {
     public static let property: String = "background-attachment"
-    
+
     /// The background scrolls with the element's content (default)
     ///
     /// The background is fixed relative to the element itself and does not scroll with its contents.
     /// It is effectively attached to the element's border.
     case scroll
-    
+
     /// The background is fixed relative to the viewport
     ///
     /// Even if an element has a scrolling mechanism, the background doesn't move with the element.
     case fixed
-    
+
     /// The background scrolls with the element's contents
     ///
     /// If the element has a scrolling mechanism, the background scrolls with the element's contents.
     case local
-    
+
     /// A list of attachment values for multiple backgrounds
     case multiple([BackgroundAttachment])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -98,7 +98,7 @@ extension BackgroundAttachment: CustomStringConvertible {
 extension BackgroundAttachment {
     /// The default value for background-attachment (`scroll`)
     public static let `default` = BackgroundAttachment.scroll
-    
+
     /// Creates a background-attachment with multiple values
     ///
     /// - Parameter attachments: The background attachment values
@@ -109,7 +109,7 @@ extension BackgroundAttachment {
         }
         return .multiple(attachments)
     }
-    
+
     /// Creates a background-attachment with multiple values
     ///
     /// - Parameter attachments: The background attachment values

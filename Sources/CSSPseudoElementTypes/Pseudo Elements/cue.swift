@@ -45,10 +45,10 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::cue](https://developer.mozilla.org/en-US/docs/Web/CSS/::cue)
 public struct Cue: CSSPseudoElement {
     @inlinable public static var name: String { "cue" }
-    
+
     /// The optional selector for targeting specific elements within cues
     public let selector: String?
-    
+
     public init(_ selector: String? = nil) {
         self.selector = selector
     }

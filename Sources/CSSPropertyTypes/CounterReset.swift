@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `counter-reset` CSS property creates named CSS counters and initializes them to specific values.
 ///
@@ -14,18 +14,18 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/counter-reset)
 public enum CounterReset: Property {
     public static let property: String = "counter-reset"
-    
+
     /// An individual counter with an optional initial value
     public struct Counter: Sendable, Hashable {
         /// The name of the counter
         public let name: CustomIdent
-        
+
         /// Whether this is a reversed counter (counts down)
         public let reversed: Bool
-        
+
         /// The initial value of the counter (defaults to 0 for regular counters if nil)
         public let value: Int?
-        
+
         /// Creates a counter with an optional initial value
         /// - Parameters:
         ///   - name: The name of the counter
@@ -37,28 +37,28 @@ public enum CounterReset: Property {
             self.value = value
         }
     }
-    
+
     /// Do not create or reset any counters
     case none
-    
+
     /// Create a single counter with default initial value (0)
     case counter(CustomIdent)
-    
+
     /// Create a single counter with the specified initial value
     case counterWithValue(CustomIdent, Int)
-    
+
     /// Create a reversed counter with default initial value
     case reversedCounter(CustomIdent)
-    
+
     /// Create a reversed counter with the specified initial value
     case reversedCounterWithValue(CustomIdent, Int)
-    
+
     /// Create multiple counters with their respective values
     case counters([Counter])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `margin` shorthand property sets the margin area on all four sides of an element at once.
 ///
@@ -23,18 +23,18 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
 public enum Margin: Property, LengthPercentageConvertible {
     public static let property: String = "margin"
-    
+
     case auto
-    
+
     /// Single value for all sides
     case all(LengthPercentage)
-    
+
     /// Two values: top/bottom (vertical) and left/right (horizontal)
     case verticalHorizontal(LengthPercentage, LengthPercentage)
-    
+
     /// Three values: top, left/right (horizontal), and bottom
     case topHorizontalBottom(CSSPropertyTypes.MarginTop, LengthPercentage, CSSPropertyTypes.MarginBottom)
-    
+
     /// Four values: top, right, bottom, and left (clockwise)
     case sides(CSSPropertyTypes.MarginTop, CSSPropertyTypes.MarginRight, CSSPropertyTypes.MarginBottom, CSSPropertyTypes.MarginLeft)
 
@@ -54,21 +54,19 @@ extension Margin {
     public var description: String {
         switch self {
         case .auto: return "auto"
-            
+
         case .all(let value):
             return value.description
-            
+
         case .verticalHorizontal(let vertical, let horizontal):
             return "\(vertical) \(horizontal)"
-            
+
         case .topHorizontalBottom(let top, let horizontal, let bottom):
             return "\(top) \(horizontal) \(bottom)"
-            
+
         case .sides(let top, let right, let bottom, let left):
             return "\(top) \(right) \(bottom) \(left)"
-            
-        
-            
+
         case .global(let global):
             return global.description
         }
@@ -103,7 +101,7 @@ extension Margin {
     ) -> Margin {
         .sides(top ?? .zero, right ?? .zero, bottom ?? .zero, left ?? .zero)
     }
-    
+
     /// Creates a margin with vertical (top/bottom) and horizontal (left/right) values
     ///
     /// - Parameters:
@@ -116,7 +114,7 @@ extension Margin {
     ) -> Margin {
         .verticalHorizontal(vertical ?? .zero, horizontal ?? .zero)
     }
-    
+
     /// Creates a margin with zero on all sides
     public static let zero: Margin = .all(.px(0))
 }
@@ -129,8 +127,6 @@ extension Margin: ExpressibleByIntegerLiteral {
         self = .all(.px(Double(value)))
     }
 }
-
-
 
 extension Margin: ExpressibleByFloatLiteral {
     /// Creates a margin from a floating-point literal (interpreted as pixels for all sides)

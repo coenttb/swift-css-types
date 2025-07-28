@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `transition-delay` property specifies the amount of time to wait before starting
 /// a transition effect.
@@ -25,18 +25,18 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on transition-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay)
 public enum TransitionDelay: Property {
-    
+
     public static let property: String = "transition-delay"
-    
+
     /// A single time delay
     case time(Time)
-    
+
     /// Multiple time delays for different properties
     case list([Time])
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .time(let time):
@@ -47,12 +47,12 @@ public enum TransitionDelay: Property {
             return global.description
         }
     }
-    
+
     /// Creates a transition delay with a time value
     public init(_ time: Time) {
         self = .time(time)
     }
-    
+
     /// Creates a transition delay with multiple time values
     public init(_ times: [Time]) {
         if times.isEmpty {
@@ -63,22 +63,22 @@ public enum TransitionDelay: Property {
             self = .list(times)
         }
     }
-    
+
     /// Creates a transition delay with multiple time values
     public init(_ times: Time...) {
         self.init(times)
     }
-    
+
     /// Creates a transition delay with a value in seconds
     public static func seconds(_ value: Double) -> TransitionDelay {
         .time(.s(value))
     }
-    
+
     /// Creates a transition delay with a value in milliseconds
     public static func milliseconds(_ value: Double) -> TransitionDelay {
         .time(.ms(value))
     }
-    
+
     /// No delay (immediate transition)
     public static let zero = TransitionDelay(.zero)
 }
@@ -89,7 +89,7 @@ extension TransitionDelay: ExpressibleByIntegerLiteral, ExpressibleByFloatLitera
     public init(integerLiteral value: Int) {
         self = .time(Time(integerLiteral: value))
     }
-    
+
     /// Creates a delay in seconds from a floating point literal
     public init(floatLiteral value: Double) {
         self = .time(Time(floatLiteral: value))

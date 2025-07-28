@@ -40,7 +40,7 @@ public enum Angle: Sendable, Hashable, ExpressibleByIntegerLiteral, ExpressibleB
     /// transform: rotate(45deg); /* 45° clockwise rotation */
     /// ```
     case deg(Double)
-    
+
     /// Specifies an angle in radians
     /// 
     /// A full circle is 2π radians (approximately 6.28318rad).
@@ -49,7 +49,7 @@ public enum Angle: Sendable, Hashable, ExpressibleByIntegerLiteral, ExpressibleB
     /// transform: rotate(1.57079rad); /* 90° (π/2) clockwise rotation */
     /// ```
     case rad(Double)
-    
+
     /// Specifies an angle in gradians
     /// 
     /// A full circle is 400 gradians. This unit is less commonly used.
@@ -57,7 +57,7 @@ public enum Angle: Sendable, Hashable, ExpressibleByIntegerLiteral, ExpressibleB
     /// transform: rotate(100grad); /* 90° clockwise rotation */
     /// ```
     case grad(Double)
-    
+
     /// Specifies an angle as a fraction of a full circle
     /// 
     /// A full circle is 1 turn. This is intuitive for full rotations.
@@ -107,11 +107,11 @@ extension Angle {
     public static func degrees(_ value: Double) -> Self {
         .deg(value)
     }
-    
+
     public static func gradians(_ value: Double) -> Self {
         .grad(value)
     }
-    
+
     public static func radians(_ value: Double) -> Self {
         .rad(value)
     }

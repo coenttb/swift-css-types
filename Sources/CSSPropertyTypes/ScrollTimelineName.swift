@@ -1,7 +1,6 @@
 //
 // ScrollTimelineName.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-timeline-name` CSS property defines the name of a named scroll progress timeline, which is
@@ -19,16 +18,16 @@ import CSSTypeTypes
 /// ```
 public enum ScrollTimelineName: Property {
     public static let property: String = "scroll-timeline-name"
-    
+
     /// No named timeline
     case none
-    
+
     /// A named timeline with a custom identifier (must start with --)
     case name(ScrollTimeline.CustomIdent)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -39,7 +38,7 @@ public enum ScrollTimelineName: Property {
             return global.description
         }
     }
-    
+
     /// Creates a ScrollTimelineName with a specific name
     /// - Parameter name: The name for the timeline (will be prefixed with -- if not already)
     /// - Returns: A ScrollTimelineName with the specified name

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-bottom` property sets the height of the padding area on the bottom of an element.
 ///
@@ -16,10 +16,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-bottom](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom)
 public enum PaddingBottom: Property, LengthPercentageConvertible {
     public static let property: String = "padding-bottom"
-    
+
     /// A length or percentage value for the bottom padding
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -31,7 +31,7 @@ extension PaddingBottom: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .global(let global):
             return global.description
         }

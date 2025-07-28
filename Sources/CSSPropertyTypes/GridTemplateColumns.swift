@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid-template-columns` property defines the line names and track sizing functions of the grid columns.
 ///
@@ -25,67 +25,67 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
 public enum GridTemplateColumns: Property {
     public static let property: String = "grid-template-columns"
-    
+
     /// No explicit grid. Columns will be implicitly generated.
     case none
-    
+
     /// Specifies track sizes for columns without naming grid lines
     case tracks([GridTrackSize])
-    
+
     /// Specifies named grid lines with track sizes
     case named([NamedTrack])
-    
+
     /// Specifies track list with explicit repeat
     case `repeat`(Int, [GridTrackSize])
-    
+
     /// Auto-fill: Repeat as many columns as will fit
     case autoFill([GridTrackSize])
-    
+
     /// Auto-fit: Like auto-fill but collapses empty tracks
     case autoFit([GridTrackSize])
-    
+
     /// Subgrid: Adopts the column definition from parent grid
     case subgrid
-    
+
     /// Global values (inherit, initial, etc.)
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a grid track with optional line names before and after
     public struct NamedTrack: Sendable, Hashable {
         /// Line name before the track (optional)
         public let before: String?
-        
+
         /// Track size
         public let size: GridTrackSize
-        
+
         /// Line name after the track (optional)
         public let after: String?
-        
+
         /// Creates a named track with optional before and after line names
         public init(before: String? = nil, size: GridTrackSize, after: String? = nil) {
             self.before = before
             self.size = size
             self.after = after
         }
-        
+
         /// Generates the CSS string representation of the named track
         public var description: String {
             var result = ""
-            
+
             if let before = before {
                 result += "[\(before)] "
             }
-            
+
             result += size.description
-            
+
             if let after = after {
                 result += " [\(after)]"
             }
-            
+
             return result
         }
     }
-    
+
     public var description: String {
         switch self {
         case .none:

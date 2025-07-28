@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `touch-action` property sets how an element's region can be manipulated by a touchscreen user
 /// (for example, by zooming features built into the browser).
@@ -27,17 +27,17 @@ public enum TouchAction: Sendable, Hashable, Property {
     public static let property: String = "touch-action"
     /// Enable browser handling of all panning and zooming gestures
     case auto
-    
+
     /// Disable browser handling of all panning and zooming gestures
     case none
-    
+
     /// Enable panning and pinch zoom gestures, but disable additional non-standard gestures
     /// such as double-tap to zoom. Equivalent to `[.panX, .panY, .pinchZoom]`
     case manipulation
-    
+
     /// Combination of specific touch action values
     case combined(Set<TouchActionValue>)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -46,22 +46,22 @@ public enum TouchAction: Sendable, Hashable, Property {
 public enum TouchActionValue: String, Sendable, Hashable {
     /// Enable single-finger horizontal panning gestures
     case panX = "pan-x"
-    
+
     /// Enable single-finger gestures that begin by scrolling to the left
     case panLeft = "pan-left"
-    
+
     /// Enable single-finger gestures that begin by scrolling to the right
     case panRight = "pan-right"
-    
+
     /// Enable single-finger vertical panning gestures
     case panY = "pan-y"
-    
+
     /// Enable single-finger gestures that begin by scrolling upward
     case panUp = "pan-up"
-    
+
     /// Enable single-finger gestures that begin by scrolling downward
     case panDown = "pan-down"
-    
+
     /// Enable multi-finger panning and zooming of the page
     case pinchZoom = "pinch-zoom"
 }
@@ -73,19 +73,19 @@ extension TouchAction: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .none:
             return "none"
-            
+
         case .manipulation:
             return "manipulation"
-            
+
         case .combined(let values):
             if values.isEmpty {
                 return "auto"
             }
             return values.map { $0.rawValue }.sorted().joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }

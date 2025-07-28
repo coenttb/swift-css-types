@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-left` property sets the width of the padding area to the left of an element.
 ///
@@ -16,10 +16,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-left](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left)
 public enum PaddingLeft: Property, LengthPercentageConvertible {
     public static let property: String = "padding-left"
-    
+
     /// A length or percentage value for the left padding
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -31,13 +31,12 @@ extension PaddingLeft: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .global(let global):
             return global.description
         }
     }
 }
-
 
 extension PaddingLeft: ExpressibleByIntegerLiteral {
     /// Creates a padding-left from an integer literal (interpreted as pixels)

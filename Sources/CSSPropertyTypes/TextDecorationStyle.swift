@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Sets the style of lines used for text decoration (underline, overline, line-through).
 ///
@@ -27,22 +27,22 @@ import CSSTypeTypes
 /// ```
 public enum TextDecorationStyle: Property {
     public static let property: String = "text-decoration-style"
-    
+
     /// A single line. This is the default style.
     case solid
-    
+
     /// Two lines.
     case double
-    
+
     /// A series of dots.
     case dotted
-    
+
     /// A series of dashes.
     case dashed
-    
+
     /// A wavy line.
     case wavy
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

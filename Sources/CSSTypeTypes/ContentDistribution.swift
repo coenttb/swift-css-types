@@ -25,7 +25,7 @@ public enum ContentDistribution: String, Sendable, Hashable, CaseIterable {
     /// justify-content: space-between;
     /// ```
     case spaceBetween = "space-between"
-    
+
     /// Distributes items evenly with half-size spaces at the edges
     ///
     /// Places equal space between items, with half-size spaces at the start and end.
@@ -33,7 +33,7 @@ public enum ContentDistribution: String, Sendable, Hashable, CaseIterable {
     /// justify-content: space-around;
     /// ```
     case spaceAround = "space-around"
-    
+
     /// Distributes items with equal space between, before, and after items
     ///
     /// Places equal space between all items and at both edges.
@@ -41,7 +41,7 @@ public enum ContentDistribution: String, Sendable, Hashable, CaseIterable {
     /// justify-content: space-evenly;
     /// ```
     case spaceEvenly = "space-evenly"
-    
+
     /// Stretches items to fill the container
     ///
     /// If items are smaller than the container, they are stretched to fill the available space

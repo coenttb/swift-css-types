@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `list-style-position` property sets the position of the marker relative to the list item.
 ///
@@ -20,15 +20,15 @@ public enum ListStylePosition: Property {
     public static let property: String = "list-style-position"
     /// Marker is placed inside the principal block box
     case inside
-    
+
     /// Marker is placed outside the principal block box (default)
     case outside
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // MARK: - CustomStringConvertible
-    
+
     public var description: String {
         switch self {
         case .inside:

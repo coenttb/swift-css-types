@@ -19,7 +19,7 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on display-internal values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-internal)
 public enum DisplayInternal: String, Sendable, Hashable {
     // Table-related values
-    
+
     /// Table row group (like `<tbody>`)
     ///
     /// These elements behave like HTML `<tbody>` elements.
@@ -27,7 +27,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-row-group;
     /// ```
     case tableRowGroup = "table-row-group"
-    
+
     /// Table header group (like `<thead>`)
     ///
     /// These elements behave like HTML `<thead>` elements.
@@ -35,7 +35,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-header-group;
     /// ```
     case tableHeaderGroup = "table-header-group"
-    
+
     /// Table footer group (like `<tfoot>`)
     ///
     /// These elements behave like HTML `<tfoot>` elements.
@@ -43,7 +43,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-footer-group;
     /// ```
     case tableFooterGroup = "table-footer-group"
-    
+
     /// Table row (like `<tr>`)
     ///
     /// These elements behave like HTML `<tr>` elements.
@@ -51,7 +51,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-row;
     /// ```
     case tableRow = "table-row"
-    
+
     /// Table cell (like `<td>` or `<th>`)
     ///
     /// These elements behave like HTML `<td>` elements.
@@ -59,7 +59,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-cell;
     /// ```
     case tableCell = "table-cell"
-    
+
     /// Table column group (like `<colgroup>`)
     ///
     /// These elements behave like HTML `<colgroup>` elements.
@@ -67,7 +67,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-column-group;
     /// ```
     case tableColumnGroup = "table-column-group"
-    
+
     /// Table column (like `<col>`)
     ///
     /// These elements behave like HTML `<col>` elements.
@@ -75,7 +75,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-column;
     /// ```
     case tableColumn = "table-column"
-    
+
     /// Table caption (like `<caption>`)
     ///
     /// These elements behave like HTML `<caption>` elements.
@@ -83,9 +83,9 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: table-caption;
     /// ```
     case tableCaption = "table-caption"
-    
+
     // Ruby-related values
-    
+
     /// Ruby base (like `<rb>`)
     ///
     /// These elements behave like HTML `<rb>` elements.
@@ -93,7 +93,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: ruby-base;
     /// ```
     case rubyBase = "ruby-base"
-    
+
     /// Ruby text (like `<rt>`)
     ///
     /// These elements behave like HTML `<rt>` elements.
@@ -101,7 +101,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: ruby-text;
     /// ```
     case rubyText = "ruby-text"
-    
+
     /// Ruby base container
     ///
     /// Generated as anonymous boxes in ruby layout.
@@ -109,7 +109,7 @@ public enum DisplayInternal: String, Sendable, Hashable {
     /// display: ruby-base-container;
     /// ```
     case rubyBaseContainer = "ruby-base-container"
-    
+
     /// Ruby text container (like `<rtc>`)
     ///
     /// These elements behave like HTML `<rtc>` elements.

@@ -1,7 +1,6 @@
 //
 // ScrollPaddingBlock.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-block` CSS property is a shorthand property that sets the scroll padding of an element 
@@ -17,19 +16,19 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingBlock: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-block"
-    
+
     /// Keyword values
     case auto
-    
+
     /// A single value for both the start and end block paddings
     case all(LengthPercentage)
-    
+
     /// Two values for start and end block paddings
     case start_end(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -42,7 +41,7 @@ public enum ScrollPaddingBlock: Property, LengthPercentageConvertible, CustomStr
             return global.description
         }
     }
-    
+
     /// Creates a ScrollPaddingBlock using a length
     public static func px(_ value: Double) -> Self {
         .all(.length(.px(value)))

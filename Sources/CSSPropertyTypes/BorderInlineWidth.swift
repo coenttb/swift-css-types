@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-width` property, which sets the width of the logical inline borders.
 ///
@@ -50,15 +50,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-width)
 public enum BorderInlineWidth: Property {
-    
+
     public static let property: String = "border-inline-width"
-    
+
     /// A specific width for both inline borders
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-width with a specific width
     ///
     /// - Parameter width: The width for both inline borders
@@ -97,13 +97,13 @@ extension BorderInlineWidth: CustomStringConvertible {
 extension BorderInlineWidth {
     /// The default border-inline-width value (medium)
     public static let `default` = BorderInlineWidth(.medium)
-    
+
     /// Creates a thin border-inline-width
     public static let thin = BorderInlineWidth(.thin)
-    
+
     /// Creates a medium border-inline-width
     public static let medium = BorderInlineWidth(.medium)
-    
+
     /// Creates a thick border-inline-width
     public static let thick = BorderInlineWidth(.thick)
 

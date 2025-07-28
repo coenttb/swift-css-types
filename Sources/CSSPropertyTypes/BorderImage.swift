@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-image` shorthand property, which draws an image around an element instead of the regular border.
 ///
@@ -38,13 +38,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on border-image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image)
 public enum BorderImage: Property {
     public static let property: String = "border-image"
-    
+
     /// Configuration for a border image
     case config(Configuration)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border image with specified properties
     ///
     /// - Parameters:
@@ -68,7 +68,7 @@ public enum BorderImage: Property {
             repeat: `repeat`
         ))
     }
-    
+
     /// Creates a border image with simple parameters
     ///
     /// - Parameters:
@@ -89,24 +89,24 @@ public enum BorderImage: Property {
             repeat: `repeat`
         ))
     }
-    
+
     /// Configuration for a border image
     public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The source of the border image
         public let source: Source
-        
+
         /// The slice values for dividing the border image
         public let slice: Slice
-        
+
         /// The width of the border image
         public let width: Width?
-        
+
         /// The outset value of the border image
         public let outset: Outset?
-        
+
         /// The repeat behavior of the border image
         public let `repeat`: Repeat?
-        
+
         /// Creates a border image configuration with specified properties
         ///
         /// - Parameters:
@@ -128,21 +128,21 @@ public enum BorderImage: Property {
             self.outset = outset
             self.repeat = `repeat`
         }
-        
+
         /// CSS string representation
         public var description: String {
             var parts: [String] = []
-            
+
             // Source
             parts.append(sourceDescription)
-            
+
             // Slice (required)
             parts.append(sliceDescription)
-            
+
             // Width and Outset (optional)
             if let width = width {
                 let widthPart = " / \(widthDescription(width))"
-                
+
                 if let outset = outset {
                     parts.append(widthPart + " / \(outsetDescription(outset))")
                 } else {
@@ -151,15 +151,15 @@ public enum BorderImage: Property {
             } else if let outset = outset {
                 parts.append(" / / \(outsetDescription(outset))")
             }
-            
+
             // Repeat (optional)
             if let `repeat` = `repeat` {
                 parts.append(repeatDescription(`repeat`))
             }
-            
+
             return parts.joined(separator: " ")
         }
-        
+
         private var sourceDescription: String {
             switch source {
             case .none:
@@ -184,62 +184,62 @@ public enum BorderImage: Property {
                 return "repeating-radial-gradient(\(positionStr)\(colorsStr))"
             }
         }
-        
+
         private var sliceDescription: String {
             var sliceValues: [String] = [slice.top.description]
-            
+
             if let right = slice.right {
                 sliceValues.append(right.description)
-                
+
                 if let bottom = slice.bottom {
                     sliceValues.append(bottom.description)
-                    
+
                     if let left = slice.left {
                         sliceValues.append(left.description)
                     }
                 }
             }
-            
+
             let sliceStr = sliceValues.joined(separator: " ")
             return slice.fill ? "\(sliceStr) fill" : sliceStr
         }
-        
+
         private func widthDescription(_ width: Width) -> String {
             var widthValues: [String] = [width.top.description]
-            
+
             if let right = width.right {
                 widthValues.append(right.description)
-                
+
                 if let bottom = width.bottom {
                     widthValues.append(bottom.description)
-                    
+
                     if let left = width.left {
                         widthValues.append(left.description)
                     }
                 }
             }
-            
+
             return widthValues.joined(separator: " ")
         }
-        
+
         private func outsetDescription(_ outset: Outset) -> String {
             var outsetValues: [String] = [outset.top.description]
-            
+
             if let right = outset.right {
                 outsetValues.append(right.description)
-                
+
                 if let bottom = outset.bottom {
                     outsetValues.append(bottom.description)
-                    
+
                     if let left = outset.left {
                         outsetValues.append(left.description)
                     }
                 }
             }
-            
+
             return outsetValues.joined(separator: " ")
         }
-        
+
         private func repeatDescription(_ repeat: Repeat) -> String {
             if let vertical = `repeat`.vertical {
                 return "\(repeatValueDescription(`repeat`.horizontal)) \(repeatValueDescription(vertical))"
@@ -247,7 +247,7 @@ public enum BorderImage: Property {
                 return repeatValueDescription(`repeat`.horizontal)
             }
         }
-        
+
         private func repeatValueDescription(_ value: Repeat.RepeatValue) -> String {
             switch value {
             case .stretch: return "stretch"
@@ -257,45 +257,45 @@ public enum BorderImage: Property {
             }
         }
     }
-    
+
     /// The source of the border image
     public enum Source: Sendable, Hashable {
         /// No border image
         case none
-        
+
         /// URL to the border image
         case url(Url)
-        
+
         /// Linear gradient as border image
         case linearGradient([String], String?)
-        
+
         /// Radial gradient as border image
         case radialGradient([String], String?)
-        
+
         /// Repeating linear gradient as border image
         case repeatingLinearGradient([String], String?)
-        
+
         /// Repeating radial gradient as border image
         case repeatingRadialGradient([String], String?)
     }
-    
+
     /// The slice values for dividing the border image
     public struct Slice: Sendable, Hashable {
         /// The top slice value
         public let top: SliceValue
-        
+
         /// The right slice value
         public let right: SliceValue?
-        
+
         /// The bottom slice value
         public let bottom: SliceValue?
-        
+
         /// The left slice value
         public let left: SliceValue?
-        
+
         /// Whether to fill the middle part
         public let fill: Bool
-        
+
         /// Creates a slice with the same value for all sides
         ///
         /// - Parameters:
@@ -308,7 +308,7 @@ public enum BorderImage: Property {
             self.left = nil
             self.fill = fill
         }
-        
+
         /// Creates a slice with different values for each side
         ///
         /// - Parameters:
@@ -324,15 +324,15 @@ public enum BorderImage: Property {
             self.left = left
             self.fill = fill
         }
-        
+
         /// Slice value type
         public enum SliceValue: Sendable, Hashable, CustomStringConvertible {
             /// Number value for slice
             case number(Number)
-            
+
             /// Percentage value for slice
             case percentage(Percentage)
-            
+
             /// Returns string representation of the slice value
             public var description: String {
                 switch self {
@@ -343,7 +343,7 @@ public enum BorderImage: Property {
                 }
             }
         }
-        
+
         /// Creates a slice value from a number
         ///
         /// - Parameter value: The number value
@@ -351,7 +351,7 @@ public enum BorderImage: Property {
         public static func slice(_ value: Number) -> Slice {
             return Slice(.number(value))
         }
-        
+
         /// Creates a slice value as a percentage
         ///
         /// - Parameter value: The percentage value
@@ -360,21 +360,21 @@ public enum BorderImage: Property {
             return Slice(.percentage(value))
         }
     }
-    
+
     /// The width of the border image
     public struct Width: Sendable, Hashable {
         /// The top width value
         public let top: WidthValue
-        
+
         /// The right width value
         public let right: WidthValue?
-        
+
         /// The bottom width value
         public let bottom: WidthValue?
-        
+
         /// The left width value
         public let left: WidthValue?
-        
+
         /// Creates a width with the same value for all sides
         ///
         /// - Parameter value: The width value for all sides
@@ -384,7 +384,7 @@ public enum BorderImage: Property {
             self.bottom = nil
             self.left = nil
         }
-        
+
         /// Creates a width with different values for each side
         ///
         /// - Parameters:
@@ -398,18 +398,18 @@ public enum BorderImage: Property {
             self.bottom = bottom
             self.left = left
         }
-        
+
         /// Width value type
         public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthPercentageConvertible {
             /// Auto width
             case auto
-            
+
             /// Number multiplier
             case number(Number)
-            
+
             /// Length value
             case lengthPercentage(LengthPercentage)
-            
+
             /// Returns string representation of the width value
             public var description: String {
                 switch self {
@@ -430,25 +430,25 @@ public enum BorderImage: Property {
         public static func number(_ number: Number) -> Width {
             return Width(.number(number))
         }
-        
+
         /// Creates a width with auto value
         public static let auto = Width(.auto)
     }
-    
+
     /// The outset value of the border image
     public struct Outset: Sendable, Hashable {
         /// The top outset value
         public let top: OutsetValue
-        
+
         /// The right outset value
         public let right: OutsetValue?
-        
+
         /// The bottom outset value
         public let bottom: OutsetValue?
-        
+
         /// The left outset value
         public let left: OutsetValue?
-        
+
         /// Creates an outset with the same value for all sides
         ///
         /// - Parameter value: The outset value for all sides
@@ -458,7 +458,7 @@ public enum BorderImage: Property {
             self.bottom = nil
             self.left = nil
         }
-        
+
         /// Creates an outset with different values for each side
         ///
         /// - Parameters:
@@ -472,15 +472,15 @@ public enum BorderImage: Property {
             self.bottom = bottom
             self.left = left
         }
-        
+
         /// Outset value type
         public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
             /// Number multiplier
             case number(Number)
-            
+
             /// Length value
             case length(Length)
-            
+
             /// Returns string representation of the outset value
             public var description: String {
                 switch self {
@@ -491,7 +491,7 @@ public enum BorderImage: Property {
                 }
             }
         }
-        
+
         /// Creates an outset with a number multiplier
         ///
         /// - Parameter number: The number multiplier
@@ -500,15 +500,15 @@ public enum BorderImage: Property {
             return Outset(.number(number))
         }
     }
-    
+
     /// The repeat behavior of the border image
     public struct Repeat: Sendable, Hashable {
         /// The horizontal repeat value
         public let horizontal: RepeatValue
-        
+
         /// The vertical repeat value (optional)
         public let vertical: RepeatValue?
-        
+
         /// Creates a repeat with the same value for horizontal and vertical
         ///
         /// - Parameter value: The repeat value for both directions
@@ -516,7 +516,7 @@ public enum BorderImage: Property {
             self.horizontal = value
             self.vertical = nil
         }
-        
+
         /// Creates a repeat with different values for horizontal and vertical
         ///
         /// - Parameters:
@@ -526,18 +526,18 @@ public enum BorderImage: Property {
             self.horizontal = horizontal
             self.vertical = vertical
         }
-        
+
         /// Repeat value type
         public enum RepeatValue: Sendable, Hashable {
             /// Stretch the image to fill the space
             case stretch
-            
+
             /// Repeat the image to fill the space
             case `repeat`
-            
+
             /// Scale the image to fit the space evenly
             case round
-            
+
             /// Repeat the image with spacing to fit evenly
             case space
         }
@@ -577,4 +577,3 @@ extension BorderImage: CustomStringConvertible {
         }
     }
 }
-

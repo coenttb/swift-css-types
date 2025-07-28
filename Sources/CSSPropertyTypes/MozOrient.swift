@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-moz-orient` property specifies the orientation of the element to which it's applied.
 ///
@@ -36,22 +36,22 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -moz-orient](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-orient)
 public enum MozOrient: Property {
     public static let property: String = "-moz-orient"
-    
+
     /// The element is rendered in the same direction as the axis of the text
     case inline
-    
+
     /// The element is rendered perpendicular to the axis of the text
     case block
-    
+
     /// The element is rendered horizontally regardless of text direction
     case horizontal
-    
+
     /// The element is rendered vertically regardless of text direction
     case vertical
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .inline:

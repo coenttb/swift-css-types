@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-bottom-style` property, which sets the style of the bottom border.
 ///
@@ -44,15 +44,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-bottom-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style)
 public enum BorderBottomStyle: Property {
-    
+
     public static let property: String = "border-bottom-style"
-    
+
     /// A specific line style for the bottom border
     case lineStyle(LineStyle)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-bottom-style with a specific line style
     ///
     /// - Parameter style: The line style for the bottom border
@@ -86,34 +86,34 @@ extension BorderBottomStyle: CustomStringConvertible {
 extension BorderBottomStyle {
     /// The default border-bottom-style value (none)
     public static let `default` = BorderBottomStyle(.none)
-    
+
     /// Creates a none border-bottom-style (invisible)
     public static let none = BorderBottomStyle(.none)
-    
+
     /// Creates a hidden border-bottom-style (invisible, high priority in border collapsing)
     public static let hidden = BorderBottomStyle(.hidden)
-    
+
     /// Creates a solid border-bottom-style
     public static let solid = BorderBottomStyle(.solid)
-    
+
     /// Creates a dotted border-bottom-style
     public static let dotted = BorderBottomStyle(.dotted)
-    
+
     /// Creates a dashed border-bottom-style
     public static let dashed = BorderBottomStyle(.dashed)
-    
+
     /// Creates a double border-bottom-style
     public static let double = BorderBottomStyle(.double)
-    
+
     /// Creates a groove border-bottom-style
     public static let groove = BorderBottomStyle(.groove)
-    
+
     /// Creates a ridge border-bottom-style
     public static let ridge = BorderBottomStyle(.ridge)
-    
+
     /// Creates a inset border-bottom-style
     public static let inset = BorderBottomStyle(.inset)
-    
+
     /// Creates a outset border-bottom-style
     public static let outset = BorderBottomStyle(.outset)
 }

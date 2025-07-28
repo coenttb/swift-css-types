@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-bottom-right-radius` property, which rounds the bottom-right corner of an element.
 ///
@@ -42,15 +42,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-bottom-right-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius)
 public enum BorderBottomRightRadius: Property {
-    
+
     public static let property: String = "border-bottom-right-radius"
-    
+
     /// A circular corner with a single radius
     case radius(LengthPercentage)
-    
+
     /// An elliptical corner with horizontal and vertical radii
     case elliptical(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -63,7 +63,7 @@ extension BorderBottomRightRadius {
     public init(_ radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-bottom-right-radius with an elliptical corner
     ///
     /// - Parameters:
@@ -72,14 +72,14 @@ extension BorderBottomRightRadius {
     public init(_ horizontal: LengthPercentage, _ vertical: LengthPercentage) {
         self = .elliptical(horizontal, vertical)
     }
-    
+
     /// Creates a border-bottom-right-radius with a circular corner
     ///
     /// - Parameter radius: The radius of the corner
     public init(radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-bottom-right-radius with an elliptical corner
     ///
     /// - Parameters:
@@ -89,7 +89,6 @@ extension BorderBottomRightRadius {
         self = .elliptical(horizontalRadius, verticalRadius)
     }
 }
-
 
 /// Support for LengthPercentageConvertible
 extension BorderBottomRightRadius: LengthPercentageConvertible {

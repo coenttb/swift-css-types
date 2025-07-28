@@ -28,100 +28,100 @@ public enum Gradient: Sendable, Hashable {
     public enum Direction: Sendable, Hashable, AngleConvertible {
         /// Direction specified by an angle
         case angle(Angle)
-        
+
         /// Direction specified using the "to" keyword followed by sides/corners
         case to(Side)
-        
+
         /// Represents sides or corners for the "to" keyword
         public enum Side: String, Sendable, Hashable, CaseIterable {
             /// Top edge
             case top
-            
+
             /// Right edge
             case right
-            
+
             /// Bottom edge
             case bottom
-            
+
             /// Left edge
             case left
-            
+
             /// Top-right corner
             case topRight = "top right"
-            
+
             /// Bottom-right corner
             case bottomRight = "bottom right"
-            
+
             /// Bottom-left corner
             case bottomLeft = "bottom left"
-            
+
             /// Top-left corner
             case topLeft = "top left"
         }
     }
-    
+
     /// Represents a color stop in a gradient
     public struct ColorStop: Sendable, Hashable {
         /// The color of the stop
         public let color: Color
-        
+
         /// The position of the stop (optional)
         public let position: LengthPercentage?
-        
+
         /// Creates a color stop with an optional position
         public init(_ color: Color, at position: LengthPercentage? = nil) {
             self.color = color
             self.position = position
         }
     }
-    
+
     /// Represents options for radial gradients
     public struct RadialOptions: Sendable, Hashable {
         /// The shape of the gradient
         public enum Shape: String, Sendable, Hashable {
             /// Circular shape (equal distance from center)
             case circle
-            
+
             /// Elliptical shape (may be stretched)
             case ellipse
         }
-        
+
         /// Size keywords for radial gradients
         public enum Size: Sendable, Hashable {
             /// Size specified by keywords
             case keyword(Keyword)
-            
+
             /// Size specified by explicit dimensions
             case explicit(radius: LengthPercentage)
-            
+
             /// Size specified by explicit dimensions for elliptical gradients
             case elliptical(radiusX: LengthPercentage, radiusY: LengthPercentage)
-            
+
             /// Keywords for radial gradient sizing
             public enum Keyword: String, Sendable, Hashable {
                 /// Gradient ends at the closest side from the center
                 case closestSide = "closest-side"
-                
+
                 /// Gradient ends at the closest corner from the center
                 case closestCorner = "closest-corner"
-                
+
                 /// Gradient ends at the farthest side from the center
                 case farthestSide = "farthest-side"
-                
+
                 /// Gradient ends at the farthest corner from the center
                 case farthestCorner = "farthest-corner"
             }
         }
-        
+
         /// The shape of the gradient (circle or ellipse)
         public let shape: Shape?
-        
+
         /// The size of the gradient
         public let size: Size?
-        
+
         /// The position of the gradient center
         public let position: Position?
-        
+
         /// Creates radial gradient options
         public init(shape: Shape? = nil, size: Size? = nil, at position: Position? = nil) {
             self.shape = shape
@@ -129,22 +129,22 @@ public enum Gradient: Sendable, Hashable {
             self.position = position
         }
     }
-    
+
     /// A linear gradient
     case linear(direction: Direction?, colorStops: [ColorStop], interpolation: ColorInterpolationMethod? = nil)
-    
+
     /// A repeating linear gradient
     case repeatingLinear(direction: Direction?, colorStops: [ColorStop], interpolation: ColorInterpolationMethod? = nil)
-    
+
     /// A radial gradient
     case radial(options: RadialOptions?, colorStops: [ColorStop], interpolation: ColorInterpolationMethod? = nil)
-    
+
     /// A repeating radial gradient
     case repeatingRadial(options: RadialOptions?, colorStops: [ColorStop], interpolation: ColorInterpolationMethod? = nil)
-    
+
     /// A conic gradient
     case conic(angle: Angle?, at: Position?, colorStops: [ColorStop], interpolation: ColorInterpolationMethod? = nil)
-    
+
     /// A repeating conic gradient
     case repeatingConic(angle: Angle?, at: Position?, colorStops: [ColorStop], interpolation: ColorInterpolationMethod? = nil)
 }
@@ -156,12 +156,12 @@ extension Gradient: CustomStringConvertible {
         switch self {
         case let .linear(direction, colorStops, interpolation):
             var result = "linear-gradient("
-            
+
             // Add interpolation method if specified
             if let interpolation = interpolation {
                 result += "\(interpolation), "
             }
-            
+
             // Add direction if specified
             if let direction = direction {
                 switch direction {
@@ -171,20 +171,20 @@ extension Gradient: CustomStringConvertible {
                     result += "to \(side.rawValue), "
                 }
             }
-            
+
             // Add color stops
             result += formatColorStops(colorStops)
             result += ")"
             return result
-            
+
         case let .repeatingLinear(direction, colorStops, interpolation):
             var result = "repeating-linear-gradient("
-            
+
             // Add interpolation method if specified
             if let interpolation = interpolation {
                 result += "\(interpolation), "
             }
-            
+
             // Add direction if specified
             if let direction = direction {
                 switch direction {
@@ -194,24 +194,24 @@ extension Gradient: CustomStringConvertible {
                     result += "to \(side.rawValue), "
                 }
             }
-            
+
             // Add color stops
             result += formatColorStops(colorStops)
             result += ")"
             return result
-            
+
         case let .radial(options, colorStops, interpolation):
             var result = "radial-gradient("
-            
+
             // Add interpolation method if specified
             if let interpolation = interpolation {
                 result += "\(interpolation), "
             }
-            
+
             // Add options if specified
             if let options = options {
                 var optionsString = ""
-                
+
                 // Add shape if specified
                 if let shape = options.shape {
                     optionsString += shape.rawValue
@@ -219,7 +219,7 @@ extension Gradient: CustomStringConvertible {
                         optionsString += " "
                     }
                 }
-                
+
                 // Add size if specified
                 if let size = options.size {
                     switch size {
@@ -231,7 +231,7 @@ extension Gradient: CustomStringConvertible {
                         optionsString += "\(radiusX) \(radiusY)"
                     }
                 }
-                
+
                 // Add position if specified
                 if let position = options.position {
                     if !optionsString.isEmpty {
@@ -239,29 +239,29 @@ extension Gradient: CustomStringConvertible {
                     }
                     optionsString += "at \(position)"
                 }
-                
+
                 if !optionsString.isEmpty {
                     result += optionsString + ", "
                 }
             }
-            
+
             // Add color stops
             result += formatColorStops(colorStops)
             result += ")"
             return result
-            
+
         case let .repeatingRadial(options, colorStops, interpolation):
             var result = "repeating-radial-gradient("
-            
+
             // Add interpolation method if specified
             if let interpolation = interpolation {
                 result += "\(interpolation), "
             }
-            
+
             // Add options if specified
             if let options = options {
                 var optionsString = ""
-                
+
                 // Add shape if specified
                 if let shape = options.shape {
                     optionsString += shape.rawValue
@@ -269,7 +269,7 @@ extension Gradient: CustomStringConvertible {
                         optionsString += " "
                     }
                 }
-                
+
                 // Add size if specified
                 if let size = options.size {
                     switch size {
@@ -281,7 +281,7 @@ extension Gradient: CustomStringConvertible {
                         optionsString += "\(radiusX) \(radiusY)"
                     }
                 }
-                
+
                 // Add position if specified
                 if let position = options.position {
                     if !optionsString.isEmpty {
@@ -289,65 +289,65 @@ extension Gradient: CustomStringConvertible {
                     }
                     optionsString += "at \(position)"
                 }
-                
+
                 if !optionsString.isEmpty {
                     result += optionsString + ", "
                 }
             }
-            
+
             // Add color stops
             result += formatColorStops(colorStops)
             result += ")"
             return result
-            
+
         case let .conic(angle, position, colorStops, interpolation):
             var result = "conic-gradient("
-            
+
             // Add interpolation method if specified
             if let interpolation = interpolation {
                 result += "\(interpolation), "
             }
-            
+
             // Add angle if specified
             if let angle = angle {
                 result += "from \(angle), "
             }
-            
+
             // Add position if specified
             if let position = position {
                 result += "at \(position), "
             }
-            
+
             // Add color stops
             result += formatColorStops(colorStops)
             result += ")"
             return result
-            
+
         case let .repeatingConic(angle, position, colorStops, interpolation):
             var result = "repeating-conic-gradient("
-            
+
             // Add interpolation method if specified
             if let interpolation = interpolation {
                 result += "\(interpolation), "
             }
-            
+
             // Add angle if specified
             if let angle = angle {
                 result += "from \(angle), "
             }
-            
+
             // Add position if specified
             if let position = position {
                 result += "at \(position), "
             }
-            
+
             // Add color stops
             result += formatColorStops(colorStops)
             result += ")"
             return result
         }
     }
-    
+
     /// Helper function to format color stops for gradients
     private func formatColorStops(_ stops: [ColorStop]) -> String {
         return stops.map { stop in
@@ -374,7 +374,7 @@ extension Gradient {
             colorStops: colors.map { ColorStop($0) }
         )
     }
-    
+
     /// Creates a linear gradient with angle and color stops
     ///
     /// - Parameters:
@@ -387,7 +387,7 @@ extension Gradient {
             colorStops: colors.map { ColorStop($0) }
         )
     }
-    
+
     /// Creates a radial gradient with color stops
     ///
     /// - Parameters:
@@ -399,7 +399,7 @@ extension Gradient {
             colorStops: colors.map { ColorStop($0) }
         )
     }
-    
+
     /// Creates a radial gradient with shape, size, position and color stops
     ///
     /// - Parameters:
@@ -419,7 +419,7 @@ extension Gradient {
             colorStops: colors.map { ColorStop($0) }
         )
     }
-    
+
     /// Creates a conic gradient with color stops
     ///
     /// - Parameters:
@@ -432,7 +432,7 @@ extension Gradient {
             colorStops: colors.map { ColorStop($0) }
         )
     }
-    
+
     /// Creates a conic gradient with angle, position and color stops
     ///
     /// - Parameters:

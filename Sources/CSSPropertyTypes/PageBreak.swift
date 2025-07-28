@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 15/09/2024.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS page break properties that control how printed content is split across pages.
 ///
@@ -63,78 +63,78 @@ public enum PageBreak: Sendable, Hashable, Property {
     public static let property: String = "page-break"
     /// Controls page breaks after an element.
     case after(After)
-    
+
     /// Controls page breaks before an element.
     case before(Before)
-    
+
     /// Controls page breaks inside an element.
     case inside(Inside)
-    
+
     case global(Global)
-    
+
     /// Values for the page-break-after property.
     public enum After: String, Sendable {
         /// Let the browser determine automatically where page breaks should occur (default).
         case auto
-        
+
         /// Always force a page break after the element.
         case always
-        
+
         /// Avoid a page break after the element if possible.
         case avoid
-        
+
         /// Force page breaks after the element until a left page is reached.
         case left
-        
+
         /// Force page breaks after the element until a right page is reached.
         case right
-        
+
         /// Sets the property to its default value.
         case initial
-        
+
         /// Inherits the value from the parent element.
         case inherit
     }
-    
+
     /// Values for the page-break-before property.
     public enum Before: String, Sendable {
         /// Let the browser determine automatically where page breaks should occur (default).
         case auto
-        
+
         /// Always force a page break before the element.
         case always
-        
+
         /// Avoid a page break before the element if possible.
         case avoid
-        
+
         /// Force page breaks before the element until a left page is reached.
         case left
-        
+
         /// Force page breaks before the element until a right page is reached.
         case right
-        
+
         /// Sets the property to its default value.
         case initial
-        
+
         /// Inherits the value from the parent element.
         case inherit
     }
-    
+
     /// Values for the page-break-inside property.
     public enum Inside: String, Sendable {
         /// Let the browser determine automatically where page breaks should occur (default).
         case auto
-        
+
         /// Avoid page breaks inside the element if possible.
         case avoid
-        
+
         /// Sets the property to its default value.
         case initial
-        
+
         /// Inherits the value from the parent element.
         case inherit
     }
-    
+
     /// Returns the CSS property name and value as a tuple.
     ///
     /// This differs from most other properties in the library as it produces
@@ -153,17 +153,16 @@ public enum PageBreak: Sendable, Hashable, Property {
             global.description
         }
     }
-    
+
     /// Default page-break-after with auto value.
     /// Equivalent to `.after(.auto)`.
     public static let after: Self = .after(.auto)
-    
+
     /// Default page-break-before with auto value.
     /// Equivalent to `.before(.auto)`.
     public static let before: Self = .before(.auto)
-    
+
     /// Default page-break-inside with auto value.
     /// Equivalent to `.inside(.auto)`.
     public static let inside: Self = .inside(.auto)
 }
-

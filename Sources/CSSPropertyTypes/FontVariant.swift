@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `font-variant` shorthand property allows you to set all the font variants for a font.
 ///
@@ -16,24 +16,24 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on font-variant](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant)
 public enum FontVariant: Property {
-    
+
     public static let property: String = "font-variant"
-    
+
     /// Specifies a normal font face. Each longhand property has an initial value of normal.
     case normal
-    
+
     /// Sets the value of the font-variant-ligatures as none and the values of the other longhand properties as normal.
     case none
-    
+
     /// Enables display of small capitals (OpenType feature: smcp).
     case smallCaps
-    
+
     /// A combination of font-variant values
     case combination([FontVariantOption])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:
@@ -61,7 +61,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
     case noHistoricalLigatures
     case contextual
     case noContextual
-    
+
     // Caps values
     case smallCaps
     case allSmallCaps
@@ -69,7 +69,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
     case allPetiteCaps
     case unicase
     case titlingCaps
-    
+
     // Alternates values
     case historicalForms
     case stylistic(String) // feature-value-name
@@ -78,7 +78,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
     case swash(String)      // feature-value-name
     case ornaments(String)  // feature-value-name
     case annotation(String) // feature-value-name
-    
+
     // Numeric values
     case liningNums
     case oldstyleNums
@@ -88,7 +88,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
     case stackedFractions
     case ordinal
     case slashedZero
-    
+
     // East Asian values
     case jis78
     case jis83
@@ -99,16 +99,16 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
     case fullWidth
     case proportionalWidth
     case ruby
-    
+
     // Position values
     case sub
     case `super`
-    
+
     // Emoji values
     case text
     case emoji
     case unicode
-    
+
     public var description: String {
         switch self {
         // Ligatures
@@ -120,7 +120,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
         case .noHistoricalLigatures: return "no-historical-ligatures"
         case .contextual: return "contextual"
         case .noContextual: return "no-contextual"
-            
+
         // Caps
         case .smallCaps: return "small-caps"
         case .allSmallCaps: return "all-small-caps"
@@ -128,7 +128,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
         case .allPetiteCaps: return "all-petite-caps"
         case .unicase: return "unicase"
         case .titlingCaps: return "titling-caps"
-            
+
         // Alternates
         case .historicalForms: return "historical-forms"
         case .stylistic(let name): return "stylistic(\(name))"
@@ -137,7 +137,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
         case .swash(let name): return "swash(\(name))"
         case .ornaments(let name): return "ornaments(\(name))"
         case .annotation(let name): return "annotation(\(name))"
-            
+
         // Numeric
         case .liningNums: return "lining-nums"
         case .oldstyleNums: return "oldstyle-nums"
@@ -147,7 +147,7 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
         case .stackedFractions: return "stacked-fractions"
         case .ordinal: return "ordinal"
         case .slashedZero: return "slashed-zero"
-            
+
         // East Asian
         case .jis78: return "jis78"
         case .jis83: return "jis83"
@@ -158,11 +158,11 @@ public enum FontVariantOption: Sendable, Hashable, CustomStringConvertible {
         case .fullWidth: return "full-width"
         case .proportionalWidth: return "proportional-width"
         case .ruby: return "ruby"
-            
+
         // Position
         case .sub: return "sub"
         case .super: return "super"
-            
+
         // Emoji
         case .text: return "text"
         case .emoji: return "emoji"

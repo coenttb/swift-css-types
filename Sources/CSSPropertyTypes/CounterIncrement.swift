@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `counter-increment` CSS property increases or decreases the value of CSS counters.
 ///
@@ -20,10 +20,10 @@ public enum CounterIncrement: Property {
     public struct Counter: Sendable, Hashable {
         /// The name of the counter
         public let name: CustomIdent
-        
+
         /// The value to add to the counter (negative values subtract)
         public let value: Int?
-        
+
         /// Creates a counter with an optional increment value
         /// - Parameters:
         ///   - name: The name of the counter
@@ -33,22 +33,22 @@ public enum CounterIncrement: Property {
             self.value = value
         }
     }
-    
+
     /// Do not increment any counters
     case none
-    
+
     /// Increment a single counter by 1
     case counter(CustomIdent)
-    
+
     /// Increment a single counter by the specified value
     case counterWithValue(CustomIdent, Int)
-    
+
     /// Increment multiple counters with their respective values
     case counters([Counter])
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

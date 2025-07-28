@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `filter` property applies graphical effects like blur, saturate, or hue rotation to an element.
 ///
@@ -18,19 +18,19 @@ public enum Filter: Property {
     public static let property: String = "filter"
     /// No filter effect is applied
     case none
-    
+
     /// A single filter function
     case filter(FilterFunction)
-    
+
     /// Multiple filter functions applied in sequence
     case filters([FilterFunction])
-    
+
     /// A URL reference to an SVG filter
     case url(Url)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

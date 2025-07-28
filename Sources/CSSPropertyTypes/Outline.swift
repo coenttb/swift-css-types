@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `outline` shorthand property sets all the outline properties in a single declaration.
 ///
@@ -18,19 +18,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on outline](https://developer.mozilla.org/en-US/docs/Web/CSS/outline)
 public enum Outline: Property {
     public static let property: String = "outline"
-    
+
     /// Style-only outline
     case style(OutlineStyle)
-    
+
     /// Style and color outline
     case styleColor(OutlineStyle, OutlineColor)
-    
+
     /// Width and style outline
     case widthStyle(OutlineWidth, OutlineStyle)
-    
+
     /// Complete outline with width, style, and color
     case widthStyleColor(OutlineWidth, OutlineStyle, OutlineColor)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -42,16 +42,16 @@ extension Outline: CustomStringConvertible {
         switch self {
         case .style(let style):
             return style.description
-            
+
         case .styleColor(let style, let color):
             return "\(style) \(color)"
-            
+
         case .widthStyle(let width, let style):
             return "\(width) \(style)"
-            
+
         case .widthStyleColor(let width, let style, let color):
             return "\(width) \(style) \(color)"
-            
+
         case .global(let global):
             return global.description
         }
@@ -78,7 +78,7 @@ extension Outline {
             return .style(style)
         }
     }
-    
+
     /// Creates a solid outline with the specified width and color
     ///
     /// - Parameters:
@@ -88,7 +88,7 @@ extension Outline {
     public static func solid(_ width: OutlineWidth, _ color: OutlineColor) -> Self {
         .widthStyleColor(width, .solid, color)
     }
-    
+
     /// Creates a dashed outline with the specified width and color
     ///
     /// - Parameters:
@@ -98,7 +98,7 @@ extension Outline {
     public static func dashed(_ width: OutlineWidth, _ color: OutlineColor) -> Self {
         .widthStyleColor(width, .dashed, color)
     }
-    
+
     /// Creates a dotted outline with the specified width and color
     ///
     /// - Parameters:
@@ -108,7 +108,7 @@ extension Outline {
     public static func dotted(_ width: OutlineWidth, _ color: OutlineColor) -> Self {
         .widthStyleColor(width, .dotted, color)
     }
-    
+
     /// Creates a double outline with the specified width and color
     ///
     /// - Parameters:

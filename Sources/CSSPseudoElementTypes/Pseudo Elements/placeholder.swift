@@ -32,6 +32,6 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::placeholder](https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder)
 public struct Placeholder: CSSPseudoElement {
     @inlinable public static var name: String { "placeholder" }
-    
+
     public init() {}
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `offset` shorthand property sets all the properties required for animating
 /// an element along a defined path.
@@ -25,7 +25,7 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on offset](https://developer.mozilla.org/en-US/docs/Web/CSS/offset)
 public enum Offset: Property {
     public static let property: String = "offset"
-    
+
     /// Complete offset definition with path, distance, rotation and anchor
     /// - Parameters:
     ///   - path: The offset-path value
@@ -33,19 +33,19 @@ public enum Offset: Property {
     ///   - rotate: The offset-rotate value
     ///   - anchor: The offset-anchor value
     case path(path: OffsetPath, distance: OffsetDistance? = nil, rotate: OffsetRotate? = nil, anchor: OffsetAnchor? = nil)
-    
+
     /// Position-based offset with optional anchor
     /// - Parameters:
     ///   - position: The offset-position value
     ///   - anchor: The offset-anchor value
     case position(OffsetPosition, OffsetAnchor?)
-    
+
     /// Keyword value 'auto'
     case auto
-    
+
     /// Keyword value 'none'
     case none
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -57,36 +57,36 @@ extension Offset: CustomStringConvertible {
         switch self {
         case .path(let path, let distance, let rotate, let anchor):
             var result = "\(path)"
-            
+
             if let d = distance {
                 result += " \(d.description)"
             }
-            
+
             if let r = rotate {
                 result += " \(r.description)"
             }
-            
+
             if let a = anchor {
                 result += " / \(a.description)"
             }
-            
+
             return result
-            
+
         case .position(let position, let anchor):
             var result = position.description
-            
+
             if let a = anchor {
                 result += " / \(a.description)"
             }
-            
+
             return result
-            
+
         case .auto:
             return "auto"
-            
+
         case .none:
             return "none"
-            
+
         case .global(let global):
             return global.description
         }
@@ -102,7 +102,7 @@ extension Offset {
     public static func path(_ pathData: String) -> Self {
         .path(path: OffsetPath.path(pathData), distance: nil, rotate: nil, anchor: nil)
     }
-    
+
     /// Creates an offset with a URL reference
     ///
     /// - Parameter id: ID reference to an SVG element
@@ -110,7 +110,7 @@ extension Offset {
     public static func url(_ url: Url) -> Self {
         .path(path: .url(url), distance: nil, rotate: nil, anchor: nil)
     }
-    
+
     /// Creates an offset with a circle path
     ///
     /// - Parameters:
@@ -120,7 +120,7 @@ extension Offset {
     public static func circle(_ radius: LengthPercentage, at position: CSSTypeTypes.Position? = nil) -> Self {
         .path(path: .circle(radius, at: position), distance: nil, rotate: nil, anchor: nil)
     }
-    
+
     /// Creates an offset with a ray path
     ///
     /// - Parameters:
@@ -130,7 +130,7 @@ extension Offset {
     public static func ray(_ angle: Angle, _ size: OffsetPath.RaySize? = nil) -> Self {
         .path(path: .ray(angle: angle, size: size), distance: nil, rotate: nil, anchor: nil)
     }
-    
+
     /// Creates an offset with a position
     ///
     /// - Parameter position: The position value
@@ -138,7 +138,7 @@ extension Offset {
     public static func position(_ position: CSSTypeTypes.Position) -> Self {
         .position(.position(position), nil)
     }
-    
+
     /// Creates a position-based offset with percentage values
     ///
     /// - Parameters:

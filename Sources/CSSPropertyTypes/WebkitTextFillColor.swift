@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `-webkit-text-fill-color` property specifies the fill color of characters of text.
 /// If this property is not set, the value of the `color` property is used.
@@ -28,21 +28,21 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-text-fill-color](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-fill-color)
 public enum WebkitTextFillColor: Property, ColorConvertible {
     public static let property: String = "-webkit-text-fill-color"
-    
+
     /// A specific color for the text fill
     case color(CSSTypeTypes.Color)
-    
+
     /// Current text color
     case currentColor
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a WebkitTextFillColor from a Color
     public init(_ color: CSSTypeTypes.Color) {
         self = .color(color)
     }
-    
+
     public var description: String {
         switch self {
         case .color(let color):

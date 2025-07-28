@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-block` shorthand property defines the logical block start and end padding of an element,
 /// which maps to physical padding properties depending on the element's writing mode, directionality, and text orientation.
@@ -19,13 +19,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-block](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block)
 public enum PaddingBlock: Property {
     public static let property: String = "padding-block"
-    
+
     /// Single value for both block-start and block-end padding
     case uniform(LengthPercentage)
-    
+
     /// Two values: the first for block-start and the second for block-end padding
     case separate(LengthPercentage, LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -37,10 +37,10 @@ extension PaddingBlock: CustomStringConvertible {
         switch self {
         case .uniform(let value):
             return value.description
-            
+
         case .separate(let start, let end):
             return "\(start) \(end)"
-            
+
         case .global(let global):
             return global.description
         }
@@ -49,7 +49,7 @@ extension PaddingBlock: CustomStringConvertible {
 
 /// Convenience initializers
 extension PaddingBlock {
-    
+
     /// Creates a padding-block with separate start and end values
     ///
     /// - Parameters:
@@ -59,7 +59,7 @@ extension PaddingBlock {
     public static func separate(start: LengthPercentage, end: LengthPercentage) -> PaddingBlock {
         .separate(start, end)
     }
-    
+
     /// Creates a padding-block with pixel values
     ///
     /// - Parameters:
@@ -72,7 +72,7 @@ extension PaddingBlock {
         }
         return .uniform(.px(start))
     }
-    
+
     /// Creates a padding-block with em values
     ///
     /// - Parameters:
@@ -85,7 +85,7 @@ extension PaddingBlock {
         }
         return .uniform(.em(start))
     }
-    
+
     /// Creates a padding-block with percentage values
     ///
     /// - Parameters:
@@ -98,7 +98,7 @@ extension PaddingBlock {
         }
         return .uniform(.percentage(start))
     }
-    
+
     /// Creates a padding-block with a zero value for both sides
     public static let zero: PaddingBlock = .uniform(.px(0))
 }

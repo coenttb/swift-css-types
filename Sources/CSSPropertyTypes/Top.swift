@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `top` property sets the vertical position of a positioned element. 
 /// This inset property has no effect on non-positioned elements.
@@ -24,10 +24,10 @@ import CSSTypeTypes
 public enum Top: Sendable, Hashable, LengthPercentageConvertible, Property {
     public static let property: String = "top"
     case lengthPercentage(LengthPercentage)
-    
+
     /// Browser determines the position automatically
     case auto
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -39,10 +39,10 @@ extension Top: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .auto:
             return "auto"
-            
+
         case .global(let global):
             return global.description
         }
@@ -63,7 +63,7 @@ extension Top: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a top position from a floating-point literal (in pixels)
     ///
     /// - Parameter value: The pixel value as a double
@@ -71,4 +71,3 @@ extension Top: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
         self = .px(value)
     }
 }
-

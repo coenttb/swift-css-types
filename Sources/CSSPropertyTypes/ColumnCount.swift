@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `column-count` property breaks an element's content into the specified number of columns.
 ///
@@ -18,14 +18,14 @@ public enum ColumnCount: Property {
     public static let property: String = "column-count"
     /// The number of columns is determined by other CSS properties, such as column-width.
     case auto
-    
+
     /// A positive integer describing the ideal number of columns for the content.
     /// Must be greater than 0.
     case count(Int)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a column count value with an integer
     ///
     /// - Parameter count: The number of columns (must be positive)
@@ -34,7 +34,7 @@ public enum ColumnCount: Property {
         // Ensure count is at least 1
         return .count(max(1, count))
     }
-    
+
     /// String representation of the column-count value
     public var description: String {
         switch self {

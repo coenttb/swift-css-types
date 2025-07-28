@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-position-y` property, which sets the initial vertical position for background images.
 ///
@@ -54,30 +54,30 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-position-y](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-y)
 public enum BackgroundPositionY: Property {
     public static let property: String = "background-position-y"
-    
+
     /// A vertical position with a keyword value
     case keyword(Keyword)
-    
+
     /// A vertical position with a length or percentage
     case lengthPercentage(LengthPercentage)
-    
+
     /// A vertical position with an edge offset
     case offset(Keyword, LengthPercentage)
-    
+
     /// Multiple vertical positions for multiple backgrounds
     case multiple([BackgroundPositionY])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Position keywords for vertical alignment
     public enum Keyword: String, Sendable, Hashable {
         /// Top edge
         case top
-        
+
         /// Vertical center
         case center
-        
+
         /// Bottom edge
         case bottom
     }
@@ -115,16 +115,15 @@ extension BackgroundPositionY: CustomStringConvertible {
 extension BackgroundPositionY {
     /// The default value for background-position-y (`0%`)
     public static let `default` = BackgroundPositionY.lengthPercentage(.percentage(0))
-    
+
     /// Top position (0%)
     public static let top = BackgroundPositionY.keyword(.top)
-    
+
     /// Center position (50%)
     public static let center = BackgroundPositionY.keyword(.center)
-    
+
     /// Bottom position (100%)
     public static let bottom = BackgroundPositionY.keyword(.bottom)
-    
 
     /// Creates a position with multiple values
     ///
@@ -136,7 +135,7 @@ extension BackgroundPositionY {
         }
         return .multiple(positions)
     }
-    
+
     /// Creates a position with multiple values
     ///
     /// - Parameter positions: The vertical position values

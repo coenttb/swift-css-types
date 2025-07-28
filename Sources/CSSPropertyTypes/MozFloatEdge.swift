@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-moz-float-edge` property specifies whether the height and width 
 /// properties of the element include the margin, border, or padding thickness.
@@ -29,16 +29,16 @@ import CSSTypeTypes
 /// - SeeAlso: [Mozilla CSS Extensions Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/Mozilla_Extensions)
 public enum MozFloatEdge: Property {
     public static let property: String = "-moz-float-edge"
-    
+
     /// The height and width properties include the content, but not the padding, border or margin
     case contentBox
-    
+
     /// The height and width properties include the content, padding, border and margin
     case marginBox
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .contentBox:

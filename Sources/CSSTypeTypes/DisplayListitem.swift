@@ -25,7 +25,7 @@ public enum DisplayListitem: String, Sendable, Hashable {
     /// display: list-item;
     /// ```
     case listItem = "list-item"
-    
+
     /// Block-level list item with flow layout
     ///
     /// A modern syntax combination that creates a block-level list item with flow layout.
@@ -33,7 +33,7 @@ public enum DisplayListitem: String, Sendable, Hashable {
     /// display: block flow list-item;
     /// ```
     case blockFlowListItem = "block flow list-item"
-    
+
     /// Block-level list item with flow-root layout
     ///
     /// A modern syntax combination that creates a block-level list item with a new formatting context.
@@ -41,7 +41,7 @@ public enum DisplayListitem: String, Sendable, Hashable {
     /// display: block flow-root list-item;
     /// ```
     case blockFlowRootListItem = "block flow-root list-item"
-    
+
     /// Inline-level list item with flow layout
     ///
     /// A modern syntax combination that creates an inline-level list item with flow layout.
@@ -49,7 +49,7 @@ public enum DisplayListitem: String, Sendable, Hashable {
     /// display: inline flow list-item;
     /// ```
     case inlineFlowListItem = "inline flow list-item"
-    
+
     /// Inline-level list item with flow-root layout
     ///
     /// A modern syntax combination that creates an inline-level list item with a new formatting context.
@@ -78,7 +78,7 @@ public struct DisplayListitemFactory {
     ///   - outer: The outer display type (`block` or `inline`)
     ///   - inner: The inner display type (`flow` or `flow-root`)
     /// - Returns: A DisplayListitem value with the combined display values
-    public static func create(outer: DisplayOutside, inner: DisplayInside) -> DisplayListitem {        
+    public static func create(outer: DisplayOutside, inner: DisplayInside) -> DisplayListitem {
         switch (outer, inner) {
         case (.block, .flow):
             return .blockFlowListItem

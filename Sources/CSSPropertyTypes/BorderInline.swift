@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline` shorthand property, which sets border properties for the inline dimension.
 ///
@@ -57,20 +57,20 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline)
 public enum BorderInline: Property {
-    
+
     public static let property: String = "border-inline"
-    
+
     /// Represents the possible border property combinations
     case properties(width: BorderWidth.Width?, style: LineStyle?, color: Color?)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline with just a style
     public static func style(_ style: LineStyle) -> BorderInline {
         .properties(width: nil, style: style, color: nil)
     }
-    
+
     /// Creates a border-inline with a width, style, and color
     public static func all(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) -> BorderInline {
         .properties(width: width, style: style, color: color)
@@ -79,8 +79,7 @@ public enum BorderInline: Property {
 
 /// Convenience initializers for BorderInline
 extension BorderInline {
-   
-    
+
     /// Creates a border-inline with a width, style, and color
     ///
     /// - Parameters:
@@ -90,7 +89,7 @@ extension BorderInline {
     public init(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) {
         self = .all(width, style, color)
     }
-    
+
     /// Creates a border-inline with specific properties
     ///
     /// - Parameters:
@@ -101,7 +100,6 @@ extension BorderInline {
         self = .properties(width: width, style: style, color: color)
     }
 }
-
 
 /// Provides string conversion for CSS output
 extension BorderInline: CustomStringConvertible {
@@ -119,21 +117,21 @@ extension BorderInline: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -149,7 +147,7 @@ extension BorderInline {
     public static func thin(_ style: LineStyle) -> BorderInline {
         .init(width: .thin, style: style)
     }
-    
+
     /// Creates a medium border-inline with the specified style
     ///
     /// - Parameter style: The border style
@@ -157,7 +155,7 @@ extension BorderInline {
     public static func medium(_ style: LineStyle) -> BorderInline {
         .init(width: .medium, style: style)
     }
-    
+
     /// Creates a thick border-inline with the specified style
     ///
     /// - Parameter style: The border style

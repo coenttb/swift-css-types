@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS animation shorthand property applies an animation between styles.
 ///
@@ -41,21 +41,21 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on animation](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
 public enum Animation: Property {
-    
+
     public static let property: String = "animation"
-    
+
     /// A single animation with multiple properties
     case single(AnimationProperties)
-    
+
     /// Multiple animations
     case multiple([AnimationProperties])
-    
+
     /// No animation
     case none
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     /// Convenience initializer for creating an animation with properties
     public init(_ properties: AnimationProperty...) {
         if properties.isEmpty {
@@ -64,7 +64,7 @@ public enum Animation: Property {
             self = .single(AnimationProperties(properties: properties))
         }
     }
-    
+
     /// Convenience initializer for creating an animation with a name only
     public static func name(_ name: CSSString) -> Animation {
         return .single(AnimationProperties(properties: [.name(.keyframes(.string(name)))]))
@@ -75,25 +75,25 @@ public enum Animation: Property {
 public enum AnimationProperty: Sendable, Hashable {
     /// The name of the keyframes rule
     case name(AnimationName)
-    
+
     /// The duration of the animation
     case duration(Time)
-    
+
     /// The timing function used
     case timingFunction(EasingFunction)
-    
+
     /// The delay before starting the animation
     case delay(Time)
-    
+
     /// The number of times the animation should repeat
     case iterationCount(AnimationIterationCount)
-    
+
     /// The direction of the animation
     case direction(AnimationDirection)
-    
+
     /// The fill mode of the animation
     case fillMode(AnimationFillMode)
-    
+
     /// The play state of the animation
     case playState(AnimationPlayState)
 }
@@ -102,28 +102,28 @@ public enum AnimationProperty: Sendable, Hashable {
 public struct AnimationProperties: Sendable, Hashable {
     /// Optional name of the animation
     public var name: AnimationName?
-    
+
     /// Optional duration of the animation
     public var duration: Time?
-    
+
     /// Optional timing function for the animation
     public var timingFunction: EasingFunction?
-    
+
     /// Optional delay before the animation starts
     public var delay: Time?
-    
+
     /// Optional number of times the animation should repeat
     public var iterationCount: AnimationIterationCount?
-    
+
     /// Optional direction of the animation
     public var direction: AnimationDirection?
-    
+
     /// Optional fill mode for the animation
     public var fillMode: AnimationFillMode?
-    
+
     /// Optional play state for the animation
     public var playState: AnimationPlayState?
-    
+
     /// Creates a new animation properties collection
     public init(
         name: AnimationName? = nil,
@@ -144,7 +144,7 @@ public struct AnimationProperties: Sendable, Hashable {
         self.fillMode = fillMode
         self.playState = playState
     }
-    
+
     /// Creates animation properties from an array of animation property values
     public init(properties: [AnimationProperty]) {
         for property in properties {
@@ -169,13 +169,13 @@ extension Animation: CustomStringConvertible {
         switch self {
         case .single(let properties):
             return properties.description
-            
+
         case .multiple(let animations):
             return animations.map { $0.description }.joined(separator: ", ")
-            
+
         case .none:
             return "none"
-            
+
         case .global(let global):
             return global.description
         }
@@ -187,42 +187,42 @@ extension AnimationProperties: CustomStringConvertible {
     /// Converts the animation properties to their CSS string representation
     public var description: String {
         var components: [String] = []
-        
+
         // The order matters for certain properties in CSS animations
         // Duration should come before delay
         if let duration = duration {
             components.append(duration.description)
         }
-        
+
         if let timingFunction = timingFunction {
             components.append(timingFunction.description)
         }
-        
+
         if let delay = delay {
             components.append(delay.description)
         }
-        
+
         if let iterationCount = iterationCount {
             components.append(iterationCount.description)
         }
-        
+
         if let direction = direction {
             components.append(direction.description)
         }
-        
+
         if let fillMode = fillMode {
             components.append(fillMode.description)
         }
-        
+
         if let playState = playState {
             components.append(playState.description)
         }
-        
+
         // Name should be the last property for clarity
         if let name = name {
             components.append(name.description)
         }
-        
+
         return components.isEmpty ? "none" : components.joined(separator: " ")
     }
 }

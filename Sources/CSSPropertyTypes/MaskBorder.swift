@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-border` shorthand property, which allows creating a mask along the edge
 /// of an element's border.
@@ -38,13 +38,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-border](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border)
 public enum MaskBorder: Property {
     public static let property: String = "mask-border"
-    
+
     /// Configuration for a mask border
     case config(Configuration)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a mask border with specified properties
     ///
     /// - Parameters:
@@ -71,7 +71,7 @@ public enum MaskBorder: Property {
             mode: mode
         ))
     }
-    
+
     /// Creates a mask border with simple parameters
     ///
     /// - Parameters:
@@ -95,27 +95,27 @@ public enum MaskBorder: Property {
             mode: mode
         ))
     }
-    
+
     /// Configuration for a mask border
     public struct Configuration: Sendable, Hashable, CustomStringConvertible {
         /// The source of the mask border image
         public let source: Source
-        
+
         /// The slice values for dividing the mask border image
         public let slice: Slice
-        
+
         /// The width of the mask border
         public let width: Width?
-        
+
         /// The outset value of the mask border
         public let outset: Outset?
-        
+
         /// The repeat behavior of the mask border
         public let `repeat`: Repeat?
-        
+
         /// The blending mode of the mask border
         public let mode: Mode?
-        
+
         /// Creates a mask border configuration with specified properties
         ///
         /// - Parameters:
@@ -140,21 +140,21 @@ public enum MaskBorder: Property {
             self.repeat = `repeat`
             self.mode = mode
         }
-        
+
         /// CSS string representation
         public var description: String {
             var parts: [String] = []
-            
+
             // Source
             parts.append(sourceDescription)
-            
+
             // Slice (required)
             parts.append(sliceDescription)
-            
+
             // Width and Outset (optional)
             if let width = width {
                 let widthPart = " / \(widthDescription(width))"
-                
+
                 if let outset = outset {
                     parts.append(widthPart + " / \(outsetDescription(outset))")
                 } else {
@@ -163,20 +163,20 @@ public enum MaskBorder: Property {
             } else if let outset = outset {
                 parts.append(" / / \(outsetDescription(outset))")
             }
-            
+
             // Repeat (optional)
             if let `repeat` = `repeat` {
                 parts.append(repeatDescription(`repeat`))
             }
-            
+
             // Mode (optional)
             if let mode = mode {
                 parts.append(modeDescription(mode))
             }
-            
+
             return parts.joined(separator: " ")
         }
-        
+
         private var sourceDescription: String {
             switch source {
             case .none:
@@ -197,62 +197,62 @@ public enum MaskBorder: Property {
                 return "repeating-conic-gradient(\(value))"
             }
         }
-        
+
         private var sliceDescription: String {
             var sliceValues: [String] = [slice.top.description]
-            
+
             if let right = slice.right {
                 sliceValues.append(right.description)
-                
+
                 if let bottom = slice.bottom {
                     sliceValues.append(bottom.description)
-                    
+
                     if let left = slice.left {
                         sliceValues.append(left.description)
                     }
                 }
             }
-            
+
             let sliceStr = sliceValues.joined(separator: " ")
             return slice.fill ? "\(sliceStr) fill" : sliceStr
         }
-        
+
         private func widthDescription(_ width: Width) -> String {
             var widthValues: [String] = [width.top.description]
-            
+
             if let right = width.right {
                 widthValues.append(right.description)
-                
+
                 if let bottom = width.bottom {
                     widthValues.append(bottom.description)
-                    
+
                     if let left = width.left {
                         widthValues.append(left.description)
                     }
                 }
             }
-            
+
             return widthValues.joined(separator: " ")
         }
-        
+
         private func outsetDescription(_ outset: Outset) -> String {
             var outsetValues: [String] = [outset.top.description]
-            
+
             if let right = outset.right {
                 outsetValues.append(right.description)
-                
+
                 if let bottom = outset.bottom {
                     outsetValues.append(bottom.description)
-                    
+
                     if let left = outset.left {
                         outsetValues.append(left.description)
                     }
                 }
             }
-            
+
             return outsetValues.joined(separator: " ")
         }
-        
+
         private func repeatDescription(_ repeat: Repeat) -> String {
             if let vertical = `repeat`.vertical {
                 return "\(repeatValueDescription(`repeat`.horizontal)) \(repeatValueDescription(vertical))"
@@ -260,7 +260,7 @@ public enum MaskBorder: Property {
                 return repeatValueDescription(`repeat`.horizontal)
             }
         }
-        
+
         private func repeatValueDescription(_ value: Repeat.RepeatValue) -> String {
             switch value {
             case .stretch: return "stretch"
@@ -269,7 +269,7 @@ public enum MaskBorder: Property {
             case .space: return "space"
             }
         }
-        
+
         private func modeDescription(_ mode: Mode) -> String {
             switch mode {
             case .alpha: return "alpha"
@@ -279,51 +279,51 @@ public enum MaskBorder: Property {
             }
         }
     }
-    
+
     /// The source of the mask border image
     public enum Source: Sendable, Hashable {
         /// No mask border image
         case none
-        
+
         /// URL to the mask border image
         case url(Url)
-        
+
         /// Linear gradient as mask border image
         case linearGradient(CSSString)
-        
+
         /// Radial gradient as mask border image
         case radialGradient(CSSString)
-        
+
         /// Conic gradient as mask border image
         case conicGradient(CSSString)
-        
+
         /// Repeating linear gradient as mask border image
         case repeatingLinearGradient(CSSString)
-        
+
         /// Repeating radial gradient as mask border image
         case repeatingRadialGradient(CSSString)
-        
+
         /// Repeating conic gradient as mask border image
         case repeatingConicGradient(CSSString)
     }
-    
+
     /// The slice values for dividing the mask border image
     public struct Slice: Sendable, Hashable {
         /// The top slice value
         public let top: SliceValue
-        
+
         /// The right slice value
         public let right: SliceValue?
-        
+
         /// The bottom slice value
         public let bottom: SliceValue?
-        
+
         /// The left slice value
         public let left: SliceValue?
-        
+
         /// Whether to fill the middle part
         public let fill: Bool
-        
+
         /// Creates a slice with the same value for all sides
         ///
         /// - Parameters:
@@ -336,7 +336,7 @@ public enum MaskBorder: Property {
             self.left = nil
             self.fill = fill
         }
-        
+
         /// Creates a slice with different values for each side
         ///
         /// - Parameters:
@@ -352,15 +352,15 @@ public enum MaskBorder: Property {
             self.left = left
             self.fill = fill
         }
-        
+
         /// Slice value type
         public enum SliceValue: Sendable, Hashable, CustomStringConvertible {
             /// Number value for slice
             case number(Number)
-            
+
             /// Percentage value for slice
             case percentage(Percentage)
-            
+
             /// Returns string representation of the slice value
             public var description: String {
                 switch self {
@@ -371,7 +371,7 @@ public enum MaskBorder: Property {
                 }
             }
         }
-        
+
         /// Creates a slice value from a number
         ///
         /// - Parameter value: The number value
@@ -379,7 +379,7 @@ public enum MaskBorder: Property {
         public static func slice(_ value: Double) -> Slice {
             return Slice(.number(.init(value)))
         }
-        
+
         /// Creates a slice value as a percentage
         ///
         /// - Parameter value: The percentage value
@@ -388,25 +388,25 @@ public enum MaskBorder: Property {
             return Slice(.percentage(value))
         }
     }
-    
+
     /// The width of the mask border
     public struct Width: Sendable, Hashable, LengthPercentageConvertible {
         /// The top width value
         public let top: WidthValue
-        
+
         /// The right width value
         public let right: WidthValue?
-        
+
         /// The bottom width value
         public let bottom: WidthValue?
-        
+
         /// The left width value
         public let left: WidthValue?
-        
+
         public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> MaskBorder.Width {
             .init(.lengthPercentage(value))
         }
-        
+
         /// Creates a width with the same value for all sides
         ///
         /// - Parameter value: The width value for all sides
@@ -416,7 +416,7 @@ public enum MaskBorder: Property {
             self.bottom = nil
             self.left = nil
         }
-        
+
         /// Creates a width with different values for each side
         ///
         /// - Parameters:
@@ -430,18 +430,18 @@ public enum MaskBorder: Property {
             self.bottom = bottom
             self.left = left
         }
-        
+
         /// Width value type
         public enum WidthValue: Sendable, Hashable, CustomStringConvertible, LengthPercentageConvertible {
             /// Auto width
             case auto
-            
+
             /// Number multiplier
             case number(Number)
-            
+
             /// Length value
             case lengthPercentage(LengthPercentage)
-            
+
             /// Returns string representation of the width value
             public var description: String {
                 switch self {
@@ -455,7 +455,6 @@ public enum MaskBorder: Property {
             }
         }
 
-        
         /// Creates a width with a number multiplier
         ///
         /// - Parameter number: The number multiplier
@@ -463,29 +462,29 @@ public enum MaskBorder: Property {
         public static func number(_ number: Number) -> Width {
             return Width(.number(number))
         }
-        
+
         /// Creates a width with auto value
         public static let auto = Width(.auto)
     }
-    
+
     /// The outset value of the mask border
     public struct Outset: Sendable, Hashable, LengthConvertible {
         /// The top outset value
         public let top: OutsetValue
-        
+
         /// The right outset value
         public let right: OutsetValue?
-        
+
         /// The bottom outset value
         public let bottom: OutsetValue?
-        
+
         /// The left outset value
         public let left: OutsetValue?
-        
+
         public static func length(_ length: CSSTypeTypes.Length) -> MaskBorder.Outset {
             .init(.length(length))
         }
-        
+
         /// Creates an outset with the same value for all sides
         ///
         /// - Parameter value: The outset value for all sides
@@ -495,7 +494,7 @@ public enum MaskBorder: Property {
             self.bottom = nil
             self.left = nil
         }
-        
+
         /// Creates an outset with different values for each side
         ///
         /// - Parameters:
@@ -509,15 +508,15 @@ public enum MaskBorder: Property {
             self.bottom = bottom
             self.left = left
         }
-        
+
         /// Outset value type
         public enum OutsetValue: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
             /// Number multiplier
             case number(Number)
-            
+
             /// Length value
             case length(Length)
-            
+
             /// Returns string representation of the outset value
             public var description: String {
                 switch self {
@@ -537,15 +536,15 @@ public enum MaskBorder: Property {
             return Outset(.number(number))
         }
     }
-    
+
     /// The repeat behavior of the mask border
     public struct Repeat: Sendable, Hashable {
         /// The horizontal repeat value
         public let horizontal: RepeatValue
-        
+
         /// The vertical repeat value (optional)
         public let vertical: RepeatValue?
-        
+
         /// Creates a repeat with the same value for horizontal and vertical
         ///
         /// - Parameter value: The repeat value for both directions
@@ -553,7 +552,7 @@ public enum MaskBorder: Property {
             self.horizontal = value
             self.vertical = nil
         }
-        
+
         /// Creates a repeat with different values for horizontal and vertical
         ///
         /// - Parameters:
@@ -563,23 +562,23 @@ public enum MaskBorder: Property {
             self.horizontal = horizontal
             self.vertical = vertical
         }
-        
+
         /// Repeat value type
         public enum RepeatValue: Sendable, Hashable {
             /// Stretch the image to fill the space
             case stretch
-            
+
             /// Repeat the image to fill the space
             case `repeat`
-            
+
             /// Scale the image to fit the space evenly
             case round
-            
+
             /// Repeat the image with spacing to fit evenly
             case space
         }
     }
-    
+
     /// The blending mode of the mask border
     public typealias Mode = MaskBorderMode
 }

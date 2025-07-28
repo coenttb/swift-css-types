@@ -1,6 +1,6 @@
-//import Foundation
-//import CSSTypeTypes
-//import CSSPropertyTypes
+// import Foundation
+// import CSSTypeTypes
+// import CSSPropertyTypes
 //
 ///// The CSS `unicode-range` descriptor defines the range of Unicode code points that 
 ///// may be supported by the font face for which it is declared.
@@ -31,7 +31,7 @@
 ///// ```
 /////
 ///// - SeeAlso: [MDN Web Docs on unicode-range](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range)
-//public enum UnicodeRange: Property {
+// public enum UnicodeRange: Property {
 //    public static let property: String = "unicode-range"
 //    
 //    /// A collection of Unicode range values.
@@ -60,10 +60,10 @@
 //    public init(_ ranges: UnicodeRangeValue...) {
 //        self.init(ranges)
 //    }
-//}
+// }
 //
 ///// Represents different types of Unicode range specifications
-//public enum UnicodeRangeValue: Sendable, Hashable {
+// public enum UnicodeRangeValue: Sendable, Hashable {
 //    /// A single code point, e.g., U+26
 //    case codePoint(Int)
 //    
@@ -77,10 +77,10 @@
 //    private static func isValidCodePoint(_ codePoint: Int) -> Bool {
 //        return codePoint >= 0 && codePoint <= 0x10FFFF
 //    }
-//}
+// }
 //
 ///// CSS Output conversion
-//extension UnicodeRange: CustomStringConvertible {
+// extension UnicodeRange: CustomStringConvertible {
 //    /// Converts the unicode-range value to its CSS string representation
 //    public var description: String {
 //        switch self {
@@ -91,9 +91,9 @@
 //            return global.description
 //        }
 //    }
-//}
+// }
 //
-//extension UnicodeRangeValue: CustomStringConvertible {
+// extension UnicodeRangeValue: CustomStringConvertible {
 //    /// Converts the unicode range value to its CSS string representation
 //    public var description: String {
 //        switch self {
@@ -109,10 +109,10 @@
 //            return "U+\(prefixHex)\(wildcards)"
 //        }
 //    }
-//}
+// }
 //
 //// Convenience factories for common Unicode ranges
-//extension UnicodeRange {
+// extension UnicodeRange {
 //    /// Basic Latin (ASCII) range: U+0-7F
 //    public static var basicLatin: UnicodeRange {
 //        .ranges([.range(0x0, 0x7F)])
@@ -175,4 +175,4 @@
 //            .range(0x20A0, 0x20CF)    // Currency Symbols
 //        ])
 //    }
-//}
+// }

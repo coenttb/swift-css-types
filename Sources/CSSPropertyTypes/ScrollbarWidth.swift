@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `scrollbar-width` property allows the author to set the desired thickness of an element's scrollbars
 /// when they are shown.
@@ -19,17 +19,17 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on scrollbar-width](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width)
 public enum ScrollbarWidth: Property {
     public static let property: String = "scrollbar-width"
-    
+
     /// The default scrollbar width for the platform
     case auto
-    
+
     /// A thin scrollbar width variant on platforms that provide that option, 
     /// or a thinner scrollbar than the default platform scrollbar width
     case thin
-    
+
     /// No scrollbar shown, however the element will still be scrollable
     case none
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -40,13 +40,13 @@ extension ScrollbarWidth: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .thin:
             return "thin"
-            
+
         case .none:
             return "none"
-            
+
         case .global(let global):
             return global.description
         }

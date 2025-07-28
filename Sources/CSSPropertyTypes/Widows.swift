@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `widows` property sets the minimum number of lines in a block container that must be shown
 /// at the top of a page, region, or column.
@@ -17,15 +17,15 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on widows](https://developer.mozilla.org/en-US/docs/Web/CSS/widows)
 public enum Widows: Property {
     public static let property: String = "widows"
-    
+
     /// Specifies the minimum number of lines that can stay by themselves
     /// at the top of a new fragment after a fragmentation break.
     /// The value must be positive.
     case integer(Int)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .integer(let value):

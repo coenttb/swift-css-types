@@ -21,7 +21,7 @@ import Foundation
 public struct CustomIdent: Sendable, Hashable {
     /// The string value of the custom identifier
     private let value: String
-    
+
     /// Creates a new custom identifier with the given value
     ///
     /// - Parameter value: A valid CSS identifier string
@@ -30,14 +30,14 @@ public struct CustomIdent: Sendable, Hashable {
     public init(_ value: String) {
         self.value = value
     }
-    
+
     /// Creates a custom identifier from a string literal
     ///
     /// - Parameter value: A string literal to use as the identifier
     public init(stringLiteral value: String) {
         self.init(value)
     }
-    
+
     /// Creates a custom identifier with a safe value
     ///
     /// - Parameter value: A string to convert to a valid CSS identifier

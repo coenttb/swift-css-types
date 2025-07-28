@@ -18,16 +18,16 @@ import Foundation
 public struct Integer: Sendable, Hashable {
     /// The integer value
     public let value: Int
-    
+
     /// Creates a new CSS integer value
     /// - Parameter value: The integer value
     public init(_ value: Int) {
         self.value = value
     }
-    
+
     /// Creates a CSS integer value with value 0
     public static let zero = Integer(0)
-    
+
     /// Creates a CSS integer value with value 1
     public static let one = Integer(1)
 }
@@ -54,22 +54,22 @@ extension Integer {
     public static func < (lhs: Integer, rhs: Integer) -> Bool {
         return lhs.value < rhs.value
     }
-    
+
     /// Adds two integers
     public static func + (lhs: Integer, rhs: Integer) -> Integer {
         return Integer(lhs.value + rhs.value)
     }
-    
+
     /// Subtracts one integer from another
     public static func - (lhs: Integer, rhs: Integer) -> Integer {
         return Integer(lhs.value - rhs.value)
     }
-    
+
     /// Negates an integer
     public static prefix func - (operand: Integer) -> Integer {
         return Integer(-operand.value)
     }
-    
+
     /// Absolute value of an integer
     public var absolute: Integer {
         return Integer(abs(value))

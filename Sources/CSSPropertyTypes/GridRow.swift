@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid-row` shorthand property specifies a grid item's size and location within 
 /// a grid by contributing a line, a span, or nothing (automatic) to its grid placement, 
@@ -25,25 +25,25 @@ public enum GridRow: Property {
     public static let property: String = "grid-row"
     /// Auto placement
     case auto
-    
+
     /// Placement using a single grid line
     case line(Int)
-    
+
     /// Placement using a named grid line or area
     case name(String)
-    
+
     /// Placement spanning a specific number of tracks
     case span(Int)
-    
+
     /// Placement spanning to a named grid line
     case spanTo(String)
-    
+
     /// Placement with explicit start and end
     case placement(GridRowValue, GridRowValue)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -68,22 +68,22 @@ public enum GridRow: Property {
 public enum GridRowValue: Sendable, Hashable, CustomStringConvertible {
     /// Auto placement
     case auto
-    
+
     /// A specific numbered grid line
     case line(Int)
-    
+
     /// A specific line from the end (negative values)
     case lineEnd(Int)
-    
+
     /// A named grid line
     case name(String)
-    
+
     /// A span of tracks
     case span(Int)
-    
+
     /// A span to a named line
     case spanTo(String)
-    
+
     public var description: String {
         switch self {
         case .auto:

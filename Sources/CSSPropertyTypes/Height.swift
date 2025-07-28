@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `height` property specifies the height of an element.
 ///
@@ -31,31 +31,31 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 public enum Height: Property, LengthPercentageConvertible {
     public static let property: String = "height"
-    
+
     /// A length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// The browser calculates and selects a height for the specified element
     case auto
-    
+
     /// The intrinsic preferred height
     case maxContent
-    
+
     /// The intrinsic minimum height
     case minContent
-    
+
     /// Uses the available space, but not more than max-content
     case fitContent
-    
+
     /// Uses the fit-content formula with the available space replaced by the specified argument
     case fitContentLength(LengthPercentage)
-    
+
     /// Sets the height of the element's margin box to the height of its containing block
     case stretch
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

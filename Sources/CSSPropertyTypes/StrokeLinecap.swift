@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `stroke-linecap` property defines the shape to be used at the end of open subpaths 
 /// of SVG elements' unclosed strokes. If present, it overrides the element's stroke-linecap attribute.
@@ -30,16 +30,16 @@ public enum StrokeLinecap: Property {
     public static let property: String = "stroke-linecap"
     /// The stroke ends flat at its endpoints (default)
     case butt
-    
+
     /// The stroke ends with a semicircular shape whose diameter equals the stroke width
     case round
-    
+
     /// The stroke ends with a square shape extending half the stroke width beyond the endpoint
     case square
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .butt:

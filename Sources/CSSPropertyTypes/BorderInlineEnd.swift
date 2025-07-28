@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-end` shorthand property, which sets border properties for
 /// the logical inline-end border of an element.
@@ -53,20 +53,20 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-end](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-end)
 public enum BorderInlineEnd: Property {
-    
+
     public static let property: String = "border-inline-end"
-    
+
     /// Represents the possible border property combinations
     case properties(width: BorderWidth.Width?, style: LineStyle?, color: Color?)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-end with just a style
     public static func style(_ style: LineStyle) -> BorderInlineEnd {
         .properties(width: nil, style: style, color: nil)
     }
-    
+
     /// Creates a border-inline-end with a width, style, and color
     public static func all(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) -> BorderInlineEnd {
         .properties(width: width, style: style, color: color)
@@ -81,7 +81,7 @@ extension BorderInlineEnd {
     public init(_ style: LineStyle) {
         self = .style(style)
     }
-    
+
 //    /// Creates a border-inline-end with a style and color
 //    ///
 //    /// - Parameters:
@@ -109,7 +109,7 @@ extension BorderInlineEnd {
     public init(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) {
         self = .all(width, style, color)
     }
-    
+
     /// Creates a border-inline-end with specific properties
     ///
     /// - Parameters:
@@ -137,21 +137,21 @@ extension BorderInlineEnd: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -162,33 +162,32 @@ extension BorderInlineEnd: CustomStringConvertible {
 extension BorderInlineEnd {
     /// Creates a none border-inline-end (invisible)
     public static let none = BorderInlineEnd(.none)
-    
+
     /// Creates a hidden border-inline-end (invisible, high priority in border collapsing)
     public static let hidden = BorderInlineEnd(.hidden)
-    
+
     /// Creates a solid border-inline-end with default width and color
     public static let solid = BorderInlineEnd(.solid)
-    
+
     /// Creates a dotted border-inline-end with default width and color
     public static let dotted = BorderInlineEnd(.dotted)
-    
+
     /// Creates a dashed border-inline-end with default width and color
     public static let dashed = BorderInlineEnd(.dashed)
-    
+
     /// Creates a double border-inline-end with default width and color
     public static let double = BorderInlineEnd(.double)
-    
+
     /// Creates a groove border-inline-end with default width and color
     public static let groove = BorderInlineEnd(.groove)
-    
+
     /// Creates a ridge border-inline-end with default width and color
     public static let ridge = BorderInlineEnd(.ridge)
-    
+
     /// Creates a inset border-inline-end with default width and color
     public static let inset = BorderInlineEnd(.inset)
-    
+
     /// Creates a outset border-inline-end with default width and color
     public static let outset = BorderInlineEnd(.outset)
-    
-    
+
 }

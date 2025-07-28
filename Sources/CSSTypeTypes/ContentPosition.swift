@@ -25,7 +25,7 @@ public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// justify-content: center;
     /// ```
     case center
-    
+
     /// Aligns the content to the start edge of the container
     ///
     /// The content is aligned to the start of the axis (left in LTR, right in RTL).
@@ -33,7 +33,7 @@ public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// justify-content: start;
     /// ```
     case start
-    
+
     /// Aligns the content to the end edge of the container
     ///
     /// The content is aligned to the end of the axis (right in LTR, left in RTL).
@@ -41,7 +41,7 @@ public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// justify-content: end;
     /// ```
     case end
-    
+
     /// Aligns the content to the start of a flex container
     ///
     /// In flex layouts, aligns to the main-start or cross-start edge.
@@ -50,7 +50,7 @@ public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// justify-content: flex-start;
     /// ```
     case flexStart = "flex-start"
-    
+
     /// Aligns the content to the end of a flex container
     ///
     /// In flex layouts, aligns to the main-end or cross-end edge.
@@ -59,9 +59,9 @@ public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// justify-content: flex-end;
     /// ```
     case flexEnd = "flex-end"
-    
+
     /// Additional values for horizontal alignment only (justify-content)
-    
+
     /// Aligns the content to the left edge of the container
     ///
     /// The content is aligned to the left edge regardless of text direction.
@@ -70,7 +70,7 @@ public enum ContentPosition: String, Sendable, Hashable, CaseIterable {
     /// justify-content: left;
     /// ```
     case left
-    
+
     /// Aligns the content to the right edge of the container
     ///
     /// The content is aligned to the right edge regardless of text direction.

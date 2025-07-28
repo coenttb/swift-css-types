@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `fill` CSS property defines how the interior of SVG shapes and text content are painted.
 ///
@@ -13,28 +13,28 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/fill)
 public indirect enum Fill: Property, ColorConvertible {
     public static let property: String = "fill"
-    
+
     /// No fill is painted (transparent)
     case none
-    
+
     /// Uses the fill value from a context element
     case contextFill
-    
+
     /// Uses the stroke value from a context element
     case contextStroke
-    
+
     /// A specific color for the fill
     case color(CSSTypeTypes.Color)
-    
+
     /// A URL reference to an SVG paint server element (gradient, pattern)
     case url(Url)
-    
+
     /// A URL with a fallback color if the URL reference doesn't resolve
     case urlWithFallback(url: Url, fallback: Fill = .none)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

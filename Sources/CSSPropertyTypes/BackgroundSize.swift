@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background-size` property, which sets the size of background images.
 ///
@@ -52,25 +52,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background-size](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size)
 public enum BackgroundSize: Property {
     public static let property: String = "background-size"
-    
+
     /// Scale to the container without cropping or stretching (fit inside)
     case contain
-    
+
     /// Scale to fill the container completely (may crop)
     case cover
-    
+
     /// Use natural size or scale proportionally
     case auto
-    
+
     /// Specify just width (height auto-scales to maintain aspect ratio)
     case width(LengthPercentage)
-    
+
     /// Specify both width and height
     case size(LengthPercentage, LengthPercentage)
-    
+
     /// Multiple sizes for multiple backgrounds
     case multiple([BackgroundSize])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -117,18 +117,17 @@ extension BackgroundSize: LengthPercentageConvertible {
         default: fatalError()
         }
     }
-    
-    
+
 }
 
 /// Default value and convenience methods
 extension BackgroundSize {
     /// The default value for background-size (`auto`)
     public static let `default` = BackgroundSize.auto
-    
+
     /// Auto size for width and height
     public static let autoSize = BackgroundSize.size(.auto, .auto)
-    
+
     /// Creates a background size with multiple values
     ///
     /// - Parameter sizes: The size values for each background
@@ -139,7 +138,7 @@ extension BackgroundSize {
         }
         return .multiple(sizes)
     }
-    
+
     /// Creates a background size with multiple values
     ///
     /// - Parameter sizes: The size values for each background

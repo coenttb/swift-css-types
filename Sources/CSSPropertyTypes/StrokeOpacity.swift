@@ -1,7 +1,6 @@
 //
 // StrokeOpacity.swift
 
-
 import CSSTypeTypes
 
 /// The `stroke-opacity` CSS property defines the opacity of an SVG shape's stroke. The effect is identical to that
@@ -17,16 +16,16 @@ import CSSTypeTypes
 /// ```
 public enum StrokeOpacity: Property {
     public static let property: String = "stroke-opacity"
-    
+
     /// A numeric opacity value between 0 and 1
     case number(Number)
-    
+
     /// A percentage opacity value between 0% and 100%
     case percentage(Percentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .number(let number):
@@ -39,14 +38,14 @@ public enum StrokeOpacity: Property {
             return global.description
         }
     }
-    
+
     /// Creates a StrokeOpacity with a numeric value
     /// - Parameter value: The opacity value between 0 and 1
     /// - Returns: A StrokeOpacity with the specified numeric value
     public static func opacity(_ value: Double) -> Self {
         .number(.init(value))
     }
-    
+
     /// Creates a StrokeOpacity with a percentage value
     /// - Parameter value: The opacity percentage value
     /// - Returns: A StrokeOpacity with the specified percentage value

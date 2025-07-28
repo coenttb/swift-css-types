@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-inline-end-width` property, which defines the width of the logical
 /// inline-end border of an element.
@@ -47,15 +47,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-inline-end-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-end-width)
 public enum BorderInlineEndWidth: Property {
-    
+
     public static let property: String = "border-inline-end-width"
-    
+
     /// Use a specific width value for the inline-end border
     case width(BorderWidth.Width)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-inline-end-width with a specific width value
     ///
     /// - Parameter width: The width value for the inline-end border
@@ -88,13 +88,13 @@ extension BorderInlineEndWidth: CustomStringConvertible {
 extension BorderInlineEndWidth {
     /// The default border-inline-end-width value (medium)
     public static let `default` = BorderInlineEndWidth(.medium)
-    
+
     /// A thin border-inline-end-width
     public static let thin = BorderInlineEndWidth(.thin)
-    
+
     /// A medium border-inline-end-width
     public static let medium = BorderInlineEndWidth(.medium)
-    
+
     /// A thick border-inline-end-width
     public static let thick = BorderInlineEndWidth(.thick)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `margin-block-start` property defines the logical block start margin of an element.
 ///
@@ -23,15 +23,15 @@ public enum MarginBlockStart: Property, LengthPercentageConvertible, Expressible
     public static let property: String = "margin-block-start"
     /// A specific length or percentage value for the margin
     case lengthPercentage(LengthPercentage)
-    
+
     /// Browser automatically determines the margin
     case auto
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // MARK: - Protocol Conformance
-    
+
     /// Implementation of the CustomStringConvertible protocol
     public var description: String {
         switch self {
@@ -43,15 +43,14 @@ public enum MarginBlockStart: Property, LengthPercentageConvertible, Expressible
             return global.description
         }
     }
-    
-    
+
     // MARK: - Convenience initializers
-    
+
     /// Create a margin value using a float literal as pixels
     public init(floatLiteral value: Double) {
         self = .px(value)
     }
-    
+
     /// Create a margin value using an integer literal as pixels
     public init(integerLiteral value: Int) {
         self = .px(Double(value))

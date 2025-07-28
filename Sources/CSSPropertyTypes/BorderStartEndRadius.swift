@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-start-end-radius` property, which rounds the corner between
 /// the block-start and inline-end edges of an element.
@@ -52,15 +52,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-start-end-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-start-end-radius)
 public enum BorderStartEndRadius: Property {
-    
+
     public static let property: String = "border-start-end-radius"
-    
+
     /// A circular corner with a single radius
     case radius(LengthPercentage)
-    
+
     /// An elliptical corner with horizontal and vertical radii
     case elliptical(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -73,7 +73,7 @@ extension BorderStartEndRadius {
     public init(_ radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-start-end-radius with an elliptical corner
     ///
     /// - Parameters:
@@ -82,14 +82,14 @@ extension BorderStartEndRadius {
     public init(_ horizontal: LengthPercentage, _ vertical: LengthPercentage) {
         self = .elliptical(horizontal, vertical)
     }
-    
+
     /// Creates a border-start-end-radius with a circular corner
     ///
     /// - Parameter radius: The radius of the corner
     public init(radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-start-end-radius with an elliptical corner
     ///
     /// - Parameters:

@@ -5,8 +5,8 @@
 //  Created by Claude on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `pointer-events` CSS property sets under what circumstances (if any)
 /// a particular graphic element can become the target of pointer events.
@@ -21,48 +21,48 @@ import CSSTypeTypes
 /// ```
 public enum PointerEvents: Property {
     public static let property: String = "pointer-events"
-    
+
     /// The element behaves as it would if the pointer-events property were not specified
     case auto
-    
+
     /// The element is never the target of pointer events; clicks, touches, and hovers "pass through"
     case none
-    
+
     // SVG-specific values (these are less commonly used in general CSS)
-    
+
     /// SVG: Element receives pointer events when visibility is set to visible and when the mouse cursor
     /// is over a painted area (fill or stroke with non-none value)
     case visiblePainted
-    
+
     /// SVG: Element receives pointer events when visibility is set to visible and the mouse cursor
     /// is over the interior (fill)
     case visibleFill
-    
+
     /// SVG: Element receives pointer events when visibility is set to visible and the mouse cursor
     /// is over the perimeter (stroke)
     case visibleStroke
-    
+
     /// SVG: Element receives pointer events when visibility is set to visible
     case visible
-    
+
     /// SVG: Element receives pointer events when the mouse cursor is over a painted area
     case painted
-    
+
     /// SVG: Element receives pointer events when the mouse cursor is over the interior (fill)
     case fill
-    
+
     /// SVG: Element receives pointer events when the mouse cursor is over the perimeter (stroke)
     case stroke
-    
+
     /// SVG: Element receives pointer events when the mouse cursor is over the bounding box
     case boundingBox
-    
+
     /// SVG: Element receives pointer events when the mouse cursor is over any part of the element
     case all
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

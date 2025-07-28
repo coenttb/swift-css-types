@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-image-source` property, which specifies the source image
 /// used to create an element's border image.
@@ -37,36 +37,36 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-image-source](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source)
 public enum BorderImageSource: Property {
-    
+
     public static let property: String = "border-image-source"
-    
+
     /// No border image (use border-style instead)
     case none
-    
+
     /// Use a URL to an image as border source
     case url(Url)
-    
+
     /// Use a linear gradient as border source
     case linearGradient(CSSString)
-    
+
     /// Use a radial gradient as border source
     case radialGradient(CSSString)
-    
+
     /// Use a conic gradient as border source
     case conicGradient(CSSString)
-    
+
     /// Use a repeating linear gradient as border source
     case repeatingLinearGradient(CSSString)
-    
+
     /// Use a repeating radial gradient as border source
     case repeatingRadialGradient(CSSString)
-    
+
     /// Use a repeating conic gradient as border source
     case repeatingConicGradient(CSSString)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Default value (none)
     public static let `default` = BorderImageSource.none
 }

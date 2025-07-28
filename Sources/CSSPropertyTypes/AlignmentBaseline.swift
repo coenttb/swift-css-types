@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS alignment-baseline property specifies the specific baseline used to align the box's text and inline-level contents.
 ///
@@ -21,56 +21,56 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on alignment-baseline](https://developer.mozilla.org/en-US/docs/Web/CSS/alignment-baseline)
 public enum AlignmentBaseline: Property {
     public static let property: String = "alignment-baseline"
-    
+
     /// Use the dominant-baseline value of the parent
     case baseline
-    
+
     /// Match the box's alphabetic baseline to that of its parent
     case alphabetic
-    
+
     /// Match the box's central baseline to the central baseline of its parent
     case central
-    
+
     /// Match the box's ideographic character face under-side baseline to that of its parent
     case ideographic
-    
+
     /// Match the box's mathematical baseline to that of its parent
     case mathematical
-    
+
     /// Align the vertical midpoint of the box with the baseline of the parent plus half the x-height
     case middle
-    
+
     /// Match the bottom of the box to the top of the parent's content area
     case textBottom
-    
+
     /// Match the top of the box to the top of the parent's content area
     case textTop
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // Deprecated values (included for completeness)
-    
+
     /// Deprecated - Use the baseline value of the parent
     @available(*, deprecated, message: "Use 'baseline' instead")
     case auto
-    
+
     /// Deprecated - Alias for text-top
     @available(*, deprecated, message: "Use 'textTop' instead")
     case beforeEdge
-    
+
     /// Deprecated - Alias for text-bottom
     @available(*, deprecated, message: "Use 'textBottom' instead")
     case afterEdge
-    
+
     /// Deprecated
     @available(*, deprecated, message: "This value is deprecated")
     case hanging
-    
+
     /// Deprecated - Alias for text-top
     @available(*, deprecated, message: "Use 'textTop' instead")
     case textBeforeEdge
-    
+
     /// Deprecated - Alias for text-bottom
     @available(*, deprecated, message: "Use 'textBottom' instead")
     case textAfterEdge

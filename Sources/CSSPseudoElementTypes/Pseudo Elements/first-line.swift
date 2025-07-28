@@ -47,7 +47,7 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::first-line](https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line)
 public struct FirstLine: CSSPseudoElement {
     @inlinable public static var name: String { "first-line" }
-    
+
     public init() {}
 }
 //

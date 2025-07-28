@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `offset-path` property specifies a path for an element to follow and
 /// determines the element's positioning within the parent container or SVG coordinate system.
@@ -19,67 +19,67 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on offset-path](https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path)
 public enum OffsetPath: Property {
     public static let property: String = "offset-path"
-    
+
     /// No offset path is specified
     case none
-    
+
     /// A URL reference to an SVG shape
     case url(Url)
-    
+
     /// A ray originating from a position extending at an angle
     case ray(angle: Angle, size: RaySize? = nil, contain: Bool = false, position: Position? = nil)
-    
+
     /// A shape using CSS basic shape functions
     case shape(BasicShape)
-    
+
     /// A coordinate box for positioning reference
     case coordBox(CoordBox)
-    
+
     /// A combination of coordinate box and shape
     case coordBoxShape(CoordBox, BasicShape)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     /// Specifies the size of a ray
     public enum RaySize: Sendable, Hashable {
         /// Uses the length from the center to the closest side
         case closestSide
-        
+
         /// Uses the length from the center to the closest corner
         case closestCorner
-        
+
         /// Uses the length from the center to the farthest side
         case farthestSide
-        
+
         /// Uses the length from the center to the farthest corner
         case farthestCorner
-        
+
         /// Uses the distance to where the ray intersects the box's sides
         case sides
     }
-    
+
     /// Specifies the coordinate box to use for the offset path
     public enum CoordBox: Sendable, Hashable {
         /// The box is positioned at the border edge of the element
         case borderBox
-        
+
         /// The box is positioned at the padding edge of the element
         case paddingBox
-        
+
         /// The box is positioned at the content edge of the element
         case contentBox
-        
+
         /// The box is positioned at the fill of an SVG element
         case fillBox
-        
+
         /// The box is positioned at the stroke of an SVG element
         case strokeBox
-        
+
         /// The box is positioned at the SVG viewBox
         case viewBox
     }
-    
+
     /// Factory method for creating a path-based offset path
     ///
     /// - Parameter pathData: SVG path data string
@@ -87,7 +87,7 @@ public enum OffsetPath: Property {
     public static func path(_ pathData: String, fillRule: BasicShape.FillRule? = nil) -> Self {
         .shape(.path(fillRule: fillRule, pathData: pathData))
     }
-    
+
     /// Factory method for creating a circle-based offset path
     ///
     /// - Parameters:
@@ -98,7 +98,7 @@ public enum OffsetPath: Property {
         let shapeRadius = radius.map { BasicShape.ShapeRadius.lengthPercentage($0) }
         return .shape(.circle(radius: shapeRadius, at: position))
     }
-    
+
     /// Factory method for creating an ellipse-based offset path
     ///
     /// - Parameters:
@@ -111,7 +111,7 @@ public enum OffsetPath: Property {
         let ry = radiusY.map { BasicShape.ShapeRadius.lengthPercentage($0) }
         return .shape(.ellipse(radiusX: rx, radiusY: ry, at: position))
     }
-    
+
     /// Factory method for creating a polygon-based offset path
     ///
     /// - Parameters:
@@ -122,7 +122,7 @@ public enum OffsetPath: Property {
         let polygonPoints = points.map { BasicShape.PolygonPoint($0.0, $0.1) }
         return .shape(.polygon(fillRule: fillRule, points: polygonPoints))
     }
-    
+
     /// Factory method for creating an inset-based offset path
     ///
     /// - Parameters:

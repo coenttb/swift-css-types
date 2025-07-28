@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-inline-start` property defines the logical inline start padding of an element, 
 /// which maps to a physical padding depending on the element's writing mode, directionality, and text orientation.
@@ -19,10 +19,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-inline-start](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline-start)
 public enum PaddingInlineStart: Property, LengthPercentageConvertible {
     public static let property: String = "padding-inline-start"
-    
+
     /// A length or percentage value for the inline-start padding
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -34,13 +34,12 @@ extension PaddingInlineStart: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .global(let global):
             return global.description
         }
     }
 }
-
 
 extension PaddingInlineStart: ExpressibleByIntegerLiteral {
     /// Creates a padding-inline-start from an integer literal (interpreted as pixels)

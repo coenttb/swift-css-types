@@ -1,7 +1,6 @@
 //
 // ScrollTimeline.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-timeline` CSS shorthand property defines a named scroll progress timeline, which is progressed
@@ -23,11 +22,11 @@ import CSSTypeTypes
 /// ```
 public enum ScrollTimeline: Property {
     public static let property: String = "scroll-timeline"
-    
+
     /// Custom identifier for a timeline name (must start with --)
     public struct CustomIdent: RawRepresentable, Sendable, Hashable, CustomStringConvertible {
         public var rawValue: String
-        
+
         public init(rawValue: String) {
             // Ensure the identifier starts with -- as per CSS custom property convention
             if rawValue.hasPrefix("--") {
@@ -36,24 +35,24 @@ public enum ScrollTimeline: Property {
                 self.rawValue = "--" + rawValue
             }
         }
-        
+
         public var description: String {
             return rawValue
         }
     }
-    
+
     /// No named timeline
     case none
-    
+
     /// A named timeline with a custom identifier
     case name(CustomIdent)
-    
+
     /// A named timeline with a custom identifier and specific axis
     case nameAndAxis(CustomIdent, ScrollTimelineAxis.Axis)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:
@@ -66,14 +65,14 @@ public enum ScrollTimeline: Property {
             return global.description
         }
     }
-    
+
     /// Creates a ScrollTimeline with a specific name
     /// - Parameter name: The name for the timeline (will be prefixed with -- if not already)
     /// - Returns: A ScrollTimeline with the specified name
     public static func named(_ name: String) -> Self {
         .name(CustomIdent(rawValue: name))
     }
-    
+
     /// Creates a ScrollTimeline with a specific name and axis
     /// - Parameters:
     ///   - name: The name for the timeline (will be prefixed with -- if not already)

@@ -19,15 +19,15 @@ import Foundation
 public struct CSSString: Sendable, Hashable {
     /// The raw string value
     public let value: String
-    
+
     public enum Quotes: Sendable, Hashable {
         case single
         case double
     }
-    
+
     /// Whether to use single quotes (true) or double quotes (false)
     public let quotes: Quotes
-    
+
     /// Creates a new CSS string value with the given raw string
     ///
     /// - Parameters:
@@ -37,7 +37,7 @@ public struct CSSString: Sendable, Hashable {
         self.value = value
         self.quotes = quotes
     }
-    
+
     /// Creates an empty CSS string value
     public static let empty = CSSString("")
 }
@@ -49,7 +49,7 @@ extension CSSString: CustomStringConvertible {
         let escaped = escapeString(value, quotes: quotes)
         return quotes == .single ? "'\(escaped)'" : "\"\(escaped)\""
     }
-    
+
     /// Escapes a string according to CSS string rules
     ///
     /// - Parameters:
@@ -58,7 +58,7 @@ extension CSSString: CustomStringConvertible {
     /// - Returns: An escaped string ready for CSS output
     private func escapeString(_ string: String, quotes: Quotes) -> String {
         var result = ""
-        
+
         for char in string {
             switch char {
             case "\"" where quotes == .double:
@@ -77,7 +77,7 @@ extension CSSString: CustomStringConvertible {
                 result.append(char)
             }
         }
-        
+
         return result
     }
 }
@@ -92,5 +92,5 @@ extension CSSString: ExpressibleByStringLiteral {
 
 /// String literal conversion
 extension CSSString: ExpressibleByStringInterpolation {
-    
+
 }

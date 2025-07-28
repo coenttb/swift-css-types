@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `offset-distance` property specifies a position along an `offset-path` for an element to be placed.
 ///
@@ -17,10 +17,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on offset-distance](https://developer.mozilla.org/en-US/docs/Web/CSS/offset-distance)
 public enum OffsetDistance: Property, LengthPercentageConvertible {
     public static let property: String = "offset-distance"
-    
+
     /// A length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -47,7 +47,7 @@ extension OffsetDistance {
     public static func percentage(_ value: Double) -> Self {
         .lengthPercentage(.percentage(Percentage(value)))
     }
-    
+
     /// Creates an offset-distance with a pixel value
     ///
     /// - Parameter value: The pixel value
@@ -55,7 +55,7 @@ extension OffsetDistance {
     public static func px(_ value: Double) -> Self {
         .lengthPercentage(.px(value))
     }
-    
+
     /// Creates an offset-distance with an em value
     ///
     /// - Parameter value: The em value
@@ -63,7 +63,7 @@ extension OffsetDistance {
     public static func em(_ value: Double) -> Self {
         .lengthPercentage(.em(value))
     }
-    
+
     /// Creates an offset-distance with a rem value
     ///
     /// - Parameter value: The rem value
@@ -81,7 +81,7 @@ extension OffsetDistance: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates an offset-distance with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

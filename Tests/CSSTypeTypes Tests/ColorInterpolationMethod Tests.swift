@@ -10,7 +10,7 @@ import Testing
 
 @Suite("ColorInterpolationMethod Tests")
 struct ColorInterpolationMethodTests {
-    
+
     @Test("Rectangular color spaces render correctly")
     func testRectangularColorSpaces() {
         #expect(ColorInterpolationMethod.rectangular(.srgb).description == "in srgb")
@@ -25,7 +25,7 @@ struct ColorInterpolationMethodTests {
         #expect(ColorInterpolationMethod.rectangular(.xyzD50).description == "in xyz-d50")
         #expect(ColorInterpolationMethod.rectangular(.xyzD65).description == "in xyz-d65")
     }
-    
+
     @Test("Polar color spaces without hue method render correctly")
     func testPolarColorSpacesWithoutHue() {
         #expect(ColorInterpolationMethod.polar(.hsl).description == "in hsl")
@@ -33,7 +33,7 @@ struct ColorInterpolationMethodTests {
         #expect(ColorInterpolationMethod.polar(.lch).description == "in lch")
         #expect(ColorInterpolationMethod.polar(.oklch).description == "in oklch")
     }
-    
+
     @Test("Polar color spaces with hue method render correctly")
     func testPolarColorSpacesWithHue() {
         #expect(ColorInterpolationMethod.polar(.hsl, .shorter).description == "in hsl shorter hue")
@@ -41,28 +41,28 @@ struct ColorInterpolationMethodTests {
         #expect(ColorInterpolationMethod.polar(.lch, .increasing).description == "in lch increasing hue")
         #expect(ColorInterpolationMethod.polar(.oklch, .decreasing).description == "in oklch decreasing hue")
     }
-    
+
     @Test("Custom color profile renders correctly")
     func testCustomColorProfile() {
         let customProfile = CSSString("my-custom-profile")
         #expect(ColorInterpolationMethod.custom(customProfile).description == "in 'my-custom-profile'")
     }
-    
+
     @Test("ColorInterpolationMethod conforms to Hashable")
     func testHashable() {
         // Same type and values should be equal
         #expect(ColorInterpolationMethod.rectangular(.srgb) == ColorInterpolationMethod.rectangular(.srgb))
         #expect(ColorInterpolationMethod.polar(.hsl) == ColorInterpolationMethod.polar(.hsl))
         #expect(ColorInterpolationMethod.polar(.hsl, .shorter) == ColorInterpolationMethod.polar(.hsl, .shorter))
-        
+
         // Different types should not be equal
         #expect(ColorInterpolationMethod.rectangular(.srgb) != ColorInterpolationMethod.polar(.hsl))
-        
+
         // Same type but different values should not be equal
         #expect(ColorInterpolationMethod.rectangular(.srgb) != ColorInterpolationMethod.rectangular(.lab))
         #expect(ColorInterpolationMethod.polar(.hsl) != ColorInterpolationMethod.polar(.hwb))
         #expect(ColorInterpolationMethod.polar(.hsl, .shorter) != ColorInterpolationMethod.polar(.hsl, .longer))
-        
+
         // Custom profiles should compare by value
         let profile1 = CSSString("profile1")
         let profile2 = CSSString("profile2")

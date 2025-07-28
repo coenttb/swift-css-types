@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-moz-user-focus` property is used to indicate whether an element can have the focus.
 ///
@@ -32,19 +32,19 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -moz-user-focus](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-user-focus)
 public enum MozUserFocus: Property {
     public static let property: String = "-moz-user-focus"
-    
+
     /// The element does not accept keyboard focus. Attempting to select the element removes focus from any other element.
     case none
-    
+
     /// The element can accept keyboard focus
     case normal
-    
+
     /// The element does not accept keyboard focus and will be skipped in the tab order
     case ignore
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

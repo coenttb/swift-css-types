@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `column-width` property sets the ideal column width in a multi-column layout.
 /// The container will have as many columns as can fit without any of them having a width less than the column-width value.
@@ -23,10 +23,10 @@ public enum ColumnWidth: Property, LengthConvertible {
     public static let property: String = "column-width"
     /// The width of the column is determined by other CSS properties, such as column-count
     case auto
-    
+
     /// A specific length for the column width
     case length(Length)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -37,10 +37,10 @@ extension ColumnWidth: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .length(let length):
             return length.description
-            
+
         case .global(let global):
             return global.description
         }

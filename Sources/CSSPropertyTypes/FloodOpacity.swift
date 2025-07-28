@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `flood-opacity` property defines the opacity of the color used in filter effects for
 /// the `<feFlood>` and `<feDropShadow>` SVG filter elements.
@@ -16,21 +16,21 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on flood-opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/flood-opacity)
 public enum FloodOpacity: Property, PercentageConvertible {
     public static let property: String = "flood-opacity"
-    
+
     /// A numeric opacity value between 0 and 1
     case number(Number)
-    
+
     /// A percentage opacity value
     case percentage(Percentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Create a flood-opacity from an integer percentage
     public init(_ percentage: Percentage) {
         self = .percentage(percentage)
     }
-    
+
     /// Create a flood-opacity from a decimal value (between 0 and 1)
     public init(_ opacity: Double) {
         if opacity >= 0 && opacity <= 1 {
@@ -40,7 +40,7 @@ public enum FloodOpacity: Property, PercentageConvertible {
             self = .percentage(.init(opacity))
         }
     }
-    
+
     public var description: String {
         switch self {
         case .number(let number):

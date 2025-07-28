@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-color` shorthand property, which sets the color of an element's borders.
 ///
@@ -42,21 +42,21 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color)
 public enum BorderColor: Property {
-    
+
     public static let property: String = "border-color"
-    
+
     /// Same color for all four sides
     case all(Color)
-    
+
     /// Different colors for vertical (top/bottom) and horizontal (left/right) sides
     case vertical_horizontal(Color, Color)
-    
+
     /// Different colors for top, horizontal (left/right), and bottom sides
     case top_horizontal_bottom(Color, Color, Color)
-    
+
     /// Different colors for each side in clockwise order: top, right, bottom, left
     case top_right_bottom_left(Color, Color, Color, Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 
@@ -66,7 +66,7 @@ public enum BorderColor: Property {
     public init(_ color: CSSPropertyTypes.Color) {
         self = .all(color)
     }
-    
+
     /// Creates a border color with two values (vertical and horizontal)
     ///
     /// - Parameters:
@@ -75,7 +75,7 @@ public enum BorderColor: Property {
     public init(_ vertical: Color, _ horizontal: Color) {
         self = .vertical_horizontal(vertical, horizontal)
     }
-    
+
     /// Creates a border color with three values (top, horizontal, bottom)
     ///
     /// - Parameters:
@@ -85,7 +85,7 @@ public enum BorderColor: Property {
     public init(_ top: Color, _ horizontal: Color, _ bottom: Color) {
         self = .top_horizontal_bottom(top, horizontal, bottom)
     }
-    
+
     /// Creates a border color with four values (one for each side)
     ///
     /// - Parameters:
@@ -129,22 +129,22 @@ extension BorderColor: CustomStringConvertible {
 extension BorderColor {
     /// Creates a transparent border color
     public static let transparent = BorderColor(.transparent)
-    
+
     /// Creates a border color that uses the current text color
     public static let currentColor = BorderColor(.currentColor)
-    
+
     /// Creates a black border color
     public static let black = BorderColor(.black)
-    
+
     /// Creates a white border color
     public static let white = BorderColor(.white)
-    
+
     /// Creates a red border color
     public static let red = BorderColor(.red)
-    
+
     /// Creates a green border color
     public static let green = BorderColor(.green)
-    
+
     /// Creates a blue border color
     public static let blue = BorderColor(.blue)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-top-left-radius` property, which rounds the top-left corner of an element.
 ///
@@ -42,18 +42,18 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-top-left-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius)
 public enum BorderTopLeftRadius: Property {
-    
+
     public static let property: String = "border-top-left-radius"
-    
+
     /// A single radius value for a circular corner
     case radius(LengthPercentage)
-    
+
     /// Two radius values for an elliptical corner (horizontal, vertical)
     case elliptical(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-top-left-radius with the specified radius
     ///
     /// - Parameters:
@@ -66,14 +66,14 @@ public enum BorderTopLeftRadius: Property {
             self = .radius(horizontal)
         }
     }
-    
+
     /// Creates a border-top-left-radius with a circular corner
     ///
     /// - Parameter radius: The radius of the corner
     public init(radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-top-left-radius with an elliptical corner
     ///
     /// - Parameters:

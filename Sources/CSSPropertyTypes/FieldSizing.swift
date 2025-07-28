@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `field-sizing` CSS property controls the sizing behavior of form control elements
 /// that have a default preferred size.
@@ -13,16 +13,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing)
 public enum FieldSizing: Property {
     public static let property: String = "field-sizing"
-    
+
     /// Allows the element to adjust its size to fit its contents
     case content
-    
+
     /// Sets a fixed size for the element (default behavior)
     case fixed
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .content:

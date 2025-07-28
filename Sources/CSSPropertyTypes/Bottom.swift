@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `bottom` property participates in setting the vertical position of a positioned element.
 /// This inset property has no effect on non-positioned elements.
@@ -28,16 +28,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on bottom](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom)
 public enum Bottom: Property, LengthPercentageConvertible {
-    
+
     public static let property: String = "bottom"
-    
+
     /// The position is determined automatically based on the element's normal flow position
     case auto
-    
+
     /// A specific length value
     case lengthPercentage(LengthPercentage)
-    
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 
@@ -50,7 +49,7 @@ extension Bottom: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .lengthPercentage(let value):
             return value.description
         case .global(let global):

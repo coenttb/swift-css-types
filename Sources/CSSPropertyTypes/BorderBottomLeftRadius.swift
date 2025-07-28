@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-bottom-left-radius` property, which rounds the bottom-left corner of an element.
 ///
@@ -42,15 +42,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-bottom-left-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius)
 public enum BorderBottomLeftRadius: Property {
-    
+
     public static let property: String = "border-bottom-left-radius"
-    
+
     /// A circular corner with a single radius
     case radius(LengthPercentage)
-    
+
     /// An elliptical corner with horizontal and vertical radii
     case elliptical(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -63,7 +63,7 @@ extension BorderBottomLeftRadius {
     public init(_ radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-bottom-left-radius with an elliptical corner
     ///
     /// - Parameters:
@@ -72,14 +72,14 @@ extension BorderBottomLeftRadius {
     public init(_ horizontal: LengthPercentage, _ vertical: LengthPercentage) {
         self = .elliptical(horizontal, vertical)
     }
-    
+
     /// Creates a border-bottom-left-radius with a circular corner
     ///
     /// - Parameter radius: The radius of the corner
     public init(radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-bottom-left-radius with an elliptical corner
     ///
     /// - Parameters:
@@ -89,7 +89,6 @@ extension BorderBottomLeftRadius {
         self = .elliptical(horizontalRadius, verticalRadius)
     }
 }
-
 
 /// Support for LengthPercentageConvertible
 extension BorderBottomLeftRadius: LengthPercentageConvertible {
@@ -121,4 +120,3 @@ extension BorderBottomLeftRadius: CustomStringConvertible {
         }
     }
 }
-

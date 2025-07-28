@@ -10,7 +10,7 @@ import Testing
 
 @Suite("Global Tests")
 struct GlobalTests {
-    
+
     @Test("Global enum cases render correctly")
     func testGlobalValues() {
         #expect(Global.inherit.description == "inherit")

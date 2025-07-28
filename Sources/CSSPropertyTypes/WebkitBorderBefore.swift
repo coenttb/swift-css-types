@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard `-webkit-border-before` CSS property is a shorthand property for setting
 /// border properties for the logical block-start edge of an element.
@@ -36,22 +36,22 @@ import CSSTypeTypes
 ///         Consider using the standard `border-block-start` property for production sites.
 ///
 public enum WebkitBorderBefore: Property {
-    
+
     public static let property: String = "-webkit-border-before"
-    
+
     /// Specifies border properties (width, style, color)
     /// Note that per CSS spec, these can be specified in any order
     case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Convenience initializer for border properties
     public init(
         width: BorderWidth? = nil,
         style: LineStyle? = nil,
         color: Color? = nil
-    ){
+    ) {
         self = .properties(width: width, style: style, color: color)
     }
 }
@@ -71,21 +71,21 @@ extension WebkitBorderBefore: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.isEmpty ? "none" : parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -108,7 +108,7 @@ extension WebkitBorderBefore {
     public static func thin(_ style: LineStyle) -> WebkitBorderBefore {
         .properties(width: .thin, style: style)
     }
-    
+
     /// Creates a medium border with the specified style
     ///
     /// - Parameter style: The border style
@@ -116,7 +116,7 @@ extension WebkitBorderBefore {
     public static func medium(_ style: LineStyle) -> WebkitBorderBefore {
         .properties(width: .medium, style: style)
     }
-    
+
     /// Creates a thick border with the specified style
     ///
     /// - Parameter style: The border style

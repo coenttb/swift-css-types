@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-top-right-radius` property, which rounds the top-right corner of an element.
 ///
@@ -45,13 +45,13 @@ public enum BorderTopRightRadius: Property {
     public static let property: String = "border-top-right-radius"
     /// A single radius value for a circular corner
     case radius(LengthPercentage)
-    
+
     /// Two radius values for an elliptical corner (horizontal, vertical)
     case elliptical(LengthPercentage, LengthPercentage)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-top-right-radius with the specified radius
     ///
     /// - Parameters:
@@ -64,14 +64,14 @@ public enum BorderTopRightRadius: Property {
             self = .radius(horizontal)
         }
     }
-    
+
     /// Creates a border-top-right-radius with a circular corner
     ///
     /// - Parameter radius: The radius of the corner
     public init(radius: LengthPercentage) {
         self = .radius(radius)
     }
-    
+
     /// Creates a border-top-right-radius with an elliptical corner
     ///
     /// - Parameters:

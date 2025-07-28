@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `x` property defines the x-axis coordinate of the top left corner of an SVG element.
 ///
@@ -21,12 +21,12 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on x](https://developer.mozilla.org/en-US/docs/Web/CSS/x)
 public enum X: Property, LengthPercentageConvertible {
     public static let property: String = "x"
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

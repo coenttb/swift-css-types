@@ -20,71 +20,71 @@ import Foundation
 public enum Position: Sendable, Hashable {
     /// A single keyword (center, top, right, bottom, left)
     case keyword(Keyword)
-    
+
     /// A single value (horizontal position, vertical defaults to center)
     case value(LengthPercentage)
-    
+
     /// Two keywords (one for each axis)
     case keywords(Keyword, Keyword)
-    
+
     /// A keyword and a value
     case keywordValue(Keyword, LengthPercentage)
-    
+
     /// A value and a keyword
     case valueKeyword(LengthPercentage, Keyword)
-    
+
     /// Two values (horizontal, vertical)
     case values(LengthPercentage, LengthPercentage)
-    
+
     /// Four values (keyword, offset, keyword, offset)
     /// This creates positions like "top 10px right 20px"
     case offsets(Keyword, LengthPercentage, Keyword, LengthPercentage)
-    
+
     /// Position keywords for horizontal and vertical alignment
     public enum Keyword: String, Sendable, Hashable {
         /// Center alignment
         case center
-        
+
         /// Top edge
         case top
-        
+
         /// Right edge
         case right
-        
+
         /// Bottom edge
         case bottom
-        
+
         /// Left edge
         case left
     }
-    
+
     /// Creates a centered position
     public static let center: Position = .keyword(.center)
-    
+
     /// Creates a top-aligned position
     public static let top: Position = .keyword(.top)
-    
+
     /// Creates a right-aligned position
     public static let right: Position = .keyword(.right)
-    
+
     /// Creates a bottom-aligned position
     public static let bottom: Position = .keyword(.bottom)
-    
+
     /// Creates a left-aligned position
     public static let left: Position = .keyword(.left)
-    
+
     /// Creates a top-left position
     public static let topLeft: Position = .keywords(.top, .left)
-    
+
     /// Creates a top-right position
     public static let topRight: Position = .keywords(.top, .right)
-    
+
     /// Creates a bottom-left position
     public static let bottomLeft: Position = .keywords(.bottom, .left)
-    
+
     /// Creates a bottom-right position
     public static let bottomRight: Position = .keywords(.bottom, .right)
-    
+
 }
 
 extension Position: LengthPercentageConvertible {
@@ -100,22 +100,22 @@ extension Position: CustomStringConvertible {
         switch self {
         case .keyword(let keyword):
             return keyword.rawValue
-            
+
         case .value(let value):
             return value.description
-            
+
         case .keywords(let keyword1, let keyword2):
             return "\(keyword1.rawValue) \(keyword2.rawValue)"
-            
+
         case .keywordValue(let keyword, let value):
             return "\(keyword.rawValue) \(value)"
-            
+
         case .valueKeyword(let value, let keyword):
             return "\(value) \(keyword.rawValue)"
-            
+
         case .values(let value1, let value2):
             return "\(value1) \(value2)"
-            
+
         case .offsets(let keyword1, let offset1, let keyword2, let offset2):
             return "\(keyword1.rawValue) \(offset1) \(keyword2.rawValue) \(offset2)"
         }

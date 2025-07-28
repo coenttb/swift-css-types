@@ -22,10 +22,10 @@ import Foundation
 public struct Ratio: Sendable, Hashable, Comparable {
     /// The width component of the ratio
     public let width: Double
-    
+
     /// The height component of the ratio
     public let height: Double
-    
+
     /// Creates a new CSS ratio value with explicit width and height
     /// - Parameters:
     ///   - width: The width component (must be positive)
@@ -36,7 +36,7 @@ public struct Ratio: Sendable, Hashable, Comparable {
         self.width = width
         self.height = height
     }
-    
+
     /// Creates a new CSS ratio value with explicit width and height as integers
     /// - Parameters:
     ///   - width: The width component (must be positive)
@@ -44,39 +44,39 @@ public struct Ratio: Sendable, Hashable, Comparable {
     public init(_ width: Int, _ height: Int) {
         self.init(Double(width), Double(height))
     }
-    
+
     /// Creates a square ratio (width/height = value/1)
     /// - Parameter value: The ratio value (must be positive)
     public init(_ value: Double) {
         self.init(value, 1)
     }
-    
+
     /// Creates a square ratio (width/height = value/1) from an integer
     /// - Parameter value: The ratio value (must be positive)
     public init(_ value: Int) {
         self.init(Double(value))
     }
-    
+
     /// The quotient of width divided by height
     public var quotient: Double {
         return width / height
     }
-    
+
     /// Creates a square ratio (1:1)
     public static let square = Ratio(1, 1)
-    
+
     /// Creates a 4:3 ratio (traditional TV)
     public static let tv = Ratio(4, 3)
-    
+
     /// Creates a 16:9 ratio (widescreen)
     public static let widescreen = Ratio(16, 9)
-    
+
     /// Creates a 21:9 ratio (ultrawide)
     public static let ultrawide = Ratio(21, 9)
-    
+
     /// Creates a 1.85:1 ratio (common movie format)
     public static let movie = Ratio(185, 100)
-    
+
     /// Creates a 2.39:1 ratio (anamorphic widescreen)
     public static let cinemascope = Ratio(239, 100)
 }
@@ -116,39 +116,39 @@ extension Ratio {
     public static func < (lhs: Ratio, rhs: Ratio) -> Bool {
         return lhs.quotient < rhs.quotient
     }
-    
+
     /// Returns the inverse of this ratio (height/width)
     public var inverse: Ratio {
         return Ratio(height, width)
     }
-    
+
     /// Simplifies the ratio to its lowest terms
     /// - Returns: A new ratio with the same proportions but reduced to lowest terms
     public func simplified() -> Ratio {
         func gcd(_ a: Double, _ b: Double) -> Double {
             let epsilon = 1e-10
-            
+
             // Convert to integers if they appear to be whole numbers
-            let isWhole = a.truncatingRemainder(dividingBy: 1) < epsilon && 
+            let isWhole = a.truncatingRemainder(dividingBy: 1) < epsilon &&
                            b.truncatingRemainder(dividingBy: 1) < epsilon
-            
+
             if isWhole {
                 let intA = Int(a.rounded())
                 let intB = Int(b.rounded())
-                
+
                 // Use Euclidean algorithm for integers
                 func gcdInt(_ a: Int, _ b: Int) -> Int {
                     return b == 0 ? a : gcdInt(b, a % b)
                 }
-                
+
                 return Double(gcdInt(intA, intB))
             }
-            
+
             // For non-integer values, maintain original values
             // by returning 1 (which won't change the ratio)
             return 1.0
         }
-        
+
         let divisor = gcd(width, height)
         return Ratio(width / divisor, height / divisor)
     }

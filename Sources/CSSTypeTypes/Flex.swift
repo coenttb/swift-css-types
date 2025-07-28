@@ -19,14 +19,14 @@ import Foundation
 public struct Flex: Sendable, Hashable {
     /// The number of fractions of available space to use
     public let number: Number
-    
+
     /// Creates a flex number with the specified number of fractions
     ///
     /// - Parameter number: The number of fractions of available space
     public init(_ number: Number) {
         self.number = number
     }
-    
+
     /// Creates a flex number with the specified number of fractions
     ///
     /// - Parameter number: The number of fractions of available space as an integer

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `backface-visibility` property, which determines whether the back face of an element is visible when turned towards the user.
 ///
@@ -32,13 +32,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on backface-visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility)
 public enum BackfaceVisibility: Property {
     public static let property: String = "backface-visibility"
-    
+
     /// The back face is visible when turned towards the user (default)
     case visible
-    
+
     /// The back face is hidden, effectively making the element invisible when turned away from the user
     case hidden
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

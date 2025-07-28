@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `cx` CSS property defines the x-axis coordinate of the center point of SVG circle and ellipse elements.
 ///
@@ -13,16 +13,16 @@ public enum Cx: Property {
     public static let property: String = "cx"
     /// A specific length value
     case length(Length)
-    
+
     /// A percentage of the SVG viewport width
     case percentage(Percentage)
-    
+
     /// A combination of length and percentage
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .length(let length):

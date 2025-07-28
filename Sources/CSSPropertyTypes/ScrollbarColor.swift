@@ -1,7 +1,6 @@
 //
 // ScrollbarColor.swift
 
-
 import CSSTypeTypes
 
 /// The `scrollbar-color` CSS property sets the color of the scrollbar track and thumb.
@@ -18,16 +17,16 @@ import CSSTypeTypes
 /// ```
 public enum ScrollbarColor: Property {
     public static let property: String = "scrollbar-color"
-    
+
     /// Default platform rendering for the scrollbar
     case auto
-    
+
     /// Applies the first color to the scrollbar thumb, the second to the scrollbar track
     case colors(thumb: Color, track: Color)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -39,7 +38,6 @@ public enum ScrollbarColor: Property {
         }
     }
 
-    
     /// Creates a ScrollbarColor with named colors for thumb and track
     ///
     /// - Parameters:
@@ -49,7 +47,7 @@ public enum ScrollbarColor: Property {
     public static func named(thumb: NamedColor, track: NamedColor) -> Self {
         .colors(thumb: .named(thumb), track: .named(track))
     }
-    
+
     /// Creates a ScrollbarColor with hex color strings for thumb and track
     ///
     /// - Parameters:
@@ -59,7 +57,7 @@ public enum ScrollbarColor: Property {
     public static func hex(thumb: String, track: String) -> Self {
         .colors(thumb: .hex(thumb), track: .hex(track))
     }
-    
+
     /// Creates a ScrollbarColor with RGB values for thumb and track
     ///
     /// - Parameters:

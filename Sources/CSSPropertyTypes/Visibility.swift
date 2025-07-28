@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `visibility` property shows or hides an element without changing the layout of a document.
 ///
@@ -18,15 +18,15 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
 public enum Visibility: Property {
     public static let property: String = "visibility"
-    
+
     /// The element box is visible.
     case visible
-    
+
     /// The element box is invisible (not drawn), but still affects layout as normal.
     /// Descendants of the element will be visible if they have visibility set to visible.
     /// The element cannot receive focus.
     case hidden
-    
+
     /// For table rows/columns, flex items, and ruby annotations, hides the element and removes its space.
     /// For other elements, behaves the same as `hidden`.
     ///
@@ -35,11 +35,10 @@ public enum Visibility: Property {
     /// - For flex items and ruby annotations: the space is removed
     /// - For other elements: behaves like `hidden`
     case collapse
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
-    
+
 }
 
 extension Visibility: CustomStringConvertible {

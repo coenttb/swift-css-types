@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 29/08/2024.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents size-related CSS properties, primarily for `width`, `height`, and `object-fit` values.
 ///
@@ -73,36 +73,36 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs: object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
 public enum Size: Property {
     public static let property: String = "size"
-    
+
     /// A single dimension value, which can be used for either width or height.
     case single(Length)
-    
+
     /// Both width and height values specified together.
     case double(width: Length, height: Length)
-    
+
     /// A keyword value for special sizing behaviors.
     case keyword(Keyword)
-    
+
     /// Automatic sizing based on content and context.
     case auto
-    
+
     case global(Global)
 
     /// Keywords for special sizing behaviors.
     public enum Keyword: String, Sendable {
         /// The intrinsic preferred size (the largest size the content can have without overflow).
         case maxContent = "max-content"
-        
+
         /// The intrinsic minimum size (the smallest size possible without overflow).
         case minContent = "min-content"
-        
+
         /// Uses available space up to a maximum of max-content.
         case fitContent = "fit-content"
-        
+
         /// Scales content to fit within the element's box while preserving aspect ratio.
         /// May result in letterboxing (empty space) to avoid overflow.
         case containingBlock = "contain"
-        
+
         /// Scales content to cover the entire element's box while preserving aspect ratio.
         /// May result in some content being cropped to avoid any empty space.
         case cover
@@ -150,7 +150,7 @@ extension Size {
     public static func width(_ width: Length) -> Self {
         .single(width)
     }
-    
+
     /// Creates a Size representing height.
     ///
     /// - Parameter height: The height value.
@@ -158,7 +158,7 @@ extension Size {
     public static func height(_ height: Length) -> Self {
         .single(height)
     }
-    
+
     /// Creates a Size representing both width and height.
     ///
     /// - Parameters:
@@ -201,19 +201,19 @@ extension Size {
     /// Size based on the content's preferred size (without wrapping).
     /// Equivalent to `.keyword(.maxContent)`.
     public static let maxContent: Self = .keyword(.maxContent)
-    
+
     /// Size based on the content's minimum size (with tight wrapping).
     /// Equivalent to `.keyword(.minContent)`.
     public static let minContent: Self = .keyword(.minContent)
-    
+
     /// Size that uses available space up to the max-content size.
     /// Equivalent to `.keyword(.fitContent)`.
     public static let fitContent: Self = .keyword(.fitContent)
-    
+
     /// Scales content to fit within the element while preserving aspect ratio.
     /// Equivalent to `.keyword(.containingBlock)`.
     public static let contain: Self = .keyword(.containingBlock)
-    
+
     /// Scales content to cover the entire element while preserving aspect ratio.
     /// Equivalent to `.keyword(.cover)`.
     public static let cover: Self = .keyword(.cover)

@@ -28,6 +28,6 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::backdrop](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop)
 public struct Backdrop: CSSPseudoElement {
     @inlinable public static var name: String { "backdrop" }
-    
+
     public init() {}
 }

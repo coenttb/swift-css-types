@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-moz-user-input` property determines if an element will accept user input
 /// in Mozilla applications.
@@ -31,16 +31,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -moz-user-input](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-user-input)
 public enum MozUserInput: Property {
     public static let property: String = "-moz-user-input"
-    
+
     /// The element will respond to user input if it normally takes user input
     case auto
-    
+
     /// The element does not respond to user input, and it does not become :active
     case none
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:

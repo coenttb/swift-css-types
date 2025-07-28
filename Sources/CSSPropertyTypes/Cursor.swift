@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `cursor` CSS property sets the type of cursor to be displayed when pointing over an element.
 ///
@@ -10,83 +10,83 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)
 public indirect enum Cursor: Property {
     public static let property: String = "cursor"
-    
+
     /// General cursor types
-    
+
     /// The browser determines the cursor to display based on context
     case auto
-    
+
     /// The platform's default cursor (usually an arrow)
     case `default`
-    
+
     /// No cursor is shown
     case none
-    
+
     /// Links and status cursors
-    
+
     /// A context menu is available (usually an arrow with a small menu)
     case contextMenu
-    
+
     /// Help is available (usually an arrow with a question mark)
     case help
-    
+
     /// Indicates a link (usually a pointing hand)
     case pointer
-    
+
     /// The program is busy in background but user can still interact (usually an arrow with hourglass)
     case progress
-    
+
     /// The program is busy and user cannot interact (usually an hourglass)
     case wait
-    
+
     /// Selection cursors
-    
+
     /// Indicates table cell or set of cells can be selected
     case cell
-    
+
     /// A crosshair cursor, often used for selection in graphics
     case crosshair
-    
+
     /// Indicates text can be selected (usually an I-beam)
     case text
-    
+
     /// Indicates vertical text can be selected (usually a horizontal I-beam)
     case verticalText
-    
+
     /// Drag and drop cursors
-    
+
     /// Indicates an alias or shortcut is to be created
     case alias
-    
+
     /// Indicates something is to be copied
     case copy
-    
+
     /// Indicates something is to be moved
     case move
-    
+
     /// Indicates item may not be dropped at the current location
     case noDrop
-    
+
     /// Indicates the requested action will not be carried out
     case notAllowed
-    
+
     /// Indicates something can be grabbed
     case grab
-    
+
     /// Indicates something is being grabbed
     case grabbing
-    
+
     /// Resizing and scrolling cursors
-    
+
     /// Indicates something can be scrolled in any direction
     case allScroll
-    
+
     /// Indicates a column can be resized horizontally
     case colResize
-    
+
     /// Indicates a row can be resized vertically
     case rowResize
-    
+
     /// Directional resize cursors
     case nResize
     case eResize
@@ -96,30 +96,30 @@ public indirect enum Cursor: Property {
     case nwResize
     case seResize
     case swResize
-    
+
     /// Bidirectional resize cursors
     case ewResize
     case nsResize
     case neswResize
     case nwseResize
-    
+
     /// Zoom cursors
-    
+
     /// Indicates something can be zoomed in
     case zoomIn
-    
+
     /// Indicates something can be zoomed out
     case zoomOut
-    
+
     /// A URL pointing to a custom cursor image with fallback cursor type
     case url(url: Url, fallback: Cursor = .auto)
-    
+
     /// A URL with cursor hotspot coordinates and fallback cursor type
     case urlWithCoordinates(url: Url, x: Int, y: Int, fallback: Cursor = .auto)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:

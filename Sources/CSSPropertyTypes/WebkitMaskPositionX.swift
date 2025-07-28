@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-webkit-mask-position-x` property sets the initial horizontal position of a mask image.
 ///
@@ -59,25 +59,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-mask-position-x](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-mask-position-x)
 public enum WebkitMaskPositionX: Property, LengthPercentageConvertible {
     public static let property: String = "-webkit-mask-position-x"
-    
+
     /// Left edge position (0%)
     case left
-    
+
     /// Horizontal center position (50%)
     case center
-    
+
     /// Right edge position (100%)
     case right
-    
+
     /// A position defined by a length or percentage value
     case lengthPercentage(LengthPercentage)
-    
+
     /// Multiple horizontal positions for multiple masks
     case multiple([WebkitMaskPositionX])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a mask position-x with multiple values
     ///
     /// - Parameter positions: The position values
@@ -131,7 +131,7 @@ extension WebkitMaskPositionX {
     public static func values(_ positions: [WebkitMaskPositionX]) -> WebkitMaskPositionX {
         WebkitMaskPositionX(positions)
     }
-    
+
     /// Creates a position with multiple values
     ///
     /// - Parameter positions: The position values

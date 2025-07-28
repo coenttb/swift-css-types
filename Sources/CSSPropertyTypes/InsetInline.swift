@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `inset-inline` property is a shorthand that defines the logical inline start and end
 /// offsets of an element, which map to physical offsets depending on the element's writing mode,
@@ -26,28 +26,27 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on inset-inline](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline)
 public enum InsetInline: Property, LengthPercentageConvertible {
     public static let property: String = "inset-inline"
-    
-        
+
     /// Auto value for both start and end
     case auto
-    
+
     /// Same value for both start and end
     case same(LengthPercentage)
-    
+
     /// Different values for start and end
     case sides(start: LengthPercentage, end: LengthPercentage?)
- 
+
     /// Global values
     case global(CSSTypeTypes.Global)
-        
+
     /// Represents a value that can be either a length/percentage or auto
     public enum Value: Hashable, Sendable {
         /// Auto value (browser-determined)
         case auto
-        
+
         /// Specific length or percentage value
         case lengthPercentage(LengthPercentage)
-        
+
         public var description: String {
             switch self {
             case .auto:
@@ -57,15 +56,15 @@ public enum InsetInline: Property, LengthPercentageConvertible {
             }
         }
     }
-    
+
     public var description: String {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .same(let value):
             return value.description
-            
+
         case .sides(let start, let end):
             if start == end {
                 return start.description
@@ -77,8 +76,7 @@ public enum InsetInline: Property, LengthPercentageConvertible {
                     return start.description
                 }
             }
-    
-            
+
         case .global(let global):
             return global.description
         }
@@ -90,11 +88,10 @@ extension InsetInline {
     public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> InsetInline {
         .same(value)
     }
-    
+
     /// Creates an inset-inline with start and end values
     public init(start: LengthPercentage, end: LengthPercentage) {
         self = .sides(start: start, end: end)
     }
- 
 
 }

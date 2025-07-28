@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `flex-flow` property is a shorthand for the `flex-direction` and `flex-wrap` properties.
 ///
@@ -18,10 +18,10 @@ public enum FlexFlow: Property {
     public static let property: String = "flex-flow"
     /// Specifies both the flex-direction and flex-wrap properties
     case flexFlow(FlexDirection, FlexWrap)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .flexFlow(let direction, let wrap):

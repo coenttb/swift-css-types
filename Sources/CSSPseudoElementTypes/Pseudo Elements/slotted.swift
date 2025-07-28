@@ -24,10 +24,10 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::slotted()](https://developer.mozilla.org/en-US/docs/Web/CSS/::slotted)
 public struct Slotted: CSSPseudoElement {
     @inlinable public static var name: String { "slotted" }
-    
+
     /// The compound selector for slotted content
     public let selector: String?
-    
+
     public init(_ selector: String? = nil) {
         self.selector = selector
     }

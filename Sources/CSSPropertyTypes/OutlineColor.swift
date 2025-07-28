@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `outline-color` property sets the color of an element's outline.
 ///
@@ -17,13 +17,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on outline-color](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color)
 public enum OutlineColor: Property, ColorConvertible {
     public static let property: String = "outline-color"
-    
+
     /// A specific color value
     case color(CSSTypeTypes.Color)
-    
+
     /// Automatically determined color (typically the inverse of the background)
     case auto
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
 }
@@ -52,7 +52,7 @@ extension OutlineColor {
     public static func namedColor(_ namedColor: NamedColor) -> Self {
         .color(.named(namedColor))
     }
-    
+
     /// Creates an outline-color with a hex color
     ///
     /// - Parameter hex: The hex color string
@@ -60,7 +60,7 @@ extension OutlineColor {
     public static func hex(_ hex: String) -> Self {
         .color(.hex(hex))
     }
-    
+
     /// Creates an outline-color with RGB values
     ///
     /// - Parameters:
@@ -71,7 +71,7 @@ extension OutlineColor {
     public static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Self {
         .color(.rgb(red, green, blue))
     }
-    
+
     /// Creates an outline-color with RGBA values
     ///
     /// - Parameters:
@@ -83,13 +83,13 @@ extension OutlineColor {
     public static func rgba(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Double) -> Self {
         .color(.rgba(red, green, blue, alpha))
     }
-    
+
     /// Creates an outline-color using the current text color
     public static let currentColor: Self = .color(.currentColor)
-    
+
     /// Creates an outline-color using transparent color
     public static let transparent: Self = .color(.transparent)
-    
+
     // Named color convenience properties
     public static let black: Self = .namedColor(.black)
     public static let silver: Self = .namedColor(.silver)

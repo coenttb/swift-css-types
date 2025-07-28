@@ -24,10 +24,10 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::part()](https://developer.mozilla.org/en-US/docs/Web/CSS/::part)
 public struct Part: CSSPseudoElement {
     @inlinable public static var name: String { "part" }
-    
+
     /// The part name to select
     public let partName: String?
-    
+
     public init(_ partName: String? = nil) {
         self.partName = partName
     }

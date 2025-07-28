@@ -19,7 +19,6 @@ public enum Global: String, Sendable, CaseIterable, CustomStringConvertible {
     case revertLayer = "revert-layer"
     /// Resets to its natural value (acts like `inherit` or `initial` depending on the property)
     case unset
-    
+
     public var description: String { self.rawValue }
 }
-

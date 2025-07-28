@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `background` shorthand property, which sets all background style properties at once.
 ///
@@ -51,51 +51,50 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on background](https://developer.mozilla.org/en-US/docs/Web/CSS/background)
 public enum Background: Property, ColorConvertible {
     public static let property: String = "background"
-    
+
     /// No background
     case none
-    
+
     /// A single background layer
     case layer(Layer)
-    
+
     /// Multiple background layers
     case layers([Layer])
-    
+
     /// Just a background color
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
-
 
 extension Background {
     /// A single background layer configuration
     public struct Layer: Sendable, Hashable {
         /// The background image to display
         public var image: Image?
-        
+
         /// The position of the background image
         public var position: BackgroundPosition?
-        
+
         /// The size of the background image
         public var size: BackgroundSize?
-        
+
         /// How the background image repeats
         public var `repeat`: BackgroundRepeat?
-        
+
         /// How the background image is attached to the viewport
         public var attachment: BackgroundAttachment?
-        
+
         /// How the background image's positioning area is defined
         public var origin: BackgroundOrigin?
-        
+
         /// How the background image is clipped
         public var clip: BackgroundClip?
-        
+
         /// The background color (only valid for the last/bottom layer)
         public var color: Color?
-        
+
         /// Creates a new background layer with specified properties
         ///
         /// - Parameters:
@@ -126,7 +125,7 @@ extension Background {
             self.clip = clip
             self.color = color
         }
-        
+
         /// Creates a background layer with just a color
         ///
         /// - Parameter color: The background color
@@ -134,7 +133,7 @@ extension Background {
         public static func color(_ color: Color) -> Layer {
             Layer(color: color)
         }
-        
+
         /// Creates a background layer with an image and optional settings
         ///
         /// - Parameters:
@@ -268,12 +267,12 @@ extension Background.Layer: CustomStringConvertible {
     /// ```
     public var description: String {
         var components: [String] = []
-        
+
         // Add image
         if let image = image {
             components.append(image.description)
         }
-        
+
         // Add position and size (position/size)
         if let position = position {
             var positionStr = position.description
@@ -285,37 +284,37 @@ extension Background.Layer: CustomStringConvertible {
             // If we have a size but no position, use the default position
             components.append("0% 0%/\(size.description)")
         }
-        
+
         // Add repeat style
         if let repeatStyle = self.repeat {
             components.append(repeatStyle.description)
         }
-        
+
         // Add attachment
         if let attachment = attachment {
             components.append(attachment.description)
         }
-        
+
         // Origin and clip can appear in either order
         // According to the MDN docs, the first is origin, the second is clip
         if let origin = origin {
             components.append(origin.description)
         }
-        
+
         if let clip = clip {
             components.append(clip.description)
         }
-        
+
         // Add color (should only be in the last layer according to spec)
         if let color = color {
             components.append(color.description)
         }
-        
+
         // Special case: empty or just color
         if components.isEmpty {
             return "none"
         }
-        
+
         return components.joined(separator: " ")
     }
 }

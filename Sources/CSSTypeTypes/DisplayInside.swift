@@ -27,7 +27,7 @@ public enum DisplayInside: String, Sendable, Hashable {
     /// display: flow;
     /// ```
     case flow
-    
+
     /// Creates a block formatting context
     ///
     /// The element generates a block box that establishes a new block formatting context,
@@ -36,7 +36,7 @@ public enum DisplayInside: String, Sendable, Hashable {
     /// display: flow-root;
     /// ```
     case flowRoot = "flow-root"
-    
+
     /// Table layout
     ///
     /// The element behaves like an HTML `<table>` element, creating a block-level box
@@ -45,7 +45,7 @@ public enum DisplayInside: String, Sendable, Hashable {
     /// display: table;
     /// ```
     case table
-    
+
     /// Flex layout
     ///
     /// The element behaves as a block-level flex container, using the flexbox layout model
@@ -54,7 +54,7 @@ public enum DisplayInside: String, Sendable, Hashable {
     /// display: flex;
     /// ```
     case flex
-    
+
     /// Grid layout
     ///
     /// The element behaves as a block-level grid container, using the grid layout model
@@ -63,7 +63,7 @@ public enum DisplayInside: String, Sendable, Hashable {
     /// display: grid;
     /// ```
     case grid
-    
+
     /// Ruby layout
     ///
     /// The element behaves like an inline element and lays out its content according to

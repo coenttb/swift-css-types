@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS appearance property is used to display UI elements with platform-specific
 /// styling, based on the operating system's theme.
@@ -18,24 +18,24 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on appearance](https://developer.mozilla.org/en-US/docs/Web/CSS/appearance)
 public enum Appearance: Property {
-    
+
     public static let property: String = "appearance"
-    
+
     /// Force standardized primitive appearance
     case none
-    
+
     /// Acts as none on elements with no special styling
     case auto
-    
+
     /// Special compatibility value menulist-button
     case menulistButton
-    
+
     /// Special compatibility value textfield
     case textfield
-    
+
     /// Compatibility auto values
     case compat(CompatAuto)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -44,37 +44,37 @@ public enum Appearance: Property {
 public enum CompatAuto: String, Sendable, Hashable, CaseIterable {
     /// Button appearance
     case button
-    
+
     /// Checkbox appearance
     case checkbox
-    
+
     /// Listbox appearance
     case listbox
-    
+
     /// Menulist appearance
     case menulist
-    
+
     /// Meter appearance
     case meter
-    
+
     /// Progress bar appearance
     case progressBar = "progress-bar"
-    
+
     /// Push button appearance
     case pushButton = "push-button"
-    
+
     /// Radio button appearance
     case radio
-    
+
     /// Search field appearance
     case searchfield
-    
+
     /// Horizontal slider appearance
     case sliderHorizontal = "slider-horizontal"
-    
+
     /// Square button appearance
     case squareButton = "square-button"
-    
+
     /// Textarea appearance
     case textarea
 }

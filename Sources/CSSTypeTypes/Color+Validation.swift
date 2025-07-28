@@ -17,7 +17,7 @@ extension Color {
         public static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> Color {
             return Color.validatedRGB(red, green, blue)
         }
-        
+
         /// Creates a color from RGBA values with validation.
         ///
         /// - Parameters:
@@ -29,7 +29,7 @@ extension Color {
         public static func rgba(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Double) -> Color {
             return Color.validatedRGBA(red, green, blue, alpha)
         }
-        
+
         /// Creates a color from HSL values with validation.
         ///
         /// - Parameters:
@@ -40,7 +40,7 @@ extension Color {
         public static func hsl(_ hue: Hue, _ saturation: Double, _ lightness: Double) -> Color {
             return Color.validatedHSL(hue, saturation, lightness)
         }
-        
+
         /// Creates a color from HSLA values with validation.
         ///
         /// - Parameters:
@@ -52,7 +52,7 @@ extension Color {
         public static func hsla(_ hue: Hue, _ saturation: Double, _ lightness: Double, _ alpha: Double) -> Color {
             return Color.validatedHSLA(hue, saturation, lightness, alpha)
         }
-        
+
         /// Creates a color from HWB values with validation.
         ///
         /// - Parameters:
@@ -63,7 +63,7 @@ extension Color {
         public static func hwb(_ hue: Hue, _ whiteness: Double, _ blackness: Double) -> Color {
             return Color.validatedHWB(hue, whiteness, blackness)
         }
-        
+
         /// Creates a color from Oklch values with validation.
         ///
         /// - Parameters:

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `break-before` property sets how page, column, or region breaks should behave before a generated box.
 /// If there is no generated box, the property is ignored.
@@ -36,56 +36,56 @@ public enum BreakBefore: Property {
     // Generic break values
     /// Allows, but does not force, any break (page, column, or region) to be inserted right before the element.
     case auto
-    
+
     /// Avoids any break (page, column, or region) from being inserted right before the element.
     case avoid
-    
+
     /// Forces a page break right before the element. The type of this break depends on the containing context
     /// (column break in a multicol container, page break in paged media).
     case always
-    
+
     /// Forces a page break right before the element, breaking through all possible fragmentation contexts.
     /// For example, a break inside a multicol container within a page would force both a column and page break.
     case all
-    
+
     // Page break values
     /// Avoids any page break right before the element.
     case avoidPage
-    
+
     /// Forces a page break right before the element.
     case page
-    
+
     /// Forces one or two page breaks right before the element, to make the next page into a left page.
     case left
-    
+
     /// Forces one or two page breaks right before the element, to make the next page into a right page.
     case right
-    
+
     /// Forces one or two page breaks right before the element, to make the next page into a recto page
     /// (right page in left-to-right spread or left page in right-to-left spread).
     case recto
-    
+
     /// Forces one or two page breaks right before the element, to make the next page into a verso page
     /// (left page in left-to-right spread or right page in right-to-left spread).
     case verso
-    
+
     // Column break values
     /// Avoids any column break right before the element.
     case avoidColumn
-    
+
     /// Forces a column break right before the element.
     case column
-    
+
     // Region break values
     /// Avoids any region break right before the element.
     case avoidRegion
-    
+
     /// Forces a region break right before the element.
     case region
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"

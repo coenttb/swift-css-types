@@ -1,15 +1,15 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 public enum TextDecorationLine: Property {
     public static let property: String = "text-decoration-line"
-    
+
     /// A single value
     case value(TextDecorationLineValue)
-    
+
     /// Multiple values
     case values([TextDecorationLineValue])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }
@@ -41,28 +41,28 @@ public enum TextDecorationLine: Property {
 public enum TextDecorationLineValue: Sendable, Hashable, CustomStringConvertible {
     /// Produces no text decoration.
     case none
-    
+
     /// Each line of text has a decorative line beneath it.
     case underline
-    
+
     /// Each line of text has a decorative line above it.
     case overline
-    
+
     /// Each line of text has a decorative line going through its middle.
     case lineThrough
-    
+
     /// The text blinks (alternates between visible and invisible).
     /// Note: This value is deprecated in favor of CSS animations.
     case blink
-    
+
     /// Each line of text uses the user agents' method of highlighting spelling mistakes,
     /// which is a dotted red line in most browsers.
     case spellingError
-    
+
     /// Each line of text uses the user agents' method of highlighting grammar mistakes,
     /// which is a dotted green line in most browsers.
     case grammarError
-    
+
     public var description: String {
         switch self {
         case .none:

@@ -1,7 +1,6 @@
 //
 // StrokeLinejoin.swift
 
-
 import CSSTypeTypes
 
 /// The `stroke-linejoin` CSS property defines the shape to be used at the corners of an SVG element's stroked paths.
@@ -17,19 +16,19 @@ import CSSTypeTypes
 /// ```
 public enum StrokeLinejoin: Property {
     public static let property: String = "stroke-linejoin"
-    
+
     /// A sharp corner is used to join path segments
     case miter
-    
+
     /// A bevelled corner is used to join path segments
     case bevel
-    
+
     /// A round corner is used to join path segments
     case round
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .miter: return "miter"

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-bottom-width` property, which sets the width of the bottom border.
 ///
@@ -41,16 +41,16 @@ import CSSTypeTypes
 /// - Note: For the border to be visible, you must also set `border-bottom-style` to a value other than `none`.
 ///
 /// - SeeAlso: [MDN Web Docs on border-bottom-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width)
-public enum BorderBottomWidth: Property  {
-    
+public enum BorderBottomWidth: Property {
+
     public static let property: String = "border-bottom-width"
-    
+
     /// A specific width for the bottom border
     case width(BorderWidth)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-bottom-width with a specific border width
     ///
     /// - Parameter width: The width for the bottom border
@@ -84,13 +84,13 @@ extension BorderBottomWidth: CustomStringConvertible {
 extension BorderBottomWidth {
     /// The default border-bottom-width value (medium)
     public static let `default` = BorderBottomWidth(.medium)
-    
+
     /// Creates a thin border-bottom-width
     public static let thin = BorderBottomWidth(.thin)
-    
+
     /// Creates a medium border-bottom-width
     public static let medium = BorderBottomWidth(.medium)
-    
+
     /// Creates a thick border-bottom-width
     public static let thick = BorderBottomWidth(.thick)
 }

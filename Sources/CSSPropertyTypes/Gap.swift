@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `gap` shorthand property sets the gaps (gutters) between rows and columns.
 ///
@@ -21,15 +21,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
 public enum Gap: Property {
-    
+
     public static let property: String = "gap"
-    
+
     /// A single gap value for both row and column gaps
     case single(GapValue)
-    
+
     /// Separate values for row gap and column gap
     case double(GapValue, GapValue)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -55,15 +55,14 @@ extension Gap {
     }
 }
 
-
 /// Represents a gap value which can be a length or percentage
 public enum GapValue: Sendable, Hashable {
     /// Normal gap value (default, usually 0 except in multi-column layout)
     case normal
-    
+
     /// A specific length value
     case length(Length)
-    
+
     /// A percentage of the container's width or height
     case percentage(Percentage)
 }
@@ -75,10 +74,10 @@ extension GapValue: CustomStringConvertible {
         switch self {
         case .normal:
             return "normal"
-            
+
         case .length(let value):
             return value.description
-            
+
         case .percentage(let percentage):
             return percentage.description
         }
@@ -92,10 +91,10 @@ extension Gap: CustomStringConvertible {
         switch self {
         case .single(let gap):
             return gap.description
-            
+
         case .double(let rowGap, let columnGap):
             return "\(rowGap) \(columnGap)"
-            
+
         case .global(let global):
             return global.description
         }

@@ -30,6 +30,6 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::before](https://developer.mozilla.org/en-US/docs/Web/CSS/::before)
 public struct Before: CSSPseudoElement {
     @inlinable public static var name: String { "before" }
-    
+
     public init() {}
 }

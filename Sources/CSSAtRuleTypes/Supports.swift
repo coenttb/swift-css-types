@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents a CSS @supports at-rule.
 ///
@@ -28,37 +28,37 @@ import CSSTypeTypes
 /// ```
 public struct Supports: AtRule {
     public static let identifier: String = "supports"
-    
+
     public var rawValue: String
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
     }
-    
+
     /// Creates a CSS property support check
     /// @supports (property: value) {}
     public static func property(_ property: String, _ value: String) -> Supports {
         Supports(rawValue: "@supports (\(property): \(value)) {}")
     }
-    
+
     /// Creates a CSS selector support check
     /// @supports selector(selectorSyntax) {}
     public static func selector(_ selector: String) -> Supports {
         Supports(rawValue: "@supports selector(\(selector)) {}")
     }
-    
+
     /// Creates a CSS font technology support check
     /// @supports font-tech(technology) {}
     public static func fontTech(_ technology: FontTechnology) -> Supports {
         Supports(rawValue: "@supports font-tech(\(technology.rawValue)) {}")
     }
-    
+
     /// Creates a CSS font format support check
     /// @supports font-format(format) {}
     public static func fontFormat(_ format: FontFormat) -> Supports {
         Supports(rawValue: "@supports font-format(\(format.rawValue)) {}")
     }
-    
+
     /// Creates a negated CSS support check
     /// @supports not (condition) {}
     public static func not(_ condition: Supports) -> Supports {
@@ -66,28 +66,28 @@ public struct Supports: AtRule {
         let start = condition.rawValue.index(condition.rawValue.startIndex, offsetBy: 10) // Skip "@supports "
         let end = condition.rawValue.index(condition.rawValue.endIndex, offsetBy: -4) // Skip " {}"
         let conditionString = condition.rawValue[start..<end]
-        
+
         return Supports(rawValue: "@supports not \(conditionString) {}")
     }
-    
+
     /// Combines this support check with another using the 'and' operator
     /// @supports (condition1) and (condition2) {}
     public func and(_ other: Supports) -> Supports {
         let thisCondition = extractCondition(from: self)
         let otherCondition = extractCondition(from: other)
-        
+
         return Supports(rawValue: "@supports \(thisCondition) and \(otherCondition) {}")
     }
-    
+
     /// Combines this support check with another using the 'or' operator
     /// @supports (condition1) or (condition2) {}
     public func or(_ other: Supports) -> Supports {
         let thisCondition = extractCondition(from: self)
         let otherCondition = extractCondition(from: other)
-        
+
         return Supports(rawValue: "@supports \(thisCondition) or \(otherCondition) {}")
     }
-    
+
     /// Extracts the condition portion from a Supports rule
     private func extractCondition(from support: Supports) -> String {
         // Skip "@supports " (10 characters) and remove the trailing " {}"
@@ -95,12 +95,12 @@ public struct Supports: AtRule {
         let end = support.rawValue.index(support.rawValue.endIndex, offsetBy: -4)
         return String(support.rawValue[start..<end])
     }
-    
+
     /// Adds a CSS rule (selector and declarations) to the supports block
     /// @supports (condition) { selector { declarations } }
     public func style(_ selector: String, _ declarations: String) -> Supports {
         let currentContent = rawValue
-        
+
         // Check if the rule already has content
         if currentContent.hasSuffix("{}") {
             // No rules yet, add the first one
@@ -112,7 +112,7 @@ public struct Supports: AtRule {
             return Supports(rawValue: String(newContent))
         }
     }
-    
+
 //    /// Add a nested at-rule to the supports block
 //    /// @supports (condition) { @nested { ... } }
 //    public func nested(_ atRule: any AtRule) -> Supports {
@@ -141,22 +141,22 @@ extension Supports {
         case colorSVG = "color-svg"
         case colorSBIX = "color-sbix"
         case colorCBDT = "color-cbdt"
-        
+
         // Font feature technologies
         case featuresOpenType = "features-opentype"
         case featuresAAT = "features-aat"
         case featuresGraphite = "features-graphite"
-        
+
         // Incremental font loading
         case incrementalPatch = "incremental-patch"
         case incrementalRange = "incremental-range"
         case incrementalAuto = "incremental-auto"
-        
+
         // Other font technologies
         case variations = "variations"
         case palettes = "palettes"
     }
-    
+
     /// Represents font formats for use with font-format()
     public enum FontFormat: String, Hashable, Sendable {
         case collection = "collection"

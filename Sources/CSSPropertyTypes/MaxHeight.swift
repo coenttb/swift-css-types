@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `max-height` property sets the maximum height of an element. It prevents 
 /// the used value of the height property from becoming larger than the value specified for max-height.
@@ -18,29 +18,28 @@ import CSSTypeTypes
 ///         than height (but larger than min-height).
 ///
 /// - SeeAlso: [MDN Web Docs on max-height](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height)
-public enum MaxHeight: Property, LengthPercentageConvertible{
-    
+public enum MaxHeight: Property, LengthPercentageConvertible {
+
     public static let property: String = "size"
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// No maximum width constraint
     case none
-    
+
     case maxContent
-    
+
     case minContent
-    
+
     case fitContent(LengthPercentage? = nil)
-    
+
     case stretch
-    
+
     /// A global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public static let fitContent: Self = .fitContent(nil)
 }
-
 
 /// CSS Output conversion
 extension MaxHeight: CustomStringConvertible {
@@ -77,7 +76,7 @@ extension MaxHeight: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a max-height with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

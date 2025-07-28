@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `font-variant-emoji` property specifies the default presentation style for displaying emojis.
 ///
@@ -20,29 +20,29 @@ import CSSTypeTypes
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on font-variant-emoji](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-emoji)
-public enum FontVariantEmoji:  Property {
-    
+public enum FontVariantEmoji: Property {
+
     public static let property: String = "font-variant-emoji"
-    
+
     /// Allows a browser to choose how to display the emoji.
     /// This often follows the operating system setting.
     case normal
-    
+
     /// Renders the emoji as if it were using the unicode text variation selector (U+FE0E).
     /// Results in a monochrome, text-style presentation.
     case text
-    
+
     /// Renders the emoji as if it were using the unicode emoji variation selector (U+FE0F).
     /// Results in a colorful, pictographic presentation.
     case emoji
-    
+
     /// Renders the emoji in accordance with the Emoji presentation properties.
     /// If variation selectors are present, they override this value setting.
     case unicode
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:

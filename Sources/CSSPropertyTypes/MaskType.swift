@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-type` property, which sets whether an SVG mask element uses luminance or alpha values.
 ///
@@ -31,13 +31,13 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-type](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-type)
 public enum MaskType: Property {
     public static let property: String = "mask-type"
-    
+
     /// Use luminance (brightness) values of the mask content
     case luminance
-    
+
     /// Use alpha (transparency) values of the mask content
     case alpha
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

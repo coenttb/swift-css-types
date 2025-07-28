@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `object-fit` property sets how the content of a replaced element, such as an 
 /// `<img>` or `<video>`, should be resized to fit its container.
@@ -21,7 +21,7 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
 public enum ObjectFit: Property {
     public static let property: String = "object-fit"
-    
+
     /// The available keyword values for the `object-fit` property
     public enum Keyword: Sendable, Hashable, CustomStringConvertible {
         /// The replaced content is scaled to maintain its aspect ratio while fitting within 
@@ -29,23 +29,23 @@ public enum ObjectFit: Property {
         /// preserving its aspect ratio, resulting in "letterboxing" or "pillarboxing" if 
         /// the aspect ratios don't match.
         case contain
-        
+
         /// The replaced content is sized to maintain its aspect ratio while filling the element's 
         /// entire content box. If the aspect ratios don't match, the object will be clipped to fit.
         case cover
-        
+
         /// The replaced content is sized to fill the element's content box. The entire object 
         /// will completely fill the box. If the aspect ratios don't match, the object will be 
         /// stretched to fit.
         case fill
-        
+
         /// The replaced content is not resized.
         case none
-        
+
         /// The content is sized as if `none` or `contain` were specified, whichever would 
         /// result in a smaller concrete object size.
         case scaleDown
-        
+
         public var description: String {
             switch self {
             case .contain: return "contain"
@@ -56,10 +56,10 @@ public enum ObjectFit: Property {
             }
         }
     }
-    
+
     /// Specifies a keyword value for the object-fit property
     case keyword(Keyword)
-    
+
     /// Specifies a global value
     case global(CSSTypeTypes.Global)
 }
@@ -71,7 +71,7 @@ extension ObjectFit: CustomStringConvertible {
         switch self {
         case .keyword(let keyword):
             return keyword.description
-            
+
         case .global(let global):
             return global.description
         }
@@ -83,17 +83,17 @@ extension ObjectFit {
     /// The replaced content is scaled to maintain its aspect ratio while fitting within 
     /// the element's content box.
     public static let contain: ObjectFit = .keyword(.contain)
-    
+
     /// The replaced content is sized to maintain its aspect ratio while filling the element's 
     /// entire content box.
     public static let cover: ObjectFit = .keyword(.cover)
-    
+
     /// The replaced content is sized to fill the element's content box.
     public static let fill: ObjectFit = .keyword(.fill)
-    
+
     /// The replaced content is not resized.
     public static let none: ObjectFit = .keyword(.none)
-    
+
     /// The content is sized as if none or contain were specified, whichever would 
     /// result in a smaller concrete object size.
     public static let scaleDown: ObjectFit = .keyword(.scaleDown)

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `mask-composite` property, which sets how the current mask layer interacts with the mask layers below it.
 ///
@@ -54,36 +54,36 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on mask-composite](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-composite)
 public enum MaskComposite: Property {
     public static let property: String = "mask-composite"
-    
+
     /// Add current mask layer to previous mask layers
     case add
-    
+
     /// Subtract current mask layer from previous mask layers
     case subtract
-    
+
     /// Intersect current mask layer with previous mask layers
     case intersect
-    
+
     /// Areas covered by both the current and previous mask layers are not shown
     case exclude
-    
+
     /// Multiple composite operations for multiple mask layers
     case multiple([CompositeOperation])
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Composite operation for mask layers
     public enum CompositeOperation: String, Sendable, Hashable {
         /// Add current mask layer to previous mask layers
         case add
-        
+
         /// Subtract current mask layer from previous mask layers
         case subtract
-        
+
         /// Intersect current mask layer with previous mask layers
         case intersect
-        
+
         /// Areas covered by both the current and previous mask layers are not shown
         case exclude
     }
@@ -123,7 +123,7 @@ extension MaskComposite: CustomStringConvertible {
 extension MaskComposite {
     /// The default value for mask-composite (`add`)
     public static let `default` = MaskComposite.add
-    
+
     /// Creates a mask-composite with multiple operations
     ///
     /// - Parameter operations: The composite operations
@@ -139,7 +139,7 @@ extension MaskComposite {
         }
         return .multiple(operations)
     }
-    
+
     /// Creates a mask-composite with multiple operations
     ///
     /// - Parameter operations: The composite operations

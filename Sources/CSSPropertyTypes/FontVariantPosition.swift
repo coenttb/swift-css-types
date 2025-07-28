@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `font-variant-position` property controls the use of alternate, smaller glyphs
 /// that are positioned as superscript or subscript.
@@ -25,23 +25,23 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on font-variant-position](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-position)
 public enum FontVariantPosition: Property {
-    
+
     public static let property: String = "font-variant-position"
-    
+
     /// Deactivates alternate superscript and subscript glyphs.
     case normal
-    
+
     /// Activates subscript alternate glyphs. If a character in the run doesn't have
     /// this glyph, all characters are rendered using synthesized glyphs.
     case sub
-    
+
     /// Activates superscript alternate glyphs. If a character in the run doesn't have
     /// this glyph, all characters are rendered using synthesized glyphs.
     case `super`
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .normal:

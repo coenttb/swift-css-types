@@ -18,30 +18,30 @@ import Foundation
 public enum TimePercentage: Sendable, Hashable, PercentageConvertible {
     /// A time value in seconds or milliseconds
     case time(Time)
-    
+
     /// A percentage value
     case percentage(Percentage)
-    
+
     /// Creates a time value in seconds
     /// - Parameter value: The time in seconds
     /// - Returns: A time-percentage with a seconds value
     public static func s(_ value: Double) -> TimePercentage {
         return .time(.s(value))
     }
-    
+
     /// Creates a time value in milliseconds
     /// - Parameter value: The time in milliseconds
     /// - Returns: A time-percentage with a milliseconds value
     public static func ms(_ value: Double) -> TimePercentage {
         return .time(.ms(value))
     }
-    
+
     /// Creates a time-percentage value of 0 seconds
     public static let zero = TimePercentage.time(.zero)
-    
+
     /// Creates a time-percentage value of 50%
     public static let half = TimePercentage.percentage(50)
-    
+
     /// Creates a time-percentage value of 100%
     public static let full = TimePercentage.percentage(100)
 }
@@ -74,7 +74,7 @@ extension TimePercentage {
             return .percentage(percentage * rhs)
         }
     }
-    
+
     /// Divides a time-percentage value by a scalar
     /// - Parameters:
     ///   - lhs: Time-percentage value

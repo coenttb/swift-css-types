@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `hyphenate-limit-chars` property specifies the minimum word length to allow hyphenation of words
 /// as well as the minimum number of characters before and after the hyphen.
@@ -17,36 +17,36 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on hyphenate-limit-chars](https://developer.mozilla.org/en-US/docs/Web/CSS/hyphenate-limit-chars)
 public enum HyphenateLimitChars: Property {
-    
+
     public static let property: String = "hyphenate-limit-chars"
-    
+
     /// The user agent will choose appropriate values for the current layout.
     /// Unless the user agent can calculate better values, the following defaults will be used:
     /// - Minimum word length to allow hyphenation: 5
     /// - Minimum number of characters before the hyphen: 2
     /// - Minimum number of characters after the hyphen: 2
     case auto
-    
+
     /// Sets just the minimum word length to allow hyphenation.
     /// The minimum number of characters before and after the hyphen will be set to auto.
     case minimumWordLength(Int)
-    
+
     /// Sets the minimum word length to allow hyphenation and the minimum number of characters before the hyphen.
     /// The minimum number of characters after the hyphen will be set equal to the second value.
     case minimumWordLengthAndBefore(Int, Int)
-    
+
     /// Sets all three values:
     /// - The minimum word length to allow hyphenation
     /// - The minimum number of characters before the hyphen
     /// - The minimum number of characters after the hyphen
     case all(Int, Int, Int)
-    
+
     /// Sets minimum word length with auto values for before and/or after
     case mixed(wordLength: Int, before: HyphenLimit, after: HyphenLimit)
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -72,7 +72,7 @@ public enum HyphenateLimitChars: Property {
 public enum HyphenLimit: Sendable, Hashable, CustomStringConvertible {
     case auto
     case value(Int)
-    
+
     public var description: String {
         switch self {
         case .auto:

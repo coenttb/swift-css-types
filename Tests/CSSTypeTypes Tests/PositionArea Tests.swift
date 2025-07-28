@@ -10,14 +10,14 @@ import Testing
 
 @Suite("PositionArea Tests")
 struct PositionAreaTests {
-    
+
     @Test("PositionArea with single physical value renders correctly")
     func testSinglePhysicalValue() {
         #expect(PositionArea.physical(.center).description == "center")
         #expect(PositionArea.physical(.top).description == "top")
         #expect(PositionArea.physical(.spanAll).description == "span-all")
     }
-    
+
     @Test("PositionArea with physical pair renders correctly")
     func testPhysicalPair() {
         #expect(PositionArea.physicalPair(.top, .left).description == "top left")
@@ -25,7 +25,7 @@ struct PositionAreaTests {
         #expect(PositionArea.physicalPair(.center, .center).description == "center center")
         #expect(PositionArea.physicalPair(.top, .spanAll).description == "top span-all")
     }
-    
+
     @Test("PositionArea with single logical value renders correctly")
     func testSingleLogicalValue() {
         #expect(PositionArea.logical(.center).description == "center")
@@ -34,14 +34,14 @@ struct PositionAreaTests {
         #expect(PositionArea.logical(.inlineEnd).description == "inline-end")
         #expect(PositionArea.logical(.spanAll).description == "span-all")
     }
-    
+
     @Test("PositionArea with logical pair renders correctly")
     func testLogicalPair() {
         #expect(PositionArea.logicalPair(.start, .end).description == "start end")
         #expect(PositionArea.logicalPair(.blockStart, .inlineStart).description == "block-start inline-start")
         #expect(PositionArea.logicalPair(.selfStart, .spanAll).description == "self-start span-all")
     }
-    
+
     @Test("PositionArea with single coordinate value renders correctly")
     func testSingleCoordinateValue() {
         #expect(PositionArea.coordinate(.center).description == "center")
@@ -49,14 +49,14 @@ struct PositionAreaTests {
         #expect(PositionArea.coordinate(.yEnd).description == "y-end")
         #expect(PositionArea.coordinate(.spanXStart).description == "span-x-start")
     }
-    
+
     @Test("PositionArea with coordinate pair renders correctly")
     func testCoordinatePair() {
         #expect(PositionArea.coordinatePair(.xStart, .yStart).description == "x-start y-start")
         #expect(PositionArea.coordinatePair(.xEnd, .yEnd).description == "x-end y-end")
         #expect(PositionArea.coordinatePair(.center, .spanYStart).description == "center span-y-start")
     }
-    
+
     @Test("PositionArea static constants render correctly")
     func testStaticConstants() {
         #expect(PositionArea.topLeft.description == "top left")
@@ -71,7 +71,7 @@ struct PositionAreaTests {
         #expect(PositionArea.start.description == "start")
         #expect(PositionArea.end.description == "end")
     }
-    
+
     @Test("PhysicalValue enum values render correctly")
     func testPhysicalValueEnumValues() {
         #expect(PositionArea.PhysicalValue.top.rawValue == "top")
@@ -85,7 +85,7 @@ struct PositionAreaTests {
         #expect(PositionArea.PhysicalValue.spanBottom.rawValue == "span-bottom")
         #expect(PositionArea.PhysicalValue.spanAll.rawValue == "span-all")
     }
-    
+
     @Test("LogicalValue enum values render correctly")
     func testLogicalValueEnumValues() {
         #expect(PositionArea.LogicalValue.start.rawValue == "start")
@@ -98,7 +98,7 @@ struct PositionAreaTests {
         #expect(PositionArea.LogicalValue.inlineStart.rawValue == "inline-start")
         #expect(PositionArea.LogicalValue.inlineEnd.rawValue == "inline-end")
     }
-    
+
     @Test("CoordinateValue enum values render correctly")
     func testCoordinateValueEnumValues() {
         #expect(PositionArea.CoordinateValue.xStart.rawValue == "x-start")
@@ -111,7 +111,7 @@ struct PositionAreaTests {
         #expect(PositionArea.CoordinateValue.ySelfEnd.rawValue == "y-self-end")
         #expect(PositionArea.CoordinateValue.center.rawValue == "center")
     }
-    
+
     @Test("PositionArea conforms to Hashable")
     func testHashable() {
         #expect(PositionArea.center == PositionArea.physical(.center))
@@ -121,16 +121,16 @@ struct PositionAreaTests {
         #expect(PositionArea.physicalPair(.top, .left) == PositionArea.physicalPair(.top, .left))
         #expect(PositionArea.physicalPair(.top, .left) != PositionArea.physicalPair(.top, .right))
     }
-    
+
     @Test("PositionArea is used correctly in CSS positioning context")
     func testUsageInPositioningContext() {
         // Create sample CSS property strings using PositionArea values
         let positionArea = "position-area: \(PositionArea.center)"
         #expect(positionArea == "position-area: center")
-        
+
         let positionAreaTopRight = "position-area: \(PositionArea.topRight)"
         #expect(positionAreaTopRight == "position-area: top right")
-        
+
         let positionAreaLogical = "position-area: \(PositionArea.logical(.blockStart))"
         #expect(positionAreaLogical == "position-area: block-start")
     }

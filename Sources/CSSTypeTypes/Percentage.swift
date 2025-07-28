@@ -21,28 +21,28 @@ import Foundation
 public struct Percentage: Sendable, Hashable {
     /// The percentage value
     public let value: Double
-    
+
     /// Creates a new CSS percentage value
     /// - Parameter value: The percentage value (e.g., 50 for 50%)
     public init(_ value: Double) {
         self.value = value
     }
-    
+
     /// Creates a new CSS percentage value from an integer
     /// - Parameter value: The percentage value as an integer
     public init(_ value: Int) {
         self.value = Double(value)
     }
-    
+
     /// Creates a CSS percentage value of 0%
     public static let zero = Percentage(0)
-    
+
     /// Creates a CSS percentage value of 50%
     public static let half = Percentage(50)
-    
+
     /// Creates a CSS percentage value of 100%
     public static let full = Percentage(100)
-    
+
     subscript<T>(dynamicMember keyPath: KeyPath<Double, T>) -> T {
         value[keyPath: keyPath]
     }
@@ -78,27 +78,27 @@ extension Percentage {
     public static func < (lhs: Percentage, rhs: Percentage) -> Bool {
         return lhs.value < rhs.value
     }
-    
+
     /// Adds two percentages
     public static func + (lhs: Percentage, rhs: Percentage) -> Percentage {
         return Percentage(lhs.value + rhs.value)
     }
-    
+
     /// Subtracts one percentage from another
     public static func - (lhs: Percentage, rhs: Percentage) -> Percentage {
         return Percentage(lhs.value - rhs.value)
     }
-    
+
     /// Multiplies a percentage by a factor
     public static func * (lhs: Percentage, rhs: Double) -> Percentage {
         return Percentage(lhs.value * rhs)
     }
-    
+
     /// Divides a percentage by a factor
     public static func / (lhs: Percentage, rhs: Double) -> Percentage {
         return Percentage(lhs.value / rhs)
     }
-    
+
     /// Creates a percentage that represents the fraction of this percentage
     ///
     /// - Parameter fraction: The fraction to calculate (0.0 to 1.0)
@@ -107,7 +107,6 @@ extension Percentage {
         return self * fraction
     }
 }
-
 
 extension Percentage {
     public func truncatingRemainder() -> String {
@@ -126,5 +125,5 @@ extension Double {
 }
 
 extension Percentage: Comparable {
-    
+
 }

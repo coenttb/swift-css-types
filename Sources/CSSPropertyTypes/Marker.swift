@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `marker` CSS property is a shorthand property for setting the `marker-start`, `marker-mid`, and `marker-end` 
 /// properties in a single declaration, establishing the markers to be used at the start, middle, 
@@ -28,24 +28,24 @@ import CSSTypeTypes
 /// - SeeAlso: `marker-start`, `marker-mid`, `marker-end`
 public enum Marker: Property {
     public static let property: String = "marker"
-    
+
     /// Set all markers to the same value
     case all(MarkerValue)
-    
+
     /// Set each marker separately
     case individual(start: MarkerValue?, mid: MarkerValue?, end: MarkerValue?)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Represents a marker value
     public enum MarkerValue: Sendable, Hashable, CustomStringConvertible {
         /// No marker
         case none
-        
+
         /// A URL reference to a marker element
         case url(Url)
-        
+
         public var description: String {
             switch self {
             case .none:
@@ -55,26 +55,26 @@ public enum Marker: Property {
             }
         }
     }
-    
+
     public var description: String {
         switch self {
         case .all(let value):
             return value.description
         case .individual(let start, let mid, let end):
             var parts: [String] = []
-            
+
             if let start = start {
                 parts.append(start.description)
             }
-            
+
             if let mid = mid {
                 parts.append(mid.description)
             }
-            
+
             if let end = end {
                 parts.append(end.description)
             }
-            
+
             return parts.joined(separator: " ")
         case .global(let global):
             return global.description
@@ -86,7 +86,7 @@ public enum Marker: Property {
 extension Marker {
     /// Create a marker with all positions set to none
     public static let none = Marker.all(.none)
-    
+
     /// Creates a URL reference to a marker defined with the specified ID for all positions
     ///
     /// - Parameter id: The ID of the SVG marker element, without the '#' prefix.
@@ -94,12 +94,12 @@ extension Marker {
     ///
     /// Example:
     /// ```swift
-    /// .marker(.reference(id: "arrow"))  // marker: url("#arrow")
+    /// .marker(.reference(id: "arrow"))  // MARK: er: url("#arrow")
     /// ```
     public static func reference(id: String) -> Self {
         .all(.url(Url("#\(id)")))
     }
-    
+
     /// Creates a URL reference to an external marker defined in the specified file for all positions
     ///
     /// - Parameters:
@@ -109,12 +109,12 @@ extension Marker {
     ///
     /// Example:
     /// ```swift
-    /// .marker(.externalReference(file: "markers.svg", id: "arrow"))  // marker: url("markers.svg#arrow")
+    /// .marker(.externalReference(file: "markers.svg", id: "arrow"))  // MARK: er: url("markers.svg#arrow")
     /// ```
     public static func externalReference(file: String, id: String) -> Self {
         .all(.url(Url("\(file)#\(id)")))
     }
-    
+
     /// Convenience initializer to set specific marker positions
     ///
     /// - Parameters:
@@ -125,7 +125,7 @@ extension Marker {
     public static func positions(start: MarkerValue? = nil, mid: MarkerValue? = nil, end: MarkerValue? = nil) -> Self {
         .individual(start: start, mid: mid, end: end)
     }
-    
+
     /// Factory method to create a marker value for the start position
     ///
     /// - Parameter value: The marker value
@@ -133,7 +133,7 @@ extension Marker {
     public static func start(_ value: MarkerValue) -> Self {
         .individual(start: value, mid: nil, end: nil)
     }
-    
+
     /// Factory method to create a marker value for the middle positions
     ///
     /// - Parameter value: The marker value
@@ -141,7 +141,7 @@ extension Marker {
     public static func mid(_ value: MarkerValue) -> Self {
         .individual(start: nil, mid: value, end: nil)
     }
-    
+
     /// Factory method to create a marker value for the end position
     ///
     /// - Parameter value: The marker value

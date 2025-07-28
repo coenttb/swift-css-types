@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `clip-path` property creates a clipping region that sets what part of an element should be shown.
 /// Parts that are inside the region are shown, while those outside are hidden.
@@ -22,31 +22,31 @@ public enum ClipPath: Property {
     public static let property: String = "clip-path"
     /// No clipping path is created.
     case none
-    
+
     /// A URL referencing an SVG <clipPath> element.
     case url(Url)
-    
+
     /// A circle shape defined by a radius and optional position.
     case circle(CircleShape)
-    
+
     /// An ellipse shape defined by horizontal and vertical radii and optional position.
     case ellipse(EllipseShape)
-    
+
     /// An inset rectangle shape with optional border radius.
     case inset(InsetShape)
-    
+
     /// A polygon shape defined by a set of points.
     case polygon(PolygonShape)
-    
+
     /// A path shape defined using an SVG path definition.
     case path(CSSString)
-    
+
     /// A custom clip path value.
     case custom(CSSString)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     /// Initialize with a custom string value
     public init(_ value: CSSString) {
         self = .custom(value)
@@ -57,10 +57,10 @@ public enum ClipPath: Property {
 public struct CircleShape: Sendable, Hashable {
     /// The radius of the circle
     public var radius: LengthPercentage
-    
+
     /// The center position of the circle (optional)
     public var center: Point?
-    
+
     /// Initialize a circle with radius and optional center
     public init(radius: LengthPercentage, center: Point? = nil) {
         self.radius = radius
@@ -72,13 +72,13 @@ public struct CircleShape: Sendable, Hashable {
 public struct EllipseShape: Sendable, Hashable {
     /// The horizontal radius of the ellipse
     public var radiusX: LengthPercentage
-    
+
     /// The vertical radius of the ellipse
     public var radiusY: LengthPercentage
-    
+
     /// The center position of the ellipse (optional)
     public var center: Point?
-    
+
     /// Initialize an ellipse with radii and optional center
     public init(
         radiusX: LengthPercentage,
@@ -95,19 +95,19 @@ public struct EllipseShape: Sendable, Hashable {
 public struct InsetShape: Sendable, Hashable {
     /// The top inset distance
     public var top: LengthPercentage
-    
+
     /// The right inset distance
     public var right: LengthPercentage
-    
+
     /// The bottom inset distance
     public var bottom: LengthPercentage
-    
+
     /// The left inset distance
     public var left: LengthPercentage
-    
+
     /// The border radius (optional)
     public var borderRadius: LengthPercentage?
-    
+
     /// Initialize an inset with specific values
     public init(
         top: LengthPercentage,
@@ -122,7 +122,7 @@ public struct InsetShape: Sendable, Hashable {
         self.left = left
         self.borderRadius = borderRadius
     }
-    
+
     /// Initialize an inset with the same value for all sides
     public init(all: LengthPercentage, borderRadius: LengthPercentage? = nil) {
         self.top = all
@@ -142,8 +142,7 @@ public struct Point: Sendable, Hashable {
 public struct PolygonShape: Sendable, Hashable {
     /// The points defining the polygon
     public var points: [Point]
-    
-    
+
     /// Initialize a polygon with a set of points
     public init(points: [Point]) {
         self.points = points
@@ -195,28 +194,28 @@ extension ClipPath: CustomStringConvertible {
         switch self {
         case .none:
             return "none"
-            
+
         case .url(let url):
             return url.description
-            
+
         case .circle(let shape):
             return shape.description
-            
+
         case .ellipse(let shape):
             return shape.description
-            
+
         case .inset(let shape):
             return shape.description
-            
+
         case .polygon(let shape):
             return shape.description
-            
+
         case .path(let path):
             return "path('\(path)')"
-            
+
         case .custom(let value):
             return value.description
-            
+
         case .global(let global):
             return global.description
         }
@@ -229,11 +228,11 @@ extension ClipPath {
     public static func circle(_ radius: LengthPercentage) -> ClipPath {
         .circle(CircleShape(radius: radius))
     }
-    
+
     public static func circle(radius: LengthPercentage) -> ClipPath {
         .circle(CircleShape(radius: radius))
     }
-    
+
     /// Creates a circle clip path with the given radius and center position
     public static func circle(
         _ radius: LengthPercentage,
@@ -241,7 +240,7 @@ extension ClipPath {
     ) -> ClipPath {
         .circle(CircleShape(radius: radius, center: center))
     }
-    
+
     /// Creates an ellipse clip path with the given radii
     public static func ellipse(
         radiusX: LengthPercentage,
@@ -249,7 +248,7 @@ extension ClipPath {
     ) -> ClipPath {
         .ellipse(EllipseShape(radiusX: radiusX, radiusY: radiusY))
     }
-    
+
     /// Creates an ellipse clip path with the given radii and center position
     public static func ellipse(
         radiusX: LengthPercentage,
@@ -258,7 +257,7 @@ extension ClipPath {
     ) -> ClipPath {
         .ellipse(EllipseShape(radiusX: radiusX, radiusY: radiusY, center: center))
     }
-    
+
     /// Creates an inset clip path with the given insets
     public static func inset(
         top: LengthPercentage,
@@ -269,12 +268,12 @@ extension ClipPath {
     ) -> ClipPath {
         .inset(InsetShape(top: top, right: right, bottom: bottom, left: left, borderRadius: borderRadius))
     }
-    
+
     /// Creates an inset clip path with the same value for all sides
     public static func inset(all: LengthPercentage, borderRadius: LengthPercentage? = nil) -> ClipPath {
         .inset(InsetShape(all: all, borderRadius: borderRadius))
     }
-    
+
     /// Creates a polygon clip path with the given points
     public static func polygon(points: [Point]) -> ClipPath {
         .polygon(PolygonShape(points: points))

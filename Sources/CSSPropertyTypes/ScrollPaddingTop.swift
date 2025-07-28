@@ -1,7 +1,6 @@
 //
 // ScrollPaddingTop.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-top` CSS property defines offsets for the top of the optimal viewing region of the scrollport:
@@ -19,12 +18,12 @@ public enum ScrollPaddingTop: Property, LengthPercentageConvertible, CustomStrin
     public static let property: String = "scroll-padding-top"
     /// Keyword values
     case auto
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto: return "auto"
@@ -32,12 +31,12 @@ public enum ScrollPaddingTop: Property, LengthPercentageConvertible, CustomStrin
         case .global(let global): return global.description
         }
     }
-    
+
     /// Creates a ScrollPaddingTop using a length
     public static func px(_ value: Double) -> Self {
         .length(.px(value))
     }
-    
+
     /// Creates a ScrollPaddingTop using a percentage
     public static func percent(_ value: Double) -> Self {
         .percentage(.init(value))

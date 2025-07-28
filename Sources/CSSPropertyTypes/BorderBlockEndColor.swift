@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-block-end-color` property, which sets the color of the logical block-end border.
 ///
@@ -49,15 +49,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-block-end-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-color)
 public enum BorderBlockEndColor: Property, ColorConvertible {
-    
+
     public static let property: String = "border-block-end-color"
-    
+
     /// A specific color for the block-end border
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-block-end-color with a specific color
     ///
     /// - Parameter color: The color for the block-end border
@@ -91,25 +91,25 @@ extension BorderBlockEndColor: CustomStringConvertible {
 extension BorderBlockEndColor {
     /// The default border-block-end-color value (currentcolor)
     public static let `default` = BorderBlockEndColor(.currentColor)
-    
+
     /// Creates a transparent border-block-end-color
     public static let transparent = BorderBlockEndColor(.transparent)
-    
+
     /// Creates a border-block-end-color that uses the current text color
     public static let currentColor = BorderBlockEndColor(.currentColor)
-    
+
     /// Creates a black border-block-end-color
     public static let black = BorderBlockEndColor(.black)
-    
+
     /// Creates a white border-block-end-color
     public static let white = BorderBlockEndColor(.white)
-    
+
     /// Creates a red border-block-end-color
     public static let red = BorderBlockEndColor(.red)
-    
+
     /// Creates a green border-block-end-color
     public static let green = BorderBlockEndColor(.green)
-    
+
     /// Creates a blue border-block-end-color
     public static let blue = BorderBlockEndColor(.blue)
 }

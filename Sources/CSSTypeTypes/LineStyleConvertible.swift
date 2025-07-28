@@ -13,8 +13,8 @@ public protocol LineStyleConvertible {
 
 /// Default initializer for LineStyleConvertible types
 extension LineStyleConvertible {
-   
-    public init(_ lineStyle: LineStyle){
+
+    public init(_ lineStyle: LineStyle) {
         self = .lineStyle(lineStyle)
     }
 }

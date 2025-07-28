@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-left` shorthand property, which sets all the left border properties at once.
 ///
@@ -67,15 +67,15 @@ public enum BorderLeft: Property {
     public static let property: String = "border-left"
     /// Represents the possible border property combinations
     case properties(width: BorderWidth.Width?, style: LineStyle?, color: Color?)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-left with just a style
     public static func style(_ style: LineStyle) -> BorderLeft {
         .properties(width: nil, style: style, color: nil)
     }
-        
+
     /// Creates a border-left with a width, style, and color
     public static func all(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) -> BorderLeft {
         .properties(width: width, style: style, color: color)
@@ -108,7 +108,7 @@ extension BorderLeft {
 //    public init(_ width: BorderWidth.Width, _ style: LineStyle) {
 //        self = .init(width, style)
 //    }
-    
+
     /// Creates a border-left with a width, style, and color
     ///
     /// - Parameters:
@@ -118,7 +118,7 @@ extension BorderLeft {
     public init(_ width: BorderWidth.Width, _ style: LineStyle, _ color: Color) {
         self = .all(width, style, color)
     }
-    
+
     /// Creates a border-left with specific properties
     ///
     /// - Parameters:
@@ -147,21 +147,21 @@ extension BorderLeft: CustomStringConvertible {
         switch self {
         case .properties(let width, let style, let color):
             var parts: [String] = []
-            
+
             if let width = width {
                 parts.append(width.description)
             }
-            
+
             if let style = style {
                 parts.append(style.description)
             }
-            
+
             if let color = color {
                 parts.append(color.description)
             }
-            
+
             return parts.joined(separator: " ")
-            
+
         case .global(let global):
             return global.description
         }
@@ -172,32 +172,32 @@ extension BorderLeft: CustomStringConvertible {
 extension BorderLeft {
     /// Creates a none border-left (invisible)
     public static let none = BorderLeft(.none)
-    
+
     /// Creates a hidden border-left (invisible, high priority in border collapsing)
     public static let hidden = BorderLeft(.hidden)
-    
+
     /// Creates a solid border-left with default width and color
     public static let solid = BorderLeft(.solid)
-    
+
     /// Creates a dotted border-left with default width and color
     public static let dotted = BorderLeft(.dotted)
-    
+
     /// Creates a dashed border-left with default width and color
     public static let dashed = BorderLeft(.dashed)
-    
+
     /// Creates a double border-left with default width and color
     public static let double = BorderLeft(.double)
-    
+
     /// Creates a groove border-left with default width and color
     public static let groove = BorderLeft(.groove)
-    
+
     /// Creates a ridge border-left with default width and color
     public static let ridge = BorderLeft(.ridge)
-    
+
     /// Creates a inset border-left with default width and color
     public static let inset = BorderLeft(.inset)
-    
+
     /// Creates a outset border-left with default width and color
     public static let outset = BorderLeft(.outset)
-    
+
 }

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `row-gap` property sets the size of the gap (gutter) between an element's rows.
 ///
@@ -26,16 +26,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on row-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap)
 public enum RowGap: Property, LengthPercentageConvertible {
     public static let property: String = "row-gap"
-    
+
     /// A length-percentage value for the gap
     case lengthPercentage(LengthPercentage)
-    
+
     /// Default value, typically 0 (except for multi-column layouts)
     case normal
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

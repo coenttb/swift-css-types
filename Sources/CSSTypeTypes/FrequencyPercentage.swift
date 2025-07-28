@@ -19,10 +19,10 @@ import Foundation
 public enum FrequencyPercentage: Sendable, Hashable, PercentageConvertible {
     /// An absolute frequency value
     case frequency(Frequency)
-    
+
     /// A percentage value
     case percentage(Percentage)
-    
+
     /// Creates a frequency-percentage from a hertz value
     ///
     /// - Parameter value: The frequency in hertz
@@ -30,7 +30,7 @@ public enum FrequencyPercentage: Sendable, Hashable, PercentageConvertible {
     public static func hz(_ number: Number) -> FrequencyPercentage {
         return .frequency(.hz(number))
     }
-    
+
     /// Creates a frequency-percentage from a kilohertz value
     ///
     /// - Parameter value: The frequency in kilohertz

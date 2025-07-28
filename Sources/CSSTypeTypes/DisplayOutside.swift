@@ -27,7 +27,7 @@ public enum DisplayOutside: String, Sendable, Hashable {
     /// display: block;
     /// ```
     case block
-    
+
     /// Inline element
     ///
     /// The element generates one or more inline element boxes that do not generate line breaks
@@ -37,7 +37,7 @@ public enum DisplayOutside: String, Sendable, Hashable {
     /// display: inline;
     /// ```
     case inline
-    
+
     /// Run-in element (rarely used)
     ///
     /// The element generates a run-in box. If the following element generates a block box, 

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `box-sizing` property sets how the total width and height of an element is calculated.
 ///
@@ -37,18 +37,18 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
 public enum BoxSizing: Property {
     public static let property: String = "box-sizing"
-    
+
     /// Default CSS box model behavior. Width and height dimensions apply to the content box only.
     /// Padding and border width are added to the outside of the element.
     case contentBox
-    
+
     /// Width and height dimensions apply to the border box. Padding and border width are 
     /// included within the specified dimensions, causing the content area to shrink to absorb them.
     case borderBox
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// String representation of the box-sizing value
     public var description: String {
         switch self {

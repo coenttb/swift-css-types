@@ -1,7 +1,6 @@
 //
 // ShapeMargin.swift
 
-
 import CSSTypeTypes
 
 /// The `shape-margin` CSS property sets a margin for a CSS shape created using `shape-outside`.
@@ -15,12 +14,12 @@ import CSSTypeTypes
 /// ```
 public enum ShapeMargin: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "shape-margin"
-        
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .lengthPercentage(let lengthPercentage):

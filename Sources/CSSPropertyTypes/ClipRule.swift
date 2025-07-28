@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `clip-rule` property defines how to determine which pixels in a mask's box are inside the
 /// clipping shape defined by a clip path, and which are outside, when parts of the path overlap other parts.
@@ -16,20 +16,20 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on clip-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-rule)
 public enum ClipRule: Property {
     public static let property: String = "clip-rule"
-    
+
     /// For points inside a clipping region, a ray is drawn from that point in any direction.
     /// The number of times the ray crosses path segments that are moving right-to-left vs. left-to-right is counted.
     /// If the total is non-zero, the point is inside the shape.
     case nonzero
-    
+
     /// For points inside a clipping region, a ray is drawn from that point in any direction.
     /// The number of times the ray crosses any path segment is counted.
     /// If this count is odd, the point is inside the shape; if it's even, the point is outside.
     case evenodd
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .nonzero: return "nonzero"

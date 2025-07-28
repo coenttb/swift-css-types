@@ -24,7 +24,7 @@ public enum BoxEdge: String, Sendable, Hashable {
     /// background-clip: content-box;
     /// ```
     case contentBox = "content-box"
-    
+
     /// The box including the element's content and padding
     ///
     /// This extends to the outer edge of the padding area.
@@ -32,7 +32,7 @@ public enum BoxEdge: String, Sendable, Hashable {
     /// background-clip: padding-box;
     /// ```
     case paddingBox = "padding-box"
-    
+
     /// The box including the element's content, padding, and border
     ///
     /// This extends to the outer edge of the border area.
@@ -40,7 +40,7 @@ public enum BoxEdge: String, Sendable, Hashable {
     /// box-sizing: border-box;
     /// ```
     case borderBox = "border-box"
-    
+
     /// The box including the element's content, padding, border, and margin
     ///
     /// This extends to the outer edge of the margin area.
@@ -48,7 +48,7 @@ public enum BoxEdge: String, Sendable, Hashable {
     /// shape-outside: margin-box;
     /// ```
     case marginBox = "margin-box"
-    
+
     /// For SVG elements, represents the object bounding box
     ///
     /// In CSS, this is treated as `content-box`.
@@ -56,7 +56,7 @@ public enum BoxEdge: String, Sendable, Hashable {
     /// transform-box: fill-box;
     /// ```
     case fillBox = "fill-box"
-    
+
     /// For SVG elements, represents the stroke bounding box
     ///
     /// In CSS, this is treated as `border-box`.
@@ -64,7 +64,7 @@ public enum BoxEdge: String, Sendable, Hashable {
     /// transform-box: stroke-box;
     /// ```
     case strokeBox = "stroke-box"
-    
+
     /// For SVG elements, refers to the nearest SVG viewport's origin box
     ///
     /// In CSS, this is treated as `border-box`.
@@ -82,7 +82,7 @@ extension BoxEdge {
         case paddingBox = "padding-box"
         case borderBox = "border-box"
     }
-    
+
     /// Box edges for layout (content-box, padding-box, border-box, margin-box)
     public enum Layout: String, Sendable, Hashable {
         case contentBox = "content-box"
@@ -90,7 +90,7 @@ extension BoxEdge {
         case borderBox = "border-box"
         case marginBox = "margin-box"
     }
-    
+
     /// Box edges for painting (content-box, padding-box, border-box, fill-box, stroke-box)
     public enum Paint: String, Sendable, Hashable {
         case contentBox = "content-box"
@@ -99,7 +99,7 @@ extension BoxEdge {
         case fillBox = "fill-box"
         case strokeBox = "stroke-box"
     }
-    
+
     /// Box edges for coordinate systems
     public enum Coordinate: String, Sendable, Hashable {
         case contentBox = "content-box"
@@ -109,7 +109,7 @@ extension BoxEdge {
         case strokeBox = "stroke-box"
         case viewBox = "view-box"
     }
-    
+
     /// Box edges for geometric operations (margin-box, fill-box, stroke-box, view-box)
     public enum Geometry: String, Sendable, Hashable {
         case contentBox = "content-box"

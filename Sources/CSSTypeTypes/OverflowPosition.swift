@@ -21,7 +21,7 @@ public enum OverflowPosition: String, Sendable, Hashable, CaseIterable {
     /// This ensures the content is visible by potentially overriding the specified alignment
     /// to prevent overflow that would be invisible or inaccessible.
     case safe
-    
+
     /// The specified alignment value is honored regardless of overflow.
     ///
     /// This may result in content that extends beyond the viewport's edges

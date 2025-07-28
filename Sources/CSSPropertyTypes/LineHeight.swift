@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `line-height` property sets the height of a line box.
 ///
@@ -20,28 +20,27 @@ public enum LineHeight: Property, LengthPercentageConvertible, ExpressibleByFloa
     public static let property: String = "line-height"
     /// Default value. Browser dependent, typically around 1.2 times the font size
     case normal
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     /// A unitless multiplier value (preferred method for setting line height)
     case multiple(Double)
 
-    
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     // MARK: - Convenience initializers
-    
+
     /// Create a line-height using a float literal as a multiplier
     public init(floatLiteral value: Double) {
         self = .multiple(value)
     }
-    
+
     /// Create a line-height using an integer literal as a multiplier
     public init(integerLiteral value: Int) {
         self = .multiple(Double(value))
     }
-        
+
     public var description: String {
         switch self {
         case .normal:

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The non-standard CSS `-webkit-text-security` property is used to obscure text content by 
 /// replacing each character with a shape.
@@ -38,22 +38,22 @@ import CSSTypeTypes
 /// - SeeAlso: [CSS-Tricks article on -webkit-text-security](https://css-tricks.com/almanac/properties/t/text-security/)
 public enum WebkitTextSecurity: Property {
     public static let property: String = "-webkit-text-security"
-    
+
     /// Do not obscure text (default)
     case none
-    
+
     /// Replace each character with a disc (filled circle/bullet symbol)
     case disc
-    
+
     /// Replace each character with a circle (hollow circle symbol)
     case circle
-    
+
     /// Replace each character with a square symbol
     case square
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

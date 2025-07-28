@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `grid-area` shorthand property specifies a grid item's size and location within a grid 
 /// by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying 
@@ -18,28 +18,28 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on grid-area](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area)
 public enum GridArea: Property {
-    
+
     public static let property: String = "grid-area"
-    
+
     /// Auto placement
     case auto
-    
+
     /// Named grid area
     case name(String)
-    
+
     /// Grid area with explicit coordinates
     case area(GridAreaCoordinates)
-    
+
     /// A span to a named grid line
     case span(String)
-    
+
     public static func span(_ value: Int) -> Self {
         .span("\(value)")
     }
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -60,16 +60,16 @@ public enum GridArea: Property {
 public struct GridAreaCoordinates: Sendable, Hashable, CustomStringConvertible {
     /// The row start position
     public let rowStart: GridLine
-    
+
     /// The column start position
     public let columnStart: GridLine
-    
+
     /// The row end position (optional)
     public let rowEnd: GridLine?
-    
+
     /// The column end position (optional)
     public let columnEnd: GridLine?
-    
+
     /// Creates a grid area with 2 values (rowStart and columnStart)
     ///
     /// - Parameters:
@@ -81,7 +81,7 @@ public struct GridAreaCoordinates: Sendable, Hashable, CustomStringConvertible {
         self.rowEnd = nil
         self.columnEnd = nil
     }
-    
+
     /// Creates a grid area with 4 values (rowStart, columnStart, rowEnd, columnEnd)
     ///
     /// - Parameters:
@@ -95,7 +95,7 @@ public struct GridAreaCoordinates: Sendable, Hashable, CustomStringConvertible {
         self.rowEnd = GridLine(rowEnd)
         self.columnEnd = GridLine(columnEnd)
     }
-    
+
     /// Creates a grid area with custom GridLine values
     ///
     /// - Parameters:
@@ -109,7 +109,7 @@ public struct GridAreaCoordinates: Sendable, Hashable, CustomStringConvertible {
         self.rowEnd = rowEnd
         self.columnEnd = columnEnd
     }
-    
+
     public var description: String {
         if let rowEnd = rowEnd, let columnEnd = columnEnd {
             return "\(rowStart) / \(columnStart) / \(rowEnd) / \(columnEnd)"
@@ -129,44 +129,44 @@ public struct GridLine: Sendable, Hashable, CustomStringConvertible {
         case spanName(String) // A span to a named grid line
         case auto            // Automatic placement
     }
-    
+
     private let type: LineType
-    
+
     /// Creates a grid line by number
     public init(_ number: Int) {
         self.type = .number(number)
     }
-    
+
     /// Creates a named grid line
     public init(_ name: String) {
         self.type = .name(name)
     }
-    
+
     /// Creates a span of grid lines
     public init(span: Int) {
         self.type = .span(span)
     }
-    
+
     /// Creates a span to a named grid line
     public init(span name: String) {
         self.type = .spanName(name)
     }
-    
+
     /// Creates a line from the end (negative index)
     public static func end(_ number: Int) -> GridLine {
         // Ensure the number is negative
         let value = number > 0 ? -number : number
         return GridLine(value)
     }
-    
+
     /// The auto keyword for grid line placement
     public static let auto = GridLine()
-    
+
     /// Private initializer for auto value
     private init() {
         self.type = .auto
     }
-    
+
     public var description: String {
         switch type {
         case .number(let number):

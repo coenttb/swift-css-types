@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `d` CSS property defines a path to be drawn by SVG path elements.
 ///
@@ -11,16 +11,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/d)
 public enum D: Property {
     public static let property: String = "d"
-    
+
     /// No path is drawn
     case none
-    
+
     /// A path definition string that defines an SVG path
     case path(String)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .none:

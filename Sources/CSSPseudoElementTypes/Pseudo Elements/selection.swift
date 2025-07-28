@@ -30,6 +30,6 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on ::selection](https://developer.mozilla.org/en-US/docs/Web/CSS/::selection)
 public struct Selection: CSSPseudoElement {
     @inlinable public static var name: String { "selection" }
-    
+
     public init() {}
 }

@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 26/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `will-change` property hints to browsers how an element is expected to change.
 ///
@@ -26,24 +26,24 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
 public enum WillChange: Property {
     public static let property: String = "will-change"
-    
+
     /// Default value. No particular intent is expressed.
     /// The user agent should apply whatever heuristics and optimizations it normally does.
     case auto
-    
+
     /// Indicates that the author expects to animate or change the scroll position of the element.
     case scrollPosition
-    
+
     /// Indicates that the author expects to animate or change something about the element's contents.
     case contents
-    
+
     /// Lists one or more properties the author expects to animate or change.
     /// Example: ["transform", "opacity"]
     case properties([String])
-    
+
     /// Global value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -59,4 +59,3 @@ public enum WillChange: Property {
         }
     }
 }
-

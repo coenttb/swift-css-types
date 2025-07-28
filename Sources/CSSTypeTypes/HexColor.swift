@@ -20,7 +20,7 @@ import Foundation
 public struct HexColor: Sendable, Hashable {
     /// The hex color value including the leading "#"
     public let value: String
-    
+
     /// Creates a hexadecimal color from a string value.
     ///
     /// - Parameter value: The hex color string (e.g., "#ff0000", "#f00")
@@ -32,7 +32,7 @@ public struct HexColor: Sendable, Hashable {
             self.value = "#" + value
         }
     }
-    
+
     /// Creates a hexadecimal color using RGB components.
     ///
     /// - Parameters:
@@ -41,13 +41,13 @@ public struct HexColor: Sendable, Hashable {
     ///   - blue: The blue component (0-255)
     /// - Returns: A HexColor in 6-digit format (#RRGGBB)
     public static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> HexColor {
-        let hexString: String = .init(format: "#%02X%02X%02X", 
+        let hexString: String = .init(format: "#%02X%02X%02X",
                              min(max(0, red), 255),
                              min(max(0, green), 255),
                              min(max(0, blue), 255))
         return HexColor(hexString)
     }
-    
+
     /// Creates a hexadecimal color using RGBA components.
     ///
     /// - Parameters:
@@ -59,15 +59,15 @@ public struct HexColor: Sendable, Hashable {
     public static func rgba(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Double) -> HexColor {
         // Convert alpha from 0.0-1.0 to 0-255 (using rounding instead of truncation)
         let alphaInt = Int(round(min(max(0.0, alpha), 1.0) * 255))
-        
-        let hexString = String(format: "#%02X%02X%02X%02X", 
+
+        let hexString = String(format: "#%02X%02X%02X%02X",
                              min(max(0, red), 255),
                              min(max(0, green), 255),
                              min(max(0, blue), 255),
                              alphaInt)
         return HexColor(hexString)
     }
-    
+
     /// Checks if the hex color is valid.
     ///
     /// - Returns: True if the hex color has a valid format (3, 4, 6, or 8 digits with # prefix)
@@ -88,7 +88,7 @@ extension HexColor: CustomStringConvertible {
 }
 
 ///// Conformance to Color protocol
-//extension HexColor: Color {
+// extension HexColor: Color {
 //    /// Returns an opacity-modified version of this color
 //    ///
 //    /// - Parameter alpha: The opacity value (0.0-1.0)
@@ -131,4 +131,4 @@ extension HexColor: CustomStringConvertible {
 //        // Create a new color with the specified opacity
 //        return HexColor.rgba(red, green, blue, alpha)
 //    }
-//}
+// }

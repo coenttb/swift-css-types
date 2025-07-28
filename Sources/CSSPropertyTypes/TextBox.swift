@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-box` property is a shorthand that combines `text-box-trim` and `text-box-edge`, 
 /// which together specify the amount of space to trim from block edges of a text element's container.
@@ -29,21 +29,21 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-box](https://developer.mozilla.org/en-US/docs/Web/CSS/text-box)
 public enum TextBox: Property {
     public static let property: String = "text-box"
-    
+
     /// Default value, equivalent to text-box: none auto;
     case normal
-    
+
     /// Combines text-box-trim and text-box-edge properties
     case trim(TextBoxTrim, TextBoxEdge)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// Convenience initializer for text-box-trim and text-box-edge values
     public init(_ trim: TextBoxTrim, _ edge: TextBoxEdge = .auto) {
         self = .trim(trim, edge)
     }
-    
+
     public var description: String {
         switch self {
         case .normal:

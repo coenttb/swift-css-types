@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `overflow-anchor` CSS property provides a way to opt out of the browser's scroll anchoring behavior,
 /// which adjusts scroll position to minimize content shifts.
@@ -20,16 +20,16 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on overflow-anchor](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor)
 public enum OverflowAnchor: Property {
     public static let property: String = "overflow-anchor"
-    
+
     /// The element becomes a potential anchor when adjusting scroll position (default)
     case auto
-    
+
     /// The element won't be selected as a potential anchor
     case none
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// CSS string representation
     public var description: String {
         switch self {

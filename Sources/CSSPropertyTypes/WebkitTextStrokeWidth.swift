@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `-webkit-text-stroke-width` property specifies the width of the stroke (outline) for text characters.
 ///
@@ -31,29 +31,29 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on -webkit-text-stroke-width](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke-width)
 public enum WebkitTextStrokeWidth: Property, LengthConvertible {
     public static let property: String = "-webkit-text-stroke-width"
-    
+
     /// Thin stroke width
     case thin
-    
+
     /// Medium stroke width
     case medium
-    
+
     /// Thick stroke width
     case thick
-    
+
     /// Custom length value
     case length(Length)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a WebkitTextStrokeWidth from a Length
     ///
     /// - Parameter length: The stroke width as a length
     public init(_ length: Length) {
         self = .length(length)
     }
-    
+
     public var description: String {
         switch self {
         case .thin:

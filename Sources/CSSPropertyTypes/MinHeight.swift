@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `min-height` property sets the minimum height of an element. It prevents 
 /// the used value of the height property from becoming smaller than the value specified for min-height.
@@ -20,25 +20,25 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on min-height](https://developer.mozilla.org/en-US/docs/Web/CSS/min-height)
 public enum MinHeight: Property, LengthPercentageConvertible {
     public static let property: String = "min-height"
-    
+
     case lengthPercentage(LengthPercentage)
-    
+
     case auto
-    
+
     /// No maximum width constraint
     case none
-    
+
     case maxContent
-    
+
     case minContent
-    
+
     case fitContent(LengthPercentage? = nil)
-    
+
     case stretch
-    
+
     /// A global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public static let fitContent: Self = .fitContent(nil)
 
 }
@@ -80,7 +80,7 @@ extension MinHeight: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
     public init(integerLiteral value: Int) {
         self = .px(Double(value))
     }
-    
+
     /// Creates a min-height with a pixel value from a floating-point literal
     ///
     /// - Parameter value: The pixel value as a double

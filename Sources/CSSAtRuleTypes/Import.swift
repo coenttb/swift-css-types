@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents a CSS @import at-rule.
 ///
@@ -35,15 +35,15 @@ import CSSTypeTypes
 /// ```
 public struct Import: AtRule {
     public static let identifier: String = "import"
-    
+
     public var rawValue: String
     private var url: String
     private var conditions: [String] = []
     private var layerName: String?
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
-        
+
         // Extract URL from rawValue - simplified implementation
         if let urlRange = rawValue.range(of: "@import\\s+([^\\s;]+)", options: .regularExpression),
            let matches = rawValue[urlRange].range(of: "\\s+([^\\s;]+)", options: .regularExpression) {
@@ -52,7 +52,7 @@ public struct Import: AtRule {
             self.url = ""
         }
     }
-    
+
     /// Creates an import rule with the specified path.
     ///
     /// - Parameter path: The path to the CSS file to import.
@@ -60,7 +60,7 @@ public struct Import: AtRule {
         self.url = "\"\(path)\""
         self.rawValue = "@import \(self.url);"
     }
-    
+
     /// Creates an import rule with the specified URL.
     ///
     /// - Parameter url: The URL to the CSS file to import.
@@ -71,11 +71,11 @@ public struct Import: AtRule {
         importRule.url = formattedUrl
         return importRule
     }
-    
+
     /// Updates the raw value based on the current conditions.
     private mutating func updateRawValue() {
         var parts: [String] = ["@import", url]
-        
+
         if let layerName = layerName {
             if layerName.isEmpty {
                 parts.append("layer")
@@ -83,11 +83,11 @@ public struct Import: AtRule {
                 parts.append("layer(\(layerName))")
             }
         }
-        
+
         parts.append(contentsOf: conditions)
         rawValue = parts.joined(separator: " ") + ";"
     }
-    
+
     /// Sets the media query condition.
     ///
     /// - Parameter media: The media query to apply.
@@ -101,7 +101,7 @@ public struct Import: AtRule {
         importRule.updateRawValue()
         return importRule
     }
-    
+
     /// Sets the media query conditions using multiple media queries.
     ///
     /// - Parameter medias: An array of media queries to apply.
@@ -115,7 +115,7 @@ public struct Import: AtRule {
         importRule.updateRawValue()
         return importRule
     }
-    
+
     /// Sets the supports condition.
     ///
     /// - Parameter condition: The condition to check for support.
@@ -127,7 +127,7 @@ public struct Import: AtRule {
         importRule.updateRawValue()
         return importRule
     }
-    
+
     /// Sets the layer to import into.
     ///
     /// - Parameter name: The name of the layer. Pass an empty string for an anonymous layer.

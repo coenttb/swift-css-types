@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `order` property sets the order to lay out an item in a flex or grid container.
 /// Items in a container are sorted by ascending order value and then by their source code order.
@@ -19,10 +19,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on order](https://developer.mozilla.org/en-US/docs/Web/CSS/order)
 public enum Order: Property {
     public static let property: String = "order"
-    
+
     /// An integer representing the ordinal group to be used by the item
     case value(Int)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -34,7 +34,7 @@ extension Order: CustomStringConvertible {
         switch self {
         case .value(let value):
             return "\(value)"
-            
+
         case .global(let global):
             return global.description
         }

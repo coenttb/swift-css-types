@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `-webkit-touch-callout` property controls the display of the default callout shown
 /// when you touch and hold a touch target on iOS devices.
@@ -31,16 +31,16 @@ import CSSTypeTypes
 /// - SeeAlso: [Safari CSS Reference on -webkit-touch-callout](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html)
 public enum WebkitTouchCallout: Property {
     public static let property: String = "-webkit-touch-callout"
-    
+
     /// Display the default callout
     case `default`
-    
+
     /// Disable the callout
     case none
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .default:

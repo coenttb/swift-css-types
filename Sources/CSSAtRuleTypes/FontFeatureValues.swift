@@ -30,10 +30,10 @@ public struct FontFeatureValues: AtRule {
     public var rawValue: String
     private var families: [String]
     private var blocks: [String: [String: String]] = [:]
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
-        
+
         // Extract families from rawValue - simplified implementation
         if let familiesRange = rawValue.range(of: "@font-feature-values\\s+([^{]+)", options: .regularExpression),
            let matches = rawValue[familiesRange].range(of: "\\s+([^{]+)", options: .regularExpression) {
@@ -43,7 +43,7 @@ public struct FontFeatureValues: AtRule {
             self.families = []
         }
     }
-    
+
     /// Creates a font feature values rule for a single font family.
     ///
     /// - Parameter family: The font family name.
@@ -51,7 +51,7 @@ public struct FontFeatureValues: AtRule {
         self.families = [family]
         self.rawValue = "@font-feature-values \(family) {}"
     }
-    
+
     /// Creates a font feature values rule for multiple font families.
     ///
     /// - Parameter families: The font family names.
@@ -60,33 +60,33 @@ public struct FontFeatureValues: AtRule {
         let familiesString = families.map { "\"\($0)\"" }.joined(separator: ", ")
         self.rawValue = "@font-feature-values \(familiesString) {}"
     }
-    
+
     /// Updates the raw value based on the current blocks.
     private mutating func updateRawValue() {
         let familiesString = families.map { "\"\($0)\"" }.joined(separator: ", ")
-        
+
         var blockStrings: [String] = []
         for (blockType, features) in blocks {
             var featureStrings: [String] = []
             for (name, value) in features {
                 featureStrings.append("    \(name): \(value);")
             }
-            
+
             if !featureStrings.isEmpty {
                 let featureString = featureStrings.joined(separator: "\n")
                 blockStrings.append("  @\(blockType) {\n\(featureString)\n  }")
             }
         }
-        
+
         let blockString = blockStrings.joined(separator: "\n\n")
-        
+
         if blockString.isEmpty {
             rawValue = "@font-feature-values \(familiesString) {}"
         } else {
             rawValue = "@font-feature-values \(familiesString) {\n\(blockString)\n}"
         }
     }
-    
+
     /// Sets the styleset feature values.
     ///
     /// - Parameter features: A dictionary mapping feature names to values.
@@ -99,7 +99,7 @@ public struct FontFeatureValues: AtRule {
         fontFeatureValues.updateRawValue()
         return fontFeatureValues
     }
-    
+
     /// Sets the stylistic feature values.
     ///
     /// - Parameter features: A dictionary mapping feature names to values.
@@ -112,7 +112,7 @@ public struct FontFeatureValues: AtRule {
         fontFeatureValues.updateRawValue()
         return fontFeatureValues
     }
-    
+
     /// Sets the swash feature values.
     ///
     /// - Parameter features: A dictionary mapping feature names to values.
@@ -125,7 +125,7 @@ public struct FontFeatureValues: AtRule {
         fontFeatureValues.updateRawValue()
         return fontFeatureValues
     }
-    
+
     /// Sets the annotation feature values.
     ///
     /// - Parameter features: A dictionary mapping feature names to values.
@@ -138,7 +138,7 @@ public struct FontFeatureValues: AtRule {
         fontFeatureValues.updateRawValue()
         return fontFeatureValues
     }
-    
+
     /// Sets the ornaments feature values.
     ///
     /// - Parameter features: A dictionary mapping feature names to values.
@@ -151,7 +151,7 @@ public struct FontFeatureValues: AtRule {
         fontFeatureValues.updateRawValue()
         return fontFeatureValues
     }
-    
+
     /// Sets the character-variant feature values.
     ///
     /// - Parameter features: A dictionary mapping feature names to value tuples.

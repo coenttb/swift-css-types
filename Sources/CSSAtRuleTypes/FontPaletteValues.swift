@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents a CSS @font-palette-values at-rule.
 ///
@@ -37,14 +37,14 @@ import CSSTypeTypes
 /// ```
 public struct FontPaletteValues: AtRule {
     public static let identifier: String = "font-palette-values"
-    
+
     public var rawValue: String
     private var identifier: String
     private var descriptors: [String: String] = [:]
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
-        
+
         // Extract identifier from rawValue - simplified implementation
         if let idRange = rawValue.range(of: "@font-palette-values\\s+([^{]+)", options: .regularExpression),
            let matches = rawValue[idRange].range(of: "\\s+([^{]+)", options: .regularExpression) {
@@ -53,7 +53,7 @@ public struct FontPaletteValues: AtRule {
             self.identifier = ""
         }
     }
-    
+
     /// Creates a font palette values rule with the specified identifier.
     ///
     /// - Parameter identifier: The palette identifier, which should start with `--`.
@@ -61,20 +61,20 @@ public struct FontPaletteValues: AtRule {
         self.identifier = identifier
         self.rawValue = "@font-palette-values \(identifier) {}"
     }
-    
+
     /// Updates the raw value based on the current descriptors.
     private mutating func updateRawValue() {
         let descriptorString = descriptors.map { key, value in
             "  \(key): \(value);"
         }.joined(separator: "\n")
-        
+
         if descriptorString.isEmpty {
             rawValue = "@font-palette-values \(identifier) {}"
         } else {
             rawValue = "@font-palette-values \(identifier) {\n\(descriptorString)\n}"
         }
     }
-    
+
     /// Sets the font-family descriptor.
     ///
     /// - Parameter family: The name of the font family.
@@ -85,7 +85,7 @@ public struct FontPaletteValues: AtRule {
         palette.updateRawValue()
         return palette
     }
-    
+
     /// Sets the base-palette descriptor.
     ///
     /// - Parameter index: The index of the base palette to use.
@@ -96,7 +96,7 @@ public struct FontPaletteValues: AtRule {
         palette.updateRawValue()
         return palette
     }
-    
+
     /// Sets the base-palette descriptor using a name.
     ///
     /// - Parameter name: The name of the base palette to use.
@@ -107,7 +107,7 @@ public struct FontPaletteValues: AtRule {
         palette.updateRawValue()
         return palette
     }
-    
+
     /// Sets the override-colors descriptor.
     ///
     /// - Parameter colors: An array of tuples containing color indices and values.
@@ -117,11 +117,11 @@ public struct FontPaletteValues: AtRule {
         let colorString = colors
             .map { "\($0.0) \($0.1)" }
             .joined(separator: ",\n    ")
-        
+
         if !colorString.isEmpty {
             palette.descriptors["override-colors"] = "\n    \(colorString)"
         }
-        
+
         palette.updateRawValue()
         return palette
     }

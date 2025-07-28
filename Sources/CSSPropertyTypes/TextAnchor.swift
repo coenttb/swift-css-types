@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Aligns a box containing a string of text relative to the anchor point of the element in SVG.
 ///
@@ -28,19 +28,19 @@ import CSSTypeTypes
 /// ```
 public enum TextAnchor: Property {
     public static let property: String = "text-anchor"
-    
+
     /// Aligns the text such that the inline start of the text string is aligned with
     /// the anchor point. This is the default value.
     case start
-    
+
     /// Aligns the text such that the center (middle) of the text string's inline box 
     /// is aligned with the anchor point.
     case middle
-    
+
     /// Aligns the text such that the inline end of the text string is aligned with 
     /// the anchor point.
     case end
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

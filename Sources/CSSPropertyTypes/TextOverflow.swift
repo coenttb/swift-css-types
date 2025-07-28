@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Specifies how overflowed content that is not displayed should be signaled to the user.
 ///
@@ -19,17 +19,17 @@ import CSSTypeTypes
 /// ```
 public enum TextOverflow: Property {
     public static let property: String = "text-overflow"
-    
+
     /// Default value. Text is clipped and not accessible.
     case clip
-    
+
     /// Render an ellipsis ('…') to represent the clipped text.
     case ellipsis
-    
+
     /// Render the given string to represent the clipped text.
     /// Only some browsers support this feature.
     case string(CSSString)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
 }

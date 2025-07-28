@@ -1,7 +1,6 @@
 //
 // ScrollPaddingInline.swift
 
-
 import CSSTypeTypes
 
 /// The `scroll-padding-inline` CSS property is a shorthand property that sets the scroll padding of an element 
@@ -17,19 +16,19 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingInline: Property, LengthPercentageConvertible, CustomStringConvertible {
     public static let property: String = "scroll-padding-inline"
-    
+
     /// Keyword values
     case auto
-    
+
     /// A single value for both the start and end inline paddings
     case lengthPercentage(LengthPercentage)
-    
+
     /// Two values for start and end inline paddings
     case start_end(start: LengthPercentage, end: LengthPercentage)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     public var description: String {
         switch self {
         case .auto:
@@ -42,7 +41,7 @@ public enum ScrollPaddingInline: Property, LengthPercentageConvertible, CustomSt
             return global.description
         }
     }
-    
+
     public static func all(_ value: CSSTypeTypes.LengthPercentage) -> ScrollPaddingInline {
         .lengthPercentage(value)
     }

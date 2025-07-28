@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `padding-top` property sets the height of the padding area on the top of an element.
 ///
@@ -16,10 +16,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on padding-top](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top)
 public enum PaddingTop: Property, LengthPercentageConvertible {
     public static let property: String = "padding-top"
-    
+
     /// A length or percentage value for the top padding
     case lengthPercentage(LengthPercentage)
-    
+
     /// Global values
     case global(CSSTypeTypes.Global)
 }
@@ -31,7 +31,7 @@ extension PaddingTop: CustomStringConvertible {
         switch self {
         case .lengthPercentage(let lengthPercentage):
             return lengthPercentage.description
-            
+
         case .global(let global):
             return global.description
         }

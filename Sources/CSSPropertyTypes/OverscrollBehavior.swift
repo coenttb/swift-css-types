@@ -5,8 +5,8 @@
 //  Created by Claude on 28/03/2025.
 //
 
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The `overscroll-behavior` CSS property sets what a browser does when reaching 
 /// the boundary of a scrolling area.
@@ -22,29 +22,29 @@ import CSSTypeTypes
 /// ```
 public enum OverscrollBehavior: Property {
     public static let property: String = "overscroll-behavior"
-    
+
     /// A single value applied to both x and y directions
     case single(Value)
-    
+
     /// Different values for horizontal (x) and vertical (y) directions
     case horizontal_vertical(Value, Value)
-    
+
     /// Global CSS value
     case global(CSSTypeTypes.Global)
-    
+
     /// Overscroll behavior values
     public enum Value: String, Sendable, Hashable {
         /// The default scroll overflow behavior occurs as normal
         case auto
-        
+
         /// Default scroll overflow behavior is observed inside the element, but no scroll
         /// chaining occurs to neighboring scrolling areas
         case contain
-        
+
         /// No scroll chaining occurs and default scroll overflow behavior is prevented
         case none
     }
-    
+
     public var description: String {
         switch self {
         case .single(let value):

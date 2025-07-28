@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents the CSS `border-right-color` property, which sets the color of the right border.
 ///
@@ -37,15 +37,15 @@ import CSSTypeTypes
 ///
 /// - SeeAlso: [MDN Web Docs on border-right-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color)
 public enum BorderRightColor: Property, ColorConvertible {
-    
+
     public static let property: String = "border-right-color"
-    
+
     /// A specific color for the right border
     case color(CSSTypeTypes.Color)
-    
+
     /// Global CSS values
     case global(CSSTypeTypes.Global)
-    
+
     /// Creates a border-right-color with a specific color
     ///
     /// - Parameter color: The color for the right border
@@ -79,25 +79,25 @@ extension BorderRightColor: CustomStringConvertible {
 extension BorderRightColor {
     /// The default border-right-color value (currentcolor)
     public static let `default` = BorderRightColor(.currentColor)
-    
+
     /// Creates a transparent border-right-color
     public static let transparent = BorderRightColor(.transparent)
-    
+
     /// Creates a border-right-color that uses the current text color
     public static let currentColor = BorderRightColor(.currentColor)
-    
+
     /// Creates a black border-right-color
     public static let black = BorderRightColor(.black)
-    
+
     /// Creates a white border-right-color
     public static let white = BorderRightColor(.white)
-    
+
     /// Creates a red border-right-color
     public static let red = BorderRightColor(.red)
-    
+
     /// Creates a green border-right-color
     public static let green = BorderRightColor(.green)
-    
+
     /// Creates a blue border-right-color
     public static let blue = BorderRightColor(.blue)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// The CSS `text-underline-offset` property sets the offset distance of an underline text
 /// decoration line (applied using text-decoration) from its original position.
@@ -18,10 +18,10 @@ import CSSTypeTypes
 /// - SeeAlso: [MDN Web Docs on text-underline-offset](https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-offset)
 public enum TextUnderlineOffset: Property, LengthPercentageConvertible {
     public static let property: String = "text-underline-offset"
-    
+
     /// The browser chooses the appropriate offset for underlines.
     case auto
-    
+
     /// Specifies the offset of underlines as a length, overriding the font file suggestion and
     /// the browser default. It is recommended to use em units so the offset scales with the font size.
     case lengthPercentage(LengthPercentage)
@@ -37,10 +37,10 @@ extension TextUnderlineOffset: CustomStringConvertible {
         switch self {
         case .auto:
             return "auto"
-            
+
         case .lengthPercentage(let value):
             return value.description
-            
+
         case .global(let global):
             return global.description
         }

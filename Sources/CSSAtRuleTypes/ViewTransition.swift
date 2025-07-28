@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents a CSS @view-transition at-rule.
 ///
@@ -20,24 +20,24 @@ import CSSTypeTypes
 /// ```
 public struct ViewTransition: AtRule {
     public static let identifier: String = "view-transition"
-    
+
     public var rawValue: String
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
     }
-    
+
     /// Creates a new @view-transition rule
     /// @view-transition {}
     public init() {
         self.rawValue = "@view-transition {}"
     }
-    
+
     /// Sets the navigation property in the view transition rule
     /// @view-transition { navigation: value; }
     public func navigation(_ value: NavigationType) -> ViewTransition {
         let currentContent = rawValue
-        
+
         // Check if the rule already has a navigation property
         if currentContent.contains("navigation:") {
             // Replace the existing navigation property
@@ -49,7 +49,7 @@ public struct ViewTransition: AtRule {
                 return ViewTransition(rawValue: newContent)
             }
         }
-        
+
         // No navigation property yet, add it
         if currentContent.hasSuffix("{}") {
             // Empty rule
@@ -69,15 +69,15 @@ extension ViewTransition {
         /// The document will undergo a view transition when taking part in a navigation,
         /// provided the navigation is same-origin, without cross-origin redirects.
         case auto
-        
+
         /// The document will not undergo a view transition.
         case none
     }
-    
+
     /// Predefined view transition with auto navigation
     /// @view-transition { navigation: auto; }
     public static let auto = ViewTransition().navigation(.auto)
-    
+
     /// Predefined view transition with no navigation
     /// @view-transition { navigation: none; }
     public static let none = ViewTransition().navigation(.none)

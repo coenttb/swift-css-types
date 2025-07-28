@@ -1,5 +1,5 @@
-import Foundation
 import CSSTypeTypes
+import Foundation
 
 /// Represents a CSS @keyframes at-rule.
 ///
@@ -49,14 +49,14 @@ import CSSTypeTypes
 /// ```
 public struct Keyframes: AtRule {
     public static let identifier: String = "keyframes"
-    
+
     public var rawValue: String
     private var name: String
     private var keyframes: [Keyframe] = []
-    
+
     public init(rawValue: String) {
         self.rawValue = rawValue
-        
+
         // Extract name from rawValue - simplified implementation
         if let nameRange = rawValue.range(of: "@keyframes\\s+([^\\s{]+)", options: .regularExpression),
            let matches = rawValue[nameRange].range(of: "\\s+([^\\s{]+)", options: .regularExpression) {
@@ -65,7 +65,7 @@ public struct Keyframes: AtRule {
             self.name = ""
         }
     }
-    
+
     /// Creates a keyframes rule with the specified name.
     ///
     /// - Parameter name: The name of the animation.
@@ -73,34 +73,34 @@ public struct Keyframes: AtRule {
         self.name = name
         self.rawValue = "@keyframes \(name) {}"
     }
-    
+
     /// Updates the raw value based on the current keyframes.
     private mutating func updateRawValue() {
         var sections: [String] = []
-        
+
         for frame in keyframes {
             var styleLines: [String] = []
-            
+
             for (property, value) in frame.styles {
                 styleLines.append("    \(property): \(value);")
             }
-            
+
             if !styleLines.isEmpty {
                 let selectorString = frame.selectors.map { $0.rawValue }.joined(separator: ", ")
                 let stylesString = styleLines.joined(separator: "\n")
                 sections.append("  \(selectorString) {\n\(stylesString)\n  }")
             }
         }
-        
+
         let keyframesString = sections.joined(separator: "\n\n")
-        
+
         if keyframesString.isEmpty {
             rawValue = "@keyframes \(name) {}"
         } else {
             rawValue = "@keyframes \(name) {\n\(keyframesString)\n}"
         }
     }
-    
+
     /// Adds a keyframe to the animation.
     ///
     /// - Parameters:
@@ -110,7 +110,7 @@ public struct Keyframes: AtRule {
     public func keyframe(_ selector: KeyframeSelector, _ styles: [String: String]) -> Keyframes {
         return keyframe([selector], styles)
     }
-    
+
     /// Adds a keyframe with multiple selectors to the animation.
     ///
     /// - Parameters:
@@ -120,7 +120,7 @@ public struct Keyframes: AtRule {
     public func keyframe(_ selectors: [KeyframeSelector], _ styles: [String: String]) -> Keyframes {
         var keyframes = self
         let frame = Keyframe(selectors: selectors, styles: styles)
-        
+
         // Check if we already have a keyframe with the same selectors
         if let index = keyframes.keyframes.firstIndex(where: { $0.selectors == frame.selectors }) {
             // Merge the styles
@@ -133,7 +133,7 @@ public struct Keyframes: AtRule {
             // Add a new keyframe
             keyframes.keyframes.append(frame)
         }
-        
+
         keyframes.updateRawValue()
         return keyframes
     }
@@ -147,21 +147,21 @@ extension Keyframes {
         var selectors: [KeyframeSelector]
         var styles: [String: String]
     }
-    
+
     /// Represents a keyframe selector.
     public enum KeyframeSelector: Sendable, Hashable {
         /// Starting keyframe (0%).
         case from
-        
+
         /// Ending keyframe (100%).
         case to
-        
+
         /// Percentage-based keyframe.
         case percentage(Int)
-        
+
         /// Named timeline range keyframe.
         case timelineRange(String, Int)
-        
+
         public var rawValue: String {
             switch self {
             case .from:

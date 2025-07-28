@@ -6,17 +6,17 @@
 //
 
 import CSSPropertyTypes
-import Testing
 import CSSTypeTypes
+import Testing
 
 @Suite("AnimationDirection Tests")
 struct AnimationDirectionTests {
-    
+
     @Test("AnimationDirection renders its Declaration correctly")
     func testDeclaration() {
         #expect(AnimationDirection.normal.declaration.description == "animation-direction:normal")
     }
-    
+
     @Test("AnimationDirection renders basic values correctly")
     func testBasicValues() {
         #expect(AnimationDirection.normal.description == "normal")
@@ -24,7 +24,7 @@ struct AnimationDirectionTests {
         #expect(AnimationDirection.alternate.description == "alternate")
         #expect(AnimationDirection.alternateReverse.description == "alternate-reverse")
     }
-    
+
     @Test("AnimationDirection renders global values correctly")
     func testGlobalValues() {
         #expect(AnimationDirection.inherit.description == "inherit")
@@ -33,12 +33,12 @@ struct AnimationDirectionTests {
         #expect(AnimationDirection.revertLayer.description == "revert-layer")
         #expect(AnimationDirection.unset.description == "unset")
     }
-    
+
     @Test("AnimationDirection conforms to Property protocol")
     func testPropertyProtocol() {
         #expect(AnimationDirection.property == "animation-direction")
     }
-    
+
     @Test("AnimationDirection provides allCases")
     func testCaseIterable() {
         let allCases = AnimationDirection.allCases
