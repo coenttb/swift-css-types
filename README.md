@@ -34,7 +34,7 @@ Add the dependency in your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/coenttb/swift-css-types", branch: "main")
+    .package(url: "https://github.com/coenttb/swift-css-types", from: "0.0.1")
 ]
 ```
 
@@ -42,7 +42,7 @@ dependencies: [
 
 1. Select File > Add Packages...
 2. Enter package URL: `https://github.com/coenttb/swift-css-types`
-3. Choose the main branch or a specific version
+3. Select version 0.0.1 or "Up to Next Major Version"
 
 ## Related Projects
 
