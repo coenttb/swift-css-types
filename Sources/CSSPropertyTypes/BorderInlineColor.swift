@@ -92,29 +92,3 @@ extension BorderInlineColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderInlineColor values
-extension BorderInlineColor {
-    /// The default border-inline-color value (currentcolor)
-    public static let `default` = BorderInlineColor(.currentColor)
-
-    /// Creates a transparent border-inline-color
-    public static let transparent = BorderInlineColor(.transparent)
-
-    /// Creates a border-inline-color that uses the current text color
-    public static let currentColor = BorderInlineColor(.currentColor)
-
-    /// Creates a black border-inline-color
-    public static let black = BorderInlineColor(.black)
-
-    /// Creates a white border-inline-color
-    public static let white = BorderInlineColor(.white)
-
-    /// Creates a red border-inline-color
-    public static let red = BorderInlineColor(.red)
-
-    /// Creates a green border-inline-color
-    public static let green = BorderInlineColor(.green)
-
-    /// Creates a blue border-inline-color
-    public static let blue = BorderInlineColor(.blue)
-}

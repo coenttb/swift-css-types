@@ -75,29 +75,3 @@ extension BorderLeftColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderLeftColor values
-extension BorderLeftColor {
-    /// The default border-left-color value (currentcolor)
-    public static let `default` = BorderLeftColor(.currentColor)
-
-    /// Creates a transparent border-left-color
-    public static let transparent = BorderLeftColor(.transparent)
-
-    /// Creates a border-left-color that uses the current text color
-    public static let currentColor = BorderLeftColor(.currentColor)
-
-    /// Creates a black border-left-color
-    public static let black = BorderLeftColor(.black)
-
-    /// Creates a white border-left-color
-    public static let white = BorderLeftColor(.white)
-
-    /// Creates a red border-left-color
-    public static let red = BorderLeftColor(.red)
-
-    /// Creates a green border-left-color
-    public static let green = BorderLeftColor(.green)
-
-    /// Creates a blue border-left-color
-    public static let blue = BorderLeftColor(.blue)
-}

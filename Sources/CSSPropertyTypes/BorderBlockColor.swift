@@ -87,29 +87,3 @@ extension BorderBlockColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderBlockColor values
-extension BorderBlockColor {
-    /// The default border-block-color value (currentcolor)
-    public static let `default` = BorderBlockColor(.currentColor)
-
-    /// Creates a transparent border-block-color
-    public static let transparent = BorderBlockColor(.transparent)
-
-    /// Creates a border-block-color that uses the current text color
-    public static let currentColor = BorderBlockColor(.currentColor)
-
-    /// Creates a black border-block-color
-    public static let black = BorderBlockColor(.black)
-
-    /// Creates a white border-block-color
-    public static let white = BorderBlockColor(.white)
-
-    /// Creates a red border-block-color
-    public static let red = BorderBlockColor(.red)
-
-    /// Creates a green border-block-color
-    public static let green = BorderBlockColor(.green)
-
-    /// Creates a blue border-block-color
-    public static let blue = BorderBlockColor(.blue)
-}

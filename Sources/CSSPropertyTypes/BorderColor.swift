@@ -125,26 +125,3 @@ extension BorderColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating border color values
-extension BorderColor {
-    /// Creates a transparent border color
-    public static let transparent = BorderColor(.transparent)
-
-    /// Creates a border color that uses the current text color
-    public static let currentColor = BorderColor(.currentColor)
-
-    /// Creates a black border color
-    public static let black = BorderColor(.black)
-
-    /// Creates a white border color
-    public static let white = BorderColor(.white)
-
-    /// Creates a red border color
-    public static let red = BorderColor(.red)
-
-    /// Creates a green border color
-    public static let green = BorderColor(.green)
-
-    /// Creates a blue border color
-    public static let blue = BorderColor(.blue)
-}

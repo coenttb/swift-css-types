@@ -88,29 +88,3 @@ extension BorderInlineEndColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderInlineEndColor values
-extension BorderInlineEndColor {
-    /// The default border-inline-end-color value (currentcolor)
-    public static let `default` = BorderInlineEndColor(.currentColor)
-
-    /// Creates a transparent border-inline-end-color
-    public static let transparent = BorderInlineEndColor(.transparent)
-
-    /// Creates a border-inline-end-color that uses the current text color
-    public static let currentColor = BorderInlineEndColor(.currentColor)
-
-    /// Creates a black border-inline-end-color
-    public static let black = BorderInlineEndColor(.black)
-
-    /// Creates a white border-inline-end-color
-    public static let white = BorderInlineEndColor(.white)
-
-    /// Creates a red border-inline-end-color
-    public static let red = BorderInlineEndColor(.red)
-
-    /// Creates a green border-inline-end-color
-    public static let green = BorderInlineEndColor(.green)
-
-    /// Creates a blue border-inline-end-color
-    public static let blue = BorderInlineEndColor(.blue)
-}

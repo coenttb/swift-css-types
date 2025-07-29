@@ -81,18 +81,17 @@ struct ColorTests {
 
     @Test("Color constants are available")
     func testColorConstants() {
-        #expect(Color.red.description == "red")
-        #expect(Color.black.description == "black")
-        #expect(Color.white.description == "white")
-        #expect(Color.current.description == "currentColor")
+        #expect(Color.named(.red).description == "red")
+        #expect(Color.named(.black).description == "black")
+        #expect(Color.named(.white).description == "white")
+        #expect(Color.named(.current).description == "currentColor")
     }
 
     @Test("Color conforms to Hashable")
     func testHashable() {
-        #expect(Color.red == Color.named(.red))
+        #expect(Color.named(.red) == Color.named(.red))
         #expect(Color.rgb(255, 0, 0) != Color.rgb(254, 0, 0))
         #expect(Color.rgba(0, 0, 255, 1.0) != Color.rgba(0, 0, 255, 0.9))
-        #expect(Color.currentColor == Color.current)
     }
 
     @Test("Static factory methods create correct colors")
@@ -102,5 +101,4 @@ struct ColorTests {
         #expect(Color.rgba(red: 0, green: 255, blue: 0, alpha: 0.5).description == "rgba(0, 255, 0, 0.5)")
         #expect(Color.hsl(hue: .deg(120), saturation: 100, lightness: 50).description == "hsl(120deg, 100%, 50%)")
     }
-
 }

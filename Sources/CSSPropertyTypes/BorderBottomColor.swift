@@ -72,29 +72,3 @@ extension BorderBottomColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderBottomColor values
-extension BorderBottomColor {
-    /// The default border-bottom-color value (currentcolor)
-    public static let `default` = BorderBottomColor(.currentColor)
-
-    /// Creates a transparent border-bottom-color
-    public static let transparent = BorderBottomColor(.transparent)
-
-    /// Creates a border-bottom-color that uses the current text color
-    public static let currentColor = BorderBottomColor(.currentColor)
-
-    /// Creates a black border-bottom-color
-    public static let black = BorderBottomColor(.black)
-
-    /// Creates a white border-bottom-color
-    public static let white = BorderBottomColor(.white)
-
-    /// Creates a red border-bottom-color
-    public static let red = BorderBottomColor(.red)
-
-    /// Creates a green border-bottom-color
-    public static let green = BorderBottomColor(.green)
-
-    /// Creates a blue border-bottom-color
-    public static let blue = BorderBottomColor(.blue)
-}

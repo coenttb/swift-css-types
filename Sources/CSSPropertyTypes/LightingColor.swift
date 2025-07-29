@@ -40,21 +40,3 @@ public enum LightingColor: Property, ColorConvertible {
         }
     }
 }
-
-/// Default lighting colors
-extension LightingColor {
-    /// White lighting color (default)
-    public static let white: LightingColor = .color(.white)
-
-    /// Red lighting color
-    public static let red: LightingColor = .color(.red)
-
-    /// Blue lighting color
-    public static let blue: LightingColor = .color(.blue)
-
-    /// Green lighting color
-    public static let green: LightingColor = .color(.green)
-
-    /// Current color value
-    public static let currentColor: LightingColor = .color(.currentColor)
-}

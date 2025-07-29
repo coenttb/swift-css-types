@@ -87,29 +87,3 @@ extension BorderBlockEndColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderBlockEndColor values
-extension BorderBlockEndColor {
-    /// The default border-block-end-color value (currentcolor)
-    public static let `default` = BorderBlockEndColor(.currentColor)
-
-    /// Creates a transparent border-block-end-color
-    public static let transparent = BorderBlockEndColor(.transparent)
-
-    /// Creates a border-block-end-color that uses the current text color
-    public static let currentColor = BorderBlockEndColor(.currentColor)
-
-    /// Creates a black border-block-end-color
-    public static let black = BorderBlockEndColor(.black)
-
-    /// Creates a white border-block-end-color
-    public static let white = BorderBlockEndColor(.white)
-
-    /// Creates a red border-block-end-color
-    public static let red = BorderBlockEndColor(.red)
-
-    /// Creates a green border-block-end-color
-    public static let green = BorderBlockEndColor(.green)
-
-    /// Creates a blue border-block-end-color
-    public static let blue = BorderBlockEndColor(.blue)
-}

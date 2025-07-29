@@ -42,7 +42,7 @@ struct AccentColorTests {
 
     @Test("AccentColor conforms to ColorConvertible")
     func testColorConvertible() {
-        let color = Color.blue
+        let color = CSSTypeTypes.Color.named(.blue)
         let accentColor = AccentColor.color(color)
         #expect(accentColor.description == color.description)
     }

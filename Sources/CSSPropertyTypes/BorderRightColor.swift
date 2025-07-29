@@ -74,30 +74,3 @@ extension BorderRightColor: CustomStringConvertible {
         }
     }
 }
-
-/// Convenience methods for creating BorderRightColor values
-extension BorderRightColor {
-    /// The default border-right-color value (currentcolor)
-    public static let `default` = BorderRightColor(.currentColor)
-
-    /// Creates a transparent border-right-color
-    public static let transparent = BorderRightColor(.transparent)
-
-    /// Creates a border-right-color that uses the current text color
-    public static let currentColor = BorderRightColor(.currentColor)
-
-    /// Creates a black border-right-color
-    public static let black = BorderRightColor(.black)
-
-    /// Creates a white border-right-color
-    public static let white = BorderRightColor(.white)
-
-    /// Creates a red border-right-color
-    public static let red = BorderRightColor(.red)
-
-    /// Creates a green border-right-color
-    public static let green = BorderRightColor(.green)
-
-    /// Creates a blue border-right-color
-    public static let blue = BorderRightColor(.blue)
-}

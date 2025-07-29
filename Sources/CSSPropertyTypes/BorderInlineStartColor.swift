@@ -88,29 +88,3 @@ extension BorderInlineStartColor: CustomStringConvertible {
     }
 }
 
-/// Convenience methods for creating BorderInlineStartColor values
-extension BorderInlineStartColor {
-    /// The default border-inline-start-color value (currentcolor)
-    public static let `default` = BorderInlineStartColor(.currentColor)
-
-    /// Creates a transparent border-inline-start-color
-    public static let transparent = BorderInlineStartColor(.transparent)
-
-    /// Creates a border-inline-start-color that uses the current text color
-    public static let currentColor = BorderInlineStartColor(.currentColor)
-
-    /// Creates a black border-inline-start-color
-    public static let black = BorderInlineStartColor(.black)
-
-    /// Creates a white border-inline-start-color
-    public static let white = BorderInlineStartColor(.white)
-
-    /// Creates a red border-inline-start-color
-    public static let red = BorderInlineStartColor(.red)
-
-    /// Creates a green border-inline-start-color
-    public static let green = BorderInlineStartColor(.green)
-
-    /// Creates a blue border-inline-start-color
-    public static let blue = BorderInlineStartColor(.blue)
-}

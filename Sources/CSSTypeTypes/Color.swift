@@ -121,38 +121,6 @@ extension Color: CustomStringConvertible {
 }
 
 extension Color {
-    /// Black color
-    public static let black: Color = .named(.black)
-
-    /// White color
-    public static let white: Color = .named(.white)
-
-    /// Red color
-    public static let red: Color = .named(.red)
-
-    /// Green color
-    public static let green: Color = .named(.green)
-
-    /// Blue color
-    public static let blue: Color = .named(.blue)
-
-    /// Yellow color
-    public static let yellow: Color = .named(.yellow)
-
-    /// Magenta color
-    public static let magenta: Color = .named(.fuchsia)
-
-    /// Cyan color
-    public static let cyan: Color = .named(.aqua)
-
-    /// Gray color
-    public static let gray: Color = .named(.gray)
-
-    /// The currentColor keyword
-    public static let current: Color = .currentColor
-}
-
-extension Color {
     /// Creates a color from a hexadecimal string
     ///
     /// - Parameter hex: The hexadecimal color string

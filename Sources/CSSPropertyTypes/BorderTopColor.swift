@@ -71,30 +71,3 @@ extension BorderTopColor: CustomStringConvertible {
         }
     }
 }
-
-/// Convenience methods for creating BorderTopColor values
-extension BorderTopColor {
-    /// The default border-top-color value (currentcolor)
-    public static let `default` = BorderTopColor(.currentColor)
-
-    /// Creates a transparent border-top-color
-    public static let transparent = BorderTopColor(.transparent)
-
-    /// Creates a border-top-color that uses the current text color
-    public static let currentColor = BorderTopColor(.currentColor)
-
-    /// Creates a black border-top-color
-    public static let black = BorderTopColor(.black)
-
-    /// Creates a white border-top-color
-    public static let white = BorderTopColor(.white)
-
-    /// Creates a red border-top-color
-    public static let red = BorderTopColor(.red)
-
-    /// Creates a green border-top-color
-    public static let green = BorderTopColor(.green)
-
-    /// Creates a blue border-top-color
-    public static let blue = BorderTopColor(.blue)
-}
