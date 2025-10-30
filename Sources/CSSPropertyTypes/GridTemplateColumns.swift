@@ -24,89 +24,89 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
 public enum GridTemplateColumns: Property {
-    public static let property: String = "grid-template-columns"
+  public static let property: String = "grid-template-columns"
 
-    /// No explicit grid. Columns will be implicitly generated.
-    case none
+  /// No explicit grid. Columns will be implicitly generated.
+  case none
 
-    /// Specifies track sizes for columns without naming grid lines
-    case tracks([GridTrackSize])
+  /// Specifies track sizes for columns without naming grid lines
+  case tracks([GridTrackSize])
 
-    /// Specifies named grid lines with track sizes
-    case named([NamedTrack])
+  /// Specifies named grid lines with track sizes
+  case named([NamedTrack])
 
-    /// Specifies track list with explicit repeat
-    case `repeat`(Int, [GridTrackSize])
+  /// Specifies track list with explicit repeat
+  case `repeat`(Int, [GridTrackSize])
 
-    /// Auto-fill: Repeat as many columns as will fit
-    case autoFill([GridTrackSize])
+  /// Auto-fill: Repeat as many columns as will fit
+  case autoFill([GridTrackSize])
 
-    /// Auto-fit: Like auto-fill but collapses empty tracks
-    case autoFit([GridTrackSize])
+  /// Auto-fit: Like auto-fill but collapses empty tracks
+  case autoFit([GridTrackSize])
 
-    /// Subgrid: Adopts the column definition from parent grid
-    case subgrid
+  /// Subgrid: Adopts the column definition from parent grid
+  case subgrid
 
-    /// Global values (inherit, initial, etc.)
-    case global(CSSTypeTypes.Global)
+  /// Global values (inherit, initial, etc.)
+  case global(CSSTypeTypes.Global)
 
-    /// Represents a grid track with optional line names before and after
-    public struct NamedTrack: Sendable, Hashable {
-        /// Line name before the track (optional)
-        public let before: String?
+  /// Represents a grid track with optional line names before and after
+  public struct NamedTrack: Sendable, Hashable {
+    /// Line name before the track (optional)
+    public let before: String?
 
-        /// Track size
-        public let size: GridTrackSize
+    /// Track size
+    public let size: GridTrackSize
 
-        /// Line name after the track (optional)
-        public let after: String?
+    /// Line name after the track (optional)
+    public let after: String?
 
-        /// Creates a named track with optional before and after line names
-        public init(before: String? = nil, size: GridTrackSize, after: String? = nil) {
-            self.before = before
-            self.size = size
-            self.after = after
-        }
-
-        /// Generates the CSS string representation of the named track
-        public var description: String {
-            var result = ""
-
-            if let before = before {
-                result += "[\(before)] "
-            }
-
-            result += size.description
-
-            if let after = after {
-                result += " [\(after)]"
-            }
-
-            return result
-        }
+    /// Creates a named track with optional before and after line names
+    public init(before: String? = nil, size: GridTrackSize, after: String? = nil) {
+      self.before = before
+      self.size = size
+      self.after = after
     }
 
+    /// Generates the CSS string representation of the named track
     public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .tracks(let sizes):
-            return sizes.map { $0.description }.joined(separator: " ")
-        case .named(let namedTracks):
-            return namedTracks.map { $0.description }.joined(separator: " ")
-        case .repeat(let count, let sizes):
-            let sizeStr = sizes.map { $0.description }.joined(separator: " ")
-            return "repeat(\(count), \(sizeStr))"
-        case .autoFill(let sizes):
-            let sizeStr = sizes.map { $0.description }.joined(separator: " ")
-            return "repeat(auto-fill, \(sizeStr))"
-        case .autoFit(let sizes):
-            let sizeStr = sizes.map { $0.description }.joined(separator: " ")
-            return "repeat(auto-fit, \(sizeStr))"
-        case .subgrid:
-            return "subgrid"
-        case .global(let value):
-            return value.description
-        }
+      var result = ""
+
+      if let before = before {
+        result += "[\(before)] "
+      }
+
+      result += size.description
+
+      if let after = after {
+        result += " [\(after)]"
+      }
+
+      return result
     }
+  }
+
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .tracks(let sizes):
+      return sizes.map { $0.description }.joined(separator: " ")
+    case .named(let namedTracks):
+      return namedTracks.map { $0.description }.joined(separator: " ")
+    case .repeat(let count, let sizes):
+      let sizeStr = sizes.map { $0.description }.joined(separator: " ")
+      return "repeat(\(count), \(sizeStr))"
+    case .autoFill(let sizes):
+      let sizeStr = sizes.map { $0.description }.joined(separator: " ")
+      return "repeat(auto-fill, \(sizeStr))"
+    case .autoFit(let sizes):
+      let sizeStr = sizes.map { $0.description }.joined(separator: " ")
+      return "repeat(auto-fit, \(sizeStr))"
+    case .subgrid:
+      return "subgrid"
+    case .global(let value):
+      return value.description
+    }
+  }
 }

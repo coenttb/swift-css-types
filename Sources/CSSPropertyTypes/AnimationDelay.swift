@@ -16,37 +16,37 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay)
 public enum AnimationDelay: Property {
 
-    public static let property: String = "animation-delay"
+  public static let property: String = "animation-delay"
 
-    /// The delay time value
-    case time(Time)
+  /// The delay time value
+  case time(Time)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    /// Creates a delay in seconds
-    public static func s(_ seconds: Double) -> AnimationDelay {
-        return .time(Time.s(seconds))
-    }
+  /// Creates a delay in seconds
+  public static func s(_ seconds: Double) -> AnimationDelay {
+    return .time(Time.s(seconds))
+  }
 
-    /// Creates a delay in milliseconds
-    public static func ms(_ milliseconds: Double) -> AnimationDelay {
-        return .time(Time.ms(milliseconds))
-    }
+  /// Creates a delay in milliseconds
+  public static func ms(_ milliseconds: Double) -> AnimationDelay {
+    return .time(Time.ms(milliseconds))
+  }
 
-    /// Zero delay (animation starts immediately)
-    public static let zero = AnimationDelay.time(Time.zero)
+  /// Zero delay (animation starts immediately)
+  public static let zero = AnimationDelay.time(Time.zero)
 }
 
 /// CSS Output conversion
 extension AnimationDelay: CustomStringConvertible {
-    /// Converts the animation delay to its CSS string representation
-    public var description: String {
-        switch self {
-        case .time(let time):
-            return time.description
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the animation delay to its CSS string representation
+  public var description: String {
+    switch self {
+    case .time(let time):
+      return time.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

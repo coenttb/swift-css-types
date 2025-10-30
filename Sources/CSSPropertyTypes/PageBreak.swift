@@ -29,7 +29,7 @@ import Foundation
 ///    +--------------------+         |   across pages)    |
 ///    |  Element with      |         |                    |
 ///    |  page-break-before |         +--------------------+
-///    |  always starts     |         
+///    |  always starts     |
 ///    |  on a new page     |         page-break-after: right;
 ///    +--------------------+         +--------------------+
 ///                                   |  Content that will |
@@ -60,109 +60,109 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs: page-break-before](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before)
 /// - SeeAlso: [MDN Web Docs: page-break-inside](https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside)
 public enum PageBreak: Sendable, Hashable, Property {
-    public static let property: String = "page-break"
-    /// Controls page breaks after an element.
-    case after(After)
+  public static let property: String = "page-break"
+  /// Controls page breaks after an element.
+  case after(After)
 
-    /// Controls page breaks before an element.
-    case before(Before)
+  /// Controls page breaks before an element.
+  case before(Before)
 
-    /// Controls page breaks inside an element.
-    case inside(Inside)
+  /// Controls page breaks inside an element.
+  case inside(Inside)
 
-    case global(Global)
+  case global(Global)
 
-    /// Values for the page-break-after property.
-    public enum After: String, Sendable {
-        /// Let the browser determine automatically where page breaks should occur (default).
-        case auto
+  /// Values for the page-break-after property.
+  public enum After: String, Sendable {
+    /// Let the browser determine automatically where page breaks should occur (default).
+    case auto
 
-        /// Always force a page break after the element.
-        case always
+    /// Always force a page break after the element.
+    case always
 
-        /// Avoid a page break after the element if possible.
-        case avoid
+    /// Avoid a page break after the element if possible.
+    case avoid
 
-        /// Force page breaks after the element until a left page is reached.
-        case left
+    /// Force page breaks after the element until a left page is reached.
+    case left
 
-        /// Force page breaks after the element until a right page is reached.
-        case right
+    /// Force page breaks after the element until a right page is reached.
+    case right
 
-        /// Sets the property to its default value.
-        case initial
+    /// Sets the property to its default value.
+    case initial
 
-        /// Inherits the value from the parent element.
-        case inherit
+    /// Inherits the value from the parent element.
+    case inherit
+  }
+
+  /// Values for the page-break-before property.
+  public enum Before: String, Sendable {
+    /// Let the browser determine automatically where page breaks should occur (default).
+    case auto
+
+    /// Always force a page break before the element.
+    case always
+
+    /// Avoid a page break before the element if possible.
+    case avoid
+
+    /// Force page breaks before the element until a left page is reached.
+    case left
+
+    /// Force page breaks before the element until a right page is reached.
+    case right
+
+    /// Sets the property to its default value.
+    case initial
+
+    /// Inherits the value from the parent element.
+    case inherit
+  }
+
+  /// Values for the page-break-inside property.
+  public enum Inside: String, Sendable {
+    /// Let the browser determine automatically where page breaks should occur (default).
+    case auto
+
+    /// Avoid page breaks inside the element if possible.
+    case avoid
+
+    /// Sets the property to its default value.
+    case initial
+
+    /// Inherits the value from the parent element.
+    case inherit
+  }
+
+  /// Returns the CSS property name and value as a tuple.
+  ///
+  /// This differs from most other properties in the library as it produces
+  /// different property names based on the variant being used (after, before, or inside).
+  ///
+  /// - Returns: A tuple containing the CSS property name and its value.
+  public var description: String {
+    switch self {
+    case .after(let after):
+      after.rawValue
+    case .before(let before):
+      before.rawValue
+    case .inside(let inside):
+      inside.rawValue
+    case .global(let global):
+      global.description
     }
+  }
 
-    /// Values for the page-break-before property.
-    public enum Before: String, Sendable {
-        /// Let the browser determine automatically where page breaks should occur (default).
-        case auto
+  /// Default page-break-after with auto value.
+  /// Equivalent to `.after(.auto)`.
+  public static let after: Self = .after(.auto)
 
-        /// Always force a page break before the element.
-        case always
+  /// Default page-break-before with auto value.
+  /// Equivalent to `.before(.auto)`.
+  public static let before: Self = .before(.auto)
 
-        /// Avoid a page break before the element if possible.
-        case avoid
-
-        /// Force page breaks before the element until a left page is reached.
-        case left
-
-        /// Force page breaks before the element until a right page is reached.
-        case right
-
-        /// Sets the property to its default value.
-        case initial
-
-        /// Inherits the value from the parent element.
-        case inherit
-    }
-
-    /// Values for the page-break-inside property.
-    public enum Inside: String, Sendable {
-        /// Let the browser determine automatically where page breaks should occur (default).
-        case auto
-
-        /// Avoid page breaks inside the element if possible.
-        case avoid
-
-        /// Sets the property to its default value.
-        case initial
-
-        /// Inherits the value from the parent element.
-        case inherit
-    }
-
-    /// Returns the CSS property name and value as a tuple.
-    ///
-    /// This differs from most other properties in the library as it produces
-    /// different property names based on the variant being used (after, before, or inside).
-    ///
-    /// - Returns: A tuple containing the CSS property name and its value.
-    public var description: String {
-        switch self {
-        case .after(let after):
-            after.rawValue
-        case .before(let before):
-            before.rawValue
-        case .inside(let inside):
-            inside.rawValue
-        case .global(let global):
-            global.description
-        }
-    }
-
-    /// Default page-break-after with auto value.
-    /// Equivalent to `.after(.auto)`.
-    public static let after: Self = .after(.auto)
-
-    /// Default page-break-before with auto value.
-    /// Equivalent to `.before(.auto)`.
-    public static let before: Self = .before(.auto)
-
-    /// Default page-break-inside with auto value.
-    /// Equivalent to `.inside(.auto)`.
-    public static let inside: Self = .inside(.auto)
+  /// Default page-break-inside with auto value.
+  /// Equivalent to `.inside(.auto)`.
+  public static let inside: Self = .inside(.auto)
 }

@@ -27,36 +27,36 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on line-clamp](https://developer.mozilla.org/en-US/docs/Web/CSS/line-clamp)
 public enum LineClamp: Property {
-    public static let property: String = "line-clamp"
-    /// No clamping; all lines of text are displayed
-    case none
+  public static let property: String = "line-clamp"
+  /// No clamping; all lines of text are displayed
+  case none
 
-    /// Clamp the text to the specified number of lines
-    case lines(Int)
+  /// Clamp the text to the specified number of lines
+  case lines(Int)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .lines(let count):
-            // Line count must be greater than 0
-            let safeCount = max(1, count)
-            return "\(safeCount)"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .lines(let count):
+      // Line count must be greater than 0
+      let safeCount = max(1, count)
+      return "\(safeCount)"
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Convenience initializers for LineClamp
 extension LineClamp: ExpressibleByIntegerLiteral {
-    /// Creates a line-clamp from an integer literal
-    ///
-    /// - Parameter value: The number of lines to clamp to
-    public init(integerLiteral value: Int) {
-        self = .lines(value)
-    }
+  /// Creates a line-clamp from an integer literal
+  ///
+  /// - Parameter value: The number of lines to clamp to
+  public init(integerLiteral value: Int) {
+    self = .lines(value)
+  }
 }

@@ -30,7 +30,7 @@ import Foundation
 ///
 /// - SeeAlso: [CSS Pseudo-Elements Module Level 4](https://www.w3.org/TR/css-pseudo-4/#target-text)
 public struct TargetText: CSSPseudoElement {
-    @inlinable public static var name: String { "target-text" }
+  @inlinable public static var name: String { "target-text" }
 
-    public init() {}
+  public init() {}
 }

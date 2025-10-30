@@ -14,29 +14,31 @@ import CSSTypeTypes
 /// scroll-margin-right: 1em;
 /// scroll-margin-right: 0;
 /// ```
-public enum ScrollMarginRight: Property, LengthConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, CustomStringConvertible {
-    public static let property: String = "scroll-margin-right"
+public enum ScrollMarginRight: Property, LengthConvertible, ExpressibleByIntegerLiteral,
+  ExpressibleByFloatLiteral, CustomStringConvertible
+{
+  public static let property: String = "scroll-margin-right"
 
-    /// A length value for the right margin
-    case length(Length)
+  /// A length value for the right margin
+  case length(Length)
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .length(let length): return length.description
-        case .global(let global): return global.description
-        }
+  public var description: String {
+    switch self {
+    case .length(let length): return length.description
+    case .global(let global): return global.description
     }
+  }
 
-    /// Creates a ScrollMarginRight using an integer literal (interpreted as pixels)
-    public init(integerLiteral value: Int) {
-        self = .length(.px(Double(value)))
-    }
+  /// Creates a ScrollMarginRight using an integer literal (interpreted as pixels)
+  public init(integerLiteral value: Int) {
+    self = .length(.px(Double(value)))
+  }
 
-    /// Creates a ScrollMarginRight using a floating-point literal (interpreted as pixels)
-    public init(floatLiteral value: Double) {
-        self = .length(.px(value))
-    }
+  /// Creates a ScrollMarginRight using a floating-point literal (interpreted as pixels)
+  public init(floatLiteral value: Double) {
+    self = .length(.px(value))
+  }
 }

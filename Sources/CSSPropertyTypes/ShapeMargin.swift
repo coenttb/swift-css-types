@@ -13,19 +13,19 @@ import CSSTypeTypes
 /// shape-margin: 60%;
 /// ```
 public enum ShapeMargin: Property, LengthPercentageConvertible, CustomStringConvertible {
-    public static let property: String = "shape-margin"
+  public static let property: String = "shape-margin"
 
-    case lengthPercentage(LengthPercentage)
+  case lengthPercentage(LengthPercentage)
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

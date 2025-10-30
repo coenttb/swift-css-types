@@ -8,7 +8,7 @@
 import CSSTypeTypes
 import Foundation
 
-/// The non-standard CSS `-moz-float-edge` property specifies whether the height and width 
+/// The non-standard CSS `-moz-float-edge` property specifies whether the height and width
 /// properties of the element include the margin, border, or padding thickness.
 ///
 /// This property is similar to box-sizing but affects how floating elements are sized. It determines
@@ -28,25 +28,25 @@ import Foundation
 ///
 /// - SeeAlso: [Mozilla CSS Extensions Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/Mozilla_Extensions)
 public enum MozFloatEdge: Property {
-    public static let property: String = "-moz-float-edge"
+  public static let property: String = "-moz-float-edge"
 
-    /// The height and width properties include the content, but not the padding, border or margin
-    case contentBox
+  /// The height and width properties include the content, but not the padding, border or margin
+  case contentBox
 
-    /// The height and width properties include the content, padding, border and margin
-    case marginBox
+  /// The height and width properties include the content, padding, border and margin
+  case marginBox
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .contentBox:
-            return "content-box"
-        case .marginBox:
-            return "margin-box"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .contentBox:
+      return "content-box"
+    case .marginBox:
+      return "margin-box"
+    case .global(let global):
+      return global.description
     }
+  }
 }

@@ -18,43 +18,45 @@ import Foundation
 /// ```
 ///
 /// - SeeAlso: [MDN Web Docs on margin-top](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top)
-public enum MarginTop: Property, LengthPercentageConvertible, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
-    public static let property: String = "margin-top"
+public enum MarginTop: Property, LengthPercentageConvertible, ExpressibleByIntegerLiteral,
+  ExpressibleByFloatLiteral
+{
+  public static let property: String = "margin-top"
 
-    /// A specific length or percentage value for the margin
-    case lengthPercentage(LengthPercentage)
+  /// A specific length or percentage value for the margin
+  case lengthPercentage(LengthPercentage)
 
-    /// Browser automatically determines the margin
-    case auto
+  /// Browser automatically determines the margin
+  case auto
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    // MARK: - Protocol Conformance
+  // MARK: - Protocol Conformance
 
-    /// Implementation of the CustomStringConvertible protocol
-    public var description: String {
-        switch self {
-        case .lengthPercentage(let value):
-            return value.description
-        case .auto:
-            return "auto"
-        case .global(let global):
-            return global.description
-        }
+  /// Implementation of the CustomStringConvertible protocol
+  public var description: String {
+    switch self {
+    case .lengthPercentage(let value):
+      return value.description
+    case .auto:
+      return "auto"
+    case .global(let global):
+      return global.description
     }
+  }
 
-    // MARK: - Convenience initializers
+  // MARK: - Convenience initializers
 
-    /// Create a margin value using a float literal as pixels
-    public init(floatLiteral value: Double) {
-        self = .px(value)
-    }
+  /// Create a margin value using a float literal as pixels
+  public init(floatLiteral value: Double) {
+    self = .px(value)
+  }
 
-    /// Create a margin value using an integer literal as pixels
-    public init(integerLiteral value: Int) {
-        self = .px(Double(value))
-    }
+  /// Create a margin value using an integer literal as pixels
+  public init(integerLiteral value: Int) {
+    self = .px(Double(value))
+  }
 }
 
 // Allow creation from Length values

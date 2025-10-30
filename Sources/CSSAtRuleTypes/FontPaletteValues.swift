@@ -36,93 +36,98 @@ import Foundation
 ///     ])
 /// ```
 public struct FontPaletteValues: AtRule {
-    public static let identifier: String = "font-palette-values"
+  public static let identifier: String = "font-palette-values"
 
-    public var rawValue: String
-    private var identifier: String
-    private var descriptors: [String: String] = [:]
+  public var rawValue: String
+  private var identifier: String
+  private var descriptors: [String: String] = [:]
 
-    public init(rawValue: String) {
-        self.rawValue = rawValue
+  public init(rawValue: String) {
+    self.rawValue = rawValue
 
-        // Extract identifier from rawValue - simplified implementation
-        if let idRange = rawValue.range(of: "@font-palette-values\\s+([^{]+)", options: .regularExpression),
-           let matches = rawValue[idRange].range(of: "\\s+([^{]+)", options: .regularExpression) {
-            self.identifier = String(rawValue[matches]).trimmingCharacters(in: .whitespacesAndNewlines)
-        } else {
-            self.identifier = ""
-        }
+    // Extract identifier from rawValue - simplified implementation
+    if let idRange = rawValue.range(
+      of: "@font-palette-values\\s+([^{]+)",
+      options: .regularExpression
+    ),
+      let matches = rawValue[idRange].range(of: "\\s+([^{]+)", options: .regularExpression)
+    {
+      self.identifier = String(rawValue[matches]).trimmingCharacters(in: .whitespacesAndNewlines)
+    } else {
+      self.identifier = ""
+    }
+  }
+
+  /// Creates a font palette values rule with the specified identifier.
+  ///
+  /// - Parameter identifier: The palette identifier, which should start with `--`.
+  public init(_ identifier: String) {
+    self.identifier = identifier
+    self.rawValue = "@font-palette-values \(identifier) {}"
+  }
+
+  /// Updates the raw value based on the current descriptors.
+  private mutating func updateRawValue() {
+    let descriptorString = descriptors.map { key, value in
+      "  \(key): \(value);"
+    }.joined(separator: "\n")
+
+    if descriptorString.isEmpty {
+      rawValue = "@font-palette-values \(identifier) {}"
+    } else {
+      rawValue = "@font-palette-values \(identifier) {\n\(descriptorString)\n}"
+    }
+  }
+
+  /// Sets the font-family descriptor.
+  ///
+  /// - Parameter family: The name of the font family.
+  /// - Returns: An updated FontPaletteValues instance.
+  public func fontFamily(_ family: String) -> FontPaletteValues {
+    var palette = self
+    palette.descriptors["font-family"] = "\"\(family)\""
+    palette.updateRawValue()
+    return palette
+  }
+
+  /// Sets the base-palette descriptor.
+  ///
+  /// - Parameter index: The index of the base palette to use.
+  /// - Returns: An updated FontPaletteValues instance.
+  public func basePalette(_ index: Int) -> FontPaletteValues {
+    var palette = self
+    palette.descriptors["base-palette"] = String(index)
+    palette.updateRawValue()
+    return palette
+  }
+
+  /// Sets the base-palette descriptor using a name.
+  ///
+  /// - Parameter name: The name of the base palette to use.
+  /// - Returns: An updated FontPaletteValues instance.
+  public func basePalette(_ name: String) -> FontPaletteValues {
+    var palette = self
+    palette.descriptors["base-palette"] = name
+    palette.updateRawValue()
+    return palette
+  }
+
+  /// Sets the override-colors descriptor.
+  ///
+  /// - Parameter colors: An array of tuples containing color indices and values.
+  /// - Returns: An updated FontPaletteValues instance.
+  public func overrideColors(_ colors: [(Int, Color)]) -> FontPaletteValues {
+    var palette = self
+    let colorString =
+      colors
+      .map { "\($0.0) \($0.1)" }
+      .joined(separator: ",\n    ")
+
+    if !colorString.isEmpty {
+      palette.descriptors["override-colors"] = "\n    \(colorString)"
     }
 
-    /// Creates a font palette values rule with the specified identifier.
-    ///
-    /// - Parameter identifier: The palette identifier, which should start with `--`.
-    public init(_ identifier: String) {
-        self.identifier = identifier
-        self.rawValue = "@font-palette-values \(identifier) {}"
-    }
-
-    /// Updates the raw value based on the current descriptors.
-    private mutating func updateRawValue() {
-        let descriptorString = descriptors.map { key, value in
-            "  \(key): \(value);"
-        }.joined(separator: "\n")
-
-        if descriptorString.isEmpty {
-            rawValue = "@font-palette-values \(identifier) {}"
-        } else {
-            rawValue = "@font-palette-values \(identifier) {\n\(descriptorString)\n}"
-        }
-    }
-
-    /// Sets the font-family descriptor.
-    ///
-    /// - Parameter family: The name of the font family.
-    /// - Returns: An updated FontPaletteValues instance.
-    public func fontFamily(_ family: String) -> FontPaletteValues {
-        var palette = self
-        palette.descriptors["font-family"] = "\"\(family)\""
-        palette.updateRawValue()
-        return palette
-    }
-
-    /// Sets the base-palette descriptor.
-    ///
-    /// - Parameter index: The index of the base palette to use.
-    /// - Returns: An updated FontPaletteValues instance.
-    public func basePalette(_ index: Int) -> FontPaletteValues {
-        var palette = self
-        palette.descriptors["base-palette"] = String(index)
-        palette.updateRawValue()
-        return palette
-    }
-
-    /// Sets the base-palette descriptor using a name.
-    ///
-    /// - Parameter name: The name of the base palette to use.
-    /// - Returns: An updated FontPaletteValues instance.
-    public func basePalette(_ name: String) -> FontPaletteValues {
-        var palette = self
-        palette.descriptors["base-palette"] = name
-        palette.updateRawValue()
-        return palette
-    }
-
-    /// Sets the override-colors descriptor.
-    ///
-    /// - Parameter colors: An array of tuples containing color indices and values.
-    /// - Returns: An updated FontPaletteValues instance.
-    public func overrideColors(_ colors: [(Int, Color)]) -> FontPaletteValues {
-        var palette = self
-        let colorString = colors
-            .map { "\($0.0) \($0.1)" }
-            .joined(separator: ",\n    ")
-
-        if !colorString.isEmpty {
-            palette.descriptors["override-colors"] = "\n    \(colorString)"
-        }
-
-        palette.updateRawValue()
-        return palette
-    }
+    palette.updateRawValue()
+    return palette
+  }
 }

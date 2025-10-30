@@ -17,32 +17,32 @@ import CSSTypeTypes
 /// scroll-timeline-name: --custom_name_for_timeline;
 /// ```
 public enum ScrollTimelineName: Property {
-    public static let property: String = "scroll-timeline-name"
+  public static let property: String = "scroll-timeline-name"
 
-    /// No named timeline
-    case none
+  /// No named timeline
+  case none
 
-    /// A named timeline with a custom identifier (must start with --)
-    case name(ScrollTimeline.CustomIdent)
+  /// A named timeline with a custom identifier (must start with --)
+  case name(ScrollTimeline.CustomIdent)
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .name(let name):
-            return name.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .name(let name):
+      return name.description
+    case .global(let global):
+      return global.description
     }
+  }
 
-    /// Creates a ScrollTimelineName with a specific name
-    /// - Parameter name: The name for the timeline (will be prefixed with -- if not already)
-    /// - Returns: A ScrollTimelineName with the specified name
-    public static func named(_ name: String) -> Self {
-        .name(ScrollTimeline.CustomIdent(rawValue: name))
-    }
+  /// Creates a ScrollTimelineName with a specific name
+  /// - Parameter name: The name for the timeline (will be prefixed with -- if not already)
+  /// - Returns: A ScrollTimelineName with the specified name
+  public static func named(_ name: String) -> Self {
+    .name(ScrollTimeline.CustomIdent(rawValue: name))
+  }
 }

@@ -16,37 +16,37 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on column-rule-width](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width)
 public enum ColumnRuleWidth: Property, LengthConvertible {
-    public static let property: String = "column-rule-width"
-    /// Predefined width values
-    case thin
-    case medium
-    case thick
+  public static let property: String = "column-rule-width"
+  /// Predefined width values
+  case thin
+  case medium
+  case thick
 
-    /// A specific length value
-    case length(Length)
+  /// A specific length value
+  case length(Length)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension ColumnRuleWidth: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .thin:
-            return "thin"
+  public var description: String {
+    switch self {
+    case .thin:
+      return "thin"
 
-        case .medium:
-            return "medium"
+    case .medium:
+      return "medium"
 
-        case .thick:
-            return "thick"
+    case .thick:
+      return "thick"
 
-        case .length(let length):
-            return length.description
+    case .length(let length):
+      return length.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }

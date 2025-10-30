@@ -18,37 +18,37 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on scrollbar-width](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width)
 public enum ScrollbarWidth: Property {
-    public static let property: String = "scrollbar-width"
+  public static let property: String = "scrollbar-width"
 
-    /// The default scrollbar width for the platform
-    case auto
+  /// The default scrollbar width for the platform
+  case auto
 
-    /// A thin scrollbar width variant on platforms that provide that option, 
-    /// or a thinner scrollbar than the default platform scrollbar width
-    case thin
+  /// A thin scrollbar width variant on platforms that provide that option,
+  /// or a thinner scrollbar than the default platform scrollbar width
+  case thin
 
-    /// No scrollbar shown, however the element will still be scrollable
-    case none
+  /// No scrollbar shown, however the element will still be scrollable
+  case none
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension ScrollbarWidth: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
 
-        case .thin:
-            return "thin"
+    case .thin:
+      return "thin"
 
-        case .none:
-            return "none"
+    case .none:
+      return "none"
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }

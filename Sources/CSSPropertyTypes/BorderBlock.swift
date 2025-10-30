@@ -44,93 +44,93 @@ import Foundation
 /// .borderBlock(.all(.px(3), .double, .blue))
 /// ```
 ///
-/// - Note: This logical property adapts to the writing mode of the document, 
+/// - Note: This logical property adapts to the writing mode of the document,
 ///         making layout more flexible for different writing systems.
 ///
 /// - SeeAlso: [MDN Web Docs on border-block](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block)
 public enum BorderBlock: Property, LineStyleConvertible {
 
-    public static let property: String = "border-block"
+  public static let property: String = "border-block"
 
-    /// Only specifies the border style
-    case lineStyle(LineStyle)
+  /// Only specifies the border style
+  case lineStyle(LineStyle)
 
-    /// Specifies the style and color
-    case styleAndColor(LineStyle, Color)
+  /// Specifies the style and color
+  case styleAndColor(LineStyle, Color)
 
-    /// Specifies the width and style
-    case widthAndStyle(BorderWidth, LineStyle)
+  /// Specifies the width and style
+  case widthAndStyle(BorderWidth, LineStyle)
 
-    /// Specifies all three properties: width, style, and color
-    case all(BorderWidth, LineStyle, Color)
+  /// Specifies all three properties: width, style, and color
+  case all(BorderWidth, LineStyle, Color)
 
-    /// Just a width value
-    case width(BorderWidth)
+  /// Just a width value
+  case width(BorderWidth)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
 }
 
 /// Provides string conversion for CSS output
 extension BorderBlock: CustomStringConvertible {
-    /// Converts the border-block to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// border-block: solid;
-    /// border-block: dashed red;
-    /// border-block: 2px dotted;
-    /// border-block: 3px double blue;
-    /// border-block: inherit;
-    /// ```
-    public var description: String {
-        switch self {
-        case .lineStyle(let lineStyle):
-            return lineStyle.description
+  /// Converts the border-block to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// border-block: solid;
+  /// border-block: dashed red;
+  /// border-block: 2px dotted;
+  /// border-block: 3px double blue;
+  /// border-block: inherit;
+  /// ```
+  public var description: String {
+    switch self {
+    case .lineStyle(let lineStyle):
+      return lineStyle.description
 
-        case .styleAndColor(let style, let color):
-            return "\(style.description) \(color.description)"
+    case .styleAndColor(let style, let color):
+      return "\(style.description) \(color.description)"
 
-        case .widthAndStyle(let width, let style):
-            return "\(width.description) \(style.description)"
+    case .widthAndStyle(let width, let style):
+      return "\(width.description) \(style.description)"
 
-        case .all(let width, let style, let color):
-            return "\(width.description) \(style.description) \(color.description)"
+    case .all(let width, let style, let color):
+      return "\(width.description) \(style.description) \(color.description)"
 
-        case .width(let width):
-            return width.description
+    case .width(let width):
+      return width.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Convenience methods for creating BorderBlock objects
 extension BorderBlock {
 
-    /// Creates a thin border-block with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thin border-block with the specified style
-    public static func thin(_ style: LineStyle) -> BorderBlock {
-        .widthAndStyle(.thin, style)
-    }
+  /// Creates a thin border-block with the specified style
+  ///
+  /// - Parameter style: The border style
+  /// - Returns: A thin border-block with the specified style
+  public static func thin(_ style: LineStyle) -> BorderBlock {
+    .widthAndStyle(.thin, style)
+  }
 
-    /// Creates a medium border-block with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A medium border-block with the specified style
-    public static func medium(_ style: LineStyle) -> BorderBlock {
-        .widthAndStyle(.medium, style)
-    }
+  /// Creates a medium border-block with the specified style
+  ///
+  /// - Parameter style: The border style
+  /// - Returns: A medium border-block with the specified style
+  public static func medium(_ style: LineStyle) -> BorderBlock {
+    .widthAndStyle(.medium, style)
+  }
 
-    /// Creates a thick border-block with the specified style
-    ///
-    /// - Parameter style: The border style
-    /// - Returns: A thick border-block with the specified style
-    public static func thick(_ style: LineStyle) -> BorderBlock {
-        .widthAndStyle(.thick, style)
-    }
+  /// Creates a thick border-block with the specified style
+  ///
+  /// - Parameter style: The border style
+  /// - Returns: A thick border-block with the specified style
+  public static func thick(_ style: LineStyle) -> BorderBlock {
+    .widthAndStyle(.thick, style)
+  }
 }

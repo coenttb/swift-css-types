@@ -15,34 +15,34 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter)
 public enum Filter: Property {
-    public static let property: String = "filter"
-    /// No filter effect is applied
-    case none
+  public static let property: String = "filter"
+  /// No filter effect is applied
+  case none
 
-    /// A single filter function
-    case filter(FilterFunction)
+  /// A single filter function
+  case filter(FilterFunction)
 
-    /// Multiple filter functions applied in sequence
-    case filters([FilterFunction])
+  /// Multiple filter functions applied in sequence
+  case filters([FilterFunction])
 
-    /// A URL reference to an SVG filter
-    case url(Url)
+  /// A URL reference to an SVG filter
+  case url(Url)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .filter(let filter):
-            return filter.description
-        case .filters(let filters):
-            return filters.map { $0.description }.joined(separator: " ")
-        case .url(let url):
-            return url.description
-        case .global(let value):
-            return value.description
-        }
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .filter(let filter):
+      return filter.description
+    case .filters(let filters):
+      return filters.map { $0.description }.joined(separator: " ")
+    case .url(let url):
+      return url.description
+    case .global(let value):
+      return value.description
     }
+  }
 }

@@ -30,41 +30,41 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on mask-type](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-type)
 public enum MaskType: Property {
-    public static let property: String = "mask-type"
+  public static let property: String = "mask-type"
 
-    /// Use luminance (brightness) values of the mask content
-    case luminance
+  /// Use luminance (brightness) values of the mask content
+  case luminance
 
-    /// Use alpha (transparency) values of the mask content
-    case alpha
+  /// Use alpha (transparency) values of the mask content
+  case alpha
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 }
 
 /// Provides string conversion for CSS output
 extension MaskType: CustomStringConvertible {
-    /// Converts the mask-type value to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// mask-type: luminance;
-    /// mask-type: alpha;
-    /// ```
-    public var description: String {
-        switch self {
-        case .luminance:
-            return "luminance"
-        case .alpha:
-            return "alpha"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the mask-type value to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// mask-type: luminance;
+  /// mask-type: alpha;
+  /// ```
+  public var description: String {
+    switch self {
+    case .luminance:
+      return "luminance"
+    case .alpha:
+      return "alpha"
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Default value and convenience methods
 extension MaskType {
-    /// The default value for mask-type (`luminance`)
-    public static let `default` = MaskType.luminance
+  /// The default value for mask-type (`luminance`)
+  public static let `default` = MaskType.luminance
 }

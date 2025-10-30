@@ -27,25 +27,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on right](https://developer.mozilla.org/en-US/docs/Web/CSS/right)
 public enum Right: Property, LengthPercentageConvertible {
-    public static let property: String = "right"
+  public static let property: String = "right"
 
-    /// A length-percentage value
-    case lengthPercentage(LengthPercentage)
+  /// A length-percentage value
+  case lengthPercentage(LengthPercentage)
 
-    /// Default value, position is determined by normal flow or left property
-    case auto
+  /// Default value, position is determined by normal flow or left property
+  case auto
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
-        case .auto:
-            return "auto"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
+    case .auto:
+      return "auto"
+    case .global(let global):
+      return global.description
     }
+  }
 }

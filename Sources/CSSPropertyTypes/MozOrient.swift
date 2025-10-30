@@ -35,35 +35,35 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -moz-orient](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-orient)
 public enum MozOrient: Property {
-    public static let property: String = "-moz-orient"
+  public static let property: String = "-moz-orient"
 
-    /// The element is rendered in the same direction as the axis of the text
-    case inline
+  /// The element is rendered in the same direction as the axis of the text
+  case inline
 
-    /// The element is rendered perpendicular to the axis of the text
-    case block
+  /// The element is rendered perpendicular to the axis of the text
+  case block
 
-    /// The element is rendered horizontally regardless of text direction
-    case horizontal
+  /// The element is rendered horizontally regardless of text direction
+  case horizontal
 
-    /// The element is rendered vertically regardless of text direction
-    case vertical
+  /// The element is rendered vertically regardless of text direction
+  case vertical
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .inline:
-            return "inline"
-        case .block:
-            return "block"
-        case .horizontal:
-            return "horizontal"
-        case .vertical:
-            return "vertical"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .inline:
+      return "inline"
+    case .block:
+      return "block"
+    case .horizontal:
+      return "horizontal"
+    case .vertical:
+      return "vertical"
+    case .global(let global):
+      return global.description
     }
+  }
 }

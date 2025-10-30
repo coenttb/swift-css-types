@@ -22,42 +22,42 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on view-timeline-name](https://developer.mozilla.org/en-US/docs/Web/CSS/view-timeline-name)
 public enum ViewTimelineName: Property {
 
-    public static let property: String = "view-timeline-name"
+  public static let property: String = "view-timeline-name"
 
-    /// The timeline has no name
-    case none
+  /// The timeline has no name
+  case none
 
-    /// An arbitrary custom identifier defining a name for a view progress timeline
-    case custom(DashedIdent)
+  /// An arbitrary custom identifier defining a name for a view progress timeline
+  case custom(DashedIdent)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension ViewTimelineName: CustomStringConvertible {
-    /// Converts the view-timeline-name value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
+  /// Converts the view-timeline-name value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
 
-        case .custom(let ident):
-            return ident.description
+    case .custom(let ident):
+      return ident.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 // Convenience initializers
 extension ViewTimelineName {
-    /// Creates a custom view timeline name
-    ///
-    /// - Parameter name: The name to use for the view timeline (with or without -- prefix)
-    /// - Returns: A ViewTimelineName with the specified dashed identifier
-    public static func custom(_ name: String) -> Self {
-        return .custom(DashedIdent(name))
-    }
+  /// Creates a custom view timeline name
+  ///
+  /// - Parameter name: The name to use for the view timeline (with or without -- prefix)
+  /// - Returns: A ViewTimelineName with the specified dashed identifier
+  public static func custom(_ name: String) -> Self {
+    return .custom(DashedIdent(name))
+  }
 }

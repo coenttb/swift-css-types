@@ -13,29 +13,29 @@ import CSSTypeTypes
 /// shape-image-threshold: 0.7;
 /// ```
 public enum ShapeImageThreshold: Property {
-    public static let property: String = "shape-image-threshold"
+  public static let property: String = "shape-image-threshold"
 
-    /// Alpha threshold value (0.0 to 1.0)
-    case value(Double)
+  /// Alpha threshold value (0.0 to 1.0)
+  case value(Double)
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .value(let threshold):
-            // Ensure the value is clamped between 0.0 and 1.0
-            let clampedValue = min(1.0, max(0.0, threshold))
-            return String(format: "%.5g", clampedValue)
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .value(let threshold):
+      // Ensure the value is clamped between 0.0 and 1.0
+      let clampedValue = min(1.0, max(0.0, threshold))
+      return String(format: "%.5g", clampedValue)
+    case .global(let global):
+      return global.description
     }
+  }
 
-    /// Creates a ShapeImageThreshold with a specific alpha threshold value
-    /// - Parameter threshold: The alpha threshold value (will be clamped to 0.0-1.0)
-    /// - Returns: A ShapeImageThreshold with the specified value
-    public static func alpha(_ threshold: Double) -> Self {
-        .value(threshold)
-    }
+  /// Creates a ShapeImageThreshold with a specific alpha threshold value
+  /// - Parameter threshold: The alpha threshold value (will be clamped to 0.0-1.0)
+  /// - Returns: A ShapeImageThreshold with the specified value
+  public static func alpha(_ threshold: Double) -> Self {
+    .value(threshold)
+  }
 }

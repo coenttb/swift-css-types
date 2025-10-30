@@ -53,80 +53,82 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-start-end-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-start-end-radius)
 public enum BorderStartEndRadius: Property {
 
-    public static let property: String = "border-start-end-radius"
+  public static let property: String = "border-start-end-radius"
 
-    /// A circular corner with a single radius
-    case radius(LengthPercentage)
+  /// A circular corner with a single radius
+  case radius(LengthPercentage)
 
-    /// An elliptical corner with horizontal and vertical radii
-    case elliptical(LengthPercentage, LengthPercentage)
+  /// An elliptical corner with horizontal and vertical radii
+  case elliptical(LengthPercentage, LengthPercentage)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 }
 
 /// Convenience initializers for BorderStartEndRadius
 extension BorderStartEndRadius {
-    /// Creates a border-start-end-radius with a circular corner
-    ///
-    /// - Parameter radius: The radius of the corner
-    public init(_ radius: LengthPercentage) {
-        self = .radius(radius)
-    }
+  /// Creates a border-start-end-radius with a circular corner
+  ///
+  /// - Parameter radius: The radius of the corner
+  public init(_ radius: LengthPercentage) {
+    self = .radius(radius)
+  }
 
-    /// Creates a border-start-end-radius with an elliptical corner
-    ///
-    /// - Parameters:
-    ///   - horizontal: The horizontal radius of the corner
-    ///   - vertical: The vertical radius of the corner
-    public init(_ horizontal: LengthPercentage, _ vertical: LengthPercentage) {
-        self = .elliptical(horizontal, vertical)
-    }
+  /// Creates a border-start-end-radius with an elliptical corner
+  ///
+  /// - Parameters:
+  ///   - horizontal: The horizontal radius of the corner
+  ///   - vertical: The vertical radius of the corner
+  public init(_ horizontal: LengthPercentage, _ vertical: LengthPercentage) {
+    self = .elliptical(horizontal, vertical)
+  }
 
-    /// Creates a border-start-end-radius with a circular corner
-    ///
-    /// - Parameter radius: The radius of the corner
-    public init(radius: LengthPercentage) {
-        self = .radius(radius)
-    }
+  /// Creates a border-start-end-radius with a circular corner
+  ///
+  /// - Parameter radius: The radius of the corner
+  public init(radius: LengthPercentage) {
+    self = .radius(radius)
+  }
 
-    /// Creates a border-start-end-radius with an elliptical corner
-    ///
-    /// - Parameters:
-    ///   - horizontalRadius: The horizontal radius of the corner
-    ///   - verticalRadius: The vertical radius of the corner
-    public init(horizontalRadius: LengthPercentage, verticalRadius: LengthPercentage) {
-        self = .elliptical(horizontalRadius, verticalRadius)
-    }
+  /// Creates a border-start-end-radius with an elliptical corner
+  ///
+  /// - Parameters:
+  ///   - horizontalRadius: The horizontal radius of the corner
+  ///   - verticalRadius: The vertical radius of the corner
+  public init(horizontalRadius: LengthPercentage, verticalRadius: LengthPercentage) {
+    self = .elliptical(horizontalRadius, verticalRadius)
+  }
 }
 
 /// Support for LengthPercentageConvertible
 extension BorderStartEndRadius: LengthPercentageConvertible {
-    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> BorderStartEndRadius {
-        .radius(value)
-    }
+  public static func lengthPercentage(
+    _ value: CSSTypeTypes.LengthPercentage
+  ) -> BorderStartEndRadius {
+    .radius(value)
+  }
 }
 
 /// Provides string conversion for CSS output
 extension BorderStartEndRadius: CustomStringConvertible {
-    /// Converts the border-start-end-radius to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// border-start-end-radius: 10px;
-    /// border-start-end-radius: 25%;
-    /// border-start-end-radius: 40px 20px;
-    /// border-start-end-radius: 20% 15px;
-    /// border-start-end-radius: inherit;
-    /// ```
-    public var description: String {
-        switch self {
-        case .radius(let radius):
-            return radius.description
-        case .elliptical(let horizontal, let vertical):
-            return "\(horizontal.description) \(vertical.description)"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the border-start-end-radius to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// border-start-end-radius: 10px;
+  /// border-start-end-radius: 25%;
+  /// border-start-end-radius: 40px 20px;
+  /// border-start-end-radius: 20% 15px;
+  /// border-start-end-radius: inherit;
+  /// ```
+  public var description: String {
+    switch self {
+    case .radius(let radius):
+      return radius.description
+    case .elliptical(let horizontal, let vertical):
+      return "\(horizontal.description) \(vertical.description)"
+    case .global(let global):
+      return global.description
     }
+  }
 }

@@ -44,46 +44,45 @@ import Foundation
 /// .borderBlockEndColor(.currentColor)
 /// ```
 ///
-/// - Note: This logical property adapts to the writing mode of the document, 
+/// - Note: This logical property adapts to the writing mode of the document,
 ///         making layout more flexible for different writing systems.
 ///
 /// - SeeAlso: [MDN Web Docs on border-block-end-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-color)
 public enum BorderBlockEndColor: Property, ColorConvertible {
 
-    public static let property: String = "border-block-end-color"
+  public static let property: String = "border-block-end-color"
 
-    /// A specific color for the block-end border
-    case color(CSSTypeTypes.Color)
+  /// A specific color for the block-end border
+  case color(CSSTypeTypes.Color)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// Creates a border-block-end-color with a specific color
-    ///
-    /// - Parameter color: The color for the block-end border
-    public init(_ color: CSSTypeTypes.Color) {
-        self = .color(color)
-    }
+  /// Creates a border-block-end-color with a specific color
+  ///
+  /// - Parameter color: The color for the block-end border
+  public init(_ color: CSSTypeTypes.Color) {
+    self = .color(color)
+  }
 }
 
 /// Provides string conversion for CSS output
 extension BorderBlockEndColor: CustomStringConvertible {
-    /// Converts the border-block-end-color to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// border-block-end-color: red;
-    /// border-block-end-color: #32a1ce;
-    /// border-block-end-color: rgba(0, 0, 255, 0.5);
-    /// border-block-end-color: currentcolor;
-    /// ```
-    public var description: String {
-        switch self {
-        case .color(let color):
-            return color.description
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the border-block-end-color to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// border-block-end-color: red;
+  /// border-block-end-color: #32a1ce;
+  /// border-block-end-color: rgba(0, 0, 255, 0.5);
+  /// border-block-end-color: currentcolor;
+  /// ```
+  public var description: String {
+    switch self {
+    case .color(let color):
+      return color.description
+    case .global(let global):
+      return global.description
     }
+  }
 }
-

@@ -29,25 +29,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -moz-force-broken-image-icon](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-force-broken-image-icon)
 public enum MozForceBrokenImageIcon: Property {
-    public static let property: String = "-moz-force-broken-image-icon"
+  public static let property: String = "-moz-force-broken-image-icon"
 
-    /// Do not show broken image icon when alt text exists (default)
-    case off
+  /// Do not show broken image icon when alt text exists (default)
+  case off
 
-    /// Show broken image icon even when alt text exists
-    case on
+  /// Show broken image icon even when alt text exists
+  case on
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .off:
-            return "0"
-        case .on:
-            return "1"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .off:
+      return "0"
+    case .on:
+      return "1"
+    case .global(let global):
+      return global.description
     }
+  }
 }

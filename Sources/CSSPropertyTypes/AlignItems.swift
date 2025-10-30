@@ -17,66 +17,66 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
 public enum AlignItems: Property, SelfPositionConvertible, BaselinePositionConvertible {
-    public static let property: String = "align-items"
+  public static let property: String = "align-items"
 
-    /// Default alignment for the layout mode
-    case normal
+  /// Default alignment for the layout mode
+  case normal
 
-    /// Stretches items to fill the container
-    case stretch
+  /// Stretches items to fill the container
+  case stretch
 
-    /// Baseline alignment
-    case baseline(BaselinePosition)
+  /// Baseline alignment
+  case baseline(BaselinePosition)
 
-    /// Positional alignment with optional overflow safety
-    case position(OverflowPosition?, SelfPosition)
+  /// Positional alignment with optional overflow safety
+  case position(OverflowPosition?, SelfPosition)
 
-    /// Aligns items to the center of an anchor element
-    case anchorCenter
+  /// Aligns items to the center of an anchor element
+  case anchorCenter
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension AlignItems {
-    /// Converts the alignment value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .normal:
-            return "normal"
+  /// Converts the alignment value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .normal:
+      return "normal"
 
-        case .stretch:
-            return "stretch"
+    case .stretch:
+      return "stretch"
 
-        case .baseline(let position):
-            return position.description
+    case .baseline(let position):
+      return position.description
 
-        case .position(let overflow, let position):
-            if let overflow = overflow {
-                return "\(overflow) \(position)"
-            } else {
-                return position.description
-            }
+    case .position(let overflow, let position):
+      if let overflow = overflow {
+        return "\(overflow) \(position)"
+      } else {
+        return position.description
+      }
 
-        case .anchorCenter:
-            return "anchor-center"
+    case .anchorCenter:
+      return "anchor-center"
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 // Convenience properties and initializers
 extension AlignItems {
-    /// Simple baseline alignment
-    public static let baseline = Self.baseline(.baseline)
+  /// Simple baseline alignment
+  public static let baseline = Self.baseline(.baseline)
 
-    /// First baseline alignment
-    public static let firstBaseline = Self.baseline(.firstBaseline)
+  /// First baseline alignment
+  public static let firstBaseline = Self.baseline(.firstBaseline)
 
-    /// Last baseline alignment
-    public static let lastBaseline = Self.baseline(.lastBaseline)
+  /// Last baseline alignment
+  public static let lastBaseline = Self.baseline(.lastBaseline)
 
 }

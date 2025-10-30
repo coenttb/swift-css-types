@@ -27,22 +27,22 @@ import Foundation
 /// text-decoration-color: currentColor;
 /// ```
 public enum TextDecorationColor: Property, ColorConvertible {
-    public static let property: String = "text-decoration-color"
+  public static let property: String = "text-decoration-color"
 
-    /// A specific color value for the text decoration.
-    case color(CSSTypeTypes.Color)
+  /// A specific color value for the text decoration.
+  case color(CSSTypeTypes.Color)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 }
 
 extension TextDecorationColor: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .color(let color):
-            return color.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .color(let color):
+      return color.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

@@ -23,24 +23,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::slotted()](https://developer.mozilla.org/en-US/docs/Web/CSS/::slotted)
 public struct Slotted: CSSPseudoElement {
-    @inlinable public static var name: String { "slotted" }
+  @inlinable public static var name: String { "slotted" }
 
-    /// The compound selector for slotted content
-    public let selector: String?
+  /// The compound selector for slotted content
+  public let selector: String?
 
-    public init(_ selector: String? = nil) {
-        self.selector = selector
-    }
+  public init(_ selector: String? = nil) {
+    self.selector = selector
+  }
 }
 
 /// Provides string conversion for CSS output
 extension Slotted: CustomStringConvertible {
-    /// Converts the ::slotted() pseudo-element to its CSS string representation
-    public var description: String {
-        if let selector = selector {
-            return Self.prefix + "slotted(\(selector))"
-        } else {
-            return Self.prefix + Self.name
-        }
+  /// Converts the ::slotted() pseudo-element to its CSS string representation
+  public var description: String {
+    if let selector = selector {
+      return Self.prefix + "slotted(\(selector))"
+    } else {
+      return Self.prefix + Self.name
     }
+  }
 }

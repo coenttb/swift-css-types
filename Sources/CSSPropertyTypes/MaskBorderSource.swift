@@ -26,78 +26,78 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on mask-border-source](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-source)
 public enum MaskBorderSource: Property {
-    public static let property: String = "mask-border-source"
+  public static let property: String = "mask-border-source"
 
-    /// No mask border source
-    case none
+  /// No mask border source
+  case none
 
-    /// Use a URL to an image as mask border source
-    case url(Url)
+  /// Use a URL to an image as mask border source
+  case url(Url)
 
-    /// Use a linear gradient as mask border source
-    case linearGradient(CSSString)
+  /// Use a linear gradient as mask border source
+  case linearGradient(CSSString)
 
-    /// Use a radial gradient as mask border source
-    case radialGradient(CSSString)
+  /// Use a radial gradient as mask border source
+  case radialGradient(CSSString)
 
-    /// Use a conic gradient as mask border source
-    case conicGradient(CSSString)
+  /// Use a conic gradient as mask border source
+  case conicGradient(CSSString)
 
-    /// Use a repeating linear gradient as mask border source
-    case repeatingLinearGradient(CSSString)
+  /// Use a repeating linear gradient as mask border source
+  case repeatingLinearGradient(CSSString)
 
-    /// Use a repeating radial gradient as mask border source
-    case repeatingRadialGradient(CSSString)
+  /// Use a repeating radial gradient as mask border source
+  case repeatingRadialGradient(CSSString)
 
-    /// Use a repeating conic gradient as mask border source
-    case repeatingConicGradient(CSSString)
+  /// Use a repeating conic gradient as mask border source
+  case repeatingConicGradient(CSSString)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// Default value (none)
-    public static let `default` = MaskBorderSource.none
+  /// Default value (none)
+  public static let `default` = MaskBorderSource.none
 }
 
 /// Provides string conversion for CSS output
 extension MaskBorderSource: CustomStringConvertible {
-    /// Converts the mask-border-source to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// mask-border-source: none;
-    /// mask-border-source: url("border-mask.png");
-    /// mask-border-source: linear-gradient(45deg, black, transparent);
-    /// ```
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .url(let path):
-            // If path already contains url(), use it as is
-            if path.value.hasPrefix("url(") {
-                return path.description
-            }
-            // If path contains quotes, use it as is inside url()
-            if path.value.contains("\"") || path.value.contains("'") {
-                return "url(\(path))"
-            }
-            // Otherwise, add quotes
-            return "url(\"\(path)\")"
-        case .linearGradient(let value):
-            return "linear-gradient(\(value))"
-        case .radialGradient(let value):
-            return "radial-gradient(\(value))"
-        case .conicGradient(let value):
-            return "conic-gradient(\(value))"
-        case .repeatingLinearGradient(let value):
-            return "repeating-linear-gradient(\(value))"
-        case .repeatingRadialGradient(let value):
-            return "repeating-radial-gradient(\(value))"
-        case .repeatingConicGradient(let value):
-            return "repeating-conic-gradient(\(value))"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the mask-border-source to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// mask-border-source: none;
+  /// mask-border-source: url("border-mask.png");
+  /// mask-border-source: linear-gradient(45deg, black, transparent);
+  /// ```
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .url(let path):
+      // If path already contains url(), use it as is
+      if path.value.hasPrefix("url(") {
+        return path.description
+      }
+      // If path contains quotes, use it as is inside url()
+      if path.value.contains("\"") || path.value.contains("'") {
+        return "url(\(path))"
+      }
+      // Otherwise, add quotes
+      return "url(\"\(path)\")"
+    case .linearGradient(let value):
+      return "linear-gradient(\(value))"
+    case .radialGradient(let value):
+      return "radial-gradient(\(value))"
+    case .conicGradient(let value):
+      return "conic-gradient(\(value))"
+    case .repeatingLinearGradient(let value):
+      return "repeating-linear-gradient(\(value))"
+    case .repeatingRadialGradient(let value):
+      return "repeating-radial-gradient(\(value))"
+    case .repeatingConicGradient(let value):
+      return "repeating-conic-gradient(\(value))"
+    case .global(let global):
+      return global.description
     }
+  }
 }

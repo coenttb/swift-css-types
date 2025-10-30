@@ -19,39 +19,39 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on text-size-adjust](https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust)
 public enum TextSizeAdjust: Property {
-    public static let property: String = "text-size-adjust"
+  public static let property: String = "text-size-adjust"
 
-    /// Enables the browser's inflation algorithm. This value is used to cancel a none value
-    /// previously set with CSS.
-    case auto
+  /// Enables the browser's inflation algorithm. This value is used to cancel a none value
+  /// previously set with CSS.
+  case auto
 
-    /// Disables the browser's inflation algorithm.
-    case none
+  /// Disables the browser's inflation algorithm.
+  case none
 
-    /// Enables the browser's inflation algorithm, specifying a percentage value
-    /// with which to increase the font size.
-    case percentage(Percentage)
+  /// Enables the browser's inflation algorithm, specifying a percentage value
+  /// with which to increase the font size.
+  case percentage(Percentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension TextSizeAdjust: CustomStringConvertible {
-    /// Converts the text-size-adjust value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
+  /// Converts the text-size-adjust value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
 
-        case .none:
-            return "none"
+    case .none:
+      return "none"
 
-        case .percentage(let percentage):
-            return percentage.description
+    case .percentage(let percentage):
+      return percentage.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }

@@ -18,17 +18,17 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on relative-size](https://developer.mozilla.org/en-US/docs/Web/CSS/relative-size)
 public enum RelativeSize: String, Sendable, Hashable, CaseIterable {
-    /// A relative size one size smaller than the inherited size
-    case smaller
+  /// A relative size one size smaller than the inherited size
+  case smaller
 
-    /// A relative size one size larger than the inherited size
-    case larger
+  /// A relative size one size larger than the inherited size
+  case larger
 }
 
 /// Provides string conversion for CSS output
 extension RelativeSize: CustomStringConvertible {
-    /// Converts the relative size to its CSS string representation
-    public var description: String {
-        rawValue
-    }
+  /// Converts the relative size to its CSS string representation
+  public var description: String {
+    rawValue
+  }
 }

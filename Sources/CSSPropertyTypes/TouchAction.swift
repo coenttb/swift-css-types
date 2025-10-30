@@ -24,78 +24,78 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on touch-action](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action)
 public enum TouchAction: Sendable, Hashable, Property {
-    public static let property: String = "touch-action"
-    /// Enable browser handling of all panning and zooming gestures
-    case auto
+  public static let property: String = "touch-action"
+  /// Enable browser handling of all panning and zooming gestures
+  case auto
 
-    /// Disable browser handling of all panning and zooming gestures
-    case none
+  /// Disable browser handling of all panning and zooming gestures
+  case none
 
-    /// Enable panning and pinch zoom gestures, but disable additional non-standard gestures
-    /// such as double-tap to zoom. Equivalent to `[.panX, .panY, .pinchZoom]`
-    case manipulation
+  /// Enable panning and pinch zoom gestures, but disable additional non-standard gestures
+  /// such as double-tap to zoom. Equivalent to `[.panX, .panY, .pinchZoom]`
+  case manipulation
 
-    /// Combination of specific touch action values
-    case combined(Set<TouchActionValue>)
+  /// Combination of specific touch action values
+  case combined(Set<TouchActionValue>)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// Individual touch action values that can be combined
 public enum TouchActionValue: String, Sendable, Hashable {
-    /// Enable single-finger horizontal panning gestures
-    case panX = "pan-x"
+  /// Enable single-finger horizontal panning gestures
+  case panX = "pan-x"
 
-    /// Enable single-finger gestures that begin by scrolling to the left
-    case panLeft = "pan-left"
+  /// Enable single-finger gestures that begin by scrolling to the left
+  case panLeft = "pan-left"
 
-    /// Enable single-finger gestures that begin by scrolling to the right
-    case panRight = "pan-right"
+  /// Enable single-finger gestures that begin by scrolling to the right
+  case panRight = "pan-right"
 
-    /// Enable single-finger vertical panning gestures
-    case panY = "pan-y"
+  /// Enable single-finger vertical panning gestures
+  case panY = "pan-y"
 
-    /// Enable single-finger gestures that begin by scrolling upward
-    case panUp = "pan-up"
+  /// Enable single-finger gestures that begin by scrolling upward
+  case panUp = "pan-up"
 
-    /// Enable single-finger gestures that begin by scrolling downward
-    case panDown = "pan-down"
+  /// Enable single-finger gestures that begin by scrolling downward
+  case panDown = "pan-down"
 
-    /// Enable multi-finger panning and zooming of the page
-    case pinchZoom = "pinch-zoom"
+  /// Enable multi-finger panning and zooming of the page
+  case pinchZoom = "pinch-zoom"
 }
 
 /// CSS Output conversion
 extension TouchAction: CustomStringConvertible {
-    /// Converts the touch-action value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
+  /// Converts the touch-action value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
 
-        case .none:
-            return "none"
+    case .none:
+      return "none"
 
-        case .manipulation:
-            return "manipulation"
+    case .manipulation:
+      return "manipulation"
 
-        case .combined(let values):
-            if values.isEmpty {
-                return "auto"
-            }
-            return values.map { $0.rawValue }.sorted().joined(separator: " ")
+    case .combined(let values):
+      if values.isEmpty {
+        return "auto"
+      }
+      return values.map { $0.rawValue }.sorted().joined(separator: " ")
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 // Convenience initializers
 extension TouchAction {
-    /// Create a touch action with a set of specific touch action values
-    public static func combined(_ values: TouchActionValue...) -> Self {
-        return .combined(Set(values))
-    }
+  /// Create a touch action with a set of specific touch action values
+  public static func combined(_ values: TouchActionValue...) -> Self {
+    return .combined(Set(values))
+  }
 }

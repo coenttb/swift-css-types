@@ -20,57 +20,57 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
 public enum TextAlign: Property {
-    public static let property: String = "text-align"
+  public static let property: String = "text-align"
 
-    /// The same as left if direction is left-to-right and right if direction is right-to-left.
-    case start
+  /// The same as left if direction is left-to-right and right if direction is right-to-left.
+  case start
 
-    /// The same as right if direction is left-to-right and left if direction is right-to-left.
-    case end
+  /// The same as right if direction is left-to-right and left if direction is right-to-left.
+  case end
 
-    /// The inline contents are aligned to the left edge of the line box.
-    case left
+  /// The inline contents are aligned to the left edge of the line box.
+  case left
 
-    /// The inline contents are aligned to the right edge of the line box.
-    case right
+  /// The inline contents are aligned to the right edge of the line box.
+  case right
 
-    /// The inline contents are centered within the line box.
-    case center
+  /// The inline contents are centered within the line box.
+  case center
 
-    /// The inline contents are justified. Spaces out the content to line up its left and right
-    /// edges to the left and right edges of the line box, except for the last line.
-    case justify
+  /// The inline contents are justified. Spaces out the content to line up its left and right
+  /// edges to the left and right edges of the line box, except for the last line.
+  case justify
 
-    /// Similar to justify, but forces the last line to be justified as well.
-    case justifyAll
+  /// Similar to justify, but forces the last line to be justified as well.
+  case justifyAll
 
-    /// Similar to inherit, but the values start and end are calculated according
-    /// to the parent's direction and are replaced by the appropriate left or right value.
-    case matchParent
+  /// Similar to inherit, but the values start and end are calculated according
+  /// to the parent's direction and are replaced by the appropriate left or right value.
+  case matchParent
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .start:
-            return "start"
-        case .end:
-            return "end"
-        case .left:
-            return "left"
-        case .right:
-            return "right"
-        case .center:
-            return "center"
-        case .justify:
-            return "justify"
-        case .justifyAll:
-            return "justify-all"
-        case .matchParent:
-            return "match-parent"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .start:
+      return "start"
+    case .end:
+      return "end"
+    case .left:
+      return "left"
+    case .right:
+      return "right"
+    case .center:
+      return "center"
+    case .justify:
+      return "justify"
+    case .justifyAll:
+      return "justify-all"
+    case .matchParent:
+      return "match-parent"
+    case .global(let global):
+      return global.description
     }
+  }
 }

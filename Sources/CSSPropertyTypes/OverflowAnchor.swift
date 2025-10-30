@@ -19,26 +19,26 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on overflow-anchor](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor)
 public enum OverflowAnchor: Property {
-    public static let property: String = "overflow-anchor"
+  public static let property: String = "overflow-anchor"
 
-    /// The element becomes a potential anchor when adjusting scroll position (default)
-    case auto
+  /// The element becomes a potential anchor when adjusting scroll position (default)
+  case auto
 
-    /// The element won't be selected as a potential anchor
-    case none
+  /// The element won't be selected as a potential anchor
+  case none
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    /// CSS string representation
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .none:
-            return "none"
-        case .global(let global):
-            return global.description
-        }
+  /// CSS string representation
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
+    case .none:
+      return "none"
+    case .global(let global):
+      return global.description
     }
+  }
 }

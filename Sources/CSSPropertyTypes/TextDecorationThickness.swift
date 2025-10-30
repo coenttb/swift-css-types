@@ -24,32 +24,32 @@ import Foundation
 /// text-decoration-thickness: from-font;
 /// ```
 public enum TextDecorationThickness: Property, LengthPercentageConvertible {
-    public static let property: String = "text-decoration-thickness"
+  public static let property: String = "text-decoration-thickness"
 
-    /// The UA chooses an appropriate thickness for text decoration lines.
-    case auto
+  /// The UA chooses an appropriate thickness for text decoration lines.
+  case auto
 
-    /// Specifies that text decoration lines should use the thickness specified by the font file.
-    case fromFont
+  /// Specifies that text decoration lines should use the thickness specified by the font file.
+  case fromFont
 
-    /// A length or percentage value measured from the beginning of the timeline
-    case lengthPercentage(LengthPercentage)
+  /// A length or percentage value measured from the beginning of the timeline
+  case lengthPercentage(LengthPercentage)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 }
 
 extension TextDecorationThickness: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .fromFont:
-            return "from-font"
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
+    case .fromFont:
+      return "from-font"
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

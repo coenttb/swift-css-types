@@ -27,25 +27,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on inset-block-start](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block-start)
 public enum InsetBlockStart: Property, LengthPercentageConvertible {
-    public static let property: String = "inset-block-start"
+  public static let property: String = "inset-block-start"
 
-    /// The position is determined automatically based on the element's normal flow position
-    case auto
+  /// The position is determined automatically based on the element's normal flow position
+  case auto
 
-    /// A specific length or percentage value
-    case lengthPercentage(LengthPercentage)
+  /// A specific length or percentage value
+  case lengthPercentage(LengthPercentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .lengthPercentage(let value):
-            return value.description
-        case .global(let value):
-            return value.description
-        }
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
+    case .lengthPercentage(let value):
+      return value.description
+    case .global(let value):
+      return value.description
     }
+  }
 }

@@ -8,7 +8,7 @@
 import CSSTypeTypes
 import Foundation
 
-/// The CSS `position-try` property is a shorthand that sets both `position-try-order` and 
+/// The CSS `position-try` property is a shorthand that sets both `position-try-order` and
 /// `position-try-fallbacks` properties.
 ///
 /// This property allows you to specify how and when alternative positioning should be applied to
@@ -25,34 +25,37 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on position-try](https://developer.mozilla.org/en-US/docs/Web/CSS/position-try)
 public enum PositionTry: Property {
-    public static let property: String = "position-try"
-    /// Setting both order and fallbacks properties
-    case combined(PositionTryOrder, PositionTryFallbacks)
+  public static let property: String = "position-try"
+  /// Setting both order and fallbacks properties
+  case combined(PositionTryOrder, PositionTryFallbacks)
 
-    /// Setting just the order property
-    case order(PositionTryOrder)
+  /// Setting just the order property
+  case order(PositionTryOrder)
 
-    /// Setting just the fallbacks property
-    case fallbacks(PositionTryFallbacks)
+  /// Setting just the fallbacks property
+  case fallbacks(PositionTryFallbacks)
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .combined(let order, let fallbacks):
-            return "\(order.description) \(fallbacks.description)"
-        case .order(let order):
-            return order.description
-        case .fallbacks(let fallbacks):
-            return fallbacks.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .combined(let order, let fallbacks):
+      return "\(order.description) \(fallbacks.description)"
+    case .order(let order):
+      return order.description
+    case .fallbacks(let fallbacks):
+      return fallbacks.description
+    case .global(let global):
+      return global.description
     }
+  }
 
-    /// Create a position-try with order and fallbacks
-    public static func orderAndFallbacks(order: PositionTryOrder, fallbacks: PositionTryFallbacks) -> PositionTry {
-        .combined(order, fallbacks)
-    }
+  /// Create a position-try with order and fallbacks
+  public static func orderAndFallbacks(
+    order: PositionTryOrder,
+    fallbacks: PositionTryFallbacks
+  ) -> PositionTry {
+    .combined(order, fallbacks)
+  }
 }

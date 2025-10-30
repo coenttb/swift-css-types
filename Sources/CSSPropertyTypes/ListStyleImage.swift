@@ -15,40 +15,40 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on list-style-image](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image)
 public enum ListStyleImage: Property {
-    public static let property: String = "list-style-image"
-    /// No image is used; the standard list item marker is displayed
-    case none
+  public static let property: String = "list-style-image"
+  /// No image is used; the standard list item marker is displayed
+  case none
 
-    /// An image to be used as the list item marker
-    case image(Image)
+  /// An image to be used as the list item marker
+  case image(Image)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    // MARK: - CustomStringConvertible
+  // MARK: - CustomStringConvertible
 
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .image(let image):
-            return image.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .image(let image):
+      return image.description
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 // MARK: - Factory Methods
 
 extension ListStyleImage {
-    /// Creates a list-style-image using a URL
-    public static func url(_ url: Url) -> ListStyleImage {
-        return .image(.url(url))
-    }
+  /// Creates a list-style-image using a URL
+  public static func url(_ url: Url) -> ListStyleImage {
+    return .image(.url(url))
+  }
 
-    /// Creates a list-style-image using a linear gradient
-    public static func linearGradient(_ stops: [CSSTypeTypes.Color]) -> ListStyleImage {
-        return .image(.linearGradient(stops))
-    }
+  /// Creates a list-style-image using a linear gradient
+  public static func linearGradient(_ stops: [CSSTypeTypes.Color]) -> ListStyleImage {
+    return .image(.linearGradient(stops))
+  }
 }

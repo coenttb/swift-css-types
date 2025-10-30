@@ -17,32 +17,32 @@ import Foundation
 ///
 /// - SeeAlso: [CSS Text Module Level 3](https://www.w3.org/TR/css-text-3/)
 public enum LetterSpacingEastAsian: Property, LengthConvertible {
-    public static let property: String = "letter-spacing-east-asian"
-    /// Uses the default spacing as specified by the font.
-    case normal
+  public static let property: String = "letter-spacing-east-asian"
+  /// Uses the default spacing as specified by the font.
+  case normal
 
-    /// Adds or removes a specific amount of space between East Asian characters.
-    /// Positive values increase spacing, negative values decrease it.
-    case length(Length)
+  /// Adds or removes a specific amount of space between East Asian characters.
+  /// Positive values increase spacing, negative values decrease it.
+  case length(Length)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
 }
 
 /// CSS Output conversion
 extension LetterSpacingEastAsian: CustomStringConvertible {
-    /// Converts the letter-spacing-east-asian value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .normal:
-            return "normal"
+  /// Converts the letter-spacing-east-asian value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .normal:
+      return "normal"
 
-        case .length(let value):
-            return value.description
+    case .length(let value):
+      return value.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }

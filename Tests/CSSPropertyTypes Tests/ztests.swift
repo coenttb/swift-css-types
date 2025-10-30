@@ -12,8 +12,8 @@ import Testing
 @Suite("Z Tests")
 struct ZTests {
 
-    @Test("z1")
-    func z1() {
-        print(BorderBottomWidth.px(5).description)
-    }
+  @Test("z1")
+  func z1() {
+    print(BorderBottomWidth.px(5).description)
+  }
 }

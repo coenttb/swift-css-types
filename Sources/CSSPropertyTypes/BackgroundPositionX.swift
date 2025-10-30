@@ -53,78 +53,78 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on background-position-x](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-x)
 public enum BackgroundPositionX: Property, LengthPercentageConvertible {
-    public static let property: String = "background-position-x"
+  public static let property: String = "background-position-x"
 
-    /// A horizontal position with a keyword value
-    case keyword(Keyword)
+  /// A horizontal position with a keyword value
+  case keyword(Keyword)
 
-    /// A horizontal position with a length or percentage
-    case lengthPercentage(LengthPercentage)
+  /// A horizontal position with a length or percentage
+  case lengthPercentage(LengthPercentage)
 
-    /// A horizontal position with an edge offset
-    case offset(Keyword, LengthPercentage)
+  /// A horizontal position with an edge offset
+  case offset(Keyword, LengthPercentage)
 
-    /// Multiple horizontal positions for multiple backgrounds
-    case multiple([BackgroundPositionX])
+  /// Multiple horizontal positions for multiple backgrounds
+  case multiple([BackgroundPositionX])
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
 }
 
 extension BackgroundPositionX {
-    /// Position keywords for horizontal alignment
-    public enum Keyword: String, Sendable, Hashable {
-        /// Left edge
-        case left
+  /// Position keywords for horizontal alignment
+  public enum Keyword: String, Sendable, Hashable {
+    /// Left edge
+    case left
 
-        /// Horizontal center
-        case center
+    /// Horizontal center
+    case center
 
-        /// Right edge
-        case right
-    }
+    /// Right edge
+    case right
+  }
 }
 
 /// Provides string conversion for CSS output
 extension BackgroundPositionX: CustomStringConvertible {
-    /// Converts the background-position-x value to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// background-position-x: left;
-    /// background-position-x: center;
-    /// background-position-x: 25%;
-    /// background-position-x: right 20px;
-    /// background-position-x: left, center;
-    /// ```
-    public var description: String {
-        switch self {
-        case .keyword(let keyword):
-            return keyword.rawValue
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
-        case .offset(let keyword, let value):
-            return "\(keyword.rawValue) \(value)"
-        case .multiple(let positions):
-            return positions.map { $0.description }.joined(separator: ", ")
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the background-position-x value to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// background-position-x: left;
+  /// background-position-x: center;
+  /// background-position-x: 25%;
+  /// background-position-x: right 20px;
+  /// background-position-x: left, center;
+  /// ```
+  public var description: String {
+    switch self {
+    case .keyword(let keyword):
+      return keyword.rawValue
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
+    case .offset(let keyword, let value):
+      return "\(keyword.rawValue) \(value)"
+    case .multiple(let positions):
+      return positions.map { $0.description }.joined(separator: ", ")
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Default value and convenience methods
 extension BackgroundPositionX {
-    /// The default value for background-position-x (`0%`)
-    public static let `default` = BackgroundPositionX.zero
+  /// The default value for background-position-x (`0%`)
+  public static let `default` = BackgroundPositionX.zero
 
-    /// Left position (0%)
-    public static let left = BackgroundPositionX.keyword(.left)
+  /// Left position (0%)
+  public static let left = BackgroundPositionX.keyword(.left)
 
-    /// Center position (50%)
-    public static let center = BackgroundPositionX.keyword(.center)
+  /// Center position (50%)
+  public static let center = BackgroundPositionX.keyword(.center)
 
-    /// Right position (100%)
-    public static let right = BackgroundPositionX.keyword(.right)
+  /// Right position (100%)
+  public static let right = BackgroundPositionX.keyword(.right)
 }

@@ -16,56 +16,56 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on outline-width](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-width)
 public enum OutlineWidth: Property, LengthConvertible {
-    public static let property: String = "outline-width"
+  public static let property: String = "outline-width"
 
-    /// A specific length value
-    case length(Length)
+  /// A specific length value
+  case length(Length)
 
-    /// Thin outline (typically 1px)
-    case thin
+  /// Thin outline (typically 1px)
+  case thin
 
-    /// Medium outline (typically 3px)
-    case medium
+  /// Medium outline (typically 3px)
+  case medium
 
-    /// Thick outline (typically 5px)
-    case thick
+  /// Thick outline (typically 5px)
+  case thick
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension OutlineWidth: CustomStringConvertible {
-    /// Converts the outline-width value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .length(let length):
-            return length.description
-        case .thin:
-            return "thin"
-        case .medium:
-            return "medium"
-        case .thick:
-            return "thick"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the outline-width value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .length(let length):
+      return length.description
+    case .thin:
+      return "thin"
+    case .medium:
+      return "medium"
+    case .thick:
+      return "thick"
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Allow for numeric literals to be used directly
 extension OutlineWidth: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
-    /// Creates an outline-width with a pixel value from an integer literal
-    ///
-    /// - Parameter value: The pixel value as an integer
-    public init(integerLiteral value: Int) {
-        self = .px(Double(value))
-    }
+  /// Creates an outline-width with a pixel value from an integer literal
+  ///
+  /// - Parameter value: The pixel value as an integer
+  public init(integerLiteral value: Int) {
+    self = .px(Double(value))
+  }
 
-    /// Creates an outline-width with a pixel value from a floating-point literal
-    ///
-    /// - Parameter value: The pixel value as a double
-    public init(floatLiteral value: Double) {
-        self = .px(value)
-    }
+  /// Creates an outline-width with a pixel value from a floating-point literal
+  ///
+  /// - Parameter value: The pixel value as a double
+  public init(floatLiteral value: Double) {
+    self = .px(value)
+  }
 }

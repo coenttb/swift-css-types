@@ -29,92 +29,92 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on break-after](https://developer.mozilla.org/en-US/docs/Web/CSS/break-after)
 public enum BreakAfter: Property {
-    public static let property: String = "break-after"
-    // Generic break values
-    /// Allows, but does not force, any break (page, column, or region) to be inserted right after the element.
-    case auto
+  public static let property: String = "break-after"
+  // Generic break values
+  /// Allows, but does not force, any break (page, column, or region) to be inserted right after the element.
+  case auto
 
-    /// Avoids any break (page, column, or region) from being inserted right after the element.
-    case avoid
+  /// Avoids any break (page, column, or region) from being inserted right after the element.
+  case avoid
 
-    /// Forces a page break right after the element. The type of this break depends on the containing context
-    /// (column break in a multicol container, page break in paged media).
-    case always
+  /// Forces a page break right after the element. The type of this break depends on the containing context
+  /// (column break in a multicol container, page break in paged media).
+  case always
 
-    /// Forces a page break right after the element, breaking through all possible fragmentation contexts.
-    /// For example, a break inside a multicol container within a page would force both a column and page break.
-    case all
+  /// Forces a page break right after the element, breaking through all possible fragmentation contexts.
+  /// For example, a break inside a multicol container within a page would force both a column and page break.
+  case all
 
-    // Page break values
-    /// Avoids any page break right after the element.
-    case avoidPage
+  // Page break values
+  /// Avoids any page break right after the element.
+  case avoidPage
 
-    /// Forces a page break right after the element.
-    case page
+  /// Forces a page break right after the element.
+  case page
 
-    /// Forces one or two page breaks right after the element, to make the next page into a left page.
-    case left
+  /// Forces one or two page breaks right after the element, to make the next page into a left page.
+  case left
 
-    /// Forces one or two page breaks right after the element, to make the next page into a right page.
-    case right
+  /// Forces one or two page breaks right after the element, to make the next page into a right page.
+  case right
 
-    /// Forces one or two page breaks right after the element, to make the next page into a recto page
-    /// (right page in left-to-right spread or left page in right-to-left spread).
-    case recto
+  /// Forces one or two page breaks right after the element, to make the next page into a recto page
+  /// (right page in left-to-right spread or left page in right-to-left spread).
+  case recto
 
-    /// Forces one or two page breaks right after the element, to make the next page into a verso page
-    /// (left page in left-to-right spread or right page in right-to-left spread).
-    case verso
+  /// Forces one or two page breaks right after the element, to make the next page into a verso page
+  /// (left page in left-to-right spread or right page in right-to-left spread).
+  case verso
 
-    // Column break values
-    /// Avoids any column break right after the element.
-    case avoidColumn
+  // Column break values
+  /// Avoids any column break right after the element.
+  case avoidColumn
 
-    /// Forces a column break right after the element.
-    case column
+  /// Forces a column break right after the element.
+  case column
 
-    // Region break values
-    /// Avoids any region break right after the element.
-    case avoidRegion
+  // Region break values
+  /// Avoids any region break right after the element.
+  case avoidRegion
 
-    /// Forces a region break right after the element.
-    case region
+  /// Forces a region break right after the element.
+  case region
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .avoid:
-            return "avoid"
-        case .always:
-            return "always"
-        case .all:
-            return "all"
-        case .avoidPage:
-            return "avoid-page"
-        case .page:
-            return "page"
-        case .left:
-            return "left"
-        case .right:
-            return "right"
-        case .recto:
-            return "recto"
-        case .verso:
-            return "verso"
-        case .avoidColumn:
-            return "avoid-column"
-        case .column:
-            return "column"
-        case .avoidRegion:
-            return "avoid-region"
-        case .region:
-            return "region"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
+    case .avoid:
+      return "avoid"
+    case .always:
+      return "always"
+    case .all:
+      return "all"
+    case .avoidPage:
+      return "avoid-page"
+    case .page:
+      return "page"
+    case .left:
+      return "left"
+    case .right:
+      return "right"
+    case .recto:
+      return "recto"
+    case .verso:
+      return "verso"
+    case .avoidColumn:
+      return "avoid-column"
+    case .column:
+      return "column"
+    case .avoidRegion:
+      return "avoid-region"
+    case .region:
+      return "region"
+    case .global(let global):
+      return global.description
     }
+  }
 }

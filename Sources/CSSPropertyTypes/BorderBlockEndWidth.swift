@@ -44,67 +44,67 @@ import Foundation
 /// .borderBlockEndWidth(.px(3))
 /// ```
 ///
-/// - Note: This logical property adapts to the writing mode of the document, 
+/// - Note: This logical property adapts to the writing mode of the document,
 ///         making layout more flexible for different writing systems.
 ///
 /// - SeeAlso: [MDN Web Docs on border-block-end-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-width)
 public enum BorderBlockEndWidth: Property {
 
-    public static let property: String = "border-block-end-width"
+  public static let property: String = "border-block-end-width"
 
-    /// A specific width for the block-end border
-    case width(BorderWidth)
+  /// A specific width for the block-end border
+  case width(BorderWidth)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// Creates a border-block-end-width with a specific border width
-    ///
-    /// - Parameter width: The width for the block-end border
-    public init(_ width: BorderWidth) {
-        self = .width(width)
-    }
+  /// Creates a border-block-end-width with a specific border width
+  ///
+  /// - Parameter width: The width for the block-end border
+  public init(_ width: BorderWidth) {
+    self = .width(width)
+  }
 }
 
 extension BorderBlockEndWidth: LengthConvertible {
-    public static func length(_ length: CSSTypeTypes.Length) -> BorderBlockEndWidth {
-        .width(.init(length))
-    }
+  public static func length(_ length: CSSTypeTypes.Length) -> BorderBlockEndWidth {
+    .width(.init(length))
+  }
 }
 
 /// Provides string conversion for CSS output
 extension BorderBlockEndWidth: CustomStringConvertible {
-    /// Converts the border-block-end-width to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// border-block-end-width: thin;
-    /// border-block-end-width: medium;
-    /// border-block-end-width: thick;
-    /// border-block-end-width: 3px;
-    /// ```
-    public var description: String {
-        switch self {
-        case .width(let width):
-            return width.description
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the border-block-end-width to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// border-block-end-width: thin;
+  /// border-block-end-width: medium;
+  /// border-block-end-width: thick;
+  /// border-block-end-width: 3px;
+  /// ```
+  public var description: String {
+    switch self {
+    case .width(let width):
+      return width.description
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Convenience methods for creating BorderBlockEndWidth values
 extension BorderBlockEndWidth {
-    /// The default border-block-end-width value (medium)
-    public static let `default` = BorderBlockEndWidth(.medium)
+  /// The default border-block-end-width value (medium)
+  public static let `default` = BorderBlockEndWidth(.medium)
 
-    /// Creates a thin border-block-end-width
-    public static let thin = BorderBlockEndWidth(.thin)
+  /// Creates a thin border-block-end-width
+  public static let thin = BorderBlockEndWidth(.thin)
 
-    /// Creates a medium border-block-end-width
-    public static let medium = BorderBlockEndWidth(.medium)
+  /// Creates a medium border-block-end-width
+  public static let medium = BorderBlockEndWidth(.medium)
 
-    /// Creates a thick border-block-end-width
-    public static let thick = BorderBlockEndWidth(.thick)
+  /// Creates a thick border-block-end-width
+  public static let thick = BorderBlockEndWidth(.thick)
 
 }

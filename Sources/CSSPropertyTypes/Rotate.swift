@@ -25,47 +25,48 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on rotate](https://developer.mozilla.org/en-US/docs/Web/CSS/rotate)
 public enum Rotate: Property {
-    public static let property: String = "rotate"
+  public static let property: String = "rotate"
 
-    /// No rotation is applied
-    case none
+  /// No rotation is applied
+  case none
 
-    /// Rotation around the Z-axis (2D rotation)
-    case z(Angle)
+  /// Rotation around the Z-axis (2D rotation)
+  case z(Angle)
 
-    /// Rotation around a specific axis (X, Y, or Z)
-    case axis(Axis, Angle)
+  /// Rotation around a specific axis (X, Y, or Z)
+  case axis(Axis, Angle)
 
-    /// Rotation around a specific vector and angle (3D rotation)
-    case vector(Double, Double, Double, Angle)
+  /// Rotation around a specific vector and angle (3D rotation)
+  case vector(Double, Double, Double, Angle)
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    /// Represents a rotation axis
-    public enum Axis: String, Sendable, Hashable {
-        /// X-axis (horizontal)
-        case x
+  /// Represents a rotation axis
+  public enum Axis: String, Sendable, Hashable {
+    /// X-axis (horizontal)
+    case x
 
-        /// Y-axis (vertical)
-        case y
+    /// Y-axis (vertical)
+    case y
 
-        /// Z-axis (depth)
-        case z
+    /// Z-axis (depth)
+    case z
+  }
+
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .z(let angle):
+      return angle.description
+    case .axis(let axis, let angle):
+      return "\(axis.rawValue) \(angle.description)"
+    case .vector(let x, let y, let z, let angle):
+      return
+        "\(x.truncatingRemainder()) \(y.truncatingRemainder()) \(z.truncatingRemainder()) \(angle.description)"
+    case .global(let global):
+      return global.description
     }
-
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .z(let angle):
-            return angle.description
-        case .axis(let axis, let angle):
-            return "\(axis.rawValue) \(angle.description)"
-        case .vector(let x, let y, let z, let angle):
-            return "\(x.truncatingRemainder()) \(y.truncatingRemainder()) \(z.truncatingRemainder()) \(angle.description)"
-        case .global(let global):
-            return global.description
-        }
-    }
+  }
 }

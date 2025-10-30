@@ -21,59 +21,59 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on aspect-ratio](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio)
 public enum AspectRatio: Property {
-    public static let property: String = "aspect-ratio"
+  public static let property: String = "aspect-ratio"
 
-    /// Replaced elements with an intrinsic aspect ratio use that ratio
-    case auto
+  /// Replaced elements with an intrinsic aspect ratio use that ratio
+  case auto
 
-    /// The box's preferred aspect ratio
-    case ratio(Ratio)
+  /// The box's preferred aspect ratio
+  case ratio(Ratio)
 
-    /// Auto with a fallback ratio for replaced elements
-    case autoWithFallback(Ratio)
+  /// Auto with a fallback ratio for replaced elements
+  case autoWithFallback(Ratio)
 
-    /// Ratio with an auto fallback for replaced elements
-    case ratioWithAuto(Ratio)
+  /// Ratio with an auto fallback for replaced elements
+  case ratioWithAuto(Ratio)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    /// Convenience initializer for a specific width-to-height ratio
-    public static func ratio(_ width: Double, _ height: Double) -> AspectRatio {
-        return .ratio(Ratio(width, height))
-    }
+  /// Convenience initializer for a specific width-to-height ratio
+  public static func ratio(_ width: Double, _ height: Double) -> AspectRatio {
+    return .ratio(Ratio(width, height))
+  }
 
-    /// Convenience initializer for a specific width-to-height ratio with integer values
-    public static func ratio(_ width: Int, _ height: Int) -> AspectRatio {
-        return .ratio(Ratio(width, height))
-    }
+  /// Convenience initializer for a specific width-to-height ratio with integer values
+  public static func ratio(_ width: Int, _ height: Int) -> AspectRatio {
+    return .ratio(Ratio(width, height))
+  }
 
-    /// Convenience initializer for a square aspect ratio
-    public static func square() -> AspectRatio {
-        return .ratio(Ratio.square)
-    }
+  /// Convenience initializer for a square aspect ratio
+  public static func square() -> AspectRatio {
+    return .ratio(Ratio.square)
+  }
 
-    /// Convenience initializer for a 16:9 widescreen aspect ratio
-    public static func widescreen() -> AspectRatio {
-        return .ratio(Ratio.widescreen)
-    }
+  /// Convenience initializer for a 16:9 widescreen aspect ratio
+  public static func widescreen() -> AspectRatio {
+    return .ratio(Ratio.widescreen)
+  }
 }
 
 /// CSS Output conversion
 extension AspectRatio: CustomStringConvertible {
-    /// Converts the aspect ratio to its CSS string representation
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .ratio(let ratio):
-            return ratio.description
-        case .autoWithFallback(let ratio):
-            return "auto \(ratio.description)"
-        case .ratioWithAuto(let ratio):
-            return "\(ratio.description) auto"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the aspect ratio to its CSS string representation
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
+    case .ratio(let ratio):
+      return ratio.description
+    case .autoWithFallback(let ratio):
+      return "auto \(ratio.description)"
+    case .ratioWithAuto(let ratio):
+      return "\(ratio.description) auto"
+    case .global(let global):
+      return global.description
     }
+  }
 }

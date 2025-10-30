@@ -21,64 +21,64 @@ import CSSTypeTypes
 /// scroll-timeline: --timeline_name;
 /// ```
 public enum ScrollTimeline: Property {
-    public static let property: String = "scroll-timeline"
+  public static let property: String = "scroll-timeline"
 
-    /// Custom identifier for a timeline name (must start with --)
-    public struct CustomIdent: RawRepresentable, Sendable, Hashable, CustomStringConvertible {
-        public var rawValue: String
+  /// Custom identifier for a timeline name (must start with --)
+  public struct CustomIdent: RawRepresentable, Sendable, Hashable, CustomStringConvertible {
+    public var rawValue: String
 
-        public init(rawValue: String) {
-            // Ensure the identifier starts with -- as per CSS custom property convention
-            if rawValue.hasPrefix("--") {
-                self.rawValue = rawValue
-            } else {
-                self.rawValue = "--" + rawValue
-            }
-        }
-
-        public var description: String {
-            return rawValue
-        }
+    public init(rawValue: String) {
+      // Ensure the identifier starts with -- as per CSS custom property convention
+      if rawValue.hasPrefix("--") {
+        self.rawValue = rawValue
+      } else {
+        self.rawValue = "--" + rawValue
+      }
     }
-
-    /// No named timeline
-    case none
-
-    /// A named timeline with a custom identifier
-    case name(CustomIdent)
-
-    /// A named timeline with a custom identifier and specific axis
-    case nameAndAxis(CustomIdent, ScrollTimelineAxis.Axis)
-
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
 
     public var description: String {
-        switch self {
-        case .none:
-            return "none"
-        case .name(let name):
-            return name.description
-        case .nameAndAxis(let name, let axis):
-            return "\(name.description) \(axis.rawValue)"
-        case .global(let global):
-            return global.description
-        }
+      return rawValue
     }
+  }
 
-    /// Creates a ScrollTimeline with a specific name
-    /// - Parameter name: The name for the timeline (will be prefixed with -- if not already)
-    /// - Returns: A ScrollTimeline with the specified name
-    public static func named(_ name: String) -> Self {
-        .name(CustomIdent(rawValue: name))
-    }
+  /// No named timeline
+  case none
 
-    /// Creates a ScrollTimeline with a specific name and axis
-    /// - Parameters:
-    ///   - name: The name for the timeline (will be prefixed with -- if not already)
-    ///   - axis: The axis for the scroll timeline
-    /// - Returns: A ScrollTimeline with the specified name and axis
-    public static func named(_ name: String, axis: ScrollTimelineAxis.Axis) -> Self {
-        .nameAndAxis(CustomIdent(rawValue: name), axis)
+  /// A named timeline with a custom identifier
+  case name(CustomIdent)
+
+  /// A named timeline with a custom identifier and specific axis
+  case nameAndAxis(CustomIdent, ScrollTimelineAxis.Axis)
+
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
+
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
+    case .name(let name):
+      return name.description
+    case .nameAndAxis(let name, let axis):
+      return "\(name.description) \(axis.rawValue)"
+    case .global(let global):
+      return global.description
     }
+  }
+
+  /// Creates a ScrollTimeline with a specific name
+  /// - Parameter name: The name for the timeline (will be prefixed with -- if not already)
+  /// - Returns: A ScrollTimeline with the specified name
+  public static func named(_ name: String) -> Self {
+    .name(CustomIdent(rawValue: name))
+  }
+
+  /// Creates a ScrollTimeline with a specific name and axis
+  /// - Parameters:
+  ///   - name: The name for the timeline (will be prefixed with -- if not already)
+  ///   - axis: The axis for the scroll timeline
+  /// - Returns: A ScrollTimeline with the specified name and axis
+  public static func named(_ name: String, axis: ScrollTimelineAxis.Axis) -> Self {
+    .nameAndAxis(CustomIdent(rawValue: name), axis)
+  }
 }

@@ -31,41 +31,41 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on backface-visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility)
 public enum BackfaceVisibility: Property {
-    public static let property: String = "backface-visibility"
+  public static let property: String = "backface-visibility"
 
-    /// The back face is visible when turned towards the user (default)
-    case visible
+  /// The back face is visible when turned towards the user (default)
+  case visible
 
-    /// The back face is hidden, effectively making the element invisible when turned away from the user
-    case hidden
+  /// The back face is hidden, effectively making the element invisible when turned away from the user
+  case hidden
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 }
 
 /// Provides string conversion for CSS output
 extension BackfaceVisibility: CustomStringConvertible {
-    /// Converts the backface-visibility value to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// backface-visibility: visible;
-    /// backface-visibility: hidden;
-    /// ```
-    public var description: String {
-        switch self {
-        case .visible:
-            return "visible"
-        case .hidden:
-            return "hidden"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the backface-visibility value to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// backface-visibility: visible;
+  /// backface-visibility: hidden;
+  /// ```
+  public var description: String {
+    switch self {
+    case .visible:
+      return "visible"
+    case .hidden:
+      return "hidden"
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Default value
 extension BackfaceVisibility {
-    /// The default value for backface-visibility (`visible`)
-    public static let `default` = BackfaceVisibility.visible
+  /// The default value for backface-visibility (`visible`)
+  public static let `default` = BackfaceVisibility.visible
 }

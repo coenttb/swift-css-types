@@ -29,31 +29,31 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on bottom](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom)
 public enum Bottom: Property, LengthPercentageConvertible {
 
-    public static let property: String = "bottom"
+  public static let property: String = "bottom"
 
-    /// The position is determined automatically based on the element's normal flow position
-    case auto
+  /// The position is determined automatically based on the element's normal flow position
+  case auto
 
-    /// A specific length value
-    case lengthPercentage(LengthPercentage)
+  /// A specific length value
+  case lengthPercentage(LengthPercentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
 }
 
 /// CSS Output conversion
 extension Bottom: CustomStringConvertible {
-    /// Converts the bottom value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
+  /// Converts the bottom value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
 
-        case .lengthPercentage(let value):
-            return value.description
-        case .global(let global):
-            return global.description
-        }
+    case .lengthPercentage(let value):
+      return value.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

@@ -1,7 +1,7 @@
 import CSSTypeTypes
 import Foundation
 
-/// The CSS `padding-inline-end` property defines the logical inline end padding of an element, 
+/// The CSS `padding-inline-end` property defines the logical inline end padding of an element,
 /// which maps to a physical padding depending on the element's writing mode, directionality, and text orientation.
 ///
 /// This is part of CSS Logical Properties, which are writing-mode aware equivalents of physical properties.
@@ -18,43 +18,43 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on padding-inline-end](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline-end)
 public enum PaddingInlineEnd: Property, LengthPercentageConvertible {
-    public static let property: String = "padding-inline-end"
+  public static let property: String = "padding-inline-end"
 
-    /// A length or percentage value for the inline-end padding
-    case lengthPercentage(LengthPercentage)
+  /// A length or percentage value for the inline-end padding
+  case lengthPercentage(LengthPercentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension PaddingInlineEnd: CustomStringConvertible {
-    /// Converts the padding-inline-end value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
+  /// Converts the padding-inline-end value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 extension PaddingInlineEnd: ExpressibleByIntegerLiteral {
-    /// Creates a padding-inline-end from an integer literal (interpreted as pixels)
-    ///
-    /// - Parameter value: The padding in pixels
-    public init(integerLiteral value: Int) {
-        self = .lengthPercentage(.px(Double(value)))
-    }
+  /// Creates a padding-inline-end from an integer literal (interpreted as pixels)
+  ///
+  /// - Parameter value: The padding in pixels
+  public init(integerLiteral value: Int) {
+    self = .lengthPercentage(.px(Double(value)))
+  }
 }
 
 extension PaddingInlineEnd: ExpressibleByFloatLiteral {
-    /// Creates a padding-inline-end from a floating-point literal (interpreted as pixels)
-    ///
-    /// - Parameter lengthPercentage: The padding in pixels
-    public init(floatLiteral lengthPercentage: Double) {
-        self = .lengthPercentage(.px(lengthPercentage))
-    }
+  /// Creates a padding-inline-end from a floating-point literal (interpreted as pixels)
+  ///
+  /// - Parameter lengthPercentage: The padding in pixels
+  public init(floatLiteral lengthPercentage: Double) {
+    self = .lengthPercentage(.px(lengthPercentage))
+  }
 }

@@ -11,22 +11,22 @@ import CSSTypeTypes
 /// scroll-snap-stop: always;
 /// ```
 public enum ScrollSnapStop: Property {
-    public static let property: String = "scroll-snap-stop"
+  public static let property: String = "scroll-snap-stop"
 
-    /// When the visual viewport is scrolled, it may "pass over" possible snap positions
-    case normal
+  /// When the visual viewport is scrolled, it may "pass over" possible snap positions
+  case normal
 
-    /// The scroll container must not "pass over" a possible snap position and must snap to the first snap position
-    case always
+  /// The scroll container must not "pass over" a possible snap position and must snap to the first snap position
+  case always
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .normal: return "normal"
-        case .always: return "always"
-        case .global(let global): return global.description
-        }
+  public var description: String {
+    switch self {
+    case .normal: return "normal"
+    case .always: return "always"
+    case .global(let global): return global.description
     }
+  }
 }

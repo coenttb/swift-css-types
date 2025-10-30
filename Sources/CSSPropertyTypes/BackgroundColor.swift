@@ -49,38 +49,38 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)
 public enum BackgroundColor: Property, ColorConvertible {
-    public static let property: String = "background-color"
+  public static let property: String = "background-color"
 
-    /// A specific color value
-    case color(CSSTypeTypes.Color)
+  /// A specific color value
+  case color(CSSTypeTypes.Color)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// Creates a background color with a specific color
-    ///
-    /// - Parameter color: The color to use
-    public init(_ color: CSSTypeTypes.Color) {
-        self = .color(color)
-    }
+  /// Creates a background color with a specific color
+  ///
+  /// - Parameter color: The color to use
+  public init(_ color: CSSTypeTypes.Color) {
+    self = .color(color)
+  }
 }
 
 /// Provides string conversion for CSS output
 extension BackgroundColor: CustomStringConvertible {
-    /// Converts the background-color value to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// background-color: red;
-    /// background-color: rgba(255, 0, 0, 0.5);
-    /// background-color: transparent;
-    /// ```
-    public var description: String {
-        switch self {
-        case .color(let color):
-            return color.description
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the background-color value to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// background-color: red;
+  /// background-color: rgba(255, 0, 0, 0.5);
+  /// background-color: transparent;
+  /// ```
+  public var description: String {
+    switch self {
+    case .color(let color):
+      return color.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

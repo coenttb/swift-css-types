@@ -55,84 +55,84 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on mask-border-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-repeat)
 public enum MaskBorderRepeat: Property {
-    public static let property: String = "mask-border-repeat"
+  public static let property: String = "mask-border-repeat"
 
-    /// Same repeat style for all sides
-    case all(RepeatStyle)
+  /// Same repeat style for all sides
+  case all(RepeatStyle)
 
-    /// Different repeat styles for horizontal (top & bottom) and vertical (left & right) sides
-    case horizontal_vertical(RepeatStyle, RepeatStyle)
+  /// Different repeat styles for horizontal (top & bottom) and vertical (left & right) sides
+  case horizontal_vertical(RepeatStyle, RepeatStyle)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// Repeat style options for mask borders
-    public enum RepeatStyle: String, Sendable, Hashable {
-        /// Stretch the mask border image to fill the area
-        case stretch
-
-        /// Tile the mask border image (may be clipped if not exact fit)
-        case `repeat`
-
-        /// Tile the mask border image and scale it to fit exactly
-        case round
-
-        /// Tile the mask border image with space between tiles
-        case space
-    }
-
-    /// Creates a mask-border-repeat with the same style for all sides
-    ///
-    /// - Parameter style: The repeat style for all sides
-    public init(_ style: RepeatStyle) {
-        self = .all(style)
-    }
-
-    /// Creates a mask-border-repeat with different styles for horizontal and vertical sides
-    ///
-    /// - Parameters:
-    ///   - horizontal: The repeat style for horizontal sides (top & bottom)
-    ///   - vertical: The repeat style for vertical sides (left & right)
-    public init(_ horizontal: RepeatStyle, _ vertical: RepeatStyle) {
-        self = .horizontal_vertical(horizontal, vertical)
-    }
-
-    /// Default repeat style (stretch)
-    public static let `default` = MaskBorderRepeat(.stretch)
-
+  /// Repeat style options for mask borders
+  public enum RepeatStyle: String, Sendable, Hashable {
     /// Stretch the mask border image to fill the area
-    public static let stretch = MaskBorderRepeat(.stretch)
+    case stretch
 
     /// Tile the mask border image (may be clipped if not exact fit)
-    public static let `repeat` = MaskBorderRepeat(.repeat)
+    case `repeat`
 
     /// Tile the mask border image and scale it to fit exactly
-    public static let round = MaskBorderRepeat(.round)
+    case round
 
     /// Tile the mask border image with space between tiles
-    public static let space = MaskBorderRepeat(.space)
+    case space
+  }
+
+  /// Creates a mask-border-repeat with the same style for all sides
+  ///
+  /// - Parameter style: The repeat style for all sides
+  public init(_ style: RepeatStyle) {
+    self = .all(style)
+  }
+
+  /// Creates a mask-border-repeat with different styles for horizontal and vertical sides
+  ///
+  /// - Parameters:
+  ///   - horizontal: The repeat style for horizontal sides (top & bottom)
+  ///   - vertical: The repeat style for vertical sides (left & right)
+  public init(_ horizontal: RepeatStyle, _ vertical: RepeatStyle) {
+    self = .horizontal_vertical(horizontal, vertical)
+  }
+
+  /// Default repeat style (stretch)
+  public static let `default` = MaskBorderRepeat(.stretch)
+
+  /// Stretch the mask border image to fill the area
+  public static let stretch = MaskBorderRepeat(.stretch)
+
+  /// Tile the mask border image (may be clipped if not exact fit)
+  public static let `repeat` = MaskBorderRepeat(.repeat)
+
+  /// Tile the mask border image and scale it to fit exactly
+  public static let round = MaskBorderRepeat(.round)
+
+  /// Tile the mask border image with space between tiles
+  public static let space = MaskBorderRepeat(.space)
 }
 
 /// Provides string conversion for CSS output
 extension MaskBorderRepeat: CustomStringConvertible {
-    /// Converts the mask-border-repeat to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// mask-border-repeat: stretch;
-    /// mask-border-repeat: repeat;
-    /// mask-border-repeat: round;
-    /// mask-border-repeat: space;
-    /// mask-border-repeat: round stretch;
-    /// ```
-    public var description: String {
-        switch self {
-        case .all(let style):
-            return style.rawValue
-        case .horizontal_vertical(let horizontal, let vertical):
-            return "\(horizontal.rawValue) \(vertical.rawValue)"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the mask-border-repeat to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// mask-border-repeat: stretch;
+  /// mask-border-repeat: repeat;
+  /// mask-border-repeat: round;
+  /// mask-border-repeat: space;
+  /// mask-border-repeat: round stretch;
+  /// ```
+  public var description: String {
+    switch self {
+    case .all(let style):
+      return style.rawValue
+    case .horizontal_vertical(let horizontal, let vertical):
+      return "\(horizontal.rawValue) \(vertical.rawValue)"
+    case .global(let global):
+      return global.description
     }
+  }
 }

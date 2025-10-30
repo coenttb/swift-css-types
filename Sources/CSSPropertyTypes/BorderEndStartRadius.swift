@@ -42,41 +42,43 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-end-start-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-end-start-radius)
 public enum BorderEndStartRadius: Property {
 
-    public static let property: String = "border-end-start-radius"
+  public static let property: String = "border-end-start-radius"
 
-    /// A single radius applied to both the horizontal and vertical dimensions
-    case radius(LengthPercentage)
+  /// A single radius applied to both the horizontal and vertical dimensions
+  case radius(LengthPercentage)
 
-    /// Different radii for horizontal and vertical dimensions
-    case horizontal_vertical(LengthPercentage, LengthPercentage)
+  /// Different radii for horizontal and vertical dimensions
+  case horizontal_vertical(LengthPercentage, LengthPercentage)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 }
 
 /// Provides string conversion for CSS output
 extension BorderEndStartRadius: CustomStringConvertible {
-    /// Converts the border-end-start-radius to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// border-end-start-radius: 5px;
-    /// border-end-start-radius: 5px 10px;
-    /// ```
-    public var description: String {
-        switch self {
-        case .radius(let radius):
-            return radius.description
-        case .horizontal_vertical(let horizontal, let vertical):
-            return "\(horizontal) \(vertical)"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the border-end-start-radius to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// border-end-start-radius: 5px;
+  /// border-end-start-radius: 5px 10px;
+  /// ```
+  public var description: String {
+    switch self {
+    case .radius(let radius):
+      return radius.description
+    case .horizontal_vertical(let horizontal, let vertical):
+      return "\(horizontal) \(vertical)"
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 extension BorderEndStartRadius: LengthPercentageConvertible {
-    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> BorderEndStartRadius {
-        .radius(value)
-    }
+  public static func lengthPercentage(
+    _ value: CSSTypeTypes.LengthPercentage
+  ) -> BorderEndStartRadius {
+    .radius(value)
+  }
 }

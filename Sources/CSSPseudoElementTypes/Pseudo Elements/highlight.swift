@@ -23,24 +23,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::highlight()](https://developer.mozilla.org/en-US/docs/Web/CSS/::highlight)
 public struct Highlight: CSSPseudoElement {
-    @inlinable public static var name: String { "highlight" }
+  @inlinable public static var name: String { "highlight" }
 
-    /// The custom identifier for this highlight
-    public let identifier: String?
+  /// The custom identifier for this highlight
+  public let identifier: String?
 
-    public init(_ identifier: String? = nil) {
-        self.identifier = identifier
-    }
+  public init(_ identifier: String? = nil) {
+    self.identifier = identifier
+  }
 }
 
 /// Provides string conversion for CSS output
 extension Highlight: CustomStringConvertible {
-    /// Converts the ::highlight() pseudo-element to its CSS string representation
-    public var description: String {
-        if let identifier = identifier {
-            return Self.prefix + "highlight(\(identifier))"
-        } else {
-            return Self.prefix + Self.name
-        }
+  /// Converts the ::highlight() pseudo-element to its CSS string representation
+  public var description: String {
+    if let identifier = identifier {
+      return Self.prefix + "highlight(\(identifier))"
+    } else {
+      return Self.prefix + Self.name
     }
+  }
 }

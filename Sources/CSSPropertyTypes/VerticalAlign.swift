@@ -19,63 +19,63 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on vertical-align](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)
 public enum VerticalAlign: Property {
-    public static let property: String = "vertical-align"
+  public static let property: String = "vertical-align"
 
-    /// Parent-relative values
+  /// Parent-relative values
 
-    /// Aligns the baseline of the element with the baseline of its parent.
-    case baseline
+  /// Aligns the baseline of the element with the baseline of its parent.
+  case baseline
 
-    /// Aligns the baseline of the element with the subscript-baseline of its parent.
-    case sub
+  /// Aligns the baseline of the element with the subscript-baseline of its parent.
+  case sub
 
-    /// Aligns the baseline of the element with the superscript-baseline of its parent.
-    case `super`
+  /// Aligns the baseline of the element with the superscript-baseline of its parent.
+  case `super`
 
-    /// Aligns the top of the element with the top of the parent element's font.
-    case textTop
+  /// Aligns the top of the element with the top of the parent element's font.
+  case textTop
 
-    /// Aligns the bottom of the element with the bottom of the parent element's font.
-    case textBottom
+  /// Aligns the bottom of the element with the bottom of the parent element's font.
+  case textBottom
 
-    /// Aligns the middle of the element with the baseline plus half the x-height of the parent.
-    case middle
+  /// Aligns the middle of the element with the baseline plus half the x-height of the parent.
+  case middle
 
-    /// Line-relative values
+  /// Line-relative values
 
-    /// Aligns the top of the element and its descendants with the top of the entire line.
-    case top
+  /// Aligns the top of the element and its descendants with the top of the entire line.
+  case top
 
-    /// Aligns the bottom of the element and its descendants with the bottom of the entire line.
-    case bottom
+  /// Aligns the bottom of the element and its descendants with the bottom of the entire line.
+  case bottom
 
-    case lengthPercentage(LengthPercentage)
+  case lengthPercentage(LengthPercentage)
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .baseline:
-            return "baseline"
-        case .sub:
-            return "sub"
-        case .super:
-            return "super"
-        case .textTop:
-            return "text-top"
-        case .textBottom:
-            return "text-bottom"
-        case .middle:
-            return "middle"
-        case .top:
-            return "top"
-        case .bottom:
-            return "bottom"
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .baseline:
+      return "baseline"
+    case .sub:
+      return "sub"
+    case .super:
+      return "super"
+    case .textTop:
+      return "text-top"
+    case .textBottom:
+      return "text-bottom"
+    case .middle:
+      return "middle"
+    case .top:
+      return "top"
+    case .bottom:
+      return "bottom"
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
+    case .global(let global):
+      return global.description
     }
+  }
 }

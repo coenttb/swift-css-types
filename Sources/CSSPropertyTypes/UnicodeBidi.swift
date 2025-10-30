@@ -24,44 +24,44 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on unicode-bidi](https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi)
 public enum UnicodeBidi: Property {
 
-    public static let property: String = "unicode-bidi"
+  public static let property: String = "unicode-bidi"
 
-    /// The element does not offer an additional level of embedding with respect to the bidirectional algorithm.
-    /// For inline elements, implicit reordering works across element boundaries.
-    case normal
+  /// The element does not offer an additional level of embedding with respect to the bidirectional algorithm.
+  /// For inline elements, implicit reordering works across element boundaries.
+  case normal
 
-    /// If the element is inline, this value opens an additional level of embedding with respect to
-    /// the bidirectional algorithm. The direction of this embedding level is given by the direction property.
-    case embed
+  /// If the element is inline, this value opens an additional level of embedding with respect to
+  /// the bidirectional algorithm. The direction of this embedding level is given by the direction property.
+  case embed
 
-    /// For inline elements this creates an override. For block container elements this creates an
-    /// override for inline-level descendants not within another block container element.
-    case bidiOverride
+  /// For inline elements this creates an override. For block container elements this creates an
+  /// override for inline-level descendants not within another block container element.
+  case bidiOverride
 
-    /// This keyword indicates that the element's container directionality should be calculated
-    /// without considering the content of this element. The element is therefore isolated from its siblings.
-    case isolate
+  /// This keyword indicates that the element's container directionality should be calculated
+  /// without considering the content of this element. The element is therefore isolated from its siblings.
+  case isolate
 
-    /// This keyword applies the isolation behavior of the isolate keyword to the surrounding content
-    /// and the override behavior of the bidi-override keyword to the inner content.
-    case isolateOverride
+  /// This keyword applies the isolation behavior of the isolate keyword to the surrounding content
+  /// and the override behavior of the bidi-override keyword to the inner content.
+  case isolateOverride
 
-    /// This keyword makes the elements directionality calculated without considering its parent bidirectional
-    /// state or the value of the direction property.
-    case plaintext
+  /// This keyword makes the elements directionality calculated without considering its parent bidirectional
+  /// state or the value of the direction property.
+  case plaintext
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .normal: return "normal"
-        case .embed: return "embed"
-        case .bidiOverride: return "bidi-override"
-        case .isolate: return "isolate"
-        case .isolateOverride: return "isolate-override"
-        case .plaintext: return "plaintext"
-        case .global(let global): return global.description
-        }
+  public var description: String {
+    switch self {
+    case .normal: return "normal"
+    case .embed: return "embed"
+    case .bidiOverride: return "bidi-override"
+    case .isolate: return "isolate"
+    case .isolateOverride: return "isolate-override"
+    case .plaintext: return "plaintext"
+    case .global(let global): return global.description
     }
+  }
 }

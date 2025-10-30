@@ -15,40 +15,40 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on flood-opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/flood-opacity)
 public enum FloodOpacity: Property, PercentageConvertible {
-    public static let property: String = "flood-opacity"
+  public static let property: String = "flood-opacity"
 
-    /// A numeric opacity value between 0 and 1
-    case number(Number)
+  /// A numeric opacity value between 0 and 1
+  case number(Number)
 
-    /// A percentage opacity value
-    case percentage(Percentage)
+  /// A percentage opacity value
+  case percentage(Percentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    /// Create a flood-opacity from an integer percentage
-    public init(_ percentage: Percentage) {
-        self = .percentage(percentage)
+  /// Create a flood-opacity from an integer percentage
+  public init(_ percentage: Percentage) {
+    self = .percentage(percentage)
+  }
+
+  /// Create a flood-opacity from a decimal value (between 0 and 1)
+  public init(_ opacity: Double) {
+    if opacity >= 0 && opacity <= 1 {
+      self = .number(.init(opacity))
+    } else {
+      // Assume it's a percentage if greater than 1 or less than 0
+      self = .percentage(.init(opacity))
     }
+  }
 
-    /// Create a flood-opacity from a decimal value (between 0 and 1)
-    public init(_ opacity: Double) {
-        if opacity >= 0 && opacity <= 1 {
-            self = .number(.init(opacity))
-        } else {
-            // Assume it's a percentage if greater than 1 or less than 0
-            self = .percentage(.init(opacity))
-        }
+  public var description: String {
+    switch self {
+    case .number(let number):
+      return max(0, min(1, number.value)).truncatingRemainder()
+    case .percentage(let percentage):
+      return percentage.description
+    case .global(let value):
+      return value.description
     }
-
-    public var description: String {
-        switch self {
-        case .number(let number):
-            return max(0, min(1, number.value)).truncatingRemainder()
-        case .percentage(let percentage):
-            return percentage.description
-        case .global(let value):
-            return value.description
-        }
-    }
+  }
 }

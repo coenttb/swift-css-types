@@ -21,72 +21,72 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme)
 public enum ColorScheme: Property {
-    public static let property: String = "color-scheme"
-    /// Indicates that the element can be rendered using the page's color scheme settings.
-    /// If the page does not have a color scheme set, the element is rendered using the page's default color settings.
-    case normal
+  public static let property: String = "color-scheme"
+  /// Indicates that the element can be rendered using the page's color scheme settings.
+  /// If the page does not have a color scheme set, the element is rendered using the page's default color settings.
+  case normal
 
-    /// Indicates that the element can be rendered using the operating system's color scheme(s).
-    case schemes([ColorSchemeValue], only: Bool)
+  /// Indicates that the element can be rendered using the operating system's color scheme(s).
+  case schemes([ColorSchemeValue], only: Bool)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// Values for color schemes
 public enum ColorSchemeValue: Sendable, Hashable, CustomStringConvertible {
-    /// Light color scheme
-    case light
+  /// Light color scheme
+  case light
 
-    /// Dark color scheme
-    case dark
+  /// Dark color scheme
+  case dark
 
-    /// Custom color scheme identifier
-    case custom(CSSString)
+  /// Custom color scheme identifier
+  case custom(CSSString)
 
-    public var description: String {
-        switch self {
-        case .light:
-            return "light"
-        case .dark:
-            return "dark"
-        case .custom(let name):
-            return name.description
-        }
+  public var description: String {
+    switch self {
+    case .light:
+      return "light"
+    case .dark:
+      return "dark"
+    case .custom(let name):
+      return name.description
     }
+  }
 }
 
 /// CSS Output conversion
 extension ColorScheme: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .normal:
-            return "normal"
+  public var description: String {
+    switch self {
+    case .normal:
+      return "normal"
 
-        case .schemes(let schemes, let only):
-            let schemeList = schemes.map { $0.description }.joined(separator: " ")
-            return only ? "only \(schemeList)" : schemeList
+    case .schemes(let schemes, let only):
+      let schemeList = schemes.map { $0.description }.joined(separator: " ")
+      return only ? "only \(schemeList)" : schemeList
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 /// Factory methods for creating color scheme values
 extension ColorScheme {
-    /// Creates a color scheme with a single scheme value
-    ///
-    /// - Parameter scheme: The color scheme value
-    /// - Returns: A color scheme with the specified scheme
-    public static func scheme(_ scheme: ColorSchemeValue, only: Bool = false) -> ColorScheme {
-        .schemes([scheme], only: only)
-    }
+  /// Creates a color scheme with a single scheme value
+  ///
+  /// - Parameter scheme: The color scheme value
+  /// - Returns: A color scheme with the specified scheme
+  public static func scheme(_ scheme: ColorSchemeValue, only: Bool = false) -> ColorScheme {
+    .schemes([scheme], only: only)
+  }
 
-    /// Light color scheme
-    public static let light: ColorScheme = .scheme(.light)
+  /// Light color scheme
+  public static let light: ColorScheme = .scheme(.light)
 
-    /// Dark color scheme
-    public static let dark: ColorScheme = .scheme(.dark)
+  /// Dark color scheme
+  public static let dark: ColorScheme = .scheme(.dark)
 
 }

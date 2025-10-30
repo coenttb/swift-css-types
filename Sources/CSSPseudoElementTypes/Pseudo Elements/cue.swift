@@ -11,7 +11,7 @@ import Foundation
 ///     color: #fff;
 ///     background-color: rgba(0, 0, 0, 0.6);
 /// }
-/// 
+///
 /// ::cue(u) {
 ///     color: red;
 /// }
@@ -44,24 +44,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::cue](https://developer.mozilla.org/en-US/docs/Web/CSS/::cue)
 public struct Cue: CSSPseudoElement {
-    @inlinable public static var name: String { "cue" }
+  @inlinable public static var name: String { "cue" }
 
-    /// The optional selector for targeting specific elements within cues
-    public let selector: String?
+  /// The optional selector for targeting specific elements within cues
+  public let selector: String?
 
-    public init(_ selector: String? = nil) {
-        self.selector = selector
-    }
+  public init(_ selector: String? = nil) {
+    self.selector = selector
+  }
 }
 
 /// Provides string conversion for CSS output
 extension Cue: CustomStringConvertible {
-    /// Converts the ::cue pseudo-element to its CSS string representation
-    public var description: String {
-        if let selector = selector {
-            return Self.prefix + "cue(\(selector))"
-        } else {
-            return Self.prefix + Self.name
-        }
+  /// Converts the ::cue pseudo-element to its CSS string representation
+  public var description: String {
+    if let selector = selector {
+      return Self.prefix + "cue(\(selector))"
+    } else {
+      return Self.prefix + Self.name
     }
+  }
 }

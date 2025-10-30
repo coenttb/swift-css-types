@@ -10,7 +10,7 @@ import Foundation
 
 /// The CSS `row-gap` property sets the size of the gap (gutter) between an element's rows.
 ///
-/// This property applies to flex containers, grid containers, and multi-column layouts. 
+/// This property applies to flex containers, grid containers, and multi-column layouts.
 /// It defines the space between rows in these layout contexts.
 ///
 /// Example:
@@ -20,30 +20,30 @@ import Foundation
 /// .rowGap(.normal)            // row-gap: normal
 /// ```
 ///
-/// - Note: Early versions of the specification called this property `grid-row-gap`, 
+/// - Note: Early versions of the specification called this property `grid-row-gap`,
 ///   and browsers will still accept that as an alias for backward compatibility.
 ///
 /// - SeeAlso: [MDN Web Docs on row-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap)
 public enum RowGap: Property, LengthPercentageConvertible {
-    public static let property: String = "row-gap"
+  public static let property: String = "row-gap"
 
-    /// A length-percentage value for the gap
-    case lengthPercentage(LengthPercentage)
+  /// A length-percentage value for the gap
+  case lengthPercentage(LengthPercentage)
 
-    /// Default value, typically 0 (except for multi-column layouts)
-    case normal
+  /// Default value, typically 0 (except for multi-column layouts)
+  case normal
 
-    /// Global value
-    case global(CSSTypeTypes.Global)
+  /// Global value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
-        case .normal:
-            return "normal"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
+    case .normal:
+      return "normal"
+    case .global(let global):
+      return global.description
     }
+  }
 }

@@ -21,29 +21,29 @@ import Foundation
 /// scrollbar-gutter: stable both-edges;    /* Reserve space on both edges */
 /// ```
 public enum ScrollbarGutter: Property {
-    public static let property: String = "scrollbar-gutter"
+  public static let property: String = "scrollbar-gutter"
 
-    /// Classic scrollbars create a gutter when overflow is scroll, or when overflow is auto
-    /// and the box is overflowing. Overlay scrollbars do not consume space.
-    case auto
+  /// Classic scrollbars create a gutter when overflow is scroll, or when overflow is auto
+  /// and the box is overflowing. Overlay scrollbars do not consume space.
+  case auto
 
-    /// When using classic scrollbars, the gutter will be present if overflow is auto, scroll,
-    /// or hidden even if the box is not overflowing.
-    case stable
+  /// When using classic scrollbars, the gutter will be present if overflow is auto, scroll,
+  /// or hidden even if the box is not overflowing.
+  case stable
 
-    /// Similar to stable, but if a gutter is present on one of the inline edges of the box,
-    /// another will be present on the opposite edge as well.
-    case stableBothEdges
+  /// Similar to stable, but if a gutter is present on one of the inline edges of the box,
+  /// another will be present on the opposite edge as well.
+  case stableBothEdges
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .auto: return "auto"
-        case .stable: return "stable"
-        case .stableBothEdges: return "stable both-edges"
-        case .global(let global): return global.description
-        }
+  public var description: String {
+    switch self {
+    case .auto: return "auto"
+    case .stable: return "stable"
+    case .stableBothEdges: return "stable both-edges"
+    case .global(let global): return global.description
     }
+  }
 }

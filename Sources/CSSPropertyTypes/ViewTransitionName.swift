@@ -19,42 +19,42 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on view-transition-name](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name)
 public enum ViewTransitionName: Property {
 
-    public static let property: String = "view-transition-name"
+  public static let property: String = "view-transition-name"
 
-    /// The element will not participate in a view transition
-    case none
+  /// The element will not participate in a view transition
+  case none
 
-    /// An identifying name that causes the element to participate in a separate view transition
-    case custom(CustomIdent)
+  /// An identifying name that causes the element to participate in a separate view transition
+  case custom(CustomIdent)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension ViewTransitionName: CustomStringConvertible {
-    /// Converts the view-transition-name value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .none:
-            return "none"
+  /// Converts the view-transition-name value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .none:
+      return "none"
 
-        case .custom(let ident):
-            return ident.description
+    case .custom(let ident):
+      return ident.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 // Convenience initializers
 extension ViewTransitionName {
-    /// Creates a custom view transition name
-    ///
-    /// - Parameter name: The name to use for the view transition
-    /// - Returns: A ViewTransitionName with the specified custom identifier
-    public static func custom(_ name: String) -> Self {
-        return .custom(CustomIdent(name))
-    }
+  /// Creates a custom view transition name
+  ///
+  /// - Parameter name: The name to use for the view transition
+  /// - Returns: A ViewTransitionName with the specified custom identifier
+  public static func custom(_ name: String) -> Self {
+    return .custom(CustomIdent(name))
+  }
 }

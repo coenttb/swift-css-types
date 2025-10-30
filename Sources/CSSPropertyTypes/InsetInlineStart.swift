@@ -26,40 +26,40 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on inset-inline-start](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline-start)
 public enum InsetInlineStart: Property, LengthPercentageConvertible {
-    public static let property: String = "inset-inline-start"
+  public static let property: String = "inset-inline-start"
 
-    /// The position is determined automatically based on the element's normal flow position
-    case auto
+  /// The position is determined automatically based on the element's normal flow position
+  case auto
 
-    /// A specific length or percentage value
-    case lengthPercentage(LengthPercentage)
+  /// A specific length or percentage value
+  case lengthPercentage(LengthPercentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .lengthPercentage(let value):
-            return value.description
-        case .global(let value):
-            return value.description
-        }
+  public var description: String {
+    switch self {
+    case .auto:
+      return "auto"
+    case .lengthPercentage(let value):
+      return value.description
+    case .global(let value):
+      return value.description
     }
+  }
 }
 
 /// Convenience initializers for InsetInlineStart
 extension InsetInlineStart {
-    /// Creates an instance with a pixel value
-    public init(_ value: Double) {
-        self = .lengthPercentage(.px(value))
-    }
+  /// Creates an instance with a pixel value
+  public init(_ value: Double) {
+    self = .lengthPercentage(.px(value))
+  }
 
-    /// Creates an instance with an integer pixel value
-    public init(_ value: Int) {
-        self = .lengthPercentage(.px(Double(value)))
-    }
+  /// Creates an instance with an integer pixel value
+  public init(_ value: Int) {
+    self = .lengthPercentage(.px(Double(value)))
+  }
 }
 
 /// Allow creation from Length values

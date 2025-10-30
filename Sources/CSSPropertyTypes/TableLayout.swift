@@ -17,22 +17,22 @@ import CSSTypeTypes
 /// table-layout: fixed;
 /// ```
 public enum TableLayout: Property {
-    public static let property: String = "table-layout"
+  public static let property: String = "table-layout"
 
-    /// The automatic table layout algorithm is used (content-based sizing)
-    case auto
+  /// The automatic table layout algorithm is used (content-based sizing)
+  case auto
 
-    /// The fixed table layout algorithm is used (faster, based on first row only)
-    case fixed
+  /// The fixed table layout algorithm is used (faster, based on first row only)
+  case fixed
 
-    /// Global CSS value
-    case global(CSSTypeTypes.Global)
+  /// Global CSS value
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .auto: return "auto"
-        case .fixed: return "fixed"
-        case .global(let global): return global.description
-        }
+  public var description: String {
+    switch self {
+    case .auto: return "auto"
+    case .fixed: return "fixed"
+    case .global(let global): return global.description
     }
+  }
 }

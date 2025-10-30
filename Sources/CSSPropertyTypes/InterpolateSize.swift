@@ -17,8 +17,8 @@ import Foundation
 /// and "open" or "hide" and "reveal" states) when animating a non-box-model CSS property,
 /// such as transform, is not a viable solution.
 ///
-/// Note: The behavior opted-into by interpolate-size cannot be enabled by default 
-/// across the web because many sites in the wild use stylesheets that assume intrinsic 
+/// Note: The behavior opted-into by interpolate-size cannot be enabled by default
+/// across the web because many sites in the wild use stylesheets that assume intrinsic
 /// size values cannot be animated.
 ///
 /// Values that can be interpolated:
@@ -28,26 +28,26 @@ import Foundation
 /// - fit-content
 /// - content (for containers sized using flex-basis)
 public enum InterpolateSize: Property {
-    public static let property: String = "interpolate-size"
+  public static let property: String = "interpolate-size"
 
-    /// The default behavior — intrinsic size values cannot be interpolated.
-    case numericOnly
+  /// The default behavior — intrinsic size values cannot be interpolated.
+  case numericOnly
 
-    /// Enables interpolation between a <length-percentage> value and an intrinsic size value,
-    /// to allow animation between the two.
-    case allowKeywords
+  /// Enables interpolation between a <length-percentage> value and an intrinsic size value,
+  /// to allow animation between the two.
+  case allowKeywords
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .numericOnly:
-            return "numeric-only"
-        case .allowKeywords:
-            return "allow-keywords"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .numericOnly:
+      return "numeric-only"
+    case .allowKeywords:
+      return "allow-keywords"
+    case .global(let global):
+      return global.description
     }
+  }
 }

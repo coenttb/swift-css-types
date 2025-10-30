@@ -22,39 +22,39 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on font-variant-emoji](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-emoji)
 public enum FontVariantEmoji: Property {
 
-    public static let property: String = "font-variant-emoji"
+  public static let property: String = "font-variant-emoji"
 
-    /// Allows a browser to choose how to display the emoji.
-    /// This often follows the operating system setting.
-    case normal
+  /// Allows a browser to choose how to display the emoji.
+  /// This often follows the operating system setting.
+  case normal
 
-    /// Renders the emoji as if it were using the unicode text variation selector (U+FE0E).
-    /// Results in a monochrome, text-style presentation.
-    case text
+  /// Renders the emoji as if it were using the unicode text variation selector (U+FE0E).
+  /// Results in a monochrome, text-style presentation.
+  case text
 
-    /// Renders the emoji as if it were using the unicode emoji variation selector (U+FE0F).
-    /// Results in a colorful, pictographic presentation.
-    case emoji
+  /// Renders the emoji as if it were using the unicode emoji variation selector (U+FE0F).
+  /// Results in a colorful, pictographic presentation.
+  case emoji
 
-    /// Renders the emoji in accordance with the Emoji presentation properties.
-    /// If variation selectors are present, they override this value setting.
-    case unicode
+  /// Renders the emoji in accordance with the Emoji presentation properties.
+  /// If variation selectors are present, they override this value setting.
+  case unicode
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 
-    public var description: String {
-        switch self {
-        case .normal:
-            return "normal"
-        case .text:
-            return "text"
-        case .emoji:
-            return "emoji"
-        case .unicode:
-            return "unicode"
-        case .global(let global):
-            return global.description
-        }
+  public var description: String {
+    switch self {
+    case .normal:
+      return "normal"
+    case .text:
+      return "text"
+    case .emoji:
+      return "emoji"
+    case .unicode:
+      return "unicode"
+    case .global(let global):
+      return global.description
     }
+  }
 }

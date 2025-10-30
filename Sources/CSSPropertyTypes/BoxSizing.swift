@@ -26,7 +26,7 @@ import Foundation
 /// └───────────────────────┘    └───────────────────────┘
 ///        ↑ border ↑                  ↑ border ↑
 ///
-/// width = content width         width = content width + 
+/// width = content width         width = content width +
 ///                                      padding width +
 ///                                      border width
 /// ```
@@ -36,28 +36,28 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
 public enum BoxSizing: Property {
-    public static let property: String = "box-sizing"
+  public static let property: String = "box-sizing"
 
-    /// Default CSS box model behavior. Width and height dimensions apply to the content box only.
-    /// Padding and border width are added to the outside of the element.
-    case contentBox
+  /// Default CSS box model behavior. Width and height dimensions apply to the content box only.
+  /// Padding and border width are added to the outside of the element.
+  case contentBox
 
-    /// Width and height dimensions apply to the border box. Padding and border width are 
-    /// included within the specified dimensions, causing the content area to shrink to absorb them.
-    case borderBox
+  /// Width and height dimensions apply to the border box. Padding and border width are
+  /// included within the specified dimensions, causing the content area to shrink to absorb them.
+  case borderBox
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// String representation of the box-sizing value
-    public var description: String {
-        switch self {
-        case .contentBox:
-            return "content-box"
-        case .borderBox:
-            return "border-box"
-        case .global(let global):
-            return global.description
-        }
+  /// String representation of the box-sizing value
+  public var description: String {
+    switch self {
+    case .contentBox:
+      return "content-box"
+    case .borderBox:
+      return "border-box"
+    case .global(let global):
+      return global.description
     }
+  }
 }

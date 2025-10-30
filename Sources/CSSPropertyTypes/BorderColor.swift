@@ -43,85 +43,84 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color)
 public enum BorderColor: Property {
 
-    public static let property: String = "border-color"
+  public static let property: String = "border-color"
 
-    /// Same color for all four sides
-    case all(Color)
+  /// Same color for all four sides
+  case all(Color)
 
-    /// Different colors for vertical (top/bottom) and horizontal (left/right) sides
-    case vertical_horizontal(Color, Color)
+  /// Different colors for vertical (top/bottom) and horizontal (left/right) sides
+  case vertical_horizontal(Color, Color)
 
-    /// Different colors for top, horizontal (left/right), and bottom sides
-    case top_horizontal_bottom(Color, Color, Color)
+  /// Different colors for top, horizontal (left/right), and bottom sides
+  case top_horizontal_bottom(Color, Color, Color)
 
-    /// Different colors for each side in clockwise order: top, right, bottom, left
-    case top_right_bottom_left(Color, Color, Color, Color)
+  /// Different colors for each side in clockwise order: top, right, bottom, left
+  case top_right_bottom_left(Color, Color, Color, Color)
 
-    /// Global CSS values
-    case global(CSSTypeTypes.Global)
+  /// Global CSS values
+  case global(CSSTypeTypes.Global)
 
-    /// Creates a border color with the same value for all sides
-    ///
-    /// - Parameter color: The color for all sides
-    public init(_ color: CSSPropertyTypes.Color) {
-        self = .all(color)
-    }
+  /// Creates a border color with the same value for all sides
+  ///
+  /// - Parameter color: The color for all sides
+  public init(_ color: CSSPropertyTypes.Color) {
+    self = .all(color)
+  }
 
-    /// Creates a border color with two values (vertical and horizontal)
-    ///
-    /// - Parameters:
-    ///   - vertical: The color for top and bottom borders
-    ///   - horizontal: The color for left and right borders
-    public init(_ vertical: Color, _ horizontal: Color) {
-        self = .vertical_horizontal(vertical, horizontal)
-    }
+  /// Creates a border color with two values (vertical and horizontal)
+  ///
+  /// - Parameters:
+  ///   - vertical: The color for top and bottom borders
+  ///   - horizontal: The color for left and right borders
+  public init(_ vertical: Color, _ horizontal: Color) {
+    self = .vertical_horizontal(vertical, horizontal)
+  }
 
-    /// Creates a border color with three values (top, horizontal, bottom)
-    ///
-    /// - Parameters:
-    ///   - top: The color for the top border
-    ///   - horizontal: The color for left and right borders
-    ///   - bottom: The color for the bottom border
-    public init(_ top: Color, _ horizontal: Color, _ bottom: Color) {
-        self = .top_horizontal_bottom(top, horizontal, bottom)
-    }
+  /// Creates a border color with three values (top, horizontal, bottom)
+  ///
+  /// - Parameters:
+  ///   - top: The color for the top border
+  ///   - horizontal: The color for left and right borders
+  ///   - bottom: The color for the bottom border
+  public init(_ top: Color, _ horizontal: Color, _ bottom: Color) {
+    self = .top_horizontal_bottom(top, horizontal, bottom)
+  }
 
-    /// Creates a border color with four values (one for each side)
-    ///
-    /// - Parameters:
-    ///   - top: The color for the top border
-    ///   - right: The color for the right border
-    ///   - bottom: The color for the bottom border
-    ///   - left: The color for the left border
-    public init(_ top: Color, _ right: Color, _ bottom: Color, _ left: Color) {
-        self = .top_right_bottom_left(top, right, bottom, left)
-    }
+  /// Creates a border color with four values (one for each side)
+  ///
+  /// - Parameters:
+  ///   - top: The color for the top border
+  ///   - right: The color for the right border
+  ///   - bottom: The color for the bottom border
+  ///   - left: The color for the left border
+  public init(_ top: Color, _ right: Color, _ bottom: Color, _ left: Color) {
+    self = .top_right_bottom_left(top, right, bottom, left)
+  }
 }
 
 /// Provides string conversion for CSS output
 extension BorderColor: CustomStringConvertible {
-    /// Converts the border-color to its CSS string representation
-    ///
-    /// This method generates CSS like:
-    /// ```css
-    /// border-color: red;
-    /// border-color: red blue;
-    /// border-color: red blue green;
-    /// border-color: red blue green gold;
-    /// ```
-    public var description: String {
-        switch self {
-        case .all(let color):
-            return color.description
-        case .vertical_horizontal(let vertical, let horizontal):
-            return "\(vertical.description) \(horizontal.description)"
-        case .top_horizontal_bottom(let top, let horizontal, let bottom):
-            return "\(top.description) \(horizontal.description) \(bottom.description)"
-        case .top_right_bottom_left(let top, let right, let bottom, let left):
-            return "\(top.description) \(right.description) \(bottom.description) \(left.description)"
-        case .global(let global):
-            return global.description
-        }
+  /// Converts the border-color to its CSS string representation
+  ///
+  /// This method generates CSS like:
+  /// ```css
+  /// border-color: red;
+  /// border-color: red blue;
+  /// border-color: red blue green;
+  /// border-color: red blue green gold;
+  /// ```
+  public var description: String {
+    switch self {
+    case .all(let color):
+      return color.description
+    case .vertical_horizontal(let vertical, let horizontal):
+      return "\(vertical.description) \(horizontal.description)"
+    case .top_horizontal_bottom(let top, let horizontal, let bottom):
+      return "\(top.description) \(horizontal.description) \(bottom.description)"
+    case .top_right_bottom_left(let top, let right, let bottom, let left):
+      return "\(top.description) \(right.description) \(bottom.description) \(left.description)"
+    case .global(let global):
+      return global.description
     }
+  }
 }
-

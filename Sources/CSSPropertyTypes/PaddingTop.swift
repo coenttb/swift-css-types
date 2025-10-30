@@ -15,43 +15,43 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on padding-top](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top)
 public enum PaddingTop: Property, LengthPercentageConvertible {
-    public static let property: String = "padding-top"
+  public static let property: String = "padding-top"
 
-    /// A length or percentage value for the top padding
-    case lengthPercentage(LengthPercentage)
+  /// A length or percentage value for the top padding
+  case lengthPercentage(LengthPercentage)
 
-    /// Global values
-    case global(CSSTypeTypes.Global)
+  /// Global values
+  case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension PaddingTop: CustomStringConvertible {
-    /// Converts the padding-top value to its CSS string representation
-    public var description: String {
-        switch self {
-        case .lengthPercentage(let lengthPercentage):
-            return lengthPercentage.description
+  /// Converts the padding-top value to its CSS string representation
+  public var description: String {
+    switch self {
+    case .lengthPercentage(let lengthPercentage):
+      return lengthPercentage.description
 
-        case .global(let global):
-            return global.description
-        }
+    case .global(let global):
+      return global.description
     }
+  }
 }
 
 extension PaddingTop: ExpressibleByIntegerLiteral {
-    /// Creates a padding-top from an integer literal (interpreted as pixels)
-    ///
-    /// - Parameter value: The padding in pixels
-    public init(integerLiteral value: Int) {
-        self = .lengthPercentage(.px(Double(value)))
-    }
+  /// Creates a padding-top from an integer literal (interpreted as pixels)
+  ///
+  /// - Parameter value: The padding in pixels
+  public init(integerLiteral value: Int) {
+    self = .lengthPercentage(.px(Double(value)))
+  }
 }
 
 extension PaddingTop: ExpressibleByFloatLiteral {
-    /// Creates a padding-top from a floating-point literal (interpreted as pixels)
-    ///
-    /// - Parameter value: The padding in pixels
-    public init(floatLiteral value: Double) {
-        self = .lengthPercentage(.px(value))
-    }
+  /// Creates a padding-top from a floating-point literal (interpreted as pixels)
+  ///
+  /// - Parameter value: The padding in pixels
+  public init(floatLiteral value: Double) {
+    self = .lengthPercentage(.px(value))
+  }
 }
