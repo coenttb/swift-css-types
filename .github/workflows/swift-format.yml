@@ -41,7 +41,7 @@ jobs:
       - name: Format
         run: swift-format format --recursive --in-place Sources Tests
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Run swift-format
           branch: 'main'
