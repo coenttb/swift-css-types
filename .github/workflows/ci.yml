@@ -15,9 +15,10 @@ concurrency:
 
 jobs:
   # Note: Swift Testing framework requires Swift 6.0+
-  # Tests use @Test and #expect which are not available in Swift 5.x
-  macos-swift60:
-    name: macOS (Swift 6.0)
+  # macOS Swift 5.10 has backported Testing framework via Xcode 26.0
+  # Linux Swift 5.10 does NOT have Testing framework - use 6.2 only
+  macos-swift510:
+    name: macOS (Swift 5.10)
     runs-on: macos-26
     strategy:
       matrix:
@@ -75,19 +76,6 @@ jobs:
 
       - name: Run tests
         run: swift test -c ${{ matrix.config }}
-
-  linux-swift60:
-    name: Ubuntu (Swift 6.0)
-    runs-on: ubuntu-latest
-    container: swift:6.0
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Build
-        run: swift build
-
-      - name: Run tests
-        run: swift test
 
   linux-swift62:
     name: Ubuntu (Swift 6.2)

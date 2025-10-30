@@ -37,6 +37,7 @@ excluded:
   - Pods
   - fastlane
   - build
+  - .build
 
 analyzer_rules:
   - unused_import

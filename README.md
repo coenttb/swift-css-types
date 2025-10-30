@@ -147,28 +147,16 @@ The package is organized into focused modules:
 - Swift 5.9+
 - macOS 14.0+ / iOS 17.0+ / Linux
 
-## Related Projects
+## Related Packages
 
-- [swift-html-types](https://www.github.com/coenttb/swift-html-types): Strongly-typed HTML elements and attributes
-- [swift-html](https://www.github.com/coenttb/swift-html): Type-safe HTML & CSS DSL for Swift
-- [swift-web](https://www.github.com/coenttb/swift-web): Foundational tools for web development in Swift
-- [coenttb-com-server](https://www.github.com/coenttb/coenttb-com-server): Production server built with swift-html-types
-
-## Development Status
-
-This package is in active development. Features and APIs may change until a stable 1.0 release.
+- [swift-html-types](https://www.github.com/coenttb/swift-html-types): A complete Swift domain model of HTML elements and attributes
+- [swift-html](https://www.github.com/coenttb/swift-html): A Swift DSL for type-safe HTML & CSS, integrating swift-css and pointfree-html
+- [swift-web](https://www.github.com/coenttb/swift-web): A collection of types and functions for dealing with common web server concerns
+- [coenttb-com-server](https://www.github.com/coenttb/coenttb-com-server): The coenttb.com website, built with swift-html
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Feedback
-
-If you have suggestions or find issues, please open a GitHub issue.
-
-> [Subscribe to my newsletter](http://coenttb.com/en/newsletter/subscribe)
-> [Follow me on X](http://x.com/coenttb)
-> [Connect on LinkedIn](https://www.linkedin.com/in/tenthijeboonkkamp)
 
 ## License
 
