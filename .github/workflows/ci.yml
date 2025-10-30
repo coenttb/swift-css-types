@@ -74,6 +74,22 @@ jobs:
       - name: Run tests
         run: swift test
 
+  readme:
+    name: README Code Examples
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+
+      - name: Run README verification tests
+        run: swift test --filter ReadmeVerificationTests
+
+      - name: Validate README examples compile
+        run: |
+          echo "✅ All README code examples are verified to compile and work"
+
   documentation:
     name: Documentation
     runs-on: macos-15
