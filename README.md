@@ -7,7 +7,7 @@ A Swift package providing strongly-typed CSS properties, types, and values with 
 
 ## Overview
 
-swift-css-types provides a comprehensive type-safe representation of CSS that mirrors the CSS specification. The package is designed as a foundation for building Swift-based CSS DSLs and tools, offering compile-time guarantees for CSS property values.
+swift-css-types provides a type-safe representation of CSS that mirrors the CSS specification. The package is designed as a foundation for building Swift-based CSS DSLs and tools, offering compile-time guarantees for CSS property values.
 
 ## Features
 
