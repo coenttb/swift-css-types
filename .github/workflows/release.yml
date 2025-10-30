@@ -1,0 +1,86 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    name: Validate Release
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+
+      - name: Validate tag format
+        run: |
+          TAG="${{ github.event.release.tag_name || github.event.inputs.tag }}"
+          if [[ ! "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "❌ Invalid tag format: $TAG"
+            echo "Tag must follow semantic versioning (e.g., 0.1.0)"
+            exit 1
+          fi
+          echo "✅ Valid tag format: $TAG"
+
+      - name: Build in release mode
+        run: swift build -c release
+
+      - name: Run all tests
+        run: swift test -c release
+
+      - name: Run README verification tests
+        run: swift test -c release --filter ReadmeVerificationTests
+
+  create-release-artifacts:
+    name: Create Release Artifacts
+    needs: validate
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+
+      - name: Build library archives
+        run: |
+          swift build -c release --arch arm64
+          swift build -c release --arch x86_64
+          cd .build
+          tar -czf swift-css-types-macos.tar.gz \
+            arm64-apple-macosx/release/*.swiftmodule \
+            x86_64-apple-macosx/release/*.swiftmodule \
+            2>/dev/null || true
+          echo "✅ Created library archives"
+
+      - name: Generate documentation
+        run: |
+          swift package \
+            --allow-writing-to-directory ./docs \
+            generate-documentation \
+            --target CSSTypes \
+            --output-path ./docs \
+            --transform-for-static-hosting \
+            --hosting-base-path swift-css-types
+          zip -r documentation.zip docs/
+        continue-on-error: true
+
+      - name: Upload artifacts to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            .build/swift-css-types-macos.tar.gz
+            documentation.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
