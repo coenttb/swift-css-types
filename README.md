@@ -149,10 +149,9 @@ The package is organized into focused modules:
 
 ## Related Packages
 
-- [swift-html-types](https://www.github.com/coenttb/swift-html-types): A complete Swift domain model of HTML elements and attributes
-- [swift-html](https://www.github.com/coenttb/swift-html): A Swift DSL for type-safe HTML & CSS, integrating swift-css and pointfree-html
-- [swift-web](https://www.github.com/coenttb/swift-web): A collection of types and functions for dealing with common web server concerns
-- [coenttb-com-server](https://www.github.com/coenttb/coenttb-com-server): The coenttb.com website, built with swift-html
+### Used By
+
+- [swift-html-css-pointfree](https://github.com/coenttb/swift-html-css-pointfree): A Swift package integrating swift-html-types and swift-css-types with pointfree-html.
 
 ## Contributing
 
