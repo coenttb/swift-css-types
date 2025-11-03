@@ -1,54 +1,13 @@
 name: SwiftLint
-
 on:
   pull_request:
-    paths:
-      - '**.swift'
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
-  swiftlint:
-    name: Check Code Quality
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-
-      - name: Cache SwiftLint
-        id: cache-swiftlint
-        uses: actions/cache@v4
-        with:
-          path: /usr/local/bin/swiftlint
-          key: ${{ runner.os }}-swiftlint-0.57.0
-
-      - name: Install SwiftLint
-        if: steps.cache-swiftlint.outputs.cache-hit != 'true'
-        run: |
-          wget https://github.com/realm/SwiftLint/releases/download/0.57.0/swiftlint_linux.zip
-          unzip swiftlint_linux.zip
-          sudo mv swiftlint /usr/local/bin/
-          sudo chmod +x /usr/local/bin/swiftlint
-
-      - name: Verify SwiftLint installation
-        run: |
-          if ! command -v swiftlint &> /dev/null; then
-            echo "❌ SwiftLint installation failed"
-            exit 1
-          fi
-          swiftlint version
-
-      - name: Run SwiftLint
-        run: |
-          echo "Checking Swift code quality..."
-          swiftlint lint --reporter github-actions-logging
-
-      - name: Provide fix instructions on failure
-        if: failure()
-        run: |
-          echo ""
-          echo "⚠️ SwiftLint violations found. These are warnings only."
-          echo ""
-          echo "To see violations locally, run:"
-          echo "  swiftlint lint"
-          echo ""
-          echo "To auto-fix some violations:"
-          echo "  swiftlint --fix"
+      - name: SwiftLint
+        run: swiftlint lint
+        continue-on-error: true

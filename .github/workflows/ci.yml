@@ -97,26 +97,6 @@ jobs:
       - name: Run tests
         run: swift test
 
-  # Windows support disabled - build completes but fails silently
-  # Windows has various runtime/testing issues that aren't worth debugging
-  # Focus on macOS and Linux where the library is primarily used
-  #
-  # windows:
-  #   name: Windows (Swift 6.2)
-  #   runs-on: windows-latest
-  #   steps:
-  #     - uses: actions/checkout@v5
-  #
-  #     - uses: SwiftyLab/setup-swift@latest
-  #       with:
-  #         swift-version: "6.2"
-  #
-  #     - name: Build
-  #       run: swift build
-  #
-  #     - name: Run tests
-  #       run: swift test
-
   readme:
     name: README Code Examples
     runs-on: macos-26
