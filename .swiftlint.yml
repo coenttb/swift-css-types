@@ -5,6 +5,7 @@ disabled_rules:
   - redundant_discardable_let  # Preserve 'let _ =' in result builder contexts (required for Swift 6.0+)
   - opening_brace  # Handled by swift-format
   - trailing_comma  # Handled by swift-format
+  - trailing_whitespace  # Preserve whitespace in snapshot tests
   - orphaned_doc_comment  # Allow module-level documentation
   - large_tuple  # CSS color validation requires tuples with multiple components
   - mark  # Allow flexible MARK comment formatting
