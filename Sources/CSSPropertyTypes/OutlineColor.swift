@@ -16,29 +16,29 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on outline-color](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color)
 public enum OutlineColor: Property, ColorConvertible {
-  public static let property: String = "outline-color"
+    public static let property: String = "outline-color"
 
-  /// A specific color value
-  case color(CSSTypeTypes.Color)
+    /// A specific color value
+    case color(CSSTypeTypes.Color)
 
-  /// Automatically determined color (typically the inverse of the background)
-  case auto
+    /// Automatically determined color (typically the inverse of the background)
+    case auto
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension OutlineColor: CustomStringConvertible {
-  /// Converts the outline-color value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .color(let color):
-      return color.description
-    case .auto:
-      return "auto"
-    case .global(let global):
-      return global.description
+    /// Converts the outline-color value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .color(let color):
+            return color.description
+        case .auto:
+            return "auto"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

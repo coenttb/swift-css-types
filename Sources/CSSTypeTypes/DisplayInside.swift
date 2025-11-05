@@ -19,67 +19,67 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on display-inside values](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
 public enum DisplayInside: String, Sendable, Hashable {
-  /// Standard block and inline layout
-  ///
-  /// The element uses flow layout, also known as block-and-inline layout.
-  /// This is the default layout mode for most elements.
-  /// ```css
-  /// display: flow;
-  /// ```
-  case flow
+    /// Standard block and inline layout
+    ///
+    /// The element uses flow layout, also known as block-and-inline layout.
+    /// This is the default layout mode for most elements.
+    /// ```css
+    /// display: flow;
+    /// ```
+    case flow
 
-  /// Creates a block formatting context
-  ///
-  /// The element generates a block box that establishes a new block formatting context,
-  /// containing things like floats and preventing margin collapsing.
-  /// ```css
-  /// display: flow-root;
-  /// ```
-  case flowRoot = "flow-root"
+    /// Creates a block formatting context
+    ///
+    /// The element generates a block box that establishes a new block formatting context,
+    /// containing things like floats and preventing margin collapsing.
+    /// ```css
+    /// display: flow-root;
+    /// ```
+    case flowRoot = "flow-root"
 
-  /// Table layout
-  ///
-  /// The element behaves like an HTML `<table>` element, creating a block-level box
-  /// with a specific layout model for rows, columns, and cells.
-  /// ```css
-  /// display: table;
-  /// ```
-  case table
+    /// Table layout
+    ///
+    /// The element behaves like an HTML `<table>` element, creating a block-level box
+    /// with a specific layout model for rows, columns, and cells.
+    /// ```css
+    /// display: table;
+    /// ```
+    case table
 
-  /// Flex layout
-  ///
-  /// The element behaves as a block-level flex container, using the flexbox layout model
-  /// to arrange its children in a flexible, responsive way.
-  /// ```css
-  /// display: flex;
-  /// ```
-  case flex
+    /// Flex layout
+    ///
+    /// The element behaves as a block-level flex container, using the flexbox layout model
+    /// to arrange its children in a flexible, responsive way.
+    /// ```css
+    /// display: flex;
+    /// ```
+    case flex
 
-  /// Grid layout
-  ///
-  /// The element behaves as a block-level grid container, using the grid layout model
-  /// to arrange its children in rows and columns.
-  /// ```css
-  /// display: grid;
-  /// ```
-  case grid
+    /// Grid layout
+    ///
+    /// The element behaves as a block-level grid container, using the grid layout model
+    /// to arrange its children in rows and columns.
+    /// ```css
+    /// display: grid;
+    /// ```
+    case grid
 
-  /// Ruby layout
-  ///
-  /// The element behaves like an inline element and lays out its content according to
-  /// the ruby formatting model, commonly used for East Asian typography annotations.
-  /// ```css
-  /// display: ruby;
-  /// ```
-  case ruby
+    /// Ruby layout
+    ///
+    /// The element behaves like an inline element and lays out its content according to
+    /// the ruby formatting model, commonly used for East Asian typography annotations.
+    /// ```css
+    /// display: ruby;
+    /// ```
+    case ruby
 }
 
 /// Provides string conversion for CSS output
 extension DisplayInside: CustomStringConvertible {
-  /// Converts the display inside value to its CSS string representation
-  ///
-  /// This method returns the raw string value for use in CSS properties.
-  public var description: String {
-    return rawValue
-  }
+    /// Converts the display inside value to its CSS string representation
+    ///
+    /// This method returns the raw string value for use in CSS properties.
+    public var description: String {
+        return rawValue
+    }
 }

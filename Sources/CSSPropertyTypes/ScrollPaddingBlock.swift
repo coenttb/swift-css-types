@@ -15,38 +15,38 @@ import CSSTypeTypes
 /// scroll-padding-block: 10%;
 /// ```
 public enum ScrollPaddingBlock: Property, LengthPercentageConvertible, CustomStringConvertible {
-  public static let property: String = "scroll-padding-block"
+    public static let property: String = "scroll-padding-block"
 
-  /// Keyword values
-  case auto
+    /// Keyword values
+    case auto
 
-  /// A single value for both the start and end block paddings
-  case all(LengthPercentage)
+    /// A single value for both the start and end block paddings
+    case all(LengthPercentage)
 
-  /// Two values for start and end block paddings
-  case start_end(LengthPercentage, LengthPercentage)
+    /// Two values for start and end block paddings
+    case start_end(LengthPercentage, LengthPercentage)
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .all(let value):
-      return value.description
-    case .start_end(let start, let end):
-      return "\(start.description) \(end.description)"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .all(let value):
+            return value.description
+        case .start_end(let start, let end):
+            return "\(start.description) \(end.description)"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 
-  /// Creates a ScrollPaddingBlock using a length
-  public static func px(_ value: Double) -> Self {
-    .all(.length(.px(value)))
-  }
-  public static func lengthPercentage(_ value: LengthPercentage) -> ScrollPaddingBlock {
-    .all(value)
-  }
+    /// Creates a ScrollPaddingBlock using a length
+    public static func px(_ value: Double) -> Self {
+        .all(.length(.px(value)))
+    }
+    public static func lengthPercentage(_ value: LengthPercentage) -> ScrollPaddingBlock {
+        .all(value)
+    }
 }

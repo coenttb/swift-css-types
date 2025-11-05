@@ -23,24 +23,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::part()](https://developer.mozilla.org/en-US/docs/Web/CSS/::part)
 public struct Part: CSSPseudoElement {
-  @inlinable public static var name: String { "part" }
+    @inlinable public static var name: String { "part" }
 
-  /// The part name to select
-  public let partName: String?
+    /// The part name to select
+    public let partName: String?
 
-  public init(_ partName: String? = nil) {
-    self.partName = partName
-  }
+    public init(_ partName: String? = nil) {
+        self.partName = partName
+    }
 }
 
 /// Provides string conversion for CSS output
 extension Part: CustomStringConvertible {
-  /// Converts the ::part() pseudo-element to its CSS string representation
-  public var description: String {
-    if let partName = partName {
-      return Self.prefix + "part(\(partName))"
-    } else {
-      return Self.prefix + Self.name
+    /// Converts the ::part() pseudo-element to its CSS string representation
+    public var description: String {
+        if let partName = partName {
+            return Self.prefix + "part(\(partName))"
+        } else {
+            return Self.prefix + Self.name
+        }
     }
-  }
 }

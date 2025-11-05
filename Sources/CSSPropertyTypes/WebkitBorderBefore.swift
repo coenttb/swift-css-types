@@ -37,91 +37,91 @@ import Foundation
 ///
 public enum WebkitBorderBefore: Property {
 
-  public static let property: String = "-webkit-border-before"
+    public static let property: String = "-webkit-border-before"
 
-  /// Specifies border properties (width, style, color)
-  /// Note that per CSS spec, these can be specified in any order
-  case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
+    /// Specifies border properties (width, style, color)
+    /// Note that per CSS spec, these can be specified in any order
+    case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Convenience initializer for border properties
-  public init(
-    width: BorderWidth? = nil,
-    style: LineStyle? = nil,
-    color: Color? = nil
-  ) {
-    self = .properties(width: width, style: style, color: color)
-  }
+    /// Convenience initializer for border properties
+    public init(
+        width: BorderWidth? = nil,
+        style: LineStyle? = nil,
+        color: Color? = nil
+    ) {
+        self = .properties(width: width, style: style, color: color)
+    }
 }
 
 /// Provides string conversion for CSS output
 extension WebkitBorderBefore: CustomStringConvertible {
-  /// Converts the -webkit-border-before to its CSS string representation
-  ///
-  /// ```css
-  /// -webkit-border-before: solid;
-  /// -webkit-border-before: dashed red;
-  /// -webkit-border-before: 2px dotted;
-  /// -webkit-border-before: 3px double blue;
-  /// -webkit-border-before: inherit;
-  /// ```
-  public var description: String {
-    switch self {
-    case .properties(let width, let style, let color):
-      var parts: [String] = []
+    /// Converts the -webkit-border-before to its CSS string representation
+    ///
+    /// ```css
+    /// -webkit-border-before: solid;
+    /// -webkit-border-before: dashed red;
+    /// -webkit-border-before: 2px dotted;
+    /// -webkit-border-before: 3px double blue;
+    /// -webkit-border-before: inherit;
+    /// ```
+    public var description: String {
+        switch self {
+        case .properties(let width, let style, let color):
+            var parts: [String] = []
 
-      if let width = width {
-        parts.append(width.description)
-      }
+            if let width = width {
+                parts.append(width.description)
+            }
 
-      if let style = style {
-        parts.append(style.description)
-      }
+            if let style = style {
+                parts.append(style.description)
+            }
 
-      if let color = color {
-        parts.append(color.description)
-      }
+            if let color = color {
+                parts.append(color.description)
+            }
 
-      return parts.isEmpty ? "none" : parts.joined(separator: " ")
+            return parts.isEmpty ? "none" : parts.joined(separator: " ")
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Line style conversion
 extension WebkitBorderBefore: LineStyleConvertible {
-  public static func lineStyle(_ lineStyle: CSSTypeTypes.LineStyle) -> WebkitBorderBefore {
-    .properties(style: lineStyle)
-  }
+    public static func lineStyle(_ lineStyle: CSSTypeTypes.LineStyle) -> WebkitBorderBefore {
+        .properties(style: lineStyle)
+    }
 }
 
 /// Convenience methods for creating WebkitBorderBefore objects
 extension WebkitBorderBefore {
-  /// Creates a thin border with the specified style
-  ///
-  /// - Parameter style: The border style
-  /// - Returns: A thin border with the specified style
-  public static func thin(_ style: LineStyle) -> WebkitBorderBefore {
-    .properties(width: .thin, style: style)
-  }
+    /// Creates a thin border with the specified style
+    ///
+    /// - Parameter style: The border style
+    /// - Returns: A thin border with the specified style
+    public static func thin(_ style: LineStyle) -> WebkitBorderBefore {
+        .properties(width: .thin, style: style)
+    }
 
-  /// Creates a medium border with the specified style
-  ///
-  /// - Parameter style: The border style
-  /// - Returns: A medium border with the specified style
-  public static func medium(_ style: LineStyle) -> WebkitBorderBefore {
-    .properties(width: .medium, style: style)
-  }
+    /// Creates a medium border with the specified style
+    ///
+    /// - Parameter style: The border style
+    /// - Returns: A medium border with the specified style
+    public static func medium(_ style: LineStyle) -> WebkitBorderBefore {
+        .properties(width: .medium, style: style)
+    }
 
-  /// Creates a thick border with the specified style
-  ///
-  /// - Parameter style: The border style
-  /// - Returns: A thick border with the specified style
-  public static func thick(_ style: LineStyle) -> WebkitBorderBefore {
-    .properties(width: .thick, style: style)
-  }
+    /// Creates a thick border with the specified style
+    ///
+    /// - Parameter style: The border style
+    /// - Returns: A thick border with the specified style
+    public static func thick(_ style: LineStyle) -> WebkitBorderBefore {
+        .properties(width: .thick, style: style)
+    }
 }

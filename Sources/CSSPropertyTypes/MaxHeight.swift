@@ -20,67 +20,67 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on max-height](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height)
 public enum MaxHeight: Property, LengthPercentageConvertible {
 
-  public static let property: String = "size"
+    public static let property: String = "size"
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// No maximum width constraint
-  case none
+    /// No maximum width constraint
+    case none
 
-  case maxContent
+    case maxContent
 
-  case minContent
+    case minContent
 
-  case fitContent(LengthPercentage? = nil)
+    case fitContent(LengthPercentage? = nil)
 
-  case stretch
+    case stretch
 
-  /// A global CSS value
-  case global(CSSTypeTypes.Global)
+    /// A global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public static let fitContent: Self = .fitContent(nil)
+    public static let fitContent: Self = .fitContent(nil)
 }
 
 /// CSS Output conversion
 extension MaxHeight: CustomStringConvertible {
-  /// Converts the max-height value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      lengthPercentage.description
-    case .none:
-      "none"
-    case .maxContent:
-      "max-content"
-    case .minContent:
-      "min-content"
-    case .fitContent(let lengthPercentage):
-      if let description = lengthPercentage?.description {
-        "fit-content(\(description)"
-      } else {
-        "fit-content"
-      }
-    case .stretch:
-      "stretch"
-    case .global(let global):
-      global.description
+    /// Converts the max-height value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            lengthPercentage.description
+        case .none:
+            "none"
+        case .maxContent:
+            "max-content"
+        case .minContent:
+            "min-content"
+        case .fitContent(let lengthPercentage):
+            if let description = lengthPercentage?.description {
+                "fit-content(\(description)"
+            } else {
+                "fit-content"
+            }
+        case .stretch:
+            "stretch"
+        case .global(let global):
+            global.description
+        }
     }
-  }
 }
 
 /// Allow for numeric literals to be used directly
 extension MaxHeight: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
-  /// Creates a max-height with a pixel value from an integer literal
-  ///
-  /// - Parameter value: The pixel value as an integer
-  public init(integerLiteral value: Int) {
-    self = .px(Double(value))
-  }
+    /// Creates a max-height with a pixel value from an integer literal
+    ///
+    /// - Parameter value: The pixel value as an integer
+    public init(integerLiteral value: Int) {
+        self = .px(Double(value))
+    }
 
-  /// Creates a max-height with a pixel value from a floating-point literal
-  ///
-  /// - Parameter value: The pixel value as a double
-  public init(floatLiteral value: Double) {
-    self = .px(value)
-  }
+    /// Creates a max-height with a pixel value from a floating-point literal
+    ///
+    /// - Parameter value: The pixel value as a double
+    public init(floatLiteral value: Double) {
+        self = .px(value)
+    }
 }

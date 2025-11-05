@@ -25,25 +25,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ry](https://developer.mozilla.org/en-US/docs/Web/CSS/ry)
 public enum Ry: Property, LengthPercentageConvertible {
-  public static let property: String = "ry"
+    public static let property: String = "ry"
 
-  /// A length-percentage value for the vertical radius
-  case lengthPercentage(LengthPercentage)
+    /// A length-percentage value for the vertical radius
+    case lengthPercentage(LengthPercentage)
 
-  /// Auto value (uses the rx value, or 0 if both are auto)
-  case auto
+    /// Auto value (uses the rx value, or 0 if both are auto)
+    case auto
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .auto:
-      return "auto"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .auto:
+            return "auto"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

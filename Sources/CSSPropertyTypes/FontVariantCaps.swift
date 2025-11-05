@@ -19,58 +19,58 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on font-variant-caps](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-caps)
 public enum FontVariantCaps: Property {
 
-  public static let property: String = "font-variant-caps"
+    public static let property: String = "font-variant-caps"
 
-  /// Deactivates the use of alternate glyphs.
-  case normal
+    /// Deactivates the use of alternate glyphs.
+    case normal
 
-  /// Enables display of small capitals (OpenType feature: smcp).
-  /// Small-caps glyphs typically use the form of uppercase letters but are displayed using
-  /// the same size as lowercase letters.
-  case smallCaps
+    /// Enables display of small capitals (OpenType feature: smcp).
+    /// Small-caps glyphs typically use the form of uppercase letters but are displayed using
+    /// the same size as lowercase letters.
+    case smallCaps
 
-  /// Enables display of small capitals for both upper and lowercase letters
-  /// (OpenType features: c2sc, smcp).
-  case allSmallCaps
+    /// Enables display of small capitals for both upper and lowercase letters
+    /// (OpenType features: c2sc, smcp).
+    case allSmallCaps
 
-  /// Enables display of petite capitals (OpenType feature: pcap).
-  case petiteCaps
+    /// Enables display of petite capitals (OpenType feature: pcap).
+    case petiteCaps
 
-  /// Enables display of petite capitals for both upper and lowercase letters
-  /// (OpenType features: c2pc, pcap).
-  case allPetiteCaps
+    /// Enables display of petite capitals for both upper and lowercase letters
+    /// (OpenType features: c2pc, pcap).
+    case allPetiteCaps
 
-  /// Enables display of mixture of small capitals for uppercase letters with normal
-  /// lowercase letters (OpenType feature: unic).
-  case unicase
+    /// Enables display of mixture of small capitals for uppercase letters with normal
+    /// lowercase letters (OpenType feature: unic).
+    case unicase
 
-  /// Enables display of titling capitals (OpenType feature: titl). Uppercase letter glyphs
-  /// are often designed for use with lowercase letters. When used in all uppercase titling
-  /// sequences they can appear too strong. Titling capitals are designed specifically for
-  /// this situation.
-  case titlingCaps
+    /// Enables display of titling capitals (OpenType feature: titl). Uppercase letter glyphs
+    /// are often designed for use with lowercase letters. When used in all uppercase titling
+    /// sequences they can appear too strong. Titling capitals are designed specifically for
+    /// this situation.
+    case titlingCaps
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .normal:
-      return "normal"
-    case .smallCaps:
-      return "small-caps"
-    case .allSmallCaps:
-      return "all-small-caps"
-    case .petiteCaps:
-      return "petite-caps"
-    case .allPetiteCaps:
-      return "all-petite-caps"
-    case .unicase:
-      return "unicase"
-    case .titlingCaps:
-      return "titling-caps"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .normal:
+            return "normal"
+        case .smallCaps:
+            return "small-caps"
+        case .allSmallCaps:
+            return "all-small-caps"
+        case .petiteCaps:
+            return "petite-caps"
+        case .allPetiteCaps:
+            return "all-petite-caps"
+        case .unicase:
+            return "unicase"
+        case .titlingCaps:
+            return "titling-caps"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

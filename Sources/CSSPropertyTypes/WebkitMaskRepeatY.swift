@@ -57,87 +57,87 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -webkit-mask-repeat-y](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-mask-repeat-y)
 public enum WebkitMaskRepeatY: Property {
-  public static let property: String = "-webkit-mask-repeat-y"
+    public static let property: String = "-webkit-mask-repeat-y"
 
-  /// Repeat the mask image vertically (default)
-  case `repeat`
+    /// Repeat the mask image vertically (default)
+    case `repeat`
 
-  /// Don't repeat the mask image vertically
-  case noRepeat
+    /// Don't repeat the mask image vertically
+    case noRepeat
 
-  /// Space mask images evenly in the vertical direction
-  case space
+    /// Space mask images evenly in the vertical direction
+    case space
 
-  /// Stretch and repeat mask images to fill the space in the vertical direction
-  case round
+    /// Stretch and repeat mask images to fill the space in the vertical direction
+    case round
 
-  /// Multiple repeat values for multiple masks
-  case multiple([WebkitMaskRepeatY])
+    /// Multiple repeat values for multiple masks
+    case multiple([WebkitMaskRepeatY])
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a mask repeat-y with multiple values
-  ///
-  /// - Parameter repeats: The repeat values for multiple masks
-  /// - Returns: A mask repeat-y with multiple values
-  public init(_ repeats: [WebkitMaskRepeatY]) {
-    if repeats.count == 1 {
-      self = repeats[0]
-    } else {
-      self = .multiple(repeats)
+    /// Creates a mask repeat-y with multiple values
+    ///
+    /// - Parameter repeats: The repeat values for multiple masks
+    /// - Returns: A mask repeat-y with multiple values
+    public init(_ repeats: [WebkitMaskRepeatY]) {
+        if repeats.count == 1 {
+            self = repeats[0]
+        } else {
+            self = .multiple(repeats)
+        }
     }
-  }
 }
 
 /// String conversion for WebkitMaskRepeatY
 extension WebkitMaskRepeatY: CustomStringConvertible {
-  /// Converts the -webkit-mask-repeat-y value to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// -webkit-mask-repeat-y: repeat;
-  /// -webkit-mask-repeat-y: no-repeat;
-  /// -webkit-mask-repeat-y: space;
-  /// -webkit-mask-repeat-y: round;
-  /// -webkit-mask-repeat-y: repeat, no-repeat;
-  /// ```
-  public var description: String {
-    switch self {
-    case .repeat:
-      return "repeat"
-    case .noRepeat:
-      return "no-repeat"
-    case .space:
-      return "space"
-    case .round:
-      return "round"
-    case .multiple(let repeats):
-      return repeats.map { $0.description }.joined(separator: ", ")
-    case .global(let global):
-      return global.description
+    /// Converts the -webkit-mask-repeat-y value to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// -webkit-mask-repeat-y: repeat;
+    /// -webkit-mask-repeat-y: no-repeat;
+    /// -webkit-mask-repeat-y: space;
+    /// -webkit-mask-repeat-y: round;
+    /// -webkit-mask-repeat-y: repeat, no-repeat;
+    /// ```
+    public var description: String {
+        switch self {
+        case .repeat:
+            return "repeat"
+        case .noRepeat:
+            return "no-repeat"
+        case .space:
+            return "space"
+        case .round:
+            return "round"
+        case .multiple(let repeats):
+            return repeats.map { $0.description }.joined(separator: ", ")
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for WebkitMaskRepeatY
 extension WebkitMaskRepeatY {
-  /// Default value (repeat)
-  public static let `default` = WebkitMaskRepeatY.repeat
+    /// Default value (repeat)
+    public static let `default` = WebkitMaskRepeatY.repeat
 
-  /// Creates a mask repeat-y with multiple values
-  ///
-  /// - Parameter repeats: The repeat values
-  /// - Returns: A mask repeat-y with multiple values
-  public static func values(_ repeats: [WebkitMaskRepeatY]) -> WebkitMaskRepeatY {
-    WebkitMaskRepeatY(repeats)
-  }
+    /// Creates a mask repeat-y with multiple values
+    ///
+    /// - Parameter repeats: The repeat values
+    /// - Returns: A mask repeat-y with multiple values
+    public static func values(_ repeats: [WebkitMaskRepeatY]) -> WebkitMaskRepeatY {
+        WebkitMaskRepeatY(repeats)
+    }
 
-  /// Creates a mask repeat-y with multiple values
-  ///
-  /// - Parameter repeats: The repeat values
-  /// - Returns: A mask repeat-y with multiple values
-  public static func values(_ repeats: WebkitMaskRepeatY...) -> WebkitMaskRepeatY {
-    values(repeats)
-  }
+    /// Creates a mask repeat-y with multiple values
+    ///
+    /// - Parameter repeats: The repeat values
+    /// - Returns: A mask repeat-y with multiple values
+    public static func values(_ repeats: WebkitMaskRepeatY...) -> WebkitMaskRepeatY {
+        values(repeats)
+    }
 }

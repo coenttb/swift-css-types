@@ -35,32 +35,32 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -webkit-text-stroke-color](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke-color)
 public enum WebkitTextStrokeColor: Property, ColorConvertible {
-  public static let property: String = "-webkit-text-stroke-color"
+    public static let property: String = "-webkit-text-stroke-color"
 
-  /// A specific color for the text stroke
-  case color(CSSTypeTypes.Color)
+    /// A specific color for the text stroke
+    case color(CSSTypeTypes.Color)
 
-  /// Current text color
-  case currentColor
+    /// Current text color
+    case currentColor
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a WebkitTextStrokeColor from a Color
-  ///
-  /// - Parameter color: The stroke color
-  public init(_ color: CSSTypeTypes.Color) {
-    self = .color(color)
-  }
-
-  public var description: String {
-    switch self {
-    case .color(let color):
-      return color.description
-    case .currentColor:
-      return "currentColor"
-    case .global(let global):
-      return global.description
+    /// Creates a WebkitTextStrokeColor from a Color
+    ///
+    /// - Parameter color: The stroke color
+    public init(_ color: CSSTypeTypes.Color) {
+        self = .color(color)
     }
-  }
+
+    public var description: String {
+        switch self {
+        case .color(let color):
+            return color.description
+        case .currentColor:
+            return "currentColor"
+        case .global(let global):
+            return global.description
+        }
+    }
 }

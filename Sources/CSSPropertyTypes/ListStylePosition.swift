@@ -17,26 +17,26 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on list-style-position](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position)
 public enum ListStylePosition: Property {
-  public static let property: String = "list-style-position"
-  /// Marker is placed inside the principal block box
-  case inside
+    public static let property: String = "list-style-position"
+    /// Marker is placed inside the principal block box
+    case inside
 
-  /// Marker is placed outside the principal block box (default)
-  case outside
+    /// Marker is placed outside the principal block box (default)
+    case outside
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  // MARK: - CustomStringConvertible
+    // MARK: - CustomStringConvertible
 
-  public var description: String {
-    switch self {
-    case .inside:
-      return "inside"
-    case .outside:
-      return "outside"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .inside:
+            return "inside"
+        case .outside:
+            return "outside"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

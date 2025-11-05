@@ -15,21 +15,21 @@ import CSSTypeTypes
 /// scroll-padding-inline-end: 10%;
 /// ```
 public enum ScrollPaddingInlineEnd: Property, LengthPercentageConvertible, CustomStringConvertible {
-  public static let property: String = "scroll-padding-inline-end"
+    public static let property: String = "scroll-padding-inline-end"
 
-  /// Keyword values
-  case auto
+    /// Keyword values
+    case auto
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto: return "auto"
-    case .lengthPercentage(let lengthPercentage): return lengthPercentage.description
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .auto: return "auto"
+        case .lengthPercentage(let lengthPercentage): return lengthPercentage.description
+        case .global(let global): return global.description
+        }
     }
-  }
 }

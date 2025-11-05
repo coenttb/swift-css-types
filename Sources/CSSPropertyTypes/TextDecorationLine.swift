@@ -2,16 +2,16 @@ import CSSTypeTypes
 import Foundation
 
 public enum TextDecorationLine: Property {
-  public static let property: String = "text-decoration-line"
+    public static let property: String = "text-decoration-line"
 
-  /// A single value
-  case value(TextDecorationLineValue)
+    /// A single value
+    case value(TextDecorationLineValue)
 
-  /// Multiple values
-  case values([TextDecorationLineValue])
+    /// Multiple values
+    case values([TextDecorationLineValue])
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 /// Sets the kind of decoration that is used on text in an element, such as an underline or overline.
@@ -39,59 +39,59 @@ public enum TextDecorationLine: Property {
 /// text-decoration-line: underline overline;
 /// ```
 public enum TextDecorationLineValue: Sendable, Hashable, CustomStringConvertible {
-  /// Produces no text decoration.
-  case none
+    /// Produces no text decoration.
+    case none
 
-  /// Each line of text has a decorative line beneath it.
-  case underline
+    /// Each line of text has a decorative line beneath it.
+    case underline
 
-  /// Each line of text has a decorative line above it.
-  case overline
+    /// Each line of text has a decorative line above it.
+    case overline
 
-  /// Each line of text has a decorative line going through its middle.
-  case lineThrough
+    /// Each line of text has a decorative line going through its middle.
+    case lineThrough
 
-  /// The text blinks (alternates between visible and invisible).
-  /// Note: This value is deprecated in favor of CSS animations.
-  case blink
+    /// The text blinks (alternates between visible and invisible).
+    /// Note: This value is deprecated in favor of CSS animations.
+    case blink
 
-  /// Each line of text uses the user agents' method of highlighting spelling mistakes,
-  /// which is a dotted red line in most browsers.
-  case spellingError
+    /// Each line of text uses the user agents' method of highlighting spelling mistakes,
+    /// which is a dotted red line in most browsers.
+    case spellingError
 
-  /// Each line of text uses the user agents' method of highlighting grammar mistakes,
-  /// which is a dotted green line in most browsers.
-  case grammarError
+    /// Each line of text uses the user agents' method of highlighting grammar mistakes,
+    /// which is a dotted green line in most browsers.
+    case grammarError
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .underline:
-      return "underline"
-    case .overline:
-      return "overline"
-    case .lineThrough:
-      return "line-through"
-    case .blink:
-      return "blink"
-    case .spellingError:
-      return "spelling-error"
-    case .grammarError:
-      return "grammar-error"
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .underline:
+            return "underline"
+        case .overline:
+            return "overline"
+        case .lineThrough:
+            return "line-through"
+        case .blink:
+            return "blink"
+        case .spellingError:
+            return "spelling-error"
+        case .grammarError:
+            return "grammar-error"
+        }
     }
-  }
 }
 
 extension TextDecorationLine: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .value(let value):
-      return value.description
-    case .values(let values):
-      return values.map { $0.description }.joined(separator: " ")
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .value(let value):
+            return value.description
+        case .values(let values):
+            return values.map { $0.description }.joined(separator: " ")
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

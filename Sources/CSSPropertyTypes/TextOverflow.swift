@@ -18,33 +18,33 @@ import Foundation
 /// text-overflow: "...";
 /// ```
 public enum TextOverflow: Property {
-  public static let property: String = "text-overflow"
+    public static let property: String = "text-overflow"
 
-  /// Default value. Text is clipped and not accessible.
-  case clip
+    /// Default value. Text is clipped and not accessible.
+    case clip
 
-  /// Render an ellipsis ('…') to represent the clipped text.
-  case ellipsis
+    /// Render an ellipsis ('…') to represent the clipped text.
+    case ellipsis
 
-  /// Render the given string to represent the clipped text.
-  /// Only some browsers support this feature.
-  case string(CSSString)
+    /// Render the given string to represent the clipped text.
+    /// Only some browsers support this feature.
+    case string(CSSString)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 extension TextOverflow: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .clip:
-      return "clip"
-    case .ellipsis:
-      return "ellipsis"
-    case .string(let value):
-      return value.description
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .clip:
+            return "clip"
+        case .ellipsis:
+            return "ellipsis"
+        case .string(let value):
+            return value.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

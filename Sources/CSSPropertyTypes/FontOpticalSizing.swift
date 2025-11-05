@@ -15,26 +15,26 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on font-optical-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/font-optical-sizing)
 public enum FontOpticalSizing: Property {
-  public static let property: String = "font-optical-sizing"
+    public static let property: String = "font-optical-sizing"
 
-  /// The browser will modify the shape of glyphs for optimal viewing.
-  /// This is the default in supporting browsers.
-  case auto
+    /// The browser will modify the shape of glyphs for optimal viewing.
+    /// This is the default in supporting browsers.
+    case auto
 
-  /// The browser will not modify the shape of glyphs for optimal viewing.
-  case none
+    /// The browser will not modify the shape of glyphs for optimal viewing.
+    case none
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .none:
-      return "none"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .none:
+            return "none"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

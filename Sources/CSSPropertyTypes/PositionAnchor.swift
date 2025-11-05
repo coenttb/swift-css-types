@@ -44,34 +44,34 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on position-anchor](https://developer.mozilla.org/en-US/docs/Web/CSS/position-anchor)
 public enum PositionAnchor: Property {
-  public static let property: String = "position-anchor"
+    public static let property: String = "position-anchor"
 
-  /// Associates a positioned element with its implicit anchor element, if it has one
-  /// (for example, as set by the non-standard HTML anchor attribute)
-  case auto
+    /// Associates a positioned element with its implicit anchor element, if it has one
+    /// (for example, as set by the non-standard HTML anchor attribute)
+    case auto
 
-  /// The name of the anchor element to associate the positioned element with
-  case anchorName(DashedIdent)
+    /// The name of the anchor element to associate the positioned element with
+    case anchorName(DashedIdent)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a position anchor using a string value
-  ///
-  /// - Parameter name: The anchor name (with or without dashes)
-  /// - Returns: A position anchor with the specified name
-  public static func anchorName(_ name: String) -> PositionAnchor {
-    .anchorName(DashedIdent(name))
-  }
-
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .anchorName(let name):
-      return name.description
-    case .global(let global):
-      return global.description
+    /// Creates a position anchor using a string value
+    ///
+    /// - Parameter name: The anchor name (with or without dashes)
+    /// - Returns: A position anchor with the specified name
+    public static func anchorName(_ name: String) -> PositionAnchor {
+        .anchorName(DashedIdent(name))
     }
-  }
+
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .anchorName(let name):
+            return name.description
+        case .global(let global):
+            return global.description
+        }
+    }
 }

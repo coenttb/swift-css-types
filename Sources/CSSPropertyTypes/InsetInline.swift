@@ -25,73 +25,73 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on inset-inline](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline)
 public enum InsetInline: Property, LengthPercentageConvertible {
-  public static let property: String = "inset-inline"
+    public static let property: String = "inset-inline"
 
-  /// Auto value for both start and end
-  case auto
-
-  /// Same value for both start and end
-  case same(LengthPercentage)
-
-  /// Different values for start and end
-  case sides(start: LengthPercentage, end: LengthPercentage?)
-
-  /// Global values
-  case global(CSSTypeTypes.Global)
-
-  /// Represents a value that can be either a length/percentage or auto
-  public enum Value: Hashable, Sendable {
-    /// Auto value (browser-determined)
+    /// Auto value for both start and end
     case auto
 
-    /// Specific length or percentage value
-    case lengthPercentage(LengthPercentage)
+    /// Same value for both start and end
+    case same(LengthPercentage)
+
+    /// Different values for start and end
+    case sides(start: LengthPercentage, end: LengthPercentage?)
+
+    /// Global values
+    case global(CSSTypeTypes.Global)
+
+    /// Represents a value that can be either a length/percentage or auto
+    public enum Value: Hashable, Sendable {
+        /// Auto value (browser-determined)
+        case auto
+
+        /// Specific length or percentage value
+        case lengthPercentage(LengthPercentage)
+
+        public var description: String {
+            switch self {
+            case .auto:
+                return "auto"
+            case .lengthPercentage(let lengthPercentage):
+                return lengthPercentage.description
+            }
+        }
+    }
 
     public var description: String {
-      switch self {
-      case .auto:
-        return "auto"
-      case .lengthPercentage(let lengthPercentage):
-        return lengthPercentage.description
-      }
-    }
-  }
+        switch self {
+        case .auto:
+            return "auto"
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
+        case .same(let value):
+            return value.description
 
-    case .same(let value):
-      return value.description
+        case .sides(let start, let end):
+            if start == end {
+                return start.description
+            } else {
+                switch end {
+                case .some(let end):
+                    return "\(start.description) \(end.description)"
+                case .none:
+                    return start.description
+                }
+            }
 
-    case .sides(let start, let end):
-      if start == end {
-        return start.description
-      } else {
-        switch end {
-        case .some(let end):
-          return "\(start.description) \(end.description)"
-        case .none:
-          return start.description
+        case .global(let global):
+            return global.description
         }
-      }
-
-    case .global(let global):
-      return global.description
     }
-  }
 }
 
 /// Convenience initializers for InsetInline
 extension InsetInline {
-  public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> InsetInline {
-    .same(value)
-  }
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> InsetInline {
+        .same(value)
+    }
 
-  /// Creates an inset-inline with start and end values
-  public init(start: LengthPercentage, end: LengthPercentage) {
-    self = .sides(start: start, end: end)
-  }
+    /// Creates an inset-inline with start and end values
+    public init(start: LengthPercentage, end: LengthPercentage) {
+        self = .sides(start: start, end: end)
+    }
 
 }

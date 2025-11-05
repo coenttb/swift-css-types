@@ -30,7 +30,7 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::after](https://developer.mozilla.org/en-US/docs/Web/CSS/::after)
 public struct After: CSSPseudoElement {
-  @inlinable public static var name: String { "after" }
+    @inlinable public static var name: String { "after" }
 
-  public init() {}
+    public init() {}
 }

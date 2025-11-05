@@ -30,42 +30,42 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -webkit-text-stroke-width](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke-width)
 public enum WebkitTextStrokeWidth: Property, LengthConvertible {
-  public static let property: String = "-webkit-text-stroke-width"
+    public static let property: String = "-webkit-text-stroke-width"
 
-  /// Thin stroke width
-  case thin
+    /// Thin stroke width
+    case thin
 
-  /// Medium stroke width
-  case medium
+    /// Medium stroke width
+    case medium
 
-  /// Thick stroke width
-  case thick
+    /// Thick stroke width
+    case thick
 
-  /// Custom length value
-  case length(Length)
+    /// Custom length value
+    case length(Length)
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a WebkitTextStrokeWidth from a Length
-  ///
-  /// - Parameter length: The stroke width as a length
-  public init(_ length: Length) {
-    self = .length(length)
-  }
-
-  public var description: String {
-    switch self {
-    case .thin:
-      return "thin"
-    case .medium:
-      return "medium"
-    case .thick:
-      return "thick"
-    case .length(let length):
-      return length.description
-    case .global(let global):
-      return global.description
+    /// Creates a WebkitTextStrokeWidth from a Length
+    ///
+    /// - Parameter length: The stroke width as a length
+    public init(_ length: Length) {
+        self = .length(length)
     }
-  }
+
+    public var description: String {
+        switch self {
+        case .thin:
+            return "thin"
+        case .medium:
+            return "medium"
+        case .thick:
+            return "thick"
+        case .length(let length):
+            return length.description
+        case .global(let global):
+            return global.description
+        }
+    }
 }

@@ -48,75 +48,75 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-block-start-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start-style)
 public enum BorderBlockStartStyle: Property {
 
-  public static let property: String = "border-block-start-style"
+    public static let property: String = "border-block-start-style"
 
-  /// A specific line style for the block-start border
-  case lineStyle(LineStyle)
+    /// A specific line style for the block-start border
+    case lineStyle(LineStyle)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a border-block-start-style with a specific line style
-  ///
-  /// - Parameter style: The line style for the block-start border
-  public init(_ style: LineStyle) {
-    self = .lineStyle(style)
-  }
+    /// Creates a border-block-start-style with a specific line style
+    ///
+    /// - Parameter style: The line style for the block-start border
+    public init(_ style: LineStyle) {
+        self = .lineStyle(style)
+    }
 }
 
 /// Provides string conversion for CSS output
 extension BorderBlockStartStyle: CustomStringConvertible {
-  /// Converts the border-block-start-style to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// border-block-start-style: solid;
-  /// border-block-start-style: dotted;
-  /// border-block-start-style: dashed;
-  /// border-block-start-style: double;
-  /// ```
-  public var description: String {
-    switch self {
-    case .lineStyle(let lineStyle):
-      return lineStyle.description
-    case .global(let global):
-      return global.description
+    /// Converts the border-block-start-style to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// border-block-start-style: solid;
+    /// border-block-start-style: dotted;
+    /// border-block-start-style: dashed;
+    /// border-block-start-style: double;
+    /// ```
+    public var description: String {
+        switch self {
+        case .lineStyle(let lineStyle):
+            return lineStyle.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for creating BorderBlockStartStyle values
 extension BorderBlockStartStyle {
-  /// The default border-block-start-style value (none)
-  public static let `default` = BorderBlockStartStyle(.none)
+    /// The default border-block-start-style value (none)
+    public static let `default` = BorderBlockStartStyle(.none)
 
-  /// Creates a none border-block-start-style (invisible)
-  public static let none = BorderBlockStartStyle(.none)
+    /// Creates a none border-block-start-style (invisible)
+    public static let none = BorderBlockStartStyle(.none)
 
-  /// Creates a hidden border-block-start-style (invisible, high priority in border collapsing)
-  public static let hidden = BorderBlockStartStyle(.hidden)
+    /// Creates a hidden border-block-start-style (invisible, high priority in border collapsing)
+    public static let hidden = BorderBlockStartStyle(.hidden)
 
-  /// Creates a solid border-block-start-style
-  public static let solid = BorderBlockStartStyle(.solid)
+    /// Creates a solid border-block-start-style
+    public static let solid = BorderBlockStartStyle(.solid)
 
-  /// Creates a dotted border-block-start-style
-  public static let dotted = BorderBlockStartStyle(.dotted)
+    /// Creates a dotted border-block-start-style
+    public static let dotted = BorderBlockStartStyle(.dotted)
 
-  /// Creates a dashed border-block-start-style
-  public static let dashed = BorderBlockStartStyle(.dashed)
+    /// Creates a dashed border-block-start-style
+    public static let dashed = BorderBlockStartStyle(.dashed)
 
-  /// Creates a double border-block-start-style
-  public static let double = BorderBlockStartStyle(.double)
+    /// Creates a double border-block-start-style
+    public static let double = BorderBlockStartStyle(.double)
 
-  /// Creates a groove border-block-start-style
-  public static let groove = BorderBlockStartStyle(.groove)
+    /// Creates a groove border-block-start-style
+    public static let groove = BorderBlockStartStyle(.groove)
 
-  /// Creates a ridge border-block-start-style
-  public static let ridge = BorderBlockStartStyle(.ridge)
+    /// Creates a ridge border-block-start-style
+    public static let ridge = BorderBlockStartStyle(.ridge)
 
-  /// Creates a inset border-block-start-style
-  public static let inset = BorderBlockStartStyle(.inset)
+    /// Creates a inset border-block-start-style
+    public static let inset = BorderBlockStartStyle(.inset)
 
-  /// Creates a outset border-block-start-style
-  public static let outset = BorderBlockStartStyle(.outset)
+    /// Creates a outset border-block-start-style
+    public static let outset = BorderBlockStartStyle(.outset)
 }

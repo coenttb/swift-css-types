@@ -53,94 +53,94 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on background-position-y](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-y)
 public enum BackgroundPositionY: Property {
-  public static let property: String = "background-position-y"
+    public static let property: String = "background-position-y"
 
-  /// A vertical position with a keyword value
-  case keyword(Keyword)
+    /// A vertical position with a keyword value
+    case keyword(Keyword)
 
-  /// A vertical position with a length or percentage
-  case lengthPercentage(LengthPercentage)
+    /// A vertical position with a length or percentage
+    case lengthPercentage(LengthPercentage)
 
-  /// A vertical position with an edge offset
-  case offset(Keyword, LengthPercentage)
+    /// A vertical position with an edge offset
+    case offset(Keyword, LengthPercentage)
 
-  /// Multiple vertical positions for multiple backgrounds
-  case multiple([BackgroundPositionY])
+    /// Multiple vertical positions for multiple backgrounds
+    case multiple([BackgroundPositionY])
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Position keywords for vertical alignment
-  public enum Keyword: String, Sendable, Hashable {
-    /// Top edge
-    case top
+    /// Position keywords for vertical alignment
+    public enum Keyword: String, Sendable, Hashable {
+        /// Top edge
+        case top
 
-    /// Vertical center
-    case center
+        /// Vertical center
+        case center
 
-    /// Bottom edge
-    case bottom
-  }
+        /// Bottom edge
+        case bottom
+    }
 }
 
 /// Provides string conversion for CSS output
 extension BackgroundPositionY: CustomStringConvertible {
-  /// Converts the background-position-y value to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// background-position-y: top;
-  /// background-position-y: center;
-  /// background-position-y: 25%;
-  /// background-position-y: bottom 20px;
-  /// background-position-y: top, bottom;
-  /// ```
-  public var description: String {
-    switch self {
-    case .keyword(let keyword):
-      return keyword.rawValue
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .offset(let keyword, let value):
-      return "\(keyword.rawValue) \(value)"
-    case .multiple(let positions):
-      return positions.map { $0.description }.joined(separator: ", ")
-    case .global(let global):
-      return global.description
+    /// Converts the background-position-y value to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// background-position-y: top;
+    /// background-position-y: center;
+    /// background-position-y: 25%;
+    /// background-position-y: bottom 20px;
+    /// background-position-y: top, bottom;
+    /// ```
+    public var description: String {
+        switch self {
+        case .keyword(let keyword):
+            return keyword.rawValue
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .offset(let keyword, let value):
+            return "\(keyword.rawValue) \(value)"
+        case .multiple(let positions):
+            return positions.map { $0.description }.joined(separator: ", ")
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Default value and convenience methods
 extension BackgroundPositionY {
-  /// The default value for background-position-y (`0%`)
-  public static let `default` = BackgroundPositionY.lengthPercentage(.percentage(0))
+    /// The default value for background-position-y (`0%`)
+    public static let `default` = BackgroundPositionY.lengthPercentage(.percentage(0))
 
-  /// Top position (0%)
-  public static let top = BackgroundPositionY.keyword(.top)
+    /// Top position (0%)
+    public static let top = BackgroundPositionY.keyword(.top)
 
-  /// Center position (50%)
-  public static let center = BackgroundPositionY.keyword(.center)
+    /// Center position (50%)
+    public static let center = BackgroundPositionY.keyword(.center)
 
-  /// Bottom position (100%)
-  public static let bottom = BackgroundPositionY.keyword(.bottom)
+    /// Bottom position (100%)
+    public static let bottom = BackgroundPositionY.keyword(.bottom)
 
-  /// Creates a position with multiple values
-  ///
-  /// - Parameter positions: The vertical position values
-  /// - Returns: A vertical position with multiple values
-  public static func values(_ positions: [BackgroundPositionY]) -> BackgroundPositionY {
-    if positions.count == 1, case let position = positions[0] {
-      return position
+    /// Creates a position with multiple values
+    ///
+    /// - Parameter positions: The vertical position values
+    /// - Returns: A vertical position with multiple values
+    public static func values(_ positions: [BackgroundPositionY]) -> BackgroundPositionY {
+        if positions.count == 1, case let position = positions[0] {
+            return position
+        }
+        return .multiple(positions)
     }
-    return .multiple(positions)
-  }
 
-  /// Creates a position with multiple values
-  ///
-  /// - Parameter positions: The vertical position values
-  /// - Returns: A vertical position with multiple values
-  public static func values(_ positions: BackgroundPositionY...) -> BackgroundPositionY {
-    values(positions)
-  }
+    /// Creates a position with multiple values
+    ///
+    /// - Parameter positions: The vertical position values
+    /// - Returns: A vertical position with multiple values
+    public static func values(_ positions: BackgroundPositionY...) -> BackgroundPositionY {
+        values(positions)
+    }
 }

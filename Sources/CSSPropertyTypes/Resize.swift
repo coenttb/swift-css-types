@@ -25,45 +25,45 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize)
 public enum Resize: Property {
-  public static let property: String = "resize"
+    public static let property: String = "resize"
 
-  /// Element can't be resized by the user
-  case none
+    /// Element can't be resized by the user
+    case none
 
-  /// Element can be resized both horizontally and vertically
-  case both
+    /// Element can be resized both horizontally and vertically
+    case both
 
-  /// Element can only be resized horizontally
-  case horizontal
+    /// Element can only be resized horizontally
+    case horizontal
 
-  /// Element can only be resized vertically
-  case vertical
+    /// Element can only be resized vertically
+    case vertical
 
-  /// Element can be resized in the block direction (depends on writing mode)
-  case block
+    /// Element can be resized in the block direction (depends on writing mode)
+    case block
 
-  /// Element can be resized in the inline direction (depends on writing mode)
-  case inline
+    /// Element can be resized in the inline direction (depends on writing mode)
+    case inline
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .both:
-      return "both"
-    case .horizontal:
-      return "horizontal"
-    case .vertical:
-      return "vertical"
-    case .block:
-      return "block"
-    case .inline:
-      return "inline"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .both:
+            return "both"
+        case .horizontal:
+            return "horizontal"
+        case .vertical:
+            return "vertical"
+        case .block:
+            return "block"
+        case .inline:
+            return "inline"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

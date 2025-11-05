@@ -15,30 +15,30 @@ import CSSTypeTypes
 /// scroll-padding-top: 10%;
 /// ```
 public enum ScrollPaddingTop: Property, LengthPercentageConvertible, CustomStringConvertible {
-  public static let property: String = "scroll-padding-top"
-  /// Keyword values
-  case auto
+    public static let property: String = "scroll-padding-top"
+    /// Keyword values
+    case auto
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto: return "auto"
-    case .lengthPercentage(let lengthPercentage): return lengthPercentage.description
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .auto: return "auto"
+        case .lengthPercentage(let lengthPercentage): return lengthPercentage.description
+        case .global(let global): return global.description
+        }
     }
-  }
 
-  /// Creates a ScrollPaddingTop using a length
-  public static func px(_ value: Double) -> Self {
-    .length(.px(value))
-  }
+    /// Creates a ScrollPaddingTop using a length
+    public static func px(_ value: Double) -> Self {
+        .length(.px(value))
+    }
 
-  /// Creates a ScrollPaddingTop using a percentage
-  public static func percent(_ value: Double) -> Self {
-    .percentage(.init(value))
-  }
+    /// Creates a ScrollPaddingTop using a percentage
+    public static func percent(_ value: Double) -> Self {
+        .percentage(.init(value))
+    }
 }

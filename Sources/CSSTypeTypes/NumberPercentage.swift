@@ -18,42 +18,42 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on number-percentage](https://developer.mozilla.org/en-US/docs/Web/CSS/number-percentage)
 public enum NumberPercentage: Sendable, Hashable, NumberConvertible, PercentageConvertible {
-  /// A number value with a specific unit
-  case number(Number)
+    /// A number value with a specific unit
+    case number(Number)
 
-  /// A percentage value
-  case percentage(Percentage)
+    /// A percentage value
+    case percentage(Percentage)
 }
 
 /// Provides string conversion for CSS output
 extension NumberPercentage: CustomStringConvertible {
-  /// Converts the number-percentage to its CSS string representation
-  public var description: String {
-    switch self {
-    case .number(let number):
-      return number.description
-    case .percentage(let percentage):
-      return percentage.description
+    /// Converts the number-percentage to its CSS string representation
+    public var description: String {
+        switch self {
+        case .number(let number):
+            return number.description
+        case .percentage(let percentage):
+            return percentage.description
+        }
     }
-  }
 }
 
 /// Allow creation of NumberPercentage values from integer literals
 extension NumberPercentage: ExpressibleByIntegerLiteral {
-  /// Creates a number-percentage from an integer literal (pixels)
-  ///
-  /// - Parameter value: The pixel value as an integer
-  public init(integerLiteral value: IntegerLiteralType) {
-    self = .number(.init(value))
-  }
+    /// Creates a number-percentage from an integer literal (pixels)
+    ///
+    /// - Parameter value: The pixel value as an integer
+    public init(integerLiteral value: IntegerLiteralType) {
+        self = .number(.init(value))
+    }
 }
 
 /// Allow creation of NumberPercentage values from floating point literals
 extension NumberPercentage: ExpressibleByFloatLiteral {
-  /// Creates a number-percentage from a floating point literal (pixels)
-  ///
-  /// - Parameter value: The pixel value as a double
-  public init(floatLiteral value: FloatLiteralType) {
-    self = .number(.init(value))
-  }
+    /// Creates a number-percentage from a floating point literal (pixels)
+    ///
+    /// - Parameter value: The pixel value as a double
+    public init(floatLiteral value: FloatLiteralType) {
+        self = .number(.init(value))
+    }
 }

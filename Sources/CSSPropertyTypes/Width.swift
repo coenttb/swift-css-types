@@ -23,49 +23,49 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
 public enum Width: Property, LengthPercentageConvertible {
-  public static let property: String = "width"
+    public static let property: String = "width"
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// The browser calculates and selects a width for the specified element
-  case auto
+    /// The browser calculates and selects a width for the specified element
+    case auto
 
-  /// The intrinsic preferred width
-  case maxContent
+    /// The intrinsic preferred width
+    case maxContent
 
-  /// The intrinsic minimum width
-  case minContent
+    /// The intrinsic minimum width
+    case minContent
 
-  /// Uses the available space, but not more than max-content
-  case fitContent
+    /// Uses the available space, but not more than max-content
+    case fitContent
 
-  /// Uses the fit-content formula with the available space replaced by the specified argument
-  case fitContentLength(LengthPercentage)
+    /// Uses the fit-content formula with the available space replaced by the specified argument
+    case fitContentLength(LengthPercentage)
 
-  /// Sets the width of the element's margin box to the width of its containing block
-  case stretch
+    /// Sets the width of the element's margin box to the width of its containing block
+    case stretch
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .auto:
-      return "auto"
-    case .maxContent:
-      return "max-content"
-    case .minContent:
-      return "min-content"
-    case .fitContent:
-      return "fit-content"
-    case .fitContentLength(let lengthPercentage):
-      return "fit-content(\(lengthPercentage.description))"
-    case .stretch:
-      return "stretch"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .auto:
+            return "auto"
+        case .maxContent:
+            return "max-content"
+        case .minContent:
+            return "min-content"
+        case .fitContent:
+            return "fit-content"
+        case .fitContentLength(let lengthPercentage):
+            return "fit-content(\(lengthPercentage.description))"
+        case .stretch:
+            return "stretch"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

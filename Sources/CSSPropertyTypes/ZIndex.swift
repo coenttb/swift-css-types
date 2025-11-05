@@ -18,40 +18,40 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
 public enum ZIndex: Property {
-  public static let property: String = "z-index"
+    public static let property: String = "z-index"
 
-  /// The box does not establish a new local stacking context.
-  /// The stack level of the generated box in the current stacking context is 0.
-  case auto
+    /// The box does not establish a new local stacking context.
+    /// The stack level of the generated box in the current stacking context is 0.
+    case auto
 
-  /// This integer is the stack level of the generated box in the current stacking context.
-  /// The box also establishes a local stacking context.
-  case integer(Int)
+    /// This integer is the stack level of the generated box in the current stacking context.
+    /// The box also establishes a local stacking context.
+    case integer(Int)
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .integer(let value):
-      return "\(value)"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .integer(let value):
+            return "\(value)"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension ZIndex: ExpressibleByIntegerLiteral {
-  /// Creates a z-index with an integer value
-  ///
-  /// This allows you to use integers directly where z-index values are expected.
-  ///
-  /// ```swift
-  /// .zIndex(5)  // equivalent to .zIndex(.integer(5))
-  /// ```
-  public init(integerLiteral value: Int) {
-    self = .integer(value)
-  }
+    /// Creates a z-index with an integer value
+    ///
+    /// This allows you to use integers directly where z-index values are expected.
+    ///
+    /// ```swift
+    /// .zIndex(5)  // equivalent to .zIndex(.integer(5))
+    /// ```
+    public init(integerLiteral value: Int) {
+        self = .integer(value)
+    }
 }

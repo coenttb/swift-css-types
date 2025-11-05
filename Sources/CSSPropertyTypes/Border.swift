@@ -49,114 +49,114 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
 public enum Border: Property {
 
-  public static let property: String = "border"
+    public static let property: String = "border"
 
-  /// Specifies border properties (width, style, color)
-  /// Note that per CSS spec, these can be specified in any order
-  case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
+    /// Specifies border properties (width, style, color)
+    /// Note that per CSS spec, these can be specified in any order
+    case properties(width: BorderWidth? = nil, style: LineStyle? = nil, color: Color? = nil)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  public init(
-    width: BorderWidth? = nil,
-    style: LineStyle? = nil,
-    color: Color? = nil
-  ) {
-    self = .properties(width: width, style: style, color: color)
-  }
+    public init(
+        width: BorderWidth? = nil,
+        style: LineStyle? = nil,
+        color: Color? = nil
+    ) {
+        self = .properties(width: width, style: style, color: color)
+    }
 }
 
 /// Provides string conversion for CSS output
 extension Border: CustomStringConvertible {
-  /// Converts the border to its CSS string representation
-  ///
-  /// ```css
-  /// border: solid;
-  /// border: dashed red;
-  /// border: 2px dotted;
-  /// border: 3px double blue;
-  /// border: thick ridge rgba(50, 161, 206, 0.8);
-  /// border: inherit;
-  /// ```
-  public var description: String {
-    switch self {
-    case .properties(let width, let style, let color):
-      var parts: [String] = []
+    /// Converts the border to its CSS string representation
+    ///
+    /// ```css
+    /// border: solid;
+    /// border: dashed red;
+    /// border: 2px dotted;
+    /// border: 3px double blue;
+    /// border: thick ridge rgba(50, 161, 206, 0.8);
+    /// border: inherit;
+    /// ```
+    public var description: String {
+        switch self {
+        case .properties(let width, let style, let color):
+            var parts: [String] = []
 
-      if let width = width {
-        parts.append(width.description)
-      }
+            if let width = width {
+                parts.append(width.description)
+            }
 
-      if let style = style {
-        parts.append(style.description)
-      }
+            if let style = style {
+                parts.append(style.description)
+            }
 
-      if let color = color {
-        parts.append(color.description)
-      }
+            if let color = color {
+                parts.append(color.description)
+            }
 
-      return parts.isEmpty ? "none" : parts.joined(separator: " ")
+            return parts.isEmpty ? "none" : parts.joined(separator: " ")
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for creating Border objects
 extension Border {
-  /// Creates a none border (invisible)
-  public static let none = Border.properties(style: LineStyle.none)
+    /// Creates a none border (invisible)
+    public static let none = Border.properties(style: LineStyle.none)
 
-  /// Creates a hidden border (invisible, high priority in border collapsing)
-  public static let hidden = Border.properties(style: .hidden)
+    /// Creates a hidden border (invisible, high priority in border collapsing)
+    public static let hidden = Border.properties(style: .hidden)
 
-  /// Creates a solid border with default width and color
-  public static let solid = Border.properties(style: .solid)
+    /// Creates a solid border with default width and color
+    public static let solid = Border.properties(style: .solid)
 
-  /// Creates a dotted border with default width and color
-  public static let dotted = Border.properties(style: .dotted)
+    /// Creates a dotted border with default width and color
+    public static let dotted = Border.properties(style: .dotted)
 
-  /// Creates a dashed border with default width and color
-  public static let dashed = Border.properties(style: .dashed)
+    /// Creates a dashed border with default width and color
+    public static let dashed = Border.properties(style: .dashed)
 
-  /// Creates a double border with default width and color
-  public static let double = Border.properties(style: .double)
+    /// Creates a double border with default width and color
+    public static let double = Border.properties(style: .double)
 
-  /// Creates a groove border with default width and color
-  public static let groove = Border.properties(style: .groove)
+    /// Creates a groove border with default width and color
+    public static let groove = Border.properties(style: .groove)
 
-  /// Creates a ridge border with default width and color
-  public static let ridge = Border.properties(style: .ridge)
+    /// Creates a ridge border with default width and color
+    public static let ridge = Border.properties(style: .ridge)
 
-  /// Creates a inset border with default width and color
-  public static let inset = Border.properties(style: .inset)
+    /// Creates a inset border with default width and color
+    public static let inset = Border.properties(style: .inset)
 
-  /// Creates a outset border with default width and color
-  public static let outset = Border.properties(style: .outset)
+    /// Creates a outset border with default width and color
+    public static let outset = Border.properties(style: .outset)
 
-  /// Creates a thin border with the specified style
-  ///
-  /// - Parameter style: The border style
-  /// - Returns: A thin border with the specified style
-  public static func thin(_ style: LineStyle) -> Border {
-    .properties(width: .thin, style: style)
-  }
+    /// Creates a thin border with the specified style
+    ///
+    /// - Parameter style: The border style
+    /// - Returns: A thin border with the specified style
+    public static func thin(_ style: LineStyle) -> Border {
+        .properties(width: .thin, style: style)
+    }
 
-  /// Creates a medium border with the specified style
-  ///
-  /// - Parameter style: The border style
-  /// - Returns: A medium border with the specified style
-  public static func medium(_ style: LineStyle) -> Border {
-    .properties(width: .medium, style: style)
-  }
+    /// Creates a medium border with the specified style
+    ///
+    /// - Parameter style: The border style
+    /// - Returns: A medium border with the specified style
+    public static func medium(_ style: LineStyle) -> Border {
+        .properties(width: .medium, style: style)
+    }
 
-  /// Creates a thick border with the specified style
-  ///
-  /// - Parameter style: The border style
-  /// - Returns: A thick border with the specified style
-  public static func thick(_ style: LineStyle) -> Border {
-    .properties(width: .thick, style: style)
-  }
+    /// Creates a thick border with the specified style
+    ///
+    /// - Parameter style: The border style
+    /// - Returns: A thick border with the specified style
+    public static func thick(_ style: LineStyle) -> Border {
+        .properties(width: .thick, style: style)
+    }
 }

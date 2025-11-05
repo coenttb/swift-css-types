@@ -18,43 +18,43 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on padding-block-start](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block-start)
 public enum PaddingBlockStart: Property, LengthPercentageConvertible {
-  public static let property: String = "padding-block-start"
+    public static let property: String = "padding-block-start"
 
-  /// A length or percentage value for the block-start padding
-  case lengthPercentage(LengthPercentage)
+    /// A length or percentage value for the block-start padding
+    case lengthPercentage(LengthPercentage)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension PaddingBlockStart: CustomStringConvertible {
-  /// Converts the padding-block-start value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
+    /// Converts the padding-block-start value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension PaddingBlockStart: ExpressibleByIntegerLiteral {
-  /// Creates a padding-block-start from an integer literal (interpreted as pixels)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(integerLiteral value: Int) {
-    self = .lengthPercentage(.px(Double(value)))
-  }
+    /// Creates a padding-block-start from an integer literal (interpreted as pixels)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(integerLiteral value: Int) {
+        self = .lengthPercentage(.px(Double(value)))
+    }
 }
 
 extension PaddingBlockStart: ExpressibleByFloatLiteral {
-  /// Creates a padding-block-start from a floating-point literal (interpreted as pixels)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(floatLiteral value: Double) {
-    self = .lengthPercentage(.px(value))
-  }
+    /// Creates a padding-block-start from a floating-point literal (interpreted as pixels)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(floatLiteral value: Double) {
+        self = .lengthPercentage(.px(value))
+    }
 }

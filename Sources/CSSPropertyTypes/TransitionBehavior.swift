@@ -22,24 +22,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on transition-behavior](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior)
 public enum TransitionBehavior: Property {
-  public static let property: String = "transition-behavior"
-  /// Allow transitions for discrete properties
-  case allowDiscrete
+    public static let property: String = "transition-behavior"
+    /// Allow transitions for discrete properties
+    case allowDiscrete
 
-  /// Do not allow transitions for discrete properties (default)
-  case normal
+    /// Do not allow transitions for discrete properties (default)
+    case normal
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .allowDiscrete:
-      return "allow-discrete"
-    case .normal:
-      return "normal"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .allowDiscrete:
+            return "allow-discrete"
+        case .normal:
+            return "normal"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

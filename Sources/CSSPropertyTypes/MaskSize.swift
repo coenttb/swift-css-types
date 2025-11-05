@@ -51,99 +51,99 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on mask-size](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-size)
 public enum MaskSize: Property {
-  public static let property: String = "mask-size"
+    public static let property: String = "mask-size"
 
-  /// Scale to the container without cropping or stretching (fit inside)
-  case contain
+    /// Scale to the container without cropping or stretching (fit inside)
+    case contain
 
-  /// Scale to fill the container completely (may crop)
-  case cover
+    /// Scale to fill the container completely (may crop)
+    case cover
 
-  /// Use natural size or scale proportionally
-  case auto
+    /// Use natural size or scale proportionally
+    case auto
 
-  /// Specify just width (height auto-scales to maintain aspect ratio)
-  case width(LengthPercentage)
+    /// Specify just width (height auto-scales to maintain aspect ratio)
+    case width(LengthPercentage)
 
-  /// Specify both width and height
-  case size(LengthPercentage, LengthPercentage)
+    /// Specify both width and height
+    case size(LengthPercentage, LengthPercentage)
 
-  /// Multiple sizes for multiple masks
-  case multiple([MaskSize])
+    /// Multiple sizes for multiple masks
+    case multiple([MaskSize])
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 /// Provides string conversion for CSS output
 extension MaskSize: CustomStringConvertible {
-  /// Converts the mask-size value to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// mask-size: auto;
-  /// mask-size: contain;
-  /// mask-size: cover;
-  /// mask-size: 50%;
-  /// mask-size: 100px 150px;
-  /// mask-size: contain, cover;
-  /// ```
-  public var description: String {
-    switch self {
-    case .contain:
-      return "contain"
-    case .cover:
-      return "cover"
-    case .auto:
-      return "auto"
-    case .width(let width):
-      return width.description
-    case .size(let width, let height):
-      return "\(width) \(height)"
-    case .multiple(let sizes):
-      return sizes.map { $0.description }.joined(separator: ", ")
-    case .global(let global):
-      return global.description
+    /// Converts the mask-size value to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// mask-size: auto;
+    /// mask-size: contain;
+    /// mask-size: cover;
+    /// mask-size: 50%;
+    /// mask-size: 100px 150px;
+    /// mask-size: contain, cover;
+    /// ```
+    public var description: String {
+        switch self {
+        case .contain:
+            return "contain"
+        case .cover:
+            return "cover"
+        case .auto:
+            return "auto"
+        case .width(let width):
+            return width.description
+        case .size(let width, let height):
+            return "\(width) \(height)"
+        case .multiple(let sizes):
+            return sizes.map { $0.description }.joined(separator: ", ")
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension MaskSize: LengthPercentageConvertible {
-  public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> MaskSize {
-    switch value {
-    case .length(let length):
-      return .width(.length(length))
-    case .percentage(let percentage):
-      return .width(.percentage(percentage))
-    default: fatalError()
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> MaskSize {
+        switch value {
+        case .length(let length):
+            return .width(.length(length))
+        case .percentage(let percentage):
+            return .width(.percentage(percentage))
+        default: fatalError()
+        }
     }
-  }
 }
 
 /// Default value and convenience methods
 extension MaskSize {
-  /// The default value for mask-size (`auto`)
-  public static let `default` = MaskSize.auto
+    /// The default value for mask-size (`auto`)
+    public static let `default` = MaskSize.auto
 
-  /// Auto size for width and height
-  public static let autoSize = MaskSize.size(.auto, .auto)
+    /// Auto size for width and height
+    public static let autoSize = MaskSize.size(.auto, .auto)
 
-  /// Creates a mask size with multiple values
-  ///
-  /// - Parameter sizes: The size values for each mask
-  /// - Returns: A mask size with multiple values
-  public static func values(_ sizes: [MaskSize]) -> MaskSize {
-    if sizes.count == 1, case let size = sizes[0] {
-      return size
+    /// Creates a mask size with multiple values
+    ///
+    /// - Parameter sizes: The size values for each mask
+    /// - Returns: A mask size with multiple values
+    public static func values(_ sizes: [MaskSize]) -> MaskSize {
+        if sizes.count == 1, case let size = sizes[0] {
+            return size
+        }
+        return .multiple(sizes)
     }
-    return .multiple(sizes)
-  }
 
-  /// Creates a mask size with multiple values
-  ///
-  /// - Parameter sizes: The size values for each mask
-  /// - Returns: A mask size with multiple values
-  public static func values(_ sizes: MaskSize...) -> MaskSize {
-    values(sizes)
-  }
+    /// Creates a mask size with multiple values
+    ///
+    /// - Parameter sizes: The size values for each mask
+    /// - Returns: A mask size with multiple values
+    public static func values(_ sizes: MaskSize...) -> MaskSize {
+        values(sizes)
+    }
 }

@@ -28,26 +28,26 @@ import Foundation
 /// - fit-content
 /// - content (for containers sized using flex-basis)
 public enum InterpolateSize: Property {
-  public static let property: String = "interpolate-size"
+    public static let property: String = "interpolate-size"
 
-  /// The default behavior — intrinsic size values cannot be interpolated.
-  case numericOnly
+    /// The default behavior — intrinsic size values cannot be interpolated.
+    case numericOnly
 
-  /// Enables interpolation between a <length-percentage> value and an intrinsic size value,
-  /// to allow animation between the two.
-  case allowKeywords
+    /// Enables interpolation between a <length-percentage> value and an intrinsic size value,
+    /// to allow animation between the two.
+    case allowKeywords
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .numericOnly:
-      return "numeric-only"
-    case .allowKeywords:
-      return "allow-keywords"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .numericOnly:
+            return "numeric-only"
+        case .allowKeywords:
+            return "allow-keywords"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

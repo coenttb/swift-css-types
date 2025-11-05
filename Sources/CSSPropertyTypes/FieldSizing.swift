@@ -12,25 +12,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing)
 public enum FieldSizing: Property {
-  public static let property: String = "field-sizing"
+    public static let property: String = "field-sizing"
 
-  /// Allows the element to adjust its size to fit its contents
-  case content
+    /// Allows the element to adjust its size to fit its contents
+    case content
 
-  /// Sets a fixed size for the element (default behavior)
-  case fixed
+    /// Sets a fixed size for the element (default behavior)
+    case fixed
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .content:
-      return "content"
-    case .fixed:
-      return "fixed"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .content:
+            return "content"
+        case .fixed:
+            return "fixed"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

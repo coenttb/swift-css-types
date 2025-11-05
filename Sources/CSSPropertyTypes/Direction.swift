@@ -21,22 +21,22 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on direction](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)
 public enum Direction: Property {
-  public static let property: String = "direction"
+    public static let property: String = "direction"
 
-  /// Text and other elements go from left to right. This is the default value.
-  case ltr
+    /// Text and other elements go from left to right. This is the default value.
+    case ltr
 
-  /// Text and other elements go from right to left.
-  case rtl
+    /// Text and other elements go from right to left.
+    case rtl
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .ltr: return "ltr"
-    case .rtl: return "rtl"
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .ltr: return "ltr"
+        case .rtl: return "rtl"
+        case .global(let global): return global.description
+        }
     }
-  }
 }

@@ -30,7 +30,7 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::spelling-error](https://developer.mozilla.org/en-US/docs/Web/CSS/::spelling-error)
 public struct SpellingError: CSSPseudoElement {
-  @inlinable public static var name: String { "spelling-error" }
+    @inlinable public static var name: String { "spelling-error" }
 
-  public init() {}
+    public init() {}
 }

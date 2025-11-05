@@ -17,31 +17,31 @@ import CSSTypeTypes
 /// ```
 public enum ScrollPaddingBlockStart: Property, LengthPercentageConvertible, CustomStringConvertible
 {
-  public static let property: String = "scroll-padding-block-start"
+    public static let property: String = "scroll-padding-block-start"
 
-  /// Keyword values
-  case auto
+    /// Keyword values
+    case auto
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto: return "auto"
-    case .lengthPercentage(let lengthPercentage): return lengthPercentage.description
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .auto: return "auto"
+        case .lengthPercentage(let lengthPercentage): return lengthPercentage.description
+        case .global(let global): return global.description
+        }
     }
-  }
 
-  /// Creates a ScrollPaddingBlockStart using a length
-  public static func px(_ value: Double) -> Self {
-    .length(.px(value))
-  }
+    /// Creates a ScrollPaddingBlockStart using a length
+    public static func px(_ value: Double) -> Self {
+        .length(.px(value))
+    }
 
-  /// Creates a ScrollPaddingBlockStart using a percentage
-  public static func percent(_ value: Double) -> Self {
-    .percentage(.init(value))
-  }
+    /// Creates a ScrollPaddingBlockStart using a percentage
+    public static func percent(_ value: Double) -> Self {
+        .percentage(.init(value))
+    }
 }

@@ -22,32 +22,32 @@ import Foundation
 /// tab-size: 2em;
 /// ```
 public enum TabSize: Property, LengthConvertible {
-  public static let property: String = "tab-size"
-  /// Specify tab width as a number of spaces
-  case number(Int)
+    public static let property: String = "tab-size"
+    /// Specify tab width as a number of spaces
+    case number(Int)
 
-  /// Specify tab width as a specific length
-  case length(Length)
+    /// Specify tab width as a specific length
+    case length(Length)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 extension TabSize: ExpressibleByIntegerLiteral {
-  public init(integerLiteral value: Int) {
-    self = .number(value)
-  }
+    public init(integerLiteral value: Int) {
+        self = .number(value)
+    }
 }
 
 extension TabSize: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .number(let number):
-      return number.description
-    case .length(let length):
-      return length.description
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .number(let number):
+            return number.description
+        case .length(let length):
+            return length.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

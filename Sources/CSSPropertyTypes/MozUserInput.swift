@@ -30,25 +30,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -moz-user-input](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-user-input)
 public enum MozUserInput: Property {
-  public static let property: String = "-moz-user-input"
+    public static let property: String = "-moz-user-input"
 
-  /// The element will respond to user input if it normally takes user input
-  case auto
+    /// The element will respond to user input if it normally takes user input
+    case auto
 
-  /// The element does not respond to user input, and it does not become :active
-  case none
+    /// The element does not respond to user input, and it does not become :active
+    case none
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .none:
-      return "none"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .none:
+            return "none"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

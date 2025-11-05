@@ -24,49 +24,49 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on grid-auto-rows](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows)
 public enum GridAutoRows: Property, LengthPercentageConvertible {
 
-  public static let property: String = "grid-auto-rows"
+    public static let property: String = "grid-auto-rows"
 
-  /// Auto sizing (similar to minmax(min-content, max-content))
-  case auto
+    /// Auto sizing (similar to minmax(min-content, max-content))
+    case auto
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// Largest minimal content contribution
-  case minContent
+    /// Largest minimal content contribution
+    case minContent
 
-  /// Largest maximal content contribution
-  case maxContent
+    /// Largest maximal content contribution
+    case maxContent
 
-  /// Range between min and max with minmax()
-  case minMax(MinMaxValue, MinMaxValue)
+    /// Range between min and max with minmax()
+    case minMax(MinMaxValue, MinMaxValue)
 
-  /// Size that is clamped at the provided argument
-  case fitContent(LengthPercentage)
+    /// Size that is clamped at the provided argument
+    case fitContent(LengthPercentage)
 
-  /// Multiple track sizes for a repeating pattern
-  case multiple([GridAutoRows])
+    /// Multiple track sizes for a repeating pattern
+    case multiple([GridAutoRows])
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .minContent:
-      return "min-content"
-    case .maxContent:
-      return "max-content"
-    case .minMax(let min, let max):
-      return "minmax(\(min), \(max))"
-    case .fitContent(let value):
-      return "fit-content(\(value))"
-    case .multiple(let tracks):
-      return tracks.map { $0.description }.joined(separator: " ")
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .minContent:
+            return "min-content"
+        case .maxContent:
+            return "max-content"
+        case .minMax(let min, let max):
+            return "minmax(\(min), \(max))"
+        case .fitContent(let value):
+            return "fit-content(\(value))"
+        case .multiple(let tracks):
+            return tracks.map { $0.description }.joined(separator: " ")
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

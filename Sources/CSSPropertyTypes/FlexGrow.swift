@@ -14,32 +14,32 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
 public enum FlexGrow: Property, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
-  public static let property: String = "flex-grow"
+    public static let property: String = "flex-grow"
 
-  /// A number specifying how much the flex item will grow
-  case number(Number)
+    /// A number specifying how much the flex item will grow
+    case number(Number)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  // MARK: - Initializers for literal expressions
+    // MARK: - Initializers for literal expressions
 
-  /// Create a flex-grow value from an integer literal
-  public init(integerLiteral value: Int) {
-    self = .number(.init(value))
-  }
-
-  /// Create a flex-grow value from a floating point literal
-  public init(floatLiteral value: Double) {
-    self = .number(.init(value))
-  }
-
-  public var description: String {
-    switch self {
-    case .number(let number):
-      return number.description
-    case .global(let value):
-      return value.description
+    /// Create a flex-grow value from an integer literal
+    public init(integerLiteral value: Int) {
+        self = .number(.init(value))
     }
-  }
+
+    /// Create a flex-grow value from a floating point literal
+    public init(floatLiteral value: Double) {
+        self = .number(.init(value))
+    }
+
+    public var description: String {
+        switch self {
+        case .number(let number):
+            return number.description
+        case .global(let value):
+            return value.description
+        }
+    }
 }

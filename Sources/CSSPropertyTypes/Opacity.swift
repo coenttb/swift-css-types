@@ -23,55 +23,55 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity)
 public enum Opacity: Property {
-  public static let property: String = "opacity"
+    public static let property: String = "opacity"
 
-  /// A specific opacity value
-  case value(Double)
+    /// A specific opacity value
+    case value(Double)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates an opacity with a specified value
-  ///
-  /// - Parameter value: The opacity value (0-1), values outside this range will be clamped
-  public init(_ value: Double) {
-    self = .value(max(0, min(1, value)))
-  }
+    /// Creates an opacity with a specified value
+    ///
+    /// - Parameter value: The opacity value (0-1), values outside this range will be clamped
+    public init(_ value: Double) {
+        self = .value(max(0, min(1, value)))
+    }
 
-  /// Fully transparent (opacity: 0)
-  public static let transparent: Opacity = .value(0)
+    /// Fully transparent (opacity: 0)
+    public static let transparent: Opacity = .value(0)
 
-  /// Fully opaque (opacity: 1)
-  public static let opaque: Opacity = .value(1)
+    /// Fully opaque (opacity: 1)
+    public static let opaque: Opacity = .value(1)
 }
 
 /// CSS Output conversion
 extension Opacity: CustomStringConvertible {
-  /// Converts the opacity value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .value(let value):
-      return String(format: "%.2f", value)
-    case .global(let global):
-      return global.description
+    /// Converts the opacity value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .value(let value):
+            return String(format: "%.2f", value)
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension Opacity: ExpressibleByFloatLiteral {
-  /// Creates an opacity value from a floating-point literal
-  ///
-  /// - Parameter value: The opacity value (0-1)
-  public init(floatLiteral value: Double) {
-    self.init(value)
-  }
+    /// Creates an opacity value from a floating-point literal
+    ///
+    /// - Parameter value: The opacity value (0-1)
+    public init(floatLiteral value: Double) {
+        self.init(value)
+    }
 }
 
 extension Opacity: ExpressibleByIntegerLiteral {
-  /// Creates an opacity value from an integer literal
-  ///
-  /// - Parameter value: The opacity value (0 or 1)
-  public init(integerLiteral value: Int) {
-    self.init(Double(value))
-  }
+    /// Creates an opacity value from an integer literal
+    ///
+    /// - Parameter value: The opacity value (0 or 1)
+    public init(integerLiteral value: Int) {
+        self.init(Double(value))
+    }
 }

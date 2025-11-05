@@ -15,19 +15,19 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on flex-flow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow)
 public enum FlexFlow: Property {
-  public static let property: String = "flex-flow"
-  /// Specifies both the flex-direction and flex-wrap properties
-  case flexFlow(FlexDirection, FlexWrap)
+    public static let property: String = "flex-flow"
+    /// Specifies both the flex-direction and flex-wrap properties
+    case flexFlow(FlexDirection, FlexWrap)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .flexFlow(let direction, let wrap):
-      return "\(direction) \(wrap)"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .flexFlow(let direction, let wrap):
+            return "\(direction) \(wrap)"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

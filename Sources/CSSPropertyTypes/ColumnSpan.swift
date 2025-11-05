@@ -14,26 +14,26 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on column-span](https://developer.mozilla.org/en-US/docs/Web/CSS/column-span)
 public enum ColumnSpan: Property {
-  public static let property: String = "column-span"
-  /// The element does not span multiple columns.
-  case none
+    public static let property: String = "column-span"
+    /// The element does not span multiple columns.
+    case none
 
-  /// The element spans across all columns. Content in the normal flow that appears before the element
-  /// is automatically balanced across all columns before the element appears.
-  /// The element establishes a new block formatting context.
-  case all
+    /// The element spans across all columns. Content in the normal flow that appears before the element
+    /// is automatically balanced across all columns before the element appears.
+    /// The element establishes a new block formatting context.
+    case all
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .all:
-      return "all"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .all:
+            return "all"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

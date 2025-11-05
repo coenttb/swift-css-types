@@ -48,59 +48,59 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-inline-start-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-width)
 public enum BorderInlineStartWidth: Property {
 
-  public static let property: String = "border-inline-start-width"
+    public static let property: String = "border-inline-start-width"
 
-  /// Use a specific width value for the inline-start border
-  case width(BorderWidth.Width)
+    /// Use a specific width value for the inline-start border
+    case width(BorderWidth.Width)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a border-inline-start-width with a specific width value
-  ///
-  /// - Parameter width: The width value for the inline-start border
-  public init(_ width: BorderWidth.Width) {
-    self = .width(width)
-  }
+    /// Creates a border-inline-start-width with a specific width value
+    ///
+    /// - Parameter width: The width value for the inline-start border
+    public init(_ width: BorderWidth.Width) {
+        self = .width(width)
+    }
 }
 
 /// Provides string conversion for CSS output
 extension BorderInlineStartWidth: CustomStringConvertible {
-  /// Converts the border-inline-start-width to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// border-inline-start-width: medium;
-  /// border-inline-start-width: 4px;
-  /// border-inline-start-width: thick;
-  /// ```
-  public var description: String {
-    switch self {
-    case .width(let width):
-      return width.description
-    case .global(let global):
-      return global.description
+    /// Converts the border-inline-start-width to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// border-inline-start-width: medium;
+    /// border-inline-start-width: 4px;
+    /// border-inline-start-width: thick;
+    /// ```
+    public var description: String {
+        switch self {
+        case .width(let width):
+            return width.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension BorderInlineStartWidth: LengthConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> BorderInlineStartWidth {
-    BorderInlineStartWidth.width(.length(length))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderInlineStartWidth {
+        BorderInlineStartWidth.width(.length(length))
+    }
 
 }
 /// Convenience methods for creating BorderInlineStartWidth values
 extension BorderInlineStartWidth {
-  /// The default border-inline-start-width value (medium)
-  public static let `default` = BorderInlineStartWidth(.medium)
+    /// The default border-inline-start-width value (medium)
+    public static let `default` = BorderInlineStartWidth(.medium)
 
-  /// A thin border-inline-start-width
-  public static let thin = BorderInlineStartWidth(.thin)
+    /// A thin border-inline-start-width
+    public static let thin = BorderInlineStartWidth(.thin)
 
-  /// A medium border-inline-start-width
-  public static let medium = BorderInlineStartWidth(.medium)
+    /// A medium border-inline-start-width
+    public static let medium = BorderInlineStartWidth(.medium)
 
-  /// A thick border-inline-start-width
-  public static let thick = BorderInlineStartWidth(.thick)
+    /// A thick border-inline-start-width
+    public static let thick = BorderInlineStartWidth(.thick)
 }

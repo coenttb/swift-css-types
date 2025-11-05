@@ -25,75 +25,75 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
 public enum Overflow: Property {
-  public static let property: String = "overflow"
+    public static let property: String = "overflow"
 
-  /// Single overflow value for both horizontal and vertical
-  case single(Value)
+    /// Single overflow value for both horizontal and vertical
+    case single(Value)
 
-  /// Different values for horizontal and vertical overflow
-  case horizontal_vertical(Value, Value)
+    /// Different values for horizontal and vertical overflow
+    case horizontal_vertical(Value, Value)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Overflow value options
-  public enum Value: String, Sendable, Hashable {
-    /// Content is not clipped and may overflow the padding box
-    case visible
+    /// Overflow value options
+    public enum Value: String, Sendable, Hashable {
+        /// Content is not clipped and may overflow the padding box
+        case visible
 
-    /// Content is clipped if necessary to fit the padding box
-    case hidden
+        /// Content is clipped if necessary to fit the padding box
+        case hidden
 
-    /// Similar to auto, but more optimized for block placement
-    case clip
+        /// Similar to auto, but more optimized for block placement
+        case clip
 
-    /// Content is clipped if necessary, with scrollbars always visible
-    case scroll
+        /// Content is clipped if necessary, with scrollbars always visible
+        case scroll
 
-    /// Content is clipped if necessary, with scrollbars appearing only when needed
-    case auto
-  }
-
-  /// Creates an overflow with the same value for horizontal and vertical
-  ///
-  /// - Parameter value: The overflow value for both directions
-  public init(_ value: Value) {
-    self = .single(value)
-  }
-
-  /// Creates an overflow with different values for horizontal and vertical
-  ///
-  /// - Parameters:
-  ///   - x: The horizontal overflow value
-  ///   - y: The vertical overflow value
-  public init(_ x: Value, _ y: Value) {
-    self = .horizontal_vertical(x, y)
-  }
-
-  /// Content is not clipped and may overflow the padding box (both directions)
-  public static let visible = Overflow(.visible)
-
-  /// Content is clipped if necessary to fit the padding box (both directions)
-  public static let hidden = Overflow(.hidden)
-
-  /// Content is clipped if necessary, with scrollbars always visible (both directions)
-  public static let scroll = Overflow(.scroll)
-
-  /// Content is clipped if necessary, with scrollbars appearing only when needed (both directions)
-  public static let auto = Overflow(.auto)
-
-  /// Similar to auto, but more optimized for block placement (both directions)
-  public static let clip = Overflow(.clip)
-
-  /// CSS string representation
-  public var description: String {
-    switch self {
-    case .single(let value):
-      return value.rawValue
-    case .horizontal_vertical(let x, let y):
-      return "\(x.rawValue) \(y.rawValue)"
-    case .global(let global):
-      return global.description
+        /// Content is clipped if necessary, with scrollbars appearing only when needed
+        case auto
     }
-  }
+
+    /// Creates an overflow with the same value for horizontal and vertical
+    ///
+    /// - Parameter value: The overflow value for both directions
+    public init(_ value: Value) {
+        self = .single(value)
+    }
+
+    /// Creates an overflow with different values for horizontal and vertical
+    ///
+    /// - Parameters:
+    ///   - x: The horizontal overflow value
+    ///   - y: The vertical overflow value
+    public init(_ x: Value, _ y: Value) {
+        self = .horizontal_vertical(x, y)
+    }
+
+    /// Content is not clipped and may overflow the padding box (both directions)
+    public static let visible = Overflow(.visible)
+
+    /// Content is clipped if necessary to fit the padding box (both directions)
+    public static let hidden = Overflow(.hidden)
+
+    /// Content is clipped if necessary, with scrollbars always visible (both directions)
+    public static let scroll = Overflow(.scroll)
+
+    /// Content is clipped if necessary, with scrollbars appearing only when needed (both directions)
+    public static let auto = Overflow(.auto)
+
+    /// Similar to auto, but more optimized for block placement (both directions)
+    public static let clip = Overflow(.clip)
+
+    /// CSS string representation
+    public var description: String {
+        switch self {
+        case .single(let value):
+            return value.rawValue
+        case .horizontal_vertical(let x, let y):
+            return "\(x.rawValue) \(y.rawValue)"
+        case .global(let global):
+            return global.description
+        }
+    }
 }

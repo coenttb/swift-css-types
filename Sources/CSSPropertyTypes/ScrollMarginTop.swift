@@ -15,30 +15,30 @@ import CSSTypeTypes
 /// scroll-margin-top: 0;
 /// ```
 public enum ScrollMarginTop: Property, LengthConvertible, ExpressibleByIntegerLiteral,
-  ExpressibleByFloatLiteral, CustomStringConvertible
+    ExpressibleByFloatLiteral, CustomStringConvertible
 {
-  public static let property: String = "scroll-margin-top"
+    public static let property: String = "scroll-margin-top"
 
-  /// A length value for the top margin
-  case length(Length)
+    /// A length value for the top margin
+    case length(Length)
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .length(let length): return length.description
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .length(let length): return length.description
+        case .global(let global): return global.description
+        }
     }
-  }
 
-  /// Creates a ScrollMarginTop using an integer literal (interpreted as pixels)
-  public init(integerLiteral value: Int) {
-    self = .length(.px(Double(value)))
-  }
+    /// Creates a ScrollMarginTop using an integer literal (interpreted as pixels)
+    public init(integerLiteral value: Int) {
+        self = .length(.px(Double(value)))
+    }
 
-  /// Creates a ScrollMarginTop using a floating-point literal (interpreted as pixels)
-  public init(floatLiteral value: Double) {
-    self = .length(.px(value))
-  }
+    /// Creates a ScrollMarginTop using a floating-point literal (interpreted as pixels)
+    public init(floatLiteral value: Double) {
+        self = .length(.px(value))
+    }
 }

@@ -23,34 +23,34 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on hyphens](https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens)
 public enum Hyphens: Property {
 
-  public static let property: String = "hyphens"
+    public static let property: String = "hyphens"
 
-  /// Words are not broken at line breaks, even if characters inside the words suggest line break points.
-  /// Lines will only wrap at whitespace.
-  case none
+    /// Words are not broken at line breaks, even if characters inside the words suggest line break points.
+    /// Lines will only wrap at whitespace.
+    case none
 
-  /// Words are broken for line-wrapping only where characters inside the word suggest line break opportunities.
-  /// For example, at soft hyphen characters (U+00AD) or hyphen characters (U+2010).
-  case manual
+    /// Words are broken for line-wrapping only where characters inside the word suggest line break opportunities.
+    /// For example, at soft hyphen characters (U+00AD) or hyphen characters (U+2010).
+    case manual
 
-  /// The browser is free to automatically break words at appropriate hyphenation points, following
-  /// whatever rules it chooses. However, suggested line break opportunities will override automatic
-  /// break point selection when present.
-  case auto
+    /// The browser is free to automatically break words at appropriate hyphenation points, following
+    /// whatever rules it chooses. However, suggested line break opportunities will override automatic
+    /// break point selection when present.
+    case auto
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .manual:
-      return "manual"
-    case .auto:
-      return "auto"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .manual:
+            return "manual"
+        case .auto:
+            return "auto"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

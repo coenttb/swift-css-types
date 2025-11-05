@@ -36,7 +36,7 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::details-content](https://developer.mozilla.org/en-US/docs/Web/CSS/::details-content)
 public struct DetailsContent: CSSPseudoElement {
-  @inlinable public static var name: String { "details-content" }
+    @inlinable public static var name: String { "details-content" }
 
-  public init() {}
+    public init() {}
 }

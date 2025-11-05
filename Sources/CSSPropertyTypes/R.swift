@@ -24,20 +24,20 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on r](https://developer.mozilla.org/en-US/docs/Web/CSS/r)
 public enum R: Property, LengthPercentageConvertible {
-  public static let property: String = "r"
+    public static let property: String = "r"
 
-  /// A length-percentage value for the radius
-  case lengthPercentage(LengthPercentage)
+    /// A length-percentage value for the radius
+    case lengthPercentage(LengthPercentage)
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

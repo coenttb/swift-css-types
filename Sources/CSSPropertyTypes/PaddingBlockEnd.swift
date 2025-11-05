@@ -18,43 +18,43 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on padding-block-end](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block-end)
 public enum PaddingBlockEnd: Property, LengthPercentageConvertible {
-  public static let property: String = "padding-block-end"
+    public static let property: String = "padding-block-end"
 
-  /// A length or percentage value for the block-end padding
-  case lengthPercentage(LengthPercentage)
+    /// A length or percentage value for the block-end padding
+    case lengthPercentage(LengthPercentage)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension PaddingBlockEnd: CustomStringConvertible {
-  /// Converts the padding-block-end value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
+    /// Converts the padding-block-end value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension PaddingBlockEnd: ExpressibleByIntegerLiteral {
-  /// Creates a padding-block-end from an integer literal (interpreted as pixels)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(integerLiteral value: Int) {
-    self = .lengthPercentage(.px(Double(value)))
-  }
+    /// Creates a padding-block-end from an integer literal (interpreted as pixels)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(integerLiteral value: Int) {
+        self = .lengthPercentage(.px(Double(value)))
+    }
 }
 
 extension PaddingBlockEnd: ExpressibleByFloatLiteral {
-  /// Creates a padding-block-end from a floating-point literal (interpreted as pixels)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(floatLiteral value: Double) {
-    self = .lengthPercentage(.px(value))
-  }
+    /// Creates a padding-block-end from a floating-point literal (interpreted as pixels)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(floatLiteral value: Double) {
+        self = .lengthPercentage(.px(value))
+    }
 }

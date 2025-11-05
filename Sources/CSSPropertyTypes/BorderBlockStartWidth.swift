@@ -48,61 +48,61 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-block-start-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start-width)
 public enum BorderBlockStartWidth: Property {
 
-  public static let property: String = "border-block-start-width"
+    public static let property: String = "border-block-start-width"
 
-  /// A specific width for the block-start border
-  case width(BorderWidth)
+    /// A specific width for the block-start border
+    case width(BorderWidth)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a border-block-start-width with a specific border width
-  ///
-  /// - Parameter width: The width for the block-start border
-  public init(_ width: BorderWidth) {
-    self = .width(width)
-  }
+    /// Creates a border-block-start-width with a specific border width
+    ///
+    /// - Parameter width: The width for the block-start border
+    public init(_ width: BorderWidth) {
+        self = .width(width)
+    }
 }
 
 extension BorderBlockStartWidth: LengthConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> BorderBlockStartWidth {
-    .width(.init(length))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderBlockStartWidth {
+        .width(.init(length))
+    }
 }
 
 /// Provides string conversion for CSS output
 extension BorderBlockStartWidth: CustomStringConvertible {
-  /// Converts the border-block-start-width to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// border-block-start-width: thin;
-  /// border-block-start-width: medium;
-  /// border-block-start-width: thick;
-  /// border-block-start-width: 3px;
-  /// ```
-  public var description: String {
-    switch self {
-    case .width(let width):
-      return width.description
-    case .global(let global):
-      return global.description
+    /// Converts the border-block-start-width to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// border-block-start-width: thin;
+    /// border-block-start-width: medium;
+    /// border-block-start-width: thick;
+    /// border-block-start-width: 3px;
+    /// ```
+    public var description: String {
+        switch self {
+        case .width(let width):
+            return width.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for creating BorderBlockStartWidth values
 extension BorderBlockStartWidth {
-  /// The default border-block-start-width value (medium)
-  public static let `default` = BorderBlockStartWidth(.medium)
+    /// The default border-block-start-width value (medium)
+    public static let `default` = BorderBlockStartWidth(.medium)
 
-  /// Creates a thin border-block-start-width
-  public static let thin = BorderBlockStartWidth(.thin)
+    /// Creates a thin border-block-start-width
+    public static let thin = BorderBlockStartWidth(.thin)
 
-  /// Creates a medium border-block-start-width
-  public static let medium = BorderBlockStartWidth(.medium)
+    /// Creates a medium border-block-start-width
+    public static let medium = BorderBlockStartWidth(.medium)
 
-  /// Creates a thick border-block-start-width
-  public static let thick = BorderBlockStartWidth(.thick)
+    /// Creates a thick border-block-start-width
+    public static let thick = BorderBlockStartWidth(.thick)
 
 }

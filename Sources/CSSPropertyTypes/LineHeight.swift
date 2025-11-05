@@ -17,44 +17,44 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)
 public enum LineHeight: Property, LengthPercentageConvertible, ExpressibleByFloatLiteral,
-  ExpressibleByIntegerLiteral
+    ExpressibleByIntegerLiteral
 {
-  public static let property: String = "line-height"
-  /// Default value. Browser dependent, typically around 1.2 times the font size
-  case normal
+    public static let property: String = "line-height"
+    /// Default value. Browser dependent, typically around 1.2 times the font size
+    case normal
 
-  case lengthPercentage(LengthPercentage)
+    case lengthPercentage(LengthPercentage)
 
-  /// A unitless multiplier value (preferred method for setting line height)
-  case multiple(Double)
+    /// A unitless multiplier value (preferred method for setting line height)
+    case multiple(Double)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  // MARK: - Convenience initializers
+    // MARK: - Convenience initializers
 
-  /// Create a line-height using a float literal as a multiplier
-  public init(floatLiteral value: Double) {
-    self = .multiple(value)
-  }
-
-  /// Create a line-height using an integer literal as a multiplier
-  public init(integerLiteral value: Int) {
-    self = .multiple(Double(value))
-  }
-
-  public var description: String {
-    switch self {
-    case .normal:
-      return "normal"
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .multiple(let factor):
-      // Ensure non-negative value
-      let nonNegative = max(0, factor)
-      return nonNegative.truncatingRemainder()
-    case .global(let value):
-      return value.description
+    /// Create a line-height using a float literal as a multiplier
+    public init(floatLiteral value: Double) {
+        self = .multiple(value)
     }
-  }
+
+    /// Create a line-height using an integer literal as a multiplier
+    public init(integerLiteral value: Int) {
+        self = .multiple(Double(value))
+    }
+
+    public var description: String {
+        switch self {
+        case .normal:
+            return "normal"
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .multiple(let factor):
+            // Ensure non-negative value
+            let nonNegative = max(0, factor)
+            return nonNegative.truncatingRemainder()
+        case .global(let value):
+            return value.description
+        }
+    }
 }

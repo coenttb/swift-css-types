@@ -17,32 +17,32 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on text-wrap-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap-mode)
 public enum TextWrapMode: Property {
-  public static let property: String = "text-wrap-mode"
+    public static let property: String = "text-wrap-mode"
 
-  /// Text is wrapped across lines at appropriate characters (for example spaces, in languages
-  /// like English that use space separators) to minimize overflow. This is the default value.
-  case wrap
+    /// Text is wrapped across lines at appropriate characters (for example spaces, in languages
+    /// like English that use space separators) to minimize overflow. This is the default value.
+    case wrap
 
-  /// Text does not wrap across lines. It will overflow its containing element rather than breaking onto a new line.
-  case nowrap
+    /// Text does not wrap across lines. It will overflow its containing element rather than breaking onto a new line.
+    case nowrap
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension TextWrapMode: CustomStringConvertible {
-  /// Converts the text-wrap-mode value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .wrap:
-      return "wrap"
+    /// Converts the text-wrap-mode value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .wrap:
+            return "wrap"
 
-    case .nowrap:
-      return "nowrap"
+        case .nowrap:
+            return "nowrap"
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

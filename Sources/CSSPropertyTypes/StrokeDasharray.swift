@@ -28,60 +28,60 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on stroke-dasharray](https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dasharray)
 public enum StrokeDasharray: Property {
-  public static let property: String = "stroke-dasharray"
+    public static let property: String = "stroke-dasharray"
 
-  /// Solid line with no dashes (default)
-  case none
+    /// Solid line with no dashes (default)
+    case none
 
-  /// Array of numeric values representing alternating dash and gap lengths in SVG units
-  case numbers([Double])
+    /// Array of numeric values representing alternating dash and gap lengths in SVG units
+    case numbers([Double])
 
-  /// Array of length values representing alternating dash and gap lengths
-  case lengths([Length])
+    /// Array of length values representing alternating dash and gap lengths
+    case lengths([Length])
 
-  /// Array of percentage values representing alternating dash and gap lengths relative to the SVG viewport diagonal
-  case percentages([Percentage])
+    /// Array of percentage values representing alternating dash and gap lengths relative to the SVG viewport diagonal
+    case percentages([Percentage])
 
-  /// Array of length-percentage values representing alternating dash and gap lengths
-  case lengthPercentages([LengthPercentage])
+    /// Array of length-percentage values representing alternating dash and gap lengths
+    case lengthPercentages([LengthPercentage])
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a dash array from an array of Doubles (interpreted as SVG units)
-  public init(_ values: [Double]) {
-    self = .numbers(values)
-  }
-
-  /// Creates a dash array from an array of Lengths
-  public init(_ values: [Length]) {
-    self = .lengths(values)
-  }
-
-  /// Creates a dash array from an array of Percentages
-  public init(_ values: [Percentage]) {
-    self = .percentages(values)
-  }
-
-  /// Creates a dash array from an array of LengthPercentages
-  public init(_ values: [LengthPercentage]) {
-    self = .lengthPercentages(values)
-  }
-
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .numbers(let values):
-      return values.map { String(format: "%.5g", $0) }.joined(separator: ", ")
-    case .lengths(let values):
-      return values.map { $0.description }.joined(separator: ", ")
-    case .percentages(let values):
-      return values.map { $0.description }.joined(separator: ", ")
-    case .lengthPercentages(let values):
-      return values.map { $0.description }.joined(separator: ", ")
-    case .global(let global):
-      return global.description
+    /// Creates a dash array from an array of Doubles (interpreted as SVG units)
+    public init(_ values: [Double]) {
+        self = .numbers(values)
     }
-  }
+
+    /// Creates a dash array from an array of Lengths
+    public init(_ values: [Length]) {
+        self = .lengths(values)
+    }
+
+    /// Creates a dash array from an array of Percentages
+    public init(_ values: [Percentage]) {
+        self = .percentages(values)
+    }
+
+    /// Creates a dash array from an array of LengthPercentages
+    public init(_ values: [LengthPercentage]) {
+        self = .lengthPercentages(values)
+    }
+
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .numbers(let values):
+            return values.map { String(format: "%.5g", $0) }.joined(separator: ", ")
+        case .lengths(let values):
+            return values.map { $0.description }.joined(separator: ", ")
+        case .percentages(let values):
+            return values.map { $0.description }.joined(separator: ", ")
+        case .lengthPercentages(let values):
+            return values.map { $0.description }.joined(separator: ", ")
+        case .global(let global):
+            return global.description
+        }
+    }
 }

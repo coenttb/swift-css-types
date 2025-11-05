@@ -15,26 +15,26 @@ import CSSTypeTypes
 /// stroke-linejoin: round;
 /// ```
 public enum StrokeLinejoin: Property {
-  public static let property: String = "stroke-linejoin"
+    public static let property: String = "stroke-linejoin"
 
-  /// A sharp corner is used to join path segments
-  case miter
+    /// A sharp corner is used to join path segments
+    case miter
 
-  /// A bevelled corner is used to join path segments
-  case bevel
+    /// A bevelled corner is used to join path segments
+    case bevel
 
-  /// A round corner is used to join path segments
-  case round
+    /// A round corner is used to join path segments
+    case round
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .miter: return "miter"
-    case .bevel: return "bevel"
-    case .round: return "round"
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .miter: return "miter"
+        case .bevel: return "bevel"
+        case .round: return "round"
+        case .global(let global): return global.description
+        }
     }
-  }
 }

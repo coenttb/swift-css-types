@@ -51,60 +51,60 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on border-inline-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-width)
 public enum BorderInlineWidth: Property {
 
-  public static let property: String = "border-inline-width"
+    public static let property: String = "border-inline-width"
 
-  /// A specific width for both inline borders
-  case width(BorderWidth)
+    /// A specific width for both inline borders
+    case width(BorderWidth)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a border-inline-width with a specific width
-  ///
-  /// - Parameter width: The width for both inline borders
-  public init(_ width: BorderWidth) {
-    self = .width(width)
-  }
+    /// Creates a border-inline-width with a specific width
+    ///
+    /// - Parameter width: The width for both inline borders
+    public init(_ width: BorderWidth) {
+        self = .width(width)
+    }
 }
 extension BorderInlineWidth: LengthConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> BorderInlineWidth {
-    .width(.length(length))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderInlineWidth {
+        .width(.length(length))
+    }
 }
 
 /// Provides string conversion for CSS output
 extension BorderInlineWidth: CustomStringConvertible {
-  /// Converts the border-inline-width to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// border-inline-width: 5px;
-  /// border-inline-width: thin;
-  /// border-inline-width: medium;
-  /// border-inline-width: thick;
-  /// ```
-  public var description: String {
-    switch self {
-    case .width(let width):
-      return width.description
-    case .global(let global):
-      return global.description
+    /// Converts the border-inline-width to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// border-inline-width: 5px;
+    /// border-inline-width: thin;
+    /// border-inline-width: medium;
+    /// border-inline-width: thick;
+    /// ```
+    public var description: String {
+        switch self {
+        case .width(let width):
+            return width.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for creating BorderInlineWidth values
 extension BorderInlineWidth {
-  /// The default border-inline-width value (medium)
-  public static let `default` = BorderInlineWidth(.medium)
+    /// The default border-inline-width value (medium)
+    public static let `default` = BorderInlineWidth(.medium)
 
-  /// Creates a thin border-inline-width
-  public static let thin = BorderInlineWidth(.thin)
+    /// Creates a thin border-inline-width
+    public static let thin = BorderInlineWidth(.thin)
 
-  /// Creates a medium border-inline-width
-  public static let medium = BorderInlineWidth(.medium)
+    /// Creates a medium border-inline-width
+    public static let medium = BorderInlineWidth(.medium)
 
-  /// Creates a thick border-inline-width
-  public static let thick = BorderInlineWidth(.thick)
+    /// Creates a thick border-inline-width
+    public static let thick = BorderInlineWidth(.thick)
 
 }

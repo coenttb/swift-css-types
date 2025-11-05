@@ -56,80 +56,80 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size)
 public enum BlockSize: Property {
-  public static let property: String = "block-size"
+    public static let property: String = "block-size"
 
-  /// Automatic sizing based on content
-  case auto
+    /// Automatic sizing based on content
+    case auto
 
-  /// Fixed length or percentage value
-  case lengthPercentage(LengthPercentage)
+    /// Fixed length or percentage value
+    case lengthPercentage(LengthPercentage)
 
-  /// Size that fits the intrinsic minimum width of the content
-  case minContent
+    /// Size that fits the intrinsic minimum width of the content
+    case minContent
 
-  /// Size that fits the intrinsic preferred width of the content
-  case maxContent
+    /// Size that fits the intrinsic preferred width of the content
+    case maxContent
 
-  /// Size that uses the available space, but never less than min-content and never more than max-content
-  case fitContent
+    /// Size that uses the available space, but never less than min-content and never more than max-content
+    case fitContent
 
-  /// Size that uses the available space up to the specified value, but never less than min-content
-  case fitContentLength(LengthPercentage)
+    /// Size that uses the available space up to the specified value, but never less than min-content
+    case fitContentLength(LengthPercentage)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 /// Provides string conversion for CSS output
 extension BlockSize: CustomStringConvertible {
-  /// Converts the block-size value to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// block-size: auto;
-  /// block-size: 300px;
-  /// block-size: 75%;
-  /// block-size: min-content;
-  /// block-size: max-content;
-  /// block-size: fit-content;
-  /// block-size: fit-content(300px);
-  /// ```
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .minContent:
-      return "min-content"
-    case .maxContent:
-      return "max-content"
-    case .fitContent:
-      return "fit-content"
-    case .fitContentLength(let length):
-      return "fit-content(\(length))"
-    case .global(let global):
-      return global.description
+    /// Converts the block-size value to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// block-size: auto;
+    /// block-size: 300px;
+    /// block-size: 75%;
+    /// block-size: min-content;
+    /// block-size: max-content;
+    /// block-size: fit-content;
+    /// block-size: fit-content(300px);
+    /// ```
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .minContent:
+            return "min-content"
+        case .maxContent:
+            return "max-content"
+        case .fitContent:
+            return "fit-content"
+        case .fitContentLength(let length):
+            return "fit-content(\(length))"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Default value and convenience methods
 extension BlockSize {
 
-  /// Creates a block-size with a fit-content constrained by a pixel value
-  ///
-  /// - Parameter px: The maximum pixel value
-  /// - Returns: A block-size with fit-content constrained by the specified pixel value
-  public static func fitContentPx(_ px: Double) -> BlockSize {
-    .fitContentLength(.px(px))
-  }
+    /// Creates a block-size with a fit-content constrained by a pixel value
+    ///
+    /// - Parameter px: The maximum pixel value
+    /// - Returns: A block-size with fit-content constrained by the specified pixel value
+    public static func fitContentPx(_ px: Double) -> BlockSize {
+        .fitContentLength(.px(px))
+    }
 
-  /// Creates a block-size with a fit-content constrained by a percentage value
-  ///
-  /// - Parameter percent: The maximum percentage value (0-100)
-  /// - Returns: A block-size with fit-content constrained by the specified percentage value
-  public static func fitContentPercent(_ percentage: Percentage) -> BlockSize {
-    .fitContentLength(.percentage(percentage))
-  }
+    /// Creates a block-size with a fit-content constrained by a percentage value
+    ///
+    /// - Parameter percent: The maximum percentage value (0-100)
+    /// - Returns: A block-size with fit-content constrained by the specified percentage value
+    public static func fitContentPercent(_ percentage: Percentage) -> BlockSize {
+        .fitContentLength(.percentage(percentage))
+    }
 }

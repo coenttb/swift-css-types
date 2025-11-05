@@ -19,66 +19,66 @@ import Foundation
 /// Namespace.default("http://www.w3.org/1999/xhtml")
 /// ```
 public struct Namespace: AtRule {
-  public static let identifier: String = "namespace"
+    public static let identifier: String = "namespace"
 
-  public var rawValue: String
+    public var rawValue: String
 
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
 
-  /// Creates a default namespace with the specified namespace URI.
-  /// @namespace url(XML-namespace-URL);
-  public static func `default`(_ uri: NamespaceURI) -> Namespace {
-    Namespace(rawValue: "@namespace \(uri.rawValue);")
-  }
+    /// Creates a default namespace with the specified namespace URI.
+    /// @namespace url(XML-namespace-URL);
+    public static func `default`(_ uri: NamespaceURI) -> Namespace {
+        Namespace(rawValue: "@namespace \(uri.rawValue);")
+    }
 
-  /// Creates a default namespace with the specified namespace URI as a string.
-  /// @namespace "XML-namespace-URL";
-  public static func `default`(_ uri: String) -> Namespace {
-    Namespace(rawValue: "@namespace \"\(uri)\";")
-  }
+    /// Creates a default namespace with the specified namespace URI as a string.
+    /// @namespace "XML-namespace-URL";
+    public static func `default`(_ uri: String) -> Namespace {
+        Namespace(rawValue: "@namespace \"\(uri)\";")
+    }
 
-  /// Creates a prefixed namespace with the specified prefix and namespace URI.
-  /// @namespace prefix url(XML-namespace-URL);
-  public static func prefixed(_ prefix: String, _ uri: NamespaceURI) -> Namespace {
-    Namespace(rawValue: "@namespace \(prefix) \(uri.rawValue);")
-  }
+    /// Creates a prefixed namespace with the specified prefix and namespace URI.
+    /// @namespace prefix url(XML-namespace-URL);
+    public static func prefixed(_ prefix: String, _ uri: NamespaceURI) -> Namespace {
+        Namespace(rawValue: "@namespace \(prefix) \(uri.rawValue);")
+    }
 
-  /// Creates a prefixed namespace with the specified prefix and namespace URI as a string.
-  /// @namespace prefix "XML-namespace-URL";
-  public static func prefixed(_ prefix: String, _ uri: String) -> Namespace {
-    Namespace(rawValue: "@namespace \(prefix) \"\(uri)\";")
-  }
+    /// Creates a prefixed namespace with the specified prefix and namespace URI as a string.
+    /// @namespace prefix "XML-namespace-URL";
+    public static func prefixed(_ prefix: String, _ uri: String) -> Namespace {
+        Namespace(rawValue: "@namespace \(prefix) \"\(uri)\";")
+    }
 }
 
 extension Namespace {
-  /// Represents a URI for a namespace.
-  public enum NamespaceURI: Hashable, Sendable {
-    /// A URL-based namespace URI.
-    case url(String)
+    /// Represents a URI for a namespace.
+    public enum NamespaceURI: Hashable, Sendable {
+        /// A URL-based namespace URI.
+        case url(String)
 
-    /// The raw value representation in CSS.
-    public var rawValue: String {
-      switch self {
-      case .url(let url):
-        return "url(\(url))"
-      }
+        /// The raw value representation in CSS.
+        public var rawValue: String {
+            switch self {
+            case .url(let url):
+                return "url(\(url))"
+            }
+        }
     }
-  }
 
-  /// Common XML namespaces used in web development
-  public struct CommonNamespaces {
-    /// XHTML namespace: http://www.w3.org/1999/xhtml
-    public static let xhtml = "http://www.w3.org/1999/xhtml"
+    /// Common XML namespaces used in web development
+    public struct CommonNamespaces {
+        /// XHTML namespace: http://www.w3.org/1999/xhtml
+        public static let xhtml = "http://www.w3.org/1999/xhtml"
 
-    /// SVG namespace: http://www.w3.org/2000/svg
-    public static let svg = "http://www.w3.org/2000/svg"
+        /// SVG namespace: http://www.w3.org/2000/svg
+        public static let svg = "http://www.w3.org/2000/svg"
 
-    /// MathML namespace: http://www.w3.org/1998/Math/MathML
-    public static let mathML = "http://www.w3.org/1998/Math/MathML"
+        /// MathML namespace: http://www.w3.org/1998/Math/MathML
+        public static let mathML = "http://www.w3.org/1998/Math/MathML"
 
-    /// XLink namespace: http://www.w3.org/1999/xlink
-    public static let xlink = "http://www.w3.org/1999/xlink"
-  }
+        /// XLink namespace: http://www.w3.org/1999/xlink
+        public static let xlink = "http://www.w3.org/1999/xlink"
+    }
 }

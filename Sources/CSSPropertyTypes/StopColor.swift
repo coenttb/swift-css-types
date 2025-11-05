@@ -18,30 +18,30 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on stop-color](https://developer.mozilla.org/en-US/docs/Web/CSS/stop-color)
 public enum StopColor: Property, ColorConvertible {
-  public static let property: String = "stop-color"
+    public static let property: String = "stop-color"
 
-  /// A specific color value
-  case color(CSSTypeTypes.Color)
+    /// A specific color value
+    case color(CSSTypeTypes.Color)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension StopColor: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .color(let color):
-      return color.description
+    public var description: String {
+        switch self {
+        case .color(let color):
+            return color.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Factory methods for creating stop-color values
 extension StopColor {
-  /// Creates a color that matches the current color value
-  public static let currentColor: StopColor = .color(.currentColor)
+    /// Creates a color that matches the current color value
+    public static let currentColor: StopColor = .color(.currentColor)
 }

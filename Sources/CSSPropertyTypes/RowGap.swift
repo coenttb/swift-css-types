@@ -25,25 +25,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on row-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap)
 public enum RowGap: Property, LengthPercentageConvertible {
-  public static let property: String = "row-gap"
+    public static let property: String = "row-gap"
 
-  /// A length-percentage value for the gap
-  case lengthPercentage(LengthPercentage)
+    /// A length-percentage value for the gap
+    case lengthPercentage(LengthPercentage)
 
-  /// Default value, typically 0 (except for multi-column layouts)
-  case normal
+    /// Default value, typically 0 (except for multi-column layouts)
+    case normal
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
-    case .normal:
-      return "normal"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
+        case .normal:
+            return "normal"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

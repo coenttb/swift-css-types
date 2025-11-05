@@ -21,33 +21,33 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on break-inside](https://developer.mozilla.org/en-US/docs/Web/CSS/break-inside)
 public enum BreakInside: Property {
-  public static let property: String = "break-inside"
-  /// Allows, but does not force, any break (page, column, or region) to be inserted within the element.
-  case auto
+    public static let property: String = "break-inside"
+    /// Allows, but does not force, any break (page, column, or region) to be inserted within the element.
+    case auto
 
-  /// Avoids any break (page, column, or region) from being inserted within the element.
-  case avoid
+    /// Avoids any break (page, column, or region) from being inserted within the element.
+    case avoid
 
-  /// Avoids any page break within the element.
-  case avoidPage
+    /// Avoids any page break within the element.
+    case avoidPage
 
-  /// Avoids any column break within the element.
-  case avoidColumn
+    /// Avoids any column break within the element.
+    case avoidColumn
 
-  /// Avoids any region break within the element.
-  case avoidRegion
+    /// Avoids any region break within the element.
+    case avoidRegion
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto: return "auto"
-    case .avoid: return "avoid"
-    case .avoidPage: return "avoid-page"
-    case .avoidColumn: return "avoid-column"
-    case .avoidRegion: return "avoid-region"
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .auto: return "auto"
+        case .avoid: return "avoid"
+        case .avoidPage: return "avoid-page"
+        case .avoidColumn: return "avoid-column"
+        case .avoidRegion: return "avoid-region"
+        case .global(let global): return global.description
+        }
     }
-  }
 }

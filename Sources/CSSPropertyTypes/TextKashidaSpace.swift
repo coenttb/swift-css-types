@@ -19,45 +19,45 @@ import Foundation
 ///
 /// - SeeAlso: [Microsoft Docs on text-kashida-space](https://docs.microsoft.com/en-us/previous-versions/ms531174(v=vs.85))
 public enum TextKashidaSpace: Property {
-  public static let property: String = "text-kashida-space"
+    public static let property: String = "text-kashida-space"
 
-  /// No kashida expansion is used.
-  case none
+    /// No kashida expansion is used.
+    case none
 
-  /// Percentage of the total justification space that can be filled with kashida expansions.
-  /// A value of 100% means that kashida expansions fill all of the justification space,
-  /// and no additional white space is used for justification.
-  case percentage(Percentage)
+    /// Percentage of the total justification space that can be filled with kashida expansions.
+    /// A value of 100% means that kashida expansions fill all of the justification space,
+    /// and no additional white space is used for justification.
+    case percentage(Percentage)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension TextKashidaSpace: CustomStringConvertible {
-  /// Converts the text-kashida-space value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .none:
-      return 0.percent.description
+    /// Converts the text-kashida-space value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .none:
+            return 0.percent.description
 
-    case .percentage(let percentage):
-      return percentage.description
+        case .percentage(let percentage):
+            return percentage.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 // Convenience properties for common kashida values
 extension TextKashidaSpace {
-  /// No kashida expansion
-  public static let off = TextKashidaSpace.none
+    /// No kashida expansion
+    public static let off = TextKashidaSpace.none
 
-  /// Default kashida expansion (typically 50%)
-  public static let normal = TextKashidaSpace.percentage(50)
+    /// Default kashida expansion (typically 50%)
+    public static let normal = TextKashidaSpace.percentage(50)
 
-  /// Full kashida expansion (100%) - use only kashida for justification
-  public static let full = TextKashidaSpace.percentage(100)
+    /// Full kashida expansion (100%) - use only kashida for justification
+    public static let full = TextKashidaSpace.percentage(100)
 }

@@ -16,66 +16,66 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on hue](https://developer.mozilla.org/en-US/docs/Web/CSS/hue)
 public enum Hue: Sendable, Hashable, AngleConvertible {
-  /// Hue expressed as a number (interpreted as degrees)
-  case number(Number)
+    /// Hue expressed as a number (interpreted as degrees)
+    case number(Number)
 
-  /// Hue expressed as an angle
-  case angle(Angle)
+    /// Hue expressed as an angle
+    case angle(Angle)
 
-  /// Normalizes the hue angle to its equivalent angle in the range [0, 360) degrees
-  ///
-  /// This method converts the hue angle to degrees and then ensures that the value
-  /// is in the range of 0 to 360 (exclusive of 360 itself).
-  ///
-  /// - Returns: The normalized hue angle in degrees
-  public func normalizedDegrees() -> Double {
-    let degrees: Double
+    /// Normalizes the hue angle to its equivalent angle in the range [0, 360) degrees
+    ///
+    /// This method converts the hue angle to degrees and then ensures that the value
+    /// is in the range of 0 to 360 (exclusive of 360 itself).
+    ///
+    /// - Returns: The normalized hue angle in degrees
+    public func normalizedDegrees() -> Double {
+        let degrees: Double
 
-    switch self {
-    case .number(let number):
-      degrees = number.value
-    case .angle(let angle):
-      // Convert angle to degrees
-      switch angle {
-      case .deg(let value):
-        degrees = value
-      case .grad(let value):
-        degrees = value * 0.9  // 1 grad = 0.9 deg
-      case .rad(let value):
-        degrees = value * 180.0 / .pi
-      case .turn(let value):
-        degrees = value * 360.0
-      }
+        switch self {
+        case .number(let number):
+            degrees = number.value
+        case .angle(let angle):
+            // Convert angle to degrees
+            switch angle {
+            case .deg(let value):
+                degrees = value
+            case .grad(let value):
+                degrees = value * 0.9  // 1 grad = 0.9 deg
+            case .rad(let value):
+                degrees = value * 180.0 / .pi
+            case .turn(let value):
+                degrees = value * 360.0
+            }
+        }
+
+        // Normalize to [0, 360)
+        return ((degrees.truncatingRemainder(dividingBy: 360.0)) + 360.0).truncatingRemainder(
+            dividingBy: 360.0
+        )
     }
-
-    // Normalize to [0, 360)
-    return ((degrees.truncatingRemainder(dividingBy: 360.0)) + 360.0).truncatingRemainder(
-      dividingBy: 360.0
-    )
-  }
 }
 
 extension Hue: ExpressibleByIntegerLiteral {
-  public init(integerLiteral value: IntegerLiteralType) {
-    self = .number(.init(value))
-  }
+    public init(integerLiteral value: IntegerLiteralType) {
+        self = .number(.init(value))
+    }
 }
 
 extension Hue: ExpressibleByFloatLiteral {
-  public init(floatLiteral value: FloatLiteralType) {
-    self = .number(.init(value))
-  }
+    public init(floatLiteral value: FloatLiteralType) {
+        self = .number(.init(value))
+    }
 }
 
 /// Provides string conversion for CSS output
 extension Hue: CustomStringConvertible {
-  /// Converts the hue to its CSS string representation
-  public var description: String {
-    switch self {
-    case .number(let value):
-      return value.value.truncatingRemainder()
-    case .angle(let angle):
-      return angle.description
+    /// Converts the hue to its CSS string representation
+    public var description: String {
+        switch self {
+        case .number(let value):
+            return value.value.truncatingRemainder()
+        case .angle(let angle):
+            return angle.description
+        }
     }
-  }
 }

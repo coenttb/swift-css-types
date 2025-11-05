@@ -26,42 +26,42 @@ import Foundation
 /// text-decoration-style: wavy;
 /// ```
 public enum TextDecorationStyle: Property {
-  public static let property: String = "text-decoration-style"
+    public static let property: String = "text-decoration-style"
 
-  /// A single line. This is the default style.
-  case solid
+    /// A single line. This is the default style.
+    case solid
 
-  /// Two lines.
-  case double
+    /// Two lines.
+    case double
 
-  /// A series of dots.
-  case dotted
+    /// A series of dots.
+    case dotted
 
-  /// A series of dashes.
-  case dashed
+    /// A series of dashes.
+    case dashed
 
-  /// A wavy line.
-  case wavy
+    /// A wavy line.
+    case wavy
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 extension TextDecorationStyle: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .solid:
-      return "solid"
-    case .double:
-      return "double"
-    case .dotted:
-      return "dotted"
-    case .dashed:
-      return "dashed"
-    case .wavy:
-      return "wavy"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .solid:
+            return "solid"
+        case .double:
+            return "double"
+        case .dotted:
+            return "dotted"
+        case .dashed:
+            return "dashed"
+        case .wavy:
+            return "wavy"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

@@ -24,45 +24,45 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ruby-position](https://developer.mozilla.org/en-US/docs/Web/CSS/ruby-position)
 public enum RubyPosition: Property, GlobalConvertible {
-  public static let property: String = "ruby-position"
+    public static let property: String = "ruby-position"
 
-  /// Ruby text is positioned over the base text in horizontal scripts
-  case over
+    /// Ruby text is positioned over the base text in horizontal scripts
+    case over
 
-  /// Ruby text is positioned under the base text in horizontal scripts
-  case under
+    /// Ruby text is positioned under the base text in horizontal scripts
+    case under
 
-  /// Ruby text alternates between over and under when there are multiple levels
-  case alternate
+    /// Ruby text alternates between over and under when there are multiple levels
+    case alternate
 
-  /// Ruby text is positioned with alternate over configuration
-  case alternateOver
+    /// Ruby text is positioned with alternate over configuration
+    case alternateOver
 
-  /// Ruby text is positioned with alternate under configuration
-  case alternateUnder
+    /// Ruby text is positioned with alternate under configuration
+    case alternateUnder
 
-  /// Ruby text is positioned between characters
-  case interCharacter
+    /// Ruby text is positioned between characters
+    case interCharacter
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .over:
-      return "over"
-    case .under:
-      return "under"
-    case .alternate:
-      return "alternate"
-    case .alternateOver:
-      return "alternate over"
-    case .alternateUnder:
-      return "alternate under"
-    case .interCharacter:
-      return "inter-character"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .over:
+            return "over"
+        case .under:
+            return "under"
+        case .alternate:
+            return "alternate"
+        case .alternateOver:
+            return "alternate over"
+        case .alternateUnder:
+            return "alternate under"
+        case .interCharacter:
+            return "inter-character"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

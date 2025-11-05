@@ -16,21 +16,21 @@ import Foundation
 /// (CustomStringConvertible), and supporting global CSS values (GlobalConvertible).
 public protocol Property: Sendable, Hashable, CustomStringConvertible, GlobalConvertible {
 
-  static var property: String { get }
+    static var property: String { get }
 }
 
 extension Property {
-  public var declaration: Declaration {
-    .init(self)
-  }
+    public var declaration: Declaration {
+        .init(self)
+    }
 }
 
 public struct Declaration: Sendable, Hashable, CustomStringConvertible {
-  public let description: String
+    public let description: String
 }
 
 extension Declaration {
-  public init<Propery: Property>(_ property: Propery) {
-    self.description = "\(Propery.property):\(property.description)"
-  }
+    public init<Propery: Property>(_ property: Propery) {
+        self.description = "\(Propery.property):\(property.description)"
+    }
 }

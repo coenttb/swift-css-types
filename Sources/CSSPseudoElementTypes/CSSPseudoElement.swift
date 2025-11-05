@@ -6,10 +6,10 @@
 //
 
 public protocol CSSPseudoElement: Sendable, Hashable, CustomStringConvertible {
-  static var name: String { get }
+    static var name: String { get }
 }
 
 extension CSSPseudoElement {
-  @inlinable static var prefix: String { "::" }
-  public var description: String { Self.prefix + Self.name }
+    @inlinable static var prefix: String { "::" }
+    public var description: String { Self.prefix + Self.name }
 }

@@ -26,32 +26,32 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on font-variant-position](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-position)
 public enum FontVariantPosition: Property {
 
-  public static let property: String = "font-variant-position"
+    public static let property: String = "font-variant-position"
 
-  /// Deactivates alternate superscript and subscript glyphs.
-  case normal
+    /// Deactivates alternate superscript and subscript glyphs.
+    case normal
 
-  /// Activates subscript alternate glyphs. If a character in the run doesn't have
-  /// this glyph, all characters are rendered using synthesized glyphs.
-  case sub
+    /// Activates subscript alternate glyphs. If a character in the run doesn't have
+    /// this glyph, all characters are rendered using synthesized glyphs.
+    case sub
 
-  /// Activates superscript alternate glyphs. If a character in the run doesn't have
-  /// this glyph, all characters are rendered using synthesized glyphs.
-  case `super`
+    /// Activates superscript alternate glyphs. If a character in the run doesn't have
+    /// this glyph, all characters are rendered using synthesized glyphs.
+    case `super`
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .normal:
-      return "normal"
-    case .sub:
-      return "sub"
-    case .super:
-      return "super"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .normal:
+            return "normal"
+        case .sub:
+            return "sub"
+        case .super:
+            return "super"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

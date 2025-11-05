@@ -13,24 +13,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/fill-rule)
 public enum FillRule: Property {
-  public static let property: String = "fill-rule"
-  /// Uses ray crossing algorithm counting intersections; if count is zero, point is outside
-  case nonzero
+    public static let property: String = "fill-rule"
+    /// Uses ray crossing algorithm counting intersections; if count is zero, point is outside
+    case nonzero
 
-  /// Uses ray crossing algorithm counting intersections; if count is odd, point is inside
-  case evenodd
+    /// Uses ray crossing algorithm counting intersections; if count is odd, point is inside
+    case evenodd
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .nonzero:
-      return "nonzero"
-    case .evenodd:
-      return "evenodd"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .nonzero:
+            return "nonzero"
+        case .evenodd:
+            return "evenodd"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

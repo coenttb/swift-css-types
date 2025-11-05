@@ -19,50 +19,50 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on transform-style](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style)
 public enum TransformStyle: Property {
 
-  public static let property: String = "transform-style"
+    public static let property: String = "transform-style"
 
-  /// Indicates that the children of the element are lying in the plane of the element itself.
-  case flat
+    /// Indicates that the children of the element are lying in the plane of the element itself.
+    case flat
 
-  /// Indicates that the children of the element should be positioned in the 3D-space.
-  case preserve3D
+    /// Indicates that the children of the element should be positioned in the 3D-space.
+    case preserve3D
 
-  case global(CSSTypeTypes.Global)
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension TransformStyle: CustomStringConvertible {
-  /// Converts the transform-style value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .flat:
-      return "flat"
-    case .preserve3D:
-      return "preserve-3d"
-    case .global(let global):
-      return global.description
+    /// Converts the transform-style value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .flat:
+            return "flat"
+        case .preserve3D:
+            return "preserve-3d"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Factory methods and convenience properties
 extension TransformStyle {
-  /// The flat value (default) - children are in the same plane as the element
-  public static let defaultValue: TransformStyle = .flat
+    /// The flat value (default) - children are in the same plane as the element
+    public static let defaultValue: TransformStyle = .flat
 
-  /// Create a 3D scene with this element
-  ///
-  /// Use this to create 3D transformable elements where children maintain their position in 3D space
-  ///
-  /// - Returns: The transform style property with preserve-3d value
-  public static func create3DScene() -> TransformStyle {
-    .preserve3D
-  }
+    /// Create a 3D scene with this element
+    ///
+    /// Use this to create 3D transformable elements where children maintain their position in 3D space
+    ///
+    /// - Returns: The transform style property with preserve-3d value
+    public static func create3DScene() -> TransformStyle {
+        .preserve3D
+    }
 
-  /// Ensures children are flattened into the element's 2D plane
-  ///
-  /// - Returns: The transform style property with flat value
-  public static func flatten() -> TransformStyle {
-    .flat
-  }
+    /// Ensures children are flattened into the element's 2D plane
+    ///
+    /// - Returns: The transform style property with flat value
+    public static func flatten() -> TransformStyle {
+        .flat
+    }
 }

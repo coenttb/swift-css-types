@@ -14,25 +14,25 @@ import Foundation
 ///
 /// - SeeAlso: `MixBlendMode`
 public enum Isolation: Property {
-  public static let property: String = "isolation"
+    public static let property: String = "isolation"
 
-  /// A new stacking context is created only if one of the properties applied to the element requires it.
-  case auto
+    /// A new stacking context is created only if one of the properties applied to the element requires it.
+    case auto
 
-  /// A new stacking context must be created.
-  case isolate
+    /// A new stacking context must be created.
+    case isolate
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .isolate:
-      return "isolate"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .isolate:
+            return "isolate"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

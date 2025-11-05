@@ -32,27 +32,27 @@ import Foundation
 /// This protocol is particularly useful for CSS properties that accept length values
 /// but require specific types for additional functionality or validation.
 public protocol LengthPercentageConvertible: LengthConvertible & PercentageConvertible {
-  static func lengthPercentage(_ value: LengthPercentage) -> Self
+    static func lengthPercentage(_ value: LengthPercentage) -> Self
 }
 
 extension LengthPercentageConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> Self {
-    .lengthPercentage(.length(length))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> Self {
+        .lengthPercentage(.length(length))
+    }
 
-  public static func percentage(_ percentage: CSSTypeTypes.Percentage) -> Self {
-    .lengthPercentage(.percentage(percentage))
-  }
+    public static func percentage(_ percentage: CSSTypeTypes.Percentage) -> Self {
+        .lengthPercentage(.percentage(percentage))
+    }
 }
 
 extension LengthPercentageConvertible {
-  public static var zero: Self { .length(.zero) }
+    public static var zero: Self { .length(.zero) }
 }
 
 extension LengthPercentageConvertible {
-  public init(
-    _ value: LengthPercentage
-  ) {
-    self = .lengthPercentage(value)
-  }
+    public init(
+        _ value: LengthPercentage
+    ) {
+        self = .lengthPercentage(value)
+    }
 }

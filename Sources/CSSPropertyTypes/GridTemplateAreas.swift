@@ -30,26 +30,26 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on grid-template-areas](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas)
 public enum GridTemplateAreas: Property {
 
-  public static let property: String = "grid-template-areas"
+    public static let property: String = "grid-template-areas"
 
-  /// The grid container doesn't define any named grid areas
-  case none
+    /// The grid container doesn't define any named grid areas
+    case none
 
-  /// Defines named grid areas using strings
-  /// Each string represents a row in the grid
-  case areas([String])
+    /// Defines named grid areas using strings
+    /// Each string represents a row in the grid
+    case areas([String])
 
-  /// Global values (inherit, initial, etc.)
-  case global(CSSTypeTypes.Global)
+    /// Global values (inherit, initial, etc.)
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .areas(let areas):
-      return areas.map { "\"\($0)\"" }.joined(separator: " ")
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .areas(let areas):
+            return areas.map { "\"\($0)\"" }.joined(separator: " ")
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

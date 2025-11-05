@@ -15,43 +15,43 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on padding-right](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right)
 public enum PaddingRight: Property, LengthPercentageConvertible {
-  public static let property: String = "padding-right"
+    public static let property: String = "padding-right"
 
-  /// A length or percentage value for the right padding
-  case lengthPercentage(LengthPercentage)
+    /// A length or percentage value for the right padding
+    case lengthPercentage(LengthPercentage)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension PaddingRight: CustomStringConvertible {
-  /// Converts the padding-right value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
+    /// Converts the padding-right value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension PaddingRight: ExpressibleByIntegerLiteral {
-  /// Creates a padding-right from an integer literal (interpreted as pixels)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(integerLiteral value: Int) {
-    self = .lengthPercentage(.px(Double(value)))
-  }
+    /// Creates a padding-right from an integer literal (interpreted as pixels)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(integerLiteral value: Int) {
+        self = .lengthPercentage(.px(Double(value)))
+    }
 }
 
 extension PaddingRight: ExpressibleByFloatLiteral {
-  /// Creates a padding-right from a floating-point literal (interpreted as pixels)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(floatLiteral value: Double) {
-    self = .lengthPercentage(.px(value))
-  }
+    /// Creates a padding-right from a floating-point literal (interpreted as pixels)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(floatLiteral value: Double) {
+        self = .lengthPercentage(.px(value))
+    }
 }

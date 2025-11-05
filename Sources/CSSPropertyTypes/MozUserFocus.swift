@@ -31,30 +31,30 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -moz-user-focus](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-user-focus)
 public enum MozUserFocus: Property {
-  public static let property: String = "-moz-user-focus"
+    public static let property: String = "-moz-user-focus"
 
-  /// The element does not accept keyboard focus. Attempting to select the element removes focus from any other element.
-  case none
+    /// The element does not accept keyboard focus. Attempting to select the element removes focus from any other element.
+    case none
 
-  /// The element can accept keyboard focus
-  case normal
+    /// The element can accept keyboard focus
+    case normal
 
-  /// The element does not accept keyboard focus and will be skipped in the tab order
-  case ignore
+    /// The element does not accept keyboard focus and will be skipped in the tab order
+    case ignore
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .normal:
-      return "normal"
-    case .ignore:
-      return "ignore"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .normal:
+            return "normal"
+        case .ignore:
+            return "ignore"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

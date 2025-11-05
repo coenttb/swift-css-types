@@ -16,29 +16,29 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on accent-color](https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color)
 public enum AccentColor: Property, ColorConvertible {
-  public static let property: String = "accent-color"
+    public static let property: String = "accent-color"
 
-  /// The browser's default accent color
-  case auto
+    /// The browser's default accent color
+    case auto
 
-  /// A specific color to use as the accent color
-  case color(CSSTypeTypes.Color)
+    /// A specific color to use as the accent color
+    case color(CSSTypeTypes.Color)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension AccentColor {
-  /// Converts the accent color to its CSS string representation
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .color(let color):
-      return color.description
-    case .global(let global):
-      return global.description
+    /// Converts the accent color to its CSS string representation
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .color(let color):
+            return color.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

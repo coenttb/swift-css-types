@@ -10,30 +10,30 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/container-name)
 public enum ContainerName: Property {
-  public static let property: String = "container-name"
+    public static let property: String = "container-name"
 
-  /// Default value. The query container has no name.
-  case none
+    /// Default value. The query container has no name.
+    case none
 
-  /// A single container name
-  case name(Ident)
+    /// A single container name
+    case name(Ident)
 
-  /// Multiple container names
-  case names([Ident])
+    /// Multiple container names
+    case names([Ident])
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .name(let name):
-      return name.description
-    case .names(let names):
-      return names.map { $0.description }.joined(separator: " ")
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .name(let name):
+            return name.description
+        case .names(let names):
+            return names.map { $0.description }.joined(separator: " ")
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

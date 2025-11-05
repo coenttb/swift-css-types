@@ -24,52 +24,52 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on view-timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/view-timeline)
 public enum ViewTimeline: Property {
 
-  public static let property: String = "view-timeline"
+    public static let property: String = "view-timeline"
 
-  /// Just a name for the timeline (axis defaults to .block)
-  case name(ViewTimelineName)
+    /// Just a name for the timeline (axis defaults to .block)
+    case name(ViewTimelineName)
 
-  /// Name and axis for the timeline
-  case nameAndAxis(ViewTimelineName, ViewTimelineAxis)
+    /// Name and axis for the timeline
+    case nameAndAxis(ViewTimelineName, ViewTimelineAxis)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension ViewTimeline: CustomStringConvertible {
-  /// Converts the view-timeline value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .name(let name):
-      return name.description
+    /// Converts the view-timeline value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .name(let name):
+            return name.description
 
-    case .nameAndAxis(let name, let axis):
-      return "\(name) \(axis)"
+        case .nameAndAxis(let name, let axis):
+            return "\(name) \(axis)"
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 // Convenience initializers
 extension ViewTimeline {
-  /// Creates a view timeline with a custom name
-  ///
-  /// - Parameter name: The name for the timeline (with or without -- prefix)
-  /// - Returns: A ViewTimeline with just the specified name
-  public static func custom(_ name: String) -> Self {
-    return .name(.custom(name))
-  }
+    /// Creates a view timeline with a custom name
+    ///
+    /// - Parameter name: The name for the timeline (with or without -- prefix)
+    /// - Returns: A ViewTimeline with just the specified name
+    public static func custom(_ name: String) -> Self {
+        return .name(.custom(name))
+    }
 
-  /// Creates a view timeline with a custom name and specific axis
-  ///
-  /// - Parameters:
-  ///   - name: The name for the timeline (with or without -- prefix)
-  ///   - axis: The axis to track for the timeline
-  /// - Returns: A ViewTimeline with the specified name and axis
-  public static func custom(_ name: String, _ axis: ViewTimelineAxis) -> Self {
-    return .nameAndAxis(.custom(name), axis)
-  }
+    /// Creates a view timeline with a custom name and specific axis
+    ///
+    /// - Parameters:
+    ///   - name: The name for the timeline (with or without -- prefix)
+    ///   - axis: The axis to track for the timeline
+    /// - Returns: A ViewTimeline with the specified name and axis
+    public static func custom(_ name: String, _ axis: ViewTimelineAxis) -> Self {
+        return .nameAndAxis(.custom(name), axis)
+    }
 }

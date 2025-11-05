@@ -12,45 +12,45 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/fill)
 public indirect enum Fill: Property, ColorConvertible {
-  public static let property: String = "fill"
+    public static let property: String = "fill"
 
-  /// No fill is painted (transparent)
-  case none
+    /// No fill is painted (transparent)
+    case none
 
-  /// Uses the fill value from a context element
-  case contextFill
+    /// Uses the fill value from a context element
+    case contextFill
 
-  /// Uses the stroke value from a context element
-  case contextStroke
+    /// Uses the stroke value from a context element
+    case contextStroke
 
-  /// A specific color for the fill
-  case color(CSSTypeTypes.Color)
+    /// A specific color for the fill
+    case color(CSSTypeTypes.Color)
 
-  /// A URL reference to an SVG paint server element (gradient, pattern)
-  case url(Url)
+    /// A URL reference to an SVG paint server element (gradient, pattern)
+    case url(Url)
 
-  /// A URL with a fallback color if the URL reference doesn't resolve
-  case urlWithFallback(url: Url, fallback: Fill = .none)
+    /// A URL with a fallback color if the URL reference doesn't resolve
+    case urlWithFallback(url: Url, fallback: Fill = .none)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .contextFill:
-      return "context-fill"
-    case .contextStroke:
-      return "context-stroke"
-    case .color(let color):
-      return color.description
-    case .url(let url):
-      return url.description
-    case .urlWithFallback(let url, let fallback):
-      return "url(\(url)) \(fallback)"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .contextFill:
+            return "context-fill"
+        case .contextStroke:
+            return "context-stroke"
+        case .color(let color):
+            return color.description
+        case .url(let url):
+            return url.description
+        case .urlWithFallback(let url, let fallback):
+            return "url(\(url)) \(fallback)"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

@@ -16,24 +16,24 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on frequency](https://developer.mozilla.org/en-US/docs/Web/CSS/frequency)
 public enum Frequency: Sendable, Hashable {
-  /// Frequency in hertz (Hz)
-  case hz(Number)
+    /// Frequency in hertz (Hz)
+    case hz(Number)
 
-  /// Frequency in kilohertz (kHz)
-  case khz(Number)
+    /// Frequency in kilohertz (kHz)
+    case khz(Number)
 }
 
 /// Provides string conversion for CSS output
 extension Frequency: CustomStringConvertible {
-  /// Converts the frequency value to its CSS string representation
-  ///
-  /// This method formats the value and appends the appropriate unit (Hz or kHz).
-  public var description: String {
-    switch self {
-    case .hz(let value):
-      return "\(value)Hz"
-    case .khz(let value):
-      return "\(value)kHz"
+    /// Converts the frequency value to its CSS string representation
+    ///
+    /// This method formats the value and appends the appropriate unit (Hz or kHz).
+    public var description: String {
+        switch self {
+        case .hz(let value):
+            return "\(value)Hz"
+        case .khz(let value):
+            return "\(value)kHz"
+        }
     }
-  }
 }

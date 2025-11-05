@@ -24,19 +24,19 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on lighting-color](https://developer.mozilla.org/en-US/docs/Web/CSS/lighting-color)
 public enum LightingColor: Property, ColorConvertible {
-  public static let property: String = "lighting-color"
-  /// A specific color value
-  case color(CSSTypeTypes.Color)
+    public static let property: String = "lighting-color"
+    /// A specific color value
+    case color(CSSTypeTypes.Color)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .color(let color):
-      return color.description
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .color(let color):
+            return color.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

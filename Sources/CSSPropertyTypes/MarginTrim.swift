@@ -37,84 +37,84 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on margin-trim](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-trim)
 public enum MarginTrim: Property {
-  public static let property: String = "margin-trim"
+    public static let property: String = "margin-trim"
 
-  /// Margins are not trimmed by the container (default)
-  case none
+    /// Margins are not trimmed by the container (default)
+    case none
 
-  /// Margins of block children at both start and end edges are trimmed
-  case block
+    /// Margins of block children at both start and end edges are trimmed
+    case block
 
-  /// Margin of the first block child with the container's edge is trimmed
-  case blockStart
+    /// Margin of the first block child with the container's edge is trimmed
+    case blockStart
 
-  /// Margin of the last block child with the container's edge is trimmed
-  case blockEnd
+    /// Margin of the last block child with the container's edge is trimmed
+    case blockEnd
 
-  /// Margins of inline children at both start and end edges are trimmed
-  case inline
+    /// Margins of inline children at both start and end edges are trimmed
+    case inline
 
-  /// Margin between the container's edge and the first inline child is trimmed
-  case inlineStart
+    /// Margin between the container's edge and the first inline child is trimmed
+    case inlineStart
 
-  /// Margin between the container's edge and the last inline child is trimmed
-  case inlineEnd
+    /// Margin between the container's edge and the last inline child is trimmed
+    case inlineEnd
 
-  /// Custom combination of edge margins to trim
-  case edges([Edge])
+    /// Custom combination of edge margins to trim
+    case edges([Edge])
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Edge types for margin trimming
-  public enum Edge: String, Sendable, Hashable, CaseIterable {
-    /// First block child margin
-    case blockStart = "block-start"
+    /// Edge types for margin trimming
+    public enum Edge: String, Sendable, Hashable, CaseIterable {
+        /// First block child margin
+        case blockStart = "block-start"
 
-    /// Last block child margin
-    case blockEnd = "block-end"
+        /// Last block child margin
+        case blockEnd = "block-end"
 
-    /// First inline child margin
-    case inlineStart = "inline-start"
+        /// First inline child margin
+        case inlineStart = "inline-start"
 
-    /// Last inline child margin
-    case inlineEnd = "inline-end"
-  }
-
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .block:
-      return "block"
-    case .blockStart:
-      return "block-start"
-    case .blockEnd:
-      return "block-end"
-    case .inline:
-      return "inline"
-    case .inlineStart:
-      return "inline-start"
-    case .inlineEnd:
-      return "inline-end"
-    case .edges(let edges):
-      return edges.map { $0.rawValue }.joined(separator: " ")
-    case .global(let global):
-      return global.description
+        /// Last inline child margin
+        case inlineEnd = "inline-end"
     }
-  }
+
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .block:
+            return "block"
+        case .blockStart:
+            return "block-start"
+        case .blockEnd:
+            return "block-end"
+        case .inline:
+            return "inline"
+        case .inlineStart:
+            return "inline-start"
+        case .inlineEnd:
+            return "inline-end"
+        case .edges(let edges):
+            return edges.map { $0.rawValue }.joined(separator: " ")
+        case .global(let global):
+            return global.description
+        }
+    }
 }
 
 /// Convenience initializers for MarginTrim
 extension MarginTrim {
-  /// Creates a margin-trim with both block and inline trimming
-  public static let all = MarginTrim.edges([.blockStart, .blockEnd, .inlineStart, .inlineEnd])
+    /// Creates a margin-trim with both block and inline trimming
+    public static let all = MarginTrim.edges([.blockStart, .blockEnd, .inlineStart, .inlineEnd])
 
-  /// Creates a margin-trim with custom edge settings
-  ///
-  /// - Parameter edges: The edges to trim
-  /// - Returns: A margin-trim with the specified edges
-  public static func trim(_ edges: Edge...) -> MarginTrim {
-    .edges(edges)
-  }
+    /// Creates a margin-trim with custom edge settings
+    ///
+    /// - Parameter edges: The edges to trim
+    /// - Returns: A margin-trim with the specified edges
+    public static func trim(_ edges: Edge...) -> MarginTrim {
+        .edges(edges)
+    }
 }

@@ -38,41 +38,41 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on border-collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse)
 public enum BorderCollapse: Property {
-  public static let property: String = "border-collapse"
+    public static let property: String = "border-collapse"
 
-  /// Cells share borders (collapsed borders)
-  case collapse
+    /// Cells share borders (collapsed borders)
+    case collapse
 
-  /// Cells have distinct borders (separated borders)
-  case separate
+    /// Cells have distinct borders (separated borders)
+    case separate
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 }
 
 /// Provides string conversion for CSS output
 extension BorderCollapse: CustomStringConvertible {
-  /// Converts the border-collapse to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// border-collapse: collapse;
-  /// border-collapse: separate;
-  /// ```
-  public var description: String {
-    switch self {
-    case .collapse:
-      return "collapse"
-    case .separate:
-      return "separate"
-    case .global(let global):
-      return global.description
+    /// Converts the border-collapse to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// border-collapse: collapse;
+    /// border-collapse: separate;
+    /// ```
+    public var description: String {
+        switch self {
+        case .collapse:
+            return "collapse"
+        case .separate:
+            return "separate"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience values for BorderCollapse
 extension BorderCollapse {
-  /// The default value for border-collapse (separate)
-  public static let `default` = BorderCollapse.separate
+    /// The default value for border-collapse (separate)
+    public static let `default` = BorderCollapse.separate
 }

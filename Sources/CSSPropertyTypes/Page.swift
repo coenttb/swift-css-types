@@ -32,26 +32,26 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on page](https://developer.mozilla.org/en-US/docs/Web/CSS/page)
 public enum Page: Property {
-  public static let property: String = "page"
+    public static let property: String = "page"
 
-  /// Uses the value of the nearest ancestor with a non-auto value.
-  /// If no ancestor has a named page value set, the used value is the empty string.
-  case auto
+    /// Uses the value of the nearest ancestor with a non-auto value.
+    /// If no ancestor has a named page value set, the used value is the empty string.
+    case auto
 
-  /// A case-sensitive name defined in a @page at-rule
-  case name(String)
+    /// A case-sensitive name defined in a @page at-rule
+    case name(String)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .name(let pageName):
-      return pageName
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .name(let pageName):
+            return pageName
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

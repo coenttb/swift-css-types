@@ -26,156 +26,157 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on inset](https://developer.mozilla.org/en-US/docs/Web/CSS/inset)
 public enum Inset: Property, LengthPercentageConvertible {
-  public static let property: String = "inset"
+    public static let property: String = "inset"
 
-  /// Auto value for all sides
-  case auto
-
-  /// Values for each side (top, right, bottom, left)
-  case sides(top: Value, right: Value, bottom: Value, left: Value)
-
-  /// Global values (inherit, initial, etc.)
-  case global(CSSTypeTypes.Global)
-
-  /// Represents a value for each side that can be either a length/percentage or auto
-  public enum Value: Hashable, Sendable, LengthPercentageConvertible {
-    /// Auto value (browser-determined)
+    /// Auto value for all sides
     case auto
 
-    /// Specific length or percentage value
-    case lengthPercentage(LengthPercentage)
+    /// Values for each side (top, right, bottom, left)
+    case sides(top: Value, right: Value, bottom: Value, left: Value)
+
+    /// Global values (inherit, initial, etc.)
+    case global(CSSTypeTypes.Global)
+
+    /// Represents a value for each side that can be either a length/percentage or auto
+    public enum Value: Hashable, Sendable, LengthPercentageConvertible {
+        /// Auto value (browser-determined)
+        case auto
+
+        /// Specific length or percentage value
+        case lengthPercentage(LengthPercentage)
+
+        public var description: String {
+            switch self {
+            case .auto:
+                return "auto"
+            case .lengthPercentage(let value):
+                return value.description
+            }
+        }
+
+        /// Converts a LengthPercentage to a Value
+        public static func from(_ value: LengthPercentage) -> Value {
+            .lengthPercentage(value)
+        }
+    }
+
+    /// Initialize with the same value for all sides
+    public init(_ value: LengthPercentage) {
+        self = .sides(
+            top: .lengthPercentage(value),
+            right: .lengthPercentage(value),
+            bottom: .lengthPercentage(value),
+            left: .lengthPercentage(value)
+        )
+    }
+
+    /// Initialize with auto for all sides
+    public init(auto: Bool = true) {
+        if auto {
+            self = .auto
+        } else {
+            self = .sides(
+                top: .length(.px(0)),
+                right: .length(.px(0)),
+                bottom: .length(.px(0)),
+                left: .length(.px(0))
+            )
+        }
+    }
+
+    /// Initialize with vertical and horizontal values
+    public init(vertical: LengthPercentage, horizontal: LengthPercentage) {
+        self = .sides(
+            top: .lengthPercentage(vertical),
+            right: .lengthPercentage(horizontal),
+            bottom: .lengthPercentage(vertical),
+            left: .lengthPercentage(horizontal)
+        )
+    }
+
+    /// Initialize with top, horizontal, and bottom values (three-value syntax)
+    public init(top: LengthPercentage, horizontal: LengthPercentage, bottom: LengthPercentage) {
+        self = .sides(
+            top: .lengthPercentage(top),
+            right: .lengthPercentage(horizontal),
+            bottom: .lengthPercentage(bottom),
+            left: .lengthPercentage(horizontal)
+        )
+    }
+
+    /// Initialize with four specific values
+    public init(
+        top: LengthPercentage,
+        right: LengthPercentage,
+        bottom: LengthPercentage,
+        left: LengthPercentage
+    ) {
+        self = .sides(
+            top: .lengthPercentage(top),
+            right: .lengthPercentage(right),
+            bottom: .lengthPercentage(bottom),
+            left: .lengthPercentage(left)
+        )
+    }
+
+    /// Initialize with values that can be either lengths or auto
+    public init(
+        top: Value,
+        right: Value,
+        bottom: Value,
+        left: Value
+    ) {
+        self = .sides(top: top, right: right, bottom: bottom, left: left)
+    }
 
     public var description: String {
-      switch self {
-      case .auto:
-        return "auto"
-      case .lengthPercentage(let value):
-        return value.description
-      }
+        switch self {
+        case .auto:
+            return "auto"
+
+        case .sides(let top, let right, let bottom, let left):
+            // Optimize output based on values
+            if top == right && right == bottom && bottom == left {
+                // All sides are equal - use single value
+                return top.description
+            } else if top == bottom && right == left {
+                // Vertical sides equal and horizontal sides equal - use two values
+                return "\(top.description) \(right.description)"
+            } else if right == left {
+                // Only horizontal sides are equal - use three values
+                return "\(top.description) \(right.description) \(bottom.description)"
+            } else {
+                // All sides different - use four values
+                return
+                    "\(top.description) \(right.description) \(bottom.description) \(left.description)"
+            }
+
+        case .global(let global):
+            return global.description
+        }
     }
 
-    /// Converts a LengthPercentage to a Value
-    public static func from(_ value: LengthPercentage) -> Value {
-      .lengthPercentage(value)
+    public static func lengthPercentage(_ value: LengthPercentage) -> Inset {
+        .init(value)
     }
-  }
-
-  /// Initialize with the same value for all sides
-  public init(_ value: LengthPercentage) {
-    self = .sides(
-      top: .lengthPercentage(value),
-      right: .lengthPercentage(value),
-      bottom: .lengthPercentage(value),
-      left: .lengthPercentage(value)
-    )
-  }
-
-  /// Initialize with auto for all sides
-  public init(auto: Bool = true) {
-    if auto {
-      self = .auto
-    } else {
-      self = .sides(
-        top: .length(.px(0)),
-        right: .length(.px(0)),
-        bottom: .length(.px(0)),
-        left: .length(.px(0))
-      )
-    }
-  }
-
-  /// Initialize with vertical and horizontal values
-  public init(vertical: LengthPercentage, horizontal: LengthPercentage) {
-    self = .sides(
-      top: .lengthPercentage(vertical),
-      right: .lengthPercentage(horizontal),
-      bottom: .lengthPercentage(vertical),
-      left: .lengthPercentage(horizontal)
-    )
-  }
-
-  /// Initialize with top, horizontal, and bottom values (three-value syntax)
-  public init(top: LengthPercentage, horizontal: LengthPercentage, bottom: LengthPercentage) {
-    self = .sides(
-      top: .lengthPercentage(top),
-      right: .lengthPercentage(horizontal),
-      bottom: .lengthPercentage(bottom),
-      left: .lengthPercentage(horizontal)
-    )
-  }
-
-  /// Initialize with four specific values
-  public init(
-    top: LengthPercentage,
-    right: LengthPercentage,
-    bottom: LengthPercentage,
-    left: LengthPercentage
-  ) {
-    self = .sides(
-      top: .lengthPercentage(top),
-      right: .lengthPercentage(right),
-      bottom: .lengthPercentage(bottom),
-      left: .lengthPercentage(left)
-    )
-  }
-
-  /// Initialize with values that can be either lengths or auto
-  public init(
-    top: Value,
-    right: Value,
-    bottom: Value,
-    left: Value
-  ) {
-    self = .sides(top: top, right: right, bottom: bottom, left: left)
-  }
-
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-
-    case .sides(let top, let right, let bottom, let left):
-      // Optimize output based on values
-      if top == right && right == bottom && bottom == left {
-        // All sides are equal - use single value
-        return top.description
-      } else if top == bottom && right == left {
-        // Vertical sides equal and horizontal sides equal - use two values
-        return "\(top.description) \(right.description)"
-      } else if right == left {
-        // Only horizontal sides are equal - use three values
-        return "\(top.description) \(right.description) \(bottom.description)"
-      } else {
-        // All sides different - use four values
-        return "\(top.description) \(right.description) \(bottom.description) \(left.description)"
-      }
-
-    case .global(let global):
-      return global.description
-    }
-  }
-
-  public static func lengthPercentage(_ value: LengthPercentage) -> Inset {
-    .init(value)
-  }
 
 }
 
 /// Literal expressions for Inset
 extension Inset: ExpressibleByIntegerLiteral {
-  /// Creates an inset from an integer literal (interpreted as pixels for all sides)
-  ///
-  /// - Parameter value: The inset in pixels
-  public init(integerLiteral value: Int) {
-    self.init(.px(Double(value)))
-  }
+    /// Creates an inset from an integer literal (interpreted as pixels for all sides)
+    ///
+    /// - Parameter value: The inset in pixels
+    public init(integerLiteral value: Int) {
+        self.init(.px(Double(value)))
+    }
 }
 
 extension Inset: ExpressibleByFloatLiteral {
-  /// Creates an inset from a floating-point literal (interpreted as pixels for all sides)
-  ///
-  /// - Parameter value: The inset in pixels
-  public init(floatLiteral value: Double) {
-    self.init(.px(value))
-  }
+    /// Creates an inset from a floating-point literal (interpreted as pixels for all sides)
+    ///
+    /// - Parameter value: The inset in pixels
+    public init(floatLiteral value: Double) {
+        self.init(.px(value))
+    }
 }

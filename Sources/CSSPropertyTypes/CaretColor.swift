@@ -22,40 +22,40 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on caret-color](https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color)
 public enum CaretColor: Property, ColorConvertible {
-  public static let property: String = "caret-color"
-  /// The user agent selects an appropriate color for the caret. This is generally `currentcolor`, but the
-  /// user agent may choose a different color to ensure good visibility and contrast with the surrounding content.
-  case auto
+    public static let property: String = "caret-color"
+    /// The user agent selects an appropriate color for the caret. This is generally `currentcolor`, but the
+    /// user agent may choose a different color to ensure good visibility and contrast with the surrounding content.
+    case auto
 
-  /// A specific color for the caret.
-  case color(CSSTypeTypes.Color)
+    /// A specific color for the caret.
+    case color(CSSTypeTypes.Color)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension CaretColor: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
 
-    case .color(let color):
-      return color.description
+        case .color(let color):
+            return color.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Factory methods for creating CaretColor values
 extension CaretColor {
 
-  /// Creates a transparent caret color
-  public static let transparent: CaretColor = .color(.transparent)
+    /// Creates a transparent caret color
+    public static let transparent: CaretColor = .color(.transparent)
 
-  /// Creates a caret color that matches the current text color
-  public static let currentColor: CaretColor = .color(.currentColor)
+    /// Creates a caret color that matches the current text color
+    public static let currentColor: CaretColor = .color(.currentColor)
 }

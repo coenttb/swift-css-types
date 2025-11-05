@@ -22,191 +22,191 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on padding](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
 public enum Padding: Property, LengthPercentageConvertible {
-  public static let property: String = "padding"
+    public static let property: String = "padding"
 
-  /// Single value for all sides
-  case all(LengthPercentage)
+    /// Single value for all sides
+    case all(LengthPercentage)
 
-  /// Two values: top/bottom (vertical) and left/right (horizontal)
-  case verticalHorizontal(LengthPercentage, LengthPercentage)
+    /// Two values: top/bottom (vertical) and left/right (horizontal)
+    case verticalHorizontal(LengthPercentage, LengthPercentage)
 
-  /// Three values: top, left/right (horizontal), and bottom
-  case topHorizontalBottom(LengthPercentage, LengthPercentage, LengthPercentage)
+    /// Three values: top, left/right (horizontal), and bottom
+    case topHorizontalBottom(LengthPercentage, LengthPercentage, LengthPercentage)
 
-  /// Four values: top, right, bottom, and left (clockwise)
-  case sides(LengthPercentage, LengthPercentage, LengthPercentage, LengthPercentage)
+    /// Four values: top, right, bottom, and left (clockwise)
+    case sides(LengthPercentage, LengthPercentage, LengthPercentage, LengthPercentage)
 
-  /// Named sides: top, right, bottom, left in any combination
-  case named(NamedSides)
+    /// Named sides: top, right, bottom, left in any combination
+    case named(NamedSides)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  /// Named sides for padding
-  public struct NamedSides: Sendable, Hashable {
-    /// Top padding value, if specified
-    public var top: LengthPercentage?
+    /// Named sides for padding
+    public struct NamedSides: Sendable, Hashable {
+        /// Top padding value, if specified
+        public var top: LengthPercentage?
 
-    /// Right padding value, if specified
-    public var right: LengthPercentage?
+        /// Right padding value, if specified
+        public var right: LengthPercentage?
 
-    /// Bottom padding value, if specified
-    public var bottom: LengthPercentage?
+        /// Bottom padding value, if specified
+        public var bottom: LengthPercentage?
 
-    /// Left padding value, if specified
-    public var left: LengthPercentage?
+        /// Left padding value, if specified
+        public var left: LengthPercentage?
 
-    /// Initialize with named sides
-    public init(
-      top: LengthPercentage? = nil,
-      right: LengthPercentage? = nil,
-      bottom: LengthPercentage? = nil,
-      left: LengthPercentage? = nil
-    ) {
-      self.top = top
-      self.right = right
-      self.bottom = bottom
-      self.left = left
+        /// Initialize with named sides
+        public init(
+            top: LengthPercentage? = nil,
+            right: LengthPercentage? = nil,
+            bottom: LengthPercentage? = nil,
+            left: LengthPercentage? = nil
+        ) {
+            self.top = top
+            self.right = right
+            self.bottom = bottom
+            self.left = left
+        }
+
+        /// Initialize with vertical and horizontal values
+        public init(vertical: LengthPercentage? = nil, horizontal: LengthPercentage? = nil) {
+            self.top = vertical
+            self.right = horizontal
+            self.bottom = vertical
+            self.left = horizontal
+        }
     }
-
-    /// Initialize with vertical and horizontal values
-    public init(vertical: LengthPercentage? = nil, horizontal: LengthPercentage? = nil) {
-      self.top = vertical
-      self.right = horizontal
-      self.bottom = vertical
-      self.left = horizontal
-    }
-  }
 }
 
 extension Padding {
-  public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> Padding {
-    .all(value)
-  }
+    public static func lengthPercentage(_ value: CSSTypeTypes.LengthPercentage) -> Padding {
+        .all(value)
+    }
 }
 
 /// CSS Output conversion
 extension Padding {
-  /// Converts the padding to its CSS string representation
-  public var description: String {
-    switch self {
-    case .all(let value):
-      return value.description
+    /// Converts the padding to its CSS string representation
+    public var description: String {
+        switch self {
+        case .all(let value):
+            return value.description
 
-    case .verticalHorizontal(let vertical, let horizontal):
-      return "\(vertical) \(horizontal)"
+        case .verticalHorizontal(let vertical, let horizontal):
+            return "\(vertical) \(horizontal)"
 
-    case .topHorizontalBottom(let top, let horizontal, let bottom):
-      return "\(top) \(horizontal) \(bottom)"
+        case .topHorizontalBottom(let top, let horizontal, let bottom):
+            return "\(top) \(horizontal) \(bottom)"
 
-    case .sides(let top, let right, let bottom, let left):
-      return "\(top) \(right) \(bottom) \(left)"
+        case .sides(let top, let right, let bottom, let left):
+            return "\(top) \(right) \(bottom) \(left)"
 
-    case .named(let sides):
-      // Convert to the most compact representation based on which sides are specified
-      if let top = sides.top, let right = sides.right, let bottom = sides.bottom,
-        let left = sides.left
-      {
-        // All four sides are specified
-        if top == right && right == bottom && bottom == left {
-          // All sides are equal
-          return top.description
-        } else if top == bottom && right == left {
-          // Vertical and horizontal pairs are equal
-          return "\(top) \(right)"
-        } else if right == left {
-          // Horizontal sides are equal
-          return "\(top) \(right) \(bottom)"
-        } else {
-          // All sides are different
-          return "\(top) \(right) \(bottom) \(left)"
+        case .named(let sides):
+            // Convert to the most compact representation based on which sides are specified
+            if let top = sides.top, let right = sides.right, let bottom = sides.bottom,
+                let left = sides.left
+            {
+                // All four sides are specified
+                if top == right && right == bottom && bottom == left {
+                    // All sides are equal
+                    return top.description
+                } else if top == bottom && right == left {
+                    // Vertical and horizontal pairs are equal
+                    return "\(top) \(right)"
+                } else if right == left {
+                    // Horizontal sides are equal
+                    return "\(top) \(right) \(bottom)"
+                } else {
+                    // All sides are different
+                    return "\(top) \(right) \(bottom) \(left)"
+                }
+            } else {
+                // Only some sides are specified - use individual properties instead
+                var individualProperties: [String] = []
+
+                if let top = sides.top {
+                    individualProperties.append("padding-top: \(top);")
+                }
+                if let right = sides.right {
+                    individualProperties.append("padding-right: \(right);")
+                }
+                if let bottom = sides.bottom {
+                    individualProperties.append("padding-bottom: \(bottom);")
+                }
+                if let left = sides.left {
+                    individualProperties.append("padding-left: \(left);")
+                }
+
+                return individualProperties.joined(separator: " ")
+            }
+
+        case .global(let global):
+            return global.description
         }
-      } else {
-        // Only some sides are specified - use individual properties instead
-        var individualProperties: [String] = []
-
-        if let top = sides.top {
-          individualProperties.append("padding-top: \(top);")
-        }
-        if let right = sides.right {
-          individualProperties.append("padding-right: \(right);")
-        }
-        if let bottom = sides.bottom {
-          individualProperties.append("padding-bottom: \(bottom);")
-        }
-        if let left = sides.left {
-          individualProperties.append("padding-left: \(left);")
-        }
-
-        return individualProperties.joined(separator: " ")
-      }
-
-    case .global(let global):
-      return global.description
     }
-  }
 }
 
 /// Convenience initializers for padding
 extension Padding {
-  /// Creates a padding with vertical and horizontal values
-  ///
-  /// - Parameters:
-  ///   - vertical: The top and bottom padding
-  ///   - horizontal: The left and right padding
-  /// - Returns: A Padding instance with the specified vertical and horizontal values
-  public static func sides(vertical: LengthPercentage, horizontal: LengthPercentage) -> Padding {
-    .verticalHorizontal(vertical, horizontal)
-  }
+    /// Creates a padding with vertical and horizontal values
+    ///
+    /// - Parameters:
+    ///   - vertical: The top and bottom padding
+    ///   - horizontal: The left and right padding
+    /// - Returns: A Padding instance with the specified vertical and horizontal values
+    public static func sides(vertical: LengthPercentage, horizontal: LengthPercentage) -> Padding {
+        .verticalHorizontal(vertical, horizontal)
+    }
 
-  /// Creates a padding with named sides
-  ///
-  /// - Parameters:
-  ///   - top: The top padding value (optional)
-  ///   - right: The right padding value (optional)
-  ///   - bottom: The bottom padding value (optional)
-  ///   - left: The left padding value (optional)
-  /// - Returns: A Padding instance with the specified sides
-  public static func sides(
-    top: LengthPercentage? = nil,
-    right: LengthPercentage? = nil,
-    bottom: LengthPercentage? = nil,
-    left: LengthPercentage? = nil
-  ) -> Padding {
-    .named(NamedSides(top: top, right: right, bottom: bottom, left: left))
-  }
+    /// Creates a padding with named sides
+    ///
+    /// - Parameters:
+    ///   - top: The top padding value (optional)
+    ///   - right: The right padding value (optional)
+    ///   - bottom: The bottom padding value (optional)
+    ///   - left: The left padding value (optional)
+    /// - Returns: A Padding instance with the specified sides
+    public static func sides(
+        top: LengthPercentage? = nil,
+        right: LengthPercentage? = nil,
+        bottom: LengthPercentage? = nil,
+        left: LengthPercentage? = nil
+    ) -> Padding {
+        .named(NamedSides(top: top, right: right, bottom: bottom, left: left))
+    }
 
-  /// Creates a padding with vertical (top/bottom) and horizontal (left/right) values
-  ///
-  /// - Parameters:
-  ///   - vertical: The vertical padding value (optional)
-  ///   - horizontal: The horizontal padding value (optional)
-  /// - Returns: A Padding instance with the specified vertical and horizontal values
-  public static func sides(
-    vertical: LengthPercentage? = nil,
-    horizontal: LengthPercentage? = nil
-  ) -> Padding {
-    .named(NamedSides(vertical: vertical, horizontal: horizontal))
-  }
+    /// Creates a padding with vertical (top/bottom) and horizontal (left/right) values
+    ///
+    /// - Parameters:
+    ///   - vertical: The vertical padding value (optional)
+    ///   - horizontal: The horizontal padding value (optional)
+    /// - Returns: A Padding instance with the specified vertical and horizontal values
+    public static func sides(
+        vertical: LengthPercentage? = nil,
+        horizontal: LengthPercentage? = nil
+    ) -> Padding {
+        .named(NamedSides(vertical: vertical, horizontal: horizontal))
+    }
 
-  /// Creates a padding with zero on all sides
-  public static let zero: Padding = .all(.px(0))
+    /// Creates a padding with zero on all sides
+    public static let zero: Padding = .all(.px(0))
 }
 
 extension Padding: ExpressibleByIntegerLiteral {
-  /// Creates a padding from an integer literal (interpreted as pixels for all sides)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(integerLiteral value: Int) {
-    self = .all(.px(Double(value)))
-  }
+    /// Creates a padding from an integer literal (interpreted as pixels for all sides)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(integerLiteral value: Int) {
+        self = .all(.px(Double(value)))
+    }
 }
 
 extension Padding: ExpressibleByFloatLiteral {
-  /// Creates a padding from a floating-point literal (interpreted as pixels for all sides)
-  ///
-  /// - Parameter value: The padding in pixels
-  public init(floatLiteral value: Double) {
-    self = .all(.px(value))
-  }
+    /// Creates a padding from a floating-point literal (interpreted as pixels for all sides)
+    ///
+    /// - Parameter value: The padding in pixels
+    public init(floatLiteral value: Double) {
+        self = .all(.px(value))
+    }
 }

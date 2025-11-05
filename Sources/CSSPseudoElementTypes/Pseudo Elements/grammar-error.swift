@@ -36,7 +36,7 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on ::grammar-error](https://developer.mozilla.org/en-US/docs/Web/CSS/::grammar-error)
 public struct GrammarError: CSSPseudoElement {
-  @inlinable public static var name: String { "grammar-error" }
+    @inlinable public static var name: String { "grammar-error" }
 
-  public init() {}
+    public init() {}
 }

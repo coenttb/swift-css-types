@@ -40,84 +40,174 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on border-width](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width)
 public enum BorderWidth: Property {
-  public static let property: String = "border-width"
+    public static let property: String = "border-width"
 
-  /// One of the various patterns of border width values
-  /// The width values can be specified in multiple patterns:
-  /// - Single width for all sides
-  /// - Vertical and horizontal widths
-  /// - Top, horizontal, and bottom widths
-  /// - Top, right, bottom, and left widths
-  case values(Values)
+    /// One of the various patterns of border width values
+    /// The width values can be specified in multiple patterns:
+    /// - Single width for all sides
+    /// - Vertical and horizontal widths
+    /// - Top, horizontal, and bottom widths
+    /// - Top, right, bottom, and left widths
+    case values(Values)
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
 }
 extension BorderWidth {
-  /// Represents different patterns of specifying border widths
-  public struct Values: Sendable, Hashable, CustomStringConvertible {
-    /// The width for the top border
-    public let top: Width
+    /// Represents different patterns of specifying border widths
+    public struct Values: Sendable, Hashable, CustomStringConvertible {
+        /// The width for the top border
+        public let top: Width
 
-    /// The width for the right border
-    public let right: Width
+        /// The width for the right border
+        public let right: Width
 
-    /// The width for the bottom border
-    public let bottom: Width
+        /// The width for the bottom border
+        public let bottom: Width
 
-    /// The width for the left border
-    public let left: Width
+        /// The width for the left border
+        public let left: Width
 
-    /// Pattern used to create this width values set
-    private enum Pattern {
-      case all
-      case verticalHorizontal
-      case topHorizontalBottom
-      case fourSides
+        /// Pattern used to create this width values set
+        private enum Pattern {
+            case all
+            case verticalHorizontal
+            case topHorizontalBottom
+            case fourSides
+        }
+
+        private let pattern: Pattern
+
+        /// Creates a width values set with the same value for all sides
+        ///
+        /// - Parameter width: The width for all sides
+        public init(_ width: Width) {
+            self.top = width
+            self.right = width
+            self.bottom = width
+            self.left = width
+            self.pattern = .all
+        }
+
+        /// Creates width values with vertical and horizontal components
+        ///
+        /// - Parameters:
+        ///   - vertical: The width for top and bottom borders
+        ///   - horizontal: The width for left and right borders
+        public init(vertical: Width, horizontal: Width) {
+            self.top = vertical
+            self.right = horizontal
+            self.bottom = vertical
+            self.left = horizontal
+            self.pattern = .verticalHorizontal
+        }
+
+        /// Creates width values with top, horizontal, and bottom components
+        ///
+        /// - Parameters:
+        ///   - top: The width for the top border
+        ///   - horizontal: The width for left and right borders
+        ///   - bottom: The width for the bottom border
+        public init(top: Width, horizontal: Width, bottom: Width) {
+            self.top = top
+            self.right = horizontal
+            self.bottom = bottom
+            self.left = horizontal
+            self.pattern = .topHorizontalBottom
+        }
+
+        /// Creates width values with specific widths for each side
+        ///
+        /// - Parameters:
+        ///   - top: The width for the top border
+        ///   - right: The width for the right border
+        ///   - bottom: The width for the bottom border
+        ///   - left: The width for the left border
+        public init(_ top: Width, _ right: Width, _ bottom: Width, _ left: Width) {
+            self.top = top
+            self.right = right
+            self.bottom = bottom
+            self.left = left
+            self.pattern = .fourSides
+        }
+
+        /// String representation of the width values
+        public var description: String {
+            switch pattern {
+            case .all:
+                return top.description
+            case .verticalHorizontal:
+                return "\(top.description) \(right.description)"
+            case .topHorizontalBottom:
+                return "\(top.description) \(right.description) \(bottom.description)"
+            case .fourSides:
+                return
+                    "\(top.description) \(right.description) \(bottom.description) \(left.description)"
+            }
+        }
     }
+}
+extension BorderWidth {
+    /// The possible width values for a border
+    public enum Width: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
+        /// Thin line (usually 1px)
+        case thin
 
-    private let pattern: Pattern
+        /// Medium line (usually 3px)
+        case medium
 
-    /// Creates a width values set with the same value for all sides
+        /// Thick line (usually 5px)
+        case thick
+
+        /// A specific length value
+        case length(Length)
+
+        /// String representation of the width
+        public var description: String {
+            switch self {
+            case .thin:
+                return "thin"
+            case .medium:
+                return "medium"
+            case .thick:
+                return "thick"
+            case .length(let length):
+                return length.description
+            }
+        }
+    }
+}
+
+/// Convenience initializers for BorderWidth
+extension BorderWidth {
+    /// Creates a border width with the same value for all sides
     ///
     /// - Parameter width: The width for all sides
     public init(_ width: Width) {
-      self.top = width
-      self.right = width
-      self.bottom = width
-      self.left = width
-      self.pattern = .all
+        self = .values(.init(width))
     }
 
-    /// Creates width values with vertical and horizontal components
+    /// Creates a border width with two values (vertical and horizontal)
     ///
     /// - Parameters:
     ///   - vertical: The width for top and bottom borders
     ///   - horizontal: The width for left and right borders
     public init(vertical: Width, horizontal: Width) {
-      self.top = vertical
-      self.right = horizontal
-      self.bottom = vertical
-      self.left = horizontal
-      self.pattern = .verticalHorizontal
+        self = .values(.init(vertical, vertical, vertical, vertical))
     }
 
-    /// Creates width values with top, horizontal, and bottom components
+    /// Creates a border width with three values (top, horizontal, bottom)
     ///
     /// - Parameters:
     ///   - top: The width for the top border
     ///   - horizontal: The width for left and right borders
     ///   - bottom: The width for the bottom border
     public init(top: Width, horizontal: Width, bottom: Width) {
-      self.top = top
-      self.right = horizontal
-      self.bottom = bottom
-      self.left = horizontal
-      self.pattern = .topHorizontalBottom
+        self = .values(.init(top: top, horizontal: horizontal, bottom: bottom))
     }
 
-    /// Creates width values with specific widths for each side
+    /// Creates a border width with four values (one for each side)
     ///
     /// - Parameters:
     ///   - top: The width for the top border
@@ -125,145 +215,56 @@ extension BorderWidth {
     ///   - bottom: The width for the bottom border
     ///   - left: The width for the left border
     public init(_ top: Width, _ right: Width, _ bottom: Width, _ left: Width) {
-      self.top = top
-      self.right = right
-      self.bottom = bottom
-      self.left = left
-      self.pattern = .fourSides
+        self = .values(.init(top, right, bottom, left))
     }
-
-    /// String representation of the width values
-    public var description: String {
-      switch pattern {
-      case .all:
-        return top.description
-      case .verticalHorizontal:
-        return "\(top.description) \(right.description)"
-      case .topHorizontalBottom:
-        return "\(top.description) \(right.description) \(bottom.description)"
-      case .fourSides:
-        return "\(top.description) \(right.description) \(bottom.description) \(left.description)"
-      }
-    }
-  }
-}
-extension BorderWidth {
-  /// The possible width values for a border
-  public enum Width: Sendable, Hashable, CustomStringConvertible, LengthConvertible {
-    /// Thin line (usually 1px)
-    case thin
-
-    /// Medium line (usually 3px)
-    case medium
-
-    /// Thick line (usually 5px)
-    case thick
-
-    /// A specific length value
-    case length(Length)
-
-    /// String representation of the width
-    public var description: String {
-      switch self {
-      case .thin:
-        return "thin"
-      case .medium:
-        return "medium"
-      case .thick:
-        return "thick"
-      case .length(let length):
-        return length.description
-      }
-    }
-  }
-}
-
-/// Convenience initializers for BorderWidth
-extension BorderWidth {
-  /// Creates a border width with the same value for all sides
-  ///
-  /// - Parameter width: The width for all sides
-  public init(_ width: Width) {
-    self = .values(.init(width))
-  }
-
-  /// Creates a border width with two values (vertical and horizontal)
-  ///
-  /// - Parameters:
-  ///   - vertical: The width for top and bottom borders
-  ///   - horizontal: The width for left and right borders
-  public init(vertical: Width, horizontal: Width) {
-    self = .values(.init(vertical, vertical, vertical, vertical))
-  }
-
-  /// Creates a border width with three values (top, horizontal, bottom)
-  ///
-  /// - Parameters:
-  ///   - top: The width for the top border
-  ///   - horizontal: The width for left and right borders
-  ///   - bottom: The width for the bottom border
-  public init(top: Width, horizontal: Width, bottom: Width) {
-    self = .values(.init(top: top, horizontal: horizontal, bottom: bottom))
-  }
-
-  /// Creates a border width with four values (one for each side)
-  ///
-  /// - Parameters:
-  ///   - top: The width for the top border
-  ///   - right: The width for the right border
-  ///   - bottom: The width for the bottom border
-  ///   - left: The width for the left border
-  public init(_ top: Width, _ right: Width, _ bottom: Width, _ left: Width) {
-    self = .values(.init(top, right, bottom, left))
-  }
 }
 
 /// Support for LengthConvertible
 extension BorderWidth: LengthConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> BorderWidth {
-    .values(.init(.init(length)))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderWidth {
+        .values(.init(.init(length)))
+    }
 }
 
 /// Provides string conversion for CSS output
 extension BorderWidth: CustomStringConvertible {
-  /// Converts the border-width to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// border-width: 2px;
-  /// border-width: 1px 5px;
-  /// border-width: thin medium thick;
-  /// border-width: 1px 5px 3px 2px;
-  /// border-width: inherit;
-  /// ```
-  public var description: String {
-    switch self {
-    case .values(let values):
-      return values.description
-    case .global(let global):
-      return global.description
+    /// Converts the border-width to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// border-width: 2px;
+    /// border-width: 1px 5px;
+    /// border-width: thin medium thick;
+    /// border-width: 1px 5px 3px 2px;
+    /// border-width: inherit;
+    /// ```
+    public var description: String {
+        switch self {
+        case .values(let values):
+            return values.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for creating BorderWidth values
 extension BorderWidth {
-  /// The default border width (medium)
-  public static let `default` = BorderWidth(.medium)
+    /// The default border width (medium)
+    public static let `default` = BorderWidth(.medium)
 
-  /// Creates a thin border width on all sides
-  public static let thin = BorderWidth(.thin)
+    /// Creates a thin border width on all sides
+    public static let thin = BorderWidth(.thin)
 
-  /// Creates a medium border width on all sides
-  public static let medium = BorderWidth(.medium)
+    /// Creates a medium border width on all sides
+    public static let medium = BorderWidth(.medium)
 
-  /// Creates a thick border width on all sides
-  public static let thick = BorderWidth(.thick)
+    /// Creates a thick border width on all sides
+    public static let thick = BorderWidth(.thick)
 }
 
 extension BorderBottomWidth: LengthConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> BorderBottomWidth {
-    .width(.values(.init(.length(length))))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> BorderBottomWidth {
+        .width(.values(.init(.length(length))))
+    }
 }

@@ -20,29 +20,29 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on column-width](https://developer.mozilla.org/en-US/docs/Web/CSS/column-width)
 public enum ColumnWidth: Property, LengthConvertible {
-  public static let property: String = "column-width"
-  /// The width of the column is determined by other CSS properties, such as column-count
-  case auto
+    public static let property: String = "column-width"
+    /// The width of the column is determined by other CSS properties, such as column-count
+    case auto
 
-  /// A specific length for the column width
-  case length(Length)
+    /// A specific length for the column width
+    case length(Length)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension ColumnWidth: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
 
-    case .length(let length):
-      return length.description
+        case .length(let length):
+            return length.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

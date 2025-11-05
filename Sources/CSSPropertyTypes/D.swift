@@ -10,25 +10,25 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/d)
 public enum D: Property {
-  public static let property: String = "d"
+    public static let property: String = "d"
 
-  /// No path is drawn
-  case none
+    /// No path is drawn
+    case none
 
-  /// A path definition string that defines an SVG path
-  case path(String)
+    /// A path definition string that defines an SVG path
+    case path(String)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .path(let pathData):
-      return "path(\"\(pathData)\")"
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .path(let pathData):
+            return "path(\"\(pathData)\")"
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }

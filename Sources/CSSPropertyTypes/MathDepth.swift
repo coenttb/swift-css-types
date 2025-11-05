@@ -16,48 +16,48 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on math-depth](https://developer.mozilla.org/en-US/docs/Web/CSS/math-depth)
 public enum MathDepth: Property {
-  public static let property: String = "math-depth"
+    public static let property: String = "math-depth"
 
-  /// Set to the inherited math-depth plus 1 when inherited math-style is compact.
-  case autoAdd
+    /// Set to the inherited math-depth plus 1 when inherited math-style is compact.
+    case autoAdd
 
-  /// Set to the inherited math-depth plus the specified integer.
-  case add(Int)
+    /// Set to the inherited math-depth plus the specified integer.
+    case add(Int)
 
-  /// Set to the specified integer.
-  case absolute(Int)
+    /// Set to the specified integer.
+    case absolute(Int)
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .autoAdd:
-      return "auto-add"
-    case .add(let value):
-      return "add(\(value))"
-    case .absolute(let value):
-      return "\(value)"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .autoAdd:
+            return "auto-add"
+        case .add(let value):
+            return "add(\(value))"
+        case .absolute(let value):
+            return "\(value)"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience factory methods for common math depth values
 extension MathDepth {
-  /// Set math depth to 0 (root level)
-  public static var zero: MathDepth {
-    .absolute(0)
-  }
+    /// Set math depth to 0 (root level)
+    public static var zero: MathDepth {
+        .absolute(0)
+    }
 
-  /// Increase math depth by 1 (go one level deeper)
-  public static var increaseByOne: MathDepth {
-    .add(1)
-  }
+    /// Increase math depth by 1 (go one level deeper)
+    public static var increaseByOne: MathDepth {
+        .add(1)
+    }
 
-  /// Decrease math depth by 1 (go one level up)
-  public static var decreaseByOne: MathDepth {
-    .add(-1)
-  }
+    /// Decrease math depth by 1 (go one level up)
+    public static var decreaseByOne: MathDepth {
+        .add(-1)
+    }
 }

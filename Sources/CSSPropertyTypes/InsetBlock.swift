@@ -26,49 +26,49 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on inset-block](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block)
 public enum InsetBlock: Property, LengthPercentageConvertible {
-  public static let property: String = "inset-block"
+    public static let property: String = "inset-block"
 
-  /// Auto value for both start and end
-  case auto
+    /// Auto value for both start and end
+    case auto
 
-  /// Different values for start and end
-  case sides(start: LengthPercentage, end: LengthPercentage)
+    /// Different values for start and end
+    case sides(start: LengthPercentage, end: LengthPercentage)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public init(
-    start: LengthPercentage,
-    end: LengthPercentage
-  ) {
-    self = .sides(start: start, end: end)
-  }
-
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-
-    case .sides(let start, let end):
-      return "\(start) \(end)"
-
-    case .global(let global):
-      return global.description
+    public init(
+        start: LengthPercentage,
+        end: LengthPercentage
+    ) {
+        self = .sides(start: start, end: end)
     }
-  }
+
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+
+        case .sides(let start, let end):
+            return "\(start) \(end)"
+
+        case .global(let global):
+            return global.description
+        }
+    }
 }
 
 /// Convenience initializers for inset-block
 extension InsetBlock {
-  /// Creates an inset-block with the same value for both start and end
-  ///
-  /// - Parameter value: The value to use for both start and end
-  /// - Returns: An InsetBlock instance with the same value for both sides
-  public static func same(_ value: LengthPercentage) -> InsetBlock {
-    .init(start: value, end: value)
-  }
+    /// Creates an inset-block with the same value for both start and end
+    ///
+    /// - Parameter value: The value to use for both start and end
+    /// - Returns: An InsetBlock instance with the same value for both sides
+    public static func same(_ value: LengthPercentage) -> InsetBlock {
+        .init(start: value, end: value)
+    }
 
-  public static func lengthPercentage(_ value: LengthPercentage) -> InsetBlock {
-    .init(start: value, end: value)
-  }
+    public static func lengthPercentage(_ value: LengthPercentage) -> InsetBlock {
+        .init(start: value, end: value)
+    }
 }

@@ -57,87 +57,87 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on -webkit-mask-repeat-x](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-mask-repeat-x)
 public enum WebkitMaskRepeatX: Property {
-  public static let property: String = "-webkit-mask-repeat-x"
+    public static let property: String = "-webkit-mask-repeat-x"
 
-  /// Repeat the mask image horizontally (default)
-  case `repeat`
+    /// Repeat the mask image horizontally (default)
+    case `repeat`
 
-  /// Don't repeat the mask image horizontally
-  case noRepeat
+    /// Don't repeat the mask image horizontally
+    case noRepeat
 
-  /// Space mask images evenly in the horizontal direction
-  case space
+    /// Space mask images evenly in the horizontal direction
+    case space
 
-  /// Stretch and repeat mask images to fill the space in the horizontal direction
-  case round
+    /// Stretch and repeat mask images to fill the space in the horizontal direction
+    case round
 
-  /// Multiple repeat values for multiple masks
-  case multiple([WebkitMaskRepeatX])
+    /// Multiple repeat values for multiple masks
+    case multiple([WebkitMaskRepeatX])
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  /// Creates a mask repeat-x with multiple values
-  ///
-  /// - Parameter repeats: The repeat values for multiple masks
-  /// - Returns: A mask repeat-x with multiple values
-  public init(_ repeats: [WebkitMaskRepeatX]) {
-    if repeats.count == 1 {
-      self = repeats[0]
-    } else {
-      self = .multiple(repeats)
+    /// Creates a mask repeat-x with multiple values
+    ///
+    /// - Parameter repeats: The repeat values for multiple masks
+    /// - Returns: A mask repeat-x with multiple values
+    public init(_ repeats: [WebkitMaskRepeatX]) {
+        if repeats.count == 1 {
+            self = repeats[0]
+        } else {
+            self = .multiple(repeats)
+        }
     }
-  }
 }
 
 /// String conversion for WebkitMaskRepeatX
 extension WebkitMaskRepeatX: CustomStringConvertible {
-  /// Converts the -webkit-mask-repeat-x value to its CSS string representation
-  ///
-  /// This method generates CSS like:
-  /// ```css
-  /// -webkit-mask-repeat-x: repeat;
-  /// -webkit-mask-repeat-x: no-repeat;
-  /// -webkit-mask-repeat-x: space;
-  /// -webkit-mask-repeat-x: round;
-  /// -webkit-mask-repeat-x: repeat, no-repeat;
-  /// ```
-  public var description: String {
-    switch self {
-    case .repeat:
-      return "repeat"
-    case .noRepeat:
-      return "no-repeat"
-    case .space:
-      return "space"
-    case .round:
-      return "round"
-    case .multiple(let repeats):
-      return repeats.map { $0.description }.joined(separator: ", ")
-    case .global(let global):
-      return global.description
+    /// Converts the -webkit-mask-repeat-x value to its CSS string representation
+    ///
+    /// This method generates CSS like:
+    /// ```css
+    /// -webkit-mask-repeat-x: repeat;
+    /// -webkit-mask-repeat-x: no-repeat;
+    /// -webkit-mask-repeat-x: space;
+    /// -webkit-mask-repeat-x: round;
+    /// -webkit-mask-repeat-x: repeat, no-repeat;
+    /// ```
+    public var description: String {
+        switch self {
+        case .repeat:
+            return "repeat"
+        case .noRepeat:
+            return "no-repeat"
+        case .space:
+            return "space"
+        case .round:
+            return "round"
+        case .multiple(let repeats):
+            return repeats.map { $0.description }.joined(separator: ", ")
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// Convenience methods for WebkitMaskRepeatX
 extension WebkitMaskRepeatX {
-  /// Default value (repeat)
-  public static let `default` = WebkitMaskRepeatX.repeat
+    /// Default value (repeat)
+    public static let `default` = WebkitMaskRepeatX.repeat
 
-  /// Creates a mask repeat-x with multiple values
-  ///
-  /// - Parameter repeats: The repeat values
-  /// - Returns: A mask repeat-x with multiple values
-  public static func values(_ repeats: [WebkitMaskRepeatX]) -> WebkitMaskRepeatX {
-    WebkitMaskRepeatX(repeats)
-  }
+    /// Creates a mask repeat-x with multiple values
+    ///
+    /// - Parameter repeats: The repeat values
+    /// - Returns: A mask repeat-x with multiple values
+    public static func values(_ repeats: [WebkitMaskRepeatX]) -> WebkitMaskRepeatX {
+        WebkitMaskRepeatX(repeats)
+    }
 
-  /// Creates a mask repeat-x with multiple values
-  ///
-  /// - Parameter repeats: The repeat values
-  /// - Returns: A mask repeat-x with multiple values
-  public static func values(_ repeats: WebkitMaskRepeatX...) -> WebkitMaskRepeatX {
-    values(repeats)
-  }
+    /// Creates a mask repeat-x with multiple values
+    ///
+    /// - Parameter repeats: The repeat values
+    /// - Returns: A mask repeat-x with multiple values
+    public static func values(_ repeats: WebkitMaskRepeatX...) -> WebkitMaskRepeatX {
+        values(repeats)
+    }
 }

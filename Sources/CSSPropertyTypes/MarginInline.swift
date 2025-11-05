@@ -21,56 +21,56 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on margin-inline](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-inline)
 public enum MarginInline: Property {
-  public static let property: String = "margin-inline"
-  /// Single value for both inline-start and inline-end margins
-  case single(Margin)
+    public static let property: String = "margin-inline"
+    /// Single value for both inline-start and inline-end margins
+    case single(Margin)
 
-  /// Different values for inline-start and inline-end margins
-  case double(Margin, Margin)
+    /// Different values for inline-start and inline-end margins
+    case double(Margin, Margin)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
 }
 
 extension MarginInline {
 
-  /// Factory method for auto margins (centers the element in its container if used with both sides)
-  public static var auto: MarginInline {
-    .single(.auto)
-  }
+    /// Factory method for auto margins (centers the element in its container if used with both sides)
+    public static var auto: MarginInline {
+        .single(.auto)
+    }
 
-  /// Factory method for percentage values with different start and end
-  public static func percentage(_ start: Percentage, _ end: Percentage) -> MarginInline {
-    .double(.percentage(start), .percentage(end))
-  }
+    /// Factory method for percentage values with different start and end
+    public static func percentage(_ start: Percentage, _ end: Percentage) -> MarginInline {
+        .double(.percentage(start), .percentage(end))
+    }
 }
 
 extension MarginInline: LengthConvertible {
-  public static func length(_ length: CSSTypeTypes.Length) -> MarginInline {
-    .single(.length(length))
-  }
+    public static func length(_ length: CSSTypeTypes.Length) -> MarginInline {
+        .single(.length(length))
+    }
 }
 
 extension MarginInline: PercentageConvertible {
-  public static func percentage(_ length: CSSTypeTypes.Percentage) -> MarginInline {
-    .single(.percentage(length))
-  }
+    public static func percentage(_ length: CSSTypeTypes.Percentage) -> MarginInline {
+        .single(.percentage(length))
+    }
 }
 
 /// CSS Output conversion
 extension MarginInline: CustomStringConvertible {
-  /// Converts the margin-inline value to its CSS string representation
-  public var description: String {
-    switch self {
-    case .single(let margin):
-      return margin.description
+    /// Converts the margin-inline value to its CSS string representation
+    public var description: String {
+        switch self {
+        case .single(let margin):
+            return margin.description
 
-    case .double(let start, let end):
-      return "\(start) \(end)"
+        case .double(let start, let end):
+            return "\(start) \(end)"
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

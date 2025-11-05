@@ -37,35 +37,35 @@ import Foundation
 ///
 /// - SeeAlso: [CSS-Tricks article on -webkit-text-security](https://css-tricks.com/almanac/properties/t/text-security/)
 public enum WebkitTextSecurity: Property {
-  public static let property: String = "-webkit-text-security"
+    public static let property: String = "-webkit-text-security"
 
-  /// Do not obscure text (default)
-  case none
+    /// Do not obscure text (default)
+    case none
 
-  /// Replace each character with a disc (filled circle/bullet symbol)
-  case disc
+    /// Replace each character with a disc (filled circle/bullet symbol)
+    case disc
 
-  /// Replace each character with a circle (hollow circle symbol)
-  case circle
+    /// Replace each character with a circle (hollow circle symbol)
+    case circle
 
-  /// Replace each character with a square symbol
-  case square
+    /// Replace each character with a square symbol
+    case square
 
-  /// Global CSS values
-  case global(CSSTypeTypes.Global)
+    /// Global CSS values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .none:
-      return "none"
-    case .disc:
-      return "disc"
-    case .circle:
-      return "circle"
-    case .square:
-      return "square"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .none:
+            return "none"
+        case .disc:
+            return "disc"
+        case .circle:
+            return "circle"
+        case .square:
+            return "square"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

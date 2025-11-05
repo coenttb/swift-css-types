@@ -21,27 +21,27 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on color-interpolation-filters](https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-filters)
 public enum ColorInterpolationFilters: Property {
-  public static let property: String = "color-interpolation-filters"
-  /// Indicates that color interpolation should occur in the linearized RGB color space
-  /// as described in the sRGB specification. This is the default property value.
-  case linearRGB
+    public static let property: String = "color-interpolation-filters"
+    /// Indicates that color interpolation should occur in the linearized RGB color space
+    /// as described in the sRGB specification. This is the default property value.
+    case linearRGB
 
-  /// Indicates that color interpolation should occur in the gamma-encoded sRGB color space.
-  case sRGB
+    /// Indicates that color interpolation should occur in the gamma-encoded sRGB color space.
+    case sRGB
 
-  /// Indicates that the user agent can choose either the sRGB or linearRGB color space for interpolation.
-  /// This means the author doesn't require interpolation to occur in a specific color space.
-  case auto
+    /// Indicates that the user agent can choose either the sRGB or linearRGB color space for interpolation.
+    /// This means the author doesn't require interpolation to occur in a specific color space.
+    case auto
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .linearRGB: return "linearRGB"
-    case .sRGB: return "sRGB"
-    case .auto: return "auto"
-    case .global(let global): return global.description
+    public var description: String {
+        switch self {
+        case .linearRGB: return "linearRGB"
+        case .sRGB: return "sRGB"
+        case .auto: return "auto"
+        case .global(let global): return global.description
+        }
     }
-  }
 }

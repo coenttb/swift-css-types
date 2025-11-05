@@ -18,55 +18,55 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on stroke-dashoffset](https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dashoffset)
 public enum StrokeDashoffset: Property {
-  public static let property: String = "stroke-dashoffset"
+    public static let property: String = "stroke-dashoffset"
 
-  /// A numeric value representing SVG units
-  case number(Number)
+    /// A numeric value representing SVG units
+    case number(Number)
 
-  /// A length value
-  case length(Length)
+    /// A length value
+    case length(Length)
 
-  /// A percentage value relative to the SVG viewport diagonal
-  case percentage(Percentage)
+    /// A percentage value relative to the SVG viewport diagonal
+    case percentage(Percentage)
 
-  /// A length-percentage value
-  case lengthPercentage(LengthPercentage)
+    /// A length-percentage value
+    case lengthPercentage(LengthPercentage)
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 }
 
 /// CSS Output conversion
 extension StrokeDashoffset: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .number(let number):
-      return number.description
+    public var description: String {
+        switch self {
+        case .number(let number):
+            return number.description
 
-    case .length(let length):
-      return length.description
+        case .length(let length):
+            return length.description
 
-    case .percentage(let percentage):
-      return percentage.description
+        case .percentage(let percentage):
+            return percentage.description
 
-    case .lengthPercentage(let lengthPercentage):
-      return lengthPercentage.description
+        case .lengthPercentage(let lengthPercentage):
+            return lengthPercentage.description
 
-    case .global(let global):
-      return global.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 /// ExpressibleByIntegerLiteral and ExpressibleByFloatLiteral conformance for StrokeDashoffset
 extension StrokeDashoffset: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
-  /// Creates a stroke-dashoffset value from an integer literal
-  public init(integerLiteral value: Int) {
-    self = .number(.init(value))
-  }
+    /// Creates a stroke-dashoffset value from an integer literal
+    public init(integerLiteral value: Int) {
+        self = .number(.init(value))
+    }
 
-  /// Creates a stroke-dashoffset value from a float literal
-  public init(floatLiteral value: Double) {
-    self = .number(.init(value))
-  }
+    /// Creates a stroke-dashoffset value from a float literal
+    public init(floatLiteral value: Double) {
+        self = .number(.init(value))
+    }
 }

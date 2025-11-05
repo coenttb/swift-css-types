@@ -18,77 +18,77 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on hex-color](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color)
 public struct HexColor: Sendable, Hashable {
-  /// The hex color value including the leading "#"
-  public let value: String
+    /// The hex color value including the leading "#"
+    public let value: String
 
-  /// Creates a hexadecimal color from a string value.
-  ///
-  /// - Parameter value: The hex color string (e.g., "#ff0000", "#f00")
-  /// - Note: The function will add a "#" prefix if missing
-  public init(_ value: String) {
-    if value.hasPrefix("#") {
-      self.value = value
-    } else {
-      self.value = "#" + value
+    /// Creates a hexadecimal color from a string value.
+    ///
+    /// - Parameter value: The hex color string (e.g., "#ff0000", "#f00")
+    /// - Note: The function will add a "#" prefix if missing
+    public init(_ value: String) {
+        if value.hasPrefix("#") {
+            self.value = value
+        } else {
+            self.value = "#" + value
+        }
     }
-  }
 
-  /// Creates a hexadecimal color using RGB components.
-  ///
-  /// - Parameters:
-  ///   - red: The red component (0-255)
-  ///   - green: The green component (0-255)
-  ///   - blue: The blue component (0-255)
-  /// - Returns: A HexColor in 6-digit format (#RRGGBB)
-  public static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> HexColor {
-    let hexString: String = .init(
-      format: "#%02X%02X%02X",
-      min(max(0, red), 255),
-      min(max(0, green), 255),
-      min(max(0, blue), 255)
-    )
-    return HexColor(hexString)
-  }
+    /// Creates a hexadecimal color using RGB components.
+    ///
+    /// - Parameters:
+    ///   - red: The red component (0-255)
+    ///   - green: The green component (0-255)
+    ///   - blue: The blue component (0-255)
+    /// - Returns: A HexColor in 6-digit format (#RRGGBB)
+    public static func rgb(_ red: Int, _ green: Int, _ blue: Int) -> HexColor {
+        let hexString: String = .init(
+            format: "#%02X%02X%02X",
+            min(max(0, red), 255),
+            min(max(0, green), 255),
+            min(max(0, blue), 255)
+        )
+        return HexColor(hexString)
+    }
 
-  /// Creates a hexadecimal color using RGBA components.
-  ///
-  /// - Parameters:
-  ///   - red: The red component (0-255)
-  ///   - green: The green component (0-255)
-  ///   - blue: The blue component (0-255)
-  ///   - alpha: The alpha component (0.0-1.0)
-  /// - Returns: A HexColor in 8-digit format (#RRGGBBAA)
-  public static func rgba(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Double) -> HexColor {
-    // Convert alpha from 0.0-1.0 to 0-255 (using rounding instead of truncation)
-    let alphaInt = Int(round(min(max(0.0, alpha), 1.0) * 255))
+    /// Creates a hexadecimal color using RGBA components.
+    ///
+    /// - Parameters:
+    ///   - red: The red component (0-255)
+    ///   - green: The green component (0-255)
+    ///   - blue: The blue component (0-255)
+    ///   - alpha: The alpha component (0.0-1.0)
+    /// - Returns: A HexColor in 8-digit format (#RRGGBBAA)
+    public static func rgba(_ red: Int, _ green: Int, _ blue: Int, _ alpha: Double) -> HexColor {
+        // Convert alpha from 0.0-1.0 to 0-255 (using rounding instead of truncation)
+        let alphaInt = Int(round(min(max(0.0, alpha), 1.0) * 255))
 
-    let hexString = String(
-      format: "#%02X%02X%02X%02X",
-      min(max(0, red), 255),
-      min(max(0, green), 255),
-      min(max(0, blue), 255),
-      alphaInt
-    )
-    return HexColor(hexString)
-  }
+        let hexString = String(
+            format: "#%02X%02X%02X%02X",
+            min(max(0, red), 255),
+            min(max(0, green), 255),
+            min(max(0, blue), 255),
+            alphaInt
+        )
+        return HexColor(hexString)
+    }
 
-  /// Checks if the hex color is valid.
-  ///
-  /// - Returns: True if the hex color has a valid format (3, 4, 6, or 8 digits with # prefix)
-  public var isValid: Bool {
-    let pattern = "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
-    let regex = try? NSRegularExpression(pattern: pattern)
-    let range = NSRange(location: 0, length: value.utf16.count)
-    return regex?.firstMatch(in: value, range: range) != nil
-  }
+    /// Checks if the hex color is valid.
+    ///
+    /// - Returns: True if the hex color has a valid format (3, 4, 6, or 8 digits with # prefix)
+    public var isValid: Bool {
+        let pattern = "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+        let regex = try? NSRegularExpression(pattern: pattern)
+        let range = NSRange(location: 0, length: value.utf16.count)
+        return regex?.firstMatch(in: value, range: range) != nil
+    }
 }
 
 /// Provides string conversion for CSS output
 extension HexColor: CustomStringConvertible {
-  /// Converts the hex color to its CSS string representation
-  public var description: String {
-    return value
-  }
+    /// Converts the hex color to its CSS string representation
+    public var description: String {
+        return value
+    }
 }
 
 ///// Conformance to Color protocol

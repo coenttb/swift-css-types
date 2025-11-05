@@ -30,25 +30,25 @@ import Foundation
 ///
 /// - SeeAlso: [Safari CSS Reference on -webkit-touch-callout](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html)
 public enum WebkitTouchCallout: Property {
-  public static let property: String = "-webkit-touch-callout"
+    public static let property: String = "-webkit-touch-callout"
 
-  /// Display the default callout
-  case `default`
+    /// Display the default callout
+    case `default`
 
-  /// Disable the callout
-  case none
+    /// Disable the callout
+    case none
 
-  /// Global CSS value
-  case global(CSSTypeTypes.Global)
+    /// Global CSS value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .default:
-      return "default"
-    case .none:
-      return "none"
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .default:
+            return "default"
+        case .none:
+            return "none"
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }

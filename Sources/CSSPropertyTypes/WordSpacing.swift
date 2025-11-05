@@ -16,27 +16,27 @@ import Foundation
 ///
 /// - SeeAlso: [MDN Web Docs on word-spacing](https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing)
 public enum WordSpacing: Property {
-  public static let property: String = "word-spacing"
+    public static let property: String = "word-spacing"
 
-  /// The normal inter-word spacing, as defined by the current font and/or the browser.
-  case normal
+    /// The normal inter-word spacing, as defined by the current font and/or the browser.
+    case normal
 
-  /// Specifies extra spacing in addition to the intrinsic inter-word spacing defined by the font.
-  case length(Length)
+    /// Specifies extra spacing in addition to the intrinsic inter-word spacing defined by the font.
+    case length(Length)
 
-  /// Global value
-  case global(CSSTypeTypes.Global)
+    /// Global value
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .normal:
-      return "normal"
-    case .length(let length):
-      return length.description
-    case .global(let global):
-      return global.description
+    public var description: String {
+        switch self {
+        case .normal:
+            return "normal"
+        case .length(let length):
+            return length.description
+        case .global(let global):
+            return global.description
+        }
     }
-  }
 }
 
 extension WordSpacing: LengthConvertible {}

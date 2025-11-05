@@ -24,98 +24,98 @@ import Foundation
 /// - SeeAlso: [MDN Web Docs on grid-auto-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns)
 public enum GridAutoColumns: Property {
 
-  public static let property: String = "grid-auto-columns"
+    public static let property: String = "grid-auto-columns"
 
-  /// Auto sizing (similar to minmax(min-content, max-content))
-  case auto
+    /// Auto sizing (similar to minmax(min-content, max-content))
+    case auto
 
-  /// Fixed length value
-  case px(Double)
+    /// Fixed length value
+    case px(Double)
 
-  /// Percentage of grid container width
-  case percentage(Percentage)
+    /// Percentage of grid container width
+    case percentage(Percentage)
 
-  /// Flexible length (takes a share of remaining space)
-  case fr(Double)
+    /// Flexible length (takes a share of remaining space)
+    case fr(Double)
 
-  /// Largest minimal content contribution
-  case minContent
+    /// Largest minimal content contribution
+    case minContent
 
-  /// Largest maximal content contribution
-  case maxContent
+    /// Largest maximal content contribution
+    case maxContent
 
-  /// Range between min and max with minmax()
-  case minMax(MinMaxValue, MinMaxValue)
+    /// Range between min and max with minmax()
+    case minMax(MinMaxValue, MinMaxValue)
 
-  /// Size that is clamped at the provided argument
-  case fitContent(LengthPercentage)
+    /// Size that is clamped at the provided argument
+    case fitContent(LengthPercentage)
 
-  /// Multiple track sizes for a repeating pattern
-  case multiple([GridAutoColumns])
+    /// Multiple track sizes for a repeating pattern
+    case multiple([GridAutoColumns])
 
-  /// Global values
-  case global(CSSTypeTypes.Global)
+    /// Global values
+    case global(CSSTypeTypes.Global)
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .px(let value):
-      return "\(value.truncatingRemainder())px"
-    case .percentage(let percentage):
-      return percentage.description
-    case .fr(let value):
-      return "\(value.truncatingRemainder())fr"
-    case .minContent:
-      return "min-content"
-    case .maxContent:
-      return "max-content"
-    case .minMax(let min, let max):
-      return "minmax(\(min), \(max))"
-    case .fitContent(let value):
-      return "fit-content(\(value))"
-    case .multiple(let tracks):
-      return tracks.map { $0.description }.joined(separator: " ")
-    case .global(let value):
-      return value.description
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .px(let value):
+            return "\(value.truncatingRemainder())px"
+        case .percentage(let percentage):
+            return percentage.description
+        case .fr(let value):
+            return "\(value.truncatingRemainder())fr"
+        case .minContent:
+            return "min-content"
+        case .maxContent:
+            return "max-content"
+        case .minMax(let min, let max):
+            return "minmax(\(min), \(max))"
+        case .fitContent(let value):
+            return "fit-content(\(value))"
+        case .multiple(let tracks):
+            return tracks.map { $0.description }.joined(separator: " ")
+        case .global(let value):
+            return value.description
+        }
     }
-  }
 }
 
 /// Values that can be used in minmax() expressions
 public enum MinMaxValue: Sendable, Hashable, CustomStringConvertible {
-  /// Auto sizing
-  case auto
+    /// Auto sizing
+    case auto
 
-  /// Fixed length value
-  case px(Double)
+    /// Fixed length value
+    case px(Double)
 
-  /// Percentage value
-  case percentage(Percentage)
+    /// Percentage value
+    case percentage(Percentage)
 
-  /// Flexible length (only valid as maximum)
-  case fr(Double)
+    /// Flexible length (only valid as maximum)
+    case fr(Double)
 
-  /// Largest minimal content contribution
-  case minContent
+    /// Largest minimal content contribution
+    case minContent
 
-  /// Largest maximal content contribution
-  case maxContent
+    /// Largest maximal content contribution
+    case maxContent
 
-  public var description: String {
-    switch self {
-    case .auto:
-      return "auto"
-    case .px(let value):
-      return "\(value.truncatingRemainder())px"
-    case .percentage(let percentage):
-      return percentage.description
-    case .fr(let value):
-      return "\(value.truncatingRemainder())fr"
-    case .minContent:
-      return "min-content"
-    case .maxContent:
-      return "max-content"
+    public var description: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .px(let value):
+            return "\(value.truncatingRemainder())px"
+        case .percentage(let percentage):
+            return percentage.description
+        case .fr(let value):
+            return "\(value.truncatingRemainder())fr"
+        case .minContent:
+            return "min-content"
+        case .maxContent:
+            return "max-content"
+        }
     }
-  }
 }
